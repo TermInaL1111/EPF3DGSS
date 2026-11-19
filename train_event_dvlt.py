@@ -26,7 +26,7 @@ def labels(root,scene,i):
 
 
 @torch.no_grad()
-def rgb_targets(root,keys,assets):
+def rgb_targets(root,keys,assets,geometry=False):
     teacher = load_rgb(assets)
     targets = {}
     features = []
@@ -37,10 +37,19 @@ def rgb_targets(root,keys,assets):
             with Image.open(root/"Scenes"/scene/f"{j:04}.png") as im:
                 frames.append(torch.from_numpy(np.array(im.convert("RGB").resize((224,168),Image.Resampling.BOX))))
         with torch.autocast("cuda",dtype=torch.bfloat16):
-            teacher.forward_inference(torch.stack(frames).permute(0,3,1,2)[None].cuda().float()/255)
-        targets[scene,i] = features.pop().half().cpu()
+            raw = teacher.forward_inference(torch.stack(frames).permute(0,3,1,2)[None].cuda().float()/255)
+        targets[scene,i] = {"tokens": features.pop().half().cpu()}
+        if geometry:
+            targets[scene,i].update({k:v.half().cpu() for k,v in geometry_maps(raw).items()})
     hook.remove()
     return targets
+
+
+def geometry_maps(raw):
+    # Pool at the patch stride to supervise geometry at the transformer's spatial resolution.
+    depth = raw["depth"].float().flatten(0,1).permute(0,3,1,2).clamp_min(1e-6).log()
+    rays = raw["rays"].float().flatten(0,1).permute(0,3,1,2)
+    return {"log_depth": F.avg_pool2d(depth,14), "rays": F.avg_pool2d(rays,14)}
 
 
 def alignment(tokens,reference,hidden,extra):
@@ -80,7 +89,7 @@ def main(args):
         scenes=(args.root/f"{split}_scenes.txt").read_text().split()[:count]
         keys.append([(s,i) for s in scenes for i in range(4,60,7)])
     train,val=keys
-    targets=rgb_targets(args.root,train,args.assets)
+    targets=rgb_targets(args.root,train,args.assets,args.geometry_weight>0)
     model=EventDVLT(args.assets).cuda()
     trainables={n:p for n,p in model.named_parameters() if p.requires_grad}
     opt=torch.optim.AdamW([{"params":[p for n,p in trainables.items() if n.startswith("backbone.")],"lr":3e-5},
@@ -93,12 +102,18 @@ def main(args):
         fraction=args.mask_fraction*min(1,(step+1)/max(1,args.warmup))
         with torch.autocast("cuda",dtype=torch.bfloat16):
             if step<args.warmup:
-                tokens,_,hidden=model.geometry(voxel,field,mask_fraction=fraction)
+                tokens,pos,hidden=model.geometry(voxel,field,mask_fraction=fraction)
+                if args.geometry_weight:
+                    raw=model.backbone._decode(tokens,168,224,1,2,pos)
             else:
-                cloud=model(voxel,field,mask_fraction=fraction)
+                cloud=model(voxel,field,mask_fraction=fraction,return_geometry=bool(args.geometry_weight))
                 tokens,hidden=cloud["tokens"],cloud["masked"]
-        align=alignment(tokens,targets[scene,i].cuda(),hidden,model.backbone.patch_start_idx)
+        target=targets[scene,i]
+        align=alignment(tokens,target["tokens"].cuda(),hidden,model.backbone.patch_start_idx)
         loss=align
+        if args.geometry_weight:
+            maps=geometry_maps(raw if step<args.warmup else cloud["raw_geometry"])
+            loss=loss+args.geometry_weight*sum(F.l1_loss(value,target[key].cuda().float()) for key,value in maps.items())
         if step>=args.warmup:
             gray,mask,poses=labels(args.root,scene,i)
             error=(render(cloud,poses[:1])-gray).abs()
@@ -111,7 +126,7 @@ def main(args):
         if step%10==0: print(step,log[-1][1:],flush=True)
     torch.save({n:p.detach().cpu() for n,p in trainables.items()},args.out/"event_dvlt_gs.pt")
     rows=evaluate(model,args.root,fields,val)
-    report=dict(seed=args.seed,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
+    report=dict(seed=args.seed,geometry_weight=args.geometry_weight,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
                 loops=model.backbone.inference_steps,trainable_params=sum(p.numel() for p in trainables.values()),
                 train=train,validation=val,trace=log,rows=rows)
     (args.out/"scores.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
@@ -123,5 +138,6 @@ if __name__=="__main__":
     p.add_argument("--steps",type=int,default=96)
     p.add_argument("--warmup",type=int,default=32)
     p.add_argument("--seed",type=int,default=10)
+    p.add_argument("--geometry-weight",type=float,default=0.)
     p.add_argument("--mask-fraction",type=float,default=.25)
     main(p.parse_args())

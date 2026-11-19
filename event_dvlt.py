@@ -114,7 +114,7 @@ class EventDVLT(nn.Module):
                              density.reshape(b,-1,1),spatial.reshape(b,-1,1)).reshape(b*s,-1,768)
         return x,pos,hidden
 
-    def forward(self,voxel,field,steps=12,mask_fraction=0.):
+    def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False):
         b,s = voxel.shape[:2]
         tokens,pos,hidden = self.geometry(voxel,field,steps,mask_fraction)
         n = self.backbone
@@ -146,10 +146,13 @@ class EventDVLT(nn.Module):
         quat = attrs[:,4:8]+attrs.new_tensor([1.,0,0,0])[None,:,None,None]
         def pack(x):
             return x.permute(0,2,3,1).reshape(b,-1,x.shape[1]).contiguous()
-        return dict(centers=center.flatten(1,2).contiguous(),scales=pack(sizes),quats=pack(F.normalize(quat,dim=1)),
+        result = dict(centers=center.flatten(1,2).contiguous(),scales=pack(sizes),quats=pack(F.normalize(quat,dim=1)),
                     gray=pack(attrs[:,8:9].sigmoid()),opacity=pack(attrs[:,9:10].sigmoid())[...,0].contiguous(),
                     tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
                     rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*scale)
+        if return_geometry:
+            result["raw_geometry"] = raw
+        return result
 
 
 def render(cloud,query):

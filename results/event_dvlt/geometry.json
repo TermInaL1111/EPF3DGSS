@@ -1,0 +1,866 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 4.259330523772571,
+      "foreground_depth_spearman": [
+        0.8971632139763857,
+        0.9092749083916045
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 15.683903665258782,
+      "foreground_depth_spearman": [
+        -0.08925503041157083,
+        -0.1363224570362575
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 5.668179410168352,
+      "foreground_depth_spearman": [
+        0.9298705347080274,
+        0.9336442145281695
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 9.09771958677211,
+      "foreground_depth_spearman": [
+        -0.1636991998721322,
+        -0.20908542269874303
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 6.586327975942328,
+      "foreground_depth_spearman": [
+        0.941812456385896,
+        0.9284018547833878
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.050246947133841,
+      "foreground_depth_spearman": [
+        -0.21309871173205394,
+        -0.21784202202590766
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 5.649514551990875,
+      "foreground_depth_spearman": [
+        0.9056822377975963,
+        0.8826446702526254
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 6.25202017584468,
+      "foreground_depth_spearman": [
+        -0.19997158355698522,
+        -0.09903831793000444
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 112.40514094781922,
+      "foreground_depth_spearman": [
+        0.32846654958653076,
+        0.3989230080751712
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 112.3200115037496,
+      "foreground_depth_spearman": [
+        0.03225792884682934,
+        0.15722537187791502
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 8.067452155025629,
+      "foreground_depth_spearman": [
+        0.6174485840550945,
+        0.7855624701722075
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.046945113782707,
+      "foreground_depth_spearman": [
+        0.35937703220893574,
+        0.7360617649351776
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 7.0318989097009315,
+      "foreground_depth_spearman": [
+        0.4111368485509516,
+        0.3645412938152265
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.7378661466760117,
+      "foreground_depth_spearman": [
+        0.8346322174529032,
+        0.8621392133335645
+      ]
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 7.132168434300428,
+      "foreground_depth_spearman": [
+        0.9379472816395978,
+        0.9218275671121209
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.1341161574320004,
+      "foreground_depth_spearman": [
+        0.755991801847598,
+        0.8430687186355115
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 1.2230708218105906,
+      "foreground_depth_spearman": [
+        0.912431897916576,
+        0.9170027772236301
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 9.302404628138891,
+      "foreground_depth_spearman": [
+        0.2885501622786471,
+        0.4291572961563193
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 1.260054313279659,
+      "foreground_depth_spearman": [
+        0.9004365898203552,
+        0.8931450194960722
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 11.603892123537593,
+      "foreground_depth_spearman": [
+        0.6828481615114846,
+        0.38579221305013683
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 1.8385423793836235,
+      "foreground_depth_spearman": [
+        0.8943531759076812,
+        0.8777190141125165
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 2.7978170947295764,
+      "foreground_depth_spearman": [
+        0.33284920648820365,
+        0.2670083899301383
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 1.7502060161529323,
+      "foreground_depth_spearman": [
+        0.9614829678339536,
+        0.9394219705293029
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 6.4018900535737195,
+      "foreground_depth_spearman": [
+        0.46538241413638565,
+        -0.08870008716203792
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 1.5890835431514074,
+      "foreground_depth_spearman": [
+        0.834100639162495,
+        0.8469596531588144
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 2.7474423969146473,
+      "foreground_depth_spearman": [
+        -0.17277055658475846,
+        -0.2956968225703956
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 5.180971046501143,
+      "foreground_depth_spearman": [
+        0.8817839784780107,
+        0.9078163459523979
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 10.792138781282349,
+      "foreground_depth_spearman": [
+        -0.5631874578577185,
+        -0.6690003183291955
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 3.936459862138492,
+      "foreground_depth_spearman": [
+        0.8271606196456772,
+        0.8193684371321573
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 13.831574343069883,
+      "foreground_depth_spearman": [
+        -0.664173853320458,
+        -0.676370229897558
+      ]
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 4.274776270809473,
+      "foreground_depth_spearman": [
+        0.8397077580353258,
+        0.8397240415214353
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.032104957761576,
+      "foreground_depth_spearman": [
+        0.02493936992035645,
+        0.04290487883685851
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 4.018087414071407,
+      "foreground_depth_spearman": [
+        0.9584663841054556,
+        0.9214414573261497
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.812644889585478,
+      "foreground_depth_spearman": [
+        0.12239150868902494,
+        0.21439227242525535
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 5.887798449388313,
+      "foreground_depth_spearman": [
+        0.8534097754523278,
+        0.7519011621188804
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.438157565309589,
+      "foreground_depth_spearman": [
+        0.23547557330675115,
+        0.38138293888011054
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 2.0955193939323644,
+      "foreground_depth_spearman": [
+        0.9467646669940769,
+        0.9223402867109755
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.9636267109041374,
+      "foreground_depth_spearman": [
+        0.685754962536202,
+        0.7931100569337696
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 3.866475749386286,
+      "foreground_depth_spearman": [
+        0.9303658937480035,
+        0.9244188095441469
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 10.739255517750372,
+      "foreground_depth_spearman": [
+        0.47846391995243975,
+        0.3595996043715662
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 2.798787147219167,
+      "foreground_depth_spearman": [
+        0.8719662413275063,
+        0.8474665294671211
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.962404074720965,
+      "foreground_depth_spearman": [
+        0.49459056123781875,
+        0.5128532507940571
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 3.175633575095729,
+      "foreground_depth_spearman": [
+        0.8925873019902156,
+        0.877195617937541
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.1165731270214025,
+      "foreground_depth_spearman": [
+        0.3632861616678002,
+        0.4812011905443868
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 4.027053394907956,
+      "foreground_depth_spearman": [
+        0.9462450656321694,
+        0.8815544049578097
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 5.881475875398952,
+      "foreground_depth_spearman": [
+        0.5686875374797241,
+        0.651395827239633
+      ]
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 2.128146878655736,
+      "foreground_depth_spearman": [
+        0.9253991308502987,
+        0.8776719302319049
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 18.600951340881046,
+      "foreground_depth_spearman": [
+        0.31728362467929067,
+        0.27374363640614613
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 2.032634469414616,
+      "foreground_depth_spearman": [
+        0.9479645665617499,
+        0.96249160542899
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.4548538621253866,
+      "foreground_depth_spearman": [
+        0.1946615868521065,
+        0.2762319655032563
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 1.353941887966177,
+      "foreground_depth_spearman": [
+        0.8794604373096907,
+        0.9143137749279824
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.775744704525823,
+      "foreground_depth_spearman": [
+        0.232588393246023,
+        0.289000049580881
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 0.5201165147961256,
+      "foreground_depth_spearman": [
+        0.8870767666467897,
+        0.8988095638527859
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.951421502496784,
+      "foreground_depth_spearman": [
+        0.08196880361114797,
+        0.1185898247095547
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 2.549870465297049,
+      "foreground_depth_spearman": [
+        0.8938378488500248,
+        0.8873250754020104
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.281948017327633,
+      "foreground_depth_spearman": [
+        0.3198434418441054,
+        0.3618545621524949
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 1.1620668889390637,
+      "foreground_depth_spearman": [
+        0.8801689692722617,
+        0.8925556148085132
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.128373768865014,
+      "foreground_depth_spearman": [
+        0.43891093022792005,
+        0.4750116372248343
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 4.110943569209245,
+      "foreground_depth_spearman": [
+        0.8835422815901853,
+        0.8585805852902826
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.356232851006128,
+      "foreground_depth_spearman": [
+        0.43191592594277817,
+        0.47090163081453507
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 1.9688375844337647,
+      "foreground_depth_spearman": [
+        0.9263840038532704,
+        0.9610837088595406
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 6.247566268377006,
+      "foreground_depth_spearman": [
+        0.4922954837192356,
+        0.47843550892105946
+      ]
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 2.1304134070902103,
+      "foreground_depth_spearman": [
+        0.962494199059984,
+        0.9467039776803206
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 5.125628463675114,
+      "foreground_depth_spearman": [
+        0.396593943219121,
+        0.3942989007773044
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 4.420066057081295,
+      "foreground_depth_spearman": [
+        0.9581971381076501,
+        0.9547732601790593
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.5702101281244847,
+      "foreground_depth_spearman": [
+        0.7520425598319534,
+        0.7148885812096757
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 4.809689801170053,
+      "foreground_depth_spearman": [
+        0.9330267105510218,
+        0.9408958658195438
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.671765561956789,
+      "foreground_depth_spearman": [
+        0.38239998543195697,
+        0.3297494379958878
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 5.258071862083698,
+      "foreground_depth_spearman": [
+        0.9546101039129317,
+        0.9480206420773706
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 0.7130614215216671,
+      "foreground_depth_spearman": [
+        0.6496197321168147,
+        0.1691288847598193
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 1.9783924709713818,
+      "foreground_depth_spearman": [
+        0.8964699769179292,
+        0.8581834470562808
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.382099984922969,
+      "foreground_depth_spearman": [
+        0.279765984880435,
+        -0.20409123372357205
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 2.0806577490539295,
+      "foreground_depth_spearman": [
+        0.7709293961425413,
+        0.7989920010189587
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 7.496942896243749,
+      "foreground_depth_spearman": [
+        -0.19618462500407544,
+        -0.04907995420043786
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 5.9394927260891,
+      "foreground_depth_spearman": [
+        0.8571181898818417,
+        0.4927108074111758
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 13.682547960547303,
+      "foreground_depth_spearman": [
+        -0.16699891463900945,
+        0.23889931875044032
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 3.2593697107521407,
+      "foreground_depth_spearman": [
+        0.841721131550952,
+        0.9254491498517349
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.4090650472056785,
+      "foreground_depth_spearman": [
+        0.7581737097393106,
+        0.8571186984106813
+      ]
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 5.04405939090378,
+      "foreground_depth_spearman": [
+        0.9407558659510658,
+        0.9530989437597477
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.71408445635576,
+      "foreground_depth_spearman": [
+        0.9069222326050423,
+        0.8992607252284114
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "rgb_teacher": {
+      "rotation_deg": 4.315032247930854,
+      "foreground_depth_spearman": [
+        0.8604588032591367,
+        0.855217206103606
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 4.220903225825595,
+      "foreground_depth_spearman": [
+        0.44835309195205775,
+        0.4219737816991672
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "rgb_teacher": {
+      "rotation_deg": 2.9218988093634937,
+      "foreground_depth_spearman": [
+        0.9307414495696014,
+        0.9272717002450305
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 14.882664633113448,
+      "foreground_depth_spearman": [
+        0.06827837452940727,
+        -0.3454831263578441
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "rgb_teacher": {
+      "rotation_deg": 3.1385894339601768,
+      "foreground_depth_spearman": [
+        0.9180649461290573,
+        0.901066986143382
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 41.51313596780942,
+      "foreground_depth_spearman": [
+        0.3727157635926449,
+        -0.4610101106139109
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "rgb_teacher": {
+      "rotation_deg": 2.458595403997086,
+      "foreground_depth_spearman": [
+        0.8378419303442795,
+        0.7943977080568787
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 8.02443088787087,
+      "foreground_depth_spearman": [
+        0.19848438486152314,
+        0.03873817001228426
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "rgb_teacher": {
+      "rotation_deg": 1.1923163187618089,
+      "foreground_depth_spearman": [
+        0.8087301132370822,
+        0.3995303961586581
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 1.3670531309679397,
+      "foreground_depth_spearman": [
+        0.2790426239080002,
+        -0.03857528873857619
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "rgb_teacher": {
+      "rotation_deg": 8.178495718592883,
+      "foreground_depth_spearman": [
+        -0.09473241875018006,
+        -0.1001167008648923
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 11.856657824502722,
+      "foreground_depth_spearman": [
+        -0.4769888861099277,
+        -0.36346562532729715
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "rgb_teacher": {
+      "rotation_deg": 6.148060592682504,
+      "foreground_depth_spearman": [
+        0.5754887205865725,
+        0.7602605007169962
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 5.964042233177335,
+      "foreground_depth_spearman": [
+        -0.13505400023854003,
+        0.23271343449122892
+      ]
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "rgb_teacher": {
+      "rotation_deg": 7.663773347904283,
+      "foreground_depth_spearman": [
+        0.09266336426118274,
+        0.03789201851019847
+      ]
+    },
+    "event_student": {
+      "rotation_deg": 3.8536276065014374,
+      "foreground_depth_spearman": [
+        0.3708352016926255,
+        0.36937183657644174
+      ]
+    }
+  }
+]

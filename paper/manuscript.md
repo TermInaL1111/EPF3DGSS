@@ -33,3 +33,17 @@ The controls include empty event inputs and a matched event pair. We report imag
 After 32 distillation updates and 64 joint updates, the masked student reaches 11.67 dB full-image PSNR and 12.19 dB foreground PSNR across 48 held-out windows. With both event inputs zeroed the same weights yield 12.31 and 12.95 dB. Disabling masking during training yields 11.78 and 12.29 dB on matched events. This single-seed experiment shows no reconstruction gain from masking. The matched-versus-empty result also leaves unresolved whether the student recovers useful event-conditioned geometry. Gaussian count measures output capacity only.
 
 On 72 zero-shot MVSEC windows sampled equally from three indoor flights, matched events yield 13.41 dB and 2.43 degrees mean relative rotation error. Empty inputs yield 13.09 dB and 1.88 degrees. Both protocols use grayscale rendering. These results motivate checking the teacher and student geometry on the same windows and isolating the effect of token distillation before attributing a reconstruction benefit to RGB priors.
+
+## Where does geometry transfer fail?
+
+We run the frozen RGB teacher and the masked event student on the same 48 held-out source pairs. We fit cameras from the decoded rays using the same random seed and measure rotation relative to the first view. For each of 96 source images we measure Spearman correlation between the decoded depth and the nearest-neighbor-resized reference depth over valid foreground pixels. This tests depth ordering before Gaussian readout and is invariant to a global scale factor.
+
+| Training and input | Mean foreground depth rank correlation ↑ | Mean relative rotation error ↓ | Foreground rendering PSNR ↑ |
+|---|---:|---:|---:|
+| Frozen teacher, RGB | 0.819 | 6.05° | — |
+| Masked token distillation, events | 0.237 | 9.65° | 12.19 dB |
+| Masked token and decoded geometry distillation, events | 0.148 | 9.84° | 12.16 dB |
+
+The third row adds mean absolute errors on teacher log-depth and six ray channels, averaged within each 14 × 14 patch, with unit weight for each term. The matched experiment keeps initialization, training windows, schedule and event-only inference fixed. The teacher recovers substantial foreground depth ordering on these objects. The additional supervision does not improve held-out foreground rendering or relative rotation at this training budget. Its empty-input foreground score is 12.83 dB. The apparent gap between teacher and student concerns these six held-out synthetic objects and this single training seed.
+
+![Mean foreground depth rank correlation by held-out object, averaged over sixteen source views per object.](geometry_transfer.png)
