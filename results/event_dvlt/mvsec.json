@@ -3,8 +3,8 @@
     "flight": "indoor_flying1",
     "start": 2,
     "matched": {
-      "psnr": 16.231189727783203,
-      "rotation_deg": 0.8527162671089172
+      "psnr": 16.619306564331055,
+      "rotation_deg": 1.0835394859313965
     },
     "zero": {
       "psnr": 15.527329444885254,
@@ -15,8 +15,8 @@
     "flight": "indoor_flying1",
     "start": 97,
     "matched": {
-      "psnr": 15.108758926391602,
-      "rotation_deg": 0.6501175165176392
+      "psnr": 15.539581298828125,
+      "rotation_deg": 0.17017419636249542
     },
     "zero": {
       "psnr": 15.292425155639648,
@@ -27,8 +27,8 @@
     "flight": "indoor_flying1",
     "start": 193,
     "matched": {
-      "psnr": 10.578104019165039,
-      "rotation_deg": 7.309811115264893
+      "psnr": 10.655988693237305,
+      "rotation_deg": 2.710505485534668
     },
     "zero": {
       "psnr": 10.802721977233887,
@@ -39,8 +39,8 @@
     "flight": "indoor_flying1",
     "start": 288,
     "matched": {
-      "psnr": 9.209025382995605,
-      "rotation_deg": 3.5395569801330566
+      "psnr": 12.539210319519043,
+      "rotation_deg": 0.2238117754459381
     },
     "zero": {
       "psnr": 9.857903480529785,
@@ -51,8 +51,8 @@
     "flight": "indoor_flying1",
     "start": 384,
     "matched": {
-      "psnr": 12.709209442138672,
-      "rotation_deg": 1.789910078048706
+      "psnr": 12.938392639160156,
+      "rotation_deg": 1.592990517616272
     },
     "zero": {
       "psnr": 13.93200397491455,
@@ -63,8 +63,8 @@
     "flight": "indoor_flying1",
     "start": 480,
     "matched": {
-      "psnr": 12.277976989746094,
-      "rotation_deg": 6.721407413482666
+      "psnr": 12.859710693359375,
+      "rotation_deg": 3.6890761852264404
     },
     "zero": {
       "psnr": 12.511712074279785,
@@ -76,7 +76,7 @@
     "start": 575,
     "matched": {
       "psnr": 10.445160865783691,
-      "rotation_deg": 3.9330320358276367
+      "rotation_deg": 5.600107192993164
     },
     "zero": {
       "psnr": 10.445160865783691,
@@ -87,8 +87,8 @@
     "flight": "indoor_flying1",
     "start": 671,
     "matched": {
-      "psnr": 11.562766075134277,
-      "rotation_deg": 5.43797492980957
+      "psnr": 11.62818717956543,
+      "rotation_deg": 5.346027374267578
     },
     "zero": {
       "psnr": 11.881139755249023,
@@ -99,8 +99,8 @@
     "flight": "indoor_flying1",
     "start": 766,
     "matched": {
-      "psnr": 16.063838958740234,
-      "rotation_deg": 0.49574559926986694
+      "psnr": 15.27502155303955,
+      "rotation_deg": 0.8641138672828674
     },
     "zero": {
       "psnr": 16.44133186340332,
@@ -111,8 +111,8 @@
     "flight": "indoor_flying1",
     "start": 862,
     "matched": {
-      "psnr": 14.180851936340332,
-      "rotation_deg": 1.2165966033935547
+      "psnr": 12.999115943908691,
+      "rotation_deg": 1.0482920408248901
     },
     "zero": {
       "psnr": 14.143048286437988,
@@ -123,8 +123,8 @@
     "flight": "indoor_flying1",
     "start": 958,
     "matched": {
-      "psnr": 14.037321090698242,
-      "rotation_deg": 2.3292739391326904
+      "psnr": 13.870759010314941,
+      "rotation_deg": 2.3071534633636475
     },
     "zero": {
       "psnr": 14.360069274902344,
@@ -135,8 +135,8 @@
     "flight": "indoor_flying1",
     "start": 1053,
     "matched": {
-      "psnr": 10.467886924743652,
-      "rotation_deg": 2.9387824535369873
+      "psnr": 13.151700973510742,
+      "rotation_deg": 3.791682243347168
     },
     "zero": {
       "psnr": 11.086463928222656,
@@ -147,8 +147,8 @@
     "flight": "indoor_flying1",
     "start": 1149,
     "matched": {
-      "psnr": 12.974956512451172,
-      "rotation_deg": 0.5475120544433594
+      "psnr": 15.867156028747559,
+      "rotation_deg": 1.6411560773849487
     },
     "zero": {
       "psnr": 13.18259048461914,
@@ -159,8 +159,8 @@
     "flight": "indoor_flying1",
     "start": 1244,
     "matched": {
-      "psnr": 14.671775817871094,
-      "rotation_deg": 2.909191370010376
+      "psnr": 15.136445999145508,
+      "rotation_deg": 2.5391383171081543
     },
     "zero": {
       "psnr": 13.58863639831543,
@@ -171,8 +171,8 @@
     "flight": "indoor_flying1",
     "start": 1340,
     "matched": {
-      "psnr": 12.972277641296387,
-      "rotation_deg": 0.1769387125968933
+      "psnr": 13.199495315551758,
+      "rotation_deg": 0.37115025520324707
     },
     "zero": {
       "psnr": 13.23452377319336,
@@ -183,8 +183,8 @@
     "flight": "indoor_flying1",
     "start": 1436,
     "matched": {
-      "psnr": 14.68108081817627,
-      "rotation_deg": 3.4652061462402344
+      "psnr": 13.565764427185059,
+      "rotation_deg": 1.613982081413269
     },
     "zero": {
       "psnr": 14.076526641845703,
@@ -195,8 +195,8 @@
     "flight": "indoor_flying1",
     "start": 1531,
     "matched": {
-      "psnr": 6.866859436035156,
-      "rotation_deg": 5.451435565948486
+      "psnr": 6.960447311401367,
+      "rotation_deg": 6.182376384735107
     },
     "zero": {
       "psnr": 6.866859436035156,
@@ -207,8 +207,8 @@
     "flight": "indoor_flying1",
     "start": 1627,
     "matched": {
-      "psnr": 11.601573944091797,
-      "rotation_deg": 3.2391817569732666
+      "psnr": 11.644612312316895,
+      "rotation_deg": 2.12135648727417
     },
     "zero": {
       "psnr": 11.814122200012207,
@@ -219,8 +219,8 @@
     "flight": "indoor_flying1",
     "start": 1722,
     "matched": {
-      "psnr": 13.62647533416748,
-      "rotation_deg": 1.6983505487442017
+      "psnr": 13.739376068115234,
+      "rotation_deg": 0.8485756516456604
     },
     "zero": {
       "psnr": 13.67732048034668,
@@ -231,8 +231,8 @@
     "flight": "indoor_flying1",
     "start": 1818,
     "matched": {
-      "psnr": 14.116591453552246,
-      "rotation_deg": 4.368701934814453
+      "psnr": 14.22476577758789,
+      "rotation_deg": 2.2832767963409424
     },
     "zero": {
       "psnr": 14.306791305541992,
@@ -243,8 +243,8 @@
     "flight": "indoor_flying1",
     "start": 1914,
     "matched": {
-      "psnr": 15.767906188964844,
-      "rotation_deg": 3.958244562149048
+      "psnr": 15.81510066986084,
+      "rotation_deg": 2.721316337585449
     },
     "zero": {
       "psnr": 15.795934677124023,
@@ -255,8 +255,8 @@
     "flight": "indoor_flying1",
     "start": 2009,
     "matched": {
-      "psnr": 10.304898262023926,
-      "rotation_deg": 5.845530033111572
+      "psnr": 10.42833137512207,
+      "rotation_deg": 4.640807628631592
     },
     "zero": {
       "psnr": 10.862607955932617,
@@ -267,8 +267,8 @@
     "flight": "indoor_flying1",
     "start": 2105,
     "matched": {
-      "psnr": 15.229951858520508,
-      "rotation_deg": 3.790959119796753
+      "psnr": 15.868762969970703,
+      "rotation_deg": 4.863410472869873
     },
     "zero": {
       "psnr": 15.618401527404785,
@@ -279,8 +279,8 @@
     "flight": "indoor_flying1",
     "start": 2201,
     "matched": {
-      "psnr": 16.059404373168945,
-      "rotation_deg": 1.1833291053771973
+      "psnr": 16.214509963989258,
+      "rotation_deg": 1.522385597229004
     },
     "zero": {
       "psnr": 15.90335750579834,
@@ -291,8 +291,8 @@
     "flight": "indoor_flying2",
     "start": 3,
     "matched": {
-      "psnr": 15.849069595336914,
-      "rotation_deg": 2.566587209701538
+      "psnr": 16.523479461669922,
+      "rotation_deg": 1.6809773445129395
     },
     "zero": {
       "psnr": 15.949259757995605,
@@ -303,8 +303,8 @@
     "flight": "indoor_flying2",
     "start": 118,
     "matched": {
-      "psnr": 16.265357971191406,
-      "rotation_deg": 1.3134331703186035
+      "psnr": 16.33819580078125,
+      "rotation_deg": 1.1955037117004395
     },
     "zero": {
       "psnr": 15.417631149291992,
@@ -315,8 +315,8 @@
     "flight": "indoor_flying2",
     "start": 234,
     "matched": {
-      "psnr": 15.303926467895508,
-      "rotation_deg": 2.3368241786956787
+      "psnr": 15.31580924987793,
+      "rotation_deg": 4.2448248863220215
     },
     "zero": {
       "psnr": 15.588911056518555,
@@ -327,8 +327,8 @@
     "flight": "indoor_flying2",
     "start": 349,
     "matched": {
-      "psnr": 10.31002140045166,
-      "rotation_deg": 5.356866836547852
+      "psnr": 11.247725486755371,
+      "rotation_deg": 1.823274850845337
     },
     "zero": {
       "psnr": 10.837855339050293,
@@ -339,8 +339,8 @@
     "flight": "indoor_flying2",
     "start": 465,
     "matched": {
-      "psnr": 14.978160858154297,
-      "rotation_deg": 1.662952184677124
+      "psnr": 15.984167098999023,
+      "rotation_deg": 0.9245039224624634
     },
     "zero": {
       "psnr": 14.56307315826416,
@@ -351,8 +351,8 @@
     "flight": "indoor_flying2",
     "start": 580,
     "matched": {
-      "psnr": 13.019542694091797,
-      "rotation_deg": 1.5506597757339478
+      "psnr": 13.245314598083496,
+      "rotation_deg": 2.001347541809082
     },
     "zero": {
       "psnr": 12.954558372497559,
@@ -363,8 +363,8 @@
     "flight": "indoor_flying2",
     "start": 696,
     "matched": {
-      "psnr": 13.328742027282715,
-      "rotation_deg": 1.651853084564209
+      "psnr": 15.149435997009277,
+      "rotation_deg": 1.2823742628097534
     },
     "zero": {
       "psnr": 13.16690444946289,
@@ -375,8 +375,8 @@
     "flight": "indoor_flying2",
     "start": 811,
     "matched": {
-      "psnr": 16.345304489135742,
-      "rotation_deg": 1.3999762535095215
+      "psnr": 16.515480041503906,
+      "rotation_deg": 0.8758100867271423
     },
     "zero": {
       "psnr": 13.64754867553711,
@@ -387,8 +387,8 @@
     "flight": "indoor_flying2",
     "start": 927,
     "matched": {
-      "psnr": 10.925407409667969,
-      "rotation_deg": 2.336488962173462
+      "psnr": 14.311346054077148,
+      "rotation_deg": 1.3929696083068848
     },
     "zero": {
       "psnr": 11.327563285827637,
@@ -399,8 +399,8 @@
     "flight": "indoor_flying2",
     "start": 1042,
     "matched": {
-      "psnr": 13.07390308380127,
-      "rotation_deg": 2.924091100692749
+      "psnr": 14.98724365234375,
+      "rotation_deg": 3.751915693283081
     },
     "zero": {
       "psnr": 14.050182342529297,
@@ -411,8 +411,8 @@
     "flight": "indoor_flying2",
     "start": 1158,
     "matched": {
-      "psnr": 13.991737365722656,
-      "rotation_deg": 2.1377155780792236
+      "psnr": 15.489830017089844,
+      "rotation_deg": 1.172697901725769
     },
     "zero": {
       "psnr": 14.075013160705566,
@@ -423,8 +423,8 @@
     "flight": "indoor_flying2",
     "start": 1273,
     "matched": {
-      "psnr": 11.962640762329102,
-      "rotation_deg": 1.6337462663650513
+      "psnr": 15.35897445678711,
+      "rotation_deg": 1.2464690208435059
     },
     "zero": {
       "psnr": 11.027837753295898,
@@ -435,8 +435,8 @@
     "flight": "indoor_flying2",
     "start": 1389,
     "matched": {
-      "psnr": 10.599212646484375,
-      "rotation_deg": 3.653662919998169
+      "psnr": 11.407732009887695,
+      "rotation_deg": 1.7210146188735962
     },
     "zero": {
       "psnr": 11.163368225097656,
@@ -447,8 +447,8 @@
     "flight": "indoor_flying2",
     "start": 1504,
     "matched": {
-      "psnr": 15.542762756347656,
-      "rotation_deg": 1.2252516746520996
+      "psnr": 14.394259452819824,
+      "rotation_deg": 1.069360375404358
     },
     "zero": {
       "psnr": 16.099979400634766,
@@ -459,8 +459,8 @@
     "flight": "indoor_flying2",
     "start": 1620,
     "matched": {
-      "psnr": 13.205291748046875,
-      "rotation_deg": 2.3629775047302246
+      "psnr": 13.184968948364258,
+      "rotation_deg": 0.9871490001678467
     },
     "zero": {
       "psnr": 13.808450698852539,
@@ -471,8 +471,8 @@
     "flight": "indoor_flying2",
     "start": 1735,
     "matched": {
-      "psnr": 11.708365440368652,
-      "rotation_deg": 2.6252503395080566
+      "psnr": 12.819823265075684,
+      "rotation_deg": 1.4601852893829346
     },
     "zero": {
       "psnr": 11.914471626281738,
@@ -483,8 +483,8 @@
     "flight": "indoor_flying2",
     "start": 1851,
     "matched": {
-      "psnr": 17.067005157470703,
-      "rotation_deg": 1.2483515739440918
+      "psnr": 15.44568157196045,
+      "rotation_deg": 1.7641398906707764
     },
     "zero": {
       "psnr": 17.350799560546875,
@@ -495,8 +495,8 @@
     "flight": "indoor_flying2",
     "start": 1966,
     "matched": {
-      "psnr": 13.034107208251953,
-      "rotation_deg": 4.976891994476318
+      "psnr": 13.045793533325195,
+      "rotation_deg": 3.8697893619537354
     },
     "zero": {
       "psnr": 13.064986228942871,
@@ -507,8 +507,8 @@
     "flight": "indoor_flying2",
     "start": 2082,
     "matched": {
-      "psnr": 9.661345481872559,
-      "rotation_deg": 3.479753017425537
+      "psnr": 9.670100212097168,
+      "rotation_deg": 3.738636016845703
     },
     "zero": {
       "psnr": 9.694985389709473,
@@ -519,8 +519,8 @@
     "flight": "indoor_flying2",
     "start": 2197,
     "matched": {
-      "psnr": 11.406787872314453,
-      "rotation_deg": 0.3000144064426422
+      "psnr": 11.405122756958008,
+      "rotation_deg": 0.4015384912490845
     },
     "zero": {
       "psnr": 10.51458740234375,
@@ -531,8 +531,8 @@
     "flight": "indoor_flying2",
     "start": 2313,
     "matched": {
-      "psnr": 13.662223815917969,
-      "rotation_deg": 5.833580493927002
+      "psnr": 14.080041885375977,
+      "rotation_deg": 3.847052812576294
     },
     "zero": {
       "psnr": 12.573099136352539,
@@ -543,8 +543,8 @@
     "flight": "indoor_flying2",
     "start": 2428,
     "matched": {
-      "psnr": 14.447270393371582,
-      "rotation_deg": 0.9013549089431763
+      "psnr": 14.50450325012207,
+      "rotation_deg": 0.7732905149459839
     },
     "zero": {
       "psnr": 11.570836067199707,
@@ -555,8 +555,8 @@
     "flight": "indoor_flying2",
     "start": 2544,
     "matched": {
-      "psnr": 15.72500991821289,
-      "rotation_deg": 3.6198513507843018
+      "psnr": 16.567075729370117,
+      "rotation_deg": 4.192084312438965
     },
     "zero": {
       "psnr": 15.89659309387207,
@@ -567,8 +567,8 @@
     "flight": "indoor_flying2",
     "start": 2660,
     "matched": {
-      "psnr": 16.6949520111084,
-      "rotation_deg": 0.9346082210540771
+      "psnr": 16.67344856262207,
+      "rotation_deg": 0.5059038400650024
     },
     "zero": {
       "psnr": 15.844541549682617,
@@ -579,8 +579,8 @@
     "flight": "indoor_flying3",
     "start": 2,
     "matched": {
-      "psnr": 16.604990005493164,
-      "rotation_deg": 0.6749268174171448
+      "psnr": 16.568586349487305,
+      "rotation_deg": 0.6268256306648254
     },
     "zero": {
       "psnr": 15.805856704711914,
@@ -591,8 +591,8 @@
     "flight": "indoor_flying3",
     "start": 130,
     "matched": {
-      "psnr": 15.243827819824219,
-      "rotation_deg": 4.53440523147583
+      "psnr": 15.675126075744629,
+      "rotation_deg": 2.404524564743042
     },
     "zero": {
       "psnr": 15.786800384521484,
@@ -603,8 +603,8 @@
     "flight": "indoor_flying3",
     "start": 258,
     "matched": {
-      "psnr": 9.179823875427246,
-      "rotation_deg": 4.640470027923584
+      "psnr": 9.418705940246582,
+      "rotation_deg": 3.611837387084961
     },
     "zero": {
       "psnr": 9.936820983886719,
@@ -615,8 +615,8 @@
     "flight": "indoor_flying3",
     "start": 386,
     "matched": {
-      "psnr": 15.040464401245117,
-      "rotation_deg": 4.240208148956299
+      "psnr": 14.227245330810547,
+      "rotation_deg": 0.4647810459136963
     },
     "zero": {
       "psnr": 15.12814998626709,
@@ -627,8 +627,8 @@
     "flight": "indoor_flying3",
     "start": 514,
     "matched": {
-      "psnr": 15.14398193359375,
-      "rotation_deg": 2.0925605297088623
+      "psnr": 14.706488609313965,
+      "rotation_deg": 1.0616470575332642
     },
     "zero": {
       "psnr": 15.702466011047363,
@@ -639,8 +639,8 @@
     "flight": "indoor_flying3",
     "start": 642,
     "matched": {
-      "psnr": 8.811182022094727,
-      "rotation_deg": 1.1049985885620117
+      "psnr": 8.833309173583984,
+      "rotation_deg": 1.4642003774642944
     },
     "zero": {
       "psnr": 9.30910587310791,
@@ -651,8 +651,8 @@
     "flight": "indoor_flying3",
     "start": 770,
     "matched": {
-      "psnr": 13.351508140563965,
-      "rotation_deg": 3.288250207901001
+      "psnr": 12.923345565795898,
+      "rotation_deg": 1.0766551494598389
     },
     "zero": {
       "psnr": 13.082677841186523,
@@ -663,8 +663,8 @@
     "flight": "indoor_flying3",
     "start": 898,
     "matched": {
-      "psnr": 16.060083389282227,
-      "rotation_deg": 4.5723466873168945
+      "psnr": 15.383320808410645,
+      "rotation_deg": 1.2744145393371582
     },
     "zero": {
       "psnr": 16.060083389282227,
@@ -675,8 +675,8 @@
     "flight": "indoor_flying3",
     "start": 1026,
     "matched": {
-      "psnr": 9.73004150390625,
-      "rotation_deg": 4.165370464324951
+      "psnr": 9.813772201538086,
+      "rotation_deg": 3.0574865341186523
     },
     "zero": {
       "psnr": 10.622476577758789,
@@ -687,8 +687,8 @@
     "flight": "indoor_flying3",
     "start": 1154,
     "matched": {
-      "psnr": 8.875511169433594,
-      "rotation_deg": 4.553372383117676
+      "psnr": 8.87504768371582,
+      "rotation_deg": 4.820198059082031
     },
     "zero": {
       "psnr": 8.909844398498535,
@@ -699,8 +699,8 @@
     "flight": "indoor_flying3",
     "start": 1282,
     "matched": {
-      "psnr": 13.50125503540039,
-      "rotation_deg": 1.8138047456741333
+      "psnr": 12.94787883758545,
+      "rotation_deg": 1.3929696083068848
     },
     "zero": {
       "psnr": 13.645441055297852,
@@ -711,8 +711,8 @@
     "flight": "indoor_flying3",
     "start": 1410,
     "matched": {
-      "psnr": 14.276134490966797,
-      "rotation_deg": 4.259747505187988
+      "psnr": 14.312590599060059,
+      "rotation_deg": 0.41401463747024536
     },
     "zero": {
       "psnr": 13.635605812072754,
@@ -723,8 +723,8 @@
     "flight": "indoor_flying3",
     "start": 1538,
     "matched": {
-      "psnr": 10.102034568786621,
-      "rotation_deg": 11.728975296020508
+      "psnr": 10.384817123413086,
+      "rotation_deg": 8.725959777832031
     },
     "zero": {
       "psnr": 11.297825813293457,
@@ -735,8 +735,8 @@
     "flight": "indoor_flying3",
     "start": 1666,
     "matched": {
-      "psnr": 8.627073287963867,
-      "rotation_deg": 5.542629241943359
+      "psnr": 9.180230140686035,
+      "rotation_deg": 4.068326950073242
     },
     "zero": {
       "psnr": 8.627073287963867,
@@ -747,8 +747,8 @@
     "flight": "indoor_flying3",
     "start": 1794,
     "matched": {
-      "psnr": 12.120523452758789,
-      "rotation_deg": 10.244612693786621
+      "psnr": 12.156641006469727,
+      "rotation_deg": 10.224160194396973
     },
     "zero": {
       "psnr": 12.747337341308594,
@@ -759,8 +759,8 @@
     "flight": "indoor_flying3",
     "start": 1922,
     "matched": {
-      "psnr": 15.262994766235352,
-      "rotation_deg": 1.777842402458191
+      "psnr": 15.239275932312012,
+      "rotation_deg": 0.5337586998939514
     },
     "zero": {
       "psnr": 14.317742347717285,
@@ -772,7 +772,7 @@
     "start": 2050,
     "matched": {
       "psnr": 6.842818260192871,
-      "rotation_deg": 2.3304500579833984
+      "rotation_deg": 1.9446078538894653
     },
     "zero": {
       "psnr": 6.842818260192871,
@@ -783,8 +783,8 @@
     "flight": "indoor_flying3",
     "start": 2178,
     "matched": {
-      "psnr": 12.109532356262207,
-      "rotation_deg": 7.2966485023498535
+      "psnr": 12.435593605041504,
+      "rotation_deg": 4.57757043838501
     },
     "zero": {
       "psnr": 12.130325317382812,
@@ -795,8 +795,8 @@
     "flight": "indoor_flying3",
     "start": 2306,
     "matched": {
-      "psnr": 16.80512809753418,
-      "rotation_deg": 1.0914568901062012
+      "psnr": 15.443107604980469,
+      "rotation_deg": 1.6366184949874878
     },
     "zero": {
       "psnr": 17.22181510925293,
@@ -807,8 +807,8 @@
     "flight": "indoor_flying3",
     "start": 2434,
     "matched": {
-      "psnr": 13.968487739562988,
-      "rotation_deg": 6.465688705444336
+      "psnr": 13.800451278686523,
+      "rotation_deg": 3.8453214168548584
     },
     "zero": {
       "psnr": 13.85137939453125,
@@ -819,8 +819,8 @@
     "flight": "indoor_flying3",
     "start": 2562,
     "matched": {
-      "psnr": 9.466255187988281,
-      "rotation_deg": 1.7707833051681519
+      "psnr": 9.906633377075195,
+      "rotation_deg": 0.8040559887886047
     },
     "zero": {
       "psnr": 9.574092864990234,
@@ -831,8 +831,8 @@
     "flight": "indoor_flying3",
     "start": 2690,
     "matched": {
-      "psnr": 10.780325889587402,
-      "rotation_deg": 5.862940311431885
+      "psnr": 11.061182975769043,
+      "rotation_deg": 4.045252799987793
     },
     "zero": {
       "psnr": 11.247322082519531,
@@ -843,8 +843,8 @@
     "flight": "indoor_flying3",
     "start": 2818,
     "matched": {
-      "psnr": 14.394536018371582,
-      "rotation_deg": 4.566860198974609
+      "psnr": 14.53172779083252,
+      "rotation_deg": 5.226747512817383
     },
     "zero": {
       "psnr": 13.432710647583008,
@@ -855,8 +855,8 @@
     "flight": "indoor_flying3",
     "start": 2947,
     "matched": {
-      "psnr": 15.648994445800781,
-      "rotation_deg": 4.087153434753418
+      "psnr": 16.10552215576172,
+      "rotation_deg": 1.649482011795044
     },
     "zero": {
       "psnr": 16.065000534057617,

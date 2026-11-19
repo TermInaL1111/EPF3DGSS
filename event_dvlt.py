@@ -19,7 +19,7 @@ def load_rgb(assets):
 def voxelize(raw):
     x,y,t,p = raw
     valid = (x>=0)&(x<640)&(y>=0)&(y<480)
-    x,y,t,p = x[valid].astype(int),y[valid].astype(int),t[valid],np.sign(p[valid])
+    x,y,t,p = x[valid].astype(int),y[valid].astype(int),t[valid],np.where(p[valid]>0,1.,-1.)
     volume = np.zeros((5,480,640),np.float32)
     if len(t):
         tau = 4*(t-t.min())/max(float(t.max()-t.min()),1e-12)
