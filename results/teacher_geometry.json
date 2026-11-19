@@ -1,0 +1,1442 @@
+[
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 4,
+    "rotation_error_deg": 0.9151434302330017,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 1.1653326749801636,
+    "aligned_abs_rel": 0.006842341297556128,
+    "median_plane_abs_rel": 0.02098529272229965
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 11,
+    "rotation_error_deg": 0.5173771381378174,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 2.4231741428375244,
+    "aligned_abs_rel": 0.009959956408394465,
+    "median_plane_abs_rel": 0.02871736961310521
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 18,
+    "rotation_error_deg": 0.6311807632446289,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 2.240269184112549,
+    "aligned_abs_rel": 0.008815224572390064,
+    "median_plane_abs_rel": 0.0354874499593725
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 25,
+    "rotation_error_deg": 0.20935674011707306,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.5696005821228027,
+    "aligned_abs_rel": 0.010482451051589908,
+    "median_plane_abs_rel": 0.038454997010359815
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 32,
+    "rotation_error_deg": 0.5855063796043396,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.5182665586471558,
+    "aligned_abs_rel": 0.017243886796706503,
+    "median_plane_abs_rel": 0.03609032839921925
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 39,
+    "rotation_error_deg": 1.1643247604370117,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.028543472290039,
+    "aligned_abs_rel": 0.02360080431450522,
+    "median_plane_abs_rel": 0.03325179434230011
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 46,
+    "rotation_error_deg": 1.6688258647918701,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 3.0458755493164062,
+    "aligned_abs_rel": 0.01987186775464426,
+    "median_plane_abs_rel": 0.037769997387080693
+  },
+  {
+    "split": "train",
+    "scene": "CaffeeMachine",
+    "frame": 53,
+    "rotation_error_deg": 0.3238513171672821,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 2.0841259956359863,
+    "aligned_abs_rel": 0.015581635320904664,
+    "median_plane_abs_rel": 0.03891643160745269
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 4,
+    "rotation_error_deg": 0.9091367125511169,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.9782183170318604,
+    "aligned_abs_rel": 0.01228328318195057,
+    "median_plane_abs_rel": 0.035061419814776465
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 11,
+    "rotation_error_deg": 0.41871416568756104,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.817038893699646,
+    "aligned_abs_rel": 0.012194667174138992,
+    "median_plane_abs_rel": 0.03350050982531669
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 18,
+    "rotation_error_deg": 0.996225893497467,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 4.328481197357178,
+    "aligned_abs_rel": 0.01257128723109743,
+    "median_plane_abs_rel": 0.03291685819846621
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 25,
+    "rotation_error_deg": 0.9257727861404419,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 2.873171091079712,
+    "aligned_abs_rel": 0.013329051744397762,
+    "median_plane_abs_rel": 0.03368503758445989
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 32,
+    "rotation_error_deg": 0.7682129144668579,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.5344212055206299,
+    "aligned_abs_rel": 0.012874811978129227,
+    "median_plane_abs_rel": 0.03826926480404433
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 39,
+    "rotation_error_deg": 1.5652307271957397,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 4.919641494750977,
+    "aligned_abs_rel": 0.010874367634420581,
+    "median_plane_abs_rel": 0.04477996128713338
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 46,
+    "rotation_error_deg": 0.3516591489315033,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 1.7993971109390259,
+    "aligned_abs_rel": 0.011875310227534524,
+    "median_plane_abs_rel": 0.049466312064574164
+  },
+  {
+    "split": "train",
+    "scene": "Breakfast",
+    "frame": 53,
+    "rotation_error_deg": 1.0523908138275146,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.6661264896392822,
+    "aligned_abs_rel": 0.009693588962611436,
+    "median_plane_abs_rel": 0.04901583375890462
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 4,
+    "rotation_error_deg": 1.1131147146224976,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 5.992665767669678,
+    "aligned_abs_rel": 0.007461280167455309,
+    "median_plane_abs_rel": 0.018294756239229274
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 11,
+    "rotation_error_deg": 2.3366565704345703,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.9618418216705322,
+    "aligned_abs_rel": 0.006156590940132798,
+    "median_plane_abs_rel": 0.02138799760676344
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 18,
+    "rotation_error_deg": 1.5107723474502563,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.6130117177963257,
+    "aligned_abs_rel": 0.005529005101776523,
+    "median_plane_abs_rel": 0.024543217158169997
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 25,
+    "rotation_error_deg": 1.8558292388916016,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 4.48178768157959,
+    "aligned_abs_rel": 0.0065731929681696185,
+    "median_plane_abs_rel": 0.027932446796644597
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 32,
+    "rotation_error_deg": 1.9530435800552368,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 7.473805904388428,
+    "aligned_abs_rel": 0.010272538136426463,
+    "median_plane_abs_rel": 0.0315985396902575
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 39,
+    "rotation_error_deg": 1.1042900085449219,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 1.609368085861206,
+    "aligned_abs_rel": 0.008874554479448321,
+    "median_plane_abs_rel": 0.03466683570033704
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 46,
+    "rotation_error_deg": 1.157582402229309,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 6.36762809753418,
+    "aligned_abs_rel": 0.009939546603751407,
+    "median_plane_abs_rel": 0.03572023996524798
+  },
+  {
+    "split": "train",
+    "scene": "Duck",
+    "frame": 53,
+    "rotation_error_deg": 2.244894504547119,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 3.8179805278778076,
+    "aligned_abs_rel": 0.010927253843715496,
+    "median_plane_abs_rel": 0.034648111623592846
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 4,
+    "rotation_error_deg": 2.4276933670043945,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.254030227661133,
+    "aligned_abs_rel": 0.05457522665116508,
+    "median_plane_abs_rel": 0.11709005188598631
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 11,
+    "rotation_error_deg": 1.1398661136627197,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 2.29012393951416,
+    "aligned_abs_rel": 0.05036740002476999,
+    "median_plane_abs_rel": 0.09839566793724874
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 18,
+    "rotation_error_deg": 1.4642003774642944,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.7515596151351929,
+    "aligned_abs_rel": 0.04166289974087492,
+    "median_plane_abs_rel": 0.08430338356883711
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 25,
+    "rotation_error_deg": 2.9104020595550537,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 2.043059825897217,
+    "aligned_abs_rel": 0.039118437441534856,
+    "median_plane_abs_rel": 0.06987929824561641
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 32,
+    "rotation_error_deg": 3.297287702560425,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 2.465533494949341,
+    "aligned_abs_rel": 0.03251954722567163,
+    "median_plane_abs_rel": 0.05013662938430776
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 39,
+    "rotation_error_deg": 4.041475296020508,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.9935595989227295,
+    "aligned_abs_rel": 0.019820965406717076,
+    "median_plane_abs_rel": 0.032564736328269964
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 46,
+    "rotation_error_deg": 1.9757587909698486,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.108586072921753,
+    "aligned_abs_rel": 0.0205516357999253,
+    "median_plane_abs_rel": 0.04532985820934531
+  },
+  {
+    "split": "train",
+    "scene": "Airbus",
+    "frame": 53,
+    "rotation_error_deg": 0.8050288558006287,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.5354411602020264,
+    "aligned_abs_rel": 0.022137367317007068,
+    "median_plane_abs_rel": 0.06620996870272441
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 4,
+    "rotation_error_deg": 0.49967706203460693,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 1.8742973804473877,
+    "aligned_abs_rel": 0.010387212342554531,
+    "median_plane_abs_rel": 0.03041109034093193
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 11,
+    "rotation_error_deg": 0.5774299502372742,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.5539376735687256,
+    "aligned_abs_rel": 0.011896655211241926,
+    "median_plane_abs_rel": 0.03438061891249889
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 18,
+    "rotation_error_deg": 0.16312941908836365,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.9671220779418945,
+    "aligned_abs_rel": 0.008138947593832782,
+    "median_plane_abs_rel": 0.0341871357223476
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 25,
+    "rotation_error_deg": 0.37430012226104736,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 2.1982014179229736,
+    "aligned_abs_rel": 0.006884338469099229,
+    "median_plane_abs_rel": 0.031191563353510334
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 32,
+    "rotation_error_deg": 0.642244279384613,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 2.5813400745391846,
+    "aligned_abs_rel": 0.006335536119277911,
+    "median_plane_abs_rel": 0.02592733413087322
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 39,
+    "rotation_error_deg": 1.9472229480743408,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.106450319290161,
+    "aligned_abs_rel": 0.005123703970991573,
+    "median_plane_abs_rel": 0.02071188231332488
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 46,
+    "rotation_error_deg": 0.7370134592056274,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.1577632427215576,
+    "aligned_abs_rel": 0.0063257009294484376,
+    "median_plane_abs_rel": 0.019536767477666143
+  },
+  {
+    "split": "train",
+    "scene": "Towel",
+    "frame": 53,
+    "rotation_error_deg": 0.6999750733375549,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 0.717370331287384,
+    "aligned_abs_rel": 0.0067330237762589324,
+    "median_plane_abs_rel": 0.017599757421482315
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 4,
+    "rotation_error_deg": 0.6336560845375061,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 1.3804099559783936,
+    "aligned_abs_rel": 0.00646161520080384,
+    "median_plane_abs_rel": 0.04165004659527508
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 11,
+    "rotation_error_deg": 0.3214254379272461,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 2.062509536743164,
+    "aligned_abs_rel": 0.00518541606370581,
+    "median_plane_abs_rel": 0.056508894597831025
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 18,
+    "rotation_error_deg": 0.5801345705986023,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 2.953533172607422,
+    "aligned_abs_rel": 0.013402848836628728,
+    "median_plane_abs_rel": 0.06517573502011353
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 25,
+    "rotation_error_deg": 0.8917517066001892,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.6125264167785645,
+    "aligned_abs_rel": 0.004136916703254637,
+    "median_plane_abs_rel": 0.06377117072100921
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 32,
+    "rotation_error_deg": 0.4493695795536041,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.150290608406067,
+    "aligned_abs_rel": 0.014249196528615971,
+    "median_plane_abs_rel": 0.052931004173728896
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 39,
+    "rotation_error_deg": 1.815961241722107,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.237384080886841,
+    "aligned_abs_rel": 0.018240345925827843,
+    "median_plane_abs_rel": 0.04659245560425849
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 46,
+    "rotation_error_deg": 1.9522416591644287,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.6822664737701416,
+    "aligned_abs_rel": 0.023727660440404415,
+    "median_plane_abs_rel": 0.06131405611868246
+  },
+  {
+    "split": "train",
+    "scene": "Football",
+    "frame": 53,
+    "rotation_error_deg": 1.773875117301941,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.7323485612869263,
+    "aligned_abs_rel": 0.024029673485935273,
+    "median_plane_abs_rel": 0.07257338089605926
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 4,
+    "rotation_error_deg": 0.8025944828987122,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 1.378707766532898,
+    "aligned_abs_rel": 0.011066846067341549,
+    "median_plane_abs_rel": 0.04274574457845707
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 11,
+    "rotation_error_deg": 0.3986039161682129,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.2025216817855835,
+    "aligned_abs_rel": 0.013963196351507133,
+    "median_plane_abs_rel": 0.04230834590316866
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 18,
+    "rotation_error_deg": 0.4306930601596832,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.488326072692871,
+    "aligned_abs_rel": 0.012988958359648622,
+    "median_plane_abs_rel": 0.042317685304775324
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 25,
+    "rotation_error_deg": 0.1370561122894287,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.3156661987304688,
+    "aligned_abs_rel": 0.012212235012540554,
+    "median_plane_abs_rel": 0.04244948225116832
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 32,
+    "rotation_error_deg": 0.30646705627441406,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.266868233680725,
+    "aligned_abs_rel": 0.016765525035389663,
+    "median_plane_abs_rel": 0.042575870356907
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 39,
+    "rotation_error_deg": 0.5855063796043396,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 1.341296672821045,
+    "aligned_abs_rel": 0.013696662946377882,
+    "median_plane_abs_rel": 0.043077280049762544
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 46,
+    "rotation_error_deg": 0.5460806488990784,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.4419219493865967,
+    "aligned_abs_rel": 0.012719618125598315,
+    "median_plane_abs_rel": 0.04394846280156309
+  },
+  {
+    "split": "train",
+    "scene": "Burger",
+    "frame": 53,
+    "rotation_error_deg": 1.3614250421524048,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 0.9433607459068298,
+    "aligned_abs_rel": 0.011040020639905338,
+    "median_plane_abs_rel": 0.04422828934851003
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 4,
+    "rotation_error_deg": 1.1357386112213135,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.9555208683013916,
+    "aligned_abs_rel": 0.004173618698186422,
+    "median_plane_abs_rel": 0.024300605003897375
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 11,
+    "rotation_error_deg": 0.8040559887886047,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 4.209567070007324,
+    "aligned_abs_rel": 0.005879477585708072,
+    "median_plane_abs_rel": 0.022108129959290054
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 18,
+    "rotation_error_deg": 0.5510743856430054,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.681792140007019,
+    "aligned_abs_rel": 0.007145340771830214,
+    "median_plane_abs_rel": 0.01958293686474851
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 25,
+    "rotation_error_deg": 1.2592765092849731,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 6.05511474609375,
+    "aligned_abs_rel": 0.006203413056305168,
+    "median_plane_abs_rel": 0.016546550915047076
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 32,
+    "rotation_error_deg": 1.6008334159851074,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 6.970181941986084,
+    "aligned_abs_rel": 0.005818730427394172,
+    "median_plane_abs_rel": 0.013841058799301685
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 39,
+    "rotation_error_deg": 2.5482184886932373,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 17.286170959472656,
+    "aligned_abs_rel": 0.006093209505933751,
+    "median_plane_abs_rel": 0.01322970028190298
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 46,
+    "rotation_error_deg": 1.9053642749786377,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 13.680959701538086,
+    "aligned_abs_rel": 0.00587751201361556,
+    "median_plane_abs_rel": 0.0140903040596654
+  },
+  {
+    "split": "train",
+    "scene": "Cola",
+    "frame": 53,
+    "rotation_error_deg": 1.0241200923919678,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 7.8917765617370605,
+    "aligned_abs_rel": 0.007947777848164458,
+    "median_plane_abs_rel": 0.01553903201372231
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 4,
+    "rotation_error_deg": 0.27411243319511414,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 0.8943809270858765,
+    "aligned_abs_rel": 0.012186268209821292,
+    "median_plane_abs_rel": 0.06419906517780066
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 11,
+    "rotation_error_deg": 0.36045199632644653,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 2.2372093200683594,
+    "aligned_abs_rel": 0.013897886866828475,
+    "median_plane_abs_rel": 0.057797360941187474
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 18,
+    "rotation_error_deg": 0.4981082081794739,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 2.3544304370880127,
+    "aligned_abs_rel": 0.013119024746018396,
+    "median_plane_abs_rel": 0.0478685778108138
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 25,
+    "rotation_error_deg": 0.5308178663253784,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.981199026107788,
+    "aligned_abs_rel": 0.011606530925401707,
+    "median_plane_abs_rel": 0.035965127765528127
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 32,
+    "rotation_error_deg": 0.7192771434783936,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.72260582447052,
+    "aligned_abs_rel": 0.010709437392297943,
+    "median_plane_abs_rel": 0.023133824462623354
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 39,
+    "rotation_error_deg": 1.078833818435669,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.5574960708618164,
+    "aligned_abs_rel": 0.0075518579502308865,
+    "median_plane_abs_rel": 0.015833494223192898
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 46,
+    "rotation_error_deg": 0.5359537601470947,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 4.406289100646973,
+    "aligned_abs_rel": 0.006063513939752619,
+    "median_plane_abs_rel": 0.022202743478778
+  },
+  {
+    "split": "train",
+    "scene": "Car",
+    "frame": 53,
+    "rotation_error_deg": 0.4813265800476074,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 4.073378086090088,
+    "aligned_abs_rel": 0.005421763841403411,
+    "median_plane_abs_rel": 0.03357034030411459
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 4,
+    "rotation_error_deg": 0.9727718830108643,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 1.2651679515838623,
+    "aligned_abs_rel": 0.009013822140595594,
+    "median_plane_abs_rel": 0.12255729312055115
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 11,
+    "rotation_error_deg": 0.11190583556890488,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.1668429374694824,
+    "aligned_abs_rel": 0.01714120927993975,
+    "median_plane_abs_rel": 0.11752310171515469
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 18,
+    "rotation_error_deg": 0.612297534942627,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.1183762550354004,
+    "aligned_abs_rel": 0.011746783806353432,
+    "median_plane_abs_rel": 0.10643136903214258
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 25,
+    "rotation_error_deg": 0.03956468030810356,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.1770285367965698,
+    "aligned_abs_rel": 0.015733913809031035,
+    "median_plane_abs_rel": 0.08904772379402012
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 32,
+    "rotation_error_deg": 0.4423476755619049,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.6480576992034912,
+    "aligned_abs_rel": 0.018615942919082334,
+    "median_plane_abs_rel": 0.06368023646394083
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 39,
+    "rotation_error_deg": 0.9911057353019714,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.1688010692596436,
+    "aligned_abs_rel": 0.017843062899740716,
+    "median_plane_abs_rel": 0.04204180234018584
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 46,
+    "rotation_error_deg": 0.27411243319511414,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 1.872207760810852,
+    "aligned_abs_rel": 0.014252527987462222,
+    "median_plane_abs_rel": 0.05323871575921041
+  },
+  {
+    "split": "train",
+    "scene": "Bed",
+    "frame": 53,
+    "rotation_error_deg": 0.27411243319511414,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 0.9219604134559631,
+    "aligned_abs_rel": 0.013995599403602631,
+    "median_plane_abs_rel": 0.07173725689907992
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 4,
+    "rotation_error_deg": 0.9946531653404236,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.4972434043884277,
+    "aligned_abs_rel": 0.019180801265884458,
+    "median_plane_abs_rel": 0.06904120448139102
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 11,
+    "rotation_error_deg": 0.6977351307868958,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.837069034576416,
+    "aligned_abs_rel": 0.019840635451832938,
+    "median_plane_abs_rel": 0.07025687795226354
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 18,
+    "rotation_error_deg": 0.23239004611968994,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.0030770301818848,
+    "aligned_abs_rel": 0.014283676634424588,
+    "median_plane_abs_rel": 0.06825124335022631
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 25,
+    "rotation_error_deg": 0.19782350957393646,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.352918028831482,
+    "aligned_abs_rel": 0.01662283397613167,
+    "median_plane_abs_rel": 0.0632068549435916
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 32,
+    "rotation_error_deg": 0.19583527743816376,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.401512861251831,
+    "aligned_abs_rel": 0.014703481010288467,
+    "median_plane_abs_rel": 0.05409778097756439
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 39,
+    "rotation_error_deg": 0.2654082179069519,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 1.6607147455215454,
+    "aligned_abs_rel": 0.011483513879550258,
+    "median_plane_abs_rel": 0.045383302959363915
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 46,
+    "rotation_error_deg": 0.7407211065292358,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 1.767354130744934,
+    "aligned_abs_rel": 0.014822791622541789,
+    "median_plane_abs_rel": 0.03955024240184887
+  },
+  {
+    "split": "train",
+    "scene": "ChickenRice",
+    "frame": 53,
+    "rotation_error_deg": 1.3711644411087036,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.608029842376709,
+    "aligned_abs_rel": 0.0175796012202315,
+    "median_plane_abs_rel": 0.037213965763785314
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 4,
+    "rotation_error_deg": 2.3159594535827637,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 6.41184663772583,
+    "aligned_abs_rel": 0.0031026703553754813,
+    "median_plane_abs_rel": 0.01161444945116911
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 11,
+    "rotation_error_deg": 2.0331692695617676,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 4.805218696594238,
+    "aligned_abs_rel": 0.004288944109971427,
+    "median_plane_abs_rel": 0.01215455205870263
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 18,
+    "rotation_error_deg": 6.195301532745361,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 12.679553031921387,
+    "aligned_abs_rel": 0.004904347674721414,
+    "median_plane_abs_rel": 0.012521362271167272
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 25,
+    "rotation_error_deg": 5.766602039337158,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 10.748050689697266,
+    "aligned_abs_rel": 0.0041507886053647565,
+    "median_plane_abs_rel": 0.01262830549648084
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 32,
+    "rotation_error_deg": 2.9098639488220215,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 10.476943016052246,
+    "aligned_abs_rel": 0.0051960829604676935,
+    "median_plane_abs_rel": 0.012407925881134756
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 39,
+    "rotation_error_deg": 1.2777880430221558,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 6.040073871612549,
+    "aligned_abs_rel": 0.005527686381006687,
+    "median_plane_abs_rel": 0.012046204107715834
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 46,
+    "rotation_error_deg": 0.6795496940612793,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 5.0525689125061035,
+    "aligned_abs_rel": 0.004022955848102272,
+    "median_plane_abs_rel": 0.011584980780089233
+  },
+  {
+    "split": "train",
+    "scene": "Icecream",
+    "frame": 53,
+    "rotation_error_deg": 0.8050288558006287,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 4.613374710083008,
+    "aligned_abs_rel": 0.005441304929704807,
+    "median_plane_abs_rel": 0.011156520305225327
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 4,
+    "rotation_error_deg": 1.33295476436615,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.006718635559082,
+    "aligned_abs_rel": 0.008445575008274957,
+    "median_plane_abs_rel": 0.041614906256519105
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 11,
+    "rotation_error_deg": 4.097872257232666,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.157582402229309,
+    "aligned_abs_rel": 0.02372927950131905,
+    "median_plane_abs_rel": 0.03780095741803393
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 18,
+    "rotation_error_deg": 3.6596598625183105,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.048478603363037,
+    "aligned_abs_rel": 0.0181933349710488,
+    "median_plane_abs_rel": 0.03169915967899216
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 25,
+    "rotation_error_deg": 4.20579719543457,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.5872061252593994,
+    "aligned_abs_rel": 0.012139294051597626,
+    "median_plane_abs_rel": 0.024322138311987113
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 32,
+    "rotation_error_deg": 3.017009735107422,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 11.929189682006836,
+    "aligned_abs_rel": 0.007888510889086556,
+    "median_plane_abs_rel": 0.01647102879171149
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 39,
+    "rotation_error_deg": 12.351012229919434,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 164.10751342773438,
+    "aligned_abs_rel": 0.009267321425490103,
+    "median_plane_abs_rel": 0.013357296014035949
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 46,
+    "rotation_error_deg": 2.2194669246673584,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 7.2841339111328125,
+    "aligned_abs_rel": 0.007135985049744703,
+    "median_plane_abs_rel": 0.01876251896701843
+  },
+  {
+    "split": "val",
+    "scene": "Arms",
+    "frame": 53,
+    "rotation_error_deg": 1.8975419998168945,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 2.3083407878875732,
+    "aligned_abs_rel": 0.005820521493215517,
+    "median_plane_abs_rel": 0.02411998796919824
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 4,
+    "rotation_error_deg": 2.0605156421661377,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 4.007900714874268,
+    "aligned_abs_rel": 0.011179622074233082,
+    "median_plane_abs_rel": 0.024054908890520123
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 11,
+    "rotation_error_deg": 0.5388665795326233,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.9954713582992554,
+    "aligned_abs_rel": 0.0105553499256923,
+    "median_plane_abs_rel": 0.029652753311326923
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 18,
+    "rotation_error_deg": 0.7475579977035522,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.9936069250106812,
+    "aligned_abs_rel": 0.011162157459739447,
+    "median_plane_abs_rel": 0.03342701666586842
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 25,
+    "rotation_error_deg": 0.5828266739845276,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 3.1678028106689453,
+    "aligned_abs_rel": 0.010641252062062819,
+    "median_plane_abs_rel": 0.03466272725288507
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 32,
+    "rotation_error_deg": 2.457502603530884,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 2.47986102104187,
+    "aligned_abs_rel": 0.015301626764605931,
+    "median_plane_abs_rel": 0.03460206874988547
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 39,
+    "rotation_error_deg": 0.2797648310661316,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 1.4674046039581299,
+    "aligned_abs_rel": 0.013666591409898591,
+    "median_plane_abs_rel": 0.03453670435745281
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 46,
+    "rotation_error_deg": 1.778282642364502,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.4291439056396484,
+    "aligned_abs_rel": 0.012073107827032498,
+    "median_plane_abs_rel": 0.03465292852971957
+  },
+  {
+    "split": "val",
+    "scene": "Capybara",
+    "frame": 53,
+    "rotation_error_deg": 3.0631160736083984,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 2.790147066116333,
+    "aligned_abs_rel": 0.016924845878191173,
+    "median_plane_abs_rel": 0.03349139308314627
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 4,
+    "rotation_error_deg": 0.2907401919364929,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.44384503364563,
+    "aligned_abs_rel": 0.005803026227130552,
+    "median_plane_abs_rel": 0.01718644120481862
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 11,
+    "rotation_error_deg": 1.2948267459869385,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 4.862362861633301,
+    "aligned_abs_rel": 0.005764440380061435,
+    "median_plane_abs_rel": 0.01735923857871217
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 18,
+    "rotation_error_deg": 1.1113554239273071,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 3.6806797981262207,
+    "aligned_abs_rel": 0.0054954904588508015,
+    "median_plane_abs_rel": 0.01791564397033135
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 25,
+    "rotation_error_deg": 0.22728195786476135,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 2.332380771636963,
+    "aligned_abs_rel": 0.005289797673220804,
+    "median_plane_abs_rel": 0.017947683462744182
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 32,
+    "rotation_error_deg": 0.8943809270858765,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 3.990321636199951,
+    "aligned_abs_rel": 0.004706181471066938,
+    "median_plane_abs_rel": 0.01665207724329796
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 39,
+    "rotation_error_deg": 2.190173387527466,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 1.858674168586731,
+    "aligned_abs_rel": 0.006113052531478874,
+    "median_plane_abs_rel": 0.013676271548956601
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 46,
+    "rotation_error_deg": 1.6110694408416748,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 1.6637756824493408,
+    "aligned_abs_rel": 0.00581713996002222,
+    "median_plane_abs_rel": 0.014258926036122407
+  },
+  {
+    "split": "val",
+    "scene": "Robot",
+    "frame": 53,
+    "rotation_error_deg": 1.157244324684143,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.169355869293213,
+    "aligned_abs_rel": 0.005910653554187131,
+    "median_plane_abs_rel": 0.016319745848604558
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 4,
+    "rotation_error_deg": 0.38966768980026245,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.640491008758545,
+    "aligned_abs_rel": 0.006464492745495384,
+    "median_plane_abs_rel": 0.018997225742429333
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 11,
+    "rotation_error_deg": 1.0914568901062012,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 2.012269973754883,
+    "aligned_abs_rel": 0.005562229762917838,
+    "median_plane_abs_rel": 0.020908775191009976
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 18,
+    "rotation_error_deg": 0.3214254379272461,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.6658916473388672,
+    "aligned_abs_rel": 0.0058165253540911075,
+    "median_plane_abs_rel": 0.022573741302974525
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 25,
+    "rotation_error_deg": 0.43611082434654236,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.4116690158843994,
+    "aligned_abs_rel": 0.006467245772802051,
+    "median_plane_abs_rel": 0.02389968272797022
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 32,
+    "rotation_error_deg": 0.27268099784851074,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.5616008043289185,
+    "aligned_abs_rel": 0.007723783617741162,
+    "median_plane_abs_rel": 0.024874769135915048
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 39,
+    "rotation_error_deg": 0.36476898193359375,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 3.054476022720337,
+    "aligned_abs_rel": 0.006025789717435312,
+    "median_plane_abs_rel": 0.026239430498997487
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 46,
+    "rotation_error_deg": 0.949563205242157,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 2.60210919380188,
+    "aligned_abs_rel": 0.00528129455294962,
+    "median_plane_abs_rel": 0.027716365216364277
+  },
+  {
+    "split": "val",
+    "scene": "Woman",
+    "frame": 53,
+    "rotation_error_deg": 1.8587796688079834,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 1.3482813835144043,
+    "aligned_abs_rel": 0.0051754908816279525,
+    "median_plane_abs_rel": 0.02746270328791941
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 4,
+    "rotation_error_deg": 0.8360307812690735,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 0.8091504573822021,
+    "aligned_abs_rel": 0.010985770371267474,
+    "median_plane_abs_rel": 0.05869408958984422
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 11,
+    "rotation_error_deg": 0.8327475786209106,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.5362056493759155,
+    "aligned_abs_rel": 0.010537303383843807,
+    "median_plane_abs_rel": 0.050968410803878046
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 18,
+    "rotation_error_deg": 0.5278605818748474,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.1436368227005005,
+    "aligned_abs_rel": 0.010890847879197963,
+    "median_plane_abs_rel": 0.04126768006142909
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 25,
+    "rotation_error_deg": 0.7088640928268433,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.6390082836151123,
+    "aligned_abs_rel": 0.006898093158810932,
+    "median_plane_abs_rel": 0.0294951981632298
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 32,
+    "rotation_error_deg": 1.436949372291565,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 1.7868460416793823,
+    "aligned_abs_rel": 0.005716568349875538,
+    "median_plane_abs_rel": 0.017177084571261658
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 39,
+    "rotation_error_deg": 0.7380746603012085,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 2.691154956817627,
+    "aligned_abs_rel": 0.0061409137708094644,
+    "median_plane_abs_rel": 0.009997904330029558
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 46,
+    "rotation_error_deg": 1.3591233491897583,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 1.7338165044784546,
+    "aligned_abs_rel": 0.00740079215559402,
+    "median_plane_abs_rel": 0.01839143270005316
+  },
+  {
+    "split": "val",
+    "scene": "Shoes",
+    "frame": 53,
+    "rotation_error_deg": 2.363308906555176,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 2.0627939701080322,
+    "aligned_abs_rel": 0.008555570682345073,
+    "median_plane_abs_rel": 0.03180600613322044
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 4,
+    "rotation_error_deg": 0.3214254379272461,
+    "identity_rotation_error_deg": 7.227975368499756,
+    "translation_angle_deg": 2.975588083267212,
+    "aligned_abs_rel": 0.0071627010922556454,
+    "median_plane_abs_rel": 0.024106080653990974
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 11,
+    "rotation_error_deg": 0.6404136419296265,
+    "identity_rotation_error_deg": 7.243267059326172,
+    "translation_angle_deg": 1.648532509803772,
+    "aligned_abs_rel": 0.007124588551933137,
+    "median_plane_abs_rel": 0.027802961378633778
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 18,
+    "rotation_error_deg": 0.20558422803878784,
+    "identity_rotation_error_deg": 7.185944080352783,
+    "translation_angle_deg": 1.7166882753372192,
+    "aligned_abs_rel": 0.008131687901691553,
+    "median_plane_abs_rel": 0.02935581644807909
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 25,
+    "rotation_error_deg": 0.42795848846435547,
+    "identity_rotation_error_deg": 7.1669721603393555,
+    "translation_angle_deg": 1.2779412269592285,
+    "aligned_abs_rel": 0.008006815482678627,
+    "median_plane_abs_rel": 0.02789126362515876
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 32,
+    "rotation_error_deg": 2.348353862762451,
+    "identity_rotation_error_deg": 7.220533847808838,
+    "translation_angle_deg": 2.4419219493865967,
+    "aligned_abs_rel": 0.010109304739486518,
+    "median_plane_abs_rel": 0.021202784830831555
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 39,
+    "rotation_error_deg": 8.050910949707031,
+    "identity_rotation_error_deg": 7.250468730926514,
+    "translation_angle_deg": 6.031921863555908,
+    "aligned_abs_rel": 0.012996972416961046,
+    "median_plane_abs_rel": 0.01476058559511419
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 46,
+    "rotation_error_deg": 4.982478618621826,
+    "identity_rotation_error_deg": 7.11411190032959,
+    "translation_angle_deg": 4.586419582366943,
+    "aligned_abs_rel": 0.01244901497438247,
+    "median_plane_abs_rel": 0.021791680590866967
+  },
+  {
+    "split": "val",
+    "scene": "Train",
+    "frame": 53,
+    "rotation_error_deg": 1.0957512855529785,
+    "identity_rotation_error_deg": 7.196910858154297,
+    "translation_angle_deg": 2.6532106399536133,
+    "aligned_abs_rel": 0.008422550367018574,
+    "median_plane_abs_rel": 0.028085341441948727
+  }
+]

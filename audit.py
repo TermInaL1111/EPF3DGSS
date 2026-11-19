@@ -8,9 +8,12 @@ from pilot import dataset, foreground
 
 
 @torch.no_grad()
-def main(root, run):
+def main(root, run, event_fields=None):
     report = json.loads((run/"scores.json").read_text())
-    events, gray, cameras, right, _ = dataset(root,report["validation"],None)
+    if bool(event_fields) != report.get("event_fields",False):
+        raise ValueError("Pass the event field bank used for this training run")
+    fields = torch.load(event_fields,weights_only=True) if event_fields else None
+    events, gray, cameras, right, _ = dataset(root,report["validation"],None,fields=fields)
     _, train_gray, *_ = dataset(root,report["train"],None)
     # Every scene uses the same eight sampled time indices.
     template = train_gray.reshape(-1,8,24,32).mean(0).repeat(len(report["validation"]),1,1)
@@ -19,7 +22,7 @@ def main(root, run):
     records = {"training_scene_mean_image_psnr":score(template),"arms":{}}
     region = foreground(root,report["validation"])
     for weight in report["arms"]:
-        net = EventGaussians().cuda().eval()
+        net = EventGaussians(input_channels=events.shape[2]).cuda().eval()
         net.load_state_dict(torch.load(run/f"student_{weight}.pt",weights_only=True))
         measurements = {}
         for name, packets in [("matched",events),("other_scene_same_time",events.roll(8,0)),
@@ -43,5 +46,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("root", type=Path)
     parser.add_argument("run", type=Path)
+    parser.add_argument("--event-fields",type=Path)
     args = parser.parse_args()
-    main(args.root,args.run)
+    main(args.root,args.run,args.event_fields)

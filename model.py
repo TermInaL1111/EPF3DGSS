@@ -10,9 +10,9 @@ def grid(height, width):
 
 
 class EventGaussians(nn.Module):
-    def __init__(self):
+    def __init__(self, input_channels=4):
         super().__init__()
-        self.encoder = nn.Sequential(nn.Conv2d(4, 32, 5, 2, 2), nn.GELU(),
+        self.encoder = nn.Sequential(nn.Conv2d(input_channels, 32, 5, 2, 2), nn.GELU(),
                                      nn.Conv2d(32, 64, 3, 2, 1), nn.GELU())
         self.fusion = nn.Sequential(nn.Conv2d(128, 64, 3, padding=1), nn.GELU())
         self.attributes = nn.Conv2d(64, 4, 1)
@@ -37,7 +37,7 @@ class EventGaussians(nn.Module):
         centers = F.pad(self.rays,(0,1),value=1.) * depth[...,None]
         first, second = centers.reshape(-1,2,48,3).unbind(1)
         centers = torch.cat([first, second @ rotation.transpose(1,2) + translation[:,None]], 1)
-        return dict(centers=centers, radius=(F.softplus(radius)*.03+.001).reshape(-1,96),
+        return dict(source_depth=depth.reshape(-1,2,6,8), centers=centers, radius=(F.softplus(radius)*.03+.001).reshape(-1,96),
                     opacity=opacity.sigmoid().reshape(-1,96), gray=gray.sigmoid().reshape(-1,96),
                     rotation=rotation, translation=translation, feature=feature)
 

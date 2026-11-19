@@ -22,3 +22,26 @@ OMP_NUM_THREADS=2 python audit.py "$data" "$assets/run10"
 同一场景的源帧为 i 和 i+4，目标帧为 i+2，事件取对应源帧之前的时间窗。每个场景取八个三元组。验证指标为逐帧灰度 PSNR，先在场景内平均，再对场景等权平均。此协议衡量合成事件、共享相机轨迹下的插值。外推、新轨迹和真实传感器需要独立评估。
 
 前景加权实验在 pilot.py 后加上 `--foreground` 并使用独立输出目录。前景由目标帧深度大于零的像素定义，训练期和评估期按下采样像素覆盖率加权。audit.py 会同时测量匹配、跨场景置换、全零事件的全图和前景指标。论文工作稿见 [paper/manuscript.md](paper/manuscript.md)，逐次实验记录见 [results](results/)。
+
+## 多视图教师和事件场验证
+
+教师实现固定为 nv-tlabs/dvlt 的 d9f1c0c 和 grasp-lyrl/fast-feature-fields 的 833e2c6。geometry_teacher.py 使用发布配置严格加载 RGB 教师，保留十二次循环，在同一次前向传播中提取循环前后的源视图特征。输入为 448×336。特征按相同方式池化到 8×6。另行缓存两源视图的深度。教师位姿通过官方的射线拟合得到。验证场景参与教师质量审计，学生训练缓存仅含训练场景。
+
+F³ 前端使用官方小模型，原始坐标在 1280×720 训练画布居中填充。每包时间映射至二十个相对年龄桶。该权重使用无极性的哈希编码；保留的四个计数通道为学生提供有符号事件信息。对中间 32 通道特征裁剪、面积池化并减去固定参考响应，然后与四通道基线拼接。空事件输入按零表示。源码和权重依照各自上游许可使用。
+
+```bash
+a=/cloud/cloud-ssd4/epf-assets
+d=/cloud/cloud-ssd1/datasets/EV3DS
+curl -fL https://huggingface.co/nvidia/dvlt/raw/c4e33d824c3f997d39bb9cbbde4e2cc4f1dd8846/config.json -o "$a/config.json"
+curl -fL https://richeek-penn.s3.amazonaws.com/prolev/ff/patchff_fullcardaym3ed_small_20ms.pth -o "$a/f3.pth"
+python event_field.py "$d" /cloud/cloud-ssd4/fast-feature-fields "$a/f3.pth" "$a/f3_features.pt"
+PYTHONPATH=/cloud/cloud-ssd4/dvlt/src python geometry_teacher.py "$d" "$a" "$a/multiview"
+python pilot.py "$d" "$a/dvlt.safetensors" "$a/loop10" --foreground --cached-features "$a/multiview/loop_features.pt" --event-fields "$a/f3_features.pt"
+python audit.py "$d" "$a/loop10" --event-fields "$a/f3_features.pt"
+python student_depth.py "$d" "$a/loop10" --event-fields "$a/f3_features.pt"
+python infer.py "$a/loop10/student_0.1.pt" "$d/Event/Arms/0004.npy" "$d/Event/Arms/0008.npy" "$a/scene.npz" --f3-repository /cloud/cloud-ssd4/fast-feature-fields --f3-checkpoint "$a/f3.pth"
+```
+
+本机 DVLT 依赖装在 /cloud/cloud-ssd4/epf-env。运行 geometry_teacher.py 时使用此环境的 Python 和 `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6`。训练和教师质量审计均在 RTX 4090 上执行。用 `encoder_features.pt` 替换循环特征可复现同分辨率单图对照。`--permute-teacher` 在相同时间索引间置换训练场景，用来检验教师和事件配对的作用。`--depth-targets "$a/multiview/depth_targets.pt" --depth-weighting event` 进一步对齐两源视图的相对对数深度，按局部事件计数加权；uniform 为对照。
+
+baseline_shift.py 在 EV3DS 上改变源间距和顺序。mvsec_transfer.py 使用官方室内标定将真实 DAVIS 图像及事件投影到学生的固定视场，对三个室内飞行序列各取 24 个窗口。学生不使用 RGB 或外参；渲染和旋转误差评估使用插值后的参考位姿。source-copy 使用源灰度图，作为额外信息参照。
