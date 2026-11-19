@@ -4,7 +4,7 @@
 
 ## 当前主线：Déjà-Events 风格的事件 DVLT 学生接 Gaussian head
 
-训练时，同步 RGB 送入冻结 DVLT 教师。事件体素与 F³ 特征进入事件适配的 DVLT 学生。学生保留 DINOv2、帧内及跨帧循环 Transformer、深度与射线解码器；用 LoRA、依赖事件密度的门控与 REALM 思路的渐进掩码进行 token 蒸馏。新的 GS head 读取**学生自己的几何 tokens、深度、相机预测**和事件细节。推理入口为 reconstruct.py。EvGGS 仅用于外部对照。
+训练时，同场景、同源帧编号的 RGB 对送入冻结 DVLT 教师。事件体素与 F³ 特征进入事件适配的 DVLT 学生。学生保留 DINOv2、帧内及跨帧循环 Transformer、深度与射线解码器；用 LoRA、依赖事件密度的门控与 REALM 思路的渐进掩码进行 token 蒸馏。新的 GS head 读取**学生自己的几何 tokens、深度、相机预测**和事件细节。推理入口为 reconstruct.py。EvGGS 仅用于外部对照。
 
 | 环节 | 当前实验设置 |
 |---|---|
@@ -26,7 +26,19 @@ python train_event_dvlt.py "$data" "$assets/f3_dense.pt" "$assets" "$assets/even
 python reconstruct.py "$assets" weights/event_dvlt_gs.pt /cloud/cloud-ssd4/fast-feature-fields "$assets/f3.pth" "$data/Event/Arms/0004.npy" "$data/Event/Arms/0008.npy" scene.npz
 ```
 
+每包输入是同一运动相机、一个源时刻附近的 (x,y,t,p) 事件列表。每个包同时包含两种极性。464 个源帧的内容配对核查中，463 个 NPY 包与同编号 RGB 变化的匹配度最高，Towel/0043 更接近下一帧。NPY 与 H5 使用不同时间数值。逐帧核查见 [sync.json](results/event_dvlt/sync.json)。
+
 逐窗口结果见 [EV3DS 和 MVSEC 实验](results/event_dvlt/)，结果解读见[论文工作稿](paper/manuscript.md)。
+
+384 步对照共享初始化、事件掩码和训练窗口。两组从第一步开始使用渲染损失，分别设置 token 蒸馏权重为 1 和 0。下面的评估覆盖全部 17 个验证物体，输入包括匹配事件、同一帧号的下一物体事件和全零输入。
+
+```bash
+for weight in 1 0; do
+  python train_event_dvlt.py "$data" "$assets/f3_dense.pt" "$assets" "$assets/dvlt_joint384_w$weight" --warmup 0 --steps 384 --token-weight "$weight"
+done
+python evaluate_dvlt.py "$data" "$assets" /cloud/cloud-ssd4/fast-feature-fields "$assets/dvlt_joint384_w1/event_dvlt_gs.pt" "$assets/dvlt_joint384_w0/event_dvlt_gs.pt" full_validation.json event_conditioning.png
+python sync_audit.py "$data" sync.json
+```
 
 <details>
 <summary>早期卷积学生实验归档</summary>

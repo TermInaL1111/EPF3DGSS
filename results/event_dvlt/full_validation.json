@@ -1,0 +1,4490 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.242490768432617,
+        "foreground": 11.71340560913086
+      },
+      "shuffled": {
+        "psnr": 12.352710723876953,
+        "foreground": 11.631669044494629
+      },
+      "zero": {
+        "psnr": 12.142557144165039,
+        "foreground": 11.707682609558105
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 24.52448844909668,
+        "foreground": 14.633005142211914
+      },
+      "shuffled": {
+        "psnr": 26.530094146728516,
+        "foreground": 15.056347846984863
+      },
+      "zero": {
+        "psnr": 19.695068359375,
+        "foreground": 15.0399169921875
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.173914909362793,
+        "foreground": 14.40191650390625
+      },
+      "shuffled": {
+        "psnr": 12.053054809570312,
+        "foreground": 14.640164375305176
+      },
+      "zero": {
+        "psnr": 11.996513366699219,
+        "foreground": 14.42060375213623
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.97846031188965,
+        "foreground": 14.085792541503906
+      },
+      "shuffled": {
+        "psnr": 18.47713279724121,
+        "foreground": 13.743156433105469
+      },
+      "zero": {
+        "psnr": 17.764474868774414,
+        "foreground": 14.003281593322754
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.205954551696777,
+        "foreground": 13.656217575073242
+      },
+      "shuffled": {
+        "psnr": 12.318148612976074,
+        "foreground": 13.848176956176758
+      },
+      "zero": {
+        "psnr": 12.131566047668457,
+        "foreground": 14.04584789276123
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.65921401977539,
+        "foreground": 14.817065238952637
+      },
+      "shuffled": {
+        "psnr": 21.145631790161133,
+        "foreground": 13.851899147033691
+      },
+      "zero": {
+        "psnr": 19.107213973999023,
+        "foreground": 13.126421928405762
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.7688570022583,
+        "foreground": 8.533180236816406
+      },
+      "shuffled": {
+        "psnr": 11.767902374267578,
+        "foreground": 8.52741813659668
+      },
+      "zero": {
+        "psnr": 11.566444396972656,
+        "foreground": 8.327969551086426
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.61017417907715,
+        "foreground": 9.761839866638184
+      },
+      "shuffled": {
+        "psnr": 18.707883834838867,
+        "foreground": 9.633989334106445
+      },
+      "zero": {
+        "psnr": 17.684715270996094,
+        "foreground": 10.282673835754395
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.205219268798828,
+        "foreground": 12.373945236206055
+      },
+      "shuffled": {
+        "psnr": 12.143867492675781,
+        "foreground": 12.361923217773438
+      },
+      "zero": {
+        "psnr": 12.002403259277344,
+        "foreground": 12.243241310119629
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.185558319091797,
+        "foreground": 13.229774475097656
+      },
+      "shuffled": {
+        "psnr": 20.378631591796875,
+        "foreground": 12.69110107421875
+      },
+      "zero": {
+        "psnr": 18.881025314331055,
+        "foreground": 12.394710540771484
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.146966934204102,
+        "foreground": 12.335810661315918
+      },
+      "shuffled": {
+        "psnr": 12.13568115234375,
+        "foreground": 12.231059074401855
+      },
+      "zero": {
+        "psnr": 12.006159782409668,
+        "foreground": 12.131113052368164
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.090341567993164,
+        "foreground": 12.39867115020752
+      },
+      "shuffled": {
+        "psnr": 20.599422454833984,
+        "foreground": 12.230229377746582
+      },
+      "zero": {
+        "psnr": 18.73763084411621,
+        "foreground": 12.381307601928711
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 4,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.030317306518555,
+        "foreground": 11.56070327758789
+      },
+      "shuffled": {
+        "psnr": 11.944670677185059,
+        "foreground": 11.5614652633667
+      },
+      "zero": {
+        "psnr": 11.901497840881348,
+        "foreground": 11.439054489135742
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.106121063232422,
+        "foreground": 11.650976181030273
+      },
+      "shuffled": {
+        "psnr": 20.178491592407227,
+        "foreground": 11.553473472595215
+      },
+      "zero": {
+        "psnr": 18.426856994628906,
+        "foreground": 11.82713508605957
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 4,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.05691909790039,
+        "foreground": 11.870302200317383
+      },
+      "shuffled": {
+        "psnr": 12.143832206726074,
+        "foreground": 11.600992202758789
+      },
+      "zero": {
+        "psnr": 12.014609336853027,
+        "foreground": 11.683454513549805
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.461647033691406,
+        "foreground": 14.541036605834961
+      },
+      "shuffled": {
+        "psnr": 19.005836486816406,
+        "foreground": 14.698030471801758
+      },
+      "zero": {
+        "psnr": 19.238235473632812,
+        "foreground": 15.2012357711792
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 4,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.411073684692383,
+        "foreground": 15.34990119934082
+      },
+      "shuffled": {
+        "psnr": 12.460302352905273,
+        "foreground": 14.970274925231934
+      },
+      "zero": {
+        "psnr": 12.283679008483887,
+        "foreground": 15.665351867675781
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.44217300415039,
+        "foreground": 14.05308723449707
+      },
+      "shuffled": {
+        "psnr": 21.655046463012695,
+        "foreground": 15.572911262512207
+      },
+      "zero": {
+        "psnr": 17.84268569946289,
+        "foreground": 12.278779983520508
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 4,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.320656776428223,
+        "foreground": 13.957910537719727
+      },
+      "shuffled": {
+        "psnr": 12.278301239013672,
+        "foreground": 13.92870044708252
+      },
+      "zero": {
+        "psnr": 12.13032341003418,
+        "foreground": 14.099433898925781
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.688629150390625,
+        "foreground": 15.91297721862793
+      },
+      "shuffled": {
+        "psnr": 20.15110206604004,
+        "foreground": 13.710229873657227
+      },
+      "zero": {
+        "psnr": 18.115203857421875,
+        "foreground": 13.45618724822998
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 4,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.448983192443848,
+        "foreground": 15.989399909973145
+      },
+      "shuffled": {
+        "psnr": 12.463358879089355,
+        "foreground": 15.949239730834961
+      },
+      "zero": {
+        "psnr": 12.280792236328125,
+        "foreground": 15.89059829711914
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.338909149169922,
+        "foreground": 15.448749542236328
+      },
+      "shuffled": {
+        "psnr": 21.551572799682617,
+        "foreground": 15.38602066040039
+      },
+      "zero": {
+        "psnr": 19.34626007080078,
+        "foreground": 14.450838088989258
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 4,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.353135108947754,
+        "foreground": 14.831403732299805
+      },
+      "shuffled": {
+        "psnr": 12.306662559509277,
+        "foreground": 14.760738372802734
+      },
+      "zero": {
+        "psnr": 12.175477981567383,
+        "foreground": 14.587211608886719
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.72069549560547,
+        "foreground": 14.413597106933594
+      },
+      "shuffled": {
+        "psnr": 20.092668533325195,
+        "foreground": 14.696847915649414
+      },
+      "zero": {
+        "psnr": 19.65779685974121,
+        "foreground": 14.703422546386719
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 4,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.21467399597168,
+        "foreground": 14.16455364227295
+      },
+      "shuffled": {
+        "psnr": 12.222567558288574,
+        "foreground": 14.153193473815918
+      },
+      "zero": {
+        "psnr": 12.085111618041992,
+        "foreground": 14.15514850616455
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.082855224609375,
+        "foreground": 14.192248344421387
+      },
+      "shuffled": {
+        "psnr": 21.224628448486328,
+        "foreground": 14.37799072265625
+      },
+      "zero": {
+        "psnr": 18.454072952270508,
+        "foreground": 13.440731048583984
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 4,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.266201972961426,
+        "foreground": 14.518230438232422
+      },
+      "shuffled": {
+        "psnr": 12.244566917419434,
+        "foreground": 14.54158878326416
+      },
+      "zero": {
+        "psnr": 12.175046920776367,
+        "foreground": 14.543664932250977
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.812761306762695,
+        "foreground": 14.792351722717285
+      },
+      "shuffled": {
+        "psnr": 20.36879539489746,
+        "foreground": 14.577089309692383
+      },
+      "zero": {
+        "psnr": 18.754554748535156,
+        "foreground": 13.571208953857422
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 4,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.111410140991211,
+        "foreground": 13.35073471069336
+      },
+      "shuffled": {
+        "psnr": 12.064746856689453,
+        "foreground": 13.102350234985352
+      },
+      "zero": {
+        "psnr": 11.986709594726562,
+        "foreground": 12.862323760986328
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.762279510498047,
+        "foreground": 13.666938781738281
+      },
+      "shuffled": {
+        "psnr": 18.884122848510742,
+        "foreground": 14.171876907348633
+      },
+      "zero": {
+        "psnr": 18.528173446655273,
+        "foreground": 13.591279029846191
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 4,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.20472240447998,
+        "foreground": 16.58660125732422
+      },
+      "shuffled": {
+        "psnr": 12.260456085205078,
+        "foreground": 16.85427474975586
+      },
+      "zero": {
+        "psnr": 12.143991470336914,
+        "foreground": 16.442180633544922
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.715604782104492,
+        "foreground": 16.61721420288086
+      },
+      "shuffled": {
+        "psnr": 22.725114822387695,
+        "foreground": 17.229305267333984
+      },
+      "zero": {
+        "psnr": 19.575899124145508,
+        "foreground": 17.30625343322754
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 4,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.697748184204102,
+        "foreground": 7.738921165466309
+      },
+      "shuffled": {
+        "psnr": 11.684242248535156,
+        "foreground": 7.796212196350098
+      },
+      "zero": {
+        "psnr": 11.578323364257812,
+        "foreground": 7.688451766967773
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.517864227294922,
+        "foreground": 10.075996398925781
+      },
+      "shuffled": {
+        "psnr": 20.051666259765625,
+        "foreground": 9.937704086303711
+      },
+      "zero": {
+        "psnr": 17.88658905029297,
+        "foreground": 10.4821195602417
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.21112060546875,
+        "foreground": 12.074655532836914
+      },
+      "shuffled": {
+        "psnr": 12.402383804321289,
+        "foreground": 12.286347389221191
+      },
+      "zero": {
+        "psnr": 12.146852493286133,
+        "foreground": 12.086152076721191
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.923587799072266,
+        "foreground": 15.184751510620117
+      },
+      "shuffled": {
+        "psnr": 22.00757598876953,
+        "foreground": 15.47998046875
+      },
+      "zero": {
+        "psnr": 19.74888038635254,
+        "foreground": 15.283541679382324
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.199849128723145,
+        "foreground": 14.789121627807617
+      },
+      "shuffled": {
+        "psnr": 12.060446739196777,
+        "foreground": 14.682329177856445
+      },
+      "zero": {
+        "psnr": 12.010129928588867,
+        "foreground": 14.621419906616211
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.143163681030273,
+        "foreground": 13.912825584411621
+      },
+      "shuffled": {
+        "psnr": 18.509410858154297,
+        "foreground": 13.874177932739258
+      },
+      "zero": {
+        "psnr": 17.840423583984375,
+        "foreground": 13.963812828063965
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.216609954833984,
+        "foreground": 14.265727043151855
+      },
+      "shuffled": {
+        "psnr": 12.300111770629883,
+        "foreground": 14.162246704101562
+      },
+      "zero": {
+        "psnr": 12.144407272338867,
+        "foreground": 14.371210098266602
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.571725845336914,
+        "foreground": 14.912962913513184
+      },
+      "shuffled": {
+        "psnr": 22.213180541992188,
+        "foreground": 14.191410064697266
+      },
+      "zero": {
+        "psnr": 19.25528335571289,
+        "foreground": 13.483322143554688
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.782259941101074,
+        "foreground": 8.695560455322266
+      },
+      "shuffled": {
+        "psnr": 11.840563774108887,
+        "foreground": 9.21729850769043
+      },
+      "zero": {
+        "psnr": 11.609295845031738,
+        "foreground": 8.494900703430176
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.350555419921875,
+        "foreground": 9.999252319335938
+      },
+      "shuffled": {
+        "psnr": 20.110774993896484,
+        "foreground": 9.380176544189453
+      },
+      "zero": {
+        "psnr": 17.830364227294922,
+        "foreground": 10.375603675842285
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.156242370605469,
+        "foreground": 12.463674545288086
+      },
+      "shuffled": {
+        "psnr": 12.068069458007812,
+        "foreground": 12.426490783691406
+      },
+      "zero": {
+        "psnr": 11.985502243041992,
+        "foreground": 12.341408729553223
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.191192626953125,
+        "foreground": 12.160048484802246
+      },
+      "shuffled": {
+        "psnr": 21.58013916015625,
+        "foreground": 12.673465728759766
+      },
+      "zero": {
+        "psnr": 18.81527328491211,
+        "foreground": 12.447653770446777
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.141741752624512,
+        "foreground": 12.801998138427734
+      },
+      "shuffled": {
+        "psnr": 12.321196556091309,
+        "foreground": 12.930859565734863
+      },
+      "zero": {
+        "psnr": 12.054766654968262,
+        "foreground": 12.696653366088867
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.78311538696289,
+        "foreground": 12.867023468017578
+      },
+      "shuffled": {
+        "psnr": 21.030290603637695,
+        "foreground": 11.966211318969727
+      },
+      "zero": {
+        "psnr": 18.95987319946289,
+        "foreground": 12.758800506591797
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 11,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.218673706054688,
+        "foreground": 11.907308578491211
+      },
+      "shuffled": {
+        "psnr": 11.991585731506348,
+        "foreground": 11.79110050201416
+      },
+      "zero": {
+        "psnr": 11.952388763427734,
+        "foreground": 11.673856735229492
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.454988479614258,
+        "foreground": 11.16812515258789
+      },
+      "shuffled": {
+        "psnr": 20.352022171020508,
+        "foreground": 11.714516639709473
+      },
+      "zero": {
+        "psnr": 18.661270141601562,
+        "foreground": 11.997475624084473
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 11,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.064840316772461,
+        "foreground": 11.684483528137207
+      },
+      "shuffled": {
+        "psnr": 12.131327629089355,
+        "foreground": 11.735782623291016
+      },
+      "zero": {
+        "psnr": 12.04129409790039,
+        "foreground": 11.86553955078125
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.128616333007812,
+        "foreground": 14.07124137878418
+      },
+      "shuffled": {
+        "psnr": 20.189456939697266,
+        "foreground": 14.413004875183105
+      },
+      "zero": {
+        "psnr": 19.30891227722168,
+        "foreground": 15.18908977508545
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 11,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.400589942932129,
+        "foreground": 15.758157730102539
+      },
+      "shuffled": {
+        "psnr": 12.460075378417969,
+        "foreground": 15.203853607177734
+      },
+      "zero": {
+        "psnr": 12.294563293457031,
+        "foreground": 15.875946044921875
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.928955078125,
+        "foreground": 14.701682090759277
+      },
+      "shuffled": {
+        "psnr": 22.21502113342285,
+        "foreground": 16.03143882751465
+      },
+      "zero": {
+        "psnr": 18.03172492980957,
+        "foreground": 12.33144760131836
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 11,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.335081100463867,
+        "foreground": 14.323974609375
+      },
+      "shuffled": {
+        "psnr": 12.226265907287598,
+        "foreground": 14.435314178466797
+      },
+      "zero": {
+        "psnr": 12.164403915405273,
+        "foreground": 14.559822082519531
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.602025985717773,
+        "foreground": 17.523305892944336
+      },
+      "shuffled": {
+        "psnr": 20.336044311523438,
+        "foreground": 14.927515983581543
+      },
+      "zero": {
+        "psnr": 18.289161682128906,
+        "foreground": 13.60913372039795
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 11,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.361130714416504,
+        "foreground": 15.863152503967285
+      },
+      "shuffled": {
+        "psnr": 12.450289726257324,
+        "foreground": 15.48416519165039
+      },
+      "zero": {
+        "psnr": 12.283021926879883,
+        "foreground": 15.811229705810547
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.72281265258789,
+        "foreground": 16.080394744873047
+      },
+      "shuffled": {
+        "psnr": 21.039257049560547,
+        "foreground": 15.340460777282715
+      },
+      "zero": {
+        "psnr": 19.388710021972656,
+        "foreground": 14.424636840820312
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 11,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.374154090881348,
+        "foreground": 14.453445434570312
+      },
+      "shuffled": {
+        "psnr": 12.30627155303955,
+        "foreground": 14.24798583984375
+      },
+      "zero": {
+        "psnr": 12.170100212097168,
+        "foreground": 14.135581970214844
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.2612247467041,
+        "foreground": 14.748584747314453
+      },
+      "shuffled": {
+        "psnr": 20.608078002929688,
+        "foreground": 13.696416854858398
+      },
+      "zero": {
+        "psnr": 19.696592330932617,
+        "foreground": 14.384376525878906
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 11,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.17949390411377,
+        "foreground": 14.030292510986328
+      },
+      "shuffled": {
+        "psnr": 12.206925392150879,
+        "foreground": 14.092729568481445
+      },
+      "zero": {
+        "psnr": 12.067341804504395,
+        "foreground": 14.05617904663086
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.42633056640625,
+        "foreground": 13.974384307861328
+      },
+      "shuffled": {
+        "psnr": 22.40175437927246,
+        "foreground": 14.184925079345703
+      },
+      "zero": {
+        "psnr": 18.430858612060547,
+        "foreground": 13.579157829284668
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 11,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.316007614135742,
+        "foreground": 14.802464485168457
+      },
+      "shuffled": {
+        "psnr": 12.328498840332031,
+        "foreground": 14.71335506439209
+      },
+      "zero": {
+        "psnr": 12.263158798217773,
+        "foreground": 15.284194946289062
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.65875816345215,
+        "foreground": 14.561959266662598
+      },
+      "shuffled": {
+        "psnr": 21.196805953979492,
+        "foreground": 15.247563362121582
+      },
+      "zero": {
+        "psnr": 18.44184112548828,
+        "foreground": 13.604448318481445
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 11,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.148465156555176,
+        "foreground": 13.331402778625488
+      },
+      "shuffled": {
+        "psnr": 12.076166152954102,
+        "foreground": 13.192578315734863
+      },
+      "zero": {
+        "psnr": 11.998966217041016,
+        "foreground": 12.997381210327148
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.455961227416992,
+        "foreground": 13.59174919128418
+      },
+      "shuffled": {
+        "psnr": 19.838518142700195,
+        "foreground": 14.298845291137695
+      },
+      "zero": {
+        "psnr": 18.472414016723633,
+        "foreground": 13.658699989318848
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 11,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.21298599243164,
+        "foreground": 16.264026641845703
+      },
+      "shuffled": {
+        "psnr": 12.303894996643066,
+        "foreground": 17.028568267822266
+      },
+      "zero": {
+        "psnr": 12.151423454284668,
+        "foreground": 16.193071365356445
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.01032257080078,
+        "foreground": 16.69607925415039
+      },
+      "shuffled": {
+        "psnr": 24.314308166503906,
+        "foreground": 17.399433135986328
+      },
+      "zero": {
+        "psnr": 19.609397888183594,
+        "foreground": 17.48809051513672
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 11,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.753087043762207,
+        "foreground": 7.909522533416748
+      },
+      "shuffled": {
+        "psnr": 11.648674964904785,
+        "foreground": 7.753734111785889
+      },
+      "zero": {
+        "psnr": 11.588905334472656,
+        "foreground": 7.7490763664245605
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.116817474365234,
+        "foreground": 9.953269958496094
+      },
+      "shuffled": {
+        "psnr": 18.329769134521484,
+        "foreground": 9.798563003540039
+      },
+      "zero": {
+        "psnr": 17.883073806762695,
+        "foreground": 10.434784889221191
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.448308944702148,
+        "foreground": 12.32785415649414
+      },
+      "shuffled": {
+        "psnr": 12.344778060913086,
+        "foreground": 12.00833511352539
+      },
+      "zero": {
+        "psnr": 12.136493682861328,
+        "foreground": 12.179271697998047
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.22681427001953,
+        "foreground": 15.422039031982422
+      },
+      "shuffled": {
+        "psnr": 23.0661678314209,
+        "foreground": 15.654783248901367
+      },
+      "zero": {
+        "psnr": 19.645254135131836,
+        "foreground": 15.366331100463867
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.196943283081055,
+        "foreground": 14.482060432434082
+      },
+      "shuffled": {
+        "psnr": 12.096772193908691,
+        "foreground": 14.694999694824219
+      },
+      "zero": {
+        "psnr": 12.005481719970703,
+        "foreground": 14.695592880249023
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.78465461730957,
+        "foreground": 13.88203239440918
+      },
+      "shuffled": {
+        "psnr": 18.942415237426758,
+        "foreground": 14.038681983947754
+      },
+      "zero": {
+        "psnr": 17.82325553894043,
+        "foreground": 13.84785270690918
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.253755569458008,
+        "foreground": 14.833235740661621
+      },
+      "shuffled": {
+        "psnr": 12.286638259887695,
+        "foreground": 14.68583869934082
+      },
+      "zero": {
+        "psnr": 12.153814315795898,
+        "foreground": 14.79743480682373
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.065757751464844,
+        "foreground": 15.323811531066895
+      },
+      "shuffled": {
+        "psnr": 21.42860221862793,
+        "foreground": 14.782320022583008
+      },
+      "zero": {
+        "psnr": 19.2882080078125,
+        "foreground": 13.87945556640625
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.784849166870117,
+        "foreground": 8.775901794433594
+      },
+      "shuffled": {
+        "psnr": 11.910026550292969,
+        "foreground": 9.075121879577637
+      },
+      "zero": {
+        "psnr": 11.645626068115234,
+        "foreground": 8.648059844970703
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.919021606445312,
+        "foreground": 10.01815414428711
+      },
+      "shuffled": {
+        "psnr": 19.0012149810791,
+        "foreground": 9.387266159057617
+      },
+      "zero": {
+        "psnr": 17.893980026245117,
+        "foreground": 10.488801002502441
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.196439743041992,
+        "foreground": 12.426843643188477
+      },
+      "shuffled": {
+        "psnr": 12.024879455566406,
+        "foreground": 12.564489364624023
+      },
+      "zero": {
+        "psnr": 11.959501266479492,
+        "foreground": 12.290443420410156
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.924549102783203,
+        "foreground": 12.22131633758545
+      },
+      "shuffled": {
+        "psnr": 19.869558334350586,
+        "foreground": 12.634682655334473
+      },
+      "zero": {
+        "psnr": 18.6499080657959,
+        "foreground": 12.465544700622559
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.167020797729492,
+        "foreground": 13.244744300842285
+      },
+      "shuffled": {
+        "psnr": 12.252758026123047,
+        "foreground": 13.395743370056152
+      },
+      "zero": {
+        "psnr": 12.095499038696289,
+        "foreground": 13.270153045654297
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.258283615112305,
+        "foreground": 12.769285202026367
+      },
+      "shuffled": {
+        "psnr": 24.278505325317383,
+        "foreground": 13.061206817626953
+      },
+      "zero": {
+        "psnr": 19.084976196289062,
+        "foreground": 13.142657279968262
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 18,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.167463302612305,
+        "foreground": 12.002320289611816
+      },
+      "shuffled": {
+        "psnr": 12.038212776184082,
+        "foreground": 11.97150993347168
+      },
+      "zero": {
+        "psnr": 12.000223159790039,
+        "foreground": 11.836843490600586
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.34302520751953,
+        "foreground": 11.919750213623047
+      },
+      "shuffled": {
+        "psnr": 22.85091781616211,
+        "foreground": 11.854561805725098
+      },
+      "zero": {
+        "psnr": 18.803972244262695,
+        "foreground": 12.073335647583008
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 18,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.093141555786133,
+        "foreground": 11.971559524536133
+      },
+      "shuffled": {
+        "psnr": 12.185348510742188,
+        "foreground": 11.810949325561523
+      },
+      "zero": {
+        "psnr": 12.063127517700195,
+        "foreground": 11.987632751464844
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.96271514892578,
+        "foreground": 14.201998710632324
+      },
+      "shuffled": {
+        "psnr": 22.177440643310547,
+        "foreground": 13.754748344421387
+      },
+      "zero": {
+        "psnr": 19.25444984436035,
+        "foreground": 15.099106788635254
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 18,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.4378662109375,
+        "foreground": 15.987415313720703
+      },
+      "shuffled": {
+        "psnr": 12.484312057495117,
+        "foreground": 15.683398246765137
+      },
+      "zero": {
+        "psnr": 12.295269966125488,
+        "foreground": 16.104053497314453
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.332042694091797,
+        "foreground": 14.86451244354248
+      },
+      "shuffled": {
+        "psnr": 22.571928024291992,
+        "foreground": 15.89535140991211
+      },
+      "zero": {
+        "psnr": 18.246280670166016,
+        "foreground": 12.594461441040039
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 18,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.33948802947998,
+        "foreground": 14.463562965393066
+      },
+      "shuffled": {
+        "psnr": 12.23431396484375,
+        "foreground": 14.747014999389648
+      },
+      "zero": {
+        "psnr": 12.171928405761719,
+        "foreground": 14.890443801879883
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.032108306884766,
+        "foreground": 17.579343795776367
+      },
+      "shuffled": {
+        "psnr": 22.294540405273438,
+        "foreground": 15.019416809082031
+      },
+      "zero": {
+        "psnr": 18.38914680480957,
+        "foreground": 13.66870403289795
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 18,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.35399341583252,
+        "foreground": 15.640693664550781
+      },
+      "shuffled": {
+        "psnr": 12.315299987792969,
+        "foreground": 15.567934036254883
+      },
+      "zero": {
+        "psnr": 12.272295951843262,
+        "foreground": 15.534688949584961
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 24.177778244018555,
+        "foreground": 15.975523948669434
+      },
+      "shuffled": {
+        "psnr": 21.263046264648438,
+        "foreground": 15.19410514831543
+      },
+      "zero": {
+        "psnr": 19.313247680664062,
+        "foreground": 14.419344902038574
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 18,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.183273315429688,
+        "foreground": 13.77165699005127
+      },
+      "shuffled": {
+        "psnr": 12.386931419372559,
+        "foreground": 13.992254257202148
+      },
+      "zero": {
+        "psnr": 12.152348518371582,
+        "foreground": 13.60759162902832
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.49793815612793,
+        "foreground": 14.425590515136719
+      },
+      "shuffled": {
+        "psnr": 19.121150970458984,
+        "foreground": 13.477259635925293
+      },
+      "zero": {
+        "psnr": 19.572824478149414,
+        "foreground": 14.034279823303223
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 18,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.278166770935059,
+        "foreground": 13.87307357788086
+      },
+      "shuffled": {
+        "psnr": 12.231945991516113,
+        "foreground": 13.832282066345215
+      },
+      "zero": {
+        "psnr": 12.048450469970703,
+        "foreground": 13.728933334350586
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.292072296142578,
+        "foreground": 13.475662231445312
+      },
+      "shuffled": {
+        "psnr": 21.250572204589844,
+        "foreground": 14.371883392333984
+      },
+      "zero": {
+        "psnr": 18.49030303955078,
+        "foreground": 13.512373924255371
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 18,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.405085563659668,
+        "foreground": 14.935054779052734
+      },
+      "shuffled": {
+        "psnr": 12.395342826843262,
+        "foreground": 14.99707317352295
+      },
+      "zero": {
+        "psnr": 12.330448150634766,
+        "foreground": 15.591231346130371
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.51094627380371,
+        "foreground": 15.404191017150879
+      },
+      "shuffled": {
+        "psnr": 21.803911209106445,
+        "foreground": 15.090200424194336
+      },
+      "zero": {
+        "psnr": 18.225017547607422,
+        "foreground": 13.403474807739258
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 18,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.189168930053711,
+        "foreground": 13.495075225830078
+      },
+      "shuffled": {
+        "psnr": 12.129329681396484,
+        "foreground": 13.213417053222656
+      },
+      "zero": {
+        "psnr": 12.018754959106445,
+        "foreground": 13.012105941772461
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.965383529663086,
+        "foreground": 13.056632995605469
+      },
+      "shuffled": {
+        "psnr": 19.952686309814453,
+        "foreground": 14.085783958435059
+      },
+      "zero": {
+        "psnr": 18.555662155151367,
+        "foreground": 13.655035018920898
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 18,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.272790908813477,
+        "foreground": 16.20681381225586
+      },
+      "shuffled": {
+        "psnr": 12.217927932739258,
+        "foreground": 16.391700744628906
+      },
+      "zero": {
+        "psnr": 12.164491653442383,
+        "foreground": 15.945499420166016
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.351041793823242,
+        "foreground": 17.014724731445312
+      },
+      "shuffled": {
+        "psnr": 21.794340133666992,
+        "foreground": 17.448745727539062
+      },
+      "zero": {
+        "psnr": 19.744842529296875,
+        "foreground": 17.689483642578125
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 18,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.713375091552734,
+        "foreground": 8.024552345275879
+      },
+      "shuffled": {
+        "psnr": 12.015090942382812,
+        "foreground": 8.720489501953125
+      },
+      "zero": {
+        "psnr": 11.652560234069824,
+        "foreground": 8.015531539916992
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.877779006958008,
+        "foreground": 9.6556396484375
+      },
+      "shuffled": {
+        "psnr": 18.226486206054688,
+        "foreground": 10.14139175415039
+      },
+      "zero": {
+        "psnr": 18.047067642211914,
+        "foreground": 10.542045593261719
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.347267150878906,
+        "foreground": 12.196073532104492
+      },
+      "shuffled": {
+        "psnr": 12.35869312286377,
+        "foreground": 11.841320037841797
+      },
+      "zero": {
+        "psnr": 12.121697425842285,
+        "foreground": 11.988933563232422
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.738296508789062,
+        "foreground": 15.210623741149902
+      },
+      "shuffled": {
+        "psnr": 25.128080368041992,
+        "foreground": 15.173591613769531
+      },
+      "zero": {
+        "psnr": 19.559646606445312,
+        "foreground": 15.198282241821289
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.24061107635498,
+        "foreground": 14.5038423538208
+      },
+      "shuffled": {
+        "psnr": 12.175485610961914,
+        "foreground": 14.724226951599121
+      },
+      "zero": {
+        "psnr": 12.039470672607422,
+        "foreground": 15.03020191192627
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.526506423950195,
+        "foreground": 14.601611137390137
+      },
+      "shuffled": {
+        "psnr": 19.673439025878906,
+        "foreground": 14.472823143005371
+      },
+      "zero": {
+        "psnr": 17.863506317138672,
+        "foreground": 13.747886657714844
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.327447891235352,
+        "foreground": 15.313409805297852
+      },
+      "shuffled": {
+        "psnr": 12.316075325012207,
+        "foreground": 15.032541275024414
+      },
+      "zero": {
+        "psnr": 12.161983489990234,
+        "foreground": 15.150080680847168
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.776020050048828,
+        "foreground": 15.766067504882812
+      },
+      "shuffled": {
+        "psnr": 23.277198791503906,
+        "foreground": 14.943330764770508
+      },
+      "zero": {
+        "psnr": 19.340103149414062,
+        "foreground": 14.239419937133789
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.852327346801758,
+        "foreground": 9.00574779510498
+      },
+      "shuffled": {
+        "psnr": 11.881847381591797,
+        "foreground": 9.183372497558594
+      },
+      "zero": {
+        "psnr": 11.688215255737305,
+        "foreground": 8.819419860839844
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.851505279541016,
+        "foreground": 9.874754905700684
+      },
+      "shuffled": {
+        "psnr": 19.587688446044922,
+        "foreground": 9.975862503051758
+      },
+      "zero": {
+        "psnr": 17.997867584228516,
+        "foreground": 10.629758834838867
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.11127758026123,
+        "foreground": 12.380399703979492
+      },
+      "shuffled": {
+        "psnr": 12.062662124633789,
+        "foreground": 12.39772891998291
+      },
+      "zero": {
+        "psnr": 11.94751262664795,
+        "foreground": 12.318197250366211
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.361164093017578,
+        "foreground": 13.161572456359863
+      },
+      "shuffled": {
+        "psnr": 19.432849884033203,
+        "foreground": 12.213567733764648
+      },
+      "zero": {
+        "psnr": 18.55640983581543,
+        "foreground": 12.495033264160156
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.2666597366333,
+        "foreground": 14.001012802124023
+      },
+      "shuffled": {
+        "psnr": 12.254051208496094,
+        "foreground": 13.82536792755127
+      },
+      "zero": {
+        "psnr": 12.138565063476562,
+        "foreground": 14.00810432434082
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.260393142700195,
+        "foreground": 13.334855079650879
+      },
+      "shuffled": {
+        "psnr": 20.565359115600586,
+        "foreground": 13.262434959411621
+      },
+      "zero": {
+        "psnr": 19.255199432373047,
+        "foreground": 13.623489379882812
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 25,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.19324016571045,
+        "foreground": 12.334113121032715
+      },
+      "shuffled": {
+        "psnr": 12.148085594177246,
+        "foreground": 12.40811824798584
+      },
+      "zero": {
+        "psnr": 12.062471389770508,
+        "foreground": 12.319562911987305
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.140472412109375,
+        "foreground": 11.671128273010254
+      },
+      "shuffled": {
+        "psnr": 23.710609436035156,
+        "foreground": 12.32174015045166
+      },
+      "zero": {
+        "psnr": 19.040754318237305,
+        "foreground": 12.436903953552246
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 25,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.173480987548828,
+        "foreground": 12.118736267089844
+      },
+      "shuffled": {
+        "psnr": 12.267027854919434,
+        "foreground": 11.954521179199219
+      },
+      "zero": {
+        "psnr": 12.08936595916748,
+        "foreground": 12.069239616394043
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 24.17049217224121,
+        "foreground": 14.27602767944336
+      },
+      "shuffled": {
+        "psnr": 23.821331024169922,
+        "foreground": 14.569106101989746
+      },
+      "zero": {
+        "psnr": 19.24629020690918,
+        "foreground": 14.943171501159668
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 25,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.424898147583008,
+        "foreground": 15.01024341583252
+      },
+      "shuffled": {
+        "psnr": 12.369318962097168,
+        "foreground": 14.966079711914062
+      },
+      "zero": {
+        "psnr": 12.23002815246582,
+        "foreground": 14.960814476013184
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.084392547607422,
+        "foreground": 13.870140075683594
+      },
+      "shuffled": {
+        "psnr": 22.768945693969727,
+        "foreground": 13.171232223510742
+      },
+      "zero": {
+        "psnr": 18.424680709838867,
+        "foreground": 12.547677993774414
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 25,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.275010108947754,
+        "foreground": 14.731415748596191
+      },
+      "shuffled": {
+        "psnr": 12.253981590270996,
+        "foreground": 14.883787155151367
+      },
+      "zero": {
+        "psnr": 12.161762237548828,
+        "foreground": 15.127792358398438
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.676084518432617,
+        "foreground": 13.827751159667969
+      },
+      "shuffled": {
+        "psnr": 19.687267303466797,
+        "foreground": 14.9985990524292
+      },
+      "zero": {
+        "psnr": 18.547971725463867,
+        "foreground": 13.673995971679688
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 25,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.3746976852417,
+        "foreground": 15.177070617675781
+      },
+      "shuffled": {
+        "psnr": 12.307442665100098,
+        "foreground": 15.09078598022461
+      },
+      "zero": {
+        "psnr": 12.257838249206543,
+        "foreground": 15.06598949432373
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.45022964477539,
+        "foreground": 16.179109573364258
+      },
+      "shuffled": {
+        "psnr": 22.945938110351562,
+        "foreground": 15.296304702758789
+      },
+      "zero": {
+        "psnr": 19.2978515625,
+        "foreground": 14.54095458984375
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 25,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.188678741455078,
+        "foreground": 13.356118202209473
+      },
+      "shuffled": {
+        "psnr": 12.265101432800293,
+        "foreground": 13.3521089553833
+      },
+      "zero": {
+        "psnr": 12.136445045471191,
+        "foreground": 13.132421493530273
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.80105209350586,
+        "foreground": 12.917154312133789
+      },
+      "shuffled": {
+        "psnr": 21.50352668762207,
+        "foreground": 14.120706558227539
+      },
+      "zero": {
+        "psnr": 19.483728408813477,
+        "foreground": 13.720237731933594
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 25,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.146824836730957,
+        "foreground": 13.501405715942383
+      },
+      "shuffled": {
+        "psnr": 12.287670135498047,
+        "foreground": 13.684114456176758
+      },
+      "zero": {
+        "psnr": 12.038461685180664,
+        "foreground": 13.407709121704102
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.189664840698242,
+        "foreground": 13.883270263671875
+      },
+      "shuffled": {
+        "psnr": 21.22231674194336,
+        "foreground": 13.738143920898438
+      },
+      "zero": {
+        "psnr": 18.531017303466797,
+        "foreground": 13.449548721313477
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 25,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.478080749511719,
+        "foreground": 14.97607135772705
+      },
+      "shuffled": {
+        "psnr": 12.408422470092773,
+        "foreground": 15.109498977661133
+      },
+      "zero": {
+        "psnr": 12.33791446685791,
+        "foreground": 15.465871810913086
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.127338409423828,
+        "foreground": 14.796588897705078
+      },
+      "shuffled": {
+        "psnr": 21.038127899169922,
+        "foreground": 15.429116249084473
+      },
+      "zero": {
+        "psnr": 18.025426864624023,
+        "foreground": 13.238059997558594
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 25,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.18014144897461,
+        "foreground": 13.415647506713867
+      },
+      "shuffled": {
+        "psnr": 12.032370567321777,
+        "foreground": 12.999610900878906
+      },
+      "zero": {
+        "psnr": 12.035419464111328,
+        "foreground": 12.899361610412598
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.413665771484375,
+        "foreground": 12.985153198242188
+      },
+      "shuffled": {
+        "psnr": 20.910377502441406,
+        "foreground": 14.177238464355469
+      },
+      "zero": {
+        "psnr": 18.59163475036621,
+        "foreground": 13.607948303222656
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 25,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.149965286254883,
+        "foreground": 14.926548957824707
+      },
+      "shuffled": {
+        "psnr": 12.298604965209961,
+        "foreground": 15.493029594421387
+      },
+      "zero": {
+        "psnr": 12.156705856323242,
+        "foreground": 14.830713272094727
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.547012329101562,
+        "foreground": 17.44829559326172
+      },
+      "shuffled": {
+        "psnr": 23.399646759033203,
+        "foreground": 17.702871322631836
+      },
+      "zero": {
+        "psnr": 19.74894142150879,
+        "foreground": 17.863252639770508
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 25,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.864770889282227,
+        "foreground": 8.332162857055664
+      },
+      "shuffled": {
+        "psnr": 11.982983589172363,
+        "foreground": 8.882648468017578
+      },
+      "zero": {
+        "psnr": 11.711200714111328,
+        "foreground": 8.223020553588867
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.898731231689453,
+        "foreground": 9.90627384185791
+      },
+      "shuffled": {
+        "psnr": 18.755783081054688,
+        "foreground": 10.297894477844238
+      },
+      "zero": {
+        "psnr": 18.146665573120117,
+        "foreground": 10.636306762695312
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.264457702636719,
+        "foreground": 11.741467475891113
+      },
+      "shuffled": {
+        "psnr": 12.246838569641113,
+        "foreground": 11.581392288208008
+      },
+      "zero": {
+        "psnr": 12.115412712097168,
+        "foreground": 11.699913024902344
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.48853302001953,
+        "foreground": 14.916520118713379
+      },
+      "shuffled": {
+        "psnr": 21.933870315551758,
+        "foreground": 14.398945808410645
+      },
+      "zero": {
+        "psnr": 19.617908477783203,
+        "foreground": 14.989530563354492
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.163702011108398,
+        "foreground": 14.530116081237793
+      },
+      "shuffled": {
+        "psnr": 12.089415550231934,
+        "foreground": 14.891202926635742
+      },
+      "zero": {
+        "psnr": 12.070536613464355,
+        "foreground": 15.179634094238281
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.8524227142334,
+        "foreground": 15.7032470703125
+      },
+      "shuffled": {
+        "psnr": 19.340320587158203,
+        "foreground": 14.901004791259766
+      },
+      "zero": {
+        "psnr": 17.9497013092041,
+        "foreground": 13.634851455688477
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.212858200073242,
+        "foreground": 15.33419418334961
+      },
+      "shuffled": {
+        "psnr": 12.262592315673828,
+        "foreground": 15.242683410644531
+      },
+      "zero": {
+        "psnr": 12.169017791748047,
+        "foreground": 15.223751068115234
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.792400360107422,
+        "foreground": 15.467405319213867
+      },
+      "shuffled": {
+        "psnr": 23.29629135131836,
+        "foreground": 14.563222885131836
+      },
+      "zero": {
+        "psnr": 19.469663619995117,
+        "foreground": 14.393373489379883
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.830782890319824,
+        "foreground": 9.078143119812012
+      },
+      "shuffled": {
+        "psnr": 11.912027359008789,
+        "foreground": 9.430912017822266
+      },
+      "zero": {
+        "psnr": 11.74354362487793,
+        "foreground": 9.051891326904297
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.264198303222656,
+        "foreground": 10.152153968811035
+      },
+      "shuffled": {
+        "psnr": 20.0241756439209,
+        "foreground": 10.227156639099121
+      },
+      "zero": {
+        "psnr": 18.212860107421875,
+        "foreground": 10.828361511230469
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.095671653747559,
+        "foreground": 12.603692054748535
+      },
+      "shuffled": {
+        "psnr": 12.093481063842773,
+        "foreground": 12.616470336914062
+      },
+      "zero": {
+        "psnr": 11.966775894165039,
+        "foreground": 12.387208938598633
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.668060302734375,
+        "foreground": 13.28773021697998
+      },
+      "shuffled": {
+        "psnr": 19.58443832397461,
+        "foreground": 12.941871643066406
+      },
+      "zero": {
+        "psnr": 18.61620330810547,
+        "foreground": 12.5830659866333
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.338552474975586,
+        "foreground": 15.018075942993164
+      },
+      "shuffled": {
+        "psnr": 12.37122917175293,
+        "foreground": 14.692981719970703
+      },
+      "zero": {
+        "psnr": 12.186226844787598,
+        "foreground": 15.00406265258789
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.634735107421875,
+        "foreground": 14.65922737121582
+      },
+      "shuffled": {
+        "psnr": 21.924304962158203,
+        "foreground": 14.30813217163086
+      },
+      "zero": {
+        "psnr": 19.564424514770508,
+        "foreground": 14.240885734558105
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 32,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.32715129852295,
+        "foreground": 12.917350769042969
+      },
+      "shuffled": {
+        "psnr": 12.205503463745117,
+        "foreground": 13.16152572631836
+      },
+      "zero": {
+        "psnr": 12.129806518554688,
+        "foreground": 13.01390552520752
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.561429977416992,
+        "foreground": 12.581806182861328
+      },
+      "shuffled": {
+        "psnr": 21.537416458129883,
+        "foreground": 13.150673866271973
+      },
+      "zero": {
+        "psnr": 19.39665412902832,
+        "foreground": 12.888989448547363
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 32,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.184052467346191,
+        "foreground": 11.852412223815918
+      },
+      "shuffled": {
+        "psnr": 12.245824813842773,
+        "foreground": 11.870795249938965
+      },
+      "zero": {
+        "psnr": 12.118882179260254,
+        "foreground": 11.981163024902344
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.401479721069336,
+        "foreground": 14.370165824890137
+      },
+      "shuffled": {
+        "psnr": 19.543046951293945,
+        "foreground": 14.369497299194336
+      },
+      "zero": {
+        "psnr": 19.349681854248047,
+        "foreground": 14.470882415771484
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 32,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.20856761932373,
+        "foreground": 12.30179214477539
+      },
+      "shuffled": {
+        "psnr": 12.256878852844238,
+        "foreground": 12.33862018585205
+      },
+      "zero": {
+        "psnr": 12.063558578491211,
+        "foreground": 12.044977188110352
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.84119415283203,
+        "foreground": 11.787108421325684
+      },
+      "shuffled": {
+        "psnr": 22.029796600341797,
+        "foreground": 11.757826805114746
+      },
+      "zero": {
+        "psnr": 18.29680061340332,
+        "foreground": 11.21533203125
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 32,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.324287414550781,
+        "foreground": 14.52530288696289
+      },
+      "shuffled": {
+        "psnr": 12.181528091430664,
+        "foreground": 14.883030891418457
+      },
+      "zero": {
+        "psnr": 12.165535926818848,
+        "foreground": 15.062098503112793
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 24.364334106445312,
+        "foreground": 15.903358459472656
+      },
+      "shuffled": {
+        "psnr": 20.341196060180664,
+        "foreground": 14.761104583740234
+      },
+      "zero": {
+        "psnr": 18.777538299560547,
+        "foreground": 13.365320205688477
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 32,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      },
+      "shuffled": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      },
+      "zero": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      },
+      "shuffled": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      },
+      "zero": {
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 32,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.125011444091797,
+        "foreground": 12.721844673156738
+      },
+      "shuffled": {
+        "psnr": 12.263372421264648,
+        "foreground": 12.979629516601562
+      },
+      "zero": {
+        "psnr": 12.127772331237793,
+        "foreground": 12.666983604431152
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 25.594768524169922,
+        "foreground": 13.358316421508789
+      },
+      "shuffled": {
+        "psnr": 21.574878692626953,
+        "foreground": 13.339327812194824
+      },
+      "zero": {
+        "psnr": 19.523509979248047,
+        "foreground": 13.398216247558594
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 32,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.163609504699707,
+        "foreground": 13.192956924438477
+      },
+      "shuffled": {
+        "psnr": 12.23408317565918,
+        "foreground": 13.397244453430176
+      },
+      "zero": {
+        "psnr": 12.036445617675781,
+        "foreground": 13.033929824829102
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.134029388427734,
+        "foreground": 12.745637893676758
+      },
+      "shuffled": {
+        "psnr": 21.221267700195312,
+        "foreground": 13.374080657958984
+      },
+      "zero": {
+        "psnr": 18.63762855529785,
+        "foreground": 13.390473365783691
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 32,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.432518005371094,
+        "foreground": 14.787256240844727
+      },
+      "shuffled": {
+        "psnr": 12.403000831604004,
+        "foreground": 14.931379318237305
+      },
+      "zero": {
+        "psnr": 12.308978080749512,
+        "foreground": 15.05225944519043
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.2838077545166,
+        "foreground": 15.138948440551758
+      },
+      "shuffled": {
+        "psnr": 20.875885009765625,
+        "foreground": 15.758577346801758
+      },
+      "zero": {
+        "psnr": 18.013046264648438,
+        "foreground": 13.2042236328125
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 32,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.173934936523438,
+        "foreground": 13.303182601928711
+      },
+      "shuffled": {
+        "psnr": 12.019041061401367,
+        "foreground": 13.011216163635254
+      },
+      "zero": {
+        "psnr": 12.029095649719238,
+        "foreground": 12.887918472290039
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.06670379638672,
+        "foreground": 12.814111709594727
+      },
+      "shuffled": {
+        "psnr": 19.93008804321289,
+        "foreground": 13.943168640136719
+      },
+      "zero": {
+        "psnr": 18.53111457824707,
+        "foreground": 13.477874755859375
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 32,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.141875267028809,
+        "foreground": 14.204986572265625
+      },
+      "shuffled": {
+        "psnr": 12.24932861328125,
+        "foreground": 14.563406944274902
+      },
+      "zero": {
+        "psnr": 12.162601470947266,
+        "foreground": 14.18154525756836
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.29279327392578,
+        "foreground": 16.482406616210938
+      },
+      "shuffled": {
+        "psnr": 26.108020782470703,
+        "foreground": 17.34528160095215
+      },
+      "zero": {
+        "psnr": 19.756916046142578,
+        "foreground": 17.7590389251709
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 32,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.858283996582031,
+        "foreground": 8.619453430175781
+      },
+      "shuffled": {
+        "psnr": 11.906417846679688,
+        "foreground": 8.581342697143555
+      },
+      "zero": {
+        "psnr": 11.760480880737305,
+        "foreground": 8.512653350830078
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.305330276489258,
+        "foreground": 10.391067504882812
+      },
+      "shuffled": {
+        "psnr": 18.78169059753418,
+        "foreground": 10.667801856994629
+      },
+      "zero": {
+        "psnr": 18.221965789794922,
+        "foreground": 10.860513687133789
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.361085891723633,
+        "foreground": 11.787604331970215
+      },
+      "shuffled": {
+        "psnr": 12.327049255371094,
+        "foreground": 11.34422492980957
+      },
+      "zero": {
+        "psnr": 12.108116149902344,
+        "foreground": 11.430521011352539
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.356294631958008,
+        "foreground": 14.832695007324219
+      },
+      "shuffled": {
+        "psnr": 20.668981552124023,
+        "foreground": 14.368963241577148
+      },
+      "zero": {
+        "psnr": 19.568601608276367,
+        "foreground": 14.837823867797852
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.246232986450195,
+        "foreground": 14.601736068725586
+      },
+      "shuffled": {
+        "psnr": 12.107943534851074,
+        "foreground": 14.95621109008789
+      },
+      "zero": {
+        "psnr": 12.052453994750977,
+        "foreground": 14.968437194824219
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.549213409423828,
+        "foreground": 15.399784088134766
+      },
+      "shuffled": {
+        "psnr": 20.683311462402344,
+        "foreground": 14.475828170776367
+      },
+      "zero": {
+        "psnr": 17.869937896728516,
+        "foreground": 13.566413879394531
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.236528396606445,
+        "foreground": 14.830423355102539
+      },
+      "shuffled": {
+        "psnr": 12.229219436645508,
+        "foreground": 14.99329948425293
+      },
+      "zero": {
+        "psnr": 12.160988807678223,
+        "foreground": 14.96975040435791
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.27356719970703,
+        "foreground": 15.177318572998047
+      },
+      "shuffled": {
+        "psnr": 22.071027755737305,
+        "foreground": 14.695808410644531
+      },
+      "zero": {
+        "psnr": 19.40656280517578,
+        "foreground": 14.202564239501953
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 11.858510971069336,
+        "foreground": 9.390291213989258
+      },
+      "shuffled": {
+        "psnr": 12.093491554260254,
+        "foreground": 10.384317398071289
+      },
+      "zero": {
+        "psnr": 11.791911125183105,
+        "foreground": 9.339890480041504
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.96761703491211,
+        "foreground": 10.725927352905273
+      },
+      "shuffled": {
+        "psnr": 18.805814743041992,
+        "foreground": 10.310340881347656
+      },
+      "zero": {
+        "psnr": 18.321014404296875,
+        "foreground": 11.057615280151367
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.184429168701172,
+        "foreground": 12.661413192749023
+      },
+      "shuffled": {
+        "psnr": 12.164791107177734,
+        "foreground": 12.472749710083008
+      },
+      "zero": {
+        "psnr": 11.966649055480957,
+        "foreground": 12.25269889831543
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.9223690032959,
+        "foreground": 13.379077911376953
+      },
+      "shuffled": {
+        "psnr": 19.813907623291016,
+        "foreground": 12.666969299316406
+      },
+      "zero": {
+        "psnr": 18.566932678222656,
+        "foreground": 12.588753700256348
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.409621238708496,
+        "foreground": 15.97782039642334
+      },
+      "shuffled": {
+        "psnr": 12.327495574951172,
+        "foreground": 15.919981956481934
+      },
+      "zero": {
+        "psnr": 12.2141695022583,
+        "foreground": 16.311080932617188
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.451223373413086,
+        "foreground": 16.91636848449707
+      },
+      "shuffled": {
+        "psnr": 25.223247528076172,
+        "foreground": 15.047931671142578
+      },
+      "zero": {
+        "psnr": 19.71485710144043,
+        "foreground": 15.10165786743164
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 39,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.299898147583008,
+        "foreground": 14.278870582580566
+      },
+      "shuffled": {
+        "psnr": 12.281354904174805,
+        "foreground": 14.522904396057129
+      },
+      "zero": {
+        "psnr": 12.180594444274902,
+        "foreground": 14.537042617797852
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 24.713172912597656,
+        "foreground": 13.671116828918457
+      },
+      "shuffled": {
+        "psnr": 26.15274429321289,
+        "foreground": 14.280950546264648
+      },
+      "zero": {
+        "psnr": 19.57302474975586,
+        "foreground": 13.791488647460938
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 39,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.22793197631836,
+        "foreground": 11.407249450683594
+      },
+      "shuffled": {
+        "psnr": 12.273780822753906,
+        "foreground": 11.3580904006958
+      },
+      "zero": {
+        "psnr": 12.132394790649414,
+        "foreground": 11.492483139038086
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 25.659713745117188,
+        "foreground": 14.28982162475586
+      },
+      "shuffled": {
+        "psnr": 19.420875549316406,
+        "foreground": 13.70454216003418
+      },
+      "zero": {
+        "psnr": 19.330703735351562,
+        "foreground": 13.608899116516113
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 39,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.2160062789917,
+        "foreground": 12.198497772216797
+      },
+      "shuffled": {
+        "psnr": 12.280035972595215,
+        "foreground": 12.15274715423584
+      },
+      "zero": {
+        "psnr": 12.063983917236328,
+        "foreground": 12.083792686462402
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 18.78261947631836,
+        "foreground": 11.831449508666992
+      },
+      "shuffled": {
+        "psnr": 19.20677375793457,
+        "foreground": 11.932069778442383
+      },
+      "zero": {
+        "psnr": 18.374095916748047,
+        "foreground": 11.245681762695312
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 39,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.357929229736328,
+        "foreground": 14.269426345825195
+      },
+      "shuffled": {
+        "psnr": 12.293015480041504,
+        "foreground": 14.552535057067871
+      },
+      "zero": {
+        "psnr": 12.167862892150879,
+        "foreground": 15.011241912841797
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.267438888549805,
+        "foreground": 16.597867965698242
+      },
+      "shuffled": {
+        "psnr": 20.874767303466797,
+        "foreground": 14.060492515563965
+      },
+      "zero": {
+        "psnr": 18.821929931640625,
+        "foreground": 13.289841651916504
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 39,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.374597549438477,
+        "foreground": 13.895294189453125
+      },
+      "shuffled": {
+        "psnr": 12.262825965881348,
+        "foreground": 13.908287048339844
+      },
+      "zero": {
+        "psnr": 12.228424072265625,
+        "foreground": 13.888754844665527
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.87859535217285,
+        "foreground": 16.602510452270508
+      },
+      "shuffled": {
+        "psnr": 21.63214111328125,
+        "foreground": 15.625344276428223
+      },
+      "zero": {
+        "psnr": 19.407737731933594,
+        "foreground": 14.862784385681152
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 39,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.14266586303711,
+        "foreground": 12.343189239501953
+      },
+      "shuffled": {
+        "psnr": 12.145973205566406,
+        "foreground": 12.505549430847168
+      },
+      "zero": {
+        "psnr": 12.112370491027832,
+        "foreground": 12.207531929016113
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.474607467651367,
+        "foreground": 13.093147277832031
+      },
+      "shuffled": {
+        "psnr": 20.252695083618164,
+        "foreground": 13.312111854553223
+      },
+      "zero": {
+        "psnr": 19.445091247558594,
+        "foreground": 13.088838577270508
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 39,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.081422805786133,
+        "foreground": 12.84036636352539
+      },
+      "shuffled": {
+        "psnr": 12.240933418273926,
+        "foreground": 13.023843765258789
+      },
+      "zero": {
+        "psnr": 12.050674438476562,
+        "foreground": 12.683329582214355
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.66916275024414,
+        "foreground": 13.408169746398926
+      },
+      "shuffled": {
+        "psnr": 20.23744773864746,
+        "foreground": 13.25437068939209
+      },
+      "zero": {
+        "psnr": 18.90341567993164,
+        "foreground": 13.425092697143555
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 39,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.393503189086914,
+        "foreground": 14.3033447265625
+      },
+      "shuffled": {
+        "psnr": 12.434019088745117,
+        "foreground": 14.476975440979004
+      },
+      "zero": {
+        "psnr": 12.2841796875,
+        "foreground": 14.576231002807617
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.22881507873535,
+        "foreground": 15.536659240722656
+      },
+      "shuffled": {
+        "psnr": 20.515972137451172,
+        "foreground": 15.101802825927734
+      },
+      "zero": {
+        "psnr": 18.021657943725586,
+        "foreground": 13.1600341796875
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 39,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.25964069366455,
+        "foreground": 13.447395324707031
+      },
+      "shuffled": {
+        "psnr": 12.064427375793457,
+        "foreground": 13.183890342712402
+      },
+      "zero": {
+        "psnr": 12.038814544677734,
+        "foreground": 13.072225570678711
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.999561309814453,
+        "foreground": 12.956171035766602
+      },
+      "shuffled": {
+        "psnr": 20.192363739013672,
+        "foreground": 13.987135887145996
+      },
+      "zero": {
+        "psnr": 18.56576156616211,
+        "foreground": 13.471893310546875
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 39,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.180520057678223,
+        "foreground": 13.41465950012207
+      },
+      "shuffled": {
+        "psnr": 12.22077465057373,
+        "foreground": 13.542486190795898
+      },
+      "zero": {
+        "psnr": 12.173518180847168,
+        "foreground": 13.294656753540039
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.843334197998047,
+        "foreground": 16.24349594116211
+      },
+      "shuffled": {
+        "psnr": 26.411834716796875,
+        "foreground": 16.44306755065918
+      },
+      "zero": {
+        "psnr": 19.877544403076172,
+        "foreground": 16.708337783813477
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 39,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.793986320495605,
+        "foreground": 8.552462577819824
+      },
+      "shuffled": {
+        "psnr": 12.04617977142334,
+        "foreground": 9.314140319824219
+      },
+      "zero": {
+        "psnr": 11.737016677856445,
+        "foreground": 8.43082046508789
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.27695083618164,
+        "foreground": 10.53160572052002
+      },
+      "shuffled": {
+        "psnr": 19.338733673095703,
+        "foreground": 10.754240036010742
+      },
+      "zero": {
+        "psnr": 18.215221405029297,
+        "foreground": 10.886391639709473
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.243246078491211,
+        "foreground": 11.528159141540527
+      },
+      "shuffled": {
+        "psnr": 12.31885051727295,
+        "foreground": 11.456426620483398
+      },
+      "zero": {
+        "psnr": 12.109779357910156,
+        "foreground": 11.539230346679688
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.89443588256836,
+        "foreground": 15.03431510925293
+      },
+      "shuffled": {
+        "psnr": 23.369295120239258,
+        "foreground": 14.686984062194824
+      },
+      "zero": {
+        "psnr": 19.530548095703125,
+        "foreground": 14.92129898071289
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.235159873962402,
+        "foreground": 14.690056800842285
+      },
+      "shuffled": {
+        "psnr": 12.065481185913086,
+        "foreground": 14.902902603149414
+      },
+      "zero": {
+        "psnr": 12.033673286437988,
+        "foreground": 14.871959686279297
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.258590698242188,
+        "foreground": 15.38700008392334
+      },
+      "shuffled": {
+        "psnr": 19.42850112915039,
+        "foreground": 14.742928504943848
+      },
+      "zero": {
+        "psnr": 17.758663177490234,
+        "foreground": 13.597476959228516
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.206459999084473,
+        "foreground": 15.465507507324219
+      },
+      "shuffled": {
+        "psnr": 12.391508102416992,
+        "foreground": 15.391034126281738
+      },
+      "zero": {
+        "psnr": 12.170183181762695,
+        "foreground": 15.522462844848633
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.158416748046875,
+        "foreground": 15.431231498718262
+      },
+      "shuffled": {
+        "psnr": 22.519664764404297,
+        "foreground": 15.019460678100586
+      },
+      "zero": {
+        "psnr": 19.390911102294922,
+        "foreground": 14.570096969604492
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 12.074665069580078,
+        "foreground": 10.191163063049316
+      },
+      "shuffled": {
+        "psnr": 11.894598007202148,
+        "foreground": 9.7578706741333
+      },
+      "zero": {
+        "psnr": 11.847391128540039,
+        "foreground": 9.977437019348145
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.2955265045166,
+        "foreground": 11.012548446655273
+      },
+      "shuffled": {
+        "psnr": 19.30280876159668,
+        "foreground": 10.857698440551758
+      },
+      "zero": {
+        "psnr": 18.376068115234375,
+        "foreground": 11.480243682861328
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.0127592086792,
+        "foreground": 12.519060134887695
+      },
+      "shuffled": {
+        "psnr": 12.117141723632812,
+        "foreground": 12.736720085144043
+      },
+      "zero": {
+        "psnr": 11.954083442687988,
+        "foreground": 12.108129501342773
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.24371910095215,
+        "foreground": 13.36493968963623
+      },
+      "shuffled": {
+        "psnr": 18.708667755126953,
+        "foreground": 12.617049217224121
+      },
+      "zero": {
+        "psnr": 18.489648818969727,
+        "foreground": 12.520414352416992
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.350507736206055,
+        "foreground": 14.79777717590332
+      },
+      "shuffled": {
+        "psnr": 12.238106727600098,
+        "foreground": 14.81501579284668
+      },
+      "zero": {
+        "psnr": 12.176799774169922,
+        "foreground": 14.738300323486328
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.864749908447266,
+        "foreground": 15.879989624023438
+      },
+      "shuffled": {
+        "psnr": 20.840272903442383,
+        "foreground": 15.53299331665039
+      },
+      "zero": {
+        "psnr": 19.485275268554688,
+        "foreground": 14.338168144226074
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 46,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.224660873413086,
+        "foreground": 14.616519927978516
+      },
+      "shuffled": {
+        "psnr": 12.382301330566406,
+        "foreground": 14.537689208984375
+      },
+      "zero": {
+        "psnr": 12.16543197631836,
+        "foreground": 14.626875877380371
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.784984588623047,
+        "foreground": 14.888595581054688
+      },
+      "shuffled": {
+        "psnr": 22.697711944580078,
+        "foreground": 14.707889556884766
+      },
+      "zero": {
+        "psnr": 19.43706703186035,
+        "foreground": 13.846811294555664
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 46,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.333210945129395,
+        "foreground": 11.835855484008789
+      },
+      "shuffled": {
+        "psnr": 12.331254959106445,
+        "foreground": 11.804961204528809
+      },
+      "zero": {
+        "psnr": 12.120823860168457,
+        "foreground": 11.923898696899414
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.25909423828125,
+        "foreground": 14.213496208190918
+      },
+      "shuffled": {
+        "psnr": 23.348995208740234,
+        "foreground": 13.897077560424805
+      },
+      "zero": {
+        "psnr": 19.271686553955078,
+        "foreground": 13.878934860229492
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 46,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.368732452392578,
+        "foreground": 14.276351928710938
+      },
+      "shuffled": {
+        "psnr": 12.342333793640137,
+        "foreground": 14.347440719604492
+      },
+      "zero": {
+        "psnr": 12.170547485351562,
+        "foreground": 14.586466789245605
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.196983337402344,
+        "foreground": 14.652318000793457
+      },
+      "shuffled": {
+        "psnr": 18.772029876708984,
+        "foreground": 14.194884300231934
+      },
+      "zero": {
+        "psnr": 18.694927215576172,
+        "foreground": 12.820372581481934
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 46,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.307775497436523,
+        "foreground": 14.700294494628906
+      },
+      "shuffled": {
+        "psnr": 12.186906814575195,
+        "foreground": 15.051328659057617
+      },
+      "zero": {
+        "psnr": 12.14792251586914,
+        "foreground": 15.207418441772461
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.15740394592285,
+        "foreground": 16.998245239257812
+      },
+      "shuffled": {
+        "psnr": 21.19369888305664,
+        "foreground": 14.256720542907715
+      },
+      "zero": {
+        "psnr": 18.68954849243164,
+        "foreground": 13.643945693969727
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 46,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.262279510498047,
+        "foreground": 13.608057022094727
+      },
+      "shuffled": {
+        "psnr": 12.263116836547852,
+        "foreground": 13.584173202514648
+      },
+      "zero": {
+        "psnr": 12.211629867553711,
+        "foreground": 13.572891235351562
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.344715118408203,
+        "foreground": 15.712151527404785
+      },
+      "shuffled": {
+        "psnr": 20.30936050415039,
+        "foreground": 15.788917541503906
+      },
+      "zero": {
+        "psnr": 19.421709060668945,
+        "foreground": 15.298266410827637
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 46,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.15111255645752,
+        "foreground": 11.877334594726562
+      },
+      "shuffled": {
+        "psnr": 12.240715980529785,
+        "foreground": 11.973515510559082
+      },
+      "zero": {
+        "psnr": 12.097296714782715,
+        "foreground": 11.713665962219238
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.197933197021484,
+        "foreground": 12.96263313293457
+      },
+      "shuffled": {
+        "psnr": 22.95955467224121,
+        "foreground": 13.152322769165039
+      },
+      "zero": {
+        "psnr": 19.380264282226562,
+        "foreground": 12.733521461486816
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 46,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.198834419250488,
+        "foreground": 12.287602424621582
+      },
+      "shuffled": {
+        "psnr": 12.09211540222168,
+        "foreground": 12.257284164428711
+      },
+      "zero": {
+        "psnr": 12.050281524658203,
+        "foreground": 12.0654878616333
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.85983657836914,
+        "foreground": 12.72531509399414
+      },
+      "shuffled": {
+        "psnr": 19.396404266357422,
+        "foreground": 12.699679374694824
+      },
+      "zero": {
+        "psnr": 19.039770126342773,
+        "foreground": 13.138360023498535
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 46,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.291808128356934,
+        "foreground": 13.933618545532227
+      },
+      "shuffled": {
+        "psnr": 12.445295333862305,
+        "foreground": 14.128998756408691
+      },
+      "zero": {
+        "psnr": 12.272967338562012,
+        "foreground": 13.963918685913086
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.412445068359375,
+        "foreground": 15.359418869018555
+      },
+      "shuffled": {
+        "psnr": 19.76164436340332,
+        "foreground": 14.679189682006836
+      },
+      "zero": {
+        "psnr": 18.235553741455078,
+        "foreground": 13.10140609741211
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 46,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.257251739501953,
+        "foreground": 13.355301856994629
+      },
+      "shuffled": {
+        "psnr": 12.132417678833008,
+        "foreground": 13.296632766723633
+      },
+      "zero": {
+        "psnr": 12.046995162963867,
+        "foreground": 13.05951976776123
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.438302993774414,
+        "foreground": 13.154851913452148
+      },
+      "shuffled": {
+        "psnr": 20.521936416625977,
+        "foreground": 13.962117195129395
+      },
+      "zero": {
+        "psnr": 18.600383758544922,
+        "foreground": 13.369832992553711
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 46,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.207263946533203,
+        "foreground": 11.339132308959961
+      },
+      "shuffled": {
+        "psnr": 12.30398178100586,
+        "foreground": 11.356550216674805
+      },
+      "zero": {
+        "psnr": 12.146439552307129,
+        "foreground": 10.892830848693848
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.041030883789062,
+        "foreground": 13.256464004516602
+      },
+      "shuffled": {
+        "psnr": 23.196929931640625,
+        "foreground": 12.903841018676758
+      },
+      "zero": {
+        "psnr": 19.755456924438477,
+        "foreground": 13.302550315856934
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 46,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.888313293457031,
+        "foreground": 8.871121406555176
+      },
+      "shuffled": {
+        "psnr": 11.825413703918457,
+        "foreground": 8.404973983764648
+      },
+      "zero": {
+        "psnr": 11.677292823791504,
+        "foreground": 8.173846244812012
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.919071197509766,
+        "foreground": 10.3822603225708
+      },
+      "shuffled": {
+        "psnr": 18.91170310974121,
+        "foreground": 10.6926908493042
+      },
+      "zero": {
+        "psnr": 18.07865333557129,
+        "foreground": 10.760379791259766
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "donor": "Capybara",
+    "distilled": {
+      "matched": {
+        "psnr": 12.218626976013184,
+        "foreground": 11.732118606567383
+      },
+      "shuffled": {
+        "psnr": 12.319934844970703,
+        "foreground": 11.663272857666016
+      },
+      "zero": {
+        "psnr": 12.123046875,
+        "foreground": 11.773873329162598
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.954965591430664,
+        "foreground": 15.287172317504883
+      },
+      "shuffled": {
+        "psnr": 25.30478286743164,
+        "foreground": 15.071006774902344
+      },
+      "zero": {
+        "psnr": 19.611478805541992,
+        "foreground": 15.023029327392578
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "donor": "Robot",
+    "distilled": {
+      "matched": {
+        "psnr": 12.21073055267334,
+        "foreground": 14.685855865478516
+      },
+      "shuffled": {
+        "psnr": 12.118574142456055,
+        "foreground": 14.774486541748047
+      },
+      "zero": {
+        "psnr": 12.006316184997559,
+        "foreground": 14.64333724975586
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.84222984313965,
+        "foreground": 15.211904525756836
+      },
+      "shuffled": {
+        "psnr": 19.395721435546875,
+        "foreground": 14.934322357177734
+      },
+      "zero": {
+        "psnr": 17.741220474243164,
+        "foreground": 13.741006851196289
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "donor": "Woman",
+    "distilled": {
+      "matched": {
+        "psnr": 12.288768768310547,
+        "foreground": 15.85106086730957
+      },
+      "shuffled": {
+        "psnr": 12.385324478149414,
+        "foreground": 15.304661750793457
+      },
+      "zero": {
+        "psnr": 12.181085586547852,
+        "foreground": 15.703426361083984
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.197683334350586,
+        "foreground": 15.561448097229004
+      },
+      "shuffled": {
+        "psnr": 20.529525756835938,
+        "foreground": 15.171524047851562
+      },
+      "zero": {
+        "psnr": 19.432321548461914,
+        "foreground": 14.579273223876953
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "donor": "Shoes",
+    "distilled": {
+      "matched": {
+        "psnr": 12.118471145629883,
+        "foreground": 10.963982582092285
+      },
+      "shuffled": {
+        "psnr": 11.959124565124512,
+        "foreground": 10.337977409362793
+      },
+      "zero": {
+        "psnr": 11.888165473937988,
+        "foreground": 10.49658203125
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.044694900512695,
+        "foreground": 11.538762092590332
+      },
+      "shuffled": {
+        "psnr": 19.41383171081543,
+        "foreground": 11.320699691772461
+      },
+      "zero": {
+        "psnr": 18.43134307861328,
+        "foreground": 11.892108917236328
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "donor": "Train",
+    "distilled": {
+      "matched": {
+        "psnr": 12.034663200378418,
+        "foreground": 12.465293884277344
+      },
+      "shuffled": {
+        "psnr": 12.071553230285645,
+        "foreground": 12.615074157714844
+      },
+      "zero": {
+        "psnr": 11.94360637664795,
+        "foreground": 11.866044998168945
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.444726943969727,
+        "foreground": 13.681032180786133
+      },
+      "shuffled": {
+        "psnr": 22.223648071289062,
+        "foreground": 12.788623809814453
+      },
+      "zero": {
+        "psnr": 18.506486892700195,
+        "foreground": 12.408037185668945
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "donor": "Flower",
+    "distilled": {
+      "matched": {
+        "psnr": 12.283866882324219,
+        "foreground": 13.751302719116211
+      },
+      "shuffled": {
+        "psnr": 12.216557502746582,
+        "foreground": 13.82138442993164
+      },
+      "zero": {
+        "psnr": 12.133419036865234,
+        "foreground": 13.672506332397461
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.538358688354492,
+        "foreground": 13.018641471862793
+      },
+      "shuffled": {
+        "psnr": 20.895225524902344,
+        "foreground": 13.89677619934082
+      },
+      "zero": {
+        "psnr": 19.319856643676758,
+        "foreground": 13.688979148864746
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 53,
+    "donor": "Doll",
+    "distilled": {
+      "matched": {
+        "psnr": 12.227724075317383,
+        "foreground": 14.35390567779541
+      },
+      "shuffled": {
+        "psnr": 12.296065330505371,
+        "foreground": 14.17814826965332
+      },
+      "zero": {
+        "psnr": 12.143049240112305,
+        "foreground": 14.32752513885498
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.267786026000977,
+        "foreground": 15.219277381896973
+      },
+      "shuffled": {
+        "psnr": 23.255117416381836,
+        "foreground": 14.665443420410156
+      },
+      "zero": {
+        "psnr": 19.35964012145996,
+        "foreground": 13.686140060424805
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 53,
+    "donor": "Camera",
+    "distilled": {
+      "matched": {
+        "psnr": 12.261552810668945,
+        "foreground": 12.270727157592773
+      },
+      "shuffled": {
+        "psnr": 12.275681495666504,
+        "foreground": 12.269893646240234
+      },
+      "zero": {
+        "psnr": 12.109397888183594,
+        "foreground": 12.35169506072998
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 23.26279067993164,
+        "foreground": 15.40469741821289
+      },
+      "shuffled": {
+        "psnr": 25.81633758544922,
+        "foreground": 15.176471710205078
+      },
+      "zero": {
+        "psnr": 19.29320526123047,
+        "foreground": 14.231968879699707
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 53,
+    "donor": "TreasureChest",
+    "distilled": {
+      "matched": {
+        "psnr": 12.365707397460938,
+        "foreground": 15.011972427368164
+      },
+      "shuffled": {
+        "psnr": 12.439318656921387,
+        "foreground": 14.551650047302246
+      },
+      "zero": {
+        "psnr": 12.201059341430664,
+        "foreground": 15.420475959777832
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 25.218109130859375,
+        "foreground": 15.463761329650879
+      },
+      "shuffled": {
+        "psnr": 21.971656799316406,
+        "foreground": 15.494749069213867
+      },
+      "zero": {
+        "psnr": 18.76470947265625,
+        "foreground": 13.074846267700195
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 53,
+    "donor": "ToyCrocodile",
+    "distilled": {
+      "matched": {
+        "psnr": 12.362171173095703,
+        "foreground": 14.471443176269531
+      },
+      "shuffled": {
+        "psnr": 12.251541137695312,
+        "foreground": 14.791309356689453
+      },
+      "zero": {
+        "psnr": 12.129530906677246,
+        "foreground": 15.12176513671875
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.55648422241211,
+        "foreground": 15.397050857543945
+      },
+      "shuffled": {
+        "psnr": 21.20587921142578,
+        "foreground": 15.224066734313965
+      },
+      "zero": {
+        "psnr": 18.63970184326172,
+        "foreground": 13.711067199707031
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 53,
+    "donor": "ToyChicken",
+    "distilled": {
+      "matched": {
+        "psnr": 12.338470458984375,
+        "foreground": 13.130002975463867
+      },
+      "shuffled": {
+        "psnr": 12.236114501953125,
+        "foreground": 13.042293548583984
+      },
+      "zero": {
+        "psnr": 12.192625999450684,
+        "foreground": 13.06977653503418
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.069358825683594,
+        "foreground": 15.68477725982666
+      },
+      "shuffled": {
+        "psnr": 25.960615158081055,
+        "foreground": 15.697436332702637
+      },
+      "zero": {
+        "psnr": 19.51249122619629,
+        "foreground": 15.444793701171875
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 53,
+    "donor": "Spray",
+    "distilled": {
+      "matched": {
+        "psnr": 12.123164176940918,
+        "foreground": 11.229310035705566
+      },
+      "shuffled": {
+        "psnr": 12.46080207824707,
+        "foreground": 11.775450706481934
+      },
+      "zero": {
+        "psnr": 12.081066131591797,
+        "foreground": 11.065922737121582
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 25.66535758972168,
+        "foreground": 12.664838790893555
+      },
+      "shuffled": {
+        "psnr": 21.235979080200195,
+        "foreground": 12.017441749572754
+      },
+      "zero": {
+        "psnr": 19.435283660888672,
+        "foreground": 12.282917022705078
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 53,
+    "donor": "WoodenTables",
+    "distilled": {
+      "matched": {
+        "psnr": 12.40433120727539,
+        "foreground": 12.592992782592773
+      },
+      "shuffled": {
+        "psnr": 12.087031364440918,
+        "foreground": 12.361932754516602
+      },
+      "zero": {
+        "psnr": 12.03976821899414,
+        "foreground": 12.117023468017578
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.506103515625,
+        "foreground": 12.823935508728027
+      },
+      "shuffled": {
+        "psnr": 19.668859481811523,
+        "foreground": 13.109244346618652
+      },
+      "zero": {
+        "psnr": 18.984130859375,
+        "foreground": 13.401369094848633
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 53,
+    "donor": "Globe",
+    "distilled": {
+      "matched": {
+        "psnr": 12.262345314025879,
+        "foreground": 13.564613342285156
+      },
+      "shuffled": {
+        "psnr": 12.40185546875,
+        "foreground": 13.914241790771484
+      },
+      "zero": {
+        "psnr": 12.229900360107422,
+        "foreground": 13.579087257385254
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 19.37054443359375,
+        "foreground": 14.565743446350098
+      },
+      "shuffled": {
+        "psnr": 21.816253662109375,
+        "foreground": 14.840299606323242
+      },
+      "zero": {
+        "psnr": 18.193204879760742,
+        "foreground": 13.109750747680664
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 53,
+    "donor": "SpatulaScan",
+    "distilled": {
+      "matched": {
+        "psnr": 12.216636657714844,
+        "foreground": 13.337536811828613
+      },
+      "shuffled": {
+        "psnr": 12.313426971435547,
+        "foreground": 13.398666381835938
+      },
+      "zero": {
+        "psnr": 12.042940139770508,
+        "foreground": 13.054572105407715
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 21.20568084716797,
+        "foreground": 13.093542098999023
+      },
+      "shuffled": {
+        "psnr": 22.953292846679688,
+        "foreground": 13.58757209777832
+      },
+      "zero": {
+        "psnr": 18.539304733276367,
+        "foreground": 13.379150390625
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 53,
+    "donor": "ToyRings",
+    "distilled": {
+      "matched": {
+        "psnr": 12.031408309936523,
+        "foreground": 7.251154899597168
+      },
+      "shuffled": {
+        "psnr": 11.977025032043457,
+        "foreground": 7.466190338134766
+      },
+      "zero": {
+        "psnr": 11.786974906921387,
+        "foreground": 7.06920051574707
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 22.281896591186523,
+        "foreground": 8.739513397216797
+      },
+      "shuffled": {
+        "psnr": 21.116233825683594,
+        "foreground": 8.742730140686035
+      },
+      "zero": {
+        "psnr": 18.379741668701172,
+        "foreground": 8.829245567321777
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 53,
+    "donor": "Arms",
+    "distilled": {
+      "matched": {
+        "psnr": 11.791929244995117,
+        "foreground": 8.073503494262695
+      },
+      "shuffled": {
+        "psnr": 11.7207670211792,
+        "foreground": 7.997760772705078
+      },
+      "zero": {
+        "psnr": 11.631840705871582,
+        "foreground": 8.019532203674316
+      }
+    },
+    "undistilled": {
+      "matched": {
+        "psnr": 20.103376388549805,
+        "foreground": 10.270248413085938
+      },
+      "shuffled": {
+        "psnr": 19.228113174438477,
+        "foreground": 10.534612655639648
+      },
+      "zero": {
+        "psnr": 17.939599990844727,
+        "foreground": 10.689193725585938
+      }
+    }
+  }
+]

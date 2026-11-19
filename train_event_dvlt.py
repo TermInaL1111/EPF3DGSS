@@ -89,7 +89,13 @@ def main(args):
         scenes=(args.root/f"{split}_scenes.txt").read_text().split()[:count]
         keys.append([(s,i) for s in scenes for i in range(4,60,7)])
     train,val=keys
-    targets=rgb_targets(args.root,train,args.assets,args.geometry_weight>0)
+    use_teacher = bool(args.token_weight or args.geometry_weight)
+    if args.warmup and not use_teacher:
+        raise ValueError("Set warmup to zero when disabling teacher supervision")
+    # Isolate teacher construction so both experimental arms draw identical student weights and samples.
+    with torch.random.fork_rng(devices=[torch.cuda.current_device()]):
+        targets = rgb_targets(args.root,train,args.assets,args.geometry_weight>0) if use_teacher else {}
+
     model=EventDVLT(args.assets).cuda()
     trainables={n:p for n,p in model.named_parameters() if p.requires_grad}
     opt=torch.optim.AdamW([{"params":[p for n,p in trainables.items() if n.startswith("backbone.")],"lr":3e-5},
@@ -108,12 +114,13 @@ def main(args):
             else:
                 cloud=model(voxel,field,mask_fraction=fraction,return_geometry=bool(args.geometry_weight))
                 tokens,hidden=cloud["tokens"],cloud["masked"]
-        target=targets[scene,i]
-        align=alignment(tokens,target["tokens"].cuda(),hidden,model.backbone.patch_start_idx)
-        loss=align
+        align = tokens.new_zeros((),dtype=torch.float32)
+        if args.token_weight:
+            align = alignment(tokens,targets[scene,i]["tokens"].cuda(),hidden,model.backbone.patch_start_idx)
+        loss = args.token_weight * align
         if args.geometry_weight:
             maps=geometry_maps(raw if step<args.warmup else cloud["raw_geometry"])
-            loss=loss+args.geometry_weight*sum(F.l1_loss(value,target[key].cuda().float()) for key,value in maps.items())
+            loss=loss+args.geometry_weight*sum(F.l1_loss(value,targets[scene,i][key].cuda().float()) for key,value in maps.items())
         if step>=args.warmup:
             gray,mask,poses=labels(args.root,scene,i)
             error=(render(cloud,poses[:1])-gray).abs()
@@ -126,7 +133,7 @@ def main(args):
         if step%10==0: print(step,log[-1][1:],flush=True)
     torch.save({n:p.detach().cpu() for n,p in trainables.items()},args.out/"event_dvlt_gs.pt")
     rows=evaluate(model,args.root,fields,val)
-    report=dict(seed=args.seed,geometry_weight=args.geometry_weight,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
+    report=dict(seed=args.seed,token_weight=args.token_weight,geometry_weight=args.geometry_weight,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
                 loops=model.backbone.inference_steps,trainable_params=sum(p.numel() for p in trainables.values()),
                 train=train,validation=val,trace=log,rows=rows)
     (args.out/"scores.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
@@ -138,6 +145,7 @@ if __name__=="__main__":
     p.add_argument("--steps",type=int,default=96)
     p.add_argument("--warmup",type=int,default=32)
     p.add_argument("--seed",type=int,default=10)
+    p.add_argument("--token-weight",type=float,default=1.)
     p.add_argument("--geometry-weight",type=float,default=0.)
     p.add_argument("--mask-fraction",type=float,default=.25)
     main(p.parse_args())

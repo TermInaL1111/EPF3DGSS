@@ -18,7 +18,7 @@ REALM motivates cross-modal alignment under spatial masking. F³ supplies local 
 
 **Multiview geometry.** We initialize the student from the released DVLT weights, including the geometry decoders. We add rank-16 updates to the query/key/value projections of all twelve DINOv2 blocks and to the frame and global attention branches of the shared recurrent block. Each branch adapts its step gate and applies trainable patchwise corrections to the attention and MLP residuals based on event density and step embeddings. Camera and register tokens retain the step-dependent gate. Twelve refinements produce the geometry tokens for both views. We decode depth and world rays and use DVLT's ray fitting procedure to recover source intrinsics and camera transforms. All Gaussian centers are expressed in the first source camera frame.
 
-**Distillation.** A separate frozen teacher sees the synchronized RGB source pair. The student matches all final tokens, including camera and register tokens, using cosine distance and a teacher-magnitude-weighted absolute error. A progressively increasing fraction of event patch tokens is hidden before the shared transformer. We apply an additional loss to the hidden positions. This is our REALM-inspired masking variant. This initial experiment fixes the recurrence count; the released Déjà-Events study also explores varying the number of refinement steps. RGB and camera labels are absent from reconstruction inputs.
+**Distillation.** A separate frozen teacher sees the frame-index-paired RGB source views. The student matches all final tokens, including camera and register tokens, using cosine distance and a teacher-magnitude-weighted absolute error. A progressively increasing fraction of event patch tokens is hidden before the shared transformer. We apply an additional loss to the hidden positions. This is our REALM-inspired masking variant. This initial experiment fixes the recurrence count; the released Déjà-Events study also explores varying the number of refinement steps. RGB and camera labels are absent from reconstruction inputs.
 
 **Gaussian readout.** The head combines projected final patch tokens, F³ features and native event voxels. At each source pixel it predicts a bounded correction to DVLT depth, a grayscale intensity, opacity, three scale parameters and a quaternion. It backprojects corrected depth using DVLT's predicted intrinsics, then transforms the points into the first camera frame using DVLT's relative pose. A learned scalar calibrates depth and translation to the training scale. This configuration emits one candidate per pixel, or 614,400 Gaussians across two 640 × 480 sources. The head's sampling resolution is independent of DVLT's token grid.
 
@@ -47,3 +47,22 @@ We run the frozen RGB teacher and the masked event student on the same 48 held-o
 The third row adds mean absolute errors on teacher log-depth and six ray channels, averaged within each 14 × 14 patch, with unit weight for each term. The matched experiment keeps initialization, training windows, schedule and event-only inference fixed. The teacher recovers substantial foreground depth ordering on these objects. The additional supervision does not improve held-out foreground rendering or relative rotation at this training budget. Its empty-input foreground score is 12.83 dB. The apparent gap between teacher and student concerns these six held-out synthetic objects and this single training seed.
 
 ![Mean foreground depth rank correlation by held-out object, averaged over sixteen source views per object.](geometry_transfer.png)
+
+## Temporal pairing audit
+
+Each training item pairs source PNGs at indices i and i + 4 with two NPY packets carrying the same scene and indices. We tested both source indices for all 12 training and 17 validation objects, totaling 464 packets. For each packet, we accumulated signed polarities per pixel and computed cosine similarity against log-grayscale differences for three candidate RGB intervals ending at i − 1, i, and i + 1. The mean similarities were 0.184, 0.782, and 0.146. The nominal interval had the highest similarity for 463 packets. The exception, Towel frame 43, favored the following interval and was retained in training.
+
+The RGB video frame at each index also had the smallest mean pixel error against the corresponding scene PNG among the three candidates in all 464 cases. Repeating the event check on the independent H5 stream using the video rate and timestamp-defined intervals selected the nominal interval in all 464 cases. This audit supports visual alignment at the frame level. It does not establish a common physical clock for the H5 and NPY streams or subframe timestamp accuracy.
+
+## Equal-budget distillation comparison
+
+We train two students for 384 joint updates on the same 12 objects with identical initialization, sampled windows, 25% event-token masking and rendering supervision throughout. Both start from pretrained DVLT. One additionally receives RGB teacher token alignment with unit weight. We evaluate all 17 validation objects (136 windows). The shuffled condition replaces the entire source pair with events from the next validation object at the same frame indices.
+
+| Training | Matched foreground PSNR | Shuffled foreground PSNR | Empty foreground PSNR | Matched full PSNR |
+|---|---:|---:|---:|---:|
+| RGB token distillation | 13.03 | 13.06 | 13.00 | 12.19 |
+| Rendering supervision only | 13.88 | 13.76 | 13.40 | 21.09 |
+
+The distilled student changes matched foreground PSNR by -0.84 dB on average, with positive differences on 4 of 17 objects. This comparison isolates the additional paired RGB token loss under one training schedule and one seed. It leaves the benefit of DVLT pretraining itself unmeasured. The figure shows center-target foreground crops for the first triplet of each of the first six validation objects in split order.
+
+![Target and event-conditioned reconstructions after 384 updates. The final two columns use the distilled checkpoint with cross-object and empty inputs.](event_conditioning.png)
