@@ -20,3 +20,5 @@ OMP_NUM_THREADS=2 python audit.py "$data" "$assets/run10"
 ```
 
 同一场景的源帧为 i 和 i+4，目标帧为 i+2，事件取对应源帧之前的时间窗。每个场景取八个三元组。验证指标为逐帧灰度 PSNR，先在场景内平均，再对场景等权平均。此协议衡量合成事件、共享相机轨迹下的插值。外推、新轨迹和真实传感器需要独立评估。
+
+前景加权实验在 pilot.py 后加上 `--foreground` 并使用独立输出目录。前景由目标帧深度大于零的像素定义，训练期和评估期按下采样像素覆盖率加权。audit.py 会同时测量匹配、跨场景置换、全零事件的全图和前景指标。论文工作稿见 [paper/manuscript.md](paper/manuscript.md)，逐次实验记录见 [results](results/)。

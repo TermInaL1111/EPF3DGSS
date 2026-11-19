@@ -1,0 +1,25 @@
+{
+  "training_scene_mean_image_psnr": 25.212919235229492,
+  "arms": {
+    "0.0": {
+      "matched": 26.020858764648438,
+      "matched_foreground_psnr": 16.15847396850586,
+      "relative_rotation_deg": 0.22339287400245667,
+      "relative_translation_l2": 0.003127473872154951,
+      "other_scene_same_time": 23.99895477294922,
+      "other_scene_same_time_foreground_psnr": 15.075551986694336,
+      "zeros": 27.56891441345215,
+      "zeros_foreground_psnr": 16.333112716674805
+    },
+    "0.1": {
+      "matched": 26.646953582763672,
+      "matched_foreground_psnr": 16.622047424316406,
+      "relative_rotation_deg": 0.16796241700649261,
+      "relative_translation_l2": 0.0033699688501656055,
+      "other_scene_same_time": 24.655689239501953,
+      "other_scene_same_time_foreground_psnr": 15.436223983764648,
+      "zeros": 27.579341888427734,
+      "zeros_foreground_psnr": 16.325307846069336
+    }
+  }
+}

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import torch
 from model import EventGaussians
-from pilot import dataset
+from pilot import dataset, foreground
 
 
 @torch.no_grad()
@@ -17,6 +17,7 @@ def main(root, run):
     def score(images):
         return float((-10*(images-gray).square().mean((-1,-2)).log10()).mean())
     records = {"training_scene_mean_image_psnr":score(template),"arms":{}}
+    region = foreground(root,report["validation"])
     for weight in report["arms"]:
         net = EventGaussians().cuda().eval()
         net.load_state_dict(torch.load(run/f"student_{weight}.pt",weights_only=True))
@@ -24,7 +25,10 @@ def main(root, run):
         for name, packets in [("matched",events),("other_scene_same_time",events.roll(8,0)),
                               ("zeros",torch.zeros_like(events))]:
             scene = net(packets)
-            measurements[name] = score(net.render(scene,cameras))
+            images = net.render(scene,cameras)
+            measurements[name] = score(images)
+            mse = ((images-gray).square()*region).sum((1,2))/region.sum((1,2)).clamp_min(1)
+            measurements[name+"_foreground_psnr"] = float((-10*mse.log10()).mean())
             if name == "matched":
                 rotation = scene["rotation"].transpose(1,2) @ right[:,:3,:3]
                 cosine = (rotation.diagonal(dim1=1,dim2=2).sum(1)-1)/2

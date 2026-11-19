@@ -61,7 +61,17 @@ def dataset(root, scenes, teacher):
     return [torch.stack(x).cuda() for x in zip(*rows)]
 
 
-def run(train,val,weight,steps,seed):
+def foreground(root, scenes):
+    masks = []
+    for scene in scenes:
+        for i in range(4,60,7):
+            with np.load(root/"Scenes"/scene/f"{i+2:04}.npz") as archive:
+                valid = archive["depth_map"] > 0
+            masks.append(torch.tensor(valid.reshape(24,20,32,20).mean((1,3)), dtype=torch.float32))
+    return torch.stack(masks).cuda()
+
+
+def run(train,val,weight,steps,seed,mask=None):
     torch.manual_seed(seed)
     net = EventGaussians().cuda()
     opt = torch.optim.AdamW(net.parameters(),lr=.001)
@@ -71,6 +81,9 @@ def run(train,val,weight,steps,seed):
         scene = net(events)
         pred = net.render(scene,target)
         loss = F.l1_loss(pred,gray) + F.l1_loss(scene["rotation"],right[:,:3,:3]) + F.l1_loss(scene["translation"],right[:,:3,3])
+        if mask is not None:
+            region = mask[ids]
+            loss += ((pred-gray).abs()*region).sum((1,2)).div(region.sum((1,2)).clamp_min(1)).mean()
         if weight:
             loss += weight*(1-F.cosine_similarity(net.distill(scene["feature"]),teacher,dim=1).mean())
         opt.zero_grad()
@@ -89,6 +102,7 @@ if __name__ == "__main__":
     p.add_argument("out",type=Path)
     p.add_argument("--steps",type=int,default=400)
     p.add_argument("--seed",type=int,default=10)
+    p.add_argument("--foreground",action="store_true")
     args = p.parse_args()
     train_names, val_names = [(args.root/f"{s}_scenes.txt").read_text().split()[:n]
                               for s,n in [("train",12),("val",6)]]
@@ -99,8 +113,10 @@ if __name__ == "__main__":
     val = dataset(args.root,val_names,None)
     result = dict(train=train_names,validation=val_names,steps=args.steps,seed=args.seed,arms={})
     args.out.mkdir(parents=True,exist_ok=True)
+    mask = foreground(args.root,train_names) if args.foreground else None
+    result["foreground_loss"] = args.foreground
     for weight in [0.,.1]:
-        scores, net = run(train,val,weight,args.steps,args.seed)
+        scores, net = run(train,val,weight,args.steps,args.seed,mask)
         result["arms"][str(weight)] = dict(scene_psnr=scores,mean_psnr=np.mean(scores))
         torch.save(net.state_dict(),args.out/f"student_{weight}.pt")
         print(result["arms"][str(weight)],flush=True)
