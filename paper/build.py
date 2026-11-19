@@ -7,7 +7,7 @@ import typst
 root = Path(__file__).resolve().parent
 content = pypandoc.convert_file(root/"manuscript.md","typst",format="gfm")
 style = '''
-#set document(title: "Testing RGB Feature Transfer for Pose-Free Feed-Forward Gaussian Reconstruction from Events")
+#set document(title: "Feed-Forward Gaussian Reconstruction from Events with a Distilled DVLT Backbone")
 #set page(paper: "a4", margin: (x: 22mm, y: 19mm), numbering: "1")
 #set text(size: 10pt, lang: "en")
 #set par(justify: true, leading: 0.68em)

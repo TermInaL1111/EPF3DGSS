@@ -57,10 +57,16 @@ class EventGaussians(nn.Module):
             consistency = consistency*(1+seen_support)/(1+support)
         return ((gray + consistency*seen_gray)/(1+consistency)).flatten(1)
 
-    def forward(self, events):
+    def view_features(self, events):
         left, right = self.encoder(events.flatten(0, 1)).reshape(-1,2,64,self.height,self.width).unbind(1)
         feature = self.fusion(torch.cat([left, right], 1))
         reverse = self.fusion(torch.cat([right, left], 1))
+        return feature, reverse
+
+    def forward(self,events):
+        return self.scene_from_features(events,*self.view_features(events))
+
+    def scene_from_features(self,events,feature,reverse):
         a, b, translation = self.camera(feature.mean((-2,-1))).chunk(3, -1)
         u = F.normalize(a, dim=-1)
         v = F.normalize(b - (b*u).sum(-1, keepdim=True)*u, dim=-1)

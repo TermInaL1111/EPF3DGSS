@@ -2,6 +2,35 @@
 
 研究目标是用训练期 RGB 视觉基础模型先验，从多视图事件包一次预测场景高斯与相对位姿，支持灰度新视角渲染。原始设计见 md/方案.md。
 
+## 当前主线：Déjà-Events 风格的事件 DVLT 学生接 Gaussian head
+
+训练时，同步 RGB 送入冻结 DVLT 教师。事件体素与 F³ 特征进入事件适配的 DVLT 学生。学生保留 DINOv2、帧内及跨帧循环 Transformer、深度与射线解码器；用 LoRA、依赖事件密度的门控与 REALM 思路的渐进掩码进行 token 蒸馏。新的 GS head 读取**学生自己的几何 tokens、深度、相机预测**和事件细节。推理入口为 reconstruct.py。EvGGS 仅用于外部对照。
+
+| 环节 | 当前实验设置 |
+|---|---|
+| 输入 | 两包原始事件，原传感器 640×480 |
+| 学生 DVLT | 224×168，14 像素 patch，每视图 16×12 个空间 token，12 次共享循环 |
+| Gaussian head | 每源视图 640×480 个候选；双视图合计 614,400 个，预测深度残差、三轴尺度、旋转、灰度和不透明度 |
+| 训练 | 冻结的 RGB DVLT 教师监督最终 tokens，先蒸馏后加入渲染损失 |
+| 位姿 | 学生利用自身射线预测恢复源相机；目标相机仅用于指定渲染视角 |
+
+event_dvlt.py 实现推理骨干与读出头；train_event_dvlt.py 实现训练与空事件对照。以下旧版实验使用小卷积学生，用于方法对照；旧权重 epf3dgs_ev3ds_pilot.pt 对应旧学生。原方案见 md/方案.md。
+
+主线学生的增量权重见 [event_dvlt_gs.pt](weights/event_dvlt_gs.pt)，搭配原始 DVLT 与 F³ 权重使用。两包输入均为形状 (4,N) 的 x、y、t、p 数组。当前配置的复现命令如下。
+
+```bash
+assets=/cloud/cloud-ssd4/epf-assets
+data=/cloud/cloud-ssd1/datasets/EV3DS
+export PYTHONPATH=/cloud/cloud-ssd4/dvlt/src
+python train_event_dvlt.py "$data" "$assets/f3_dense.pt" "$assets" "$assets/event_dvlt_v1"
+python reconstruct.py "$assets" weights/event_dvlt_gs.pt /cloud/cloud-ssd4/fast-feature-fields "$assets/f3.pth" "$data/Event/Arms/0004.npy" "$data/Event/Arms/0008.npy" scene.npz
+```
+
+逐窗口结果见 [EV3DS 和 MVSEC 实验](results/event_dvlt/)，结果解读见[论文工作稿](paper/manuscript.md)。
+
+<details>
+<summary>早期卷积学生实验归档</summary>
+
 ## EV3DS 配对先导实验
 
 学生的 forward 接口仅接收两个事件包。当前原型固定使用 EV3DS 标定，每包按时间二分并分正负极性。共享卷积编码器和双视图融合头预测相对旋转、平移，以及每个源视图的 48 个各向同性高斯。渲染器通过透视投影雅可比计算屏幕协方差，按深度进行透明度合成。训练有相对位姿监督。目标相机只传给渲染器。当前实现将首源视图定义为场景坐标系。
@@ -59,3 +88,5 @@ baseline_shift.py 在 EV3DS 上改变源间距和顺序。mvsec_transfer.py 使�
 论文工作稿可用安装了 pypandoc_binary 和 typst 的 Python 运行 `python paper/build.py` 生成。当前稿件记录负结果以及相机标注敏感性。[PDF](paper/manuscript.pdf)
 
 仓库随附 weights/epf3dgs_ev3ds_pilot.pt，来自 scene_dense_event_10，含学生参数，不含 F³ 或 RGB 教师权重。使用 infer.py 的两个源事件文件即可生成 1,536 个高斯；提供官方 F³ 权重及源码路径。三种稠密融合方案的定量结果见 results/dense_summary.py。
+
+</details>

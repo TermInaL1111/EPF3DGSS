@@ -7,6 +7,7 @@ import numpy as np
 import torch
 from pilot import packet
 from model import EventGaussians
+from pixel_gaussians import PixelGaussians
 from event_field import EventField
 
 
@@ -16,7 +17,8 @@ def reconstruct(args):
     channels = weights["encoder.0.weight"].shape[1]
     fusion = ("none","geometry","event")[int(weights.get("fusion_id",0))]
     scale = isqrt(len(weights["rays"])//48)
-    net = EventGaussians(input_channels=channels,scale=scale,fusion_mode=fusion)
+    pixel_aligned = "detail.0.weight" in weights
+    net = PixelGaussians() if pixel_aligned else EventGaussians(input_channels=channels,scale=scale,fusion_mode=fusion)
     net.load_state_dict(weights)
     net.cuda().eval()
     paths = (args.first,args.second)
@@ -27,7 +29,11 @@ def reconstruct(args):
         encode = EventField(args.f3_repository,args.f3_checkpoint,scale)
         fields = torch.stack([encode(np.load(path)).half().float() for path in paths])
         events = torch.cat([events,fields],1)
-    scene = net(events[None])
+    if pixel_aligned:
+        native = torch.stack([packet(path,20) for path in paths]).cuda()
+        scene = net(events[None],native[None])
+    else:
+        scene = net(events[None])
     np.savez_compressed(args.output,**{key:value[0].cpu().numpy() for key,value in scene.items()
                                        if key != "feature"})
 

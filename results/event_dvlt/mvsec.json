@@ -1,0 +1,866 @@
+[
+  {
+    "flight": "indoor_flying1",
+    "start": 2,
+    "matched": {
+      "psnr": 16.231189727783203,
+      "rotation_deg": 0.8527162671089172
+    },
+    "zero": {
+      "psnr": 15.527329444885254,
+      "rotation_deg": 0.9989719390869141
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 97,
+    "matched": {
+      "psnr": 15.108758926391602,
+      "rotation_deg": 0.6501175165176392
+    },
+    "zero": {
+      "psnr": 15.292425155639648,
+      "rotation_deg": 1.0878652334213257
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 193,
+    "matched": {
+      "psnr": 10.578104019165039,
+      "rotation_deg": 7.309811115264893
+    },
+    "zero": {
+      "psnr": 10.802721977233887,
+      "rotation_deg": 1.2354307174682617
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 288,
+    "matched": {
+      "psnr": 9.209025382995605,
+      "rotation_deg": 3.5395569801330566
+    },
+    "zero": {
+      "psnr": 9.857903480529785,
+      "rotation_deg": 1.5491446256637573
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 384,
+    "matched": {
+      "psnr": 12.709209442138672,
+      "rotation_deg": 1.789910078048706
+    },
+    "zero": {
+      "psnr": 13.93200397491455,
+      "rotation_deg": 1.2645490169525146
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 480,
+    "matched": {
+      "psnr": 12.277976989746094,
+      "rotation_deg": 6.721407413482666
+    },
+    "zero": {
+      "psnr": 12.511712074279785,
+      "rotation_deg": 5.621065616607666
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 575,
+    "matched": {
+      "psnr": 10.445160865783691,
+      "rotation_deg": 3.9330320358276367
+    },
+    "zero": {
+      "psnr": 10.445160865783691,
+      "rotation_deg": 4.584326267242432
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 671,
+    "matched": {
+      "psnr": 11.562766075134277,
+      "rotation_deg": 5.43797492980957
+    },
+    "zero": {
+      "psnr": 11.881139755249023,
+      "rotation_deg": 2.1380817890167236
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 766,
+    "matched": {
+      "psnr": 16.063838958740234,
+      "rotation_deg": 0.49574559926986694
+    },
+    "zero": {
+      "psnr": 16.44133186340332,
+      "rotation_deg": 2.821748971939087
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 862,
+    "matched": {
+      "psnr": 14.180851936340332,
+      "rotation_deg": 1.2165966033935547
+    },
+    "zero": {
+      "psnr": 14.143048286437988,
+      "rotation_deg": 1.0248841047286987
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 958,
+    "matched": {
+      "psnr": 14.037321090698242,
+      "rotation_deg": 2.3292739391326904
+    },
+    "zero": {
+      "psnr": 14.360069274902344,
+      "rotation_deg": 2.0833747386932373
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1053,
+    "matched": {
+      "psnr": 10.467886924743652,
+      "rotation_deg": 2.9387824535369873
+    },
+    "zero": {
+      "psnr": 11.086463928222656,
+      "rotation_deg": 5.01055383682251
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1149,
+    "matched": {
+      "psnr": 12.974956512451172,
+      "rotation_deg": 0.5475120544433594
+    },
+    "zero": {
+      "psnr": 13.18259048461914,
+      "rotation_deg": 0.9553158283233643
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1244,
+    "matched": {
+      "psnr": 14.671775817871094,
+      "rotation_deg": 2.909191370010376
+    },
+    "zero": {
+      "psnr": 13.58863639831543,
+      "rotation_deg": 3.143484115600586
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1340,
+    "matched": {
+      "psnr": 12.972277641296387,
+      "rotation_deg": 0.1769387125968933
+    },
+    "zero": {
+      "psnr": 13.23452377319336,
+      "rotation_deg": 1.0351428985595703
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1436,
+    "matched": {
+      "psnr": 14.68108081817627,
+      "rotation_deg": 3.4652061462402344
+    },
+    "zero": {
+      "psnr": 14.076526641845703,
+      "rotation_deg": 1.4896403551101685
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1531,
+    "matched": {
+      "psnr": 6.866859436035156,
+      "rotation_deg": 5.451435565948486
+    },
+    "zero": {
+      "psnr": 6.866859436035156,
+      "rotation_deg": 5.5486369132995605
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1627,
+    "matched": {
+      "psnr": 11.601573944091797,
+      "rotation_deg": 3.2391817569732666
+    },
+    "zero": {
+      "psnr": 11.814122200012207,
+      "rotation_deg": 1.5133607387542725
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1722,
+    "matched": {
+      "psnr": 13.62647533416748,
+      "rotation_deg": 1.6983505487442017
+    },
+    "zero": {
+      "psnr": 13.67732048034668,
+      "rotation_deg": 1.2586549520492554
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1818,
+    "matched": {
+      "psnr": 14.116591453552246,
+      "rotation_deg": 4.368701934814453
+    },
+    "zero": {
+      "psnr": 14.306791305541992,
+      "rotation_deg": 1.1555522680282593
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 1914,
+    "matched": {
+      "psnr": 15.767906188964844,
+      "rotation_deg": 3.958244562149048
+    },
+    "zero": {
+      "psnr": 15.795934677124023,
+      "rotation_deg": 1.8549854755401611
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 2009,
+    "matched": {
+      "psnr": 10.304898262023926,
+      "rotation_deg": 5.845530033111572
+    },
+    "zero": {
+      "psnr": 10.862607955932617,
+      "rotation_deg": 1.3128371238708496
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 2105,
+    "matched": {
+      "psnr": 15.229951858520508,
+      "rotation_deg": 3.790959119796753
+    },
+    "zero": {
+      "psnr": 15.618401527404785,
+      "rotation_deg": 2.688607931137085
+    }
+  },
+  {
+    "flight": "indoor_flying1",
+    "start": 2201,
+    "matched": {
+      "psnr": 16.059404373168945,
+      "rotation_deg": 1.1833291053771973
+    },
+    "zero": {
+      "psnr": 15.90335750579834,
+      "rotation_deg": 1.5727144479751587
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 3,
+    "matched": {
+      "psnr": 15.849069595336914,
+      "rotation_deg": 2.566587209701538
+    },
+    "zero": {
+      "psnr": 15.949259757995605,
+      "rotation_deg": 1.0572141408920288
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 118,
+    "matched": {
+      "psnr": 16.265357971191406,
+      "rotation_deg": 1.3134331703186035
+    },
+    "zero": {
+      "psnr": 15.417631149291992,
+      "rotation_deg": 0.9069817662239075
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 234,
+    "matched": {
+      "psnr": 15.303926467895508,
+      "rotation_deg": 2.3368241786956787
+    },
+    "zero": {
+      "psnr": 15.588911056518555,
+      "rotation_deg": 1.1700249910354614
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 349,
+    "matched": {
+      "psnr": 10.31002140045166,
+      "rotation_deg": 5.356866836547852
+    },
+    "zero": {
+      "psnr": 10.837855339050293,
+      "rotation_deg": 1.5195549726486206
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 465,
+    "matched": {
+      "psnr": 14.978160858154297,
+      "rotation_deg": 1.662952184677124
+    },
+    "zero": {
+      "psnr": 14.56307315826416,
+      "rotation_deg": 1.2759490013122559
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 580,
+    "matched": {
+      "psnr": 13.019542694091797,
+      "rotation_deg": 1.5506597757339478
+    },
+    "zero": {
+      "psnr": 12.954558372497559,
+      "rotation_deg": 3.181492805480957
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 696,
+    "matched": {
+      "psnr": 13.328742027282715,
+      "rotation_deg": 1.651853084564209
+    },
+    "zero": {
+      "psnr": 13.16690444946289,
+      "rotation_deg": 1.1555522680282593
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 811,
+    "matched": {
+      "psnr": 16.345304489135742,
+      "rotation_deg": 1.3999762535095215
+    },
+    "zero": {
+      "psnr": 13.64754867553711,
+      "rotation_deg": 1.615436315536499
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 927,
+    "matched": {
+      "psnr": 10.925407409667969,
+      "rotation_deg": 2.336488962173462
+    },
+    "zero": {
+      "psnr": 11.327563285827637,
+      "rotation_deg": 0.9707583785057068
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1042,
+    "matched": {
+      "psnr": 13.07390308380127,
+      "rotation_deg": 2.924091100692749
+    },
+    "zero": {
+      "psnr": 14.050182342529297,
+      "rotation_deg": 3.2219715118408203
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1158,
+    "matched": {
+      "psnr": 13.991737365722656,
+      "rotation_deg": 2.1377155780792236
+    },
+    "zero": {
+      "psnr": 14.075013160705566,
+      "rotation_deg": 0.7813459038734436
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1273,
+    "matched": {
+      "psnr": 11.962640762329102,
+      "rotation_deg": 1.6337462663650513
+    },
+    "zero": {
+      "psnr": 11.027837753295898,
+      "rotation_deg": 0.9291486144065857
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1389,
+    "matched": {
+      "psnr": 10.599212646484375,
+      "rotation_deg": 3.653662919998169
+    },
+    "zero": {
+      "psnr": 11.163368225097656,
+      "rotation_deg": 1.5531818866729736
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1504,
+    "matched": {
+      "psnr": 15.542762756347656,
+      "rotation_deg": 1.2252516746520996
+    },
+    "zero": {
+      "psnr": 16.099979400634766,
+      "rotation_deg": 1.292406439781189
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1620,
+    "matched": {
+      "psnr": 13.205291748046875,
+      "rotation_deg": 2.3629775047302246
+    },
+    "zero": {
+      "psnr": 13.808450698852539,
+      "rotation_deg": 1.166675329208374
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1735,
+    "matched": {
+      "psnr": 11.708365440368652,
+      "rotation_deg": 2.6252503395080566
+    },
+    "zero": {
+      "psnr": 11.914471626281738,
+      "rotation_deg": 2.811184883117676
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1851,
+    "matched": {
+      "psnr": 17.067005157470703,
+      "rotation_deg": 1.2483515739440918
+    },
+    "zero": {
+      "psnr": 17.350799560546875,
+      "rotation_deg": 2.0167388916015625
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 1966,
+    "matched": {
+      "psnr": 13.034107208251953,
+      "rotation_deg": 4.976891994476318
+    },
+    "zero": {
+      "psnr": 13.064986228942871,
+      "rotation_deg": 1.2759490013122559
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2082,
+    "matched": {
+      "psnr": 9.661345481872559,
+      "rotation_deg": 3.479753017425537
+    },
+    "zero": {
+      "psnr": 9.694985389709473,
+      "rotation_deg": 2.517772674560547
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2197,
+    "matched": {
+      "psnr": 11.406787872314453,
+      "rotation_deg": 0.3000144064426422
+    },
+    "zero": {
+      "psnr": 10.51458740234375,
+      "rotation_deg": 1.1656683683395386
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2313,
+    "matched": {
+      "psnr": 13.662223815917969,
+      "rotation_deg": 5.833580493927002
+    },
+    "zero": {
+      "psnr": 12.573099136352539,
+      "rotation_deg": 2.4833314418792725
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2428,
+    "matched": {
+      "psnr": 14.447270393371582,
+      "rotation_deg": 0.9013549089431763
+    },
+    "zero": {
+      "psnr": 11.570836067199707,
+      "rotation_deg": 0.8166127800941467
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2544,
+    "matched": {
+      "psnr": 15.72500991821289,
+      "rotation_deg": 3.6198513507843018
+    },
+    "zero": {
+      "psnr": 15.89659309387207,
+      "rotation_deg": 2.88920521736145
+    }
+  },
+  {
+    "flight": "indoor_flying2",
+    "start": 2660,
+    "matched": {
+      "psnr": 16.6949520111084,
+      "rotation_deg": 0.9346082210540771
+    },
+    "zero": {
+      "psnr": 15.844541549682617,
+      "rotation_deg": 1.2088513374328613
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2,
+    "matched": {
+      "psnr": 16.604990005493164,
+      "rotation_deg": 0.6749268174171448
+    },
+    "zero": {
+      "psnr": 15.805856704711914,
+      "rotation_deg": 1.0638564825057983
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 130,
+    "matched": {
+      "psnr": 15.243827819824219,
+      "rotation_deg": 4.53440523147583
+    },
+    "zero": {
+      "psnr": 15.786800384521484,
+      "rotation_deg": 1.2966389656066895
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 258,
+    "matched": {
+      "psnr": 9.179823875427246,
+      "rotation_deg": 4.640470027923584
+    },
+    "zero": {
+      "psnr": 9.936820983886719,
+      "rotation_deg": 1.1538574695587158
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 386,
+    "matched": {
+      "psnr": 15.040464401245117,
+      "rotation_deg": 4.240208148956299
+    },
+    "zero": {
+      "psnr": 15.12814998626709,
+      "rotation_deg": 1.677947759628296
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 514,
+    "matched": {
+      "psnr": 15.14398193359375,
+      "rotation_deg": 2.0925605297088623
+    },
+    "zero": {
+      "psnr": 15.702466011047363,
+      "rotation_deg": 1.1623060703277588
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 642,
+    "matched": {
+      "psnr": 8.811182022094727,
+      "rotation_deg": 1.1049985885620117
+    },
+    "zero": {
+      "psnr": 9.30910587310791,
+      "rotation_deg": 1.3276591300964355
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 770,
+    "matched": {
+      "psnr": 13.351508140563965,
+      "rotation_deg": 3.288250207901001
+    },
+    "zero": {
+      "psnr": 13.082677841186523,
+      "rotation_deg": 1.3402750492095947
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 898,
+    "matched": {
+      "psnr": 16.060083389282227,
+      "rotation_deg": 4.5723466873168945
+    },
+    "zero": {
+      "psnr": 16.060083389282227,
+      "rotation_deg": 0.719821035861969
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1026,
+    "matched": {
+      "psnr": 9.73004150390625,
+      "rotation_deg": 4.165370464324951
+    },
+    "zero": {
+      "psnr": 10.622476577758789,
+      "rotation_deg": 1.1646606922149658
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1154,
+    "matched": {
+      "psnr": 8.875511169433594,
+      "rotation_deg": 4.553372383117676
+    },
+    "zero": {
+      "psnr": 8.909844398498535,
+      "rotation_deg": 1.3481361865997314
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1282,
+    "matched": {
+      "psnr": 13.50125503540039,
+      "rotation_deg": 1.8138047456741333
+    },
+    "zero": {
+      "psnr": 13.645441055297852,
+      "rotation_deg": 1.5483864545822144
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1410,
+    "matched": {
+      "psnr": 14.276134490966797,
+      "rotation_deg": 4.259747505187988
+    },
+    "zero": {
+      "psnr": 13.635605812072754,
+      "rotation_deg": 0.7682129144668579
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1538,
+    "matched": {
+      "psnr": 10.102034568786621,
+      "rotation_deg": 11.728975296020508
+    },
+    "zero": {
+      "psnr": 11.297825813293457,
+      "rotation_deg": 5.165887832641602
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1666,
+    "matched": {
+      "psnr": 8.627073287963867,
+      "rotation_deg": 5.542629241943359
+    },
+    "zero": {
+      "psnr": 8.627073287963867,
+      "rotation_deg": 1.827349066734314
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1794,
+    "matched": {
+      "psnr": 12.120523452758789,
+      "rotation_deg": 10.244612693786621
+    },
+    "zero": {
+      "psnr": 12.747337341308594,
+      "rotation_deg": 1.1225677728652954
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 1922,
+    "matched": {
+      "psnr": 15.262994766235352,
+      "rotation_deg": 1.777842402458191
+    },
+    "zero": {
+      "psnr": 14.317742347717285,
+      "rotation_deg": 0.9699517488479614
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2050,
+    "matched": {
+      "psnr": 6.842818260192871,
+      "rotation_deg": 2.3304500579833984
+    },
+    "zero": {
+      "psnr": 6.842818260192871,
+      "rotation_deg": 1.2845087051391602
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2178,
+    "matched": {
+      "psnr": 12.109532356262207,
+      "rotation_deg": 7.2966485023498535
+    },
+    "zero": {
+      "psnr": 12.130325317382812,
+      "rotation_deg": 2.9375829696655273
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2306,
+    "matched": {
+      "psnr": 16.80512809753418,
+      "rotation_deg": 1.0914568901062012
+    },
+    "zero": {
+      "psnr": 17.22181510925293,
+      "rotation_deg": 0.9528547525405884
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2434,
+    "matched": {
+      "psnr": 13.968487739562988,
+      "rotation_deg": 6.465688705444336
+    },
+    "zero": {
+      "psnr": 13.85137939453125,
+      "rotation_deg": 4.287062644958496
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2562,
+    "matched": {
+      "psnr": 9.466255187988281,
+      "rotation_deg": 1.7707833051681519
+    },
+    "zero": {
+      "psnr": 9.574092864990234,
+      "rotation_deg": 0.6655846834182739
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2690,
+    "matched": {
+      "psnr": 10.780325889587402,
+      "rotation_deg": 5.862940311431885
+    },
+    "zero": {
+      "psnr": 11.247322082519531,
+      "rotation_deg": 5.610875606536865
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2818,
+    "matched": {
+      "psnr": 14.394536018371582,
+      "rotation_deg": 4.566860198974609
+    },
+    "zero": {
+      "psnr": 13.432710647583008,
+      "rotation_deg": 1.9524422883987427
+    }
+  },
+  {
+    "flight": "indoor_flying3",
+    "start": 2947,
+    "matched": {
+      "psnr": 15.648994445800781,
+      "rotation_deg": 4.087153434753418
+    },
+    "zero": {
+      "psnr": 16.065000534057617,
+      "rotation_deg": 2.386385202407837
+    }
+  }
+]

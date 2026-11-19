@@ -41,6 +41,43 @@ def calibration(path):
     return mapping,inverse
 
 
+def flight_windows(root,sequence,count,scale,field,mapping,inverse,raw_packets=False):
+    with h5py.File(root/f"{sequence}_data.hdf5") as data, h5py.File(root/f"{sequence}_gt.hdf5") as truth:
+        cam = data["davis/left"]
+        gt = truth["davis/left"]
+        times = cam["image_raw_ts"][:]
+        pose_times = gt["pose_ts"][:]
+        poses = gt["pose"][:]
+        interp = Slerp(pose_times,Rotation.from_matrix(poses[:,:3,:3]))
+        valid = np.nonzero((times[1:-4]>=pose_times[0]) & (times[5:]<=pose_times[-1]))[0]+1
+        for start in valid[np.linspace(0,len(valid)-1,count,dtype=int)]:
+            frame_ids = np.array([start,start+2,start+4])
+            at = times[frame_ids]
+            rigid = np.repeat(np.eye(4)[None],3,axis=0)
+            rigid[:,:3,:3] = interp(at).as_matrix()
+            rigid[:,:3,3] = np.column_stack([np.interp(at,pose_times,poses[:,j,3]) for j in range(3)])
+            query,right = torch.tensor(np.linalg.inv(rigid[0]) @ rigid[1:],device="cuda").float()
+            packets = []
+            raw_pair = []
+            for frame in frame_ids[[0,2]]:
+                events = cam["events"]
+                block = events[lower_bound_after(events,times[frame-1]):lower_bound_after(events,times[frame])]
+                xy = mapping[block[:,1].astype(int),block[:,0].astype(int)]
+                raw = np.column_stack([xy,block[:,2:]]).T
+                if raw_packets:
+                    raw_pair.append(raw)
+                counts = bin_events(raw,scale).cuda()
+                if field is not None:
+                    counts = torch.cat([counts,field(raw).half().float()],dim=0)
+                packets.append(counts)
+            label = []
+            for frame in frame_ids[:2]:
+                full = cv2.remap(cam["image_raw"][frame],*inverse,cv2.INTER_LINEAR)
+                label.append(torch.tensor(cv2.resize(full,(32*scale,24*scale),interpolation=cv2.INTER_AREA),device="cuda")/255)
+            result = int(start),torch.stack(packets),label,query,right
+            yield (*result,raw_pair) if raw_packets else result
+
+
 @torch.inference_mode()
 def evaluate(args):
     mapping,inverse = calibration(args.calibration)
@@ -58,46 +95,18 @@ def evaluate(args):
     model.cuda().eval()
     rows = []
     for sequence in ("indoor_flying1","indoor_flying2","indoor_flying3"):
-        with h5py.File(args.root/f"{sequence}_data.hdf5") as data, h5py.File(args.root/f"{sequence}_gt.hdf5") as truth:
-            cam = data["davis/left"]
-            gt = truth["davis/left"]
-            times = cam["image_raw_ts"][:]
-            pose_times = gt["pose_ts"][:]
-            poses = gt["pose"][:]
-            interp = Slerp(pose_times,Rotation.from_matrix(poses[:,:3,:3]))
-            valid = np.nonzero((times[1:-4]>=pose_times[0]) & (times[5:]<=pose_times[-1]))[0]+1
-            for start in valid[np.linspace(0,len(valid)-1,24,dtype=int)]:
-                frame_ids = np.array([start,start+2,start+4])
-                at = times[frame_ids]
-                rigid = np.repeat(np.eye(4)[None],3,axis=0)
-                rigid[:,:3,:3] = interp(at).as_matrix()
-                rigid[:,:3,3] = np.column_stack([np.interp(at,pose_times,poses[:,j,3]) for j in range(3)])
-                query,right = torch.tensor(np.linalg.inv(rigid[0]) @ rigid[1:],device="cuda").float()
-                packets = []
-                for frame in frame_ids[[0,2]]:
-                    events = cam["events"]
-                    block = events[lower_bound_after(events,times[frame-1]):lower_bound_after(events,times[frame])]
-                    xy = mapping[block[:,1].astype(int),block[:,0].astype(int)]
-                    raw = np.column_stack([xy,block[:,2:]]).T
-                    counts = bin_events(raw,scale).cuda()
-                    if field is not None:
-                        counts = torch.cat([counts,field(raw).half().float()],dim=0)
-                    packets.append(counts)
-                label = []
-                for frame in frame_ids[:2]:
-                    full = cv2.remap(cam["image_raw"][frame],*inverse,cv2.INTER_LINEAR)
-                    label.append(torch.tensor(cv2.resize(full,(32*scale,24*scale),interpolation=cv2.INTER_AREA),device="cuda")/255)
-                def psnr(image):
-                    return float(-10*(image-label[1]).square().mean().log10())
-                packet = torch.stack(packets)[None].cuda()
-                row = dict(sequence=sequence,start=int(start),source_copy_psnr=psnr(label[0]))
-                for name,input_packet in [("matched",packet),("zero",torch.zeros_like(packet))]:
-                    scene = model(input_packet)
-                    row[name+"_psnr"] = psnr(model.render(scene,query[None]))
-                    rot = scene["rotation"][0].T @ right[:3,:3]
-                    row[name+"_rotation_deg"] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
-                row["identity_rotation_deg"] = float(((right[:3,:3].trace()-1)/2).clamp(-1,1).acos().rad2deg())
-                rows.append(row)
+        for start,packet,label,query,right in flight_windows(args.root,sequence,24,scale,field,mapping,inverse):
+            def psnr(image):
+                return float(-10*(image-label[1]).square().mean().log10())
+            packet = packet[None]
+            row = dict(sequence=sequence,start=int(start),source_copy_psnr=psnr(label[0]))
+            for name,input_packet in [("matched",packet),("zero",torch.zeros_like(packet))]:
+                scene = model(input_packet)
+                row[name+"_psnr"] = psnr(model.render(scene,query[None]))
+                rot = scene["rotation"][0].T @ right[:3,:3]
+                row[name+"_rotation_deg"] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
+            row["identity_rotation_deg"] = float(((right[:3,:3].trace()-1)/2).clamp(-1,1).acos().rad2deg())
+            rows.append(row)
     args.out.write_text(json.dumps(rows,indent=2,allow_nan=False)+"\n")
 
 

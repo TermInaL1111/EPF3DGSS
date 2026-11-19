@@ -1,0 +1,2130 @@
+{
+  "flight": "indoor_flying2",
+  "rows": [
+    {
+      "start": 3,
+      "valid_rays": 0,
+      "depth_dt_s": [
+        0.1781017780303955,
+        0.050664663314819336
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 24.054086685180664,
+          "query_psnr": 24.054346084594727
+        },
+        "aligned_10": {
+          "source_camera_psnr": 23.925382614135742,
+          "query_psnr": 23.925779342651367
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 23.997329711914062,
+          "query_psnr": 23.997798919677734
+        },
+        "none_11": {
+          "source_camera_psnr": 23.856287002563477,
+          "query_psnr": 23.857112884521484
+        },
+        "aligned_11": {
+          "source_camera_psnr": 23.989147186279297,
+          "query_psnr": 23.99003028869629
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 24.056869506835938,
+          "query_psnr": 24.057682037353516
+        },
+        "none_12": {
+          "source_camera_psnr": 24.020376205444336,
+          "query_psnr": 24.020729064941406
+        },
+        "aligned_12": {
+          "source_camera_psnr": 24.13203239440918,
+          "query_psnr": 24.13233757019043
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 23.914052963256836,
+          "query_psnr": 23.91472053527832
+        }
+      },
+      "source_copy_psnr": 51.10801315307617,
+      "identity_rotation_deg": 0.0
+    },
+    {
+      "start": 88,
+      "valid_rays": 348,
+      "depth_dt_s": [
+        0.019680500030517578,
+        0.007721424102783203
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 23.839622497558594,
+          "query_psnr": 23.856494903564453,
+          "metric_abs_rel": 2.1691789627075195,
+          "aligned_abs_rel": 0.10832919180393219
+        },
+        "aligned_10": {
+          "source_camera_psnr": 23.686315536499023,
+          "query_psnr": 23.704479217529297,
+          "metric_abs_rel": 2.2480080127716064,
+          "aligned_abs_rel": 0.11281058192253113
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 23.79520606994629,
+          "query_psnr": 23.812076568603516,
+          "metric_abs_rel": 2.2567636966705322,
+          "aligned_abs_rel": 0.1205345094203949
+        },
+        "none_11": {
+          "source_camera_psnr": 23.776031494140625,
+          "query_psnr": 23.804424285888672,
+          "metric_abs_rel": 2.16743803024292,
+          "aligned_abs_rel": 0.12816937267780304
+        },
+        "aligned_11": {
+          "source_camera_psnr": 23.81014060974121,
+          "query_psnr": 23.838788986206055,
+          "metric_abs_rel": 2.3853225708007812,
+          "aligned_abs_rel": 0.0972202867269516
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 23.907501220703125,
+          "query_psnr": 23.937213897705078,
+          "metric_abs_rel": 2.2977333068847656,
+          "aligned_abs_rel": 0.09148388355970383
+        },
+        "none_12": {
+          "source_camera_psnr": 23.926620483398438,
+          "query_psnr": 23.91336441040039,
+          "metric_abs_rel": 1.8778668642044067,
+          "aligned_abs_rel": 0.10016041994094849
+        },
+        "aligned_12": {
+          "source_camera_psnr": 24.127843856811523,
+          "query_psnr": 24.116239547729492,
+          "metric_abs_rel": 2.13791561126709,
+          "aligned_abs_rel": 0.10657723993062973
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 23.870878219604492,
+          "query_psnr": 23.837182998657227,
+          "metric_abs_rel": 1.846708059310913,
+          "aligned_abs_rel": 0.0897868201136589
+        }
+      },
+      "source_copy_psnr": 50.96992874145508,
+      "identity_rotation_deg": 0.29341986775398254,
+      "plane_abs_rel": 0.07857423275709152
+    },
+    {
+      "start": 174,
+      "valid_rays": 463,
+      "depth_dt_s": [
+        0.018720388412475586,
+        0.003732442855834961
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 23.913345336914062,
+          "query_psnr": 23.91334342956543,
+          "metric_abs_rel": 2.4536547660827637,
+          "aligned_abs_rel": 0.11774231493473053
+        },
+        "aligned_10": {
+          "source_camera_psnr": 23.75145721435547,
+          "query_psnr": 23.751617431640625,
+          "metric_abs_rel": 2.5406785011291504,
+          "aligned_abs_rel": 0.12292644381523132
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 23.87133026123047,
+          "query_psnr": 23.871623992919922,
+          "metric_abs_rel": 2.524235725402832,
+          "aligned_abs_rel": 0.12154801934957504
+        },
+        "none_11": {
+          "source_camera_psnr": 23.718994140625,
+          "query_psnr": 23.719757080078125,
+          "metric_abs_rel": 2.452138900756836,
+          "aligned_abs_rel": 0.14022213220596313
+        },
+        "aligned_11": {
+          "source_camera_psnr": 23.873491287231445,
+          "query_psnr": 23.874126434326172,
+          "metric_abs_rel": 2.7033464908599854,
+          "aligned_abs_rel": 0.10790404677391052
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 23.956153869628906,
+          "query_psnr": 23.956851959228516,
+          "metric_abs_rel": 2.6060667037963867,
+          "aligned_abs_rel": 0.10057879239320755
+        },
+        "none_12": {
+          "source_camera_psnr": 23.980335235595703,
+          "query_psnr": 23.980981826782227,
+          "metric_abs_rel": 2.1264748573303223,
+          "aligned_abs_rel": 0.1073913723230362
+        },
+        "aligned_12": {
+          "source_camera_psnr": 24.119644165039062,
+          "query_psnr": 24.119720458984375,
+          "metric_abs_rel": 2.4253509044647217,
+          "aligned_abs_rel": 0.11545728892087936
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 23.939151763916016,
+          "query_psnr": 23.940528869628906,
+          "metric_abs_rel": 2.0860695838928223,
+          "aligned_abs_rel": 0.0891711562871933
+        }
+      },
+      "source_copy_psnr": 51.34590148925781,
+      "identity_rotation_deg": 0.0,
+      "plane_abs_rel": 0.07251784950494766
+    },
+    {
+      "start": 260,
+      "valid_rays": 922,
+      "depth_dt_s": [
+        0.009799480438232422,
+        0.012850761413574219
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 23.455562591552734,
+          "query_psnr": 23.282699584960938,
+          "metric_abs_rel": 3.0362441539764404,
+          "aligned_abs_rel": 0.20408053696155548
+        },
+        "aligned_10": {
+          "source_camera_psnr": 22.767858505249023,
+          "query_psnr": 22.564783096313477,
+          "metric_abs_rel": 2.940934419631958,
+          "aligned_abs_rel": 0.25487515330314636
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 25.12493324279785,
+          "query_psnr": 24.895301818847656,
+          "metric_abs_rel": 2.5904173851013184,
+          "aligned_abs_rel": 0.25906381011009216
+        },
+        "none_11": {
+          "source_camera_psnr": 23.949289321899414,
+          "query_psnr": 23.860265731811523,
+          "metric_abs_rel": 3.1964261531829834,
+          "aligned_abs_rel": 0.21981139481067657
+        },
+        "aligned_11": {
+          "source_camera_psnr": 24.238435745239258,
+          "query_psnr": 24.087177276611328,
+          "metric_abs_rel": 2.919630527496338,
+          "aligned_abs_rel": 0.16379879415035248
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 24.02176284790039,
+          "query_psnr": 23.89069366455078,
+          "metric_abs_rel": 2.554288864135742,
+          "aligned_abs_rel": 0.15090340375900269
+        },
+        "none_12": {
+          "source_camera_psnr": 22.893247604370117,
+          "query_psnr": 22.722320556640625,
+          "metric_abs_rel": 2.8320493698120117,
+          "aligned_abs_rel": 0.21390704810619354
+        },
+        "aligned_12": {
+          "source_camera_psnr": 23.118167877197266,
+          "query_psnr": 22.87958335876465,
+          "metric_abs_rel": 2.9758927822113037,
+          "aligned_abs_rel": 0.202483668923378
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 24.54979705810547,
+          "query_psnr": 23.884870529174805,
+          "metric_abs_rel": 2.3184187412261963,
+          "aligned_abs_rel": 0.1642524152994156
+        }
+      },
+      "source_copy_psnr": 25.690887451171875,
+      "identity_rotation_deg": 0.8663754463195801,
+      "plane_abs_rel": 0.14070136845111847
+    },
+    {
+      "start": 345,
+      "valid_rays": 1528,
+      "depth_dt_s": [
+        0.016074419021606445,
+        0.006739616394042969
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 13.492907524108887,
+          "query_psnr": 13.600139617919922,
+          "metric_abs_rel": 0.9067596793174744,
+          "aligned_abs_rel": 0.3945399522781372
+        },
+        "aligned_10": {
+          "source_camera_psnr": 13.6314058303833,
+          "query_psnr": 13.7421875,
+          "metric_abs_rel": 0.864434003829956,
+          "aligned_abs_rel": 0.42801979184150696
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 13.291851043701172,
+          "query_psnr": 13.43340015411377,
+          "metric_abs_rel": 0.7402773499488831,
+          "aligned_abs_rel": 0.4708966314792633
+        },
+        "none_11": {
+          "source_camera_psnr": 13.799407958984375,
+          "query_psnr": 13.917716979980469,
+          "metric_abs_rel": 1.0871312618255615,
+          "aligned_abs_rel": 0.4779459536075592
+        },
+        "aligned_11": {
+          "source_camera_psnr": 13.684774398803711,
+          "query_psnr": 13.928522109985352,
+          "metric_abs_rel": 0.9119036197662354,
+          "aligned_abs_rel": 0.3900073170661926
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 13.810169219970703,
+          "query_psnr": 14.092662811279297,
+          "metric_abs_rel": 0.6653313636779785,
+          "aligned_abs_rel": 0.34149712324142456
+        },
+        "none_12": {
+          "source_camera_psnr": 13.289997100830078,
+          "query_psnr": 13.255512237548828,
+          "metric_abs_rel": 0.7749577760696411,
+          "aligned_abs_rel": 0.3680936396121979
+        },
+        "aligned_12": {
+          "source_camera_psnr": 13.132749557495117,
+          "query_psnr": 13.123780250549316,
+          "metric_abs_rel": 0.7834821939468384,
+          "aligned_abs_rel": 0.3323284089565277
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 13.206414222717285,
+          "query_psnr": 13.131715774536133,
+          "metric_abs_rel": 0.515305757522583,
+          "aligned_abs_rel": 0.30171746015548706
+        }
+      },
+      "source_copy_psnr": 15.524224281311035,
+      "identity_rotation_deg": 0.5888388752937317,
+      "plane_abs_rel": 0.2503815293312073
+    },
+    {
+      "start": 431,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.0033004283905029297,
+        0.019387483596801758
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 16.52259063720703,
+          "query_psnr": 16.443870544433594,
+          "metric_abs_rel": 1.143376350402832,
+          "aligned_abs_rel": 0.44736361503601074
+        },
+        "aligned_10": {
+          "source_camera_psnr": 16.70488739013672,
+          "query_psnr": 16.46866226196289,
+          "metric_abs_rel": 1.0912070274353027,
+          "aligned_abs_rel": 0.49016353487968445
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 16.576274871826172,
+          "query_psnr": 16.190366744995117,
+          "metric_abs_rel": 0.911263644695282,
+          "aligned_abs_rel": 0.5244636535644531
+        },
+        "none_11": {
+          "source_camera_psnr": 16.784116744995117,
+          "query_psnr": 16.548545837402344,
+          "metric_abs_rel": 1.3315657377243042,
+          "aligned_abs_rel": 0.5164596438407898
+        },
+        "aligned_11": {
+          "source_camera_psnr": 16.74836540222168,
+          "query_psnr": 16.371225357055664,
+          "metric_abs_rel": 1.1174488067626953,
+          "aligned_abs_rel": 0.39913707971572876
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 16.801298141479492,
+          "query_psnr": 16.27591323852539,
+          "metric_abs_rel": 0.867728590965271,
+          "aligned_abs_rel": 0.39686617255210876
+        },
+        "none_12": {
+          "source_camera_psnr": 16.40630531311035,
+          "query_psnr": 16.26572036743164,
+          "metric_abs_rel": 0.9628498554229736,
+          "aligned_abs_rel": 0.40044641494750977
+        },
+        "aligned_12": {
+          "source_camera_psnr": 16.128490447998047,
+          "query_psnr": 16.0075740814209,
+          "metric_abs_rel": 0.971643328666687,
+          "aligned_abs_rel": 0.3841015100479126
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 16.374603271484375,
+          "query_psnr": 15.87864875793457,
+          "metric_abs_rel": 0.6395858526229858,
+          "aligned_abs_rel": 0.29757237434387207
+        }
+      },
+      "source_copy_psnr": 16.080345153808594,
+      "identity_rotation_deg": 0.9503872394561768,
+      "plane_abs_rel": 0.2565445601940155
+    },
+    {
+      "start": 517,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.008148670196533203,
+        0.019207477569580078
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 22.045297622680664,
+          "query_psnr": 22.05450439453125,
+          "metric_abs_rel": 0.3840923011302948,
+          "aligned_abs_rel": 0.27901673316955566
+        },
+        "aligned_10": {
+          "source_camera_psnr": 21.958189010620117,
+          "query_psnr": 21.926815032958984,
+          "metric_abs_rel": 0.37286576628685,
+          "aligned_abs_rel": 0.2877905070781708
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 21.62559700012207,
+          "query_psnr": 21.608509063720703,
+          "metric_abs_rel": 0.313709020614624,
+          "aligned_abs_rel": 0.28219854831695557
+        },
+        "none_11": {
+          "source_camera_psnr": 21.641014099121094,
+          "query_psnr": 21.632673263549805,
+          "metric_abs_rel": 0.4260677695274353,
+          "aligned_abs_rel": 0.31670624017715454
+        },
+        "aligned_11": {
+          "source_camera_psnr": 21.916494369506836,
+          "query_psnr": 21.825302124023438,
+          "metric_abs_rel": 0.42628610134124756,
+          "aligned_abs_rel": 0.2712509036064148
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 21.9547176361084,
+          "query_psnr": 21.889970779418945,
+          "metric_abs_rel": 0.38350939750671387,
+          "aligned_abs_rel": 0.2749524712562561
+        },
+        "none_12": {
+          "source_camera_psnr": 22.527246475219727,
+          "query_psnr": 22.539260864257812,
+          "metric_abs_rel": 0.3074023127555847,
+          "aligned_abs_rel": 0.2716563940048218
+        },
+        "aligned_12": {
+          "source_camera_psnr": 22.335670471191406,
+          "query_psnr": 22.30825424194336,
+          "metric_abs_rel": 0.4040796756744385,
+          "aligned_abs_rel": 0.2803001403808594
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 22.083606719970703,
+          "query_psnr": 22.135692596435547,
+          "metric_abs_rel": 0.24220547080039978,
+          "aligned_abs_rel": 0.24765026569366455
+        }
+      },
+      "source_copy_psnr": 39.200462341308594,
+      "identity_rotation_deg": 1.3264795541763306,
+      "plane_abs_rel": 0.23321542143821716
+    },
+    {
+      "start": 602,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.00021839141845703125,
+        0.022350549697875977
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 17.46379280090332,
+          "query_psnr": 16.801433563232422,
+          "metric_abs_rel": 0.4569851756095886,
+          "aligned_abs_rel": 0.3930511474609375
+        },
+        "aligned_10": {
+          "source_camera_psnr": 17.398557662963867,
+          "query_psnr": 16.801584243774414,
+          "metric_abs_rel": 0.44995248317718506,
+          "aligned_abs_rel": 0.4191523492336273
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 17.273366928100586,
+          "query_psnr": 16.732467651367188,
+          "metric_abs_rel": 0.4307408332824707,
+          "aligned_abs_rel": 0.45251941680908203
+        },
+        "none_11": {
+          "source_camera_psnr": 17.550107955932617,
+          "query_psnr": 16.977191925048828,
+          "metric_abs_rel": 0.5561231374740601,
+          "aligned_abs_rel": 0.471172034740448
+        },
+        "aligned_11": {
+          "source_camera_psnr": 17.58049964904785,
+          "query_psnr": 16.759876251220703,
+          "metric_abs_rel": 0.43925732374191284,
+          "aligned_abs_rel": 0.3776586949825287
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.554834365844727,
+          "query_psnr": 16.90276336669922,
+          "metric_abs_rel": 0.363412082195282,
+          "aligned_abs_rel": 0.3483164310455322
+        },
+        "none_12": {
+          "source_camera_psnr": 17.131391525268555,
+          "query_psnr": 16.53477668762207,
+          "metric_abs_rel": 0.3712058961391449,
+          "aligned_abs_rel": 0.3506415784358978
+        },
+        "aligned_12": {
+          "source_camera_psnr": 17.13095474243164,
+          "query_psnr": 16.503103256225586,
+          "metric_abs_rel": 0.38753122091293335,
+          "aligned_abs_rel": 0.33174094557762146
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 17.28597068786621,
+          "query_psnr": 15.411201477050781,
+          "metric_abs_rel": 0.2855113446712494,
+          "aligned_abs_rel": 0.2978692054748535
+        }
+      },
+      "source_copy_psnr": 18.1541748046875,
+      "identity_rotation_deg": 3.4761502742767334,
+      "plane_abs_rel": 0.26211974024772644
+    },
+    {
+      "start": 688,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.010393619537353516,
+        0.0170285701751709
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 17.317502975463867,
+          "query_psnr": 17.3334903717041,
+          "metric_abs_rel": 0.44563135504722595,
+          "aligned_abs_rel": 0.38010209798812866
+        },
+        "aligned_10": {
+          "source_camera_psnr": 17.5745792388916,
+          "query_psnr": 17.59902572631836,
+          "metric_abs_rel": 0.44088229537010193,
+          "aligned_abs_rel": 0.3923007845878601
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 17.17601776123047,
+          "query_psnr": 17.159008026123047,
+          "metric_abs_rel": 0.4125553071498871,
+          "aligned_abs_rel": 0.4234280288219452
+        },
+        "none_11": {
+          "source_camera_psnr": 17.460676193237305,
+          "query_psnr": 17.466018676757812,
+          "metric_abs_rel": 0.5208359956741333,
+          "aligned_abs_rel": 0.43109649419784546
+        },
+        "aligned_11": {
+          "source_camera_psnr": 17.42119598388672,
+          "query_psnr": 17.4222354888916,
+          "metric_abs_rel": 0.4338487982749939,
+          "aligned_abs_rel": 0.35912585258483887
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.473426818847656,
+          "query_psnr": 17.457672119140625,
+          "metric_abs_rel": 0.3700973391532898,
+          "aligned_abs_rel": 0.3535591959953308
+        },
+        "none_12": {
+          "source_camera_psnr": 16.819379806518555,
+          "query_psnr": 16.860403060913086,
+          "metric_abs_rel": 0.3897647261619568,
+          "aligned_abs_rel": 0.3484150767326355
+        },
+        "aligned_12": {
+          "source_camera_psnr": 16.528446197509766,
+          "query_psnr": 16.57059097290039,
+          "metric_abs_rel": 0.404509037733078,
+          "aligned_abs_rel": 0.3226318359375
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 16.95924949645996,
+          "query_psnr": 16.929758071899414,
+          "metric_abs_rel": 0.2971746325492859,
+          "aligned_abs_rel": 0.30714231729507446
+        }
+      },
+      "source_copy_psnr": 19.93423843383789,
+      "identity_rotation_deg": 0.11190583556890488,
+      "plane_abs_rel": 0.2786383032798767
+    },
+    {
+      "start": 774,
+      "valid_rays": 1504,
+      "depth_dt_s": [
+        0.02244257926940918,
+        0.005024433135986328
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 15.197925567626953,
+          "query_psnr": 15.038869857788086,
+          "metric_abs_rel": 1.0642560720443726,
+          "aligned_abs_rel": 0.3605939447879791
+        },
+        "aligned_10": {
+          "source_camera_psnr": 15.093855857849121,
+          "query_psnr": 15.02440071105957,
+          "metric_abs_rel": 1.0256985425949097,
+          "aligned_abs_rel": 0.3685086667537689
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 15.308991432189941,
+          "query_psnr": 15.234414100646973,
+          "metric_abs_rel": 0.9167361855506897,
+          "aligned_abs_rel": 0.42313626408576965
+        },
+        "none_11": {
+          "source_camera_psnr": 15.89478874206543,
+          "query_psnr": 15.854548454284668,
+          "metric_abs_rel": 1.2520807981491089,
+          "aligned_abs_rel": 0.4403415024280548
+        },
+        "aligned_11": {
+          "source_camera_psnr": 15.941492080688477,
+          "query_psnr": 15.896507263183594,
+          "metric_abs_rel": 1.0569260120391846,
+          "aligned_abs_rel": 0.3732195496559143
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 16.15203094482422,
+          "query_psnr": 16.15232276916504,
+          "metric_abs_rel": 0.8235496282577515,
+          "aligned_abs_rel": 0.33450743556022644
+        },
+        "none_12": {
+          "source_camera_psnr": 14.906618118286133,
+          "query_psnr": 14.83975887298584,
+          "metric_abs_rel": 0.9110330939292908,
+          "aligned_abs_rel": 0.3268354535102844
+        },
+        "aligned_12": {
+          "source_camera_psnr": 14.804121017456055,
+          "query_psnr": 14.779120445251465,
+          "metric_abs_rel": 0.9184859991073608,
+          "aligned_abs_rel": 0.29914551973342896
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 15.115087509155273,
+          "query_psnr": 14.694952011108398,
+          "metric_abs_rel": 0.614273190498352,
+          "aligned_abs_rel": 0.29471951723098755
+        }
+      },
+      "source_copy_psnr": 20.566654205322266,
+      "identity_rotation_deg": 2.205667734146118,
+      "plane_abs_rel": 0.2511914074420929
+    },
+    {
+      "start": 860,
+      "valid_rays": 1533,
+      "depth_dt_s": [
+        0.018570423126220703,
+        0.003890514373779297
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 15.835216522216797,
+          "query_psnr": 15.824356079101562,
+          "metric_abs_rel": 0.49622562527656555,
+          "aligned_abs_rel": 0.43111732602119446
+        },
+        "aligned_10": {
+          "source_camera_psnr": 16.055940628051758,
+          "query_psnr": 16.029537200927734,
+          "metric_abs_rel": 0.4981742799282074,
+          "aligned_abs_rel": 0.4610554277896881
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 15.887866020202637,
+          "query_psnr": 15.879642486572266,
+          "metric_abs_rel": 0.4913950562477112,
+          "aligned_abs_rel": 0.5119848847389221
+        },
+        "none_11": {
+          "source_camera_psnr": 16.094039916992188,
+          "query_psnr": 16.085283279418945,
+          "metric_abs_rel": 0.5940478444099426,
+          "aligned_abs_rel": 0.49797776341438293
+        },
+        "aligned_11": {
+          "source_camera_psnr": 15.98007583618164,
+          "query_psnr": 15.986486434936523,
+          "metric_abs_rel": 0.4728357791900635,
+          "aligned_abs_rel": 0.36372941732406616
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 16.1451416015625,
+          "query_psnr": 16.14785385131836,
+          "metric_abs_rel": 0.3851664960384369,
+          "aligned_abs_rel": 0.3653407394886017
+        },
+        "none_12": {
+          "source_camera_psnr": 15.431879997253418,
+          "query_psnr": 15.39954948425293,
+          "metric_abs_rel": 0.42495572566986084,
+          "aligned_abs_rel": 0.3836599886417389
+        },
+        "aligned_12": {
+          "source_camera_psnr": 15.028058052062988,
+          "query_psnr": 14.980668067932129,
+          "metric_abs_rel": 0.4055800139904022,
+          "aligned_abs_rel": 0.3494003713130951
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 15.406339645385742,
+          "query_psnr": 15.405655860900879,
+          "metric_abs_rel": 0.3045203983783722,
+          "aligned_abs_rel": 0.30859652161598206
+        }
+      },
+      "source_copy_psnr": 17.975337982177734,
+      "identity_rotation_deg": 0.3876538872718811,
+      "plane_abs_rel": 0.2588801085948944
+    },
+    {
+      "start": 945,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.022492647171020508,
+        0.00486445426940918
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 18.713499069213867,
+          "query_psnr": 18.81223487854004,
+          "metric_abs_rel": 0.48771047592163086,
+          "aligned_abs_rel": 0.367839515209198
+        },
+        "aligned_10": {
+          "source_camera_psnr": 18.680320739746094,
+          "query_psnr": 18.645492553710938,
+          "metric_abs_rel": 0.4730529189109802,
+          "aligned_abs_rel": 0.38543686270713806
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 18.58074188232422,
+          "query_psnr": 18.727323532104492,
+          "metric_abs_rel": 0.42975592613220215,
+          "aligned_abs_rel": 0.4057086408138275
+        },
+        "none_11": {
+          "source_camera_psnr": 19.116588592529297,
+          "query_psnr": 19.096759796142578,
+          "metric_abs_rel": 0.5683051943778992,
+          "aligned_abs_rel": 0.42443689703941345
+        },
+        "aligned_11": {
+          "source_camera_psnr": 18.949119567871094,
+          "query_psnr": 18.829214096069336,
+          "metric_abs_rel": 0.47516068816185,
+          "aligned_abs_rel": 0.33742207288742065
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 19.05548858642578,
+          "query_psnr": 19.02283477783203,
+          "metric_abs_rel": 0.4100857675075531,
+          "aligned_abs_rel": 0.3448004722595215
+        },
+        "none_12": {
+          "source_camera_psnr": 17.859638214111328,
+          "query_psnr": 17.607637405395508,
+          "metric_abs_rel": 0.40229368209838867,
+          "aligned_abs_rel": 0.34287208318710327
+        },
+        "aligned_12": {
+          "source_camera_psnr": 17.78012466430664,
+          "query_psnr": 17.467004776000977,
+          "metric_abs_rel": 0.4473270773887634,
+          "aligned_abs_rel": 0.3275773823261261
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 18.04167938232422,
+          "query_psnr": 17.90155792236328,
+          "metric_abs_rel": 0.3025408685207367,
+          "aligned_abs_rel": 0.30420705676078796
+        }
+      },
+      "source_copy_psnr": 21.30861473083496,
+      "identity_rotation_deg": 1.9178545475006104,
+      "plane_abs_rel": 0.2751784920692444
+    },
+    {
+      "start": 1031,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.01903247833251953,
+        0.0033867359161376953
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 17.254301071166992,
+          "query_psnr": 17.275259017944336,
+          "metric_abs_rel": 0.5343889594078064,
+          "aligned_abs_rel": 0.3993586301803589
+        },
+        "aligned_10": {
+          "source_camera_psnr": 17.313507080078125,
+          "query_psnr": 17.351972579956055,
+          "metric_abs_rel": 0.5227400660514832,
+          "aligned_abs_rel": 0.42223072052001953
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 16.971620559692383,
+          "query_psnr": 17.017629623413086,
+          "metric_abs_rel": 0.48554977774620056,
+          "aligned_abs_rel": 0.46952757239341736
+        },
+        "none_11": {
+          "source_camera_psnr": 17.302541732788086,
+          "query_psnr": 17.32577896118164,
+          "metric_abs_rel": 0.660599410533905,
+          "aligned_abs_rel": 0.47871601581573486
+        },
+        "aligned_11": {
+          "source_camera_psnr": 17.38191032409668,
+          "query_psnr": 17.41489028930664,
+          "metric_abs_rel": 0.5081564784049988,
+          "aligned_abs_rel": 0.3947319984436035
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.38813591003418,
+          "query_psnr": 17.42129135131836,
+          "metric_abs_rel": 0.3893694281578064,
+          "aligned_abs_rel": 0.3487914204597473
+        },
+        "none_12": {
+          "source_camera_psnr": 16.834980010986328,
+          "query_psnr": 16.843278884887695,
+          "metric_abs_rel": 0.44885677099227905,
+          "aligned_abs_rel": 0.3836766183376312
+        },
+        "aligned_12": {
+          "source_camera_psnr": 16.883392333984375,
+          "query_psnr": 16.890960693359375,
+          "metric_abs_rel": 0.4290415942668915,
+          "aligned_abs_rel": 0.32527241110801697
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 16.75559425354004,
+          "query_psnr": 16.77644157409668,
+          "metric_abs_rel": 0.3303070068359375,
+          "aligned_abs_rel": 0.3268054127693176
+        }
+      },
+      "source_copy_psnr": 18.816848754882812,
+      "identity_rotation_deg": 1.6475826501846313,
+      "plane_abs_rel": 0.26339995861053467
+    },
+    {
+      "start": 1117,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.010913372039794922,
+        0.011434555053710938
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 16.888164520263672,
+          "query_psnr": 16.86460304260254,
+          "metric_abs_rel": 0.6527696847915649,
+          "aligned_abs_rel": 0.3822817802429199
+        },
+        "aligned_10": {
+          "source_camera_psnr": 16.896984100341797,
+          "query_psnr": 16.87425422668457,
+          "metric_abs_rel": 0.6198539733886719,
+          "aligned_abs_rel": 0.409355103969574
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 16.647106170654297,
+          "query_psnr": 16.62759017944336,
+          "metric_abs_rel": 0.5375550985336304,
+          "aligned_abs_rel": 0.43114611506462097
+        },
+        "none_11": {
+          "source_camera_psnr": 17.050573348999023,
+          "query_psnr": 17.02058982849121,
+          "metric_abs_rel": 0.7727934122085571,
+          "aligned_abs_rel": 0.4505302906036377
+        },
+        "aligned_11": {
+          "source_camera_psnr": 16.962074279785156,
+          "query_psnr": 16.931354522705078,
+          "metric_abs_rel": 0.651505172252655,
+          "aligned_abs_rel": 0.35152682662010193
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.039554595947266,
+          "query_psnr": 17.006685256958008,
+          "metric_abs_rel": 0.5148977041244507,
+          "aligned_abs_rel": 0.31881579756736755
+        },
+        "none_12": {
+          "source_camera_psnr": 16.557510375976562,
+          "query_psnr": 16.53661346435547,
+          "metric_abs_rel": 0.5311620831489563,
+          "aligned_abs_rel": 0.3753196597099304
+        },
+        "aligned_12": {
+          "source_camera_psnr": 16.59775161743164,
+          "query_psnr": 16.572622299194336,
+          "metric_abs_rel": 0.5625345706939697,
+          "aligned_abs_rel": 0.33090436458587646
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 16.558889389038086,
+          "query_psnr": 16.519550323486328,
+          "metric_abs_rel": 0.3763605058193207,
+          "aligned_abs_rel": 0.31728777289390564
+        }
+      },
+      "source_copy_psnr": 17.884851455688477,
+      "identity_rotation_deg": 1.805802583694458,
+      "plane_abs_rel": 0.26477205753326416
+    },
+    {
+      "start": 1202,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.018614530563354492,
+        0.003950595855712891
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 17.982906341552734,
+          "query_psnr": 17.941503524780273,
+          "metric_abs_rel": 0.35797280073165894,
+          "aligned_abs_rel": 0.3635610044002533
+        },
+        "aligned_10": {
+          "source_camera_psnr": 18.11151123046875,
+          "query_psnr": 18.091917037963867,
+          "metric_abs_rel": 0.36140093207359314,
+          "aligned_abs_rel": 0.37774229049682617
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 17.825119018554688,
+          "query_psnr": 17.749038696289062,
+          "metric_abs_rel": 0.36631888151168823,
+          "aligned_abs_rel": 0.4051291346549988
+        },
+        "none_11": {
+          "source_camera_psnr": 18.22088623046875,
+          "query_psnr": 18.20620346069336,
+          "metric_abs_rel": 0.4167780876159668,
+          "aligned_abs_rel": 0.4034736156463623
+        },
+        "aligned_11": {
+          "source_camera_psnr": 18.02979278564453,
+          "query_psnr": 17.92678451538086,
+          "metric_abs_rel": 0.3562496304512024,
+          "aligned_abs_rel": 0.3529035449028015
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 18.150039672851562,
+          "query_psnr": 17.99288558959961,
+          "metric_abs_rel": 0.31500348448753357,
+          "aligned_abs_rel": 0.3382488191127777
+        },
+        "none_12": {
+          "source_camera_psnr": 17.34541130065918,
+          "query_psnr": 17.359989166259766,
+          "metric_abs_rel": 0.3347715735435486,
+          "aligned_abs_rel": 0.3556064963340759
+        },
+        "aligned_12": {
+          "source_camera_psnr": 17.118494033813477,
+          "query_psnr": 17.151615142822266,
+          "metric_abs_rel": 0.3253733515739441,
+          "aligned_abs_rel": 0.3214634358882904
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 17.41826820373535,
+          "query_psnr": 17.307985305786133,
+          "metric_abs_rel": 0.2853996455669403,
+          "aligned_abs_rel": 0.30696576833724976
+        }
+      },
+      "source_copy_psnr": 19.19074821472168,
+      "identity_rotation_deg": 0.8802672624588013,
+      "plane_abs_rel": 0.28270870447158813
+    },
+    {
+      "start": 1288,
+      "valid_rays": 1474,
+      "depth_dt_s": [
+        0.0075495243072509766,
+        0.015109539031982422
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 15.225509643554688,
+          "query_psnr": 15.215941429138184,
+          "metric_abs_rel": 1.200439691543579,
+          "aligned_abs_rel": 0.3070108890533447
+        },
+        "aligned_10": {
+          "source_camera_psnr": 15.081271171569824,
+          "query_psnr": 15.075058937072754,
+          "metric_abs_rel": 1.1482958793640137,
+          "aligned_abs_rel": 0.33142319321632385
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 15.248732566833496,
+          "query_psnr": 15.239606857299805,
+          "metric_abs_rel": 0.9970991611480713,
+          "aligned_abs_rel": 0.36757993698120117
+        },
+        "none_11": {
+          "source_camera_psnr": 15.629382133483887,
+          "query_psnr": 15.622310638427734,
+          "metric_abs_rel": 1.359764575958252,
+          "aligned_abs_rel": 0.37360522150993347
+        },
+        "aligned_11": {
+          "source_camera_psnr": 15.58367919921875,
+          "query_psnr": 15.57172966003418,
+          "metric_abs_rel": 1.1555144786834717,
+          "aligned_abs_rel": 0.28861579298973083
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 15.657807350158691,
+          "query_psnr": 15.648324966430664,
+          "metric_abs_rel": 0.9489579200744629,
+          "aligned_abs_rel": 0.2597294747829437
+        },
+        "none_12": {
+          "source_camera_psnr": 14.564624786376953,
+          "query_psnr": 14.558186531066895,
+          "metric_abs_rel": 1.005885362625122,
+          "aligned_abs_rel": 0.29893895983695984
+        },
+        "aligned_12": {
+          "source_camera_psnr": 14.542193412780762,
+          "query_psnr": 14.536852836608887,
+          "metric_abs_rel": 1.050144910812378,
+          "aligned_abs_rel": 0.27237966656684875
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 14.968805313110352,
+          "query_psnr": 14.980107307434082,
+          "metric_abs_rel": 0.7039503455162048,
+          "aligned_abs_rel": 0.25700968503952026
+        }
+      },
+      "source_copy_psnr": 26.163433074951172,
+      "identity_rotation_deg": 0.4588492214679718,
+      "plane_abs_rel": 0.21172116696834564
+    },
+    {
+      "start": 1374,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.0034835338592529297,
+        0.024041414260864258
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 15.341550827026367,
+          "query_psnr": 13.980825424194336,
+          "metric_abs_rel": 0.6563960313796997,
+          "aligned_abs_rel": 0.4339826703071594
+        },
+        "aligned_10": {
+          "source_camera_psnr": 15.458433151245117,
+          "query_psnr": 14.224854469299316,
+          "metric_abs_rel": 0.652482271194458,
+          "aligned_abs_rel": 0.4390798807144165
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 15.049129486083984,
+          "query_psnr": 13.926137924194336,
+          "metric_abs_rel": 0.588050365447998,
+          "aligned_abs_rel": 0.48911961913108826
+        },
+        "none_11": {
+          "source_camera_psnr": 15.500639915466309,
+          "query_psnr": 14.792465209960938,
+          "metric_abs_rel": 0.7885740995407104,
+          "aligned_abs_rel": 0.4927118718624115
+        },
+        "aligned_11": {
+          "source_camera_psnr": 15.582709312438965,
+          "query_psnr": 14.611960411071777,
+          "metric_abs_rel": 0.6126898527145386,
+          "aligned_abs_rel": 0.3959033489227295
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 15.632925033569336,
+          "query_psnr": 14.61578369140625,
+          "metric_abs_rel": 0.500190258026123,
+          "aligned_abs_rel": 0.41757020354270935
+        },
+        "none_12": {
+          "source_camera_psnr": 14.931686401367188,
+          "query_psnr": 13.443866729736328,
+          "metric_abs_rel": 0.5763497352600098,
+          "aligned_abs_rel": 0.3763371706008911
+        },
+        "aligned_12": {
+          "source_camera_psnr": 14.964369773864746,
+          "query_psnr": 13.935792922973633,
+          "metric_abs_rel": 0.5602813363075256,
+          "aligned_abs_rel": 0.38770732283592224
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 14.886024475097656,
+          "query_psnr": 12.984903335571289,
+          "metric_abs_rel": 0.3949039876461029,
+          "aligned_abs_rel": 0.3148934543132782
+        }
+      },
+      "source_copy_psnr": 19.596664428710938,
+      "identity_rotation_deg": 3.6122705936431885,
+      "plane_abs_rel": 0.28102871775627136
+    },
+    {
+      "start": 1460,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.013532638549804688,
+        0.013925552368164062
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 22.473541259765625,
+          "query_psnr": 20.28652572631836,
+          "metric_abs_rel": 0.3566663861274719,
+          "aligned_abs_rel": 0.308247834444046
+        },
+        "aligned_10": {
+          "source_camera_psnr": 22.651630401611328,
+          "query_psnr": 21.383834838867188,
+          "metric_abs_rel": 0.3502194881439209,
+          "aligned_abs_rel": 0.3269379436969757
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 22.34146499633789,
+          "query_psnr": 20.39728355407715,
+          "metric_abs_rel": 0.32655125856399536,
+          "aligned_abs_rel": 0.3429293632507324
+        },
+        "none_11": {
+          "source_camera_psnr": 21.953725814819336,
+          "query_psnr": 20.40898895263672,
+          "metric_abs_rel": 0.41165298223495483,
+          "aligned_abs_rel": 0.3579317331314087
+        },
+        "aligned_11": {
+          "source_camera_psnr": 22.088176727294922,
+          "query_psnr": 20.464202880859375,
+          "metric_abs_rel": 0.36573633551597595,
+          "aligned_abs_rel": 0.2835039496421814
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 21.910741806030273,
+          "query_psnr": 20.137861251831055,
+          "metric_abs_rel": 0.32312068343162537,
+          "aligned_abs_rel": 0.27915558218955994
+        },
+        "none_12": {
+          "source_camera_psnr": 23.314523696899414,
+          "query_psnr": 20.29771614074707,
+          "metric_abs_rel": 0.2818365693092346,
+          "aligned_abs_rel": 0.2871345281600952
+        },
+        "aligned_12": {
+          "source_camera_psnr": 22.957975387573242,
+          "query_psnr": 21.170085906982422,
+          "metric_abs_rel": 0.32360532879829407,
+          "aligned_abs_rel": 0.2642658054828644
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 22.661876678466797,
+          "query_psnr": 19.266075134277344,
+          "metric_abs_rel": 0.24060039222240448,
+          "aligned_abs_rel": 0.24968628585338593
+        }
+      },
+      "source_copy_psnr": 23.352128982543945,
+      "identity_rotation_deg": 0.6391903758049011,
+      "plane_abs_rel": 0.23019126057624817
+    },
+    {
+      "start": 1545,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.004807710647583008,
+        0.02259039878845215
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 17.665998458862305,
+          "query_psnr": 17.635887145996094,
+          "metric_abs_rel": 0.2652496099472046,
+          "aligned_abs_rel": 0.23776531219482422
+        },
+        "aligned_10": {
+          "source_camera_psnr": 17.76258659362793,
+          "query_psnr": 17.80401611328125,
+          "metric_abs_rel": 0.2781972587108612,
+          "aligned_abs_rel": 0.2581491470336914
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 17.680265426635742,
+          "query_psnr": 17.69143295288086,
+          "metric_abs_rel": 0.24970993399620056,
+          "aligned_abs_rel": 0.2602604031562805
+        },
+        "none_11": {
+          "source_camera_psnr": 17.372346878051758,
+          "query_psnr": 17.405195236206055,
+          "metric_abs_rel": 0.3037627637386322,
+          "aligned_abs_rel": 0.2641185522079468
+        },
+        "aligned_11": {
+          "source_camera_psnr": 17.612586975097656,
+          "query_psnr": 17.72218894958496,
+          "metric_abs_rel": 0.276737242937088,
+          "aligned_abs_rel": 0.22433176636695862
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.626232147216797,
+          "query_psnr": 17.715913772583008,
+          "metric_abs_rel": 0.2418699711561203,
+          "aligned_abs_rel": 0.2254422903060913
+        },
+        "none_12": {
+          "source_camera_psnr": 18.041900634765625,
+          "query_psnr": 18.091047286987305,
+          "metric_abs_rel": 0.20491081476211548,
+          "aligned_abs_rel": 0.20778219401836395
+        },
+        "aligned_12": {
+          "source_camera_psnr": 18.05279541015625,
+          "query_psnr": 18.11686897277832,
+          "metric_abs_rel": 0.258938729763031,
+          "aligned_abs_rel": 0.2195860594511032
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 18.064748764038086,
+          "query_psnr": 17.919763565063477,
+          "metric_abs_rel": 0.18536649644374847,
+          "aligned_abs_rel": 0.17336611449718475
+        }
+      },
+      "source_copy_psnr": 32.83808898925781,
+      "identity_rotation_deg": 1.7182834148406982,
+      "plane_abs_rel": 0.15678179264068604
+    },
+    {
+      "start": 1631,
+      "valid_rays": 1533,
+      "depth_dt_s": [
+        0.01719951629638672,
+        0.009999513626098633
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 16.41197395324707,
+          "query_psnr": 15.868890762329102,
+          "metric_abs_rel": 0.30772244930267334,
+          "aligned_abs_rel": 0.32148686051368713
+        },
+        "aligned_10": {
+          "source_camera_psnr": 16.406478881835938,
+          "query_psnr": 15.837085723876953,
+          "metric_abs_rel": 0.34858664870262146,
+          "aligned_abs_rel": 0.376364529132843
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 16.522069931030273,
+          "query_psnr": 15.828962326049805,
+          "metric_abs_rel": 0.33992528915405273,
+          "aligned_abs_rel": 0.35400041937828064
+        },
+        "none_11": {
+          "source_camera_psnr": 16.18556785583496,
+          "query_psnr": 15.685365676879883,
+          "metric_abs_rel": 0.33221307396888733,
+          "aligned_abs_rel": 0.3459000587463379
+        },
+        "aligned_11": {
+          "source_camera_psnr": 16.505615234375,
+          "query_psnr": 15.946596145629883,
+          "metric_abs_rel": 0.30191993713378906,
+          "aligned_abs_rel": 0.3106537163257599
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 16.527122497558594,
+          "query_psnr": 15.833198547363281,
+          "metric_abs_rel": 0.3139684796333313,
+          "aligned_abs_rel": 0.3176482319831848
+        },
+        "none_12": {
+          "source_camera_psnr": 16.772319793701172,
+          "query_psnr": 15.824166297912598,
+          "metric_abs_rel": 0.2802349328994751,
+          "aligned_abs_rel": 0.29580187797546387
+        },
+        "aligned_12": {
+          "source_camera_psnr": 16.758729934692383,
+          "query_psnr": 16.260177612304688,
+          "metric_abs_rel": 0.2834916114807129,
+          "aligned_abs_rel": 0.2944677472114563
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 16.751821517944336,
+          "query_psnr": 15.25544261932373,
+          "metric_abs_rel": 0.282548725605011,
+          "aligned_abs_rel": 0.24620290100574493
+        }
+      },
+      "source_copy_psnr": 17.943058013916016,
+      "identity_rotation_deg": 1.6366184949874878,
+      "plane_abs_rel": 0.2170613408088684
+    },
+    {
+      "start": 1717,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.019771575927734375,
+        0.0027306079864501953
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 12.253056526184082,
+          "query_psnr": 12.258136749267578,
+          "metric_abs_rel": 0.6025134921073914,
+          "aligned_abs_rel": 0.31269121170043945
+        },
+        "aligned_10": {
+          "source_camera_psnr": 12.104430198669434,
+          "query_psnr": 12.106849670410156,
+          "metric_abs_rel": 0.5996091365814209,
+          "aligned_abs_rel": 0.33974337577819824
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 12.256518363952637,
+          "query_psnr": 12.266388893127441,
+          "metric_abs_rel": 0.4824194610118866,
+          "aligned_abs_rel": 0.3312917649745941
+        },
+        "none_11": {
+          "source_camera_psnr": 12.451395988464355,
+          "query_psnr": 12.455074310302734,
+          "metric_abs_rel": 0.6459269523620605,
+          "aligned_abs_rel": 0.3377581536769867
+        },
+        "aligned_11": {
+          "source_camera_psnr": 12.423457145690918,
+          "query_psnr": 12.425922393798828,
+          "metric_abs_rel": 0.6208487749099731,
+          "aligned_abs_rel": 0.30052486062049866
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 12.516650199890137,
+          "query_psnr": 12.513667106628418,
+          "metric_abs_rel": 0.5415588021278381,
+          "aligned_abs_rel": 0.30884307622909546
+        },
+        "none_12": {
+          "source_camera_psnr": 11.731006622314453,
+          "query_psnr": 11.732779502868652,
+          "metric_abs_rel": 0.4836812913417816,
+          "aligned_abs_rel": 0.2832368314266205
+        },
+        "aligned_12": {
+          "source_camera_psnr": 11.69050407409668,
+          "query_psnr": 11.699315071105957,
+          "metric_abs_rel": 0.5689608454704285,
+          "aligned_abs_rel": 0.29182255268096924
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 11.944938659667969,
+          "query_psnr": 11.9273042678833,
+          "metric_abs_rel": 0.3626271188259125,
+          "aligned_abs_rel": 0.2581547796726227
+        }
+      },
+      "source_copy_psnr": 18.94399070739746,
+      "identity_rotation_deg": 2.1985573768615723,
+      "plane_abs_rel": 0.2496393322944641
+    },
+    {
+      "start": 1802,
+      "valid_rays": 1536,
+      "depth_dt_s": [
+        0.023384571075439453,
+        0.004023313522338867
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 18.652326583862305,
+          "query_psnr": 18.80802345275879,
+          "metric_abs_rel": 0.34560316801071167,
+          "aligned_abs_rel": 0.32272762060165405
+        },
+        "aligned_10": {
+          "source_camera_psnr": 18.83877182006836,
+          "query_psnr": 19.00343132019043,
+          "metric_abs_rel": 0.3860290050506592,
+          "aligned_abs_rel": 0.374103844165802
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 18.38106346130371,
+          "query_psnr": 18.51702880859375,
+          "metric_abs_rel": 0.35899609327316284,
+          "aligned_abs_rel": 0.3815406262874603
+        },
+        "none_11": {
+          "source_camera_psnr": 18.034929275512695,
+          "query_psnr": 18.131858825683594,
+          "metric_abs_rel": 0.41548895835876465,
+          "aligned_abs_rel": 0.38319462537765503
+        },
+        "aligned_11": {
+          "source_camera_psnr": 18.180044174194336,
+          "query_psnr": 18.29772186279297,
+          "metric_abs_rel": 0.3395332992076874,
+          "aligned_abs_rel": 0.2880486249923706
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 17.94042205810547,
+          "query_psnr": 18.06398582458496,
+          "metric_abs_rel": 0.29317706823349,
+          "aligned_abs_rel": 0.30033549666404724
+        },
+        "none_12": {
+          "source_camera_psnr": 19.950471878051758,
+          "query_psnr": 20.114307403564453,
+          "metric_abs_rel": 0.27876338362693787,
+          "aligned_abs_rel": 0.27234166860580444
+        },
+        "aligned_12": {
+          "source_camera_psnr": 20.11579704284668,
+          "query_psnr": 20.201744079589844,
+          "metric_abs_rel": 0.29168790578842163,
+          "aligned_abs_rel": 0.2672048807144165
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 19.108495712280273,
+          "query_psnr": 19.247739791870117,
+          "metric_abs_rel": 0.2042003870010376,
+          "aligned_abs_rel": 0.20078301429748535
+        }
+      },
+      "source_copy_psnr": 22.039714813232422,
+      "identity_rotation_deg": 2.3115603923797607,
+      "plane_abs_rel": 0.1549963355064392
+    },
+    {
+      "start": 1888,
+      "valid_rays": 1534,
+      "depth_dt_s": [
+        0.017173290252685547,
+        0.005346536636352539
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 21.08252716064453,
+          "query_psnr": 20.980838775634766,
+          "metric_abs_rel": 0.30174893140792847,
+          "aligned_abs_rel": 0.2644978165626526
+        },
+        "aligned_10": {
+          "source_camera_psnr": 21.208271026611328,
+          "query_psnr": 21.071577072143555,
+          "metric_abs_rel": 0.31867754459381104,
+          "aligned_abs_rel": 0.30332931876182556
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 21.27381134033203,
+          "query_psnr": 21.189682006835938,
+          "metric_abs_rel": 0.2856593728065491,
+          "aligned_abs_rel": 0.30090832710266113
+        },
+        "none_11": {
+          "source_camera_psnr": 20.78563690185547,
+          "query_psnr": 20.68380355834961,
+          "metric_abs_rel": 0.36085158586502075,
+          "aligned_abs_rel": 0.3186343312263489
+        },
+        "aligned_11": {
+          "source_camera_psnr": 20.93733787536621,
+          "query_psnr": 20.847185134887695,
+          "metric_abs_rel": 0.2963727116584778,
+          "aligned_abs_rel": 0.23440298438072205
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 20.950620651245117,
+          "query_psnr": 20.902673721313477,
+          "metric_abs_rel": 0.2569867670536041,
+          "aligned_abs_rel": 0.24080578982830048
+        },
+        "none_12": {
+          "source_camera_psnr": 21.642663955688477,
+          "query_psnr": 21.53834342956543,
+          "metric_abs_rel": 0.23999172449111938,
+          "aligned_abs_rel": 0.23932094871997833
+        },
+        "aligned_12": {
+          "source_camera_psnr": 21.490272521972656,
+          "query_psnr": 21.371736526489258,
+          "metric_abs_rel": 0.279390424489975,
+          "aligned_abs_rel": 0.24471746385097504
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 21.828197479248047,
+          "query_psnr": 21.867900848388672,
+          "metric_abs_rel": 0.19876882433891296,
+          "aligned_abs_rel": 0.19560912251472473
+        }
+      },
+      "source_copy_psnr": 26.485719680786133,
+      "identity_rotation_deg": 0.5914912819862366,
+      "plane_abs_rel": 0.16755613684654236
+    },
+    {
+      "start": 1974,
+      "valid_rays": 1533,
+      "depth_dt_s": [
+        0.009407520294189453,
+        0.013232707977294922
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 15.057473182678223,
+          "query_psnr": 15.061332702636719,
+          "metric_abs_rel": 0.33280760049819946,
+          "aligned_abs_rel": 0.3224785029888153
+        },
+        "aligned_10": {
+          "source_camera_psnr": 15.063496589660645,
+          "query_psnr": 15.069876670837402,
+          "metric_abs_rel": 0.35845664143562317,
+          "aligned_abs_rel": 0.35689210891723633
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 15.136653900146484,
+          "query_psnr": 15.157424926757812,
+          "metric_abs_rel": 0.38063713908195496,
+          "aligned_abs_rel": 0.34096643328666687
+        },
+        "none_11": {
+          "source_camera_psnr": 14.888744354248047,
+          "query_psnr": 14.894964218139648,
+          "metric_abs_rel": 0.32256948947906494,
+          "aligned_abs_rel": 0.3323552906513214
+        },
+        "aligned_11": {
+          "source_camera_psnr": 15.088683128356934,
+          "query_psnr": 15.077459335327148,
+          "metric_abs_rel": 0.3234933018684387,
+          "aligned_abs_rel": 0.3110922574996948
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 15.103053092956543,
+          "query_psnr": 15.095426559448242,
+          "metric_abs_rel": 0.3614971935749054,
+          "aligned_abs_rel": 0.33252984285354614
+        },
+        "none_12": {
+          "source_camera_psnr": 15.063009262084961,
+          "query_psnr": 15.064905166625977,
+          "metric_abs_rel": 0.3196915090084076,
+          "aligned_abs_rel": 0.2739903926849365
+        },
+        "aligned_12": {
+          "source_camera_psnr": 15.016548156738281,
+          "query_psnr": 15.004939079284668,
+          "metric_abs_rel": 0.31150293350219727,
+          "aligned_abs_rel": 0.29647499322891235
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 15.196495056152344,
+          "query_psnr": 15.218400001525879,
+          "metric_abs_rel": 0.37051308155059814,
+          "aligned_abs_rel": 0.2494538277387619
+        }
+      },
+      "source_copy_psnr": 19.2935791015625,
+      "identity_rotation_deg": 0.7230757474899292,
+      "plane_abs_rel": 0.23887480795383453
+    },
+    {
+      "start": 2060,
+      "valid_rays": 1520,
+      "depth_dt_s": [
+        0.0013127326965332031,
+        0.023838520050048828
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 11.965936660766602,
+          "query_psnr": 12.039137840270996,
+          "metric_abs_rel": 0.3848824203014374,
+          "aligned_abs_rel": 0.2126503884792328
+        },
+        "aligned_10": {
+          "source_camera_psnr": 11.885875701904297,
+          "query_psnr": 12.013151168823242,
+          "metric_abs_rel": 0.40281009674072266,
+          "aligned_abs_rel": 0.2448715716600418
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 12.131012916564941,
+          "query_psnr": 11.980113983154297,
+          "metric_abs_rel": 0.4661431908607483,
+          "aligned_abs_rel": 0.2514267563819885
+        },
+        "none_11": {
+          "source_camera_psnr": 12.204428672790527,
+          "query_psnr": 12.404275894165039,
+          "metric_abs_rel": 0.3756951689720154,
+          "aligned_abs_rel": 0.24890322983264923
+        },
+        "aligned_11": {
+          "source_camera_psnr": 12.136735916137695,
+          "query_psnr": 12.217446327209473,
+          "metric_abs_rel": 0.3698394000530243,
+          "aligned_abs_rel": 0.18578515946865082
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 12.224834442138672,
+          "query_psnr": 12.282501220703125,
+          "metric_abs_rel": 0.41902419924736023,
+          "aligned_abs_rel": 0.16587308049201965
+        },
+        "none_12": {
+          "source_camera_psnr": 11.453229904174805,
+          "query_psnr": 11.590958595275879,
+          "metric_abs_rel": 0.4380432665348053,
+          "aligned_abs_rel": 0.20922443270683289
+        },
+        "aligned_12": {
+          "source_camera_psnr": 11.357216835021973,
+          "query_psnr": 11.720000267028809,
+          "metric_abs_rel": 0.38282352685928345,
+          "aligned_abs_rel": 0.18352195620536804
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 11.813492774963379,
+          "query_psnr": 11.56786060333252,
+          "metric_abs_rel": 0.5070288181304932,
+          "aligned_abs_rel": 0.17105558514595032
+        }
+      },
+      "source_copy_psnr": 20.8457088470459,
+      "identity_rotation_deg": 1.9115172624588013,
+      "plane_abs_rel": 0.1389561891555786
+    },
+    {
+      "start": 2145,
+      "valid_rays": 1533,
+      "depth_dt_s": [
+        0.00790548324584961,
+        0.014620780944824219
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 11.349501609802246,
+          "query_psnr": 11.276444435119629,
+          "metric_abs_rel": 0.2755112946033478,
+          "aligned_abs_rel": 0.28262093663215637
+        },
+        "aligned_10": {
+          "source_camera_psnr": 11.283037185668945,
+          "query_psnr": 11.25114631652832,
+          "metric_abs_rel": 0.34686121344566345,
+          "aligned_abs_rel": 0.360844224691391
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 11.442634582519531,
+          "query_psnr": 11.36491584777832,
+          "metric_abs_rel": 0.3199719190597534,
+          "aligned_abs_rel": 0.33893048763275146
+        },
+        "none_11": {
+          "source_camera_psnr": 11.5504732131958,
+          "query_psnr": 11.513448715209961,
+          "metric_abs_rel": 0.28255507349967957,
+          "aligned_abs_rel": 0.28055980801582336
+        },
+        "aligned_11": {
+          "source_camera_psnr": 11.539192199707031,
+          "query_psnr": 11.510929107666016,
+          "metric_abs_rel": 0.23489418625831604,
+          "aligned_abs_rel": 0.23774324357509613
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 11.612346649169922,
+          "query_psnr": 11.5780029296875,
+          "metric_abs_rel": 0.2946559190750122,
+          "aligned_abs_rel": 0.2749852240085602
+        },
+        "none_12": {
+          "source_camera_psnr": 11.032646179199219,
+          "query_psnr": 10.994756698608398,
+          "metric_abs_rel": 0.22044286131858826,
+          "aligned_abs_rel": 0.22428135573863983
+        },
+        "aligned_12": {
+          "source_camera_psnr": 11.072932243347168,
+          "query_psnr": 11.028345108032227,
+          "metric_abs_rel": 0.23448485136032104,
+          "aligned_abs_rel": 0.24166689813137054
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 11.346901893615723,
+          "query_psnr": 11.218067169189453,
+          "metric_abs_rel": 0.18785908818244934,
+          "aligned_abs_rel": 0.13720294833183289
+        }
+      },
+      "source_copy_psnr": 18.691843032836914,
+      "identity_rotation_deg": 0.40348300337791443,
+      "plane_abs_rel": 0.09206261485815048
+    },
+    {
+      "start": 2231,
+      "valid_rays": 1522,
+      "depth_dt_s": [
+        0.005382537841796875,
+        0.02184152603149414
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 12.870282173156738,
+          "query_psnr": 12.8815279006958,
+          "metric_abs_rel": 0.26614639163017273,
+          "aligned_abs_rel": 0.25270378589630127
+        },
+        "aligned_10": {
+          "source_camera_psnr": 12.763479232788086,
+          "query_psnr": 12.78783893585205,
+          "metric_abs_rel": 0.2961869537830353,
+          "aligned_abs_rel": 0.28609219193458557
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 12.98270320892334,
+          "query_psnr": 12.992033004760742,
+          "metric_abs_rel": 0.3301979899406433,
+          "aligned_abs_rel": 0.2830204665660858
+        },
+        "none_11": {
+          "source_camera_psnr": 12.995109558105469,
+          "query_psnr": 13.047274589538574,
+          "metric_abs_rel": 0.26748159527778625,
+          "aligned_abs_rel": 0.26778316497802734
+        },
+        "aligned_11": {
+          "source_camera_psnr": 12.925640106201172,
+          "query_psnr": 12.946919441223145,
+          "metric_abs_rel": 0.23861409723758698,
+          "aligned_abs_rel": 0.21224795281887054
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 12.979537963867188,
+          "query_psnr": 13.021451950073242,
+          "metric_abs_rel": 0.2897370755672455,
+          "aligned_abs_rel": 0.2242136001586914
+        },
+        "none_12": {
+          "source_camera_psnr": 12.549066543579102,
+          "query_psnr": 12.617252349853516,
+          "metric_abs_rel": 0.25001439452171326,
+          "aligned_abs_rel": 0.21019239723682404
+        },
+        "aligned_12": {
+          "source_camera_psnr": 12.518080711364746,
+          "query_psnr": 12.586511611938477,
+          "metric_abs_rel": 0.23352406919002533,
+          "aligned_abs_rel": 0.20690031349658966
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 12.830862998962402,
+          "query_psnr": 12.659111976623535,
+          "metric_abs_rel": 0.30982908606529236,
+          "aligned_abs_rel": 0.1684478223323822
+        }
+      },
+      "source_copy_psnr": 21.62319564819336,
+      "identity_rotation_deg": 0.6584911942481995,
+      "plane_abs_rel": 0.13283002376556396
+    },
+    {
+      "start": 2317,
+      "valid_rays": 1535,
+      "depth_dt_s": [
+        0.01721048355102539,
+        0.010196447372436523
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 16.046350479125977,
+          "query_psnr": 14.731542587280273,
+          "metric_abs_rel": 0.4189659357070923,
+          "aligned_abs_rel": 0.409976601600647
+        },
+        "aligned_10": {
+          "source_camera_psnr": 16.03650665283203,
+          "query_psnr": 15.021469116210938,
+          "metric_abs_rel": 0.4064235985279083,
+          "aligned_abs_rel": 0.4132857322692871
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 16.164859771728516,
+          "query_psnr": 14.83217716217041,
+          "metric_abs_rel": 0.3770356774330139,
+          "aligned_abs_rel": 0.4134436249732971
+        },
+        "none_11": {
+          "source_camera_psnr": 16.1053524017334,
+          "query_psnr": 15.555292129516602,
+          "metric_abs_rel": 0.4475080072879791,
+          "aligned_abs_rel": 0.42801111936569214
+        },
+        "aligned_11": {
+          "source_camera_psnr": 16.151077270507812,
+          "query_psnr": 15.082509994506836,
+          "metric_abs_rel": 0.40757879614830017,
+          "aligned_abs_rel": 0.3780948519706726
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 16.1959228515625,
+          "query_psnr": 14.79813003540039,
+          "metric_abs_rel": 0.3858642578125,
+          "aligned_abs_rel": 0.3904705047607422
+        },
+        "none_12": {
+          "source_camera_psnr": 15.697354316711426,
+          "query_psnr": 14.555044174194336,
+          "metric_abs_rel": 0.3364797830581665,
+          "aligned_abs_rel": 0.3524598777294159
+        },
+        "aligned_12": {
+          "source_camera_psnr": 15.630644798278809,
+          "query_psnr": 15.085739135742188,
+          "metric_abs_rel": 0.37630343437194824,
+          "aligned_abs_rel": 0.36165758967399597
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 15.875699996948242,
+          "query_psnr": 13.767332077026367,
+          "metric_abs_rel": 0.30674082040786743,
+          "aligned_abs_rel": 0.3338596820831299
+        }
+      },
+      "source_copy_psnr": 21.411333084106445,
+      "identity_rotation_deg": 0.46393829584121704,
+      "plane_abs_rel": 0.32123422622680664
+    },
+    {
+      "start": 2402,
+      "valid_rays": 1386,
+      "depth_dt_s": [
+        0.010864496231079102,
+        0.016516447067260742
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 13.459619522094727,
+          "query_psnr": 13.41733169555664,
+          "metric_abs_rel": 0.5667198896408081,
+          "aligned_abs_rel": 0.38793060183525085
+        },
+        "aligned_10": {
+          "source_camera_psnr": 13.68122673034668,
+          "query_psnr": 13.631186485290527,
+          "metric_abs_rel": 0.5464344620704651,
+          "aligned_abs_rel": 0.407757043838501
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 13.187618255615234,
+          "query_psnr": 13.136524200439453,
+          "metric_abs_rel": 0.47885963320732117,
+          "aligned_abs_rel": 0.44271600246429443
+        },
+        "none_11": {
+          "source_camera_psnr": 13.39107608795166,
+          "query_psnr": 13.362009048461914,
+          "metric_abs_rel": 0.6891524195671082,
+          "aligned_abs_rel": 0.45730942487716675
+        },
+        "aligned_11": {
+          "source_camera_psnr": 13.273839950561523,
+          "query_psnr": 13.208054542541504,
+          "metric_abs_rel": 0.6140663027763367,
+          "aligned_abs_rel": 0.3884911835193634
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 13.345891952514648,
+          "query_psnr": 13.246356010437012,
+          "metric_abs_rel": 0.4189925193786621,
+          "aligned_abs_rel": 0.3327164351940155
+        },
+        "none_12": {
+          "source_camera_psnr": 13.184815406799316,
+          "query_psnr": 13.198786735534668,
+          "metric_abs_rel": 0.5404021739959717,
+          "aligned_abs_rel": 0.3933393359184265
+        },
+        "aligned_12": {
+          "source_camera_psnr": 12.823752403259277,
+          "query_psnr": 12.841010093688965,
+          "metric_abs_rel": 0.5283200740814209,
+          "aligned_abs_rel": 0.3318638205528259
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 12.913676261901855,
+          "query_psnr": 12.869606018066406,
+          "metric_abs_rel": 0.3957732319831848,
+          "aligned_abs_rel": 0.3264695405960083
+        }
+      },
+      "source_copy_psnr": 13.109249114990234,
+      "identity_rotation_deg": 0.23239004611968994,
+      "plane_abs_rel": 0.28666791319847107
+    },
+    {
+      "start": 2488,
+      "valid_rays": 1266,
+      "depth_dt_s": [
+        0.020850419998168945,
+        0.006611347198486328
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 20.125532150268555,
+          "query_psnr": 19.569799423217773,
+          "metric_abs_rel": 2.568006992340088,
+          "aligned_abs_rel": 0.2985802888870239
+        },
+        "aligned_10": {
+          "source_camera_psnr": 19.819169998168945,
+          "query_psnr": 19.317903518676758,
+          "metric_abs_rel": 2.5723490715026855,
+          "aligned_abs_rel": 0.3464919924736023
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 21.182031631469727,
+          "query_psnr": 20.596595764160156,
+          "metric_abs_rel": 2.196631908416748,
+          "aligned_abs_rel": 0.3411724865436554
+        },
+        "none_11": {
+          "source_camera_psnr": 21.323976516723633,
+          "query_psnr": 20.924571990966797,
+          "metric_abs_rel": 2.787022113800049,
+          "aligned_abs_rel": 0.32869115471839905
+        },
+        "aligned_11": {
+          "source_camera_psnr": 21.19582748413086,
+          "query_psnr": 20.759937286376953,
+          "metric_abs_rel": 2.6491353511810303,
+          "aligned_abs_rel": 0.33383503556251526
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 21.246124267578125,
+          "query_psnr": 20.945266723632812,
+          "metric_abs_rel": 2.194739818572998,
+          "aligned_abs_rel": 0.29777634143829346
+        },
+        "none_12": {
+          "source_camera_psnr": 19.91593360900879,
+          "query_psnr": 19.461942672729492,
+          "metric_abs_rel": 2.3949193954467773,
+          "aligned_abs_rel": 0.2947975993156433
+        },
+        "aligned_12": {
+          "source_camera_psnr": 20.019559860229492,
+          "query_psnr": 19.669288635253906,
+          "metric_abs_rel": 2.424318552017212,
+          "aligned_abs_rel": 0.26753470301628113
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 21.154050827026367,
+          "query_psnr": 19.726512908935547,
+          "metric_abs_rel": 1.8892654180526733,
+          "aligned_abs_rel": 0.2523376941680908
+        }
+      },
+      "source_copy_psnr": 22.46637725830078,
+      "identity_rotation_deg": 1.0914568901062012,
+      "plane_abs_rel": 0.2281041294336319
+    },
+    {
+      "start": 2574,
+      "valid_rays": 560,
+      "depth_dt_s": [
+        0.022396326065063477,
+        0.000110626220703125
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 23.324148178100586,
+          "query_psnr": 23.34100914001465,
+          "metric_abs_rel": 4.705711364746094,
+          "aligned_abs_rel": 0.21869462728500366
+        },
+        "aligned_10": {
+          "source_camera_psnr": 22.91023063659668,
+          "query_psnr": 22.947372436523438,
+          "metric_abs_rel": 4.555956840515137,
+          "aligned_abs_rel": 0.2336304783821106
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 23.240556716918945,
+          "query_psnr": 23.26970672607422,
+          "metric_abs_rel": 4.11120080947876,
+          "aligned_abs_rel": 0.24863842129707336
+        },
+        "none_11": {
+          "source_camera_psnr": 23.935853958129883,
+          "query_psnr": 23.94273567199707,
+          "metric_abs_rel": 4.873237133026123,
+          "aligned_abs_rel": 0.25594988465309143
+        },
+        "aligned_11": {
+          "source_camera_psnr": 23.339946746826172,
+          "query_psnr": 23.347225189208984,
+          "metric_abs_rel": 4.886545658111572,
+          "aligned_abs_rel": 0.1950075775384903
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 23.454999923706055,
+          "query_psnr": 23.458168029785156,
+          "metric_abs_rel": 4.561346054077148,
+          "aligned_abs_rel": 0.20238013565540314
+        },
+        "none_12": {
+          "source_camera_psnr": 21.671445846557617,
+          "query_psnr": 21.677536010742188,
+          "metric_abs_rel": 4.035183429718018,
+          "aligned_abs_rel": 0.19899149239063263
+        },
+        "aligned_12": {
+          "source_camera_psnr": 21.140413284301758,
+          "query_psnr": 21.154151916503906,
+          "metric_abs_rel": 4.701744556427002,
+          "aligned_abs_rel": 0.2088332176208496
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 22.45844078063965,
+          "query_psnr": 22.470083236694336,
+          "metric_abs_rel": 3.4258711338043213,
+          "aligned_abs_rel": 0.18325841426849365
+        }
+      },
+      "source_copy_psnr": 35.68431854248047,
+      "identity_rotation_deg": 4.018928527832031,
+      "plane_abs_rel": 0.1826101541519165
+    },
+    {
+      "start": 2660,
+      "valid_rays": 196,
+      "depth_dt_s": [
+        0.01552438735961914,
+        0.09304332733154297
+      ],
+      "arms": {
+        "none_10": {
+          "source_camera_psnr": 23.961944580078125,
+          "query_psnr": 23.959360122680664,
+          "metric_abs_rel": 2.0884430408477783,
+          "aligned_abs_rel": 0.14151225984096527
+        },
+        "aligned_10": {
+          "source_camera_psnr": 23.846004486083984,
+          "query_psnr": 23.839929580688477,
+          "metric_abs_rel": 2.135089635848999,
+          "aligned_abs_rel": 0.14088699221611023
+        },
+        "wrong_training_time_10": {
+          "source_camera_psnr": 23.885746002197266,
+          "query_psnr": 23.88042640686035,
+          "metric_abs_rel": 2.1501693725585938,
+          "aligned_abs_rel": 0.1506587713956833
+        },
+        "none_11": {
+          "source_camera_psnr": 23.911823272705078,
+          "query_psnr": 23.900123596191406,
+          "metric_abs_rel": 2.0693089962005615,
+          "aligned_abs_rel": 0.1535315066576004
+        },
+        "aligned_11": {
+          "source_camera_psnr": 23.86240005493164,
+          "query_psnr": 23.850038528442383,
+          "metric_abs_rel": 2.3005361557006836,
+          "aligned_abs_rel": 0.13859620690345764
+        },
+        "wrong_training_time_11": {
+          "source_camera_psnr": 23.8771915435791,
+          "query_psnr": 23.870140075683594,
+          "metric_abs_rel": 2.214901924133301,
+          "aligned_abs_rel": 0.13559435307979584
+        },
+        "none_12": {
+          "source_camera_psnr": 24.026775360107422,
+          "query_psnr": 24.01473617553711,
+          "metric_abs_rel": 1.805802583694458,
+          "aligned_abs_rel": 0.13827776908874512
+        },
+        "aligned_12": {
+          "source_camera_psnr": 24.087980270385742,
+          "query_psnr": 24.08136749267578,
+          "metric_abs_rel": 2.0560383796691895,
+          "aligned_abs_rel": 0.143077090382576
+        },
+        "wrong_training_time_12": {
+          "source_camera_psnr": 23.764135360717773,
+          "query_psnr": 23.744504928588867,
+          "metric_abs_rel": 1.7714956998825073,
+          "aligned_abs_rel": 0.13595789670944214
+        }
+      },
+      "source_copy_psnr": 45.874732971191406,
+      "identity_rotation_deg": 0.1532333940267563,
+      "plane_abs_rel": 0.12874625623226166
+    }
+  ]
+}

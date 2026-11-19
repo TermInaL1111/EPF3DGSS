@@ -1,0 +1,702 @@
+{
+  "steps": 200,
+  "train": [
+    "CaffeeMachine",
+    "Breakfast",
+    "Duck",
+    "Airbus",
+    "Towel",
+    "Football",
+    "Burger",
+    "Cola",
+    "Car",
+    "Bed",
+    "ChickenRice",
+    "Icecream"
+  ],
+  "validation": [
+    "Arms",
+    "Capybara",
+    "Robot",
+    "Woman",
+    "Shoes",
+    "Train"
+  ],
+  "peak_allocated_gib": 0.3300957679748535,
+  "batch": 1,
+  "seed": 10,
+  "rows": [
+    {
+      "scene": "Arms",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.035526275634766,
+        "foreground": 13.575982093811035
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.569482803344727,
+        "foreground": 13.628225326538086
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.942874908447266,
+        "foreground": 14.618217468261719
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.155258178710938,
+        "foreground": 14.094064712524414
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.23989486694336,
+        "foreground": 14.088165283203125
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.259794235229492,
+        "foreground": 13.5701904296875
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.93914222717285,
+        "foreground": 13.850723266601562
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.146587371826172,
+        "foreground": 13.460091590881348
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.22755241394043,
+        "foreground": 13.209087371826172
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.78628158569336,
+        "foreground": 13.091329574584961
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.93058204650879,
+        "foreground": 13.998506546020508
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.434812545776367,
+        "foreground": 14.032951354980469
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.050474166870117,
+        "foreground": 14.137031555175781
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.40395736694336,
+        "foreground": 14.29757022857666
+      }
+    },
+    {
+      "scene": "Arms",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.751569747924805,
+        "foreground": 15.218975067138672
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.080150604248047,
+        "foreground": 15.156766891479492
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.073137283325195,
+        "foreground": 17.93632698059082
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.89594841003418,
+        "foreground": 17.090028762817383
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.42584800720215,
+        "foreground": 17.208755493164062
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.308002471923828,
+        "foreground": 16.5700740814209
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.862329483032227,
+        "foreground": 15.264209747314453
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.902517318725586,
+        "foreground": 15.557397842407227
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.94764518737793,
+        "foreground": 15.07790756225586
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.687170028686523,
+        "foreground": 15.005040168762207
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.063627243041992,
+        "foreground": 16.130659103393555
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.90017318725586,
+        "foreground": 16.317697525024414
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.30025863647461,
+        "foreground": 16.378084182739258
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 24.056217193603516,
+        "foreground": 16.5157470703125
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.622777938842773,
+        "foreground": 14.874438285827637
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.982675552368164,
+        "foreground": 15.434896469116211
+      }
+    },
+    {
+      "scene": "Capybara",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.174989700317383,
+        "foreground": 14.773773193359375
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.632658004760742,
+        "foreground": 15.566492080688477
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.033428192138672,
+        "foreground": 13.387338638305664
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.682294845581055,
+        "foreground": 14.757518768310547
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.972095489501953,
+        "foreground": 15.018136978149414
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.558849334716797,
+        "foreground": 16.234582901000977
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.437847137451172,
+        "foreground": 15.577505111694336
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.39341926574707,
+        "foreground": 16.10167694091797
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.68016815185547,
+        "foreground": 14.659032821655273
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.345733642578125,
+        "foreground": 15.862282752990723
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.825010299682617,
+        "foreground": 14.6761474609375
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.652742385864258,
+        "foreground": 15.800350189208984
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.08442497253418,
+        "foreground": 12.141393661499023
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.757678985595703,
+        "foreground": 14.987014770507812
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 23.883914947509766,
+        "foreground": 11.704391479492188
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.52470588684082,
+        "foreground": 14.996927261352539
+      }
+    },
+    {
+      "scene": "Robot",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.106056213378906,
+        "foreground": 12.260056495666504
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.655075073242188,
+        "foreground": 14.996517181396484
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 21.953102111816406,
+        "foreground": 11.072941780090332
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 21.513629913330078,
+        "foreground": 10.835780143737793
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.36049461364746,
+        "foreground": 11.451807022094727
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.041139602661133,
+        "foreground": 11.262638092041016
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.452173233032227,
+        "foreground": 11.353875160217285
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.377197265625,
+        "foreground": 11.491437911987305
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.282623291015625,
+        "foreground": 10.95606803894043
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.48788833618164,
+        "foreground": 11.425915718078613
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 22.875194549560547,
+        "foreground": 11.405021667480469
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 22.938871383666992,
+        "foreground": 11.706022262573242
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.295936584472656,
+        "foreground": 12.678284645080566
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 24.04422378540039,
+        "foreground": 12.65234375
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 24.853309631347656,
+        "foreground": 13.530797004699707
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.84559440612793,
+        "foreground": 12.747992515563965
+      }
+    },
+    {
+      "scene": "Woman",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.178335189819336,
+        "foreground": 14.338918685913086
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.34061622619629,
+        "foreground": 14.821053504943848
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.131345748901367,
+        "foreground": 14.24494743347168
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.092201232910156,
+        "foreground": 14.564077377319336
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.80782127380371,
+        "foreground": 14.924440383911133
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.57666778564453,
+        "foreground": 15.360245704650879
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.768110275268555,
+        "foreground": 15.354061126708984
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.47182846069336,
+        "foreground": 15.797224998474121
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.591489791870117,
+        "foreground": 15.638718605041504
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.24881362915039,
+        "foreground": 16.05181121826172
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.05917739868164,
+        "foreground": 15.744386672973633
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.067901611328125,
+        "foreground": 16.326738357543945
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.333499908447266,
+        "foreground": 16.066326141357422
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.166179656982422,
+        "foreground": 16.356849670410156
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.60289764404297,
+        "foreground": 15.074873924255371
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.349327087402344,
+        "foreground": 15.581993103027344
+      }
+    },
+    {
+      "scene": "Shoes",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.371807098388672,
+        "foreground": 14.865184783935547
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.44264030456543,
+        "foreground": 15.326955795288086
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 4,
+      "coarse": {
+        "count": 1536,
+        "psnr": 23.446266174316406,
+        "foreground": 11.95528507232666
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.35740089416504,
+        "foreground": 11.899042129516602
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 11,
+      "coarse": {
+        "count": 1536,
+        "psnr": 23.26708984375,
+        "foreground": 11.531852722167969
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 23.472537994384766,
+        "foreground": 11.764339447021484
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 18,
+      "coarse": {
+        "count": 1536,
+        "psnr": 25.955617904663086,
+        "foreground": 14.289871215820312
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 25.103511810302734,
+        "foreground": 13.371105194091797
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 25,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.340469360351562,
+        "foreground": 14.683489799499512
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.95846176147461,
+        "foreground": 14.915986061096191
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 32,
+      "coarse": {
+        "count": 1536,
+        "psnr": 27.767257690429688,
+        "foreground": 14.446258544921875
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 27.47254180908203,
+        "foreground": 14.91140365600586
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 39,
+      "coarse": {
+        "count": 1536,
+        "psnr": 29.619464874267578,
+        "foreground": 15.809330940246582
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 28.83169174194336,
+        "foreground": 16.594255447387695
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 46,
+      "coarse": {
+        "count": 1536,
+        "psnr": 29.912906646728516,
+        "foreground": 16.870162963867188
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 29.013349533081055,
+        "foreground": 17.09893035888672
+      }
+    },
+    {
+      "scene": "Train",
+      "start": 53,
+      "coarse": {
+        "count": 1536,
+        "psnr": 26.942352294921875,
+        "foreground": 14.41197395324707
+      },
+      "pixel": {
+        "count": 614400,
+        "psnr": 26.410930633544922,
+        "foreground": 14.281010627746582
+      }
+    }
+  ]
+}
