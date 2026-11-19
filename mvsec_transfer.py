@@ -11,6 +11,7 @@ import torch
 import yaml
 from model import EventGaussians
 from pilot import bin_events
+from event_field import EventField
 
 
 def lower_bound_after(events,t):
@@ -42,7 +43,13 @@ def calibration(path):
 def evaluate(args):
     mapping,inverse = calibration(args.calibration)
     weights = torch.load(args.checkpoint,map_location="cpu",weights_only=True)
-    model = EventGaussians()
+    channels = weights["encoder.0.weight"].shape[1]
+    field = None
+    if channels == 36:
+        if not args.f3_repository or not args.f3_checkpoint:
+            raise ValueError("F³ weights and repository are required by this student")
+        field = EventField(args.f3_repository,args.f3_checkpoint)
+    model = EventGaussians(channels)
     model.load_state_dict(weights)
     model.cuda().eval()
     rows = []
@@ -67,7 +74,11 @@ def evaluate(args):
                     events = cam["events"]
                     block = events[lower_bound_after(events,times[frame-1]):lower_bound_after(events,times[frame])]
                     xy = mapping[block[:,1].astype(int),block[:,0].astype(int)]
-                    packets.append(bin_events(np.column_stack([xy,block[:,2:]]).T))
+                    raw = np.column_stack([xy,block[:,2:]]).T
+                    counts = bin_events(raw).cuda()
+                    if field is not None:
+                        counts = torch.cat([counts,field(raw).half().float()],dim=0)
+                    packets.append(counts)
                 label = []
                 for frame in frame_ids[:2]:
                     full = cv2.remap(cam["image_raw"][frame],*inverse,cv2.INTER_LINEAR)
@@ -90,4 +101,6 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("root","calibration","checkpoint","out"):
         p.add_argument(name,type=Path)
+    p.add_argument("--f3-repository",type=Path)
+    p.add_argument("--f3-checkpoint",type=Path)
     evaluate(p.parse_args())

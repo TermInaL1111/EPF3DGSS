@@ -1,0 +1,56 @@
+{
+  "train": [
+    "CaffeeMachine",
+    "Breakfast",
+    "Duck",
+    "Airbus",
+    "Towel",
+    "Football",
+    "Burger",
+    "Cola",
+    "Car",
+    "Bed",
+    "ChickenRice",
+    "Icecream"
+  ],
+  "validation": [
+    "Arms",
+    "Capybara",
+    "Robot",
+    "Woman",
+    "Shoes",
+    "Train"
+  ],
+  "steps": 400,
+  "seed": 12,
+  "arms": {
+    "0.0": {
+      "scene_psnr": [
+        28.688129425048828,
+        22.61025619506836,
+        29.575782775878906,
+        23.34113311767578,
+        25.61446762084961,
+        27.407907485961914
+      ],
+      "mean_psnr": 26.206279436747234
+    },
+    "0.1": {
+      "scene_psnr": [
+        28.786144256591797,
+        22.193302154541016,
+        30.293495178222656,
+        24.012313842773438,
+        25.027904510498047,
+        28.882545471191406
+      ],
+      "mean_psnr": 26.532617568969727
+    }
+  },
+  "foreground_loss": true,
+  "event_fields": true,
+  "mixed_spacing": false,
+  "teacher": "loop",
+  "teacher_permuted": true,
+  "depth_weighting": null
+}
