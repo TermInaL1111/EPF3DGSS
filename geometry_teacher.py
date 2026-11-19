@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ev3ds_pose import camera
 from PIL import Image
 from safetensors.torch import load_file
 import torch
@@ -72,8 +73,7 @@ def extract(args):
                 rays = out["rays"].float()
                 pose, _ = rays_to_pose(rays, torch.ones_like(rays[...,0]),336,448,14)
                 pred = torch.linalg.inv(pose[0,0]) @ pose[0,1]
-                cv = np.diag([1,-1,-1,1])
-                poses = [np.loadtxt(args.root/"Poses"/f"r_{j+1:04}.txt") @ cv for j in frames]
+                poses = [camera(args.root,scene,j) for j in frames]
                 gt = torch.tensor(np.linalg.inv(poses[0]) @ poses[1],device="cuda",dtype=torch.float32)
                 rot = pred[:3,:3].T @ gt[:3,:3]
                 row = dict(split=split,scene=scene,frame=i,rotation_error_deg=angle((rot.trace()-1)/2),

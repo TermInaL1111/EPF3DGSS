@@ -1,0 +1,722 @@
+[
+  {
+    "sequence": "indoor_flying1",
+    "start": 2,
+    "source_copy_psnr": 51.1552619934082,
+    "matched_psnr": 17.259361267089844,
+    "matched_rotation_deg": 6.657083511352539,
+    "zero_psnr": 17.11191177368164,
+    "zero_rotation_deg": 6.421197891235352,
+    "identity_rotation_deg": 0.13988231122493744
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 97,
+    "source_copy_psnr": 29.670209884643555,
+    "matched_psnr": 17.950908660888672,
+    "matched_rotation_deg": 6.7434306144714355,
+    "zero_psnr": 17.619754791259766,
+    "zero_rotation_deg": 5.895946025848389,
+    "identity_rotation_deg": 0.6471007466316223
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 193,
+    "source_copy_psnr": 20.35580825805664,
+    "matched_psnr": 11.47111701965332,
+    "matched_rotation_deg": 6.985108852386475,
+    "zero_psnr": 12.27878189086914,
+    "zero_rotation_deg": 6.8048095703125,
+    "identity_rotation_deg": 0.41871416568756104
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 288,
+    "source_copy_psnr": 18.59821891784668,
+    "matched_psnr": 14.25370979309082,
+    "matched_rotation_deg": 6.061262607574463,
+    "zero_psnr": 14.744139671325684,
+    "zero_rotation_deg": 5.924534797668457,
+    "identity_rotation_deg": 0.7470343112945557
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 384,
+    "source_copy_psnr": 17.615806579589844,
+    "matched_psnr": 12.974365234375,
+    "matched_rotation_deg": 6.021285533905029,
+    "zero_psnr": 15.335930824279785,
+    "zero_rotation_deg": 6.192958831787109,
+    "identity_rotation_deg": 0.3000144064426422
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 480,
+    "source_copy_psnr": 19.86415672302246,
+    "matched_psnr": 13.772257804870605,
+    "matched_rotation_deg": 5.6782355308532715,
+    "zero_psnr": 14.47506332397461,
+    "zero_rotation_deg": 5.291205883026123,
+    "identity_rotation_deg": 4.6413140296936035
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 575,
+    "source_copy_psnr": 21.551912307739258,
+    "matched_psnr": 11.144065856933594,
+    "matched_rotation_deg": 9.987570762634277,
+    "zero_psnr": 10.66389274597168,
+    "zero_rotation_deg": 9.43960952758789,
+    "identity_rotation_deg": 5.481906414031982
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 671,
+    "source_copy_psnr": 22.617530822753906,
+    "matched_psnr": 13.524521827697754,
+    "matched_rotation_deg": 8.454148292541504,
+    "zero_psnr": 13.464448928833008,
+    "zero_rotation_deg": 7.785505771636963,
+    "identity_rotation_deg": 3.017139434814453
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 766,
+    "source_copy_psnr": 23.409669876098633,
+    "matched_psnr": 12.280830383300781,
+    "matched_rotation_deg": 5.6536760330200195,
+    "zero_psnr": 14.241317749023438,
+    "zero_rotation_deg": 5.115960597991943,
+    "identity_rotation_deg": 1.8998098373413086
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 862,
+    "source_copy_psnr": 26.346900939941406,
+    "matched_psnr": 11.865262985229492,
+    "matched_rotation_deg": 8.264816284179688,
+    "zero_psnr": 13.05348014831543,
+    "zero_rotation_deg": 7.648833751678467,
+    "identity_rotation_deg": 1.9878066778182983
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 958,
+    "source_copy_psnr": 28.465343475341797,
+    "matched_psnr": 12.790850639343262,
+    "matched_rotation_deg": 8.875066757202148,
+    "zero_psnr": 14.01800537109375,
+    "zero_rotation_deg": 8.218311309814453,
+    "identity_rotation_deg": 3.1187245845794678
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1053,
+    "source_copy_psnr": 16.982051849365234,
+    "matched_psnr": 12.077618598937988,
+    "matched_rotation_deg": 5.980648517608643,
+    "zero_psnr": 14.504133224487305,
+    "zero_rotation_deg": 6.235047340393066,
+    "identity_rotation_deg": 4.070059776306152
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1149,
+    "source_copy_psnr": 21.224266052246094,
+    "matched_psnr": 14.951872825622559,
+    "matched_rotation_deg": 7.7659687995910645,
+    "zero_psnr": 16.429731369018555,
+    "zero_rotation_deg": 7.380067348480225,
+    "identity_rotation_deg": 1.5652307271957397
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1244,
+    "source_copy_psnr": 20.978713989257812,
+    "matched_psnr": 15.071718215942383,
+    "matched_rotation_deg": 6.320558071136475,
+    "zero_psnr": 15.381828308105469,
+    "zero_rotation_deg": 5.853169918060303,
+    "identity_rotation_deg": 2.3551785945892334
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1340,
+    "source_copy_psnr": 27.200593948364258,
+    "matched_psnr": 14.190665245056152,
+    "matched_rotation_deg": 7.4304656982421875,
+    "zero_psnr": 14.090118408203125,
+    "zero_rotation_deg": 6.695213317871094,
+    "identity_rotation_deg": 0.31027427315711975
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1436,
+    "source_copy_psnr": 23.822118759155273,
+    "matched_psnr": 13.025003433227539,
+    "matched_rotation_deg": 6.990161895751953,
+    "zero_psnr": 13.416333198547363,
+    "zero_rotation_deg": 6.1827569007873535,
+    "identity_rotation_deg": 0.44849780201911926
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1531,
+    "source_copy_psnr": 19.56279754638672,
+    "matched_psnr": 7.790000915527344,
+    "matched_rotation_deg": 11.44977855682373,
+    "zero_psnr": 7.42515754699707,
+    "zero_rotation_deg": 10.72174072265625,
+    "identity_rotation_deg": 6.431023120880127
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1627,
+    "source_copy_psnr": 21.980117797851562,
+    "matched_psnr": 12.614364624023438,
+    "matched_rotation_deg": 6.446614742279053,
+    "zero_psnr": 14.241480827331543,
+    "zero_rotation_deg": 5.664273738861084,
+    "identity_rotation_deg": 0.8098755478858948
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1722,
+    "source_copy_psnr": 25.300193786621094,
+    "matched_psnr": 13.164361953735352,
+    "matched_rotation_deg": 7.004627704620361,
+    "zero_psnr": 13.280526161193848,
+    "zero_rotation_deg": 6.073347091674805,
+    "identity_rotation_deg": 0.4813265800476074
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1818,
+    "source_copy_psnr": 22.677398681640625,
+    "matched_psnr": 12.596768379211426,
+    "matched_rotation_deg": 7.287015438079834,
+    "zero_psnr": 13.472394943237305,
+    "zero_rotation_deg": 6.46417236328125,
+    "identity_rotation_deg": 0.1532333940267563
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 1914,
+    "source_copy_psnr": 30.413305282592773,
+    "matched_psnr": 15.36207389831543,
+    "matched_rotation_deg": 8.878918647766113,
+    "zero_psnr": 15.062395095825195,
+    "zero_rotation_deg": 8.067183494567871,
+    "identity_rotation_deg": 2.8874430656433105
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 2009,
+    "source_copy_psnr": 21.144716262817383,
+    "matched_psnr": 14.395785331726074,
+    "matched_rotation_deg": 7.078672885894775,
+    "zero_psnr": 14.914356231689453,
+    "zero_rotation_deg": 6.6279144287109375,
+    "identity_rotation_deg": 0.6268256306648254
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 2105,
+    "source_copy_psnr": 25.45429039001465,
+    "matched_psnr": 14.628554344177246,
+    "matched_rotation_deg": 9.973738670349121,
+    "zero_psnr": 17.867538452148438,
+    "zero_rotation_deg": 9.402305603027344,
+    "identity_rotation_deg": 3.1789073944091797
+  },
+  {
+    "sequence": "indoor_flying1",
+    "start": 2201,
+    "source_copy_psnr": 49.74678039550781,
+    "matched_psnr": 17.237728118896484,
+    "matched_rotation_deg": 8.5519380569458,
+    "zero_psnr": 17.134124755859375,
+    "zero_rotation_deg": 8.283231735229492,
+    "identity_rotation_deg": 2.088066339492798
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 3,
+    "source_copy_psnr": 51.10801315307617,
+    "matched_psnr": 16.95574951171875,
+    "matched_rotation_deg": 6.7390666007995605,
+    "zero_psnr": 16.747488021850586,
+    "zero_rotation_deg": 6.442659854888916,
+    "identity_rotation_deg": 0.0
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 118,
+    "source_copy_psnr": 51.271697998046875,
+    "matched_psnr": 16.483642578125,
+    "matched_rotation_deg": 6.588564395904541,
+    "zero_psnr": 16.314823150634766,
+    "zero_rotation_deg": 6.345573425292969,
+    "identity_rotation_deg": 0.2783624827861786
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 234,
+    "source_copy_psnr": 33.41404342651367,
+    "matched_psnr": 16.714563369750977,
+    "matched_rotation_deg": 7.060303211212158,
+    "zero_psnr": 16.579763412475586,
+    "zero_rotation_deg": 6.420220375061035,
+    "identity_rotation_deg": 0.11869406700134277
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 349,
+    "source_copy_psnr": 15.705652236938477,
+    "matched_psnr": 11.885374069213867,
+    "matched_rotation_deg": 5.711344242095947,
+    "zero_psnr": 12.86292839050293,
+    "zero_rotation_deg": 6.0629448890686035,
+    "identity_rotation_deg": 0.7922884821891785
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 465,
+    "source_copy_psnr": 23.14385986328125,
+    "matched_psnr": 15.14066219329834,
+    "matched_rotation_deg": 6.235424995422363,
+    "zero_psnr": 15.465845108032227,
+    "zero_rotation_deg": 5.744124889373779,
+    "identity_rotation_deg": 0.8439511656761169
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 580,
+    "source_copy_psnr": 19.330211639404297,
+    "matched_psnr": 12.765010833740234,
+    "matched_rotation_deg": 9.529308319091797,
+    "zero_psnr": 13.413253784179688,
+    "zero_rotation_deg": 9.386781692504883,
+    "identity_rotation_deg": 3.290273666381836
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 696,
+    "source_copy_psnr": 21.748985290527344,
+    "matched_psnr": 14.702323913574219,
+    "matched_rotation_deg": 6.991508960723877,
+    "zero_psnr": 15.92396354675293,
+    "zero_rotation_deg": 6.458770275115967,
+    "identity_rotation_deg": 0.29341986775398254
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 811,
+    "source_copy_psnr": 24.45010757446289,
+    "matched_psnr": 14.602083206176758,
+    "matched_rotation_deg": 6.159947872161865,
+    "zero_psnr": 17.669532775878906,
+    "zero_rotation_deg": 5.817093372344971,
+    "identity_rotation_deg": 0.786338746547699
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 927,
+    "source_copy_psnr": 21.480594635009766,
+    "matched_psnr": 13.821226119995117,
+    "matched_rotation_deg": 6.302353858947754,
+    "zero_psnr": 15.076871871948242,
+    "zero_rotation_deg": 5.918311595916748,
+    "identity_rotation_deg": 1.3797008991241455
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1042,
+    "source_copy_psnr": 17.410938262939453,
+    "matched_psnr": 13.986776351928711,
+    "matched_rotation_deg": 5.24119758605957,
+    "zero_psnr": 15.860618591308594,
+    "zero_rotation_deg": 5.1100592613220215,
+    "identity_rotation_deg": 2.9212779998779297
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1158,
+    "source_copy_psnr": 25.861312866210938,
+    "matched_psnr": 15.303323745727539,
+    "matched_rotation_deg": 7.237576961517334,
+    "zero_psnr": 16.89432144165039,
+    "zero_rotation_deg": 6.671503067016602,
+    "identity_rotation_deg": 0.5203939080238342
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1273,
+    "source_copy_psnr": 19.150781631469727,
+    "matched_psnr": 11.688901901245117,
+    "matched_rotation_deg": 7.096939563751221,
+    "zero_psnr": 13.013087272644043,
+    "zero_rotation_deg": 7.310348987579346,
+    "identity_rotation_deg": 1.0704578161239624
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1389,
+    "source_copy_psnr": 15.994119644165039,
+    "matched_psnr": 13.148887634277344,
+    "matched_rotation_deg": 7.357168197631836,
+    "zero_psnr": 14.145783424377441,
+    "zero_rotation_deg": 7.694624900817871,
+    "identity_rotation_deg": 1.4350414276123047
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1504,
+    "source_copy_psnr": 28.176557540893555,
+    "matched_psnr": 14.972177505493164,
+    "matched_rotation_deg": 8.600350379943848,
+    "zero_psnr": 15.268814086914062,
+    "zero_rotation_deg": 7.865318298339844,
+    "identity_rotation_deg": 1.5001131296157837
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1620,
+    "source_copy_psnr": 20.95612335205078,
+    "matched_psnr": 13.631803512573242,
+    "matched_rotation_deg": 6.815523147583008,
+    "zero_psnr": 13.34522819519043,
+    "zero_rotation_deg": 6.129063129425049,
+    "identity_rotation_deg": 0.31775185465812683
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1735,
+    "source_copy_psnr": 18.514083862304688,
+    "matched_psnr": 13.352785110473633,
+    "matched_rotation_deg": 5.56648063659668,
+    "zero_psnr": 14.415145874023438,
+    "zero_rotation_deg": 4.741029262542725,
+    "identity_rotation_deg": 2.197844982147217
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1851,
+    "source_copy_psnr": 29.496097564697266,
+    "matched_psnr": 13.467926979064941,
+    "matched_rotation_deg": 9.508203506469727,
+    "zero_psnr": 14.954849243164062,
+    "zero_rotation_deg": 8.728569030761719,
+    "identity_rotation_deg": 2.4546332359313965
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 1966,
+    "source_copy_psnr": 19.995834350585938,
+    "matched_psnr": 12.611159324645996,
+    "matched_rotation_deg": 7.969448566436768,
+    "zero_psnr": 13.651124954223633,
+    "zero_rotation_deg": 7.40401029586792,
+    "identity_rotation_deg": 1.079196572303772
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2082,
+    "source_copy_psnr": 17.678913116455078,
+    "matched_psnr": 10.962790489196777,
+    "matched_rotation_deg": 9.84043025970459,
+    "zero_psnr": 10.909890174865723,
+    "zero_rotation_deg": 9.310888290405273,
+    "identity_rotation_deg": 3.0911083221435547
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2197,
+    "source_copy_psnr": 25.67144203186035,
+    "matched_psnr": 10.6854248046875,
+    "matched_rotation_deg": 7.283891201019287,
+    "zero_psnr": 11.80327320098877,
+    "zero_rotation_deg": 6.467811107635498,
+    "identity_rotation_deg": 0.20935674011707306
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2313,
+    "source_copy_psnr": 21.264278411865234,
+    "matched_psnr": 13.417353630065918,
+    "matched_rotation_deg": 9.91004467010498,
+    "zero_psnr": 13.399295806884766,
+    "zero_rotation_deg": 9.124728202819824,
+    "identity_rotation_deg": 2.7234737873077393
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2428,
+    "source_copy_psnr": 16.311277389526367,
+    "matched_psnr": 11.932402610778809,
+    "matched_rotation_deg": 6.181171417236328,
+    "zero_psnr": 14.082012176513672,
+    "zero_rotation_deg": 6.196566581726074,
+    "identity_rotation_deg": 0.487787663936615
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2544,
+    "source_copy_psnr": 23.53513526916504,
+    "matched_psnr": 12.747320175170898,
+    "matched_rotation_deg": 4.877569198608398,
+    "zero_psnr": 17.246917724609375,
+    "zero_rotation_deg": 4.5968708992004395,
+    "identity_rotation_deg": 2.1298274993896484
+  },
+  {
+    "sequence": "indoor_flying2",
+    "start": 2660,
+    "source_copy_psnr": 45.874732971191406,
+    "matched_psnr": 17.109745025634766,
+    "matched_rotation_deg": 6.685422420501709,
+    "zero_psnr": 16.938983917236328,
+    "zero_rotation_deg": 6.450507164001465,
+    "identity_rotation_deg": 0.1532333940267563
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2,
+    "source_copy_psnr": 51.122764587402344,
+    "matched_psnr": 17.178226470947266,
+    "matched_rotation_deg": 6.679904937744141,
+    "zero_psnr": 16.99530601501465,
+    "zero_rotation_deg": 6.443572998046875,
+    "identity_rotation_deg": 0.0
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 130,
+    "source_copy_psnr": 33.34016036987305,
+    "matched_psnr": 17.620899200439453,
+    "matched_rotation_deg": 7.214117527008057,
+    "zero_psnr": 17.06178092956543,
+    "zero_rotation_deg": 6.444607257843018,
+    "identity_rotation_deg": 0.24066275358200073
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 258,
+    "source_copy_psnr": 16.656024932861328,
+    "matched_psnr": 13.074493408203125,
+    "matched_rotation_deg": 5.312346458435059,
+    "zero_psnr": 14.051085472106934,
+    "zero_rotation_deg": 5.859997749328613,
+    "identity_rotation_deg": 0.936281681060791
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 386,
+    "source_copy_psnr": 23.196590423583984,
+    "matched_psnr": 13.358002662658691,
+    "matched_rotation_deg": 7.073239326477051,
+    "zero_psnr": 14.920969009399414,
+    "zero_rotation_deg": 6.619446754455566,
+    "identity_rotation_deg": 0.7121688723564148
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 514,
+    "source_copy_psnr": 22.912771224975586,
+    "matched_psnr": 12.527610778808594,
+    "matched_rotation_deg": 8.340024948120117,
+    "zero_psnr": 14.668475151062012,
+    "zero_rotation_deg": 7.679050445556641,
+    "identity_rotation_deg": 1.4063915014266968
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 642,
+    "source_copy_psnr": 22.522323608398438,
+    "matched_psnr": 12.101191520690918,
+    "matched_rotation_deg": 7.230850696563721,
+    "zero_psnr": 12.05573844909668,
+    "zero_rotation_deg": 6.31646203994751,
+    "identity_rotation_deg": 0.6835691332817078
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 770,
+    "source_copy_psnr": 16.925992965698242,
+    "matched_psnr": 11.75269889831543,
+    "matched_rotation_deg": 6.682840347290039,
+    "zero_psnr": 12.373722076416016,
+    "zero_rotation_deg": 5.952329158782959,
+    "identity_rotation_deg": 0.538139820098877
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 898,
+    "source_copy_psnr": 25.145034790039062,
+    "matched_psnr": 15.996562957763672,
+    "matched_rotation_deg": 7.607568264007568,
+    "zero_psnr": 16.16139030456543,
+    "zero_rotation_deg": 7.005243301391602,
+    "identity_rotation_deg": 0.8899944424629211
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1026,
+    "source_copy_psnr": 16.99723243713379,
+    "matched_psnr": 11.89549446105957,
+    "matched_rotation_deg": 8.153553009033203,
+    "zero_psnr": 12.210113525390625,
+    "zero_rotation_deg": 7.32477331161499,
+    "identity_rotation_deg": 0.9614412188529968
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1154,
+    "source_copy_psnr": 15.367586135864258,
+    "matched_psnr": 8.79489517211914,
+    "matched_rotation_deg": 6.233915328979492,
+    "zero_psnr": 9.010876655578613,
+    "zero_rotation_deg": 5.494475364685059,
+    "identity_rotation_deg": 1.1081815958023071
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1282,
+    "source_copy_psnr": 18.385971069335938,
+    "matched_psnr": 12.061660766601562,
+    "matched_rotation_deg": 6.55544376373291,
+    "zero_psnr": 12.915386199951172,
+    "zero_rotation_deg": 5.841974258422852,
+    "identity_rotation_deg": 0.6573014855384827
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1410,
+    "source_copy_psnr": 18.612686157226562,
+    "matched_psnr": 12.782611846923828,
+    "matched_rotation_deg": 6.8421196937561035,
+    "zero_psnr": 14.837259292602539,
+    "zero_rotation_deg": 6.577661991119385,
+    "identity_rotation_deg": 0.4502396285533905
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1538,
+    "source_copy_psnr": 14.676795959472656,
+    "matched_psnr": 13.564908981323242,
+    "matched_rotation_deg": 6.213249683380127,
+    "zero_psnr": 15.639643669128418,
+    "zero_rotation_deg": 6.9195404052734375,
+    "identity_rotation_deg": 4.132706165313721
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1666,
+    "source_copy_psnr": 20.712146759033203,
+    "matched_psnr": 8.803380966186523,
+    "matched_rotation_deg": 8.165776252746582,
+    "zero_psnr": 8.82366943359375,
+    "zero_rotation_deg": 7.511206150054932,
+    "identity_rotation_deg": 2.883915662765503
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1794,
+    "source_copy_psnr": 17.394145965576172,
+    "matched_psnr": 11.849656105041504,
+    "matched_rotation_deg": 6.191376209259033,
+    "zero_psnr": 14.964341163635254,
+    "zero_rotation_deg": 6.217476844787598,
+    "identity_rotation_deg": 0.786338746547699
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 1922,
+    "source_copy_psnr": 20.111711502075195,
+    "matched_psnr": 14.705010414123535,
+    "matched_rotation_deg": 7.332591533660889,
+    "zero_psnr": 16.181781768798828,
+    "zero_rotation_deg": 6.907170295715332,
+    "identity_rotation_deg": 0.5051296949386597
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2050,
+    "source_copy_psnr": 20.331016540527344,
+    "matched_psnr": 6.842818260192871,
+    "matched_rotation_deg": 7.2384443283081055,
+    "zero_psnr": 6.842818260192871,
+    "zero_rotation_deg": 6.489965438842773,
+    "identity_rotation_deg": 0.36903542280197144
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2178,
+    "source_copy_psnr": 17.575454711914062,
+    "matched_psnr": 12.123345375061035,
+    "matched_rotation_deg": 8.880157470703125,
+    "zero_psnr": 12.472024917602539,
+    "zero_rotation_deg": 8.500526428222656,
+    "identity_rotation_deg": 3.9311392307281494
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2306,
+    "source_copy_psnr": 31.32402229309082,
+    "matched_psnr": 14.889941215515137,
+    "matched_rotation_deg": 8.051105499267578,
+    "zero_psnr": 16.29361915588379,
+    "zero_rotation_deg": 7.313192844390869,
+    "identity_rotation_deg": 1.1432945728302002
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2434,
+    "source_copy_psnr": 17.224502563476562,
+    "matched_psnr": 11.698802947998047,
+    "matched_rotation_deg": 8.723978042602539,
+    "zero_psnr": 13.309051513671875,
+    "zero_rotation_deg": 8.278203964233398,
+    "identity_rotation_deg": 3.3887648582458496
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2562,
+    "source_copy_psnr": 21.18671226501465,
+    "matched_psnr": 11.925459861755371,
+    "matched_rotation_deg": 7.012911796569824,
+    "zero_psnr": 13.019067764282227,
+    "zero_rotation_deg": 6.522696495056152,
+    "identity_rotation_deg": 0.8485756516456604
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2690,
+    "source_copy_psnr": 13.968006134033203,
+    "matched_psnr": 11.637784957885742,
+    "matched_rotation_deg": 6.982019424438477,
+    "zero_psnr": 13.743290901184082,
+    "zero_rotation_deg": 7.102189540863037,
+    "identity_rotation_deg": 4.560507774353027
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2818,
+    "source_copy_psnr": 22.57032585144043,
+    "matched_psnr": 14.321160316467285,
+    "matched_rotation_deg": 8.258256912231445,
+    "zero_psnr": 14.3949556350708,
+    "zero_rotation_deg": 8.270610809326172,
+    "identity_rotation_deg": 2.9584336280822754
+  },
+  {
+    "sequence": "indoor_flying3",
+    "start": 2947,
+    "source_copy_psnr": 44.895469665527344,
+    "matched_psnr": 16.82788848876953,
+    "matched_rotation_deg": 6.294260025024414,
+    "zero_psnr": 16.557462692260742,
+    "zero_rotation_deg": 5.982287883758545,
+    "identity_rotation_deg": 1.3332483768463135
+  }
+]

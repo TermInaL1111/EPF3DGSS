@@ -2,7 +2,19 @@
 
 ## Abstract
 
-An event camera records signed brightness changes. Recovering absolute appearance and consistent geometry from these changes requires information beyond a single local event count. We investigate whether training-time supervision from an RGB vision foundation model helps an event encoder infer a grayscale Gaussian scene. We develop a controlled two-view experiment in which the student receives only events and predicts the relative camera transform and Gaussian parameters in one forward pass. We evaluate interpolated views of held-out EV3DS objects and test whether replacing the events with packets from another scene changes reconstruction quality. The latter test addresses a confound in this benchmark: a shared camera path and a nearly uniform background can yield high image-level scores even when the predicted scene is insensitive to the input.
+An event camera records signed brightness changes. Recovering absolute appearance and consistent geometry from these changes requires information beyond a single local event count. We investigate whether training-time supervision from an RGB vision foundation model helps an event encoder infer a grayscale Gaussian scene. We develop a controlled two-view experiment in which the student receives only events and predicts the relative camera transform and Gaussian parameters in one forward pass. We evaluate interpolated views of held-out EV3DS objects and test whether replacing the events with packets from another scene changes reconstruction quality. Under a fixed-spacing synthetic protocol, multiview supervision improves foreground PSNR by 0.114 dB over resolution-matched single-image supervision and by 0.428 dB over a wrong-scene teacher. Relative-depth supervision improves depth accuracy while reducing rendering quality. On three real flights the frozen student scores below its zero-input control. These findings show how little a high full-frame rendering score alone establishes about the transfer of camera motion or object geometry.
+
+## Introduction
+
+An event packet can localize a moving contour precisely while leaving the intensity on either side underdetermined. Two packets acquired from different camera positions provide an additional constraint: a single 3D surface must explain the contour locations after reprojection. This constraint is useful only to the extent that the model recovers the camera motion. A canonical camera increment learned from an object turntable can give a misleading impression of reconstruction quality, particularly when the background fills most of the image.
+
+We study this ambiguity in a feed-forward system that estimates camera motion and a renderable scene from two event packets. A frozen RGB teacher observes paired source views during training. Our experiments ask three questions. Does matching the teacher to the correct object matter? Do recurrent multiview features convey more information than image features at the same resolution? Does improving relative depth transfer also improve the appearance of a novel view? We measure these effects on held-out objects and test sensor transfer on indoor flights with independently measured camera motion.
+
+## Related work
+
+Wang et al. developed EvGGS for generalizable event-based Gaussian splatting and introduced synthetic data with grayscale, depth, pose and silhouette labels. This provides a natural appearance benchmark. Our reconstruction stage additionally estimates the relative source pose. We report the inputs consumed by each system when comparing their renders. [Wang et al., ICML 2024](https://proceedings.mlr.press/v235/wang24w.html)
+
+Déjà View repeatedly refines RGB features with a shared transformer block. Déjà-Events already demonstrated that an event-only student can learn multiview depth, pose and pointmaps by matching a frozen Déjà View teacher. Distilling recurrent RGB features therefore serves as a baseline in our study. Our question concerns which transferred signals benefit Gaussian appearance under held-out rendering supervision. REALM studies RGB–event feature alignment, and F³ learns a predictive representation of event streams. We retain the released F³ field and analyze temporal event support in the Gaussian fusion stage. [Déjà View](https://arxiv.org/abs/2605.30215) · [Déjà-Events](https://arxiv.org/abs/2611.21302) · [REALM](https://github.com/utiasSTARS/REALM) · [Das et al., Science Robotics 2026](https://doi.org/10.1126/scirobotics.aec8218)
 
 ## Problem and method
 
@@ -13,6 +25,8 @@ Each packet is partitioned into two temporal bins and two polarity channels. Log
 For RGB supervision, the left source image is passed through the frozen image encoder extracted from the published DVLT checkpoint. A learned projection maps the fused event grid into the teacher feature dimension. We minimize one minus the patchwise cosine similarity together with image and relative-pose losses. The initial experiment uses single-image features. We subsequently compare them with features from the final multiview loop under matched teacher inputs. [DVLT](https://github.com/nv-tlabs/dvlt)
 
 ## Experimental design
+
+The initial coarse-grid experiments use the shared EV3DS trajectory text files for supervision and rendering. The dense experiments below use frame-specific camera records.
 
 We take the first 12 training and six validation scenes in the EV3DS scene lists. Eight triplets per scene share the same temporal offsets. Events from the two source intervals end two frames before and after the target. Each arm receives 400 AdamW updates on batches of eight. We pair initializations and sampled batches between the zero-weight and 0.1-weight distillation arms. The student predicts 96 Gaussians and renders a 32 by 24 image. All windows are offline interpolations.
 
@@ -56,6 +70,8 @@ The recurrent teacher improved foreground PSNR by 0.114 dB over its resolution-m
 
 ### Zero-shot transfer to real events
 
+MVSEC contains synchronized events, images and ground truth for mobile platforms. [Zhu et al., IEEE Robotics and Automation Letters 2018](https://arxiv.org/abs/1801.10202)
+
 We tested the frozen seed-10 models on 24 evenly spaced, pose-covered windows in each of MVSEC indoor_flying1, indoor_flying2, and indoor_flying3. The two source packets each span one image interval, and their endpoints are separated by four frames. We rectified both events and grayscale targets into a narrow virtual camera with the training intrinsics and the orientation of the raw left camera. We used the left-camera pose stream as camera-to-world, interpolated rotations by SLERP and translations linearly, and retained the original translation units. No MVSEC frames were used for optimization. These flights share an indoor environment; the result describes motion and sensor transfer within the selected field of view.
 
 | Frozen model or reference | Matched PSNR | Zero-input PSNR | Rotation error |
@@ -67,6 +83,26 @@ We tested the frozen seed-10 models on 24 evenly spaced, pose-covered windows in
 
 Both students scored below their zero-input controls. Source-image copying, which uses additional photometric input, quantifies how little the grayscale target changes over these windows. These measurements provide no evidence of successful zero-shot transfer. A balanced training run with both source orders and four spacings also failed to resolve the pose ambiguity: at an eight-frame spacing, its mean rotation errors across both orders were 14.41° for matched and zero packets.
 
+### Dense Gaussians and appearance fusion
+
+The dense student encodes events at 128 by 96 pixels and predicts 1,536 anisotropic Gaussians. Position and opacity come from the shared geometry and appearance decoder. A separate head predicts three scales and a quaternion in the first-camera frame. We compare independent source appearance against two ways of combining grayscale estimates across views. We project each predicted center into the other camera, sample its grayscale and depth, and downweight its contribution according to relative depth disagreement. The event-weighted variant also weights the contribution by the ratio of local event support. All three variants use F³ inputs and the multiview RGB teacher during training. The table reports six-scene validation means over three seeds.
+
+| Cross-view appearance | PSNR | Foreground PSNR | Foreground gain over zero | Aligned depth AbsRel |
+|---|---:|---:|---:|---:|
+| none | 26.1998 | 15.1062 | 0.9786 | 0.1808 |
+| geometry | 25.4779 | 14.4981 | 0.4350 | 0.2130 |
+| event | 25.2860 | 14.3443 | 0.2832 | 0.2091 |
+
+Independent appearance estimates yield the highest foreground PSNR. The data give no support to the proposed event-weighted fusion rule at this stage. In the seed-10 event-weighted model the matched packets recover coarse structure that disappears when both packets are set to zero. Thin boundaries and local shading remain blurred.
+
+![First triplet of the first four validation scenes. The display crops use the reference foreground mask. Predictions use the full field of view.](qualitative.png)
+
+**Camera metadata sensitivity.** We compared frame-specific camera records against the shared trajectory over the 144 sampled training and validation triplets. One four-frame relative rotation differs by approximately 116°. The Arms scene records an identity camera at frame 36 between two nonidentity orbital poses. We retain the window in the main table and report its influence separately. For the dense event-weighted seed-10 model, mean rotation error is 2.555° over all 48 validation pairs and 0.141° over the other 47. The teacher's rotation error against per-frame metadata is 4.117° over all pairs. This label sensitivity compounds the camera-prior issue in the earlier shared-trajectory evaluation.
+
+**Native crop comparison.** We evaluated the seed-10 dense model with independent appearance on 32 matched target frames from four validation objects shared with an archived run of the released EvGGS checkpoint. Both systems render the central 512 by 480 crop at native sampling. Our system yielded 14.208 dB foreground PSNR, compared with 20.075 dB for EvGGS. Full-image scores were 23.867 and 11.679 dB respectively. EvGGS uses a black-background convention, two packets per source and reference source extrinsics; our student learns raw grayscale backgrounds and receives one packet per source. The reversal between full-frame and foreground rankings precludes treating full-frame scores as evidence of superior object reconstruction. This comparison uses different training budgets and source information.
+
+**Real-event transfer at 128 by 96.** On the same 72 MVSEC windows, the dense event-weighted model obtained 13.428 dB with matched packets and 14.302 dB with empty packets. Relative rotation error was 7.296°, compared with 1.574° for identity. The increased Gaussian count alone did not resolve the domain gap.
+
 ## Scope of inference
 
-The scene is the evaluation unit. Adjacent windows share content, and different seeds evaluate the same scenes. The official test split is reserved. A common trajectory and fixed intrinsics permit camera prediction from a learned prior. Relative pose accuracy on these clips alone cannot establish event-based pose estimation. The coarse spatial grid also limits measurements of edge fidelity. The current measurements motivate a denser Gaussian representation and training on trajectories with substantial, varied camera motion. Evaluation against published event reconstruction systems on a predeclared protocol remains necessary. The deployment question is whether a learned scene improves foreground appearance and geometry relative to motion- and appearance-prior controls on real events.
+The scene is the evaluation unit. Adjacent windows share content, and different seeds evaluate the same scenes. The official test split is reserved. A common trajectory and fixed intrinsics permit camera prediction from a learned prior. Relative pose accuracy on these clips alone cannot establish event-based pose estimation. The coarse spatial grid also limits measurements of edge fidelity. The current measurements motivate training on trajectories with substantial, varied camera motion. Evaluation against published event reconstruction systems on a predeclared protocol remains necessary. The deployment question is whether a learned scene improves foreground appearance and geometry relative to motion- and appearance-prior controls on real events.

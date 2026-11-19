@@ -13,7 +13,10 @@ def main(args):
     report = json.loads((args.run/"scores.json").read_text())
     names = report["validation"]
     fields = torch.load(args.event_fields,weights_only=True) if args.event_fields else None
-    events = dataset(args.root,names,None,fields=fields)[0]
+    scale = report.get("scale",1)
+    cell = 80//scale
+    mid = cell//2
+    events = dataset(args.root,names,None,fields=fields,scale=scale)[0]
     gt = []
     for scene in names:
         for i in range(4,60,7):
@@ -21,11 +24,11 @@ def main(args):
             for j in (i,i+4):
                 with np.load(args.root/"Scenes"/scene/f"{j:04}.npz") as archive:
                     # Require all four neighbors around the ray center to see a surface.
-                    d = archive["depth_map"].reshape(6,80,8,80)[:,39:41,:,39:41]
+                    d = archive["depth_map"].reshape(6*scale,cell,8*scale,cell)[:,mid-1:mid+1,:,mid-1:mid+1]
                     pair.append(np.where((d>0).all((1,3)),d.mean((1,3)),0))
             gt.append(pair)
     gt = torch.tensor(np.array(gt),device="cuda")
-    net = EventGaussians(events.shape[2]).cuda().eval()
+    net = EventGaussians(events.shape[2],scale=scale,fusion_mode=report.get("fusion","none")).cuda().eval()
     net.load_state_dict(torch.load(args.run/"student_0.1.pt",weights_only=True))
     actual = net(events)["source_depth"]
     empty = net(torch.zeros_like(events))["source_depth"]

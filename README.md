@@ -45,3 +45,17 @@ python infer.py "$a/loop10/student_0.1.pt" "$d/Event/Arms/0004.npy" "$d/Event/Ar
 本机 DVLT 依赖装在 /cloud/cloud-ssd4/epf-env。运行 geometry_teacher.py 时使用此环境的 Python 和 `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6`。训练和教师质量审计均在 RTX 4090 上执行。用 `encoder_features.pt` 替换循环特征可复现同分辨率单图对照。`--permute-teacher` 在相同时间索引间置换训练场景，用来检验教师和事件配对的作用。`--depth-targets "$a/multiview/depth_targets.pt" --depth-weighting event` 进一步对齐两源视图的相对对数深度，按局部事件计数加权；uniform 为对照。
 
 baseline_shift.py 在 EV3DS 上改变源间距和顺序。mvsec_transfer.py 使用官方室内标定将真实 DAVIS 图像及事件投影到学生的固定视场，对三个室内飞行序列各取 24 个窗口。学生不使用 RGB 或外参；渲染和旋转误差评估使用插值后的参考位姿。source-copy 使用源灰度图，作为额外信息参照。
+
+## 高密度 3DGS 与位姿校验
+
+128×96 版本的 32×24 网格为每个源视图生成 768 个各向异性高斯。每个高斯预测旋转、三轴尺度、中心、不透明度与灰度。渲染使用 gsplat 1.5.3。训练蒸馏、事件加权深度损失和跨视图灰度融合可以独立消融。论文中的高密度融合对照只使用循环层特征监督。几何融合按预测深度一致性对重投影灰度加权，事件融合再乘上两个视图的局部事件支持度比值。
+
+运行 event_field.py 加 `--scale 4` 写入单独的高密度缓存。运行 pilot.py 加 `--scale 4 --fusion event` 并传入该缓存。geometry 和 none 分别是只使用深度一致性和不融合的对照。在本机先启用 /cloud/cloud-ssd4/epf-env，并设置 `TORCH_EXTENSIONS_DIR=/cloud/cloud-ssd4/epf-assets/extensions`。infer.py 可从训练权重恢复输入密度和融合方式。
+
+当前代码从每帧 NPZ 内的 Camera 对象读取位姿。results 下 scene_dense 开头的实验使用此协议。此前已推送的低分辨率实验使用公共 Poses 文本；复现这些记录请使用提交 1eada6c。pose_labels.py 对比了两种标注。验证集 Arms 第 36 帧的 NPZ 将相机变换记为单位矩阵，相邻帧均处于轨道上，需在位姿指标中披露该异常。全局文本和逐帧 NPZ 在绝对坐标上也可能不同。
+
+原始分辨率 EvGGS 对照使用本地锁定的上游权重评估存档。evggs_comparison.py 根据场景、源帧、目标帧匹配，检查前景比例，并在 640×480 渲染后裁出与 EvGGS 一致的 512×480 区域。存档的上游版本、权重和逐样本文件摘要已写入 results/evggs_native_comparison.json。两者使用的事件包数、源位姿和背景监督不同。
+
+论文工作稿可用安装了 pypandoc_binary 和 typst 的 Python 运行 `python paper/build.py` 生成。当前稿件记录负结果以及相机标注敏感性。[PDF](paper/manuscript.pdf)
+
+仓库随附 weights/epf3dgs_ev3ds_pilot.pt，来自 scene_dense_event_10，含学生参数，不含 F³ 或 RGB 教师权重。使用 infer.py 的两个源事件文件即可生成 1,536 个高斯；提供官方 F³ 权重及源码路径。三种稠密融合方案的定量结果见 results/dense_summary.py。

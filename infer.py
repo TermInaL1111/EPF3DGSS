@@ -1,5 +1,7 @@
 """Reconstruct a grayscale Gaussian scene from two calibrated EV3DS event packets."""
 import argparse
+
+from math import isqrt
 from pathlib import Path
 import numpy as np
 import torch
@@ -12,15 +14,17 @@ from event_field import EventField
 def reconstruct(args):
     weights = torch.load(args.weights,map_location="cpu",weights_only=True)
     channels = weights["encoder.0.weight"].shape[1]
-    net = EventGaussians(input_channels=channels)
+    fusion = ("none","geometry","event")[int(weights.get("fusion_id",0))]
+    scale = isqrt(len(weights["rays"])//48)
+    net = EventGaussians(input_channels=channels,scale=scale,fusion_mode=fusion)
     net.load_state_dict(weights)
     net.cuda().eval()
     paths = (args.first,args.second)
-    events = torch.stack([packet(path) for path in paths]).cuda()
+    events = torch.stack([packet(path,scale) for path in paths]).cuda()
     if channels == 36:
         if not (args.f3_repository and args.f3_checkpoint):
             raise ValueError("This checkpoint requires the F³ repository and weights")
-        encode = EventField(args.f3_repository,args.f3_checkpoint)
+        encode = EventField(args.f3_repository,args.f3_checkpoint,scale)
         fields = torch.stack([encode(np.load(path)).half().float() for path in paths])
         events = torch.cat([events,fields],1)
     scene = net(events[None])

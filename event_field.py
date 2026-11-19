@@ -7,7 +7,8 @@ import torch.nn.functional as F
 
 
 class EventField:
-    def __init__(self, repository, checkpoint):
+    def __init__(self, repository, checkpoint, scale=1):
+        self.cell = 20//scale
         self.encoder = torch.hub.load(str(repository), "f3", source="local",
                                       name="1280x720x20_patchff_ds1_small", compile=False,
                                       return_feat=True, return_logits=False, single_batch_mode=True)
@@ -21,7 +22,7 @@ class EventField:
     def _encode(self, events):
         # Upstream returns (batch, x, y, channels). Undo center padding before pooling.
         field = self.encoder(events).permute(0,3,2,1)
-        return F.avg_pool2d(field[:,:,120:600,320:960],20)[0]
+        return F.avg_pool2d(field[:,:,120:600,320:960],self.cell)[0]
 
     @torch.inference_mode()
     def __call__(self, raw):
@@ -41,8 +42,9 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for arg in ("root","repository","checkpoint","out"):
         p.add_argument(arg,type=Path)
+    p.add_argument("--scale",type=int,choices=(1,4),default=1)
     args = p.parse_args()
-    extract = EventField(args.repository,args.checkpoint)
+    extract = EventField(args.repository,args.checkpoint,args.scale)
     bank = {}
     for split,count in (("train",12),("val",6)):
         names = (args.root/f"{split}_scenes.txt").read_text().split()[:count]

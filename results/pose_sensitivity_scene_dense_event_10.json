@@ -1,0 +1,386 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.1312212347984314,
+    "psnr": 28.68156623840332,
+    "fg_psnr": 15.473764419555664
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.08846932649612427,
+    "psnr": 29.353349685668945,
+    "fg_psnr": 16.065086364746094
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.05595291033387184,
+    "psnr": 27.63486099243164,
+    "fg_psnr": 14.607120513916016
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.03956468030810356,
+    "psnr": 27.781532287597656,
+    "fg_psnr": 14.867788314819336
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "identity_record": true,
+    "rotation_error_deg": 116.01078796386719,
+    "psnr": 27.03430938720703,
+    "fg_psnr": 14.438810348510742
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.1251145452260971,
+    "psnr": 28.656522750854492,
+    "fg_psnr": 16.112504959106445
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.0,
+    "psnr": 28.983259201049805,
+    "fg_psnr": 16.46053695678711
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.03956468030810356,
+    "psnr": 29.45318603515625,
+    "fg_psnr": 17.307682037353516
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.10835235565900803,
+    "psnr": 24.144506454467773,
+    "fg_psnr": 16.97568130493164
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.1678587943315506,
+    "psnr": 23.82098388671875,
+    "fg_psnr": 16.67751121520996
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.19583527743816376,
+    "psnr": 22.554492950439453,
+    "fg_psnr": 14.957521438598633
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.16551098227500916,
+    "psnr": 22.06657600402832,
+    "fg_psnr": 14.17007827758789
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "identity_record": false,
+    "rotation_error_deg": 0.08846932649612427,
+    "psnr": 23.301620483398438,
+    "fg_psnr": 15.298177719116211
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.18557488918304443,
+    "psnr": 23.399227142333984,
+    "fg_psnr": 15.410425186157227
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.08846932649612427,
+    "psnr": 21.99323272705078,
+    "fg_psnr": 14.263423919677734
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.05595291033387184,
+    "psnr": 21.64130973815918,
+    "fg_psnr": 14.239744186401367
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.14265252649784088,
+    "psnr": 24.08102798461914,
+    "fg_psnr": 12.815991401672363
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.23069991171360016,
+    "psnr": 25.357994079589844,
+    "fg_psnr": 13.509745597839355
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.20558422803878784,
+    "psnr": 25.72854995727539,
+    "fg_psnr": 13.881244659423828
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.1370561122894287,
+    "psnr": 24.90211296081543,
+    "fg_psnr": 12.734509468078613
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "identity_record": false,
+    "rotation_error_deg": 0.15065786242485046,
+    "psnr": 25.490657806396484,
+    "fg_psnr": 13.38959789276123
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.28393030166625977,
+    "psnr": 23.690235137939453,
+    "fg_psnr": 11.49601936340332
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.14803752303123474,
+    "psnr": 22.413484573364258,
+    "fg_psnr": 10.249606132507324
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.18557488918304443,
+    "psnr": 22.92640495300293,
+    "fg_psnr": 11.057442665100098
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.20558422803878784,
+    "psnr": 22.86756134033203,
+    "fg_psnr": 12.106522560119629
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.2594431936740875,
+    "psnr": 23.243989944458008,
+    "fg_psnr": 12.49118423461914
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.22028695046901703,
+    "psnr": 23.089675903320312,
+    "fg_psnr": 12.161264419555664
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.14803752303123474,
+    "psnr": 22.60308074951172,
+    "fg_psnr": 11.347428321838379
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "identity_record": false,
+    "rotation_error_deg": 0.1453699767589569,
+    "psnr": 22.656131744384766,
+    "fg_psnr": 11.204275131225586
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.3165178596973419,
+    "psnr": 24.001571655273438,
+    "fg_psnr": 12.438702583312988
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.17471297085285187,
+    "psnr": 25.291980743408203,
+    "fg_psnr": 14.004731178283691
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.19382666051387787,
+    "psnr": 24.91295623779297,
+    "fg_psnr": 14.251919746398926
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.11869406700134277,
+    "psnr": 27.266464233398438,
+    "fg_psnr": 15.734607696533203
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.12194657325744629,
+    "psnr": 25.196609497070312,
+    "fg_psnr": 15.039108276367188
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.05595291033387184,
+    "psnr": 25.03106117248535,
+    "fg_psnr": 15.338435173034668
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.03956468030810356,
+    "psnr": 25.630054473876953,
+    "fg_psnr": 16.112743377685547
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "identity_record": false,
+    "rotation_error_deg": 0.06852804869413376,
+    "psnr": 26.62311363220215,
+    "fg_psnr": 16.721906661987305
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.22555352747440338,
+    "psnr": 27.64756965637207,
+    "fg_psnr": 17.799957275390625
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.05595291033387184,
+    "psnr": 25.83313751220703,
+    "fg_psnr": 15.445195198059082
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.07401874661445618,
+    "psnr": 26.469104766845703,
+    "fg_psnr": 16.1015625
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "identity_record": false,
+    "rotation_error_deg": 0.18974563479423523,
+    "psnr": 22.154273986816406,
+    "fg_psnr": 11.01294994354248
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "identity_record": false,
+    "rotation_error_deg": 0.20174118876457214,
+    "psnr": 22.732318878173828,
+    "fg_psnr": 11.108100891113281
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "identity_record": false,
+    "rotation_error_deg": 0.10835235565900803,
+    "psnr": 25.312061309814453,
+    "fg_psnr": 13.538457870483398
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "identity_record": false,
+    "rotation_error_deg": 0.08846932649612427,
+    "psnr": 26.625404357910156,
+    "fg_psnr": 14.536134719848633
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "identity_record": false,
+    "rotation_error_deg": 0.10087055712938309,
+    "psnr": 27.979490280151367,
+    "fg_psnr": 15.154485702514648
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "identity_record": false,
+    "rotation_error_deg": 0.2564086616039276,
+    "psnr": 28.102359771728516,
+    "fg_psnr": 14.84340763092041
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "identity_record": false,
+    "rotation_error_deg": 0.11190583556890488,
+    "psnr": 30.118560791015625,
+    "fg_psnr": 17.26072883605957
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "identity_record": false,
+    "rotation_error_deg": 0.11869406700134277,
+    "psnr": 27.37684440612793,
+    "fg_psnr": 15.093208312988281
+  }
+]

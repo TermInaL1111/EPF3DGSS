@@ -1,6 +1,8 @@
 """Zero-shot motion and rendering on real MVSEC indoor flights, with fixed EV3DS field of view."""
 import argparse
+
 import json
+from math import isqrt
 from pathlib import Path
 
 import cv2
@@ -43,13 +45,15 @@ def calibration(path):
 def evaluate(args):
     mapping,inverse = calibration(args.calibration)
     weights = torch.load(args.checkpoint,map_location="cpu",weights_only=True)
+    fusion = ("none","geometry","event")[int(weights.get("fusion_id",0))]
+    scale = isqrt(len(weights["rays"])//48)
     channels = weights["encoder.0.weight"].shape[1]
     field = None
     if channels == 36:
         if not args.f3_repository or not args.f3_checkpoint:
             raise ValueError("F³ weights and repository are required by this student")
-        field = EventField(args.f3_repository,args.f3_checkpoint)
-    model = EventGaussians(channels)
+        field = EventField(args.f3_repository,args.f3_checkpoint,scale)
+    model = EventGaussians(channels,scale,fusion)
     model.load_state_dict(weights)
     model.cuda().eval()
     rows = []
@@ -75,14 +79,14 @@ def evaluate(args):
                     block = events[lower_bound_after(events,times[frame-1]):lower_bound_after(events,times[frame])]
                     xy = mapping[block[:,1].astype(int),block[:,0].astype(int)]
                     raw = np.column_stack([xy,block[:,2:]]).T
-                    counts = bin_events(raw).cuda()
+                    counts = bin_events(raw,scale).cuda()
                     if field is not None:
                         counts = torch.cat([counts,field(raw).half().float()],dim=0)
                     packets.append(counts)
                 label = []
                 for frame in frame_ids[:2]:
                     full = cv2.remap(cam["image_raw"][frame],*inverse,cv2.INTER_LINEAR)
-                    label.append(torch.tensor(cv2.resize(full,(32,24),interpolation=cv2.INTER_AREA),device="cuda")/255)
+                    label.append(torch.tensor(cv2.resize(full,(32*scale,24*scale),interpolation=cv2.INTER_AREA),device="cuda")/255)
                 def psnr(image):
                     return float(-10*(image-label[1]).square().mean().log10())
                 packet = torch.stack(packets)[None].cuda()

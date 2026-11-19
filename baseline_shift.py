@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ev3ds_pose import camera
 from PIL import Image
 import torch
 from model import EventGaussians
@@ -15,7 +16,6 @@ def evaluate(root, run):
     report = json.loads((run/"scores.json").read_text())
     net = EventGaussians().cuda().eval()
     net.load_state_dict(torch.load(run/"student_0.1.pt",weights_only=True))
-    flip = np.diag([1,-1,-1,1])
     output = []
     for gap in (2,4,8,16):
         for reverse in (False,True):
@@ -24,7 +24,7 @@ def evaluate(root, run):
                 for i in range(4,60,7):
                     left_id, right_id = (i+gap,i) if reverse else (i,i+gap)
                     mid = i+gap//2
-                    poses = [np.loadtxt(root/"Poses"/f"r_{j+1:04}.txt") @ flip
+                    poses = [camera(root,scene,j)
                              for j in (left_id,mid,right_id)]
                     query.append(np.linalg.solve(poses[0],poses[1]))
                     right.append(np.linalg.solve(poses[0],poses[2]))

@@ -13,16 +13,17 @@ def main(root, run, event_fields=None):
     if bool(event_fields) != report.get("event_fields",False):
         raise ValueError("Pass the event field bank used for this training run")
     fields = torch.load(event_fields,weights_only=True) if event_fields else None
-    events, gray, cameras, right, _ = dataset(root,report["validation"],None,fields=fields)
-    _, train_gray, *_ = dataset(root,report["train"],None)
+    scale = report.get("scale",1)
+    events, gray, cameras, right, _ = dataset(root,report["validation"],None,fields=fields,scale=scale)
+    _, train_gray, *_ = dataset(root,report["train"],None,scale=scale)
     # Every scene uses the same eight sampled time indices.
-    template = train_gray.reshape(-1,8,24,32).mean(0).repeat(len(report["validation"]),1,1)
+    template = train_gray.reshape(-1,8,*gray.shape[-2:]).mean(0).repeat(len(report["validation"]),1,1)
     def score(images):
         return float((-10*(images-gray).square().mean((-1,-2)).log10()).mean())
     records = {"training_scene_mean_image_psnr":score(template),"arms":{}}
-    region = foreground(root,report["validation"])
+    region = foreground(root,report["validation"],scale=scale)
     for weight in report["arms"]:
-        net = EventGaussians(input_channels=events.shape[2]).cuda().eval()
+        net = EventGaussians(input_channels=events.shape[2],scale=scale,fusion_mode=report.get("fusion","none")).cuda().eval()
         net.load_state_dict(torch.load(run/f"student_{weight}.pt",weights_only=True))
         measurements = {}
         for name, packets in [("matched",events),("other_scene_same_time",events.roll(8,0)),

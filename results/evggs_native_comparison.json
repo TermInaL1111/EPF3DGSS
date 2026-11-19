@@ -1,0 +1,450 @@
+{
+  "baseline_commit": "4c97c29da989a8555e04e2a0020b46ada8861665",
+  "baseline_weight_sha256": "c58ded1c053a92ef1fa99c999ef7ab790066b505371676894dd70b6f58f8861a",
+  "archive_sha256": "8e98cdabf576b67fb8b63f511b32d9e391a7082a526a0482a5e67fb5461f7962",
+  "student": {
+    "train": [
+      "CaffeeMachine",
+      "Breakfast",
+      "Duck",
+      "Airbus",
+      "Towel",
+      "Football",
+      "Burger",
+      "Cola",
+      "Car",
+      "Bed",
+      "ChickenRice",
+      "Icecream"
+    ],
+    "validation": [
+      "Arms",
+      "Capybara",
+      "Robot",
+      "Woman",
+      "Shoes",
+      "Train"
+    ],
+    "steps": 400,
+    "seed": 10,
+    "arms": {
+      "0.0": {
+        "scene_psnr": [
+          28.100133895874023,
+          23.33228302001953,
+          26.305980682373047,
+          23.552316665649414,
+          27.3271484375,
+          27.316436767578125
+        ],
+        "mean_psnr": 25.989049911499023
+      },
+      "0.1": {
+        "scene_psnr": [
+          28.308223724365234,
+          23.85634994506836,
+          25.80457305908203,
+          23.659650802612305,
+          26.901594161987305,
+          27.12016487121582
+        ],
+        "mean_psnr": 25.941759427388508
+      }
+    },
+    "fusion": "none",
+    "pose_source": "scene_npz",
+    "scale": 4,
+    "foreground_loss": true,
+    "event_fields": true,
+    "mixed_spacing": false,
+    "teacher": "loop",
+    "teacher_permuted": false,
+    "depth_weighting": null
+  },
+  "results": [
+    {
+      "scene": "Arms",
+      "sources": [
+        4,
+        6
+      ],
+      "target": 5,
+      "epf_raw": 25.688459396362305,
+      "epf_foreground": 13.459531784057617,
+      "evggs_raw": 11.384260177612305,
+      "evggs_foreground": 18.724592208862305
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        11,
+        13
+      ],
+      "target": 12,
+      "epf_raw": 26.77078628540039,
+      "epf_foreground": 14.181333541870117,
+      "evggs_raw": 11.40135383605957,
+      "evggs_foreground": 18.695186614990234
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        18,
+        20
+      ],
+      "target": 19,
+      "epf_raw": 25.407413482666016,
+      "epf_foreground": 13.17686653137207,
+      "evggs_raw": 11.410141944885254,
+      "evggs_foreground": 17.994457244873047
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        25,
+        27
+      ],
+      "target": 26,
+      "epf_raw": 25.756969451904297,
+      "epf_foreground": 13.829425811767578,
+      "evggs_raw": 11.419748306274414,
+      "evggs_foreground": 18.155929565429688
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        32,
+        34
+      ],
+      "target": 33,
+      "epf_raw": 25.344036102294922,
+      "epf_foreground": 13.253866195678711,
+      "evggs_raw": 11.423564910888672,
+      "evggs_foreground": 17.86140251159668
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        39,
+        41
+      ],
+      "target": 40,
+      "epf_raw": 25.675106048583984,
+      "epf_foreground": 13.72413444519043,
+      "evggs_raw": 11.433433532714844,
+      "evggs_foreground": 19.023496627807617
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        46,
+        48
+      ],
+      "target": 47,
+      "epf_raw": 26.215791702270508,
+      "epf_foreground": 14.368721008300781,
+      "evggs_raw": 11.42972183227539,
+      "evggs_foreground": 18.572067260742188
+    },
+    {
+      "scene": "Arms",
+      "sources": [
+        53,
+        55
+      ],
+      "target": 54,
+      "epf_raw": 26.392080307006836,
+      "epf_foreground": 14.73602294921875,
+      "evggs_raw": 11.450113296508789,
+      "evggs_foreground": 19.35860824584961
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        4,
+        6
+      ],
+      "target": 5,
+      "epf_raw": 24.022462844848633,
+      "epf_foreground": 17.841955184936523,
+      "evggs_raw": 12.217650413513184,
+      "evggs_foreground": 21.603675842285156
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        11,
+        13
+      ],
+      "target": 12,
+      "epf_raw": 22.915016174316406,
+      "epf_foreground": 16.562955856323242,
+      "evggs_raw": 12.206317901611328,
+      "evggs_foreground": 21.996261596679688
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        18,
+        20
+      ],
+      "target": 19,
+      "epf_raw": 19.56212043762207,
+      "epf_foreground": 12.858830451965332,
+      "evggs_raw": 12.151955604553223,
+      "evggs_foreground": 21.723411560058594
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        25,
+        27
+      ],
+      "target": 26,
+      "epf_raw": 21.17812156677246,
+      "epf_foreground": 14.315791130065918,
+      "evggs_raw": 12.115635871887207,
+      "evggs_foreground": 22.386207580566406
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        32,
+        34
+      ],
+      "target": 33,
+      "epf_raw": 22.355579376220703,
+      "epf_foreground": 15.355031967163086,
+      "evggs_raw": 12.088592529296875,
+      "evggs_foreground": 23.903472900390625
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        39,
+        41
+      ],
+      "target": 40,
+      "epf_raw": 23.41170883178711,
+      "epf_foreground": 16.39183807373047,
+      "evggs_raw": 12.09520435333252,
+      "evggs_foreground": 24.258272171020508
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        46,
+        48
+      ],
+      "target": 47,
+      "epf_raw": 21.91877555847168,
+      "epf_foreground": 15.119564056396484,
+      "evggs_raw": 12.149494171142578,
+      "evggs_foreground": 24.417009353637695
+    },
+    {
+      "scene": "Capybara",
+      "sources": [
+        53,
+        55
+      ],
+      "target": 54,
+      "epf_raw": 21.3111515045166,
+      "epf_foreground": 14.876375198364258,
+      "evggs_raw": 12.225227355957031,
+      "evggs_foreground": 24.214691162109375
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        4,
+        6
+      ],
+      "target": 5,
+      "epf_raw": 24.95053482055664,
+      "epf_foreground": 14.096487045288086,
+      "evggs_raw": 11.46654224395752,
+      "evggs_foreground": 17.391773223876953
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        11,
+        13
+      ],
+      "target": 12,
+      "epf_raw": 25.305034637451172,
+      "epf_foreground": 15.297003746032715,
+      "evggs_raw": 11.51720905303955,
+      "evggs_foreground": 18.414003372192383
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        18,
+        20
+      ],
+      "target": 19,
+      "epf_raw": 25.41905975341797,
+      "epf_foreground": 15.599993705749512,
+      "evggs_raw": 11.570472717285156,
+      "evggs_foreground": 19.990446090698242
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        25,
+        27
+      ],
+      "target": 26,
+      "epf_raw": 25.085294723510742,
+      "epf_foreground": 15.994524002075195,
+      "evggs_raw": 11.598638534545898,
+      "evggs_foreground": 20.331912994384766
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        32,
+        34
+      ],
+      "target": 33,
+      "epf_raw": 24.88727378845215,
+      "epf_foreground": 15.549427032470703,
+      "evggs_raw": 11.607093811035156,
+      "evggs_foreground": 20.030315399169922
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        39,
+        41
+      ],
+      "target": 40,
+      "epf_raw": 25.11918067932129,
+      "epf_foreground": 15.516727447509766,
+      "evggs_raw": 11.599955558776855,
+      "evggs_foreground": 19.284183502197266
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        46,
+        48
+      ],
+      "target": 47,
+      "epf_raw": 25.3062801361084,
+      "epf_foreground": 15.817164421081543,
+      "evggs_raw": 11.633724212646484,
+      "evggs_foreground": 20.691059112548828
+    },
+    {
+      "scene": "Shoes",
+      "sources": [
+        53,
+        55
+      ],
+      "target": 54,
+      "epf_raw": 24.795440673828125,
+      "epf_foreground": 15.258718490600586,
+      "evggs_raw": 11.632781982421875,
+      "evggs_foreground": 20.123703002929688
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        4,
+        6
+      ],
+      "target": 5,
+      "epf_raw": 20.80247688293457,
+      "epf_foreground": 10.925167083740234,
+      "evggs_raw": 11.561885833740234,
+      "evggs_foreground": 17.46343231201172
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        11,
+        13
+      ],
+      "target": 12,
+      "epf_raw": 21.350608825683594,
+      "epf_foreground": 11.428539276123047,
+      "evggs_raw": 11.559986114501953,
+      "evggs_foreground": 17.782323837280273
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        18,
+        20
+      ],
+      "target": 19,
+      "epf_raw": 21.592758178710938,
+      "epf_foreground": 11.526954650878906,
+      "evggs_raw": 11.548604011535645,
+      "evggs_foreground": 17.828062057495117
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        25,
+        27
+      ],
+      "target": 26,
+      "epf_raw": 21.361618041992188,
+      "epf_foreground": 11.033988952636719,
+      "evggs_raw": 11.547840118408203,
+      "evggs_foreground": 18.384187698364258
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        32,
+        34
+      ],
+      "target": 33,
+      "epf_raw": 22.10028076171875,
+      "epf_foreground": 11.608829498291016,
+      "evggs_raw": 11.560629844665527,
+      "evggs_foreground": 20.36434555053711
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        39,
+        41
+      ],
+      "target": 40,
+      "epf_raw": 23.024356842041016,
+      "epf_foreground": 12.405871391296387,
+      "evggs_raw": 11.540204048156738,
+      "evggs_foreground": 19.481136322021484
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        46,
+        48
+      ],
+      "target": 47,
+      "epf_raw": 23.867084503173828,
+      "epf_foreground": 13.445188522338867,
+      "evggs_raw": 11.559852600097656,
+      "evggs_foreground": 20.40030288696289
+    },
+    {
+      "scene": "Woman",
+      "sources": [
+        53,
+        55
+      ],
+      "target": 54,
+      "epf_raw": 24.847278594970703,
+      "epf_foreground": 15.097955703735352,
+      "evggs_raw": 11.607555389404297,
+      "evggs_foreground": 21.56146812438965
+    }
+  ]
+}

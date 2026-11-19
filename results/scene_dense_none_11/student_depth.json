@@ -1,0 +1,386 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "valid_rays": 53,
+    "matched_aligned_abs_rel": 0.2967385985806144,
+    "zero_aligned_abs_rel": 0.039045024943925144,
+    "plane_aligned_abs_rel": 0.039045023268971496
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "valid_rays": 60,
+    "matched_aligned_abs_rel": 0.2834206668271265,
+    "zero_aligned_abs_rel": 0.035244893388587786,
+    "plane_aligned_abs_rel": 0.035244893388587786
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "valid_rays": 65,
+    "matched_aligned_abs_rel": 0.33022356948204545,
+    "zero_aligned_abs_rel": 0.029882737596573696,
+    "plane_aligned_abs_rel": 0.029882738029679334
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "valid_rays": 64,
+    "matched_aligned_abs_rel": 0.3708488541100784,
+    "zero_aligned_abs_rel": 0.024582480044495925,
+    "plane_aligned_abs_rel": 0.024582479296869325
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "valid_rays": 61,
+    "matched_aligned_abs_rel": 0.3799819671991956,
+    "zero_aligned_abs_rel": 0.015746836175408525,
+    "plane_aligned_abs_rel": 0.015746836175408525
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "valid_rays": 62,
+    "matched_aligned_abs_rel": 0.30523082279087094,
+    "zero_aligned_abs_rel": 0.011716270729673524,
+    "plane_aligned_abs_rel": 0.01171627054778076
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "valid_rays": 68,
+    "matched_aligned_abs_rel": 0.25745649663080966,
+    "zero_aligned_abs_rel": 0.019353077412540252,
+    "plane_aligned_abs_rel": 0.0193530768001297
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "valid_rays": 69,
+    "matched_aligned_abs_rel": 0.2391217701887323,
+    "zero_aligned_abs_rel": 0.022225158751314613,
+    "plane_aligned_abs_rel": 0.022225158875772075
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "valid_rays": 268,
+    "matched_aligned_abs_rel": 0.20203662348737123,
+    "zero_aligned_abs_rel": 0.023537365098585526,
+    "plane_aligned_abs_rel": 0.02353736587449458
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "valid_rays": 258,
+    "matched_aligned_abs_rel": 0.2548752077465411,
+    "zero_aligned_abs_rel": 0.02883186013304355,
+    "plane_aligned_abs_rel": 0.028831860815617203
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "valid_rays": 247,
+    "matched_aligned_abs_rel": 0.21633197499424087,
+    "zero_aligned_abs_rel": 0.03311004451817945,
+    "plane_aligned_abs_rel": 0.03311004269791886
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "valid_rays": 232,
+    "matched_aligned_abs_rel": 0.23066261235943736,
+    "zero_aligned_abs_rel": 0.03414488933704871,
+    "plane_aligned_abs_rel": 0.03414489059687275
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "valid_rays": 230,
+    "matched_aligned_abs_rel": 0.1844000052880426,
+    "zero_aligned_abs_rel": 0.03524166046485559,
+    "plane_aligned_abs_rel": 0.03524166221930669
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "valid_rays": 231,
+    "matched_aligned_abs_rel": 0.19584312348673216,
+    "zero_aligned_abs_rel": 0.033867282719712795,
+    "plane_aligned_abs_rel": 0.03386728208477958
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "valid_rays": 247,
+    "matched_aligned_abs_rel": 0.21783526783326568,
+    "zero_aligned_abs_rel": 0.035138732112331185,
+    "plane_aligned_abs_rel": 0.03513873367003338
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "valid_rays": 261,
+    "matched_aligned_abs_rel": 0.17663075778337578,
+    "zero_aligned_abs_rel": 0.03345633844078182,
+    "plane_aligned_abs_rel": 0.03345633942990516
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "valid_rays": 82,
+    "matched_aligned_abs_rel": 0.18583901128152458,
+    "zero_aligned_abs_rel": 0.01700810668677071,
+    "plane_aligned_abs_rel": 0.017008106039804575
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "valid_rays": 76,
+    "matched_aligned_abs_rel": 0.1657985242709419,
+    "zero_aligned_abs_rel": 0.016502104073968724,
+    "plane_aligned_abs_rel": 0.016502104073968724
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "valid_rays": 84,
+    "matched_aligned_abs_rel": 0.16067525741530558,
+    "zero_aligned_abs_rel": 0.018433798187007924,
+    "plane_aligned_abs_rel": 0.018433797115325567
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "valid_rays": 76,
+    "matched_aligned_abs_rel": 0.16707121027353805,
+    "zero_aligned_abs_rel": 0.017530928403264943,
+    "plane_aligned_abs_rel": 0.017530928403264943
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "valid_rays": 73,
+    "matched_aligned_abs_rel": 0.17672296432987392,
+    "zero_aligned_abs_rel": 0.01619034372713387,
+    "plane_aligned_abs_rel": 0.01619034284521565
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "valid_rays": 75,
+    "matched_aligned_abs_rel": 0.19402027073442693,
+    "zero_aligned_abs_rel": 0.014069230265763035,
+    "plane_aligned_abs_rel": 0.014069230287672799
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "valid_rays": 82,
+    "matched_aligned_abs_rel": 0.1888041942457144,
+    "zero_aligned_abs_rel": 0.01439401580952559,
+    "plane_aligned_abs_rel": 0.014394015379081297
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "valid_rays": 87,
+    "matched_aligned_abs_rel": 0.19533189188919345,
+    "zero_aligned_abs_rel": 0.016093408364385362,
+    "plane_aligned_abs_rel": 0.016093408364385362
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "valid_rays": 115,
+    "matched_aligned_abs_rel": 0.1894682813992243,
+    "zero_aligned_abs_rel": 0.018768647999445384,
+    "plane_aligned_abs_rel": 0.018768647210143548
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "valid_rays": 115,
+    "matched_aligned_abs_rel": 0.18098353067948184,
+    "zero_aligned_abs_rel": 0.021519748441801653,
+    "plane_aligned_abs_rel": 0.02151974670759048
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "valid_rays": 113,
+    "matched_aligned_abs_rel": 0.18292147006177967,
+    "zero_aligned_abs_rel": 0.02299625763853643,
+    "plane_aligned_abs_rel": 0.02299625763853643
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "valid_rays": 109,
+    "matched_aligned_abs_rel": 0.1742556857416896,
+    "zero_aligned_abs_rel": 0.0242694973999235,
+    "plane_aligned_abs_rel": 0.02426949546797391
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "valid_rays": 106,
+    "matched_aligned_abs_rel": 0.18572940991052525,
+    "zero_aligned_abs_rel": 0.026293165113744386,
+    "plane_aligned_abs_rel": 0.026293165329921032
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "valid_rays": 99,
+    "matched_aligned_abs_rel": 0.23016309642334276,
+    "zero_aligned_abs_rel": 0.02660111199524229,
+    "plane_aligned_abs_rel": 0.02660111091234348
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "valid_rays": 105,
+    "matched_aligned_abs_rel": 0.20801854143542947,
+    "zero_aligned_abs_rel": 0.02806168363735436,
+    "plane_aligned_abs_rel": 0.028061684192485073
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "valid_rays": 112,
+    "matched_aligned_abs_rel": 0.22099521301363442,
+    "zero_aligned_abs_rel": 0.026416733808255537,
+    "plane_aligned_abs_rel": 0.026416733808255537
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "valid_rays": 84,
+    "matched_aligned_abs_rel": 0.20607138030888397,
+    "zero_aligned_abs_rel": 0.05674204478702078,
+    "plane_aligned_abs_rel": 0.05674204391893039
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "valid_rays": 94,
+    "matched_aligned_abs_rel": 0.18869669542578785,
+    "zero_aligned_abs_rel": 0.04840751412579029,
+    "plane_aligned_abs_rel": 0.04840751534805716
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "valid_rays": 107,
+    "matched_aligned_abs_rel": 0.1921862018854303,
+    "zero_aligned_abs_rel": 0.04034653565212227,
+    "plane_aligned_abs_rel": 0.04034653565212227
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "valid_rays": 110,
+    "matched_aligned_abs_rel": 0.21136162148246312,
+    "zero_aligned_abs_rel": 0.028472095557352632,
+    "plane_aligned_abs_rel": 0.028472094696944096
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "valid_rays": 116,
+    "matched_aligned_abs_rel": 0.2258378111384762,
+    "zero_aligned_abs_rel": 0.01651874545082227,
+    "plane_aligned_abs_rel": 0.016518745201321745
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "valid_rays": 119,
+    "matched_aligned_abs_rel": 0.1949767078266092,
+    "zero_aligned_abs_rel": 0.009274930108099612,
+    "plane_aligned_abs_rel": 0.009274930147780278
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "valid_rays": 116,
+    "matched_aligned_abs_rel": 0.19824761194699247,
+    "zero_aligned_abs_rel": 0.017246468436150034,
+    "plane_aligned_abs_rel": 0.017246468436150034
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "valid_rays": 118,
+    "matched_aligned_abs_rel": 0.1962911415287816,
+    "zero_aligned_abs_rel": 0.032343270284930836,
+    "plane_aligned_abs_rel": 0.032343270284930836
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "valid_rays": 97,
+    "matched_aligned_abs_rel": 0.2400400432997024,
+    "zero_aligned_abs_rel": 0.02468766215232057,
+    "plane_aligned_abs_rel": 0.02468766215232057
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "valid_rays": 92,
+    "matched_aligned_abs_rel": 0.27211923699033597,
+    "zero_aligned_abs_rel": 0.026790646073063033,
+    "plane_aligned_abs_rel": 0.026790644445962315
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "valid_rays": 86,
+    "matched_aligned_abs_rel": 0.2298455927128579,
+    "zero_aligned_abs_rel": 0.028792925059745254,
+    "plane_aligned_abs_rel": 0.028792925229726256
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "valid_rays": 73,
+    "matched_aligned_abs_rel": 0.19136517601328015,
+    "zero_aligned_abs_rel": 0.02494077555891899,
+    "plane_aligned_abs_rel": 0.02494077573436234
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "valid_rays": 61,
+    "matched_aligned_abs_rel": 0.24149254119484623,
+    "zero_aligned_abs_rel": 0.02027227040715193,
+    "plane_aligned_abs_rel": 0.020272265001501633
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "valid_rays": 52,
+    "matched_aligned_abs_rel": 0.19639868292909057,
+    "zero_aligned_abs_rel": 0.015770873191800077,
+    "plane_aligned_abs_rel": 0.015770872689198478
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "valid_rays": 62,
+    "matched_aligned_abs_rel": 0.18719235567624493,
+    "zero_aligned_abs_rel": 0.021399713098262843,
+    "plane_aligned_abs_rel": 0.021399712751699763
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "valid_rays": 77,
+    "matched_aligned_abs_rel": 0.17542476440962604,
+    "zero_aligned_abs_rel": 0.025949244080524667,
+    "plane_aligned_abs_rel": 0.025949242839840663
+  }
+]
