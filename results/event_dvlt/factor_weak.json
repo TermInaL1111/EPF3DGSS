@@ -1,0 +1,3810 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "student": {
+      "foreground": 14.936161041259766,
+      "correlation": -0.15828630328178406
+    },
+    "source_gray": {
+      "foreground": 15.06028938293457,
+      "correlation": -0.03407598286867142
+    },
+    "cameras": {
+      "foreground": 14.93496322631836,
+      "correlation": -0.19159892201423645
+    },
+    "cameras_gray": {
+      "foreground": 15.060378074645996,
+      "correlation": -0.04551531374454498
+    },
+    "reference_geometry": {
+      "foreground": 14.81743335723877,
+      "correlation": -0.2542172372341156
+    },
+    "both": {
+      "foreground": 19.18248748779297,
+      "correlation": 0.7933400869369507
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "student": {
+      "foreground": 15.301852226257324,
+      "correlation": -0.19450369477272034
+    },
+    "source_gray": {
+      "foreground": 15.381113052368164,
+      "correlation": -0.04410098120570183
+    },
+    "cameras": {
+      "foreground": 15.299391746520996,
+      "correlation": -0.06961032748222351
+    },
+    "cameras_gray": {
+      "foreground": 15.374462127685547,
+      "correlation": 0.0004872807767242193
+    },
+    "reference_geometry": {
+      "foreground": 15.130374908447266,
+      "correlation": -0.21444065868854523
+    },
+    "both": {
+      "foreground": 19.624448776245117,
+      "correlation": 0.7964671850204468
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "student": {
+      "foreground": 15.434313774108887,
+      "correlation": -0.19658255577087402
+    },
+    "source_gray": {
+      "foreground": 15.48220157623291,
+      "correlation": 0.0025600078515708447
+    },
+    "cameras": {
+      "foreground": 15.34599494934082,
+      "correlation": -0.08667302131652832
+    },
+    "cameras_gray": {
+      "foreground": 15.482156753540039,
+      "correlation": 0.026798754930496216
+    },
+    "reference_geometry": {
+      "foreground": 15.293462753295898,
+      "correlation": -0.22765399515628815
+    },
+    "both": {
+      "foreground": 20.015682220458984,
+      "correlation": 0.8100010752677917
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "student": {
+      "foreground": 15.15567684173584,
+      "correlation": -0.15505695343017578
+    },
+    "source_gray": {
+      "foreground": 15.4552640914917,
+      "correlation": 0.20561715960502625
+    },
+    "cameras": {
+      "foreground": 15.103377342224121,
+      "correlation": -0.06716014444828033
+    },
+    "cameras_gray": {
+      "foreground": 15.301302909851074,
+      "correlation": 0.030978985130786896
+    },
+    "reference_geometry": {
+      "foreground": 15.165814399719238,
+      "correlation": -0.177028626203537
+    },
+    "both": {
+      "foreground": 19.944107055664062,
+      "correlation": 0.8151509761810303
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "student": {
+      "foreground": 14.976874351501465,
+      "correlation": -0.2588585615158081
+    },
+    "source_gray": {
+      "foreground": 15.074214935302734,
+      "correlation": 0.01709938421845436
+    },
+    "cameras": {
+      "foreground": 14.961014747619629,
+      "correlation": -0.2705261707305908
+    },
+    "cameras_gray": {
+      "foreground": 15.074152946472168,
+      "correlation": -0.16005517542362213
+    },
+    "reference_geometry": {
+      "foreground": 14.963546752929688,
+      "correlation": -0.10001960396766663
+    },
+    "both": {
+      "foreground": 20.771217346191406,
+      "correlation": 0.8559234142303467
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "student": {
+      "foreground": 14.915112495422363,
+      "correlation": 0.014612508937716484
+    },
+    "source_gray": {
+      "foreground": 14.93446159362793,
+      "correlation": 0.033454425632953644
+    },
+    "cameras": {
+      "foreground": 14.862119674682617,
+      "correlation": -0.006144041195511818
+    },
+    "cameras_gray": {
+      "foreground": 14.965925216674805,
+      "correlation": 0.13551384210586548
+    },
+    "reference_geometry": {
+      "foreground": 14.785155296325684,
+      "correlation": -0.11452411115169525
+    },
+    "both": {
+      "foreground": 19.926420211791992,
+      "correlation": 0.8314767479896545
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "student": {
+      "foreground": 13.903590202331543,
+      "correlation": -0.20801293849945068
+    },
+    "source_gray": {
+      "foreground": 13.949361801147461,
+      "correlation": -0.1808329075574875
+    },
+    "cameras": {
+      "foreground": 14.993816375732422,
+      "correlation": 0.01382029801607132
+    },
+    "cameras_gray": {
+      "foreground": 15.078831672668457,
+      "correlation": -0.055034272372722626
+    },
+    "reference_geometry": {
+      "foreground": 14.8084716796875,
+      "correlation": -0.13251778483390808
+    },
+    "both": {
+      "foreground": 20.04662322998047,
+      "correlation": 0.830284595489502
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "student": {
+      "foreground": 15.265083312988281,
+      "correlation": -0.16169823706150055
+    },
+    "source_gray": {
+      "foreground": 15.287256240844727,
+      "correlation": -0.03823762387037277
+    },
+    "cameras": {
+      "foreground": 15.271860122680664,
+      "correlation": 0.028424544259905815
+    },
+    "cameras_gray": {
+      "foreground": 15.287290573120117,
+      "correlation": -0.007165614981204271
+    },
+    "reference_geometry": {
+      "foreground": 14.991837501525879,
+      "correlation": -0.09803743660449982
+    },
+    "both": {
+      "foreground": 20.59792709350586,
+      "correlation": 0.84161376953125
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "student": {
+      "foreground": 14.499771118164062,
+      "correlation": 0.22664877772331238
+    },
+    "source_gray": {
+      "foreground": 14.014474868774414,
+      "correlation": 0.10123978555202484
+    },
+    "cameras": {
+      "foreground": 14.408670425415039,
+      "correlation": 0.4070635139942169
+    },
+    "cameras_gray": {
+      "foreground": 14.298379898071289,
+      "correlation": 0.00396437244489789
+    },
+    "reference_geometry": {
+      "foreground": 13.98847484588623,
+      "correlation": 0.265173077583313
+    },
+    "both": {
+      "foreground": 26.178997039794922,
+      "correlation": 0.9672250151634216
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "student": {
+      "foreground": 14.703078269958496,
+      "correlation": 0.3439907431602478
+    },
+    "source_gray": {
+      "foreground": 14.074750900268555,
+      "correlation": -0.11009977757930756
+    },
+    "cameras": {
+      "foreground": 14.265172958374023,
+      "correlation": 0.1555032581090927
+    },
+    "cameras_gray": {
+      "foreground": 14.312914848327637,
+      "correlation": 0.03796285763382912
+    },
+    "reference_geometry": {
+      "foreground": 13.850112915039062,
+      "correlation": 0.4219987988471985
+    },
+    "both": {
+      "foreground": 26.690364837646484,
+      "correlation": 0.9687843322753906
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "student": {
+      "foreground": 14.569758415222168,
+      "correlation": 0.13842833042144775
+    },
+    "source_gray": {
+      "foreground": 14.292009353637695,
+      "correlation": -0.008451876230537891
+    },
+    "cameras": {
+      "foreground": 14.41257095336914,
+      "correlation": 0.6178137063980103
+    },
+    "cameras_gray": {
+      "foreground": 14.32856559753418,
+      "correlation": -0.038285475224256516
+    },
+    "reference_geometry": {
+      "foreground": 13.79896068572998,
+      "correlation": 0.42655086517333984
+    },
+    "both": {
+      "foreground": 27.11433219909668,
+      "correlation": 0.9693337082862854
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "student": {
+      "foreground": 14.502106666564941,
+      "correlation": 0.15397612750530243
+    },
+    "source_gray": {
+      "foreground": 14.11491584777832,
+      "correlation": -0.11968547850847244
+    },
+    "cameras": {
+      "foreground": 14.239131927490234,
+      "correlation": 0.2815816402435303
+    },
+    "cameras_gray": {
+      "foreground": 14.319973945617676,
+      "correlation": 0.0488646999001503
+    },
+    "reference_geometry": {
+      "foreground": 13.608453750610352,
+      "correlation": 0.46932196617126465
+    },
+    "both": {
+      "foreground": 27.376365661621094,
+      "correlation": 0.9675558805465698
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "student": {
+      "foreground": 14.64871597290039,
+      "correlation": 0.13083727657794952
+    },
+    "source_gray": {
+      "foreground": 14.240817070007324,
+      "correlation": 0.02135688066482544
+    },
+    "cameras": {
+      "foreground": 14.193573951721191,
+      "correlation": 0.10195342451334
+    },
+    "cameras_gray": {
+      "foreground": 14.255729675292969,
+      "correlation": 0.04081881791353226
+    },
+    "reference_geometry": {
+      "foreground": 13.6315336227417,
+      "correlation": 0.43573933839797974
+    },
+    "both": {
+      "foreground": 27.354829788208008,
+      "correlation": 0.9638677835464478
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "student": {
+      "foreground": 14.52791976928711,
+      "correlation": 0.13784925639629364
+    },
+    "source_gray": {
+      "foreground": 14.220561981201172,
+      "correlation": 0.07259035110473633
+    },
+    "cameras": {
+      "foreground": 13.909418106079102,
+      "correlation": 0.19013598561286926
+    },
+    "cameras_gray": {
+      "foreground": 14.130218505859375,
+      "correlation": 0.0740787535905838
+    },
+    "reference_geometry": {
+      "foreground": 13.440773010253906,
+      "correlation": 0.19622761011123657
+    },
+    "both": {
+      "foreground": 28.125804901123047,
+      "correlation": 0.9713103771209717
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "student": {
+      "foreground": 14.19135570526123,
+      "correlation": 0.05485878139734268
+    },
+    "source_gray": {
+      "foreground": 14.323280334472656,
+      "correlation": 0.15046583116054535
+    },
+    "cameras": {
+      "foreground": 13.946432113647461,
+      "correlation": -0.12774619460105896
+    },
+    "cameras_gray": {
+      "foreground": 14.108418464660645,
+      "correlation": 0.045529793947935104
+    },
+    "reference_geometry": {
+      "foreground": 13.554853439331055,
+      "correlation": 0.1999225914478302
+    },
+    "both": {
+      "foreground": 27.53483772277832,
+      "correlation": 0.9701203107833862
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "student": {
+      "foreground": 14.179889678955078,
+      "correlation": 0.07153065502643585
+    },
+    "source_gray": {
+      "foreground": 14.635001182556152,
+      "correlation": 0.2353883981704712
+    },
+    "cameras": {
+      "foreground": 13.569856643676758,
+      "correlation": -0.2168130874633789
+    },
+    "cameras_gray": {
+      "foreground": 15.40687370300293,
+      "correlation": 0.4411863386631012
+    },
+    "reference_geometry": {
+      "foreground": 13.4496488571167,
+      "correlation": 0.21043072640895844
+    },
+    "both": {
+      "foreground": 27.358497619628906,
+      "correlation": 0.9717861413955688
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "student": {
+      "foreground": 13.974912643432617,
+      "correlation": 0.34197166562080383
+    },
+    "source_gray": {
+      "foreground": 13.594675064086914,
+      "correlation": 0.022023700177669525
+    },
+    "cameras": {
+      "foreground": 13.652706146240234,
+      "correlation": 0.25834202766418457
+    },
+    "cameras_gray": {
+      "foreground": 13.588922500610352,
+      "correlation": 0.11010318249464035
+    },
+    "reference_geometry": {
+      "foreground": 13.136929512023926,
+      "correlation": 0.36534327268600464
+    },
+    "both": {
+      "foreground": 23.81402015686035,
+      "correlation": 0.94057297706604
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "student": {
+      "foreground": 14.25373649597168,
+      "correlation": 0.6222990155220032
+    },
+    "source_gray": {
+      "foreground": 13.936725616455078,
+      "correlation": 0.065711110830307
+    },
+    "cameras": {
+      "foreground": 13.920007705688477,
+      "correlation": 0.3282712399959564
+    },
+    "cameras_gray": {
+      "foreground": 13.93677806854248,
+      "correlation": 0.09775039553642273
+    },
+    "reference_geometry": {
+      "foreground": 13.374852180480957,
+      "correlation": 0.3215523362159729
+    },
+    "both": {
+      "foreground": 24.025386810302734,
+      "correlation": 0.9399846792221069
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "student": {
+      "foreground": 14.551186561584473,
+      "correlation": 0.3432392477989197
+    },
+    "source_gray": {
+      "foreground": 14.373997688293457,
+      "correlation": 0.13917186856269836
+    },
+    "cameras": {
+      "foreground": 14.016342163085938,
+      "correlation": 0.1295957714319229
+    },
+    "cameras_gray": {
+      "foreground": 14.373968124389648,
+      "correlation": 0.15745779871940613
+    },
+    "reference_geometry": {
+      "foreground": 13.874099731445312,
+      "correlation": 0.35961422324180603
+    },
+    "both": {
+      "foreground": 23.76238250732422,
+      "correlation": 0.9313569068908691
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "student": {
+      "foreground": 15.10839557647705,
+      "correlation": 0.20430995523929596
+    },
+    "source_gray": {
+      "foreground": 14.877758979797363,
+      "correlation": 0.13464874029159546
+    },
+    "cameras": {
+      "foreground": 14.613365173339844,
+      "correlation": 0.13059064745903015
+    },
+    "cameras_gray": {
+      "foreground": 14.77114200592041,
+      "correlation": 0.10199879109859467
+    },
+    "reference_geometry": {
+      "foreground": 14.541339874267578,
+      "correlation": 0.3485349118709564
+    },
+    "both": {
+      "foreground": 24.401771545410156,
+      "correlation": 0.937601625919342
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "student": {
+      "foreground": 15.148958206176758,
+      "correlation": 0.41884177923202515
+    },
+    "source_gray": {
+      "foreground": 14.930806159973145,
+      "correlation": 0.10837595909833908
+    },
+    "cameras": {
+      "foreground": 14.84738826751709,
+      "correlation": 0.2485816329717636
+    },
+    "cameras_gray": {
+      "foreground": 14.930805206298828,
+      "correlation": 0.060537345707416534
+    },
+    "reference_geometry": {
+      "foreground": 14.540995597839355,
+      "correlation": 0.4832053482532501
+    },
+    "both": {
+      "foreground": 24.275638580322266,
+      "correlation": 0.9359706044197083
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "student": {
+      "foreground": 14.997684478759766,
+      "correlation": 0.1861615777015686
+    },
+    "source_gray": {
+      "foreground": 14.802362442016602,
+      "correlation": 0.11443021148443222
+    },
+    "cameras": {
+      "foreground": 14.68356990814209,
+      "correlation": 0.23033924400806427
+    },
+    "cameras_gray": {
+      "foreground": 14.716480255126953,
+      "correlation": 0.162124902009964
+    },
+    "reference_geometry": {
+      "foreground": 14.493631362915039,
+      "correlation": 0.5000556707382202
+    },
+    "both": {
+      "foreground": 23.07328987121582,
+      "correlation": 0.9204326868057251
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "student": {
+      "foreground": 15.500727653503418,
+      "correlation": 0.3053385019302368
+    },
+    "source_gray": {
+      "foreground": 15.139388084411621,
+      "correlation": -0.03424357995390892
+    },
+    "cameras": {
+      "foreground": 14.980178833007812,
+      "correlation": -0.07148254662752151
+    },
+    "cameras_gray": {
+      "foreground": 15.154805183410645,
+      "correlation": 0.09027683734893799
+    },
+    "reference_geometry": {
+      "foreground": 15.124776840209961,
+      "correlation": 0.5102068781852722
+    },
+    "both": {
+      "foreground": 24.414718627929688,
+      "correlation": 0.934598445892334
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "student": {
+      "foreground": 15.268524169921875,
+      "correlation": 0.002769140060991049
+    },
+    "source_gray": {
+      "foreground": 14.936054229736328,
+      "correlation": -0.11429476737976074
+    },
+    "cameras": {
+      "foreground": 15.079557418823242,
+      "correlation": 0.08063831925392151
+    },
+    "cameras_gray": {
+      "foreground": 15.188495635986328,
+      "correlation": 0.007332730107009411
+    },
+    "reference_geometry": {
+      "foreground": 14.975847244262695,
+      "correlation": 0.5503636002540588
+    },
+    "both": {
+      "foreground": 24.854459762573242,
+      "correlation": 0.9396286606788635
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "student": {
+      "foreground": 9.830867767333984,
+      "correlation": -0.3386901021003723
+    },
+    "source_gray": {
+      "foreground": 9.970728874206543,
+      "correlation": 0.08994942903518677
+    },
+    "cameras": {
+      "foreground": 10.390466690063477,
+      "correlation": 0.17777284979820251
+    },
+    "cameras_gray": {
+      "foreground": 10.637380599975586,
+      "correlation": 0.3856508135795593
+    },
+    "reference_geometry": {
+      "foreground": 10.4339017868042,
+      "correlation": 0.19449394941329956
+    },
+    "both": {
+      "foreground": 25.41474151611328,
+      "correlation": 0.9829530715942383
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "student": {
+      "foreground": 9.940189361572266,
+      "correlation": -0.33183854818344116
+    },
+    "source_gray": {
+      "foreground": 10.053620338439941,
+      "correlation": -0.024627435952425003
+    },
+    "cameras": {
+      "foreground": 10.277491569519043,
+      "correlation": -0.13851502537727356
+    },
+    "cameras_gray": {
+      "foreground": 10.235244750976562,
+      "correlation": 0.21485280990600586
+    },
+    "reference_geometry": {
+      "foreground": 10.437813758850098,
+      "correlation": 0.07962070405483246
+    },
+    "both": {
+      "foreground": 24.941871643066406,
+      "correlation": 0.9808237552642822
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "student": {
+      "foreground": 10.09123420715332,
+      "correlation": -0.1540994644165039
+    },
+    "source_gray": {
+      "foreground": 10.19448184967041,
+      "correlation": 0.08358791470527649
+    },
+    "cameras": {
+      "foreground": 10.414299964904785,
+      "correlation": 0.05163992568850517
+    },
+    "cameras_gray": {
+      "foreground": 10.846882820129395,
+      "correlation": 0.3247213661670685
+    },
+    "reference_geometry": {
+      "foreground": 10.518577575683594,
+      "correlation": -0.02534843236207962
+    },
+    "both": {
+      "foreground": 24.191932678222656,
+      "correlation": 0.9768975377082825
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "student": {
+      "foreground": 10.299186706542969,
+      "correlation": -0.02516677975654602
+    },
+    "source_gray": {
+      "foreground": 10.347023963928223,
+      "correlation": -0.007335949223488569
+    },
+    "cameras": {
+      "foreground": 10.420244216918945,
+      "correlation": 0.010021151043474674
+    },
+    "cameras_gray": {
+      "foreground": 10.644418716430664,
+      "correlation": 0.1984814703464508
+    },
+    "reference_geometry": {
+      "foreground": 10.599068641662598,
+      "correlation": -0.05358856916427612
+    },
+    "both": {
+      "foreground": 23.518898010253906,
+      "correlation": 0.9725946187973022
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "student": {
+      "foreground": 10.48276138305664,
+      "correlation": -0.19605018198490143
+    },
+    "source_gray": {
+      "foreground": 10.550230026245117,
+      "correlation": 0.13035452365875244
+    },
+    "cameras": {
+      "foreground": 10.627769470214844,
+      "correlation": -0.1593332141637802
+    },
+    "cameras_gray": {
+      "foreground": 10.610647201538086,
+      "correlation": 0.16806845366954803
+    },
+    "reference_geometry": {
+      "foreground": 10.800350189208984,
+      "correlation": -0.03546945005655289
+    },
+    "both": {
+      "foreground": 23.408248901367188,
+      "correlation": 0.9711338877677917
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "student": {
+      "foreground": 10.69998836517334,
+      "correlation": 0.0227519478648901
+    },
+    "source_gray": {
+      "foreground": 10.790801048278809,
+      "correlation": -0.03835400193929672
+    },
+    "cameras": {
+      "foreground": 10.838531494140625,
+      "correlation": 0.056610167026519775
+    },
+    "cameras_gray": {
+      "foreground": 10.819726943969727,
+      "correlation": 0.13233235478401184
+    },
+    "reference_geometry": {
+      "foreground": 11.045129776000977,
+      "correlation": 0.3277210593223572
+    },
+    "both": {
+      "foreground": 24.190887451171875,
+      "correlation": 0.9751261472702026
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "student": {
+      "foreground": 11.192058563232422,
+      "correlation": -0.0899387001991272
+    },
+    "source_gray": {
+      "foreground": 11.267024040222168,
+      "correlation": -0.07649105787277222
+    },
+    "cameras": {
+      "foreground": 11.412812232971191,
+      "correlation": 0.09791581332683563
+    },
+    "cameras_gray": {
+      "foreground": 11.7034912109375,
+      "correlation": 0.3597564697265625
+    },
+    "reference_geometry": {
+      "foreground": 11.46900749206543,
+      "correlation": 0.27432525157928467
+    },
+    "both": {
+      "foreground": 25.483665466308594,
+      "correlation": 0.9802286028862
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "student": {
+      "foreground": 11.628976821899414,
+      "correlation": 0.09855979681015015
+    },
+    "source_gray": {
+      "foreground": 11.674500465393066,
+      "correlation": 0.09690547734498978
+    },
+    "cameras": {
+      "foreground": 11.791584014892578,
+      "correlation": 0.23759064078330994
+    },
+    "cameras_gray": {
+      "foreground": 11.742711067199707,
+      "correlation": 0.06329251825809479
+    },
+    "reference_geometry": {
+      "foreground": 11.866474151611328,
+      "correlation": 0.5002297163009644
+    },
+    "both": {
+      "foreground": 26.963529586791992,
+      "correlation": 0.9848628044128418
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "student": {
+      "foreground": 12.375955581665039,
+      "correlation": 0.4948795735836029
+    },
+    "source_gray": {
+      "foreground": 12.433724403381348,
+      "correlation": -0.09357357025146484
+    },
+    "cameras": {
+      "foreground": 12.38643741607666,
+      "correlation": -0.14143779873847961
+    },
+    "cameras_gray": {
+      "foreground": 12.43380355834961,
+      "correlation": 0.010141512379050255
+    },
+    "reference_geometry": {
+      "foreground": 12.783994674682617,
+      "correlation": 0.5641664266586304
+    },
+    "both": {
+      "foreground": 18.893733978271484,
+      "correlation": 0.877117931842804
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "student": {
+      "foreground": 12.547140121459961,
+      "correlation": -0.03109205700457096
+    },
+    "source_gray": {
+      "foreground": 12.620211601257324,
+      "correlation": 0.0016220002435147762
+    },
+    "cameras": {
+      "foreground": 12.504502296447754,
+      "correlation": -0.09109584987163544
+    },
+    "cameras_gray": {
+      "foreground": 12.604740142822266,
+      "correlation": -0.014101499691605568
+    },
+    "reference_geometry": {
+      "foreground": 12.796582221984863,
+      "correlation": 0.5511177778244019
+    },
+    "both": {
+      "foreground": 19.726245880126953,
+      "correlation": 0.8989726305007935
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "student": {
+      "foreground": 12.763155937194824,
+      "correlation": 0.11694151163101196
+    },
+    "source_gray": {
+      "foreground": 12.723947525024414,
+      "correlation": 0.038202911615371704
+    },
+    "cameras": {
+      "foreground": 12.591309547424316,
+      "correlation": -0.03415901958942413
+    },
+    "cameras_gray": {
+      "foreground": 12.737041473388672,
+      "correlation": 0.1212196797132492
+    },
+    "reference_geometry": {
+      "foreground": 12.786867141723633,
+      "correlation": 0.5767320394515991
+    },
+    "both": {
+      "foreground": 20.35723876953125,
+      "correlation": 0.9102513790130615
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "student": {
+      "foreground": 12.955936431884766,
+      "correlation": 0.27525800466537476
+    },
+    "source_gray": {
+      "foreground": 12.85308837890625,
+      "correlation": 0.13521572947502136
+    },
+    "cameras": {
+      "foreground": 12.628783226013184,
+      "correlation": 0.015956159681081772
+    },
+    "cameras_gray": {
+      "foreground": 13.295088768005371,
+      "correlation": 0.4075760245323181
+    },
+    "reference_geometry": {
+      "foreground": 12.740724563598633,
+      "correlation": 0.41562607884407043
+    },
+    "both": {
+      "foreground": 20.559368133544922,
+      "correlation": 0.9103345274925232
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "student": {
+      "foreground": 13.028236389160156,
+      "correlation": 0.0404200553894043
+    },
+    "source_gray": {
+      "foreground": 12.819486618041992,
+      "correlation": -0.011307580396533012
+    },
+    "cameras": {
+      "foreground": 13.053070068359375,
+      "correlation": 0.40356189012527466
+    },
+    "cameras_gray": {
+      "foreground": 12.987966537475586,
+      "correlation": 0.05020108073949814
+    },
+    "reference_geometry": {
+      "foreground": 12.866609573364258,
+      "correlation": 0.36892253160476685
+    },
+    "both": {
+      "foreground": 20.783349990844727,
+      "correlation": 0.907772958278656
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "student": {
+      "foreground": 12.64852523803711,
+      "correlation": -0.06715068966150284
+    },
+    "source_gray": {
+      "foreground": 12.51032829284668,
+      "correlation": -0.07965151220560074
+    },
+    "cameras": {
+      "foreground": 12.878161430358887,
+      "correlation": -0.20594245195388794
+    },
+    "cameras_gray": {
+      "foreground": 13.046096801757812,
+      "correlation": 0.0704713836312294
+    },
+    "reference_geometry": {
+      "foreground": 12.791413307189941,
+      "correlation": 0.46207359433174133
+    },
+    "both": {
+      "foreground": 21.424030303955078,
+      "correlation": 0.9161407947540283
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "student": {
+      "foreground": 12.852120399475098,
+      "correlation": -0.0689527690410614
+    },
+    "source_gray": {
+      "foreground": 12.600756645202637,
+      "correlation": -0.1003972589969635
+    },
+    "cameras": {
+      "foreground": 13.04545783996582,
+      "correlation": 0.2813798785209656
+    },
+    "cameras_gray": {
+      "foreground": 12.99434757232666,
+      "correlation": 0.07800483703613281
+    },
+    "reference_geometry": {
+      "foreground": 12.652836799621582,
+      "correlation": 0.3913974165916443
+    },
+    "both": {
+      "foreground": 21.649940490722656,
+      "correlation": 0.9189730286598206
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "student": {
+      "foreground": 12.103300094604492,
+      "correlation": -0.13830146193504333
+    },
+    "source_gray": {
+      "foreground": 11.900520324707031,
+      "correlation": -0.18967536091804504
+    },
+    "cameras": {
+      "foreground": 12.76359748840332,
+      "correlation": 0.29976361989974976
+    },
+    "cameras_gray": {
+      "foreground": 13.044698715209961,
+      "correlation": 0.1430465281009674
+    },
+    "reference_geometry": {
+      "foreground": 12.444059371948242,
+      "correlation": 0.2591429352760315
+    },
+    "both": {
+      "foreground": 21.48798370361328,
+      "correlation": 0.9166949391365051
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "student": {
+      "foreground": 12.36439323425293,
+      "correlation": 0.4419737756252289
+    },
+    "source_gray": {
+      "foreground": 12.46717643737793,
+      "correlation": 0.15753605961799622
+    },
+    "cameras": {
+      "foreground": 12.350250244140625,
+      "correlation": 0.22756467759609222
+    },
+    "cameras_gray": {
+      "foreground": 12.314435005187988,
+      "correlation": 0.005358794704079628
+    },
+    "reference_geometry": {
+      "foreground": 12.629556655883789,
+      "correlation": 0.20275580883026123
+    },
+    "both": {
+      "foreground": 24.755367279052734,
+      "correlation": 0.968742847442627
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "student": {
+      "foreground": 12.776180267333984,
+      "correlation": 0.39067384600639343
+    },
+    "source_gray": {
+      "foreground": 12.823627471923828,
+      "correlation": 0.075447678565979
+    },
+    "cameras": {
+      "foreground": 12.880764961242676,
+      "correlation": 0.05806735157966614
+    },
+    "cameras_gray": {
+      "foreground": 12.81533145904541,
+      "correlation": 0.00569539051502943
+    },
+    "reference_geometry": {
+      "foreground": 13.10451889038086,
+      "correlation": 0.4183765649795532
+    },
+    "both": {
+      "foreground": 25.541580200195312,
+      "correlation": 0.972190797328949
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "student": {
+      "foreground": 13.36386775970459,
+      "correlation": 0.34459561109542847
+    },
+    "source_gray": {
+      "foreground": 13.313227653503418,
+      "correlation": 0.035216785967350006
+    },
+    "cameras": {
+      "foreground": 13.456100463867188,
+      "correlation": 0.5073179602622986
+    },
+    "cameras_gray": {
+      "foreground": 13.313228607177734,
+      "correlation": 0.0470598042011261
+    },
+    "reference_geometry": {
+      "foreground": 13.491819381713867,
+      "correlation": 0.442649781703949
+    },
+    "both": {
+      "foreground": 26.375551223754883,
+      "correlation": 0.9749771952629089
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "student": {
+      "foreground": 13.81410026550293,
+      "correlation": -0.2503812909126282
+    },
+    "source_gray": {
+      "foreground": 13.976085662841797,
+      "correlation": 0.07927800714969635
+    },
+    "cameras": {
+      "foreground": 14.003786087036133,
+      "correlation": 0.14230439066886902
+    },
+    "cameras_gray": {
+      "foreground": 13.963525772094727,
+      "correlation": -0.003540411591529846
+    },
+    "reference_geometry": {
+      "foreground": 14.116658210754395,
+      "correlation": 0.6160648465156555
+    },
+    "both": {
+      "foreground": 26.409435272216797,
+      "correlation": 0.971287190914154
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "student": {
+      "foreground": 14.87871265411377,
+      "correlation": 0.07171566784381866
+    },
+    "source_gray": {
+      "foreground": 14.909173965454102,
+      "correlation": 0.10304798185825348
+    },
+    "cameras": {
+      "foreground": 14.670104026794434,
+      "correlation": -0.5262385010719299
+    },
+    "cameras_gray": {
+      "foreground": 14.851235389709473,
+      "correlation": 0.0026973597705364227
+    },
+    "reference_geometry": {
+      "foreground": 14.577325820922852,
+      "correlation": 0.59864342212677
+    },
+    "both": {
+      "foreground": 25.89645767211914,
+      "correlation": 0.9584305286407471
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "student": {
+      "foreground": 16.128459930419922,
+      "correlation": 0.14037156105041504
+    },
+    "source_gray": {
+      "foreground": 16.000646591186523,
+      "correlation": 0.030190056189894676
+    },
+    "cameras": {
+      "foreground": 15.772294044494629,
+      "correlation": 0.14555537700653076
+    },
+    "cameras_gray": {
+      "foreground": 16.00072479248047,
+      "correlation": 0.10005023330450058
+    },
+    "reference_geometry": {
+      "foreground": 15.068246841430664,
+      "correlation": 0.4534408152103424
+    },
+    "both": {
+      "foreground": 25.89342498779297,
+      "correlation": 0.938173770904541
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "student": {
+      "foreground": 14.680404663085938,
+      "correlation": 0.03023868426680565
+    },
+    "source_gray": {
+      "foreground": 14.680643081665039,
+      "correlation": 0.026532763615250587
+    },
+    "cameras": {
+      "foreground": 14.486886024475098,
+      "correlation": -0.052861228585243225
+    },
+    "cameras_gray": {
+      "foreground": 14.680171012878418,
+      "correlation": 0.12055377662181854
+    },
+    "reference_geometry": {
+      "foreground": 14.50877571105957,
+      "correlation": 0.45536118745803833
+    },
+    "both": {
+      "foreground": 26.002986907958984,
+      "correlation": 0.9615448713302612
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "student": {
+      "foreground": 13.84634780883789,
+      "correlation": 0.2614385485649109
+    },
+    "source_gray": {
+      "foreground": 13.73394775390625,
+      "correlation": -0.0016452297568321228
+    },
+    "cameras": {
+      "foreground": 13.761171340942383,
+      "correlation": 0.07415863126516342
+    },
+    "cameras_gray": {
+      "foreground": 13.74947738647461,
+      "correlation": 0.057209745049476624
+    },
+    "reference_geometry": {
+      "foreground": 13.758367538452148,
+      "correlation": 0.4087499976158142
+    },
+    "both": {
+      "foreground": 26.453350067138672,
+      "correlation": 0.9730138778686523
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 4,
+    "student": {
+      "foreground": 11.810808181762695,
+      "correlation": 0.202255517244339
+    },
+    "source_gray": {
+      "foreground": 11.794010162353516,
+      "correlation": 0.12830156087875366
+    },
+    "cameras": {
+      "foreground": 11.922554969787598,
+      "correlation": 0.20755550265312195
+    },
+    "cameras_gray": {
+      "foreground": 11.220985412597656,
+      "correlation": 0.015222257934510708
+    },
+    "reference_geometry": {
+      "foreground": 12.060593605041504,
+      "correlation": 0.03649980202317238
+    },
+    "both": {
+      "foreground": 19.72142219543457,
+      "correlation": 0.9088046550750732
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 11,
+    "student": {
+      "foreground": 12.034741401672363,
+      "correlation": 0.18422234058380127
+    },
+    "source_gray": {
+      "foreground": 11.919337272644043,
+      "correlation": 0.08212506771087646
+    },
+    "cameras": {
+      "foreground": 12.218729019165039,
+      "correlation": 0.21639494597911835
+    },
+    "cameras_gray": {
+      "foreground": 11.930445671081543,
+      "correlation": 0.20464345812797546
+    },
+    "reference_geometry": {
+      "foreground": 12.263936042785645,
+      "correlation": 0.11399057507514954
+    },
+    "both": {
+      "foreground": 19.663602828979492,
+      "correlation": 0.906312108039856
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 18,
+    "student": {
+      "foreground": 12.053869247436523,
+      "correlation": 0.22128726541996002
+    },
+    "source_gray": {
+      "foreground": 11.967358589172363,
+      "correlation": 0.0003061223542317748
+    },
+    "cameras": {
+      "foreground": 12.137612342834473,
+      "correlation": 0.21035805344581604
+    },
+    "cameras_gray": {
+      "foreground": 12.037672996520996,
+      "correlation": 0.10213808715343475
+    },
+    "reference_geometry": {
+      "foreground": 12.270318031311035,
+      "correlation": 0.03355365991592407
+    },
+    "both": {
+      "foreground": 20.563579559326172,
+      "correlation": 0.9240274429321289
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 25,
+    "student": {
+      "foreground": 12.567643165588379,
+      "correlation": 0.32132434844970703
+    },
+    "source_gray": {
+      "foreground": 12.3860445022583,
+      "correlation": 0.050789736211299896
+    },
+    "cameras": {
+      "foreground": 12.393431663513184,
+      "correlation": -0.06940411031246185
+    },
+    "cameras_gray": {
+      "foreground": 12.550636291503906,
+      "correlation": 0.17013442516326904
+    },
+    "reference_geometry": {
+      "foreground": 12.611123085021973,
+      "correlation": 0.2187844067811966
+    },
+    "both": {
+      "foreground": 20.297639846801758,
+      "correlation": 0.9146483540534973
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 32,
+    "student": {
+      "foreground": 12.993821144104004,
+      "correlation": 0.23287329077720642
+    },
+    "source_gray": {
+      "foreground": 12.926679611206055,
+      "correlation": 0.02388903871178627
+    },
+    "cameras": {
+      "foreground": 12.910298347473145,
+      "correlation": -0.053434599190950394
+    },
+    "cameras_gray": {
+      "foreground": 12.926628112792969,
+      "correlation": -0.09366748481988907
+    },
+    "reference_geometry": {
+      "foreground": 12.931373596191406,
+      "correlation": 0.19443103671073914
+    },
+    "both": {
+      "foreground": 21.189069747924805,
+      "correlation": 0.924003005027771
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 39,
+    "student": {
+      "foreground": 14.27111530303955,
+      "correlation": 0.21282847225666046
+    },
+    "source_gray": {
+      "foreground": 14.100881576538086,
+      "correlation": -0.11191672086715698
+    },
+    "cameras": {
+      "foreground": 14.097436904907227,
+      "correlation": 0.24123907089233398
+    },
+    "cameras_gray": {
+      "foreground": 14.100961685180664,
+      "correlation": 0.11789136379957199
+    },
+    "reference_geometry": {
+      "foreground": 13.625110626220703,
+      "correlation": 0.08966045081615448
+    },
+    "both": {
+      "foreground": 23.52983856201172,
+      "correlation": 0.9355010986328125
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 46,
+    "student": {
+      "foreground": 14.239273071289062,
+      "correlation": 0.01839558780193329
+    },
+    "source_gray": {
+      "foreground": 14.197178840637207,
+      "correlation": -0.15514521300792694
+    },
+    "cameras": {
+      "foreground": 14.083173751831055,
+      "correlation": -0.1180969774723053
+    },
+    "cameras_gray": {
+      "foreground": 14.205228805541992,
+      "correlation": 0.015040821395814419
+    },
+    "reference_geometry": {
+      "foreground": 13.506160736083984,
+      "correlation": 0.057710349559783936
+    },
+    "both": {
+      "foreground": 23.71500015258789,
+      "correlation": 0.9316667914390564
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 53,
+    "student": {
+      "foreground": 14.28215217590332,
+      "correlation": 0.028811443597078323
+    },
+    "source_gray": {
+      "foreground": 14.013524055480957,
+      "correlation": 0.004002676345407963
+    },
+    "cameras": {
+      "foreground": 13.93766975402832,
+      "correlation": -0.040670160204172134
+    },
+    "cameras_gray": {
+      "foreground": 14.013548851013184,
+      "correlation": -0.030841199681162834
+    },
+    "reference_geometry": {
+      "foreground": 13.383231163024902,
+      "correlation": -0.04883924871683121
+    },
+    "both": {
+      "foreground": 25.223556518554688,
+      "correlation": 0.9528796672821045
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 4,
+    "student": {
+      "foreground": 15.187568664550781,
+      "correlation": 0.24361033737659454
+    },
+    "source_gray": {
+      "foreground": 15.059013366699219,
+      "correlation": 0.04827733337879181
+    },
+    "cameras": {
+      "foreground": 15.379348754882812,
+      "correlation": 0.2624441981315613
+    },
+    "cameras_gray": {
+      "foreground": 15.15113639831543,
+      "correlation": 0.271186500787735
+    },
+    "reference_geometry": {
+      "foreground": 15.332681655883789,
+      "correlation": 0.19677241146564484
+    },
+    "both": {
+      "foreground": 24.846027374267578,
+      "correlation": 0.945029616355896
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 11,
+    "student": {
+      "foreground": 15.272344589233398,
+      "correlation": 0.23565997183322906
+    },
+    "source_gray": {
+      "foreground": 15.11098861694336,
+      "correlation": 0.03228209167718887
+    },
+    "cameras": {
+      "foreground": 15.174962043762207,
+      "correlation": -0.019256163388490677
+    },
+    "cameras_gray": {
+      "foreground": 15.20576286315918,
+      "correlation": 0.20901411771774292
+    },
+    "reference_geometry": {
+      "foreground": 15.345338821411133,
+      "correlation": 0.40191850066185
+    },
+    "both": {
+      "foreground": 25.406034469604492,
+      "correlation": 0.9524037837982178
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 18,
+    "student": {
+      "foreground": 14.77885627746582,
+      "correlation": 0.12974554300308228
+    },
+    "source_gray": {
+      "foreground": 15.053939819335938,
+      "correlation": 0.18942046165466309
+    },
+    "cameras": {
+      "foreground": 14.991578102111816,
+      "correlation": -0.3644711375236511
+    },
+    "cameras_gray": {
+      "foreground": 15.161160469055176,
+      "correlation": 0.0015275564510375261
+    },
+    "reference_geometry": {
+      "foreground": 15.235279083251953,
+      "correlation": 0.44848403334617615
+    },
+    "both": {
+      "foreground": 25.64838409423828,
+      "correlation": 0.9551620483398438
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 25,
+    "student": {
+      "foreground": 15.30405044555664,
+      "correlation": 0.2585446238517761
+    },
+    "source_gray": {
+      "foreground": 15.142311096191406,
+      "correlation": 0.002048923633992672
+    },
+    "cameras": {
+      "foreground": 15.066486358642578,
+      "correlation": 0.04334023594856262
+    },
+    "cameras_gray": {
+      "foreground": 15.13160228729248,
+      "correlation": 0.14322680234909058
+    },
+    "reference_geometry": {
+      "foreground": 14.977621078491211,
+      "correlation": 0.42738077044487
+    },
+    "both": {
+      "foreground": 25.26603889465332,
+      "correlation": 0.9506046772003174
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 32,
+    "student": {
+      "foreground": 14.917645454406738,
+      "correlation": 0.04185127094388008
+    },
+    "source_gray": {
+      "foreground": 14.730481147766113,
+      "correlation": -0.038524627685546875
+    },
+    "cameras": {
+      "foreground": 14.846179962158203,
+      "correlation": 0.34213000535964966
+    },
+    "cameras_gray": {
+      "foreground": 14.836830139160156,
+      "correlation": -0.03458460047841072
+    },
+    "reference_geometry": {
+      "foreground": 14.57787036895752,
+      "correlation": 0.4629663825035095
+    },
+    "both": {
+      "foreground": 24.362018585205078,
+      "correlation": 0.9409438371658325
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 39,
+    "student": {
+      "foreground": 14.268845558166504,
+      "correlation": -0.049389805644750595
+    },
+    "source_gray": {
+      "foreground": 14.122251510620117,
+      "correlation": -0.15186631679534912
+    },
+    "cameras": {
+      "foreground": 14.113748550415039,
+      "correlation": 0.4238704442977905
+    },
+    "cameras_gray": {
+      "foreground": 14.122319221496582,
+      "correlation": 0.06904953718185425
+    },
+    "reference_geometry": {
+      "foreground": 13.757547378540039,
+      "correlation": 0.49273020029067993
+    },
+    "both": {
+      "foreground": 22.742412567138672,
+      "correlation": 0.9247475862503052
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 46,
+    "student": {
+      "foreground": 14.426979064941406,
+      "correlation": -0.060089290142059326
+    },
+    "source_gray": {
+      "foreground": 14.204458236694336,
+      "correlation": -0.1286870539188385
+    },
+    "cameras": {
+      "foreground": 14.175445556640625,
+      "correlation": -0.013653513975441456
+    },
+    "cameras_gray": {
+      "foreground": 14.409370422363281,
+      "correlation": -0.08742359280586243
+    },
+    "reference_geometry": {
+      "foreground": 13.932405471801758,
+      "correlation": 0.05505210906267166
+    },
+    "both": {
+      "foreground": 24.096843719482422,
+      "correlation": 0.9400652647018433
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 53,
+    "student": {
+      "foreground": 14.86441421508789,
+      "correlation": 0.02785475179553032
+    },
+    "source_gray": {
+      "foreground": 14.78244400024414,
+      "correlation": 0.06072787567973137
+    },
+    "cameras": {
+      "foreground": 14.536211013793945,
+      "correlation": -0.18727660179138184
+    },
+    "cameras_gray": {
+      "foreground": 14.748616218566895,
+      "correlation": 0.13859835267066956
+    },
+    "reference_geometry": {
+      "foreground": 14.143106460571289,
+      "correlation": 0.04753364622592926
+    },
+    "both": {
+      "foreground": 24.520151138305664,
+      "correlation": 0.9400026798248291
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 4,
+    "student": {
+      "foreground": 13.123921394348145,
+      "correlation": 0.11737854778766632
+    },
+    "source_gray": {
+      "foreground": 13.238418579101562,
+      "correlation": 0.011526243761181831
+    },
+    "cameras": {
+      "foreground": 11.99627685546875,
+      "correlation": 0.03545120358467102
+    },
+    "cameras_gray": {
+      "foreground": 14.887361526489258,
+      "correlation": 0.2765023410320282
+    },
+    "reference_geometry": {
+      "foreground": 11.466968536376953,
+      "correlation": 0.21677184104919434
+    },
+    "both": {
+      "foreground": 21.384801864624023,
+      "correlation": 0.8028364181518555
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 11,
+    "student": {
+      "foreground": 13.749652862548828,
+      "correlation": 0.08536626398563385
+    },
+    "source_gray": {
+      "foreground": 13.332571983337402,
+      "correlation": 0.044995300471782684
+    },
+    "cameras": {
+      "foreground": 12.875564575195312,
+      "correlation": -0.24839219450950623
+    },
+    "cameras_gray": {
+      "foreground": 13.164204597473145,
+      "correlation": 0.019585242494940758
+    },
+    "reference_geometry": {
+      "foreground": 12.106281280517578,
+      "correlation": 0.30040043592453003
+    },
+    "both": {
+      "foreground": 22.880905151367188,
+      "correlation": 0.8669679760932922
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 18,
+    "student": {
+      "foreground": 13.566655158996582,
+      "correlation": 0.17103701829910278
+    },
+    "source_gray": {
+      "foreground": 13.395164489746094,
+      "correlation": 0.003548212116584182
+    },
+    "cameras": {
+      "foreground": 13.175497055053711,
+      "correlation": 0.05393156036734581
+    },
+    "cameras_gray": {
+      "foreground": 13.932435989379883,
+      "correlation": 0.10967141389846802
+    },
+    "reference_geometry": {
+      "foreground": 12.235469818115234,
+      "correlation": 0.3741458058357239
+    },
+    "both": {
+      "foreground": 24.239206314086914,
+      "correlation": 0.9106754064559937
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 25,
+    "student": {
+      "foreground": 13.014745712280273,
+      "correlation": 0.2725481688976288
+    },
+    "source_gray": {
+      "foreground": 13.156494140625,
+      "correlation": 0.09849816560745239
+    },
+    "cameras": {
+      "foreground": 12.901639938354492,
+      "correlation": -0.08863937854766846
+    },
+    "cameras_gray": {
+      "foreground": 13.14876937866211,
+      "correlation": 0.10240636765956879
+    },
+    "reference_geometry": {
+      "foreground": 12.262866973876953,
+      "correlation": 0.4908480644226074
+    },
+    "both": {
+      "foreground": 23.163721084594727,
+      "correlation": 0.9300068616867065
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 32,
+    "student": {
+      "foreground": 11.688004493713379,
+      "correlation": 0.4505488872528076
+    },
+    "source_gray": {
+      "foreground": 11.4899263381958,
+      "correlation": -0.012563678435981274
+    },
+    "cameras": {
+      "foreground": 11.595527648925781,
+      "correlation": 0.458331823348999
+    },
+    "cameras_gray": {
+      "foreground": 11.489934921264648,
+      "correlation": -0.0009457126725465059
+    },
+    "reference_geometry": {
+      "foreground": 11.251901626586914,
+      "correlation": 0.5581732988357544
+    },
+    "both": {
+      "foreground": 20.09943199157715,
+      "correlation": 0.9256609082221985
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 39,
+    "student": {
+      "foreground": 11.7955322265625,
+      "correlation": 0.16808278858661652
+    },
+    "source_gray": {
+      "foreground": 11.607257843017578,
+      "correlation": 0.0975162535905838
+    },
+    "cameras": {
+      "foreground": 11.470422744750977,
+      "correlation": 0.1980711817741394
+    },
+    "cameras_gray": {
+      "foreground": 11.534725189208984,
+      "correlation": 0.0584808811545372
+    },
+    "reference_geometry": {
+      "foreground": 11.251298904418945,
+      "correlation": 0.5881332755088806
+    },
+    "both": {
+      "foreground": 19.755014419555664,
+      "correlation": 0.9170597791671753
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 46,
+    "student": {
+      "foreground": 13.430434226989746,
+      "correlation": 0.1075051873922348
+    },
+    "source_gray": {
+      "foreground": 13.505620956420898,
+      "correlation": 0.032182008028030396
+    },
+    "cameras": {
+      "foreground": 12.988279342651367,
+      "correlation": -0.14970669150352478
+    },
+    "cameras_gray": {
+      "foreground": 13.50969123840332,
+      "correlation": 0.06264682114124298
+    },
+    "reference_geometry": {
+      "foreground": 12.49571418762207,
+      "correlation": 0.3832964301109314
+    },
+    "both": {
+      "foreground": 22.486553192138672,
+      "correlation": 0.8997553586959839
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 53,
+    "student": {
+      "foreground": 14.054450035095215,
+      "correlation": 0.4261459708213806
+    },
+    "source_gray": {
+      "foreground": 13.942222595214844,
+      "correlation": -0.003189497161656618
+    },
+    "cameras": {
+      "foreground": 13.590377807617188,
+      "correlation": -0.1077829897403717
+    },
+    "cameras_gray": {
+      "foreground": 13.939214706420898,
+      "correlation": 0.03716167435050011
+    },
+    "reference_geometry": {
+      "foreground": 12.345961570739746,
+      "correlation": 0.2606707513332367
+    },
+    "both": {
+      "foreground": 24.131982803344727,
+      "correlation": 0.8603821992874146
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 4,
+    "student": {
+      "foreground": 14.180846214294434,
+      "correlation": 0.216365784406662
+    },
+    "source_gray": {
+      "foreground": 14.13713264465332,
+      "correlation": 0.042015232145786285
+    },
+    "cameras": {
+      "foreground": 14.020113945007324,
+      "correlation": 0.1735638976097107
+    },
+    "cameras_gray": {
+      "foreground": 14.121496200561523,
+      "correlation": 0.04814837500452995
+    },
+    "reference_geometry": {
+      "foreground": 13.25367546081543,
+      "correlation": 0.2971181869506836
+    },
+    "both": {
+      "foreground": 23.859481811523438,
+      "correlation": 0.9275004267692566
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 11,
+    "student": {
+      "foreground": 14.563921928405762,
+      "correlation": 0.1784965991973877
+    },
+    "source_gray": {
+      "foreground": 14.485614776611328,
+      "correlation": 0.0986166000366211
+    },
+    "cameras": {
+      "foreground": 13.348165512084961,
+      "correlation": 0.09274762123823166
+    },
+    "cameras_gray": {
+      "foreground": 16.054035186767578,
+      "correlation": 0.42155003547668457
+    },
+    "reference_geometry": {
+      "foreground": 12.796669960021973,
+      "correlation": 0.24779045581817627
+    },
+    "both": {
+      "foreground": 24.2088680267334,
+      "correlation": 0.9182720184326172
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 18,
+    "student": {
+      "foreground": 14.108911514282227,
+      "correlation": 0.09306183457374573
+    },
+    "source_gray": {
+      "foreground": 14.531540870666504,
+      "correlation": 0.049025390297174454
+    },
+    "cameras": {
+      "foreground": 13.063762664794922,
+      "correlation": -0.32899144291877747
+    },
+    "cameras_gray": {
+      "foreground": 16.10784912109375,
+      "correlation": 0.3127570152282715
+    },
+    "reference_geometry": {
+      "foreground": 12.71670913696289,
+      "correlation": 0.3821868300437927
+    },
+    "both": {
+      "foreground": 24.476543426513672,
+      "correlation": 0.9075486660003662
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 25,
+    "student": {
+      "foreground": 14.662548065185547,
+      "correlation": 0.353209912776947
+    },
+    "source_gray": {
+      "foreground": 14.428180694580078,
+      "correlation": -0.11980687826871872
+    },
+    "cameras": {
+      "foreground": 14.05253791809082,
+      "correlation": 0.3156774640083313
+    },
+    "cameras_gray": {
+      "foreground": 14.428201675415039,
+      "correlation": -0.008182539604604244
+    },
+    "reference_geometry": {
+      "foreground": 13.061355590820312,
+      "correlation": 0.46766385436058044
+    },
+    "both": {
+      "foreground": 25.194318771362305,
+      "correlation": 0.8973637819290161
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 32,
+    "student": {
+      "foreground": 13.459663391113281,
+      "correlation": -0.059866104274988174
+    },
+    "source_gray": {
+      "foreground": 14.098993301391602,
+      "correlation": 0.027198798954486847
+    },
+    "cameras": {
+      "foreground": 13.578121185302734,
+      "correlation": -0.06546735763549805
+    },
+    "cameras_gray": {
+      "foreground": 14.098977088928223,
+      "correlation": -0.023754563182592392
+    },
+    "reference_geometry": {
+      "foreground": 12.170074462890625,
+      "correlation": 0.3630368411540985
+    },
+    "both": {
+      "foreground": 24.511507034301758,
+      "correlation": 0.8380191922187805
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 39,
+    "student": {
+      "foreground": 13.982176780700684,
+      "correlation": -0.02001919411122799
+    },
+    "source_gray": {
+      "foreground": 14.246788024902344,
+      "correlation": -0.02013298124074936
+    },
+    "cameras": {
+      "foreground": 13.99835205078125,
+      "correlation": -0.07686153054237366
+    },
+    "cameras_gray": {
+      "foreground": 14.025871276855469,
+      "correlation": 0.004601727239787579
+    },
+    "reference_geometry": {
+      "foreground": 12.541921615600586,
+      "correlation": 0.14394381642341614
+    },
+    "both": {
+      "foreground": 24.143394470214844,
+      "correlation": 0.7933107614517212
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 46,
+    "student": {
+      "foreground": 14.478922843933105,
+      "correlation": -0.04857821762561798
+    },
+    "source_gray": {
+      "foreground": 14.40835189819336,
+      "correlation": 0.010201482102274895
+    },
+    "cameras": {
+      "foreground": 13.983906745910645,
+      "correlation": 0.14330299198627472
+    },
+    "cameras_gray": {
+      "foreground": 14.408300399780273,
+      "correlation": -0.014621331356465816
+    },
+    "reference_geometry": {
+      "foreground": 13.21019172668457,
+      "correlation": 0.24207954108715057
+    },
+    "both": {
+      "foreground": 25.11962890625,
+      "correlation": 0.8815799951553345
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 53,
+    "student": {
+      "foreground": 13.839288711547852,
+      "correlation": 0.05448071286082268
+    },
+    "source_gray": {
+      "foreground": 14.635151863098145,
+      "correlation": 0.05361205339431763
+    },
+    "cameras": {
+      "foreground": 13.830911636352539,
+      "correlation": -0.12948109209537506
+    },
+    "cameras_gray": {
+      "foreground": 14.48895263671875,
+      "correlation": 0.05308974161744118
+    },
+    "reference_geometry": {
+      "foreground": 13.009210586547852,
+      "correlation": 0.08965837210416794
+    },
+    "both": {
+      "foreground": 24.95925521850586,
+      "correlation": 0.9068921804428101
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 4,
+    "student": {
+      "foreground": 15.127205848693848,
+      "correlation": 0.06413538008928299
+    },
+    "source_gray": {
+      "foreground": 14.946924209594727,
+      "correlation": 0.0850858986377716
+    },
+    "cameras": {
+      "foreground": 14.84046745300293,
+      "correlation": -0.0027046927716583014
+    },
+    "cameras_gray": {
+      "foreground": 14.923398971557617,
+      "correlation": 0.014299215748906136
+    },
+    "reference_geometry": {
+      "foreground": 14.617705345153809,
+      "correlation": 0.025770964100956917
+    },
+    "both": {
+      "foreground": 23.500194549560547,
+      "correlation": 0.922458291053772
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 11,
+    "student": {
+      "foreground": 14.491467475891113,
+      "correlation": -0.2119411826133728
+    },
+    "source_gray": {
+      "foreground": 14.14128303527832,
+      "correlation": -0.2333400696516037
+    },
+    "cameras": {
+      "foreground": 14.79218864440918,
+      "correlation": -0.014597104862332344
+    },
+    "cameras_gray": {
+      "foreground": 14.919533729553223,
+      "correlation": 0.006969654932618141
+    },
+    "reference_geometry": {
+      "foreground": 14.452792167663574,
+      "correlation": 0.06484843790531158
+    },
+    "both": {
+      "foreground": 23.876468658447266,
+      "correlation": 0.9285829663276672
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 18,
+    "student": {
+      "foreground": 15.160055160522461,
+      "correlation": 0.2560621201992035
+    },
+    "source_gray": {
+      "foreground": 14.909252166748047,
+      "correlation": -0.036319367587566376
+    },
+    "cameras": {
+      "foreground": 14.575611114501953,
+      "correlation": -0.18831603229045868
+    },
+    "cameras_gray": {
+      "foreground": 14.910689353942871,
+      "correlation": 0.01267960388213396
+    },
+    "reference_geometry": {
+      "foreground": 14.632604598999023,
+      "correlation": 0.2585849165916443
+    },
+    "both": {
+      "foreground": 23.878990173339844,
+      "correlation": 0.9290139675140381
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 25,
+    "student": {
+      "foreground": 14.156061172485352,
+      "correlation": -0.2658093571662903
+    },
+    "source_gray": {
+      "foreground": 13.850722312927246,
+      "correlation": -0.299792617559433
+    },
+    "cameras": {
+      "foreground": 14.74728775024414,
+      "correlation": -0.17689494788646698
+    },
+    "cameras_gray": {
+      "foreground": 14.957877159118652,
+      "correlation": 0.06880591809749603
+    },
+    "reference_geometry": {
+      "foreground": 14.700264930725098,
+      "correlation": 0.2563929557800293
+    },
+    "both": {
+      "foreground": 24.193782806396484,
+      "correlation": 0.9331502914428711
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 32,
+    "student": {
+      "foreground": 10.777188301086426,
+      "correlation": -0.20846162736415863
+    },
+    "source_gray": {
+      "foreground": 10.783760070800781,
+      "correlation": -0.20574752986431122
+    },
+    "cameras": {
+      "foreground": 14.729456901550293,
+      "correlation": -0.19902737438678741
+    },
+    "cameras_gray": {
+      "foreground": 15.224799156188965,
+      "correlation": 0.030853429809212685
+    },
+    "reference_geometry": {
+      "foreground": 14.818052291870117,
+      "correlation": 0.20363734662532806
+    },
+    "both": {
+      "foreground": 25.40347671508789,
+      "correlation": 0.9481058716773987
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 39,
+    "student": {
+      "foreground": 15.16238021850586,
+      "correlation": -0.17473387718200684
+    },
+    "source_gray": {
+      "foreground": 15.236011505126953,
+      "correlation": -0.08923657983541489
+    },
+    "cameras": {
+      "foreground": 15.221349716186523,
+      "correlation": 0.03445544093847275
+    },
+    "cameras_gray": {
+      "foreground": 15.236078262329102,
+      "correlation": 0.008264904841780663
+    },
+    "reference_geometry": {
+      "foreground": 14.871306419372559,
+      "correlation": 0.05630927532911301
+    },
+    "both": {
+      "foreground": 23.469764709472656,
+      "correlation": 0.9202433824539185
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 46,
+    "student": {
+      "foreground": 15.573929786682129,
+      "correlation": 0.004876855760812759
+    },
+    "source_gray": {
+      "foreground": 15.600613594055176,
+      "correlation": 0.07449684292078018
+    },
+    "cameras": {
+      "foreground": 15.506058692932129,
+      "correlation": -0.09380266815423965
+    },
+    "cameras_gray": {
+      "foreground": 15.589601516723633,
+      "correlation": 0.08004612475633621
+    },
+    "reference_geometry": {
+      "foreground": 15.26746654510498,
+      "correlation": -0.0020861602388322353
+    },
+    "both": {
+      "foreground": 24.104156494140625,
+      "correlation": 0.9275929927825928
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 53,
+    "student": {
+      "foreground": 15.45248794555664,
+      "correlation": 0.06883589923381805
+    },
+    "source_gray": {
+      "foreground": 15.366777420043945,
+      "correlation": -0.038349755108356476
+    },
+    "cameras": {
+      "foreground": 15.447951316833496,
+      "correlation": -0.20896947383880615
+    },
+    "cameras_gray": {
+      "foreground": 15.602537155151367,
+      "correlation": 0.21971945464611053
+    },
+    "reference_geometry": {
+      "foreground": 15.41054916381836,
+      "correlation": -0.07871153950691223
+    },
+    "both": {
+      "foreground": 23.418352127075195,
+      "correlation": 0.9153311252593994
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 4,
+    "student": {
+      "foreground": 14.957412719726562,
+      "correlation": 0.40246039628982544
+    },
+    "source_gray": {
+      "foreground": 14.842687606811523,
+      "correlation": 0.11363983154296875
+    },
+    "cameras": {
+      "foreground": 14.873103141784668,
+      "correlation": 0.08198881149291992
+    },
+    "cameras_gray": {
+      "foreground": 14.84265422821045,
+      "correlation": 0.04004155844449997
+    },
+    "reference_geometry": {
+      "foreground": 14.98325252532959,
+      "correlation": 0.4772660434246063
+    },
+    "both": {
+      "foreground": 22.508981704711914,
+      "correlation": 0.9108015894889832
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 11,
+    "student": {
+      "foreground": 14.22899341583252,
+      "correlation": -0.0027806952130049467
+    },
+    "source_gray": {
+      "foreground": 14.453277587890625,
+      "correlation": -0.07738350331783295
+    },
+    "cameras": {
+      "foreground": 14.29336166381836,
+      "correlation": 0.45163169503211975
+    },
+    "cameras_gray": {
+      "foreground": 14.453258514404297,
+      "correlation": -0.031217526644468307
+    },
+    "reference_geometry": {
+      "foreground": 14.617586135864258,
+      "correlation": 0.4386683404445648
+    },
+    "both": {
+      "foreground": 22.43678855895996,
+      "correlation": 0.9159774780273438
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 18,
+    "student": {
+      "foreground": 13.861942291259766,
+      "correlation": 0.2585046887397766
+    },
+    "source_gray": {
+      "foreground": 14.000855445861816,
+      "correlation": 0.0801452100276947
+    },
+    "cameras": {
+      "foreground": 14.155929565429688,
+      "correlation": 0.41213491559028625
+    },
+    "cameras_gray": {
+      "foreground": 14.000289916992188,
+      "correlation": 0.03378120809793472
+    },
+    "reference_geometry": {
+      "foreground": 14.238718032836914,
+      "correlation": 0.419438898563385
+    },
+    "both": {
+      "foreground": 22.362993240356445,
+      "correlation": 0.9208065867424011
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 25,
+    "student": {
+      "foreground": 13.384028434753418,
+      "correlation": 0.37614163756370544
+    },
+    "source_gray": {
+      "foreground": 13.610869407653809,
+      "correlation": -0.07705532014369965
+    },
+    "cameras": {
+      "foreground": 13.763524055480957,
+      "correlation": 0.49313515424728394
+    },
+    "cameras_gray": {
+      "foreground": 13.610859870910645,
+      "correlation": -0.0559888519346714
+    },
+    "reference_geometry": {
+      "foreground": 13.904205322265625,
+      "correlation": 0.34735938906669617
+    },
+    "both": {
+      "foreground": 22.531692504882812,
+      "correlation": 0.9274546504020691
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 32,
+    "student": {
+      "foreground": 13.265748977661133,
+      "correlation": 0.392158180475235
+    },
+    "source_gray": {
+      "foreground": 13.229043960571289,
+      "correlation": -0.11290261149406433
+    },
+    "cameras": {
+      "foreground": 13.240915298461914,
+      "correlation": 0.008876617066562176
+    },
+    "cameras_gray": {
+      "foreground": 13.22905158996582,
+      "correlation": 0.11920303106307983
+    },
+    "reference_geometry": {
+      "foreground": 13.624077796936035,
+      "correlation": 0.3355792462825775
+    },
+    "both": {
+      "foreground": 22.30291748046875,
+      "correlation": 0.9264980554580688
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 39,
+    "student": {
+      "foreground": 12.588606834411621,
+      "correlation": 0.3081180453300476
+    },
+    "source_gray": {
+      "foreground": 12.851818084716797,
+      "correlation": -0.06032658368349075
+    },
+    "cameras": {
+      "foreground": 13.090795516967773,
+      "correlation": -0.10971975326538086
+    },
+    "cameras_gray": {
+      "foreground": 12.849875450134277,
+      "correlation": 0.21721936762332916
+    },
+    "reference_geometry": {
+      "foreground": 13.098812103271484,
+      "correlation": 0.22013989090919495
+    },
+    "both": {
+      "foreground": 21.721641540527344,
+      "correlation": 0.9179760217666626
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 46,
+    "student": {
+      "foreground": 12.15900993347168,
+      "correlation": 0.31361687183380127
+    },
+    "source_gray": {
+      "foreground": 12.417899131774902,
+      "correlation": 0.08192606270313263
+    },
+    "cameras": {
+      "foreground": 12.76776123046875,
+      "correlation": 0.14851374924182892
+    },
+    "cameras_gray": {
+      "foreground": 12.411567687988281,
+      "correlation": -0.022344261407852173
+    },
+    "reference_geometry": {
+      "foreground": 12.647327423095703,
+      "correlation": 0.302449107170105
+    },
+    "both": {
+      "foreground": 20.965518951416016,
+      "correlation": 0.9030452966690063
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 53,
+    "student": {
+      "foreground": 11.621803283691406,
+      "correlation": 0.3602677881717682
+    },
+    "source_gray": {
+      "foreground": 11.866859436035156,
+      "correlation": -0.00257921707816422
+    },
+    "cameras": {
+      "foreground": 12.175253868103027,
+      "correlation": 0.028519634157419205
+    },
+    "cameras_gray": {
+      "foreground": 11.866827011108398,
+      "correlation": 0.057650595903396606
+    },
+    "reference_geometry": {
+      "foreground": 12.171412467956543,
+      "correlation": 0.20246621966362
+    },
+    "both": {
+      "foreground": 20.2519588470459,
+      "correlation": 0.8759175539016724
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 4,
+    "student": {
+      "foreground": 13.639963150024414,
+      "correlation": 0.042279623448848724
+    },
+    "source_gray": {
+      "foreground": 13.819496154785156,
+      "correlation": 0.0898088589310646
+    },
+    "cameras": {
+      "foreground": 13.538923263549805,
+      "correlation": 0.18981435894966125
+    },
+    "cameras_gray": {
+      "foreground": 14.221945762634277,
+      "correlation": 0.4825114607810974
+    },
+    "reference_geometry": {
+      "foreground": 13.065759658813477,
+      "correlation": -0.24027109146118164
+    },
+    "both": {
+      "foreground": 26.095600128173828,
+      "correlation": 0.9672576189041138
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 11,
+    "student": {
+      "foreground": 13.814359664916992,
+      "correlation": -0.05490589141845703
+    },
+    "source_gray": {
+      "foreground": 13.875791549682617,
+      "correlation": 0.06534326076507568
+    },
+    "cameras": {
+      "foreground": 13.738826751708984,
+      "correlation": -0.08742733299732208
+    },
+    "cameras_gray": {
+      "foreground": 13.828868865966797,
+      "correlation": -0.08653363585472107
+    },
+    "reference_geometry": {
+      "foreground": 13.403156280517578,
+      "correlation": -0.18874861299991608
+    },
+    "both": {
+      "foreground": 26.51493263244629,
+      "correlation": 0.9715400338172913
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 18,
+    "student": {
+      "foreground": 13.760920524597168,
+      "correlation": 0.1133674755692482
+    },
+    "source_gray": {
+      "foreground": 13.673110961914062,
+      "correlation": 0.03326311707496643
+    },
+    "cameras": {
+      "foreground": 13.578539848327637,
+      "correlation": -0.06352494657039642
+    },
+    "cameras_gray": {
+      "foreground": 13.587200164794922,
+      "correlation": 0.1044965535402298
+    },
+    "reference_geometry": {
+      "foreground": 13.269757270812988,
+      "correlation": -0.2115473598241806
+    },
+    "both": {
+      "foreground": 26.161348342895508,
+      "correlation": 0.9711775779724121
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 25,
+    "student": {
+      "foreground": 13.595967292785645,
+      "correlation": 0.1335570216178894
+    },
+    "source_gray": {
+      "foreground": 13.554454803466797,
+      "correlation": 0.030296565964818
+    },
+    "cameras": {
+      "foreground": 13.56818962097168,
+      "correlation": 0.19296950101852417
+    },
+    "cameras_gray": {
+      "foreground": 13.156822204589844,
+      "correlation": -0.06243196874856949
+    },
+    "reference_geometry": {
+      "foreground": 13.326255798339844,
+      "correlation": -0.3059273660182953
+    },
+    "both": {
+      "foreground": 25.952388763427734,
+      "correlation": 0.9709776639938354
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 32,
+    "student": {
+      "foreground": 13.343830108642578,
+      "correlation": 0.12851330637931824
+    },
+    "source_gray": {
+      "foreground": 13.439411163330078,
+      "correlation": 0.15147429704666138
+    },
+    "cameras": {
+      "foreground": 13.34607982635498,
+      "correlation": -0.12946650385856628
+    },
+    "cameras_gray": {
+      "foreground": 13.41203498840332,
+      "correlation": 0.20809590816497803
+    },
+    "reference_geometry": {
+      "foreground": 13.468549728393555,
+      "correlation": 0.10507392883300781
+    },
+    "both": {
+      "foreground": 25.602386474609375,
+      "correlation": 0.9693461656570435
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 39,
+    "student": {
+      "foreground": 13.379687309265137,
+      "correlation": 0.2764190435409546
+    },
+    "source_gray": {
+      "foreground": 13.327825546264648,
+      "correlation": 0.027379920706152916
+    },
+    "cameras": {
+      "foreground": 13.474727630615234,
+      "correlation": 0.32566720247268677
+    },
+    "cameras_gray": {
+      "foreground": 13.331005096435547,
+      "correlation": 0.047462452203035355
+    },
+    "reference_geometry": {
+      "foreground": 13.579760551452637,
+      "correlation": 0.17503845691680908
+    },
+    "both": {
+      "foreground": 25.12415313720703,
+      "correlation": 0.9650806784629822
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 46,
+    "student": {
+      "foreground": 12.950371742248535,
+      "correlation": 0.3088131546974182
+    },
+    "source_gray": {
+      "foreground": 12.914653778076172,
+      "correlation": -0.07247264683246613
+    },
+    "cameras": {
+      "foreground": 13.011460304260254,
+      "correlation": -0.23257231712341309
+    },
+    "cameras_gray": {
+      "foreground": 12.91463851928711,
+      "correlation": -0.017099015414714813
+    },
+    "reference_geometry": {
+      "foreground": 13.481507301330566,
+      "correlation": 0.3005695343017578
+    },
+    "both": {
+      "foreground": 24.032405853271484,
+      "correlation": 0.95508873462677
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 53,
+    "student": {
+      "foreground": 13.215738296508789,
+      "correlation": 0.381550133228302
+    },
+    "source_gray": {
+      "foreground": 13.152464866638184,
+      "correlation": 0.05925600603222847
+    },
+    "cameras": {
+      "foreground": 13.337791442871094,
+      "correlation": -0.019962552934885025
+    },
+    "cameras_gray": {
+      "foreground": 13.15243911743164,
+      "correlation": 0.04547078162431717
+    },
+    "reference_geometry": {
+      "foreground": 13.80282211303711,
+      "correlation": 0.4063279628753662
+    },
+    "both": {
+      "foreground": 24.552717208862305,
+      "correlation": 0.9567046165466309
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 4,
+    "student": {
+      "foreground": 13.737187385559082,
+      "correlation": 0.009599106386303902
+    },
+    "source_gray": {
+      "foreground": 13.962324142456055,
+      "correlation": 0.0014451263705268502
+    },
+    "cameras": {
+      "foreground": 13.691519737243652,
+      "correlation": 0.14270882308483124
+    },
+    "cameras_gray": {
+      "foreground": 13.234424591064453,
+      "correlation": -0.31872716546058655
+    },
+    "reference_geometry": {
+      "foreground": 12.824387550354004,
+      "correlation": -0.057403262704610825
+    },
+    "both": {
+      "foreground": 23.11281394958496,
+      "correlation": 0.9049859046936035
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 11,
+    "student": {
+      "foreground": 14.474996566772461,
+      "correlation": 0.18111301958560944
+    },
+    "source_gray": {
+      "foreground": 14.835063934326172,
+      "correlation": 0.17016743123531342
+    },
+    "cameras": {
+      "foreground": 12.442998886108398,
+      "correlation": 0.021398283541202545
+    },
+    "cameras_gray": {
+      "foreground": 15.088022232055664,
+      "correlation": 0.20237043499946594
+    },
+    "reference_geometry": {
+      "foreground": 12.228660583496094,
+      "correlation": -0.027246417477726936
+    },
+    "both": {
+      "foreground": 25.239612579345703,
+      "correlation": 0.9279201626777649
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 18,
+    "student": {
+      "foreground": 14.209978103637695,
+      "correlation": 0.0941343829035759
+    },
+    "source_gray": {
+      "foreground": 14.375862121582031,
+      "correlation": 0.037245217710733414
+    },
+    "cameras": {
+      "foreground": 12.50568962097168,
+      "correlation": -0.0709695965051651
+    },
+    "cameras_gray": {
+      "foreground": 15.917672157287598,
+      "correlation": 0.31081193685531616
+    },
+    "reference_geometry": {
+      "foreground": 12.309402465820312,
+      "correlation": -0.08781097829341888
+    },
+    "both": {
+      "foreground": 26.277088165283203,
+      "correlation": 0.9376105070114136
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 25,
+    "student": {
+      "foreground": 13.82177734375,
+      "correlation": 0.04262596741318703
+    },
+    "source_gray": {
+      "foreground": 14.280228614807129,
+      "correlation": -0.0039810254238545895
+    },
+    "cameras": {
+      "foreground": 12.565388679504395,
+      "correlation": -0.02431313507258892
+    },
+    "cameras_gray": {
+      "foreground": 16.116037368774414,
+      "correlation": 0.2803693115711212
+    },
+    "reference_geometry": {
+      "foreground": 12.394474983215332,
+      "correlation": 0.0389668270945549
+    },
+    "both": {
+      "foreground": 27.178138732910156,
+      "correlation": 0.9465818405151367
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 32,
+    "student": {
+      "foreground": 13.414469718933105,
+      "correlation": -0.0009234845056198537
+    },
+    "source_gray": {
+      "foreground": 14.181610107421875,
+      "correlation": 0.03414693474769592
+    },
+    "cameras": {
+      "foreground": 12.586874008178711,
+      "correlation": 0.0413958914577961
+    },
+    "cameras_gray": {
+      "foreground": 14.976378440856934,
+      "correlation": 0.24578523635864258
+    },
+    "reference_geometry": {
+      "foreground": 12.308025360107422,
+      "correlation": 0.10817684233188629
+    },
+    "both": {
+      "foreground": 27.626388549804688,
+      "correlation": 0.9527789950370789
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 39,
+    "student": {
+      "foreground": 13.33968734741211,
+      "correlation": 0.0024421322159469128
+    },
+    "source_gray": {
+      "foreground": 14.580527305603027,
+      "correlation": 0.07986684888601303
+    },
+    "cameras": {
+      "foreground": 11.848480224609375,
+      "correlation": 0.1147991493344307
+    },
+    "cameras_gray": {
+      "foreground": 17.58433723449707,
+      "correlation": 0.5283373594284058
+    },
+    "reference_geometry": {
+      "foreground": 11.762762069702148,
+      "correlation": 0.16059426963329315
+    },
+    "both": {
+      "foreground": 28.508705139160156,
+      "correlation": 0.9649285078048706
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 46,
+    "student": {
+      "foreground": 13.12598991394043,
+      "correlation": 0.00969143770635128
+    },
+    "source_gray": {
+      "foreground": 14.127593040466309,
+      "correlation": 0.046951569616794586
+    },
+    "cameras": {
+      "foreground": 11.86733341217041,
+      "correlation": 0.1546214371919632
+    },
+    "cameras_gray": {
+      "foreground": 17.36686897277832,
+      "correlation": 0.5966324210166931
+    },
+    "reference_geometry": {
+      "foreground": 11.707426071166992,
+      "correlation": 0.19309362769126892
+    },
+    "both": {
+      "foreground": 27.159215927124023,
+      "correlation": 0.9584423303604126
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 53,
+    "student": {
+      "foreground": 13.030937194824219,
+      "correlation": -0.011098900809884071
+    },
+    "source_gray": {
+      "foreground": 14.079689979553223,
+      "correlation": 0.04129324480891228
+    },
+    "cameras": {
+      "foreground": 11.739157676696777,
+      "correlation": 0.12319835275411606
+    },
+    "cameras_gray": {
+      "foreground": 16.705289840698242,
+      "correlation": 0.5388191938400269
+    },
+    "reference_geometry": {
+      "foreground": 11.528568267822266,
+      "correlation": 0.1629566252231598
+    },
+    "both": {
+      "foreground": 26.938934326171875,
+      "correlation": 0.9568583369255066
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 4,
+    "student": {
+      "foreground": 13.138628005981445,
+      "correlation": 0.02133292891085148
+    },
+    "source_gray": {
+      "foreground": 13.079615592956543,
+      "correlation": -0.008889054879546165
+    },
+    "cameras": {
+      "foreground": 13.777299880981445,
+      "correlation": 0.11767642945051193
+    },
+    "cameras_gray": {
+      "foreground": 13.72724437713623,
+      "correlation": 0.09514430165290833
+    },
+    "reference_geometry": {
+      "foreground": 13.869894981384277,
+      "correlation": 0.4225897490978241
+    },
+    "both": {
+      "foreground": 23.436542510986328,
+      "correlation": 0.9454046487808228
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 11,
+    "student": {
+      "foreground": 13.485337257385254,
+      "correlation": 0.06912916898727417
+    },
+    "source_gray": {
+      "foreground": 13.484359741210938,
+      "correlation": 0.06600252538919449
+    },
+    "cameras": {
+      "foreground": 13.822869300842285,
+      "correlation": -0.0018242857186123729
+    },
+    "cameras_gray": {
+      "foreground": 13.722467422485352,
+      "correlation": 0.0527501180768013
+    },
+    "reference_geometry": {
+      "foreground": 13.804503440856934,
+      "correlation": 0.243809774518013
+    },
+    "both": {
+      "foreground": 23.434600830078125,
+      "correlation": 0.9444959163665771
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 18,
+    "student": {
+      "foreground": 13.90536880493164,
+      "correlation": 0.20293526351451874
+    },
+    "source_gray": {
+      "foreground": 13.881515502929688,
+      "correlation": 0.17370566725730896
+    },
+    "cameras": {
+      "foreground": 13.811346054077148,
+      "correlation": -0.016477638855576515
+    },
+    "cameras_gray": {
+      "foreground": 13.811488151550293,
+      "correlation": 0.1116645336151123
+    },
+    "reference_geometry": {
+      "foreground": 13.875938415527344,
+      "correlation": 0.2694760859012604
+    },
+    "both": {
+      "foreground": 23.15349578857422,
+      "correlation": 0.9409874677658081
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 25,
+    "student": {
+      "foreground": 13.930265426635742,
+      "correlation": 0.2947685718536377
+    },
+    "source_gray": {
+      "foreground": 13.730142593383789,
+      "correlation": 0.08678414672613144
+    },
+    "cameras": {
+      "foreground": 13.91474723815918,
+      "correlation": 0.26608601212501526
+    },
+    "cameras_gray": {
+      "foreground": 14.414848327636719,
+      "correlation": 0.4212396740913391
+    },
+    "reference_geometry": {
+      "foreground": 13.852628707885742,
+      "correlation": 0.30775272846221924
+    },
+    "both": {
+      "foreground": 23.06880760192871,
+      "correlation": 0.9409022927284241
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 32,
+    "student": {
+      "foreground": 13.613947868347168,
+      "correlation": 0.13195067644119263
+    },
+    "source_gray": {
+      "foreground": 13.561248779296875,
+      "correlation": 0.054814413189888
+    },
+    "cameras": {
+      "foreground": 13.576759338378906,
+      "correlation": -0.08965776860713959
+    },
+    "cameras_gray": {
+      "foreground": 13.637325286865234,
+      "correlation": 0.10247298330068588
+    },
+    "reference_geometry": {
+      "foreground": 13.73940658569336,
+      "correlation": 0.3736981153488159
+    },
+    "both": {
+      "foreground": 23.53193473815918,
+      "correlation": 0.9482744932174683
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 39,
+    "student": {
+      "foreground": 13.810096740722656,
+      "correlation": 0.39864808320999146
+    },
+    "source_gray": {
+      "foreground": 13.581809043884277,
+      "correlation": -0.031477347016334534
+    },
+    "cameras": {
+      "foreground": 13.616071701049805,
+      "correlation": -0.036999598145484924
+    },
+    "cameras_gray": {
+      "foreground": 13.657637596130371,
+      "correlation": 0.12087079137563705
+    },
+    "reference_geometry": {
+      "foreground": 13.68456745147705,
+      "correlation": 0.27750706672668457
+    },
+    "both": {
+      "foreground": 23.855192184448242,
+      "correlation": 0.9519656300544739
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 46,
+    "student": {
+      "foreground": 13.660228729248047,
+      "correlation": 0.21449533104896545
+    },
+    "source_gray": {
+      "foreground": 13.626718521118164,
+      "correlation": 0.180860698223114
+    },
+    "cameras": {
+      "foreground": 13.56376838684082,
+      "correlation": 0.06172680854797363
+    },
+    "cameras_gray": {
+      "foreground": 13.70615005493164,
+      "correlation": 0.36619290709495544
+    },
+    "reference_geometry": {
+      "foreground": 13.664922714233398,
+      "correlation": 0.5126338601112366
+    },
+    "both": {
+      "foreground": 23.619991302490234,
+      "correlation": 0.9499056339263916
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 53,
+    "student": {
+      "foreground": 13.612869262695312,
+      "correlation": 0.19440500438213348
+    },
+    "source_gray": {
+      "foreground": 13.559236526489258,
+      "correlation": 0.14033842086791992
+    },
+    "cameras": {
+      "foreground": 13.535481452941895,
+      "correlation": 0.012344367802143097
+    },
+    "cameras_gray": {
+      "foreground": 13.64444637298584,
+      "correlation": 0.19702406227588654
+    },
+    "reference_geometry": {
+      "foreground": 13.689497947692871,
+      "correlation": 0.4407581090927124
+    },
+    "both": {
+      "foreground": 23.432422637939453,
+      "correlation": 0.9474801421165466
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 4,
+    "student": {
+      "foreground": 15.148215293884277,
+      "correlation": 0.07016855478286743
+    },
+    "source_gray": {
+      "foreground": 15.221994400024414,
+      "correlation": 0.06509228050708771
+    },
+    "cameras": {
+      "foreground": 17.26384162902832,
+      "correlation": -0.09252967685461044
+    },
+    "cameras_gray": {
+      "foreground": 17.371278762817383,
+      "correlation": -0.0497896745800972
+    },
+    "reference_geometry": {
+      "foreground": 17.555830001831055,
+      "correlation": 0.3027213215827942
+    },
+    "both": {
+      "foreground": 24.877519607543945,
+      "correlation": 0.9076354503631592
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 11,
+    "student": {
+      "foreground": 15.402267456054688,
+      "correlation": 0.07385789602994919
+    },
+    "source_gray": {
+      "foreground": 15.43862247467041,
+      "correlation": 0.07063844054937363
+    },
+    "cameras": {
+      "foreground": 17.60710906982422,
+      "correlation": 0.1189194768667221
+    },
+    "cameras_gray": {
+      "foreground": 17.512147903442383,
+      "correlation": -0.09724168479442596
+    },
+    "reference_geometry": {
+      "foreground": 17.63630485534668,
+      "correlation": 0.299669474363327
+    },
+    "both": {
+      "foreground": 25.053123474121094,
+      "correlation": 0.9084987044334412
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 18,
+    "student": {
+      "foreground": 16.687957763671875,
+      "correlation": 0.07605695724487305
+    },
+    "source_gray": {
+      "foreground": 16.77668571472168,
+      "correlation": 0.07325633615255356
+    },
+    "cameras": {
+      "foreground": 17.67340087890625,
+      "correlation": -0.03568337857723236
+    },
+    "cameras_gray": {
+      "foreground": 17.731916427612305,
+      "correlation": 0.010068915784358978
+    },
+    "reference_geometry": {
+      "foreground": 17.845396041870117,
+      "correlation": 0.194451704621315
+    },
+    "both": {
+      "foreground": 25.21989631652832,
+      "correlation": 0.9081194400787354
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 25,
+    "student": {
+      "foreground": 17.640867233276367,
+      "correlation": 0.08273210376501083
+    },
+    "source_gray": {
+      "foreground": 17.841997146606445,
+      "correlation": -0.017505478113889694
+    },
+    "cameras": {
+      "foreground": 17.73986053466797,
+      "correlation": -0.042205601930618286
+    },
+    "cameras_gray": {
+      "foreground": 17.84203338623047,
+      "correlation": 0.03912308067083359
+    },
+    "reference_geometry": {
+      "foreground": 17.93525505065918,
+      "correlation": 0.13394123315811157
+    },
+    "both": {
+      "foreground": 25.24762725830078,
+      "correlation": 0.9070446491241455
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 32,
+    "student": {
+      "foreground": 17.45148468017578,
+      "correlation": 0.06619527190923691
+    },
+    "source_gray": {
+      "foreground": 17.6337890625,
+      "correlation": -0.03413483873009682
+    },
+    "cameras": {
+      "foreground": 17.542024612426758,
+      "correlation": -0.0138784758746624
+    },
+    "cameras_gray": {
+      "foreground": 17.633821487426758,
+      "correlation": 0.08265607059001923
+    },
+    "reference_geometry": {
+      "foreground": 17.703340530395508,
+      "correlation": 0.06261292845010757
+    },
+    "both": {
+      "foreground": 24.845760345458984,
+      "correlation": 0.9036005735397339
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 39,
+    "student": {
+      "foreground": 15.796479225158691,
+      "correlation": 0.006746251136064529
+    },
+    "source_gray": {
+      "foreground": 15.965261459350586,
+      "correlation": 0.008580674417316914
+    },
+    "cameras": {
+      "foreground": 16.457273483276367,
+      "correlation": 0.05027322471141815
+    },
+    "cameras_gray": {
+      "foreground": 16.497623443603516,
+      "correlation": -0.008390292525291443
+    },
+    "reference_geometry": {
+      "foreground": 16.610698699951172,
+      "correlation": 0.050287432968616486
+    },
+    "both": {
+      "foreground": 23.89154815673828,
+      "correlation": 0.9093189239501953
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 46,
+    "student": {
+      "foreground": 12.680347442626953,
+      "correlation": -0.013647411949932575
+    },
+    "source_gray": {
+      "foreground": 12.86406421661377,
+      "correlation": -0.007769972551614046
+    },
+    "cameras": {
+      "foreground": 12.861703872680664,
+      "correlation": 0.059429068118333817
+    },
+    "cameras_gray": {
+      "foreground": 12.992197036743164,
+      "correlation": -0.012726247310638428
+    },
+    "reference_geometry": {
+      "foreground": 13.174150466918945,
+      "correlation": -0.09773728251457214
+    },
+    "both": {
+      "foreground": 19.754945755004883,
+      "correlation": 0.8882312774658203
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 53,
+    "student": {
+      "foreground": 8.434294700622559,
+      "correlation": 0.28318506479263306
+    },
+    "source_gray": {
+      "foreground": 8.437324523925781,
+      "correlation": 0.11560836434364319
+    },
+    "cameras": {
+      "foreground": 8.47658634185791,
+      "correlation": 0.04345820099115372
+    },
+    "cameras_gray": {
+      "foreground": 8.37430477142334,
+      "correlation": -0.015321223065257072
+    },
+    "reference_geometry": {
+      "foreground": 8.830994606018066,
+      "correlation": -0.34422218799591064
+    },
+    "both": {
+      "foreground": 21.925281524658203,
+      "correlation": 0.9512984752655029
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 4,
+    "student": {
+      "foreground": 9.607118606567383,
+      "correlation": 0.23519504070281982
+    },
+    "source_gray": {
+      "foreground": 9.615663528442383,
+      "correlation": 0.22153562307357788
+    },
+    "cameras": {
+      "foreground": 10.837983131408691,
+      "correlation": 0.330855131149292
+    },
+    "cameras_gray": {
+      "foreground": 11.101332664489746,
+      "correlation": 0.3489809036254883
+    },
+    "reference_geometry": {
+      "foreground": 10.821614265441895,
+      "correlation": 0.2843775153160095
+    },
+    "both": {
+      "foreground": 19.2739315032959,
+      "correlation": 0.9182237386703491
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 11,
+    "student": {
+      "foreground": 9.766949653625488,
+      "correlation": 0.24714648723602295
+    },
+    "source_gray": {
+      "foreground": 9.664701461791992,
+      "correlation": 0.1722477823495865
+    },
+    "cameras": {
+      "foreground": 10.60462474822998,
+      "correlation": 0.10456633567810059
+    },
+    "cameras_gray": {
+      "foreground": 9.741372108459473,
+      "correlation": 0.0693085640668869
+    },
+    "reference_geometry": {
+      "foreground": 10.752456665039062,
+      "correlation": 0.2298557460308075
+    },
+    "both": {
+      "foreground": 19.065296173095703,
+      "correlation": 0.9151154160499573
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 18,
+    "student": {
+      "foreground": 10.17163372039795,
+      "correlation": 0.268494188785553
+    },
+    "source_gray": {
+      "foreground": 10.185731887817383,
+      "correlation": 0.20342803001403809
+    },
+    "cameras": {
+      "foreground": 10.431984901428223,
+      "correlation": -0.02785414829850197
+    },
+    "cameras_gray": {
+      "foreground": 9.754467010498047,
+      "correlation": -0.09907685220241547
+    },
+    "reference_geometry": {
+      "foreground": 10.823283195495605,
+      "correlation": 0.3491373062133789
+    },
+    "both": {
+      "foreground": 18.735855102539062,
+      "correlation": 0.9065271615982056
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 25,
+    "student": {
+      "foreground": 10.270060539245605,
+      "correlation": 0.28767305612564087
+    },
+    "source_gray": {
+      "foreground": 10.297745704650879,
+      "correlation": -0.03576791286468506
+    },
+    "cameras": {
+      "foreground": 10.432343482971191,
+      "correlation": 0.22558298707008362
+    },
+    "cameras_gray": {
+      "foreground": 10.297748565673828,
+      "correlation": -0.03060636669397354
+    },
+    "reference_geometry": {
+      "foreground": 10.85280990600586,
+      "correlation": 0.31272000074386597
+    },
+    "both": {
+      "foreground": 18.659957885742188,
+      "correlation": 0.9031347036361694
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 32,
+    "student": {
+      "foreground": 10.517449378967285,
+      "correlation": 0.2749743163585663
+    },
+    "source_gray": {
+      "foreground": 10.578054428100586,
+      "correlation": -0.03150667995214462
+    },
+    "cameras": {
+      "foreground": 10.694247245788574,
+      "correlation": 0.2717907726764679
+    },
+    "cameras_gray": {
+      "foreground": 10.577999114990234,
+      "correlation": -0.014661658555269241
+    },
+    "reference_geometry": {
+      "foreground": 11.175397872924805,
+      "correlation": 0.21929781138896942
+    },
+    "both": {
+      "foreground": 19.20075225830078,
+      "correlation": 0.9126156568527222
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 39,
+    "student": {
+      "foreground": 10.480745315551758,
+      "correlation": 0.23191958665847778
+    },
+    "source_gray": {
+      "foreground": 10.627119064331055,
+      "correlation": 0.06816531717777252
+    },
+    "cameras": {
+      "foreground": 10.819750785827637,
+      "correlation": 0.23802366852760315
+    },
+    "cameras_gray": {
+      "foreground": 10.624283790588379,
+      "correlation": 0.06324589997529984
+    },
+    "reference_geometry": {
+      "foreground": 11.169737815856934,
+      "correlation": 0.25670966506004333
+    },
+    "both": {
+      "foreground": 19.00405502319336,
+      "correlation": 0.9067209362983704
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 46,
+    "student": {
+      "foreground": 10.519624710083008,
+      "correlation": 0.15111157298088074
+    },
+    "source_gray": {
+      "foreground": 10.493460655212402,
+      "correlation": 0.08178980648517609
+    },
+    "cameras": {
+      "foreground": 10.697256088256836,
+      "correlation": 0.20890860259532928
+    },
+    "cameras_gray": {
+      "foreground": 10.427242279052734,
+      "correlation": -0.07421931624412537
+    },
+    "reference_geometry": {
+      "foreground": 11.159296035766602,
+      "correlation": 0.20813661813735962
+    },
+    "both": {
+      "foreground": 18.866193771362305,
+      "correlation": 0.9033535718917847
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 53,
+    "student": {
+      "foreground": 10.47367000579834,
+      "correlation": 0.09075694531202316
+    },
+    "source_gray": {
+      "foreground": 10.398183822631836,
+      "correlation": -0.03467508405447006
+    },
+    "cameras": {
+      "foreground": 10.588491439819336,
+      "correlation": 0.2137935310602188
+    },
+    "cameras_gray": {
+      "foreground": 10.398993492126465,
+      "correlation": -0.012030061334371567
+    },
+    "reference_geometry": {
+      "foreground": 11.111383438110352,
+      "correlation": 0.21901771426200867
+    },
+    "both": {
+      "foreground": 19.082672119140625,
+      "correlation": 0.9079962372779846
+    }
+  }
+]

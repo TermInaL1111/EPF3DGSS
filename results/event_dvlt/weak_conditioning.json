@@ -1,0 +1,5306 @@
+[
+  {
+    "scene": "Arms",
+    "start": 4,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.15828627347946167,
+        "psnr": 15.175325393676758,
+        "foreground": 14.936161041259766
+      },
+      "shuffled": {
+        "foreground_correlation": -0.0030098415445536375,
+        "psnr": 14.49716567993164,
+        "foreground": 14.929014205932617
+      },
+      "zero": {
+        "foreground_correlation": -0.21747741103172302,
+        "psnr": 13.821456909179688,
+        "foreground": 14.856781959533691
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.2519588768482208,
+        "psnr": 17.658273696899414,
+        "foreground": 14.983386039733887
+      },
+      "shuffled": {
+        "foreground_correlation": -0.17108306288719177,
+        "psnr": 14.98305892944336,
+        "foreground": 14.958122253417969
+      },
+      "zero": {
+        "foreground_correlation": -0.21933810412883759,
+        "psnr": 14.231870651245117,
+        "foreground": 14.929303169250488
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 4,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.22664876282215118,
+        "psnr": 14.043315887451172,
+        "foreground": 14.499771118164062
+      },
+      "shuffled": {
+        "foreground_correlation": 0.034104738384485245,
+        "psnr": 14.307961463928223,
+        "foreground": 13.039802551269531
+      },
+      "zero": {
+        "foreground_correlation": 0.5275149941444397,
+        "psnr": 13.325605392456055,
+        "foreground": 14.638543128967285
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.19330430030822754,
+        "psnr": 14.396977424621582,
+        "foreground": 14.53481674194336
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1753658503293991,
+        "psnr": 14.885231018066406,
+        "foreground": 14.47278118133545
+      },
+      "zero": {
+        "foreground_correlation": 0.5169119834899902,
+        "psnr": 13.676613807678223,
+        "foreground": 14.55288028717041
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 4,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.34197166562080383,
+        "psnr": 14.697418212890625,
+        "foreground": 13.974912643432617
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3488607406616211,
+        "psnr": 13.565897941589355,
+        "foreground": 13.559139251708984
+      },
+      "zero": {
+        "foreground_correlation": 0.4534750282764435,
+        "psnr": 13.712621688842773,
+        "foreground": 13.954813003540039
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.47973495721817017,
+        "psnr": 15.356892585754395,
+        "foreground": 13.869583129882812
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10063371062278748,
+        "psnr": 14.217758178710938,
+        "foreground": 13.679299354553223
+      },
+      "zero": {
+        "foreground_correlation": 0.33201634883880615,
+        "psnr": 14.113482475280762,
+        "foreground": 13.988018035888672
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 4,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.3386901021003723,
+        "psnr": 13.026090621948242,
+        "foreground": 9.830867767333984
+      },
+      "shuffled": {
+        "foreground_correlation": -0.01173347793519497,
+        "psnr": 14.937673568725586,
+        "foreground": 9.785055160522461
+      },
+      "zero": {
+        "foreground_correlation": -0.219163715839386,
+        "psnr": 13.115846633911133,
+        "foreground": 9.708572387695312
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.07874193042516708,
+        "psnr": 13.597827911376953,
+        "foreground": 9.8789701461792
+      },
+      "shuffled": {
+        "foreground_correlation": -0.025383969768881798,
+        "psnr": 17.039735794067383,
+        "foreground": 9.846678733825684
+      },
+      "zero": {
+        "foreground_correlation": -0.11030550301074982,
+        "psnr": 13.459579467773438,
+        "foreground": 9.700831413269043
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 4,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.4948795735836029,
+        "psnr": 15.672042846679688,
+        "foreground": 12.375955581665039
+      },
+      "shuffled": {
+        "foreground_correlation": 0.359968900680542,
+        "psnr": 15.92802906036377,
+        "foreground": 12.5011625289917
+      },
+      "zero": {
+        "foreground_correlation": 0.5195682644844055,
+        "psnr": 13.601330757141113,
+        "foreground": 12.419920921325684
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.6511306166648865,
+        "psnr": 18.283023834228516,
+        "foreground": 12.42962646484375
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3053356111049652,
+        "psnr": 17.132192611694336,
+        "foreground": 12.354649543762207
+      },
+      "zero": {
+        "foreground_correlation": 0.4878138303756714,
+        "psnr": 13.981910705566406,
+        "foreground": 12.323270797729492
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 4,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.4419737756252289,
+        "psnr": 15.83771800994873,
+        "foreground": 12.36439323425293
+      },
+      "shuffled": {
+        "foreground_correlation": 0.35062533617019653,
+        "psnr": 15.725264549255371,
+        "foreground": 12.500497817993164
+      },
+      "zero": {
+        "foreground_correlation": 0.5084673166275024,
+        "psnr": 13.547836303710938,
+        "foreground": 12.283746719360352
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2490570992231369,
+        "psnr": 17.002309799194336,
+        "foreground": 12.182029724121094
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1422712355852127,
+        "psnr": 16.106088638305664,
+        "foreground": 12.19378662109375
+      },
+      "zero": {
+        "foreground_correlation": 0.4131040871143341,
+        "psnr": 13.919161796569824,
+        "foreground": 12.159424781799316
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 4,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.20225553214550018,
+        "psnr": 15.551637649536133,
+        "foreground": 11.810808181762695
+      },
+      "shuffled": {
+        "foreground_correlation": 0.037589412182569504,
+        "psnr": 15.215656280517578,
+        "foreground": 11.79310417175293
+      },
+      "zero": {
+        "foreground_correlation": 0.15124855935573578,
+        "psnr": 13.432262420654297,
+        "foreground": 11.56862735748291
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.19837482273578644,
+        "psnr": 15.905248641967773,
+        "foreground": 11.51853084564209
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06939389556646347,
+        "psnr": 17.721759796142578,
+        "foreground": 11.591801643371582
+      },
+      "zero": {
+        "foreground_correlation": 0.25114578008651733,
+        "psnr": 13.792223930358887,
+        "foreground": 11.458532333374023
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 4,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.24361033737659454,
+        "psnr": 15.585111618041992,
+        "foreground": 15.187568664550781
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3323591351509094,
+        "psnr": 12.927359580993652,
+        "foreground": 14.907005310058594
+      },
+      "zero": {
+        "foreground_correlation": 0.19458064436912537,
+        "psnr": 13.682981491088867,
+        "foreground": 14.83680248260498
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.1741596907377243,
+        "psnr": 18.42357063293457,
+        "foreground": 14.879776000976562
+      },
+      "shuffled": {
+        "foreground_correlation": 0.120170459151268,
+        "psnr": 14.047073364257812,
+        "foreground": 15.01329231262207
+      },
+      "zero": {
+        "foreground_correlation": 0.14433176815509796,
+        "psnr": 14.07366943359375,
+        "foreground": 14.768861770629883
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 4,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.11737853288650513,
+        "psnr": 12.646749496459961,
+        "foreground": 13.123921394348145
+      },
+      "shuffled": {
+        "foreground_correlation": 0.001335151493549347,
+        "psnr": 13.358067512512207,
+        "foreground": 13.152664184570312
+      },
+      "zero": {
+        "foreground_correlation": 0.3621568977832794,
+        "psnr": 13.456493377685547,
+        "foreground": 13.812639236450195
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.17609116435050964,
+        "psnr": 13.7031888961792,
+        "foreground": 13.11092472076416
+      },
+      "shuffled": {
+        "foreground_correlation": -0.02166871353983879,
+        "psnr": 14.136061668395996,
+        "foreground": 13.287132263183594
+      },
+      "zero": {
+        "foreground_correlation": 0.27102452516555786,
+        "psnr": 13.830171585083008,
+        "foreground": 13.811227798461914
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 4,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.216365784406662,
+        "psnr": 13.406578063964844,
+        "foreground": 14.180846214294434
+      },
+      "shuffled": {
+        "foreground_correlation": 0.17897334694862366,
+        "psnr": 15.252973556518555,
+        "foreground": 14.475873947143555
+      },
+      "zero": {
+        "foreground_correlation": 0.5054363012313843,
+        "psnr": 13.492860794067383,
+        "foreground": 14.666269302368164
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.16234196722507477,
+        "psnr": 14.202436447143555,
+        "foreground": 14.27005386352539
+      },
+      "shuffled": {
+        "foreground_correlation": 0.14134752750396729,
+        "psnr": 15.928725242614746,
+        "foreground": 14.509272575378418
+      },
+      "zero": {
+        "foreground_correlation": 0.4424760937690735,
+        "psnr": 13.868785858154297,
+        "foreground": 14.647005081176758
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 4,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.06413538753986359,
+        "psnr": 15.695137977600098,
+        "foreground": 15.127205848693848
+      },
+      "shuffled": {
+        "foreground_correlation": 0.451452374458313,
+        "psnr": 15.987813949584961,
+        "foreground": 15.244284629821777
+      },
+      "zero": {
+        "foreground_correlation": 0.5477326512336731,
+        "psnr": 13.774879455566406,
+        "foreground": 15.412402153015137
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14258402585983276,
+        "psnr": 16.445947647094727,
+        "foreground": 15.14844799041748
+      },
+      "shuffled": {
+        "foreground_correlation": 0.15694157779216766,
+        "psnr": 16.189756393432617,
+        "foreground": 15.006284713745117
+      },
+      "zero": {
+        "foreground_correlation": 0.33637985587120056,
+        "psnr": 14.17101001739502,
+        "foreground": 15.235390663146973
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 4,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.40246036648750305,
+        "psnr": 16.083406448364258,
+        "foreground": 14.957412719726562
+      },
+      "shuffled": {
+        "foreground_correlation": 0.132959246635437,
+        "psnr": 13.133635520935059,
+        "foreground": 14.884082794189453
+      },
+      "zero": {
+        "foreground_correlation": 0.38299664855003357,
+        "psnr": 13.821842193603516,
+        "foreground": 14.900341033935547
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.2905628979206085,
+        "psnr": 16.300012588500977,
+        "foreground": 14.782087326049805
+      },
+      "shuffled": {
+        "foreground_correlation": 0.21632450819015503,
+        "psnr": 13.535100936889648,
+        "foreground": 14.90148639678955
+      },
+      "zero": {
+        "foreground_correlation": 0.32737424969673157,
+        "psnr": 14.228009223937988,
+        "foreground": 14.79770565032959
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 4,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.042279623448848724,
+        "psnr": 12.864889144897461,
+        "foreground": 13.639963150024414
+      },
+      "shuffled": {
+        "foreground_correlation": 0.011744573712348938,
+        "psnr": 13.458736419677734,
+        "foreground": 13.646293640136719
+      },
+      "zero": {
+        "foreground_correlation": 0.1328190714120865,
+        "psnr": 13.52210807800293,
+        "foreground": 13.990222930908203
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.061352286487817764,
+        "psnr": 13.225038528442383,
+        "foreground": 13.691191673278809
+      },
+      "shuffled": {
+        "foreground_correlation": 0.03984363377094269,
+        "psnr": 13.433265686035156,
+        "foreground": 13.693218231201172
+      },
+      "zero": {
+        "foreground_correlation": 0.1501174420118332,
+        "psnr": 13.905104637145996,
+        "foreground": 14.025768280029297
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 4,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.009599104523658752,
+        "psnr": 13.634449005126953,
+        "foreground": 13.737187385559082
+      },
+      "shuffled": {
+        "foreground_correlation": -0.01777820475399494,
+        "psnr": 14.756011962890625,
+        "foreground": 13.914895057678223
+      },
+      "zero": {
+        "foreground_correlation": 0.15306590497493744,
+        "psnr": 13.650845527648926,
+        "foreground": 14.712966918945312
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.07467295229434967,
+        "psnr": 13.550727844238281,
+        "foreground": 13.760956764221191
+      },
+      "shuffled": {
+        "foreground_correlation": 0.061077676713466644,
+        "psnr": 15.454659461975098,
+        "foreground": 14.257611274719238
+      },
+      "zero": {
+        "foreground_correlation": 0.06946216523647308,
+        "psnr": 14.034003257751465,
+        "foreground": 14.655820846557617
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 4,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.021332930773496628,
+        "psnr": 14.55167007446289,
+        "foreground": 13.138628005981445
+      },
+      "shuffled": {
+        "foreground_correlation": -0.0018165610963478684,
+        "psnr": 14.797898292541504,
+        "foreground": 11.588123321533203
+      },
+      "zero": {
+        "foreground_correlation": 0.3893311321735382,
+        "psnr": 13.511547088623047,
+        "foreground": 13.778751373291016
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.06371130794286728,
+        "psnr": 15.114411354064941,
+        "foreground": 13.0216646194458
+      },
+      "shuffled": {
+        "foreground_correlation": -0.02775687724351883,
+        "psnr": 16.160104751586914,
+        "foreground": 13.666913986206055
+      },
+      "zero": {
+        "foreground_correlation": 0.45036575198173523,
+        "psnr": 13.880244255065918,
+        "foreground": 13.687009811401367
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 4,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.07016855478286743,
+        "psnr": 15.248250007629395,
+        "foreground": 15.148215293884277
+      },
+      "shuffled": {
+        "foreground_correlation": -0.017948852851986885,
+        "psnr": 12.785114288330078,
+        "foreground": 17.006731033325195
+      },
+      "zero": {
+        "foreground_correlation": 0.13795249164104462,
+        "psnr": 13.794008255004883,
+        "foreground": 17.316320419311523
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.054108619689941406,
+        "psnr": 16.72734260559082,
+        "foreground": 17.18927764892578
+      },
+      "shuffled": {
+        "foreground_correlation": 0.019045308232307434,
+        "psnr": 13.336204528808594,
+        "foreground": 17.044002532958984
+      },
+      "zero": {
+        "foreground_correlation": 0.14983944594860077,
+        "psnr": 14.19620132446289,
+        "foreground": 17.214935302734375
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 4,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.23519504070281982,
+        "psnr": 12.321362495422363,
+        "foreground": 9.607118606567383
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10750933736562729,
+        "psnr": 14.304733276367188,
+        "foreground": 9.61538028717041
+      },
+      "zero": {
+        "foreground_correlation": 0.21981719136238098,
+        "psnr": 13.176185607910156,
+        "foreground": 9.779901504516602
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.1115318089723587,
+        "psnr": 12.804981231689453,
+        "foreground": 9.993415832519531
+      },
+      "shuffled": {
+        "foreground_correlation": 0.27055343985557556,
+        "psnr": 16.265960693359375,
+        "foreground": 9.922079086303711
+      },
+      "zero": {
+        "foreground_correlation": 0.2613185942173004,
+        "psnr": 13.522769927978516,
+        "foreground": 9.775486946105957
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 11,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.19450367987155914,
+        "psnr": 15.273326873779297,
+        "foreground": 15.301852226257324
+      },
+      "shuffled": {
+        "foreground_correlation": -0.021528542041778564,
+        "psnr": 15.527132034301758,
+        "foreground": 15.194549560546875
+      },
+      "zero": {
+        "foreground_correlation": -0.22002975642681122,
+        "psnr": 13.837214469909668,
+        "foreground": 15.21767807006836
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.061093833297491074,
+        "psnr": 19.5628719329834,
+        "foreground": 15.362955093383789
+      },
+      "shuffled": {
+        "foreground_correlation": -0.16448456048965454,
+        "psnr": 14.902961730957031,
+        "foreground": 15.291444778442383
+      },
+      "zero": {
+        "foreground_correlation": -0.2087784707546234,
+        "psnr": 14.258338928222656,
+        "foreground": 15.314659118652344
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 11,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3439907729625702,
+        "psnr": 14.851615905761719,
+        "foreground": 14.703078269958496
+      },
+      "shuffled": {
+        "foreground_correlation": 0.17608293890953064,
+        "psnr": 14.356435775756836,
+        "foreground": 14.639582633972168
+      },
+      "zero": {
+        "foreground_correlation": 0.5324218273162842,
+        "psnr": 13.370171546936035,
+        "foreground": 14.751729011535645
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.21118652820587158,
+        "psnr": 14.310202598571777,
+        "foreground": 14.624279975891113
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1306479424238205,
+        "psnr": 14.99354362487793,
+        "foreground": 14.564027786254883
+      },
+      "zero": {
+        "foreground_correlation": 0.4971952736377716,
+        "psnr": 13.735445976257324,
+        "foreground": 14.682458877563477
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 11,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.6222990155220032,
+        "psnr": 14.761247634887695,
+        "foreground": 14.25373649597168
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1476162075996399,
+        "psnr": 14.233136177062988,
+        "foreground": 13.828754425048828
+      },
+      "zero": {
+        "foreground_correlation": 0.5032815933227539,
+        "psnr": 13.750391960144043,
+        "foreground": 14.328754425048828
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.10483330488204956,
+        "psnr": 15.494997024536133,
+        "foreground": 14.183849334716797
+      },
+      "shuffled": {
+        "foreground_correlation": -0.17350026965141296,
+        "psnr": 15.246482849121094,
+        "foreground": 14.096454620361328
+      },
+      "zero": {
+        "foreground_correlation": 0.39253440499305725,
+        "psnr": 14.162189483642578,
+        "foreground": 14.347552299499512
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 11,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.33183854818344116,
+        "psnr": 13.637327194213867,
+        "foreground": 9.940189361572266
+      },
+      "shuffled": {
+        "foreground_correlation": -0.10628238320350647,
+        "psnr": 14.117918014526367,
+        "foreground": 9.416470527648926
+      },
+      "zero": {
+        "foreground_correlation": -0.19611014425754547,
+        "psnr": 13.17263412475586,
+        "foreground": 9.822395324707031
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.09656525403261185,
+        "psnr": 14.484353065490723,
+        "foreground": 9.913999557495117
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2188284993171692,
+        "psnr": 15.24375057220459,
+        "foreground": 9.823568344116211
+      },
+      "zero": {
+        "foreground_correlation": -0.1701340526342392,
+        "psnr": 13.524757385253906,
+        "foreground": 9.794021606445312
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 11,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.03109206072986126,
+        "psnr": 14.699918746948242,
+        "foreground": 12.547140121459961
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2780264914035797,
+        "psnr": 14.125165939331055,
+        "foreground": 12.62510871887207
+      },
+      "zero": {
+        "foreground_correlation": 0.5733661651611328,
+        "psnr": 13.597540855407715,
+        "foreground": 12.688709259033203
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.09086291491985321,
+        "psnr": 15.92841625213623,
+        "foreground": 12.518906593322754
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5017719864845276,
+        "psnr": 15.786913871765137,
+        "foreground": 12.653493881225586
+      },
+      "zero": {
+        "foreground_correlation": 0.5261952877044678,
+        "psnr": 13.98835277557373,
+        "foreground": 12.627662658691406
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 11,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.39067384600639343,
+        "psnr": 14.15841007232666,
+        "foreground": 12.776180267333984
+      },
+      "shuffled": {
+        "foreground_correlation": 0.4330226480960846,
+        "psnr": 13.78879165649414,
+        "foreground": 12.990431785583496
+      },
+      "zero": {
+        "foreground_correlation": 0.5410621166229248,
+        "psnr": 13.624625205993652,
+        "foreground": 12.805562973022461
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.49058979749679565,
+        "psnr": 15.824356079101562,
+        "foreground": 12.716819763183594
+      },
+      "shuffled": {
+        "foreground_correlation": 0.46662595868110657,
+        "psnr": 15.474369049072266,
+        "foreground": 12.82178020477295
+      },
+      "zero": {
+        "foreground_correlation": 0.39501142501831055,
+        "psnr": 14.011871337890625,
+        "foreground": 12.671905517578125
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 11,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.18422235548496246,
+        "psnr": 13.685141563415527,
+        "foreground": 12.034741401672363
+      },
+      "shuffled": {
+        "foreground_correlation": 0.009619631804525852,
+        "psnr": 14.426654815673828,
+        "foreground": 11.900110244750977
+      },
+      "zero": {
+        "foreground_correlation": 0.18554776906967163,
+        "psnr": 13.512028694152832,
+        "foreground": 11.78636646270752
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.23303447663784027,
+        "psnr": 15.31500244140625,
+        "foreground": 11.8694486618042
+      },
+      "shuffled": {
+        "foreground_correlation": 0.18409256637096405,
+        "psnr": 15.140647888183594,
+        "foreground": 11.915430068969727
+      },
+      "zero": {
+        "foreground_correlation": 0.27752548456192017,
+        "psnr": 13.8889799118042,
+        "foreground": 11.682515144348145
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 11,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.23565998673439026,
+        "psnr": 14.678540229797363,
+        "foreground": 15.272344589233398
+      },
+      "shuffled": {
+        "foreground_correlation": 0.516086220741272,
+        "psnr": 13.518411636352539,
+        "foreground": 14.722660064697266
+      },
+      "zero": {
+        "foreground_correlation": 0.22178947925567627,
+        "psnr": 13.712507247924805,
+        "foreground": 15.020631790161133
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3414052426815033,
+        "psnr": 15.423334121704102,
+        "foreground": 15.168906211853027
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1803356260061264,
+        "psnr": 14.000951766967773,
+        "foreground": 15.101818084716797
+      },
+      "zero": {
+        "foreground_correlation": 0.16542930901050568,
+        "psnr": 14.114275932312012,
+        "foreground": 14.9577054977417
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 11,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.08536624908447266,
+        "psnr": 13.224250793457031,
+        "foreground": 13.749652862548828
+      },
+      "shuffled": {
+        "foreground_correlation": 0.17459237575531006,
+        "psnr": 13.143430709838867,
+        "foreground": 13.768651962280273
+      },
+      "zero": {
+        "foreground_correlation": 0.37201687693595886,
+        "psnr": 13.505629539489746,
+        "foreground": 13.836687088012695
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.21509411931037903,
+        "psnr": 13.71787166595459,
+        "foreground": 13.327999114990234
+      },
+      "shuffled": {
+        "foreground_correlation": 0.017286598682403564,
+        "psnr": 13.872879028320312,
+        "foreground": 12.801400184631348
+      },
+      "zero": {
+        "foreground_correlation": 0.29191339015960693,
+        "psnr": 13.89291763305664,
+        "foreground": 13.846755981445312
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 11,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.1784965991973877,
+        "psnr": 13.120733261108398,
+        "foreground": 14.563921928405762
+      },
+      "shuffled": {
+        "foreground_correlation": 0.168173149228096,
+        "psnr": 13.997701644897461,
+        "foreground": 14.78636360168457
+      },
+      "zero": {
+        "foreground_correlation": 0.5074383616447449,
+        "psnr": 13.553675651550293,
+        "foreground": 14.956806182861328
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.030374862253665924,
+        "psnr": 13.9476957321167,
+        "foreground": 13.972068786621094
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3518449366092682,
+        "psnr": 15.468290328979492,
+        "foreground": 14.772451400756836
+      },
+      "zero": {
+        "foreground_correlation": 0.4593157470226288,
+        "psnr": 13.948040008544922,
+        "foreground": 14.986186981201172
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 11,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.2119411677122116,
+        "psnr": 14.244284629821777,
+        "foreground": 14.491467475891113
+      },
+      "shuffled": {
+        "foreground_correlation": 0.05238313972949982,
+        "psnr": 16.035123825073242,
+        "foreground": 15.216389656066895
+      },
+      "zero": {
+        "foreground_correlation": 0.51652592420578,
+        "psnr": 13.788002014160156,
+        "foreground": 15.41756820678711
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.08230491727590561,
+        "psnr": 15.847427368164062,
+        "foreground": 15.129096984863281
+      },
+      "shuffled": {
+        "foreground_correlation": 0.24322324991226196,
+        "psnr": 17.029125213623047,
+        "foreground": 15.193704605102539
+      },
+      "zero": {
+        "foreground_correlation": 0.3290204703807831,
+        "psnr": 14.193819999694824,
+        "foreground": 15.251558303833008
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 11,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.0027806945145130157,
+        "psnr": 16.103418350219727,
+        "foreground": 14.22899341583252
+      },
+      "shuffled": {
+        "foreground_correlation": 0.25100797414779663,
+        "psnr": 13.55526065826416,
+        "foreground": 14.468072891235352
+      },
+      "zero": {
+        "foreground_correlation": 0.38116881251335144,
+        "psnr": 13.827554702758789,
+        "foreground": 14.473295211791992
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.16247494518756866,
+        "psnr": 17.122159957885742,
+        "foreground": 14.260969161987305
+      },
+      "shuffled": {
+        "foreground_correlation": 0.008084735833108425,
+        "psnr": 15.735745429992676,
+        "foreground": 14.373847961425781
+      },
+      "zero": {
+        "foreground_correlation": 0.39326801896095276,
+        "psnr": 14.241928100585938,
+        "foreground": 14.362746238708496
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 11,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.05490589141845703,
+        "psnr": 13.208571434020996,
+        "foreground": 13.814359664916992
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2534937262535095,
+        "psnr": 13.127223014831543,
+        "foreground": 13.963190078735352
+      },
+      "zero": {
+        "foreground_correlation": 0.16937725245952606,
+        "psnr": 13.50370979309082,
+        "foreground": 14.009241104125977
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.2966298758983612,
+        "psnr": 15.191179275512695,
+        "foreground": 13.774920463562012
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1179911270737648,
+        "psnr": 13.338480949401855,
+        "foreground": 13.76528549194336
+      },
+      "zero": {
+        "foreground_correlation": 0.1730816811323166,
+        "psnr": 13.881951332092285,
+        "foreground": 14.008136749267578
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 11,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.18111300468444824,
+        "psnr": 13.195674896240234,
+        "foreground": 14.474996566772461
+      },
+      "shuffled": {
+        "foreground_correlation": 0.060302067548036575,
+        "psnr": 14.034769058227539,
+        "foreground": 14.338479995727539
+      },
+      "zero": {
+        "foreground_correlation": 0.06357968598604202,
+        "psnr": 13.603887557983398,
+        "foreground": 15.004048347473145
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.11866014450788498,
+        "psnr": 13.4275484085083,
+        "foreground": 14.381705284118652
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06342533975839615,
+        "psnr": 14.286513328552246,
+        "foreground": 14.526644706726074
+      },
+      "zero": {
+        "foreground_correlation": -0.022501839324831963,
+        "psnr": 13.978721618652344,
+        "foreground": 14.938591957092285
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 11,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.06912916898727417,
+        "psnr": 13.855551719665527,
+        "foreground": 13.485337257385254
+      },
+      "shuffled": {
+        "foreground_correlation": -0.050586093217134476,
+        "psnr": 14.029407501220703,
+        "foreground": 11.626724243164062
+      },
+      "zero": {
+        "foreground_correlation": 0.40799906849861145,
+        "psnr": 13.499670028686523,
+        "foreground": 13.903412818908691
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.0746321827173233,
+        "psnr": 14.072355270385742,
+        "foreground": 13.385931015014648
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10754881054162979,
+        "psnr": 15.40727710723877,
+        "foreground": 13.057502746582031
+      },
+      "zero": {
+        "foreground_correlation": 0.46319228410720825,
+        "psnr": 13.866969108581543,
+        "foreground": 13.80781364440918
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 11,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.07385789602994919,
+        "psnr": 14.451887130737305,
+        "foreground": 15.402267456054688
+      },
+      "shuffled": {
+        "foreground_correlation": 0.03368015214800835,
+        "psnr": 13.391958236694336,
+        "foreground": 17.146190643310547
+      },
+      "zero": {
+        "foreground_correlation": 0.0754544660449028,
+        "psnr": 13.80289077758789,
+        "foreground": 17.386802673339844
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.09815481305122375,
+        "psnr": 15.873722076416016,
+        "foreground": 15.862278938293457
+      },
+      "shuffled": {
+        "foreground_correlation": 0.07153359800577164,
+        "psnr": 13.337091445922852,
+        "foreground": 16.8082218170166
+      },
+      "zero": {
+        "foreground_correlation": 0.06651050597429276,
+        "psnr": 14.206332206726074,
+        "foreground": 17.31011390686035
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 11,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.24714645743370056,
+        "psnr": 12.86782169342041,
+        "foreground": 9.766949653625488
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3131778836250305,
+        "psnr": 14.359898567199707,
+        "foreground": 9.885250091552734
+      },
+      "zero": {
+        "foreground_correlation": 0.23820555210113525,
+        "psnr": 13.177520751953125,
+        "foreground": 9.757524490356445
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.19468790292739868,
+        "psnr": 12.808684349060059,
+        "foreground": 10.019421577453613
+      },
+      "shuffled": {
+        "foreground_correlation": 0.0893762931227684,
+        "psnr": 17.514015197753906,
+        "foreground": 9.902299880981445
+      },
+      "zero": {
+        "foreground_correlation": 0.272418349981308,
+        "psnr": 13.521709442138672,
+        "foreground": 9.734588623046875
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 18,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.19658257067203522,
+        "psnr": 16.40137481689453,
+        "foreground": 15.434313774108887
+      },
+      "shuffled": {
+        "foreground_correlation": -0.04574066027998924,
+        "psnr": 14.550670623779297,
+        "foreground": 15.1500883102417
+      },
+      "zero": {
+        "foreground_correlation": -0.2242058664560318,
+        "psnr": 13.813482284545898,
+        "foreground": 15.324623107910156
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.09699857980012894,
+        "psnr": 17.561458587646484,
+        "foreground": 15.463672637939453
+      },
+      "shuffled": {
+        "foreground_correlation": -0.19383947551250458,
+        "psnr": 15.35981559753418,
+        "foreground": 15.396008491516113
+      },
+      "zero": {
+        "foreground_correlation": -0.19000381231307983,
+        "psnr": 14.225051879882812,
+        "foreground": 15.440187454223633
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 18,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.13842834532260895,
+        "psnr": 14.018712043762207,
+        "foreground": 14.569758415222168
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1365778148174286,
+        "psnr": 15.2134370803833,
+        "foreground": 14.516519546508789
+      },
+      "zero": {
+        "foreground_correlation": 0.5116441249847412,
+        "psnr": 13.382118225097656,
+        "foreground": 14.784651756286621
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.5361446142196655,
+        "psnr": 14.727802276611328,
+        "foreground": 14.645751953125
+      },
+      "shuffled": {
+        "foreground_correlation": 0.049815595149993896,
+        "psnr": 15.635767936706543,
+        "foreground": 14.456403732299805
+      },
+      "zero": {
+        "foreground_correlation": 0.4772144556045532,
+        "psnr": 13.746337890625,
+        "foreground": 14.747360229492188
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 18,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.34323927760124207,
+        "psnr": 15.676950454711914,
+        "foreground": 14.551186561584473
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16117817163467407,
+        "psnr": 14.281219482421875,
+        "foreground": 14.438243865966797
+      },
+      "zero": {
+        "foreground_correlation": 0.5158385038375854,
+        "psnr": 13.758993148803711,
+        "foreground": 14.78154182434082
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.3325214385986328,
+        "psnr": 16.34711265563965,
+        "foreground": 14.39577579498291
+      },
+      "shuffled": {
+        "foreground_correlation": 0.18303413689136505,
+        "psnr": 14.805459976196289,
+        "foreground": 14.579179763793945
+      },
+      "zero": {
+        "foreground_correlation": 0.47246551513671875,
+        "psnr": 14.163280487060547,
+        "foreground": 14.790946960449219
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 18,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.1540994644165039,
+        "psnr": 13.698004722595215,
+        "foreground": 10.09123420715332
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14133687317371368,
+        "psnr": 13.280622482299805,
+        "foreground": 9.181711196899414
+      },
+      "zero": {
+        "foreground_correlation": -0.1807776242494583,
+        "psnr": 13.205076217651367,
+        "foreground": 9.959066390991211
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.11758632957935333,
+        "psnr": 14.139169692993164,
+        "foreground": 10.057400703430176
+      },
+      "shuffled": {
+        "foreground_correlation": -0.001819749129936099,
+        "psnr": 14.315935134887695,
+        "foreground": 9.981740951538086
+      },
+      "zero": {
+        "foreground_correlation": -0.19186818599700928,
+        "psnr": 13.552966117858887,
+        "foreground": 9.92780590057373
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 18,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.11694151163101196,
+        "psnr": 13.72146987915039,
+        "foreground": 12.763155937194824
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3568248450756073,
+        "psnr": 15.413661003112793,
+        "foreground": 12.81332015991211
+      },
+      "zero": {
+        "foreground_correlation": 0.5717703700065613,
+        "psnr": 13.563142776489258,
+        "foreground": 12.854606628417969
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.04648430272936821,
+        "psnr": 14.78126049041748,
+        "foreground": 12.459211349487305
+      },
+      "shuffled": {
+        "foreground_correlation": 0.004472560714930296,
+        "psnr": 15.514310836791992,
+        "foreground": 12.726083755493164
+      },
+      "zero": {
+        "foreground_correlation": 0.5601257681846619,
+        "psnr": 13.946309089660645,
+        "foreground": 12.827573776245117
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 18,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.34459564089775085,
+        "psnr": 15.588212013244629,
+        "foreground": 13.36386775970459
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5525358319282532,
+        "psnr": 17.12526512145996,
+        "foreground": 13.419498443603516
+      },
+      "zero": {
+        "foreground_correlation": 0.5646979212760925,
+        "psnr": 13.67396354675293,
+        "foreground": 13.375829696655273
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.28821322321891785,
+        "psnr": 15.689393043518066,
+        "foreground": 13.230545043945312
+      },
+      "shuffled": {
+        "foreground_correlation": 0.38265806436538696,
+        "psnr": 19.805805206298828,
+        "foreground": 13.315644264221191
+      },
+      "zero": {
+        "foreground_correlation": 0.39862269163131714,
+        "psnr": 14.060381889343262,
+        "foreground": 13.240937232971191
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 18,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.22128726541996002,
+        "psnr": 16.90895652770996,
+        "foreground": 12.053869247436523
+      },
+      "shuffled": {
+        "foreground_correlation": 0.35011541843414307,
+        "psnr": 14.283112525939941,
+        "foreground": 11.976158142089844
+      },
+      "zero": {
+        "foreground_correlation": 0.21655386686325073,
+        "psnr": 13.5634765625,
+        "foreground": 11.896437644958496
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.023311933502554893,
+        "psnr": 19.38269805908203,
+        "foreground": 11.886133193969727
+      },
+      "shuffled": {
+        "foreground_correlation": 0.28594836592674255,
+        "psnr": 14.572577476501465,
+        "foreground": 12.009130477905273
+      },
+      "zero": {
+        "foreground_correlation": 0.19035832583904266,
+        "psnr": 13.938494682312012,
+        "foreground": 11.783084869384766
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 18,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.12974552810192108,
+        "psnr": 14.469943046569824,
+        "foreground": 14.77885627746582
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5135947465896606,
+        "psnr": 13.563821792602539,
+        "foreground": 14.838741302490234
+      },
+      "zero": {
+        "foreground_correlation": 0.21615585684776306,
+        "psnr": 13.711410522460938,
+        "foreground": 15.147945404052734
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2830982208251953,
+        "psnr": 14.749746322631836,
+        "foreground": 15.220993995666504
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2547034025192261,
+        "psnr": 13.95749282836914,
+        "foreground": 15.200562477111816
+      },
+      "zero": {
+        "foreground_correlation": 0.1713433563709259,
+        "psnr": 14.105887413024902,
+        "foreground": 15.090768814086914
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 18,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.17103701829910278,
+        "psnr": 13.222677230834961,
+        "foreground": 13.566655158996582
+      },
+      "shuffled": {
+        "foreground_correlation": 0.20551325380802155,
+        "psnr": 14.8082275390625,
+        "foreground": 13.526710510253906
+      },
+      "zero": {
+        "foreground_correlation": 0.431363046169281,
+        "psnr": 13.551488876342773,
+        "foreground": 14.060314178466797
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.48816725611686707,
+        "psnr": 13.729764938354492,
+        "foreground": 13.48173999786377
+      },
+      "shuffled": {
+        "foreground_correlation": 0.17754416167736053,
+        "psnr": 12.976164817810059,
+        "foreground": 13.87424087524414
+      },
+      "zero": {
+        "foreground_correlation": 0.39247074723243713,
+        "psnr": 13.936460494995117,
+        "foreground": 14.076507568359375
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 18,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.09306183457374573,
+        "psnr": 14.786224365234375,
+        "foreground": 14.108911514282227
+      },
+      "shuffled": {
+        "foreground_correlation": 0.24955834448337555,
+        "psnr": 15.195493698120117,
+        "foreground": 14.77701187133789
+      },
+      "zero": {
+        "foreground_correlation": 0.4853373169898987,
+        "psnr": 13.5795316696167,
+        "foreground": 15.064258575439453
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.20205537974834442,
+        "psnr": 12.955514907836914,
+        "foreground": 14.647507667541504
+      },
+      "shuffled": {
+        "foreground_correlation": -0.131851926445961,
+        "psnr": 17.03469467163086,
+        "foreground": 14.794297218322754
+      },
+      "zero": {
+        "foreground_correlation": 0.5101498961448669,
+        "psnr": 13.97421646118164,
+        "foreground": 15.156322479248047
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 18,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2560621201992035,
+        "psnr": 15.49586296081543,
+        "foreground": 15.160055160522461
+      },
+      "shuffled": {
+        "foreground_correlation": 0.13078412413597107,
+        "psnr": 15.61793327331543,
+        "foreground": 15.182779312133789
+      },
+      "zero": {
+        "foreground_correlation": 0.4827791750431061,
+        "psnr": 13.768645286560059,
+        "foreground": 15.38720989227295
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.44267019629478455,
+        "psnr": 17.479408264160156,
+        "foreground": 14.993463516235352
+      },
+      "shuffled": {
+        "foreground_correlation": -0.06521756947040558,
+        "psnr": 16.349781036376953,
+        "foreground": 15.096435546875
+      },
+      "zero": {
+        "foreground_correlation": 0.30091342329978943,
+        "psnr": 14.165129661560059,
+        "foreground": 15.23120403289795
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 18,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.258504718542099,
+        "psnr": 15.662633895874023,
+        "foreground": 13.861942291259766
+      },
+      "shuffled": {
+        "foreground_correlation": 0.40750041604042053,
+        "psnr": 13.635125160217285,
+        "foreground": 14.097700119018555
+      },
+      "zero": {
+        "foreground_correlation": 0.3740508556365967,
+        "psnr": 13.792299270629883,
+        "foreground": 13.970258712768555
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.10228703171014786,
+        "psnr": 16.407264709472656,
+        "foreground": 13.794560432434082
+      },
+      "shuffled": {
+        "foreground_correlation": 0.43872305750846863,
+        "psnr": 13.83758544921875,
+        "foreground": 14.04116153717041
+      },
+      "zero": {
+        "foreground_correlation": 0.45272621512413025,
+        "psnr": 14.194490432739258,
+        "foreground": 13.851106643676758
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 18,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.1133674755692482,
+        "psnr": 13.372896194458008,
+        "foreground": 13.760920524597168
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2698828876018524,
+        "psnr": 13.238378524780273,
+        "foreground": 13.884984970092773
+      },
+      "zero": {
+        "foreground_correlation": 0.20933426916599274,
+        "psnr": 13.508367538452148,
+        "foreground": 13.810378074645996
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.007207630202174187,
+        "psnr": 13.54490852355957,
+        "foreground": 13.695449829101562
+      },
+      "shuffled": {
+        "foreground_correlation": 0.17059354484081268,
+        "psnr": 14.461942672729492,
+        "foreground": 13.672741889953613
+      },
+      "zero": {
+        "foreground_correlation": 0.2221013307571411,
+        "psnr": 13.892240524291992,
+        "foreground": 13.777857780456543
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 18,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.0941343754529953,
+        "psnr": 13.266495704650879,
+        "foreground": 14.209978103637695
+      },
+      "shuffled": {
+        "foreground_correlation": 0.07016311585903168,
+        "psnr": 14.698490142822266,
+        "foreground": 14.511141777038574
+      },
+      "zero": {
+        "foreground_correlation": 0.03539076820015907,
+        "psnr": 13.614730834960938,
+        "foreground": 14.907476425170898
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.008717779070138931,
+        "psnr": 14.481101989746094,
+        "foreground": 14.046711921691895
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10778740793466568,
+        "psnr": 15.730013847351074,
+        "foreground": 15.02143383026123
+      },
+      "zero": {
+        "foreground_correlation": -0.015517161227762699,
+        "psnr": 13.989988327026367,
+        "foreground": 14.828596115112305
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 18,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.20293527841567993,
+        "psnr": 14.581537246704102,
+        "foreground": 13.90536880493164
+      },
+      "shuffled": {
+        "foreground_correlation": -0.0343649759888649,
+        "psnr": 15.850528717041016,
+        "foreground": 13.053232192993164
+      },
+      "zero": {
+        "foreground_correlation": 0.4241819679737091,
+        "psnr": 13.522066116333008,
+        "foreground": 13.881482124328613
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.11762135475873947,
+        "psnr": 15.326730728149414,
+        "foreground": 13.115961074829102
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06916290521621704,
+        "psnr": 18.705678939819336,
+        "foreground": 13.775585174560547
+      },
+      "zero": {
+        "foreground_correlation": 0.4690732955932617,
+        "psnr": 13.898609161376953,
+        "foreground": 13.775177955627441
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 18,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.07605694979429245,
+        "psnr": 16.474958419799805,
+        "foreground": 16.687957763671875
+      },
+      "shuffled": {
+        "foreground_correlation": 0.08066069334745407,
+        "psnr": 14.362835884094238,
+        "foreground": 16.61972999572754
+      },
+      "zero": {
+        "foreground_correlation": 0.04887387901544571,
+        "psnr": 13.835630416870117,
+        "foreground": 17.28162384033203
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.18416887521743774,
+        "psnr": 19.907611846923828,
+        "foreground": 17.79905128479004
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10658730566501617,
+        "psnr": 14.64845085144043,
+        "foreground": 16.325531005859375
+      },
+      "zero": {
+        "foreground_correlation": 0.05480656772851944,
+        "psnr": 14.252620697021484,
+        "foreground": 17.25662612915039
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 18,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.268494188785553,
+        "psnr": 13.747735977172852,
+        "foreground": 10.17163372039795
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16470178961753845,
+        "psnr": 15.380189895629883,
+        "foreground": 9.855096817016602
+      },
+      "zero": {
+        "foreground_correlation": 0.2614154517650604,
+        "psnr": 13.242354393005371,
+        "foreground": 9.902608871459961
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3272121846675873,
+        "psnr": 13.949308395385742,
+        "foreground": 10.015361785888672
+      },
+      "shuffled": {
+        "foreground_correlation": 0.11671001464128494,
+        "psnr": 16.30057144165039,
+        "foreground": 9.943896293640137
+      },
+      "zero": {
+        "foreground_correlation": 0.30519556999206543,
+        "psnr": 13.596843719482422,
+        "foreground": 9.857246398925781
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 25,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.1550569385290146,
+        "psnr": 15.335103034973145,
+        "foreground": 15.15567684173584
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1886320561170578,
+        "psnr": 14.871750831604004,
+        "foreground": 14.354890823364258
+      },
+      "zero": {
+        "foreground_correlation": -0.2054150551557541,
+        "psnr": 13.790975570678711,
+        "foreground": 15.141061782836914
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.14308306574821472,
+        "psnr": 18.397891998291016,
+        "foreground": 15.25831127166748
+      },
+      "shuffled": {
+        "foreground_correlation": -0.16628940403461456,
+        "psnr": 16.634721755981445,
+        "foreground": 15.218420028686523
+      },
+      "zero": {
+        "foreground_correlation": -0.18410353362560272,
+        "psnr": 14.195260047912598,
+        "foreground": 15.246639251708984
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 25,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.15397611260414124,
+        "psnr": 14.361763000488281,
+        "foreground": 14.502106666564941
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06241459399461746,
+        "psnr": 15.050050735473633,
+        "foreground": 14.164846420288086
+      },
+      "zero": {
+        "foreground_correlation": 0.4325190782546997,
+        "psnr": 13.406194686889648,
+        "foreground": 14.809636116027832
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.6215770244598389,
+        "psnr": 15.873016357421875,
+        "foreground": 14.606108665466309
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5017420053482056,
+        "psnr": 16.20218849182129,
+        "foreground": 14.75156307220459
+      },
+      "zero": {
+        "foreground_correlation": 0.4324216842651367,
+        "psnr": 13.775253295898438,
+        "foreground": 14.826351165771484
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 25,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.20430995523929596,
+        "psnr": 15.325828552246094,
+        "foreground": 15.10839557647705
+      },
+      "shuffled": {
+        "foreground_correlation": 0.032225970178842545,
+        "psnr": 14.69021224975586,
+        "foreground": 14.780746459960938
+      },
+      "zero": {
+        "foreground_correlation": 0.49661755561828613,
+        "psnr": 13.769746780395508,
+        "foreground": 15.172358512878418
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.21336312592029572,
+        "psnr": 16.926982879638672,
+        "foreground": 15.011382102966309
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3993096351623535,
+        "psnr": 15.43578052520752,
+        "foreground": 15.004741668701172
+      },
+      "zero": {
+        "foreground_correlation": 0.5381210446357727,
+        "psnr": 14.169662475585938,
+        "foreground": 15.172954559326172
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 25,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.02516678161919117,
+        "psnr": 14.101430892944336,
+        "foreground": 10.299186706542969
+      },
+      "shuffled": {
+        "foreground_correlation": -0.22999221086502075,
+        "psnr": 13.512778282165527,
+        "foreground": 9.178011894226074
+      },
+      "zero": {
+        "foreground_correlation": -0.14509496092796326,
+        "psnr": 13.249262809753418,
+        "foreground": 10.121296882629395
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.23331034183502197,
+        "psnr": 14.714642524719238,
+        "foreground": 10.202807426452637
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5430483222007751,
+        "psnr": 15.828990936279297,
+        "foreground": 10.16268539428711
+      },
+      "zero": {
+        "foreground_correlation": -0.23841682076454163,
+        "psnr": 13.596182823181152,
+        "foreground": 10.086362838745117
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 25,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.27525800466537476,
+        "psnr": 13.94273567199707,
+        "foreground": 12.955936431884766
+      },
+      "shuffled": {
+        "foreground_correlation": -0.17180223762989044,
+        "psnr": 14.176939010620117,
+        "foreground": 12.003890991210938
+      },
+      "zero": {
+        "foreground_correlation": 0.5067892074584961,
+        "psnr": 13.544999122619629,
+        "foreground": 12.991752624511719
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.41046640276908875,
+        "psnr": 16.376665115356445,
+        "foreground": 13.027666091918945
+      },
+      "shuffled": {
+        "foreground_correlation": 0.12584349513053894,
+        "psnr": 15.031065940856934,
+        "foreground": 12.4955472946167
+      },
+      "zero": {
+        "foreground_correlation": 0.5619749426841736,
+        "psnr": 13.924464225769043,
+        "foreground": 12.993379592895508
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 25,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.2503812909126282,
+        "psnr": 14.4315824508667,
+        "foreground": 13.81410026550293
+      },
+      "shuffled": {
+        "foreground_correlation": 0.519533634185791,
+        "psnr": 13.761926651000977,
+        "foreground": 14.168630599975586
+      },
+      "zero": {
+        "foreground_correlation": 0.5397957563400269,
+        "psnr": 13.731560707092285,
+        "foreground": 14.119951248168945
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.000981390243396163,
+        "psnr": 15.200050354003906,
+        "foreground": 13.760499000549316
+      },
+      "shuffled": {
+        "foreground_correlation": 0.48818227648735046,
+        "psnr": 17.194650650024414,
+        "foreground": 14.075952529907227
+      },
+      "zero": {
+        "foreground_correlation": 0.4336942434310913,
+        "psnr": 14.121991157531738,
+        "foreground": 14.009435653686523
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 25,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.32132434844970703,
+        "psnr": 13.685260772705078,
+        "foreground": 12.567643165588379
+      },
+      "shuffled": {
+        "foreground_correlation": 0.14183516800403595,
+        "psnr": 14.201231956481934,
+        "foreground": 12.5069580078125
+      },
+      "zero": {
+        "foreground_correlation": 0.265123575925827,
+        "psnr": 13.64181900024414,
+        "foreground": 12.337926864624023
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2567828297615051,
+        "psnr": 17.017353057861328,
+        "foreground": 12.434667587280273
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1783962994813919,
+        "psnr": 15.801125526428223,
+        "foreground": 12.461198806762695
+      },
+      "zero": {
+        "foreground_correlation": 0.11759863048791885,
+        "psnr": 14.020978927612305,
+        "foreground": 12.215346336364746
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 25,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2585446238517761,
+        "psnr": 14.278623580932617,
+        "foreground": 15.30405044555664
+      },
+      "shuffled": {
+        "foreground_correlation": 0.27333366870880127,
+        "psnr": 16.065019607543945,
+        "foreground": 15.183382987976074
+      },
+      "zero": {
+        "foreground_correlation": 0.1714465469121933,
+        "psnr": 13.721159934997559,
+        "foreground": 15.23547649383545
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3436945676803589,
+        "psnr": 15.916780471801758,
+        "foreground": 15.275362968444824
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3606678247451782,
+        "psnr": 18.176822662353516,
+        "foreground": 15.216444969177246
+      },
+      "zero": {
+        "foreground_correlation": 0.14928260445594788,
+        "psnr": 14.112858772277832,
+        "foreground": 15.194987297058105
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 25,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2725481688976288,
+        "psnr": 15.71213150024414,
+        "foreground": 13.014745712280273
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1338631510734558,
+        "psnr": 13.679744720458984,
+        "foreground": 13.403139114379883
+      },
+      "zero": {
+        "foreground_correlation": 0.5330587029457092,
+        "psnr": 13.565544128417969,
+        "foreground": 13.690715789794922
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.1305995136499405,
+        "psnr": 17.575098037719727,
+        "foreground": 12.869486808776855
+      },
+      "shuffled": {
+        "foreground_correlation": 0.435289204120636,
+        "psnr": 13.73431396484375,
+        "foreground": 13.22211742401123
+      },
+      "zero": {
+        "foreground_correlation": 0.5379206538200378,
+        "psnr": 13.943241119384766,
+        "foreground": 13.663419723510742
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 25,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3532099425792694,
+        "psnr": 13.718210220336914,
+        "foreground": 14.662548065185547
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2688089907169342,
+        "psnr": 14.112865447998047,
+        "foreground": 15.174276351928711
+      },
+      "zero": {
+        "foreground_correlation": 0.4150680601596832,
+        "psnr": 13.614068984985352,
+        "foreground": 15.06616497039795
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.4632926881313324,
+        "psnr": 13.773378372192383,
+        "foreground": 14.3821382522583
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2101813554763794,
+        "psnr": 15.429058074951172,
+        "foreground": 15.001469612121582
+      },
+      "zero": {
+        "foreground_correlation": 0.5009788274765015,
+        "psnr": 14.010567665100098,
+        "foreground": 15.216567993164062
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 25,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.26580938696861267,
+        "psnr": 14.231332778930664,
+        "foreground": 14.156061172485352
+      },
+      "shuffled": {
+        "foreground_correlation": 0.560866117477417,
+        "psnr": 15.520429611206055,
+        "foreground": 15.495454788208008
+      },
+      "zero": {
+        "foreground_correlation": 0.40978527069091797,
+        "psnr": 13.760470390319824,
+        "foreground": 15.438745498657227
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.13948370516300201,
+        "psnr": 15.64083194732666,
+        "foreground": 15.129375457763672
+      },
+      "shuffled": {
+        "foreground_correlation": -0.042537152767181396,
+        "psnr": 16.620986938476562,
+        "foreground": 15.166420936584473
+      },
+      "zero": {
+        "foreground_correlation": 0.2570342719554901,
+        "psnr": 14.152493476867676,
+        "foreground": 15.307723999023438
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 25,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.37614163756370544,
+        "psnr": 15.512443542480469,
+        "foreground": 13.384028434753418
+      },
+      "shuffled": {
+        "foreground_correlation": 0.4268149733543396,
+        "psnr": 14.344472885131836,
+        "foreground": 13.648122787475586
+      },
+      "zero": {
+        "foreground_correlation": 0.3795027434825897,
+        "psnr": 13.763896942138672,
+        "foreground": 13.534271240234375
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2797907292842865,
+        "psnr": 16.643413543701172,
+        "foreground": 13.395634651184082
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3758874237537384,
+        "psnr": 15.887341499328613,
+        "foreground": 13.570207595825195
+      },
+      "zero": {
+        "foreground_correlation": 0.49673447012901306,
+        "psnr": 14.157493591308594,
+        "foreground": 13.405660629272461
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 25,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.1335570514202118,
+        "psnr": 14.068690299987793,
+        "foreground": 13.595967292785645
+      },
+      "shuffled": {
+        "foreground_correlation": 0.404659628868103,
+        "psnr": 13.975716590881348,
+        "foreground": 13.799812316894531
+      },
+      "zero": {
+        "foreground_correlation": 0.2507810592651367,
+        "psnr": 13.510997772216797,
+        "foreground": 13.63667106628418
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.017606962472200394,
+        "psnr": 15.476569175720215,
+        "foreground": 13.55039119720459
+      },
+      "shuffled": {
+        "foreground_correlation": -0.13510708510875702,
+        "psnr": 16.4661808013916,
+        "foreground": 13.479327201843262
+      },
+      "zero": {
+        "foreground_correlation": 0.2636978328227997,
+        "psnr": 13.885875701904297,
+        "foreground": 13.574163436889648
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 25,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.04262596741318703,
+        "psnr": 13.91407585144043,
+        "foreground": 13.82177734375
+      },
+      "shuffled": {
+        "foreground_correlation": 0.05599992722272873,
+        "psnr": 13.950305938720703,
+        "foreground": 14.321646690368652
+      },
+      "zero": {
+        "foreground_correlation": 0.030136484652757645,
+        "psnr": 13.603571891784668,
+        "foreground": 14.795187950134277
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.01730128936469555,
+        "psnr": 16.4208984375,
+        "foreground": 13.817398071289062
+      },
+      "shuffled": {
+        "foreground_correlation": -0.010697568766772747,
+        "psnr": 15.298794746398926,
+        "foreground": 14.457008361816406
+      },
+      "zero": {
+        "foreground_correlation": -0.008176852948963642,
+        "psnr": 13.974149703979492,
+        "foreground": 14.726161003112793
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 25,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2947685718536377,
+        "psnr": 13.94168472290039,
+        "foreground": 13.930265426635742
+      },
+      "shuffled": {
+        "foreground_correlation": 0.08404595404863358,
+        "psnr": 19.499427795410156,
+        "foreground": 13.578628540039062
+      },
+      "zero": {
+        "foreground_correlation": 0.4473843574523926,
+        "psnr": 13.527573585510254,
+        "foreground": 13.763252258300781
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.15332253277301788,
+        "psnr": 15.19200325012207,
+        "foreground": 13.69700813293457
+      },
+      "shuffled": {
+        "foreground_correlation": -0.011994575150310993,
+        "psnr": 20.14560890197754,
+        "foreground": 13.615747451782227
+      },
+      "zero": {
+        "foreground_correlation": 0.45962095260620117,
+        "psnr": 13.897024154663086,
+        "foreground": 13.639935493469238
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 25,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.08273211866617203,
+        "psnr": 20.960983276367188,
+        "foreground": 17.640867233276367
+      },
+      "shuffled": {
+        "foreground_correlation": 0.08258653432130814,
+        "psnr": 14.497560501098633,
+        "foreground": 15.988916397094727
+      },
+      "zero": {
+        "foreground_correlation": 0.03495332598686218,
+        "psnr": 13.835678100585938,
+        "foreground": 17.16730308532715
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.07766246050596237,
+        "psnr": 21.90218734741211,
+        "foreground": 17.809589385986328
+      },
+      "shuffled": {
+        "foreground_correlation": 0.08226816356182098,
+        "psnr": 16.372392654418945,
+        "foreground": 16.37215805053711
+      },
+      "zero": {
+        "foreground_correlation": 0.041519954800605774,
+        "psnr": 14.245927810668945,
+        "foreground": 17.154457092285156
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 25,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.28767305612564087,
+        "psnr": 13.893813133239746,
+        "foreground": 10.270060539245605
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1208062469959259,
+        "psnr": 14.597579002380371,
+        "foreground": 9.958584785461426
+      },
+      "zero": {
+        "foreground_correlation": 0.24336586892604828,
+        "psnr": 13.290810585021973,
+        "foreground": 10.040665626525879
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.006959347985684872,
+        "psnr": 15.455987930297852,
+        "foreground": 10.177277565002441
+      },
+      "shuffled": {
+        "foreground_correlation": 0.0525989904999733,
+        "psnr": 17.048437118530273,
+        "foreground": 10.016098976135254
+      },
+      "zero": {
+        "foreground_correlation": 0.27276110649108887,
+        "psnr": 13.64291000366211,
+        "foreground": 9.985189437866211
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 32,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.2588585317134857,
+        "psnr": 18.12651824951172,
+        "foreground": 14.976874351501465
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1612056940793991,
+        "psnr": 14.148040771484375,
+        "foreground": 13.965307235717773
+      },
+      "zero": {
+        "foreground_correlation": -0.18828943371772766,
+        "psnr": 13.803815841674805,
+        "foreground": 14.908121109008789
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.02176152542233467,
+        "psnr": 19.08395004272461,
+        "foreground": 15.0737943649292
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14242282509803772,
+        "psnr": 14.605692863464355,
+        "foreground": 15.014364242553711
+      },
+      "zero": {
+        "foreground_correlation": -0.19029338657855988,
+        "psnr": 14.218435287475586,
+        "foreground": 14.998946189880371
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 32,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.13083727657794952,
+        "psnr": 13.77060317993164,
+        "foreground": 14.64871597290039
+      },
+      "shuffled": {
+        "foreground_correlation": 0.025021852925419807,
+        "psnr": 14.518301010131836,
+        "foreground": 14.440470695495605
+      },
+      "zero": {
+        "foreground_correlation": 0.3064676821231842,
+        "psnr": 13.439053535461426,
+        "foreground": 14.748008728027344
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.620514988899231,
+        "psnr": 14.154298782348633,
+        "foreground": 14.66353988647461
+      },
+      "shuffled": {
+        "foreground_correlation": 0.46491122245788574,
+        "psnr": 14.616762161254883,
+        "foreground": 14.660676956176758
+      },
+      "zero": {
+        "foreground_correlation": 0.35765573382377625,
+        "psnr": 13.826663970947266,
+        "foreground": 14.822186470031738
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 32,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.41884180903434753,
+        "psnr": 15.021711349487305,
+        "foreground": 15.148958206176758
+      },
+      "shuffled": {
+        "foreground_correlation": 0.19935756921768188,
+        "psnr": 15.124930381774902,
+        "foreground": 14.9749755859375
+      },
+      "zero": {
+        "foreground_correlation": 0.5166012644767761,
+        "psnr": 13.800492286682129,
+        "foreground": 15.31165599822998
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.18915735185146332,
+        "psnr": 15.10445499420166,
+        "foreground": 15.117449760437012
+      },
+      "shuffled": {
+        "foreground_correlation": 0.12832525372505188,
+        "psnr": 15.21501636505127,
+        "foreground": 15.09443473815918
+      },
+      "zero": {
+        "foreground_correlation": 0.5645542144775391,
+        "psnr": 14.211612701416016,
+        "foreground": 15.28099250793457
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 32,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.19605018198490143,
+        "psnr": 14.532918930053711,
+        "foreground": 10.48276138305664
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1466924101114273,
+        "psnr": 14.145679473876953,
+        "foreground": 9.60338020324707
+      },
+      "zero": {
+        "foreground_correlation": -0.12938913702964783,
+        "psnr": 13.326509475708008,
+        "foreground": 10.333308219909668
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.15973111987113953,
+        "psnr": 14.598678588867188,
+        "foreground": 10.439668655395508
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3927711248397827,
+        "psnr": 15.782952308654785,
+        "foreground": 10.346722602844238
+      },
+      "zero": {
+        "foreground_correlation": -0.2444029152393341,
+        "psnr": 13.689563751220703,
+        "foreground": 10.304303169250488
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 32,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.040420051664114,
+        "psnr": 14.535975456237793,
+        "foreground": 13.028236389160156
+      },
+      "shuffled": {
+        "foreground_correlation": 0.02790302038192749,
+        "psnr": 14.152286529541016,
+        "foreground": 12.364192962646484
+      },
+      "zero": {
+        "foreground_correlation": 0.4137328267097473,
+        "psnr": 13.57298755645752,
+        "foreground": 13.206254959106445
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.4849315881729126,
+        "psnr": 16.237154006958008,
+        "foreground": 13.284655570983887
+      },
+      "shuffled": {
+        "foreground_correlation": -0.01593945547938347,
+        "psnr": 14.731637001037598,
+        "foreground": 12.56157398223877
+      },
+      "zero": {
+        "foreground_correlation": 0.5482061505317688,
+        "psnr": 13.96674633026123,
+        "foreground": 13.238869667053223
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 32,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.07171566784381866,
+        "psnr": 14.38323974609375,
+        "foreground": 14.87871265411377
+      },
+      "shuffled": {
+        "foreground_correlation": 0.45863232016563416,
+        "psnr": 14.502805709838867,
+        "foreground": 15.088788032531738
+      },
+      "zero": {
+        "foreground_correlation": 0.45633962750434875,
+        "psnr": 13.821222305297852,
+        "foreground": 15.169294357299805
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.27899640798568726,
+        "psnr": 15.039566993713379,
+        "foreground": 14.992441177368164
+      },
+      "shuffled": {
+        "foreground_correlation": 0.158021941781044,
+        "psnr": 16.322738647460938,
+        "foreground": 15.026569366455078
+      },
+      "zero": {
+        "foreground_correlation": 0.39830198884010315,
+        "psnr": 14.233054161071777,
+        "foreground": 15.103328704833984
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 32,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.23287327587604523,
+        "psnr": 14.424549102783203,
+        "foreground": 12.993821144104004
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16566987335681915,
+        "psnr": 15.625043869018555,
+        "foreground": 12.986659049987793
+      },
+      "zero": {
+        "foreground_correlation": 0.28960856795310974,
+        "psnr": 13.75035285949707,
+        "foreground": 12.975625038146973
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.1680794656276703,
+        "psnr": 16.19874382019043,
+        "foreground": 12.889366149902344
+      },
+      "shuffled": {
+        "foreground_correlation": 0.2035771906375885,
+        "psnr": 15.98919677734375,
+        "foreground": 12.929595947265625
+      },
+      "zero": {
+        "foreground_correlation": 0.08312052488327026,
+        "psnr": 14.152408599853516,
+        "foreground": 12.87096881866455
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 32,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.04185127094388008,
+        "psnr": 15.63367748260498,
+        "foreground": 14.917645454406738
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1021653488278389,
+        "psnr": 14.672540664672852,
+        "foreground": 14.916085243225098
+      },
+      "zero": {
+        "foreground_correlation": 0.09943164139986038,
+        "psnr": 13.759655952453613,
+        "foreground": 15.027200698852539
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.27703163027763367,
+        "psnr": 16.005868911743164,
+        "foreground": 15.029767990112305
+      },
+      "shuffled": {
+        "foreground_correlation": 0.021786099299788475,
+        "psnr": 14.115962982177734,
+        "foreground": 14.942936897277832
+      },
+      "zero": {
+        "foreground_correlation": 0.0804852694272995,
+        "psnr": 14.165583610534668,
+        "foreground": 15.00649356842041
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 32,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.45054891705513,
+        "psnr": 14.326513290405273,
+        "foreground": 11.688004493713379
+      },
+      "shuffled": {
+        "foreground_correlation": 0.004569487180560827,
+        "psnr": 14.829268455505371,
+        "foreground": 11.341371536254883
+      },
+      "zero": {
+        "foreground_correlation": 0.558799147605896,
+        "psnr": 13.480474472045898,
+        "foreground": 11.782007217407227
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.5111910700798035,
+        "psnr": 13.804071426391602,
+        "foreground": 11.656684875488281
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3074829578399658,
+        "psnr": 15.485250473022461,
+        "foreground": 11.572500228881836
+      },
+      "zero": {
+        "foreground_correlation": 0.6230154037475586,
+        "psnr": 13.855114936828613,
+        "foreground": 11.72351360321045
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 32,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.05986610800027847,
+        "psnr": 15.029631614685059,
+        "foreground": 13.459663391113281
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16115999221801758,
+        "psnr": 14.17197322845459,
+        "foreground": 14.52487564086914
+      },
+      "zero": {
+        "foreground_correlation": 0.2555083930492401,
+        "psnr": 13.668066024780273,
+        "foreground": 14.704432487487793
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3066070079803467,
+        "psnr": 15.76485538482666,
+        "foreground": 14.165523529052734
+      },
+      "shuffled": {
+        "foreground_correlation": 0.07884378731250763,
+        "psnr": 16.76497459411621,
+        "foreground": 14.59311580657959
+      },
+      "zero": {
+        "foreground_correlation": 0.33770328760147095,
+        "psnr": 14.080591201782227,
+        "foreground": 14.89677619934082
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 32,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.20846164226531982,
+        "psnr": 11.293784141540527,
+        "foreground": 10.777188301086426
+      },
+      "shuffled": {
+        "foreground_correlation": -0.38855937123298645,
+        "psnr": 11.286048889160156,
+        "foreground": 10.559837341308594
+      },
+      "zero": {
+        "foreground_correlation": null,
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": null,
+        "psnr": 11.245840072631836,
+        "foreground": 10.832128524780273
+      },
+      "shuffled": {
+        "foreground_correlation": null,
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      },
+      "zero": {
+        "foreground_correlation": null,
+        "psnr": 11.204157829284668,
+        "foreground": 10.832128524780273
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 32,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.392158180475235,
+        "psnr": 17.1533145904541,
+        "foreground": 13.265748977661133
+      },
+      "shuffled": {
+        "foreground_correlation": -0.007516083307564259,
+        "psnr": 14.648550033569336,
+        "foreground": 12.688031196594238
+      },
+      "zero": {
+        "foreground_correlation": 0.3947267234325409,
+        "psnr": 13.767829895019531,
+        "foreground": 13.109160423278809
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.29612889885902405,
+        "psnr": 20.196243286132812,
+        "foreground": 13.099275588989258
+      },
+      "shuffled": {
+        "foreground_correlation": 0.24513033032417297,
+        "psnr": 15.186561584472656,
+        "foreground": 13.018318176269531
+      },
+      "zero": {
+        "foreground_correlation": 0.49985650181770325,
+        "psnr": 14.17036247253418,
+        "foreground": 12.975420951843262
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 32,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.12851330637931824,
+        "psnr": 14.342008590698242,
+        "foreground": 13.343830108642578
+      },
+      "shuffled": {
+        "foreground_correlation": 0.27993255853652954,
+        "psnr": 14.62579345703125,
+        "foreground": 13.602476119995117
+      },
+      "zero": {
+        "foreground_correlation": 0.3172276020050049,
+        "psnr": 13.531683921813965,
+        "foreground": 13.447247505187988
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.058713287115097046,
+        "psnr": 14.871764183044434,
+        "foreground": 13.326799392700195
+      },
+      "shuffled": {
+        "foreground_correlation": 0.045801907777786255,
+        "psnr": 15.900507926940918,
+        "foreground": 13.450782775878906
+      },
+      "zero": {
+        "foreground_correlation": 0.3215945363044739,
+        "psnr": 13.899812698364258,
+        "foreground": 13.344854354858398
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 32,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.0009234869503416121,
+        "psnr": 14.42660903930664,
+        "foreground": 13.414469718933105
+      },
+      "shuffled": {
+        "foreground_correlation": -0.0045068394392728806,
+        "psnr": 14.398422241210938,
+        "foreground": 14.192193984985352
+      },
+      "zero": {
+        "foreground_correlation": 0.011706528253853321,
+        "psnr": 13.609305381774902,
+        "foreground": 14.686306953430176
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.00584608456119895,
+        "psnr": 15.774906158447266,
+        "foreground": 13.581974029541016
+      },
+      "shuffled": {
+        "foreground_correlation": -0.04423642158508301,
+        "psnr": 14.899971008300781,
+        "foreground": 14.291646957397461
+      },
+      "zero": {
+        "foreground_correlation": -0.02100522443652153,
+        "psnr": 13.97656536102295,
+        "foreground": 14.634546279907227
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 32,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.13195066154003143,
+        "psnr": 14.311031341552734,
+        "foreground": 13.613947868347168
+      },
+      "shuffled": {
+        "foreground_correlation": 0.250679075717926,
+        "psnr": 17.508380889892578,
+        "foreground": 13.556844711303711
+      },
+      "zero": {
+        "foreground_correlation": 0.4835667908191681,
+        "psnr": 13.515581130981445,
+        "foreground": 13.704723358154297
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.0027968306094408035,
+        "psnr": 14.733972549438477,
+        "foreground": 13.411669731140137
+      },
+      "shuffled": {
+        "foreground_correlation": -0.05906124413013458,
+        "psnr": 18.443017959594727,
+        "foreground": 13.525277137756348
+      },
+      "zero": {
+        "foreground_correlation": 0.5061351656913757,
+        "psnr": 13.877616882324219,
+        "foreground": 13.571595191955566
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 32,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.06619526445865631,
+        "psnr": 18.406002044677734,
+        "foreground": 17.45148468017578
+      },
+      "shuffled": {
+        "foreground_correlation": 0.08556245267391205,
+        "psnr": 14.891586303710938,
+        "foreground": 15.697639465332031
+      },
+      "zero": {
+        "foreground_correlation": 0.036953266710042953,
+        "psnr": 13.836108207702637,
+        "foreground": 16.960567474365234
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.06714380532503128,
+        "psnr": 19.610200881958008,
+        "foreground": 17.57444190979004
+      },
+      "shuffled": {
+        "foreground_correlation": 0.09820789098739624,
+        "psnr": 15.439598083496094,
+        "foreground": 15.034035682678223
+      },
+      "zero": {
+        "foreground_correlation": 0.032956793904304504,
+        "psnr": 14.23951530456543,
+        "foreground": 16.920692443847656
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 32,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2749743163585663,
+        "psnr": 14.277946472167969,
+        "foreground": 10.517449378967285
+      },
+      "shuffled": {
+        "foreground_correlation": 0.34206199645996094,
+        "psnr": 16.9788761138916,
+        "foreground": 10.372844696044922
+      },
+      "zero": {
+        "foreground_correlation": 0.2244292050600052,
+        "psnr": 13.33076286315918,
+        "foreground": 10.335224151611328
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.15206275880336761,
+        "psnr": 14.729126930236816,
+        "foreground": 10.390180587768555
+      },
+      "shuffled": {
+        "foreground_correlation": 0.028484024107456207,
+        "psnr": 17.70865249633789,
+        "foreground": 10.474634170532227
+      },
+      "zero": {
+        "foreground_correlation": 0.29718703031539917,
+        "psnr": 13.682106971740723,
+        "foreground": 10.280344009399414
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 39,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.014612515456974506,
+        "psnr": 13.997146606445312,
+        "foreground": 14.915112495422363
+      },
+      "shuffled": {
+        "foreground_correlation": -0.21832425892353058,
+        "psnr": 14.78630542755127,
+        "foreground": 13.00960922241211
+      },
+      "zero": {
+        "foreground_correlation": -0.17908278107643127,
+        "psnr": 13.792237281799316,
+        "foreground": 14.763937950134277
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14369413256645203,
+        "psnr": 17.75312614440918,
+        "foreground": 14.975232124328613
+      },
+      "shuffled": {
+        "foreground_correlation": -0.11500085145235062,
+        "psnr": 16.218429565429688,
+        "foreground": 14.713431358337402
+      },
+      "zero": {
+        "foreground_correlation": -0.1829521656036377,
+        "psnr": 14.202152252197266,
+        "foreground": 14.851007461547852
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 39,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.13784927129745483,
+        "psnr": 14.354179382324219,
+        "foreground": 14.52791976928711
+      },
+      "shuffled": {
+        "foreground_correlation": -0.31565728783607483,
+        "psnr": 13.815017700195312,
+        "foreground": 13.233485221862793
+      },
+      "zero": {
+        "foreground_correlation": 0.21417035162448883,
+        "psnr": 13.402910232543945,
+        "foreground": 14.569096565246582
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14564406871795654,
+        "psnr": 15.50869369506836,
+        "foreground": 14.335901260375977
+      },
+      "shuffled": {
+        "foreground_correlation": 0.15916746854782104,
+        "psnr": 15.410367012023926,
+        "foreground": 14.486852645874023
+      },
+      "zero": {
+        "foreground_correlation": 0.3422716557979584,
+        "psnr": 13.788240432739258,
+        "foreground": 14.674433708190918
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 39,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.1861615777015686,
+        "psnr": 14.328367233276367,
+        "foreground": 14.997684478759766
+      },
+      "shuffled": {
+        "foreground_correlation": 0.23114609718322754,
+        "psnr": 14.47719669342041,
+        "foreground": 14.86509895324707
+      },
+      "zero": {
+        "foreground_correlation": 0.5339300632476807,
+        "psnr": 13.783796310424805,
+        "foreground": 15.069110870361328
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14242301881313324,
+        "psnr": 16.040969848632812,
+        "foreground": 14.891044616699219
+      },
+      "shuffled": {
+        "foreground_correlation": 0.13626760244369507,
+        "psnr": 15.897494316101074,
+        "foreground": 14.874415397644043
+      },
+      "zero": {
+        "foreground_correlation": 0.5825956463813782,
+        "psnr": 14.188786506652832,
+        "foreground": 15.018173217773438
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 39,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.02275194600224495,
+        "psnr": 14.02005672454834,
+        "foreground": 10.69998836517334
+      },
+      "shuffled": {
+        "foreground_correlation": -0.366086483001709,
+        "psnr": 13.286508560180664,
+        "foreground": 8.559114456176758
+      },
+      "zero": {
+        "foreground_correlation": -0.0949224978685379,
+        "psnr": 13.371554374694824,
+        "foreground": 10.590526580810547
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2847723960876465,
+        "psnr": 15.272638320922852,
+        "foreground": 10.686262130737305
+      },
+      "shuffled": {
+        "foreground_correlation": 0.4926292300224304,
+        "psnr": 16.2044677734375,
+        "foreground": 10.689635276794434
+      },
+      "zero": {
+        "foreground_correlation": -0.22507686913013458,
+        "psnr": 13.735713005065918,
+        "foreground": 10.561305046081543
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 39,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.06715068966150284,
+        "psnr": 13.690184593200684,
+        "foreground": 12.64852523803711
+      },
+      "shuffled": {
+        "foreground_correlation": -0.02688341587781906,
+        "psnr": 14.002312660217285,
+        "foreground": 12.368330955505371
+      },
+      "zero": {
+        "foreground_correlation": 0.29590749740600586,
+        "psnr": 13.565927505493164,
+        "foreground": 13.291951179504395
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3946910500526428,
+        "psnr": 16.564834594726562,
+        "foreground": 13.310842514038086
+      },
+      "shuffled": {
+        "foreground_correlation": -0.07002034038305283,
+        "psnr": 14.629983901977539,
+        "foreground": 12.520604133605957
+      },
+      "zero": {
+        "foreground_correlation": 0.5167166590690613,
+        "psnr": 13.958368301391602,
+        "foreground": 13.35551643371582
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 39,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.14037156105041504,
+        "psnr": 14.300999641418457,
+        "foreground": 16.128459930419922
+      },
+      "shuffled": {
+        "foreground_correlation": 0.23652829229831696,
+        "psnr": 15.633868217468262,
+        "foreground": 16.37193489074707
+      },
+      "zero": {
+        "foreground_correlation": 0.28241732716560364,
+        "psnr": 13.862725257873535,
+        "foreground": 16.566335678100586
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14546909928321838,
+        "psnr": 15.006172180175781,
+        "foreground": 16.352632522583008
+      },
+      "shuffled": {
+        "foreground_correlation": 0.04418113827705383,
+        "psnr": 18.413951873779297,
+        "foreground": 16.5074462890625
+      },
+      "zero": {
+        "foreground_correlation": 0.3062327206134796,
+        "psnr": 14.278096199035645,
+        "foreground": 16.607105255126953
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 39,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.21282845735549927,
+        "psnr": 15.560541152954102,
+        "foreground": 14.27111530303955
+      },
+      "shuffled": {
+        "foreground_correlation": 0.05574817955493927,
+        "psnr": 15.31019401550293,
+        "foreground": 14.200568199157715
+      },
+      "zero": {
+        "foreground_correlation": 0.21326133608818054,
+        "psnr": 13.812297821044922,
+        "foreground": 14.35086727142334
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.113052137196064,
+        "psnr": 18.275314331054688,
+        "foreground": 14.347320556640625
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06019901856780052,
+        "psnr": 16.99658966064453,
+        "foreground": 14.187012672424316
+      },
+      "zero": {
+        "foreground_correlation": 0.03325784578919411,
+        "psnr": 14.222010612487793,
+        "foreground": 14.349639892578125
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 39,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.0493898019194603,
+        "psnr": 15.239717483520508,
+        "foreground": 14.268845558166504
+      },
+      "shuffled": {
+        "foreground_correlation": 0.04552871733903885,
+        "psnr": 13.664709091186523,
+        "foreground": 12.15684986114502
+      },
+      "zero": {
+        "foreground_correlation": 0.09181658923625946,
+        "psnr": 13.764251708984375,
+        "foreground": 14.390535354614258
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.12168974429368973,
+        "psnr": 16.895915985107422,
+        "foreground": 14.300795555114746
+      },
+      "shuffled": {
+        "foreground_correlation": -0.026506051421165466,
+        "psnr": 14.000548362731934,
+        "foreground": 14.270344734191895
+      },
+      "zero": {
+        "foreground_correlation": 0.04881579428911209,
+        "psnr": 14.166693687438965,
+        "foreground": 14.361783027648926
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 39,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.16808278858661652,
+        "psnr": 13.36154556274414,
+        "foreground": 11.7955322265625
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16173069179058075,
+        "psnr": 13.551894187927246,
+        "foreground": 11.713400840759277
+      },
+      "zero": {
+        "foreground_correlation": 0.5339915156364441,
+        "psnr": 13.503812789916992,
+        "foreground": 11.829157829284668
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.4684160351753235,
+        "psnr": 13.71795654296875,
+        "foreground": 11.696174621582031
+      },
+      "shuffled": {
+        "foreground_correlation": 0.19120433926582336,
+        "psnr": 15.142725944519043,
+        "foreground": 11.568620681762695
+      },
+      "zero": {
+        "foreground_correlation": 0.5824976563453674,
+        "psnr": 13.878259658813477,
+        "foreground": 11.775650978088379
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 39,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.02001919411122799,
+        "psnr": 13.68038558959961,
+        "foreground": 13.982176780700684
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1307743340730667,
+        "psnr": 16.98838996887207,
+        "foreground": 13.886051177978516
+      },
+      "zero": {
+        "foreground_correlation": 0.1409422606229782,
+        "psnr": 13.674976348876953,
+        "foreground": 14.605301856994629
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.15456648170948029,
+        "psnr": 15.383000373840332,
+        "foreground": 14.064244270324707
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1685076355934143,
+        "psnr": 18.598438262939453,
+        "foreground": 14.202434539794922
+      },
+      "zero": {
+        "foreground_correlation": 0.16816429793834686,
+        "psnr": 14.084614753723145,
+        "foreground": 14.810176849365234
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 39,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.17473387718200684,
+        "psnr": 17.283845901489258,
+        "foreground": 15.16238021850586
+      },
+      "shuffled": {
+        "foreground_correlation": 0.19377002120018005,
+        "psnr": 16.3449649810791,
+        "foreground": 15.4207181930542
+      },
+      "zero": {
+        "foreground_correlation": 0.194327250123024,
+        "psnr": 13.775430679321289,
+        "foreground": 15.45177936553955
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.21864815056324005,
+        "psnr": 18.975690841674805,
+        "foreground": 15.27375316619873
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10390746593475342,
+        "psnr": 17.051847457885742,
+        "foreground": 15.38519287109375
+      },
+      "zero": {
+        "foreground_correlation": 0.10721924901008606,
+        "psnr": 14.177896499633789,
+        "foreground": 15.390463829040527
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 39,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3081180453300476,
+        "psnr": 16.28068733215332,
+        "foreground": 12.588606834411621
+      },
+      "shuffled": {
+        "foreground_correlation": 0.21173866093158722,
+        "psnr": 14.816520690917969,
+        "foreground": 12.862309455871582
+      },
+      "zero": {
+        "foreground_correlation": 0.4154885709285736,
+        "psnr": 13.742351531982422,
+        "foreground": 12.691072463989258
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.01593635603785515,
+        "psnr": 16.96485137939453,
+        "foreground": 12.438858985900879
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06842830032110214,
+        "psnr": 15.441179275512695,
+        "foreground": 12.70541000366211
+      },
+      "zero": {
+        "foreground_correlation": 0.5111814737319946,
+        "psnr": 14.138374328613281,
+        "foreground": 12.558307647705078
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 39,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.276419073343277,
+        "psnr": 14.639090538024902,
+        "foreground": 13.379687309265137
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3035282790660858,
+        "psnr": 12.887816429138184,
+        "foreground": 13.870253562927246
+      },
+      "zero": {
+        "foreground_correlation": 0.3953380882740021,
+        "psnr": 13.597475051879883,
+        "foreground": 13.316264152526855
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.16551050543785095,
+        "psnr": 15.231945037841797,
+        "foreground": 13.241340637207031
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3530859351158142,
+        "psnr": 13.812718391418457,
+        "foreground": 13.668315887451172
+      },
+      "zero": {
+        "foreground_correlation": 0.39927220344543457,
+        "psnr": 13.976663589477539,
+        "foreground": 13.168750762939453
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 39,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.0024421336129307747,
+        "psnr": 12.789660453796387,
+        "foreground": 13.33968734741211
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06051822006702423,
+        "psnr": 15.237421989440918,
+        "foreground": 14.424894332885742
+      },
+      "zero": {
+        "foreground_correlation": -0.0053170789033174515,
+        "psnr": 13.623001098632812,
+        "foreground": 14.584273338317871
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.015139183029532433,
+        "psnr": 13.634757041931152,
+        "foreground": 13.5960111618042
+      },
+      "shuffled": {
+        "foreground_correlation": -0.053395066410303116,
+        "psnr": 15.801581382751465,
+        "foreground": 14.234048843383789
+      },
+      "zero": {
+        "foreground_correlation": -0.032350655645132065,
+        "psnr": 13.999143600463867,
+        "foreground": 14.521196365356445
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 39,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.39864808320999146,
+        "psnr": 15.165043830871582,
+        "foreground": 13.810096740722656
+      },
+      "shuffled": {
+        "foreground_correlation": -0.18826119601726532,
+        "psnr": 15.757387161254883,
+        "foreground": 12.83023738861084
+      },
+      "zero": {
+        "foreground_correlation": 0.5052593350410461,
+        "psnr": 13.529715538024902,
+        "foreground": 13.74105453491211
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2663208246231079,
+        "psnr": 15.681135177612305,
+        "foreground": 13.618097305297852
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1575523316860199,
+        "psnr": 15.916409492492676,
+        "foreground": 13.522523880004883
+      },
+      "zero": {
+        "foreground_correlation": 0.5321300029754639,
+        "psnr": 13.900259017944336,
+        "foreground": 13.602038383483887
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 39,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.006746252533048391,
+        "psnr": 16.450925827026367,
+        "foreground": 15.796479225158691
+      },
+      "shuffled": {
+        "foreground_correlation": 0.044459763914346695,
+        "psnr": 14.97181510925293,
+        "foreground": 15.036221504211426
+      },
+      "zero": {
+        "foreground_correlation": 0.055199261754751205,
+        "psnr": 13.865708351135254,
+        "foreground": 16.108253479003906
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.014647461473941803,
+        "psnr": 16.555206298828125,
+        "foreground": 15.770135879516602
+      },
+      "shuffled": {
+        "foreground_correlation": -0.005180777981877327,
+        "psnr": 15.31557846069336,
+        "foreground": 16.099313735961914
+      },
+      "zero": {
+        "foreground_correlation": 0.01010435912758112,
+        "psnr": 14.27830696105957,
+        "foreground": 15.96491813659668
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 39,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2319195717573166,
+        "psnr": 14.307231903076172,
+        "foreground": 10.480745315551758
+      },
+      "shuffled": {
+        "foreground_correlation": 0.14080649614334106,
+        "psnr": 13.54544734954834,
+        "foreground": 10.644545555114746
+      },
+      "zero": {
+        "foreground_correlation": 0.21828864514827728,
+        "psnr": 13.327202796936035,
+        "foreground": 10.37874698638916
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.16075578331947327,
+        "psnr": 14.599969863891602,
+        "foreground": 10.48824691772461
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10868506133556366,
+        "psnr": 16.69814682006836,
+        "foreground": 10.455940246582031
+      },
+      "zero": {
+        "foreground_correlation": 0.3140166997909546,
+        "psnr": 13.685203552246094,
+        "foreground": 10.322696685791016
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 46,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.20801293849945068,
+        "psnr": 14.177828788757324,
+        "foreground": 13.903590202331543
+      },
+      "shuffled": {
+        "foreground_correlation": -0.13260067999362946,
+        "psnr": 14.33204174041748,
+        "foreground": 14.875139236450195
+      },
+      "zero": {
+        "foreground_correlation": -0.1964961290359497,
+        "psnr": 13.785201072692871,
+        "foreground": 14.934581756591797
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.08392944186925888,
+        "psnr": 18.94552993774414,
+        "foreground": 15.060880661010742
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14079971611499786,
+        "psnr": 14.119254112243652,
+        "foreground": 15.026655197143555
+      },
+      "zero": {
+        "foreground_correlation": -0.19636963307857513,
+        "psnr": 14.190729141235352,
+        "foreground": 15.033101081848145
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 46,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.05485878139734268,
+        "psnr": 13.805704116821289,
+        "foreground": 14.19135570526123
+      },
+      "shuffled": {
+        "foreground_correlation": -0.23473034799098969,
+        "psnr": 15.59754753112793,
+        "foreground": 14.066549301147461
+      },
+      "zero": {
+        "foreground_correlation": 0.2010771781206131,
+        "psnr": 13.35427188873291,
+        "foreground": 14.480350494384766
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.09806125611066818,
+        "psnr": 13.630350112915039,
+        "foreground": 14.324560165405273
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5460076332092285,
+        "psnr": 15.585214614868164,
+        "foreground": 14.485763549804688
+      },
+      "zero": {
+        "foreground_correlation": 0.3215909004211426,
+        "psnr": 13.729812622070312,
+        "foreground": 14.567480087280273
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 46,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3053385019302368,
+        "psnr": 16.401105880737305,
+        "foreground": 15.500727653503418
+      },
+      "shuffled": {
+        "foreground_correlation": 0.5273382067680359,
+        "psnr": 14.814764022827148,
+        "foreground": 15.437589645385742
+      },
+      "zero": {
+        "foreground_correlation": 0.5327728986740112,
+        "psnr": 13.783793449401855,
+        "foreground": 15.571605682373047
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2700207829475403,
+        "psnr": 16.317337036132812,
+        "foreground": 15.378421783447266
+      },
+      "shuffled": {
+        "foreground_correlation": 0.34220775961875916,
+        "psnr": 14.30430793762207,
+        "foreground": 15.339982986450195
+      },
+      "zero": {
+        "foreground_correlation": 0.5814112424850464,
+        "psnr": 14.184608459472656,
+        "foreground": 15.516281127929688
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 46,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.0899387001991272,
+        "psnr": 14.354347229003906,
+        "foreground": 11.192058563232422
+      },
+      "shuffled": {
+        "foreground_correlation": -0.07149985432624817,
+        "psnr": 13.478604316711426,
+        "foreground": 10.416646003723145
+      },
+      "zero": {
+        "foreground_correlation": 0.01184005569666624,
+        "psnr": 13.405856132507324,
+        "foreground": 11.129122734069824
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.04726988077163696,
+        "psnr": 13.89737319946289,
+        "foreground": 11.202959060668945
+      },
+      "shuffled": {
+        "foreground_correlation": 0.24818938970565796,
+        "psnr": 14.089624404907227,
+        "foreground": 11.192262649536133
+      },
+      "zero": {
+        "foreground_correlation": -0.11629179120063782,
+        "psnr": 13.768671035766602,
+        "foreground": 11.093345642089844
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 46,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.068952776491642,
+        "psnr": 13.655555725097656,
+        "foreground": 12.852120399475098
+      },
+      "shuffled": {
+        "foreground_correlation": -0.18393021821975708,
+        "psnr": 14.16854476928711,
+        "foreground": 11.95466136932373
+      },
+      "zero": {
+        "foreground_correlation": 0.17077884078025818,
+        "psnr": 13.54551887512207,
+        "foreground": 13.239850044250488
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.14008517563343048,
+        "psnr": 14.237796783447266,
+        "foreground": 12.340665817260742
+      },
+      "shuffled": {
+        "foreground_correlation": -0.092042937874794,
+        "psnr": 14.934863090515137,
+        "foreground": 12.225313186645508
+      },
+      "zero": {
+        "foreground_correlation": 0.4547341763973236,
+        "psnr": 13.934564590454102,
+        "foreground": 13.327226638793945
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 46,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.030238689854741096,
+        "psnr": 14.4694185256958,
+        "foreground": 14.680404663085938
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3938465416431427,
+        "psnr": 14.504440307617188,
+        "foreground": 14.873414039611816
+      },
+      "zero": {
+        "foreground_correlation": 0.24771247804164886,
+        "psnr": 13.789653778076172,
+        "foreground": 14.881265640258789
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.18477612733840942,
+        "psnr": 15.225075721740723,
+        "foreground": 14.814237594604492
+      },
+      "shuffled": {
+        "foreground_correlation": 0.318774551153183,
+        "psnr": 16.253265380859375,
+        "foreground": 14.827932357788086
+      },
+      "zero": {
+        "foreground_correlation": 0.35289910435676575,
+        "psnr": 14.192991256713867,
+        "foreground": 14.8814115524292
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 46,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.018395589664578438,
+        "psnr": 14.486539840698242,
+        "foreground": 14.239273071289062
+      },
+      "shuffled": {
+        "foreground_correlation": 0.18184635043144226,
+        "psnr": 15.08530044555664,
+        "foreground": 14.328910827636719
+      },
+      "zero": {
+        "foreground_correlation": 0.12611858546733856,
+        "psnr": 13.781547546386719,
+        "foreground": 14.468117713928223
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.08214689791202545,
+        "psnr": 16.244781494140625,
+        "foreground": 14.500146865844727
+      },
+      "shuffled": {
+        "foreground_correlation": 0.19396229088306427,
+        "psnr": 15.833871841430664,
+        "foreground": 14.459917068481445
+      },
+      "zero": {
+        "foreground_correlation": -0.0219697505235672,
+        "psnr": 14.186497688293457,
+        "foreground": 14.52462387084961
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 46,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.060089293867349625,
+        "psnr": 15.038148880004883,
+        "foreground": 14.426979064941406
+      },
+      "shuffled": {
+        "foreground_correlation": 0.03743086755275726,
+        "psnr": 13.372797012329102,
+        "foreground": 13.946207046508789
+      },
+      "zero": {
+        "foreground_correlation": 0.01599980890750885,
+        "psnr": 13.749517440795898,
+        "foreground": 14.651643753051758
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.2789268493652344,
+        "psnr": 15.774009704589844,
+        "foreground": 14.571197509765625
+      },
+      "shuffled": {
+        "foreground_correlation": -0.12691695988178253,
+        "psnr": 14.12239933013916,
+        "foreground": 14.525566101074219
+      },
+      "zero": {
+        "foreground_correlation": 0.09307160973548889,
+        "psnr": 14.149080276489258,
+        "foreground": 14.69068431854248
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 46,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.1075051799416542,
+        "psnr": 13.224381446838379,
+        "foreground": 13.430434226989746
+      },
+      "shuffled": {
+        "foreground_correlation": 0.13010048866271973,
+        "psnr": 13.30151653289795,
+        "foreground": 13.623697280883789
+      },
+      "zero": {
+        "foreground_correlation": 0.46160179376602173,
+        "psnr": 13.635252952575684,
+        "foreground": 14.024688720703125
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.1080152690410614,
+        "psnr": 13.971070289611816,
+        "foreground": 13.572362899780273
+      },
+      "shuffled": {
+        "foreground_correlation": 0.09908981621265411,
+        "psnr": 14.860428810119629,
+        "foreground": 13.655463218688965
+      },
+      "zero": {
+        "foreground_correlation": 0.4329267144203186,
+        "psnr": 14.024133682250977,
+        "foreground": 14.029989242553711
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 46,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.04857821762561798,
+        "psnr": 13.301307678222656,
+        "foreground": 14.478922843933105
+      },
+      "shuffled": {
+        "foreground_correlation": -0.316479355096817,
+        "psnr": 15.721061706542969,
+        "foreground": 14.31160831451416
+      },
+      "zero": {
+        "foreground_correlation": 0.1527806520462036,
+        "psnr": 13.642449378967285,
+        "foreground": 14.961343765258789
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.07889258861541748,
+        "psnr": 14.876030921936035,
+        "foreground": 14.652826309204102
+      },
+      "shuffled": {
+        "foreground_correlation": -0.3228375017642975,
+        "psnr": 18.097698211669922,
+        "foreground": 14.696074485778809
+      },
+      "zero": {
+        "foreground_correlation": 0.07227011024951935,
+        "psnr": 14.044751167297363,
+        "foreground": 15.14149284362793
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 46,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.004876854829490185,
+        "psnr": 15.999395370483398,
+        "foreground": 15.573929786682129
+      },
+      "shuffled": {
+        "foreground_correlation": -0.006342429202049971,
+        "psnr": 16.876697540283203,
+        "foreground": 15.611339569091797
+      },
+      "zero": {
+        "foreground_correlation": 0.11818991601467133,
+        "psnr": 13.769515991210938,
+        "foreground": 15.657835006713867
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.09487692266702652,
+        "psnr": 18.504966735839844,
+        "foreground": 15.593022346496582
+      },
+      "shuffled": {
+        "foreground_correlation": -0.020736636593937874,
+        "psnr": 17.817625045776367,
+        "foreground": 15.618654251098633
+      },
+      "zero": {
+        "foreground_correlation": 0.08523739129304886,
+        "psnr": 14.16866683959961,
+        "foreground": 15.627337455749512
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 46,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3136168420314789,
+        "psnr": 16.77235984802246,
+        "foreground": 12.15900993347168
+      },
+      "shuffled": {
+        "foreground_correlation": 0.47319358587265015,
+        "psnr": 13.94044303894043,
+        "foreground": 12.41162109375
+      },
+      "zero": {
+        "foreground_correlation": 0.4148394763469696,
+        "psnr": 13.718629837036133,
+        "foreground": 12.216023445129395
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.24070169031620026,
+        "psnr": 17.675994873046875,
+        "foreground": 12.044191360473633
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3581365942955017,
+        "psnr": 16.603992462158203,
+        "foreground": 12.250995635986328
+      },
+      "zero": {
+        "foreground_correlation": 0.5094507336616516,
+        "psnr": 14.108075141906738,
+        "foreground": 12.087153434753418
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 46,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3088131248950958,
+        "psnr": 13.864822387695312,
+        "foreground": 12.950371742248535
+      },
+      "shuffled": {
+        "foreground_correlation": 0.35576826333999634,
+        "psnr": 12.785120964050293,
+        "foreground": 13.696760177612305
+      },
+      "zero": {
+        "foreground_correlation": 0.5037678480148315,
+        "psnr": 13.624720573425293,
+        "foreground": 12.825729370117188
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.33414095640182495,
+        "psnr": 16.393146514892578,
+        "foreground": 12.783300399780273
+      },
+      "shuffled": {
+        "foreground_correlation": 0.22390463948249817,
+        "psnr": 15.871540069580078,
+        "foreground": 13.195722579956055
+      },
+      "zero": {
+        "foreground_correlation": 0.4760534465312958,
+        "psnr": 14.004331588745117,
+        "foreground": 12.637591361999512
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 46,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.009691435843706131,
+        "psnr": 12.719134330749512,
+        "foreground": 13.12598991394043
+      },
+      "shuffled": {
+        "foreground_correlation": -0.05106299743056297,
+        "psnr": 13.819283485412598,
+        "foreground": 13.790377616882324
+      },
+      "zero": {
+        "foreground_correlation": -0.018831726163625717,
+        "psnr": 13.666657447814941,
+        "foreground": 14.301828384399414
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.007346354424953461,
+        "psnr": 15.58676528930664,
+        "foreground": 13.600465774536133
+      },
+      "shuffled": {
+        "foreground_correlation": -0.09731671214103699,
+        "psnr": 14.295982360839844,
+        "foreground": 13.686054229736328
+      },
+      "zero": {
+        "foreground_correlation": -0.038869015872478485,
+        "psnr": 14.050026893615723,
+        "foreground": 14.252609252929688
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 46,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.21449528634548187,
+        "psnr": 13.663372039794922,
+        "foreground": 13.660228729248047
+      },
+      "shuffled": {
+        "foreground_correlation": 0.13814005255699158,
+        "psnr": 15.905413627624512,
+        "foreground": 13.422403335571289
+      },
+      "zero": {
+        "foreground_correlation": 0.5638648867607117,
+        "psnr": 13.537376403808594,
+        "foreground": 13.609532356262207
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.4790416359901428,
+        "psnr": 14.162901878356934,
+        "foreground": 13.598910331726074
+      },
+      "shuffled": {
+        "foreground_correlation": -0.2570273280143738,
+        "psnr": 18.234235763549805,
+        "foreground": 13.373544692993164
+      },
+      "zero": {
+        "foreground_correlation": 0.5410863161087036,
+        "psnr": 13.907118797302246,
+        "foreground": 13.447104454040527
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 46,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.01364741288125515,
+        "psnr": 16.453678131103516,
+        "foreground": 12.680347442626953
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14614145457744598,
+        "psnr": 13.898653030395508,
+        "foreground": 12.29058837890625
+      },
+      "zero": {
+        "foreground_correlation": -0.04221303388476372,
+        "psnr": 13.82989501953125,
+        "foreground": 12.824193000793457
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.09903725236654282,
+        "psnr": 19.246002197265625,
+        "foreground": 12.829200744628906
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14099033176898956,
+        "psnr": 14.830484390258789,
+        "foreground": 12.274931907653809
+      },
+      "zero": {
+        "foreground_correlation": -0.0681380182504654,
+        "psnr": 14.2395601272583,
+        "foreground": 12.712479591369629
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 46,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.15111158788204193,
+        "psnr": 13.382039070129395,
+        "foreground": 10.519624710083008
+      },
+      "shuffled": {
+        "foreground_correlation": 0.11503654718399048,
+        "psnr": 13.65534782409668,
+        "foreground": 10.242527961730957
+      },
+      "zero": {
+        "foreground_correlation": 0.2193313091993332,
+        "psnr": 13.275418281555176,
+        "foreground": 10.238386154174805
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.012086538597941399,
+        "psnr": 14.16855239868164,
+        "foreground": 10.32784652709961
+      },
+      "shuffled": {
+        "foreground_correlation": 0.09219979494810104,
+        "psnr": 17.45771026611328,
+        "foreground": 10.325102806091309
+      },
+      "zero": {
+        "foreground_correlation": 0.2477157711982727,
+        "psnr": 13.628469467163086,
+        "foreground": 10.183772087097168
+      }
+    }
+  },
+  {
+    "scene": "Arms",
+    "start": 53,
+    "donor": "Capybara",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.16169823706150055,
+        "psnr": 15.2695951461792,
+        "foreground": 15.265083312988281
+      },
+      "shuffled": {
+        "foreground_correlation": -0.28333646059036255,
+        "psnr": 13.403675079345703,
+        "foreground": 13.097467422485352
+      },
+      "zero": {
+        "foreground_correlation": -0.17269395291805267,
+        "psnr": 13.810596466064453,
+        "foreground": 15.209295272827148
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.04889046028256416,
+        "psnr": 18.217432022094727,
+        "foreground": 15.319620132446289
+      },
+      "shuffled": {
+        "foreground_correlation": -0.128962442278862,
+        "psnr": 16.014511108398438,
+        "foreground": 15.260980606079102
+      },
+      "zero": {
+        "foreground_correlation": -0.1675993949174881,
+        "psnr": 14.228090286254883,
+        "foreground": 15.303091049194336
+      }
+    }
+  },
+  {
+    "scene": "Capybara",
+    "start": 53,
+    "donor": "Robot",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.07153064757585526,
+        "psnr": 12.985313415527344,
+        "foreground": 14.179889678955078
+      },
+      "shuffled": {
+        "foreground_correlation": -0.14026804268360138,
+        "psnr": 14.641528129577637,
+        "foreground": 14.141322135925293
+      },
+      "zero": {
+        "foreground_correlation": 0.15210109949111938,
+        "psnr": 13.330890655517578,
+        "foreground": 14.466639518737793
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.01236776914447546,
+        "psnr": 15.180084228515625,
+        "foreground": 14.194165229797363
+      },
+      "shuffled": {
+        "foreground_correlation": 0.0985533818602562,
+        "psnr": 15.813409805297852,
+        "foreground": 14.38901424407959
+      },
+      "zero": {
+        "foreground_correlation": 0.249474436044693,
+        "psnr": 13.711081504821777,
+        "foreground": 14.535806655883789
+      }
+    }
+  },
+  {
+    "scene": "Robot",
+    "start": 53,
+    "donor": "Woman",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.0027691498398780823,
+        "psnr": 15.334741592407227,
+        "foreground": 15.268524169921875
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3007013201713562,
+        "psnr": 14.974717140197754,
+        "foreground": 15.408860206604004
+      },
+      "zero": {
+        "foreground_correlation": 0.5368332266807556,
+        "psnr": 13.79893684387207,
+        "foreground": 15.65255355834961
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.400523841381073,
+        "psnr": 16.69330406188965,
+        "foreground": 15.467765808105469
+      },
+      "shuffled": {
+        "foreground_correlation": 0.004578710999339819,
+        "psnr": 15.826014518737793,
+        "foreground": 15.343246459960938
+      },
+      "zero": {
+        "foreground_correlation": 0.6004217863082886,
+        "psnr": 14.210099220275879,
+        "foreground": 15.588892936706543
+      }
+    }
+  },
+  {
+    "scene": "Woman",
+    "start": 53,
+    "donor": "Shoes",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.09855978935956955,
+        "psnr": 14.538718223571777,
+        "foreground": 11.628976821899414
+      },
+      "shuffled": {
+        "foreground_correlation": -0.0673106238245964,
+        "psnr": 14.042032241821289,
+        "foreground": 10.580118179321289
+      },
+      "zero": {
+        "foreground_correlation": 0.11292485892772675,
+        "psnr": 13.438029289245605,
+        "foreground": 11.681872367858887
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2620289623737335,
+        "psnr": 15.295735359191895,
+        "foreground": 11.777885437011719
+      },
+      "shuffled": {
+        "foreground_correlation": 0.03846575319766998,
+        "psnr": 16.077436447143555,
+        "foreground": 11.67946720123291
+      },
+      "zero": {
+        "foreground_correlation": -0.020617367699742317,
+        "psnr": 13.810876846313477,
+        "foreground": 11.636548042297363
+      }
+    }
+  },
+  {
+    "scene": "Shoes",
+    "start": 53,
+    "donor": "Train",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.13830146193504333,
+        "psnr": 14.220169067382812,
+        "foreground": 12.103300094604492
+      },
+      "shuffled": {
+        "foreground_correlation": -0.18811577558517456,
+        "psnr": 13.744345664978027,
+        "foreground": 11.824432373046875
+      },
+      "zero": {
+        "foreground_correlation": 0.03956398740410805,
+        "psnr": 13.550909996032715,
+        "foreground": 13.112727165222168
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.15257148444652557,
+        "psnr": 16.283700942993164,
+        "foreground": 13.072835922241211
+      },
+      "shuffled": {
+        "foreground_correlation": -0.21713101863861084,
+        "psnr": 13.91039752960205,
+        "foreground": 11.949373245239258
+      },
+      "zero": {
+        "foreground_correlation": 0.3928341567516327,
+        "psnr": 13.951464653015137,
+        "foreground": 13.218525886535645
+      }
+    }
+  },
+  {
+    "scene": "Train",
+    "start": 53,
+    "donor": "Flower",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.2614385187625885,
+        "psnr": 13.953895568847656,
+        "foreground": 13.84634780883789
+      },
+      "shuffled": {
+        "foreground_correlation": 0.27472949028015137,
+        "psnr": 15.631647109985352,
+        "foreground": 13.775410652160645
+      },
+      "zero": {
+        "foreground_correlation": 0.2891295552253723,
+        "psnr": 13.729116439819336,
+        "foreground": 13.789674758911133
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.2342914491891861,
+        "psnr": 14.133805274963379,
+        "foreground": 13.782754898071289
+      },
+      "shuffled": {
+        "foreground_correlation": -0.2727642059326172,
+        "psnr": 16.15302276611328,
+        "foreground": 13.656879425048828
+      },
+      "zero": {
+        "foreground_correlation": 0.32018429040908813,
+        "psnr": 14.133023262023926,
+        "foreground": 13.736051559448242
+      }
+    }
+  },
+  {
+    "scene": "Flower",
+    "start": 53,
+    "donor": "Doll",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.028811443597078323,
+        "psnr": 15.685995101928711,
+        "foreground": 14.28215217590332
+      },
+      "shuffled": {
+        "foreground_correlation": -0.04935726895928383,
+        "psnr": 13.898157119750977,
+        "foreground": 13.99281120300293
+      },
+      "zero": {
+        "foreground_correlation": 0.03075612336397171,
+        "psnr": 13.761970520019531,
+        "foreground": 14.255114555358887
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.010684662498533726,
+        "psnr": 16.233531951904297,
+        "foreground": 14.377670288085938
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10784460604190826,
+        "psnr": 15.544819831848145,
+        "foreground": 14.267863273620605
+      },
+      "zero": {
+        "foreground_correlation": -0.06463465094566345,
+        "psnr": 14.177041053771973,
+        "foreground": 14.351207733154297
+      }
+    }
+  },
+  {
+    "scene": "Doll",
+    "start": 53,
+    "donor": "Camera",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.02785474807024002,
+        "psnr": 13.902456283569336,
+        "foreground": 14.86441421508789
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06203163415193558,
+        "psnr": 14.209461212158203,
+        "foreground": 14.70018196105957
+      },
+      "zero": {
+        "foreground_correlation": -0.02159976027905941,
+        "psnr": 13.755861282348633,
+        "foreground": 14.971349716186523
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.19105198979377747,
+        "psnr": 15.528468132019043,
+        "foreground": 14.95353889465332
+      },
+      "shuffled": {
+        "foreground_correlation": 0.06573744118213654,
+        "psnr": 14.718433380126953,
+        "foreground": 14.758371353149414
+      },
+      "zero": {
+        "foreground_correlation": -0.03339796140789986,
+        "psnr": 14.166051864624023,
+        "foreground": 15.039108276367188
+      }
+    }
+  },
+  {
+    "scene": "Camera",
+    "start": 53,
+    "donor": "TreasureChest",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.426146000623703,
+        "psnr": 14.07197380065918,
+        "foreground": 14.054450035095215
+      },
+      "shuffled": {
+        "foreground_correlation": 0.14552877843379974,
+        "psnr": 15.649237632751465,
+        "foreground": 13.339239120483398
+      },
+      "zero": {
+        "foreground_correlation": 0.3699290454387665,
+        "psnr": 13.682347297668457,
+        "foreground": 14.67113971710205
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.3514387905597687,
+        "psnr": 14.557703971862793,
+        "foreground": 13.843896865844727
+      },
+      "shuffled": {
+        "foreground_correlation": 0.09251271188259125,
+        "psnr": 14.861899375915527,
+        "foreground": 14.29727554321289
+      },
+      "zero": {
+        "foreground_correlation": 0.33616843819618225,
+        "psnr": 14.089954376220703,
+        "foreground": 14.748920440673828
+      }
+    }
+  },
+  {
+    "scene": "TreasureChest",
+    "start": 53,
+    "donor": "ToyCrocodile",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.05448071286082268,
+        "psnr": 15.573490142822266,
+        "foreground": 13.839288711547852
+      },
+      "shuffled": {
+        "foreground_correlation": 0.022202230989933014,
+        "psnr": 15.070886611938477,
+        "foreground": 15.042481422424316
+      },
+      "zero": {
+        "foreground_correlation": 0.16886724531650543,
+        "psnr": 13.63512134552002,
+        "foreground": 15.0272798538208
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.15854313969612122,
+        "psnr": 14.810234069824219,
+        "foreground": 14.805862426757812
+      },
+      "shuffled": {
+        "foreground_correlation": -0.3006613254547119,
+        "psnr": 16.967952728271484,
+        "foreground": 14.952568054199219
+      },
+      "zero": {
+        "foreground_correlation": 0.07817669212818146,
+        "psnr": 14.044537544250488,
+        "foreground": 15.170201301574707
+      }
+    }
+  },
+  {
+    "scene": "ToyCrocodile",
+    "start": 53,
+    "donor": "ToyChicken",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.06883589923381805,
+        "psnr": 15.27938461303711,
+        "foreground": 15.45248794555664
+      },
+      "shuffled": {
+        "foreground_correlation": -0.18344169855117798,
+        "psnr": 17.502193450927734,
+        "foreground": 15.537420272827148
+      },
+      "zero": {
+        "foreground_correlation": 0.07750564813613892,
+        "psnr": 13.782500267028809,
+        "foreground": 15.5485258102417
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.26396098732948303,
+        "psnr": 17.29522705078125,
+        "foreground": 15.49656867980957
+      },
+      "shuffled": {
+        "foreground_correlation": 0.16567093133926392,
+        "psnr": 18.228303909301758,
+        "foreground": 15.615581512451172
+      },
+      "zero": {
+        "foreground_correlation": 0.0832812637090683,
+        "psnr": 14.193111419677734,
+        "foreground": 15.539226531982422
+      }
+    }
+  },
+  {
+    "scene": "ToyChicken",
+    "start": 53,
+    "donor": "Spray",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.3602678179740906,
+        "psnr": 17.37154769897461,
+        "foreground": 11.621803283691406
+      },
+      "shuffled": {
+        "foreground_correlation": 0.22885987162590027,
+        "psnr": 14.04736614227295,
+        "foreground": 11.924468994140625
+      },
+      "zero": {
+        "foreground_correlation": 0.320328027009964,
+        "psnr": 13.72214412689209,
+        "foreground": 11.595654487609863
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.043207332491874695,
+        "psnr": 18.073421478271484,
+        "foreground": 11.659913063049316
+      },
+      "shuffled": {
+        "foreground_correlation": 0.1959211677312851,
+        "psnr": 15.97339153289795,
+        "foreground": 11.598880767822266
+      },
+      "zero": {
+        "foreground_correlation": 0.40425801277160645,
+        "psnr": 14.120986938476562,
+        "foreground": 11.471930503845215
+      }
+    }
+  },
+  {
+    "scene": "Spray",
+    "start": 53,
+    "donor": "WoodenTables",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.381550133228302,
+        "psnr": 13.859088897705078,
+        "foreground": 13.215738296508789
+      },
+      "shuffled": {
+        "foreground_correlation": 0.40358561277389526,
+        "psnr": 12.669535636901855,
+        "foreground": 14.007265090942383
+      },
+      "zero": {
+        "foreground_correlation": 0.5037016868591309,
+        "psnr": 13.606003761291504,
+        "foreground": 13.037495613098145
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.27188414335250854,
+        "psnr": 15.77421760559082,
+        "foreground": 12.961223602294922
+      },
+      "shuffled": {
+        "foreground_correlation": 0.3355902135372162,
+        "psnr": 13.244802474975586,
+        "foreground": 13.812647819519043
+      },
+      "zero": {
+        "foreground_correlation": 0.4793395400047302,
+        "psnr": 13.97511100769043,
+        "foreground": 12.844593048095703
+      }
+    }
+  },
+  {
+    "scene": "WoodenTables",
+    "start": 53,
+    "donor": "Globe",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": -0.011098903603851795,
+        "psnr": 12.6151762008667,
+        "foreground": 13.030937194824219
+      },
+      "shuffled": {
+        "foreground_correlation": -0.1086510419845581,
+        "psnr": 13.71176528930664,
+        "foreground": 13.497313499450684
+      },
+      "zero": {
+        "foreground_correlation": -0.06307893991470337,
+        "psnr": 13.59870433807373,
+        "foreground": 14.111932754516602
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.06660749018192291,
+        "psnr": 13.178277015686035,
+        "foreground": 13.732328414916992
+      },
+      "shuffled": {
+        "foreground_correlation": -0.18351396918296814,
+        "psnr": 14.508392333984375,
+        "foreground": 13.411481857299805
+      },
+      "zero": {
+        "foreground_correlation": -0.0995209813117981,
+        "psnr": 13.96066665649414,
+        "foreground": 14.09743881225586
+      }
+    }
+  },
+  {
+    "scene": "Globe",
+    "start": 53,
+    "donor": "SpatulaScan",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.19440503418445587,
+        "psnr": 13.60445499420166,
+        "foreground": 13.612869262695312
+      },
+      "shuffled": {
+        "foreground_correlation": 0.029353968799114227,
+        "psnr": 17.32962417602539,
+        "foreground": 13.496057510375977
+      },
+      "zero": {
+        "foreground_correlation": 0.5440252423286438,
+        "psnr": 13.519950866699219,
+        "foreground": 13.625645637512207
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.44390979409217834,
+        "psnr": 14.424793243408203,
+        "foreground": 13.607812881469727
+      },
+      "shuffled": {
+        "foreground_correlation": 0.013949348591268063,
+        "psnr": 18.598800659179688,
+        "foreground": 13.420239448547363
+      },
+      "zero": {
+        "foreground_correlation": 0.49222442507743835,
+        "psnr": 13.878829956054688,
+        "foreground": 13.454294204711914
+      }
+    }
+  },
+  {
+    "scene": "SpatulaScan",
+    "start": 53,
+    "donor": "ToyRings",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.28318506479263306,
+        "psnr": 17.085620880126953,
+        "foreground": 8.434294700622559
+      },
+      "shuffled": {
+        "foreground_correlation": -0.36358481645584106,
+        "psnr": 15.118745803833008,
+        "foreground": 8.389259338378906
+      },
+      "zero": {
+        "foreground_correlation": -0.5290877223014832,
+        "psnr": 13.358306884765625,
+        "foreground": 8.05737590789795
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": -0.6344941258430481,
+        "psnr": 18.17705535888672,
+        "foreground": 8.11108684539795
+      },
+      "shuffled": {
+        "foreground_correlation": -0.5900862812995911,
+        "psnr": 14.524024963378906,
+        "foreground": 8.195917129516602
+      },
+      "zero": {
+        "foreground_correlation": -0.5873873829841614,
+        "psnr": 13.712035179138184,
+        "foreground": 8.00218391418457
+      }
+    }
+  },
+  {
+    "scene": "ToyRings",
+    "start": 53,
+    "donor": "Arms",
+    "uniform": {
+      "matched": {
+        "foreground_correlation": 0.09075693786144257,
+        "psnr": 14.931330680847168,
+        "foreground": 10.47367000579834
+      },
+      "shuffled": {
+        "foreground_correlation": 0.10280133783817291,
+        "psnr": 14.456621170043945,
+        "foreground": 10.202632904052734
+      },
+      "zero": {
+        "foreground_correlation": 0.2022641897201538,
+        "psnr": 13.221639633178711,
+        "foreground": 10.135948181152344
+      }
+    },
+    "activity": {
+      "matched": {
+        "foreground_correlation": 0.14564673602581024,
+        "psnr": 14.363845825195312,
+        "foreground": 10.355249404907227
+      },
+      "shuffled": {
+        "foreground_correlation": 0.003911059349775314,
+        "psnr": 16.786169052124023,
+        "foreground": 10.255678176879883
+      },
+      "zero": {
+        "foreground_correlation": 0.23194874823093414,
+        "psnr": 13.564085960388184,
+        "foreground": 10.096582412719727
+      }
+    }
+  }
+]

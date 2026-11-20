@@ -38,20 +38,27 @@ class EventField:
         return field-self.reference
 
 
+def source_windows(root, split, full_split=False):
+    names = (root / f"{split}_scenes.txt").read_text().split()
+    if not full_split:
+        names = names[:{"train": 12, "val": 6}[split]]
+    return [(scene, i) for scene in names for i in range(4,60,7)]
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for arg in ("root","repository","checkpoint","out"):
         p.add_argument(arg,type=Path)
     p.add_argument("--scale",type=int,choices=(1,4),default=1)
+    p.add_argument("--full-split",action="store_true")
     args = p.parse_args()
     extract = EventField(args.repository,args.checkpoint,args.scale)
     bank = {}
-    for split,count in (("train",12),("val",6)):
-        names = (args.root/f"{split}_scenes.txt").read_text().split()[:count]
-        for scene in names:
-            for i in range(4,60,7):
-                for frame in (i,i+4):
-                    raw = np.load(args.root/"Event"/scene/f"{frame:04}.npy")
-                    bank[(scene,frame)] = extract(raw).half().cpu()
-            print(split,scene,flush=True)
+    for split in ("train","val"):
+        for scene,i in source_windows(args.root,split,args.full_split):
+            for frame in (i,i+4):
+                raw = np.load(args.root/"Event"/scene/f"{frame:04}.npy")
+                bank[(scene,frame)] = extract(raw).half().cpu()
+            if i == 53:
+                print(split,scene,flush=True)
     torch.save(bank,args.out)

@@ -66,3 +66,29 @@ We train two students for 384 joint updates on the same 12 objects with identica
 The distilled student changes matched foreground PSNR by -0.84 dB on average, with positive differences on 4 of 17 objects. This comparison isolates the additional paired RGB token loss under one training schedule and one seed. It leaves the benefit of DVLT pretraining itself unmeasured. The figure shows center-target foreground crops for the first triplet of each of the first six validation objects in split order.
 
 ![Target and event-conditioned reconstructions after 384 updates. The final two columns use the distilled checkpoint with cross-object and empty inputs.](event_conditioning.png)
+
+## Strength and location of token supervision
+
+Using the same 384-update schedule, we reduce the token loss coefficient to 0.05. One variant weights spatial tokens uniformly. A second mixes equal parts uniform weight and normalized square-root event activity on the patch grid. Camera and register tokens retain unit weight. We apply the same weighting to the masked-token term.
+
+| Token supervision | Matched | Cross-object | Empty |
+|---|---:|---:|---:|
+| Weak, uniform | 13.54 | 13.41 | 13.76 |
+| Weak, event-weighted | 13.59 | 13.60 | 13.73 |
+
+Entries are mean foreground PSNR in dB over 136 validation windows. Reducing the coefficient recovers part of the gap to the rendering-only student (13.88 dB). Event weighting changes matched foreground PSNR by 0.05 dB, and both variants score higher with empty inputs than with matched ones. These single-seed results provide little evidence that spatial weighting helps recover scene-specific appearance.
+
+## Separating appearance and geometry errors
+
+We render the weak, uniformly distilled student under controlled substitutions on the same 136 windows. Source-gray substitution assigns the true grayscale at each source pixel to its corresponding Gaussian. Camera substitution backprojects student depths using reference intrinsics and source transforms. Full reference geometry uses calibrated cameras, reference foreground depth, isotropic pixel-sized Gaussians and unit opacity. Background pixels use a far plane at 10 scene units.
+
+| Inputs substituted for diagnosis | Foreground PSNR (dB) | Foreground intensity correlation |
+|---|---:|---:|
+| Event student as trained | 13.54 | 0.116 |
+| Source gray | 13.55 | 0.024 |
+| Source cameras | 13.51 | 0.060 |
+| Source cameras and gray | 13.85 | 0.093 |
+| Full reference geometry | 13.38 | 0.231 |
+| Full reference geometry and gray | 23.53 | 0.925 |
+
+With predicted geometry, even true source intensities transfer poorly to the target. With reference geometry, the student’s predicted intensities also miss much of the foreground texture. Simultaneously replacing geometry and appearance raises foreground PSNR by 9.98 dB. The last row measures what this renderer can recover with privileged inputs and a chosen background model. Only the first row measures event-only reconstruction.

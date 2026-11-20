@@ -40,6 +40,17 @@ python evaluate_dvlt.py "$data" "$assets" /cloud/cloud-ssd4/fast-feature-fields 
 python sync_audit.py "$data" sync.json
 ```
 
+低权重蒸馏在上述训练命令中使用 `--token-weight .05`。加入 `--event-weighted` 可按事件活动对空间 token 加权。完整训练划分含 69 个物体。以下命令提取配套 F³ 缓存，并分别运行有、无源视图灰度监督的配对训练。
+
+```bash
+python event_field.py "$data" /cloud/cloud-ssd4/fast-feature-fields "$assets/f3.pth" "$assets/f3_dense_full.pt" --scale 4 --full-split
+for weight in 0 1; do
+  python train_event_dvlt.py "$data" "$assets/f3_dense_full.pt" "$assets" "$assets/dvlt_fullsrc$weight" --steps 768 --warmup 0 --token-weight .05 --source-weight "$weight" --full-split
+done
+```
+
+几何与灰度替换仅用于误差诊断。逐窗口输出和实现见 [factor_weak.json](results/event_dvlt/factor_weak.json) 和 [factor_audit.py](factor_audit.py)。
+
 <details>
 <summary>早期卷积学生实验归档</summary>
 

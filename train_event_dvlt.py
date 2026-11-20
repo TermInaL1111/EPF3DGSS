@@ -6,6 +6,7 @@ import numpy as np
 from PIL import Image
 import torch
 import torch.nn.functional as F
+from event_field import source_windows
 from ev3ds_pose import camera
 from event_dvlt import EventDVLT,load_rgb,render,voxelize
 
@@ -23,6 +24,24 @@ def labels(root,scene,i):
         valid = torch.tensor(data["depth_map"]>0,device="cuda")[None]
     poses = np.linalg.solve(camera(root,scene,i),np.stack([camera(root,scene,j) for j in (i+2,i+4)]))
     return gray,valid,torch.tensor(poses,device="cuda",dtype=torch.float32)
+
+
+def source_attribute_loss(cloud,root,scene,start):
+    # Candidate order is source, row, column. Supervise attributes before projection.
+    intensities = []
+    foregrounds = []
+    for frame in (start,start+4):
+        stem = root/"Scenes"/scene/f"{frame:04}"
+        with Image.open(stem.with_suffix(".png")) as image:
+            intensities.append(np.array(image.convert("L")))
+        with np.load(stem.with_suffix(".npz")) as archive:
+            foregrounds.append(archive["depth_map"]>0)
+    predicted = cloud["gray"].reshape(-1)
+    target = torch.as_tensor(np.stack(intensities),device=predicted.device).flatten().float()/255
+    mask = torch.as_tensor(np.stack(foregrounds),device=predicted.device).flatten()
+    residual = (predicted-target).abs()
+    # Equal foreground/background weights keep the target surface visible in the loss.
+    return 0.5*(residual[mask].mean() + residual[~mask].mean())
 
 
 @torch.no_grad()
@@ -52,13 +71,21 @@ def geometry_maps(raw):
     return {"log_depth": F.avg_pool2d(depth,14), "rays": F.avg_pool2d(rays,14)}
 
 
-def alignment(tokens,reference,hidden,extra):
+def alignment(tokens,reference,hidden,extra,voxel=None):
     tokens,reference = tokens.float(),reference.float()
     importance = reference.norm(dim=-1)
     importance = importance/importance.amax(1,keepdim=True).clamp_min(1e-6)
     error = 1-F.cosine_similarity(tokens,reference,dim=-1)+importance*(tokens-reference).abs().mean(-1)
     masked = F.pad(hidden.squeeze(-1),(extra,0))
-    return error.mean() + .25*(error*masked).sum()/masked.sum().clamp_min(1)
+    if voxel is None:
+        weight = torch.ones_like(error)
+    else:
+        activity = voxel.flatten(0,1).abs().sum(1,keepdim=True)
+        activity = F.adaptive_avg_pool2d(activity,(12,16)).flatten(1).sqrt()
+        activity = activity / activity.mean(1,keepdim=True).clamp_min(1e-8)
+        weight = F.pad(0.5 + 0.5 * activity, (extra,0), value=1.)
+    masked_weight = masked * weight
+    return (error*weight).sum()/weight.sum() + .25*(error*masked_weight).sum()/masked_weight.sum().clamp_min(1)
 
 
 @torch.no_grad()
@@ -84,11 +111,8 @@ def evaluate(model,root,fields,keys):
 def main(args):
     torch.manual_seed(args.seed)
     fields=torch.load(args.fields,weights_only=True)
-    keys=[]
-    for split,count in [("train",12),("val",6)]:
-        scenes=(args.root/f"{split}_scenes.txt").read_text().split()[:count]
-        keys.append([(s,i) for s in scenes for i in range(4,60,7)])
-    train,val=keys
+    train = source_windows(args.root,"train",args.full_split)
+    val = source_windows(args.root,"val",args.full_split)
     use_teacher = bool(args.token_weight or args.geometry_weight)
     if args.warmup and not use_teacher:
         raise ValueError("Set warmup to zero when disabling teacher supervision")
@@ -116,7 +140,8 @@ def main(args):
                 tokens,hidden=cloud["tokens"],cloud["masked"]
         align = tokens.new_zeros((),dtype=torch.float32)
         if args.token_weight:
-            align = alignment(tokens,targets[scene,i]["tokens"].cuda(),hidden,model.backbone.patch_start_idx)
+            align = alignment(tokens,targets[scene,i]["tokens"].cuda(),hidden,model.backbone.patch_start_idx,
+                              voxel if args.event_weighted else None)
         loss = args.token_weight * align
         if args.geometry_weight:
             maps=geometry_maps(raw if step<args.warmup else cloud["raw_geometry"])
@@ -125,6 +150,8 @@ def main(args):
             gray,mask,poses=labels(args.root,scene,i)
             error=(render(cloud,poses[:1])-gray).abs()
             loss=loss+error.mean()+error[mask].mean()
+            if args.source_weight:
+                loss = loss + args.source_weight * source_attribute_loss(cloud,args.root,scene,i)
         opt.zero_grad()
         loss.backward()
         norm=torch.nn.utils.clip_grad_norm_(trainables.values(),1.,error_if_nonfinite=True)
@@ -133,7 +160,7 @@ def main(args):
         if step%10==0: print(step,log[-1][1:],flush=True)
     torch.save({n:p.detach().cpu() for n,p in trainables.items()},args.out/"event_dvlt_gs.pt")
     rows=evaluate(model,args.root,fields,val)
-    report=dict(seed=args.seed,token_weight=args.token_weight,geometry_weight=args.geometry_weight,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
+    report=dict(seed=args.seed,source_weight=args.source_weight,event_weighted=args.event_weighted,token_weight=args.token_weight,geometry_weight=args.geometry_weight,mask_fraction=args.mask_fraction,steps=args.steps,warmup=args.warmup,input_hw=[168,224],gs_hw=[480,640],
                 loops=model.backbone.inference_steps,trainable_params=sum(p.numel() for p in trainables.values()),
                 train=train,validation=val,trace=log,rows=rows)
     (args.out/"scores.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
@@ -145,6 +172,9 @@ if __name__=="__main__":
     p.add_argument("--steps",type=int,default=96)
     p.add_argument("--warmup",type=int,default=32)
     p.add_argument("--seed",type=int,default=10)
+    p.add_argument("--source-weight",type=float,default=0.)
+    p.add_argument("--full-split",action="store_true")
+    p.add_argument("--event-weighted",action="store_true")
     p.add_argument("--token-weight",type=float,default=1.)
     p.add_argument("--geometry-weight",type=float,default=0.)
     p.add_argument("--mask-fraction",type=float,default=.25)

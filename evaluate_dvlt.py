@@ -16,7 +16,10 @@ from train_event_dvlt import labels
 def evaluate(args):
     torch.manual_seed(10)
     models = {}
-    for name, path in (("distilled", args.distilled), ("undistilled", args.undistilled)):
+    first, second = args.names
+    if first == second:
+        raise ValueError("Specify distinct checkpoint names")
+    for name, path in ((first, args.distilled), (second, args.undistilled)):
         model = EventDVLT(args.assets).cuda().eval()
         delta = torch.load(path, weights_only=True)
         assert set(delta) == {key for key, p in model.named_parameters() if p.requires_grad}
@@ -50,7 +53,11 @@ def evaluate(args):
                         cloud = model(v, f)
                     prediction = render(cloud, pose[:1])
                     err = (prediction - target).square()
-                    row[name][condition] = dict(psnr=float(-10*err.mean().log10()),
+                    a = prediction[mask] - prediction[mask].mean()
+                    b = target[mask] - target[mask].mean()
+                    denom = a.norm()*b.norm()
+                    correlation = float((a*b).sum()/denom) if denom>0 else None
+                    row[name][condition] = dict(foreground_correlation=correlation, psnr=float(-10*err.mean().log10()),
                                                  foreground=float(-10*err[mask].mean().log10()))
                     if index < 6 and start == 4:
                         images[name, condition] = prediction[0]
@@ -58,15 +65,15 @@ def evaluate(args):
                 y, x = torch.where(mask[0])
                 region = (slice(max(0,int(y.min())-8),int(y.max())+9),
                           slice(max(0,int(x.min())-8),int(x.max())+9))
-                for axis, img in zip(axes[index], [target[0], images["distilled","matched"],
-                                                   images["undistilled","matched"], images["distilled","shuffled"],
-                                                   images["distilled","zero"]]):
+                for axis, img in zip(axes[index], [target[0], images[first,"matched"],
+                                                   images[second,"matched"], images[first,"shuffled"],
+                                                   images[first,"zero"]]):
                     axis.imshow(img[region].cpu(), cmap="gray", vmin=0, vmax=1)
                     axis.set_xticks([])
                     axis.set_yticks([])
                 axes[index,0].set_ylabel(scene)
             results.append(row)
-    for axis, title in zip(axes[0], ["Target", "Distilled", "No distillation", "Shuffled events", "Empty events"]):
+    for axis, title in zip(axes[0], ["Target", first, second, "Shuffled events", "Empty events"]):
         axis.set_title(title, fontsize=10)
     figure.savefig(args.figure, dpi=160)
     plt.close(figure)
@@ -77,4 +84,5 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for arg in ("root", "assets", "f3_repository", "distilled", "undistilled", "out", "figure"):
         p.add_argument(arg, type=Path)
+    p.add_argument("--names",nargs=2,default=("distilled","undistilled"))
     evaluate(p.parse_args())
