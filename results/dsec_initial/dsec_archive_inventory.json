@@ -1,0 +1,913 @@
+{
+  "archive_bytes": {
+    "events": 131892069895,
+    "images": 231426730063,
+    "disparity": 12488218166,
+    "calibration": 302384
+  },
+  "sequence_count": 41,
+  "sequences": [
+    {
+      "sequence": "interlaken_00_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1678874023
+        },
+        "images": {
+          "files": 1077,
+          "uncompressed_bytes": 2686189358
+        },
+        "disparity": {
+          "files": 539,
+          "uncompressed_bytes": 155744306
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": true
+    },
+    {
+      "sequence": "interlaken_00_d",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 6580623436
+        },
+        "images": {
+          "files": 3985,
+          "uncompressed_bytes": 9089283308
+        },
+        "disparity": {
+          "files": 1993,
+          "uncompressed_bytes": 562745914
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "interlaken_00_e",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 5099968161
+        },
+        "images": {
+          "files": 3985,
+          "uncompressed_bytes": 8423714333
+        },
+        "disparity": {
+          "files": 1993,
+          "uncompressed_bytes": 469430417
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "interlaken_00_f",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2570765455
+        },
+        "images": {
+          "files": 2985,
+          "uncompressed_bytes": 5858252767
+        },
+        "disparity": {
+          "files": 1493,
+          "uncompressed_bytes": 296613845
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "interlaken_00_g",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2630074174
+        },
+        "images": {
+          "files": 2673,
+          "uncompressed_bytes": 4896211437
+        },
+        "disparity": {
+          "files": 1337,
+          "uncompressed_bytes": 341961423
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "thun_00_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 581808410
+        },
+        "images": {
+          "files": 481,
+          "uncompressed_bytes": 987308714
+        },
+        "disparity": {
+          "files": 241,
+          "uncompressed_bytes": 65900761
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7047
+        }
+      },
+      "left_training_entrypoints_present": true
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1959174441
+        },
+        "images": {
+          "files": 1881,
+          "uncompressed_bytes": 3920591853
+        },
+        "disparity": {
+          "files": 941,
+          "uncompressed_bytes": 253995893
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": true
+    },
+    {
+      "sequence": "zurich_city_00_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2423641298
+        },
+        "images": {
+          "files": 2929,
+          "uncompressed_bytes": 6250507068
+        },
+        "disparity": {
+          "files": 1465,
+          "uncompressed_bytes": 402724813
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1299023745
+        },
+        "images": {
+          "files": 1365,
+          "uncompressed_bytes": 2914495898
+        },
+        "disparity": {
+          "files": 683,
+          "uncompressed_bytes": 195915446
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": true
+    },
+    {
+      "sequence": "zurich_city_01_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2988262864
+        },
+        "images": {
+          "files": 2653,
+          "uncompressed_bytes": 5938498314
+        },
+        "disparity": {
+          "files": 1327,
+          "uncompressed_bytes": 308720874
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_01_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2614226958
+        },
+        "images": {
+          "files": 1957,
+          "uncompressed_bytes": 4342870443
+        },
+        "disparity": {
+          "files": 979,
+          "uncompressed_bytes": 199172027
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_01_d",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1885481078
+        },
+        "images": {
+          "files": 1593,
+          "uncompressed_bytes": 3500607384
+        },
+        "disparity": {
+          "files": 797,
+          "uncompressed_bytes": 169527289
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_01_e",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 4046120379
+        },
+        "images": {
+          "files": 3985,
+          "uncompressed_bytes": 8898789600
+        },
+        "disparity": {
+          "files": 1993,
+          "uncompressed_bytes": 438582920
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_01_f",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 4000277529
+        },
+        "images": {
+          "files": 3149,
+          "uncompressed_bytes": 7375791635
+        },
+        "disparity": {
+          "files": 1575,
+          "uncompressed_bytes": 380596953
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_02_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 644550887
+        },
+        "images": {
+          "files": 473,
+          "uncompressed_bytes": 1073987134
+        },
+        "disparity": {
+          "files": 237,
+          "uncompressed_bytes": 62194003
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": true
+    },
+    {
+      "sequence": "zurich_city_02_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3557971930
+        },
+        "images": {
+          "files": 2453,
+          "uncompressed_bytes": 6108153765
+        },
+        "disparity": {
+          "files": 1227,
+          "uncompressed_bytes": 264918424
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_02_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 9864982816
+        },
+        "images": {
+          "files": 5769,
+          "uncompressed_bytes": 13937491808
+        },
+        "disparity": {
+          "files": 2885,
+          "uncompressed_bytes": 493580675
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_02_d",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3437743423
+        },
+        "images": {
+          "files": 3689,
+          "uncompressed_bytes": 9246487809
+        },
+        "disparity": {
+          "files": 1845,
+          "uncompressed_bytes": 293692592
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_02_e",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 6601428086
+        },
+        "images": {
+          "files": 3693,
+          "uncompressed_bytes": 9240273129
+        },
+        "disparity": {
+          "files": 1847,
+          "uncompressed_bytes": 305490782
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_03_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3464520395
+        },
+        "images": {
+          "files": 1769,
+          "uncompressed_bytes": 3942925283
+        },
+        "disparity": {
+          "files": 885,
+          "uncompressed_bytes": 156076980
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1394904375
+        },
+        "images": {
+          "files": 1405,
+          "uncompressed_bytes": 3038846733
+        },
+        "disparity": {
+          "files": 703,
+          "uncompressed_bytes": 238148402
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 549443452
+        },
+        "images": {
+          "files": 541,
+          "uncompressed_bytes": 1148779927
+        },
+        "disparity": {
+          "files": 271,
+          "uncompressed_bytes": 91475459
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1787288094
+        },
+        "images": {
+          "files": 2365,
+          "uncompressed_bytes": 4737905305
+        },
+        "disparity": {
+          "files": 1183,
+          "uncompressed_bytes": 337076748
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_d",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1547886179
+        },
+        "images": {
+          "files": 1917,
+          "uncompressed_bytes": 3778112392
+        },
+        "disparity": {
+          "files": 959,
+          "uncompressed_bytes": 248691956
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_e",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 521233933
+        },
+        "images": {
+          "files": 541,
+          "uncompressed_bytes": 1104701498
+        },
+        "disparity": {
+          "files": 271,
+          "uncompressed_bytes": 76511262
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_04_f",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1499096842
+        },
+        "images": {
+          "files": 1721,
+          "uncompressed_bytes": 3506811935
+        },
+        "disparity": {
+          "files": 861,
+          "uncompressed_bytes": 215679085
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_05_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3690893772
+        },
+        "images": {
+          "files": 3509,
+          "uncompressed_bytes": 7282296452
+        },
+        "disparity": {
+          "files": 1755,
+          "uncompressed_bytes": 608972788
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_05_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3703470449
+        },
+        "images": {
+          "files": 3261,
+          "uncompressed_bytes": 6586111807
+        },
+        "disparity": {
+          "files": 1631,
+          "uncompressed_bytes": 504883624
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_06_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 4904829117
+        },
+        "images": {
+          "files": 3049,
+          "uncompressed_bytes": 7047251404
+        },
+        "disparity": {
+          "files": 1525,
+          "uncompressed_bytes": 510504540
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7084
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_07_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3486658016
+        },
+        "images": {
+          "files": 2929,
+          "uncompressed_bytes": 6350901843
+        },
+        "disparity": {
+          "files": 1465,
+          "uncompressed_bytes": 419508916
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7084
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_08_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1889639730
+        },
+        "images": {
+          "files": 1577,
+          "uncompressed_bytes": 3090121639
+        },
+        "disparity": {
+          "files": 789,
+          "uncompressed_bytes": 284908011
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7024
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_09_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 5738614168
+        },
+        "images": {
+          "files": 3629,
+          "uncompressed_bytes": 7351756613
+        },
+        "disparity": {
+          "files": 1815,
+          "uncompressed_bytes": 259323910
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_09_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 711460165
+        },
+        "images": {
+          "files": 737,
+          "uncompressed_bytes": 1587291022
+        },
+        "disparity": {
+          "files": 369,
+          "uncompressed_bytes": 47250522
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_09_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 2668213952
+        },
+        "images": {
+          "files": 2649,
+          "uncompressed_bytes": 5817489520
+        },
+        "disparity": {
+          "files": 1325,
+          "uncompressed_bytes": 207924240
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_09_d",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3515320818
+        },
+        "images": {
+          "files": 3401,
+          "uncompressed_bytes": 7335274962
+        },
+        "disparity": {
+          "files": 1701,
+          "uncompressed_bytes": 225846515
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_09_e",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 1686662012
+        },
+        "images": {
+          "files": 1637,
+          "uncompressed_bytes": 3690391906
+        },
+        "disparity": {
+          "files": 819,
+          "uncompressed_bytes": 102243065
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_10_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 7576687564
+        },
+        "images": {
+          "files": 4633,
+          "uncompressed_bytes": 11127883982
+        },
+        "disparity": {
+          "files": 2317,
+          "uncompressed_bytes": 399117895
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_10_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 9251226460
+        },
+        "images": {
+          "files": 4813,
+          "uncompressed_bytes": 10951807669
+        },
+        "disparity": {
+          "files": 2407,
+          "uncompressed_bytes": 398593492
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7029
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_11_a",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 630125806
+        },
+        "images": {
+          "files": 933,
+          "uncompressed_bytes": 1811929554
+        },
+        "disparity": {
+          "files": 467,
+          "uncompressed_bytes": 164724085
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_11_b",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3478378659
+        },
+        "images": {
+          "files": 3869,
+          "uncompressed_bytes": 7776299407
+        },
+        "disparity": {
+          "files": 1935,
+          "uncompressed_bytes": 675270555
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    },
+    {
+      "sequence": "zurich_city_11_c",
+      "components": {
+        "events": {
+          "files": 4,
+          "uncompressed_bytes": 3730488386
+        },
+        "images": {
+          "files": 3917,
+          "uncompressed_bytes": 7652638535
+        },
+        "disparity": {
+          "files": 1959,
+          "uncompressed_bytes": 644916063
+        },
+        "calibration": {
+          "files": 2,
+          "uncompressed_bytes": 7065
+        }
+      },
+      "left_training_entrypoints_present": false
+    }
+  ]
+}
