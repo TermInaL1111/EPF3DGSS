@@ -30,6 +30,23 @@ def paired(first, second, keys, metrics):
     return result
 
 
+def training_schedule(run):
+    path = run/'geometry/train.jsonl'
+    with path.open() as stream:
+        for line in stream:
+            row = json.loads(line)
+            yield row['step'],row['epoch'],row['sequence'],tuple(row['frames']),row['K']
+
+
+def verify_schedule(paths, steps):
+    step = 0
+    for step,(a,b) in enumerate(zip(*(training_schedule(p) for p in paths),strict=True),1):
+        if a != b or a[0] != step:
+            raise ValueError(f'Training schedule differs or has a gap at step {step}')
+    if step != steps:
+        raise ValueError(f'Expected {steps} training steps, found {step}')
+
+
 def compare(f3, no_f3):
     paths = (f3,no_f3)
     geometry = [load(p/'geometry/config.json') for p in paths]
@@ -42,13 +59,21 @@ def compare(f3, no_f3):
         raise ValueError('Expected the paired 20,000-step F3 ablation')
     if gaussians[0]['steps'] != 5000 or gaussians[0]['geometry'] != 'predicted':
         raise ValueError('Expected a 5,000-step predicted Gaussian head')
+    verify_schedule(paths,geometry[0]['max_steps'])
     depth = [load(p/'depth.json') for p in paths]
     if any(d['step'] != 20000 or d['depth_cap_m'] != 50 for d in depth):
         raise ValueError('Depth reports must use the final geometry checkpoints and 50 m cap')
     render_metrics = ('psnr','ssim','ssim_evggs','lpips_vgg','lpips_alex')
     nested = dict((m,lambda r,c,m=m:r[c][m]) for m in render_metrics)
     flat = dict((m,lambda r,c,m=m:r[f'{c}_{m}']) for m in (*render_metrics,'overlap_psnr'))
-    report = {}
+    epoch = geometry[0]['actual_epochs']
+    tokens = [load(p/f'geometry/val_{epoch:03}.json') for p in paths]
+    for rows in tokens:
+        for row in rows:
+            row['frames'] = tuple(row['frames'])
+    report = {'steps':geometry[0]['max_steps'], 'geometry_epochs':epoch}
+    report['dsec_tokens'] = paired(*tokens,('seq','frames'),
+        {'token_loss':lambda r,c:r['matched' if c=='matched' else 'empty']})
     report['dsec_depth'] = paired(*(d['rows'] for d in depth), ('sequence','frame'),
                                   {m:(lambda r,c,m=m:r[c][m]) for m in
                                    ('absrel','delta1','valid_prediction_fraction')})
