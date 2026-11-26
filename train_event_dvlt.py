@@ -90,7 +90,7 @@ def alignment(tokens,reference,hidden,extra,voxel=None):
 
 
 @torch.no_grad()
-def evaluate(model,root,fields,keys):
+def evaluate(model,root,fields,keys,perceptual=None):
     rows=[]
     for scene,i in keys:
         voxel,field = get_inputs(root,fields,scene,i)
@@ -106,6 +106,9 @@ def evaluate(model,root,fields,keys):
             row[name]=dict(psnr=float(psnr[0]),ssim=float(ssim[0]),foreground=float(-10*err[mask].mean().log10()),
                            rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()),
                            gaussians=int(cloud["centers"].shape[1]))
+            if perceptual is not None:
+                row[name]['ssim_evggs'] = float(gray_metrics(pred,gray,padded=True)[1][0])
+                row[name].update(perceptual(pred,gray))
         rows.append(row)
     return rows
 

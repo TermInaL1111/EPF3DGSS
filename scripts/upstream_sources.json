@@ -13,5 +13,15 @@
     "path": "/data/userwj/projects/epf-deps/dvlt",
     "origin": "https://github.com/nv-tlabs/dvlt.git",
     "commit": "d9f1c0c481eea8b6a399b507b30c9f484e99fd69"
+  },
+  "EvGGS": {
+    "path": "/data/userwj/projects/epf-deps/EvGGS",
+    "origin": "https://github.com/Mercerai/EvGGS.git",
+    "commit": "4c97c29da989a8555e04e2a0020b46ada8861665"
+  },
+  "IncEventGS": {
+    "path": "/data/userwj/projects/epf-deps/IncEventGS",
+    "origin": "https://github.com/WU-CVGL/IncEventGS.git",
+    "commit": "28d070f5c5eff1c62869006741a1c794ef587c14"
   }
 }
