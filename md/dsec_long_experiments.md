@@ -34,3 +34,11 @@ bash scripts/run_dsec_long.sh no_f3
 上一轮 DSEC 匹配事件的深度 AbsRel 为 0.172，全零为 0.425。归档指标采用上一轮有效深度范围，长程实验采用上面注明的 50 米上限。机器可读结果见 [results/dsec_initial](../results/dsec_initial/)。
 
 EV3DS 旧基线已按新指标重评 136 个窗口。匹配/全零事件 LPIPS-VGG 为 0.4764/0.4538，LPIPS-AlexNet 为 0.6007/0.6035。见 [EV3DS 重评汇总](../results/dsec_initial/ev3ds_reference_lpips_summary.json)。
+
+无 F³ 的流程已用上一轮基础蒸馏权重实际检查。Gaussian head 训练两步，
+DSEC 验证两个窗口，MVSEC 验证三条航线各一个窗口，均产出两种 LPIPS 和零填充 SSIM。
+这次检查使用旧骨干与极短训练，只验证接线。
+
+长跑结束后用 `scripts/compare_dsec_long.py` 生成配对汇总。该脚本检查
+两组训练设置、最后一步产物、深度上限以及三套评测的窗口一致性。
+服务器汇总路径为 `/data/userwj/epf-runs/dsec_long_comparison.json`。
