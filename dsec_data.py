@@ -38,6 +38,17 @@ def lower_bound(dataset, value):
     return lo
 
 
+def indexed_lower_bound(timestamps, milliseconds, value):
+    """Use the DSEC millisecond index and refine to the exact microsecond."""
+    bucket = value//1000
+    if bucket < 0 or bucket+1 >= len(milliseconds):
+        return lower_bound(timestamps,value)
+    lo,hi = map(int,milliseconds[bucket:bucket+2])
+    if hi < lo or hi > len(timestamps):
+        raise ValueError('Invalid DSEC millisecond index')
+    return lo+int(np.searchsorted(timestamps[lo:hi],value,side='left'))
+
+
 class DSECSequence:
     def __init__(self, root, sequence, window_us=20000):
         self.root = Path(root) / sequence
@@ -146,11 +157,13 @@ class DSECTemporalPairs:
         with h5py.File(self.event_path, 'r') as f:
             timestamps = f['events/t']
             offset = int(f['t_offset'][()])
+            first,last = int(timestamps[0]),int(timestamps[-1])
+            milliseconds = f['ms_to_idx'][:] if 'ms_to_idx' in f else ()
             self.ends = {}
             for i in range(0, len(self.times), 2):
                 end = int(self.times[i])-offset
-                if timestamps[0] <= end <= timestamps[-1]:
-                    pos = lower_bound(timestamps, end)
+                if first <= end <= last:
+                    pos = indexed_lower_bound(timestamps, milliseconds, end)
                     if pos >= 150000 and self.image(i).is_file():
                         self.ends[i] = pos
         self.pairs = [(i, i+2) for i in self.ends if i+2 in self.ends]
