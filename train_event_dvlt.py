@@ -9,6 +9,7 @@ import torch.nn.functional as F
 from event_field import source_windows
 from ev3ds_pose import camera
 from event_dvlt import EventDVLT,load_rgb,render,voxelize
+from image_metrics import gray_metrics
 
 
 def get_inputs(root,fields,scene,i):
@@ -101,7 +102,8 @@ def evaluate(model,root,fields,keys):
             pred=render(cloud,poses[:1])
             err=(pred-gray).square()
             rot=cloud["rotation"][0].T @ poses[1,:3,:3]
-            row[name]=dict(psnr=float(-10*err.mean().log10()),foreground=float(-10*err[mask].mean().log10()),
+            psnr,ssim = gray_metrics(pred,gray)
+            row[name]=dict(psnr=float(psnr[0]),ssim=float(ssim[0]),foreground=float(-10*err[mask].mean().log10()),
                            rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()),
                            gaussians=int(cloud["centers"].shape[1]))
         rows.append(row)

@@ -1,0 +1,254 @@
+{
+  "windows": 24,
+  "calibrated": {
+    "all": {
+      "windows": 24,
+      "psnr": {
+        "matched": 10.160356720288595,
+        "zero": 9.564464449882507,
+        "matched_minus_zero": 0.5958922704060873
+      },
+      "ssim": {
+        "matched": 0.522622287273407,
+        "zero": 0.4776409516731898,
+        "matched_minus_zero": 0.044981335600217186
+      },
+      "overlap_psnr": {
+        "matched": 12.968592286109924,
+        "zero": 11.897416353225708,
+        "matched_minus_zero": 1.0711759328842163
+      }
+    },
+    "zurich_city_01_a": {
+      "windows": 24,
+      "psnr": {
+        "matched": 10.160356720288595,
+        "zero": 9.564464449882507,
+        "matched_minus_zero": 0.5958922704060873
+      },
+      "ssim": {
+        "matched": 0.522622287273407,
+        "zero": 0.4776409516731898,
+        "matched_minus_zero": 0.044981335600217186
+      },
+      "overlap_psnr": {
+        "matched": 12.968592286109924,
+        "zero": 11.897416353225708,
+        "matched_minus_zero": 1.0711759328842163
+      }
+    }
+  },
+  "predicted": {
+    "all": {
+      "windows": 24,
+      "psnr": {
+        "matched": 9.366750001907349,
+        "zero": 8.868837833404541,
+        "matched_minus_zero": 0.4979121685028076
+      },
+      "ssim": {
+        "matched": 0.3351049708823363,
+        "zero": 0.259542307506005,
+        "matched_minus_zero": 0.07556266337633133
+      },
+      "overlap_psnr": {
+        "matched": 12.967627565066019,
+        "zero": 11.93540644645691,
+        "matched_minus_zero": 1.0322211186091106
+      }
+    },
+    "zurich_city_01_a": {
+      "windows": 24,
+      "psnr": {
+        "matched": 9.366750001907349,
+        "zero": 8.868837833404541,
+        "matched_minus_zero": 0.4979121685028076
+      },
+      "ssim": {
+        "matched": 0.3351049708823363,
+        "zero": 0.259542307506005,
+        "matched_minus_zero": 0.07556266337633133
+      },
+      "overlap_psnr": {
+        "matched": 12.967627565066019,
+        "zero": 11.93540644645691,
+        "matched_minus_zero": 1.0322211186091106
+      }
+    }
+  },
+  "matched_predicted_minus_calibrated": {
+    "matched_psnr": -0.793606718381246,
+    "matched_ssim": -0.1875173163910707,
+    "matched_overlap_psnr": -0.0009647210439046224
+  },
+  "paired_rows": [
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 2,
+      "matched_psnr": -0.5109796524047852,
+      "matched_ssim": -0.18556874990463257,
+      "matched_overlap_psnr": -0.47767162322998047
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 30,
+      "matched_psnr": -0.9959850311279297,
+      "matched_ssim": -0.19841071963310242,
+      "matched_overlap_psnr": 0.00811004638671875
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 60,
+      "matched_psnr": -0.7198810577392578,
+      "matched_ssim": -0.18395176529884338,
+      "matched_overlap_psnr": 1.4299049377441406
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 90,
+      "matched_psnr": 0.19156169891357422,
+      "matched_ssim": -0.19200584292411804,
+      "matched_overlap_psnr": 1.2861557006835938
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 118,
+      "matched_psnr": -0.5776767730712891,
+      "matched_ssim": -0.18455997109413147,
+      "matched_overlap_psnr": 0.7022676467895508
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 148,
+      "matched_psnr": 0.2586097717285156,
+      "matched_ssim": -0.17299270629882812,
+      "matched_overlap_psnr": 1.090458869934082
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 178,
+      "matched_psnr": -1.398137092590332,
+      "matched_ssim": -0.2340129017829895,
+      "matched_overlap_psnr": -1.3249073028564453
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 208,
+      "matched_psnr": -2.3567962646484375,
+      "matched_ssim": -0.2027696669101715,
+      "matched_overlap_psnr": -0.5080013275146484
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 236,
+      "matched_psnr": -0.5456886291503906,
+      "matched_ssim": -0.24402475357055664,
+      "matched_overlap_psnr": 0.5165843963623047
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 266,
+      "matched_psnr": -1.2651081085205078,
+      "matched_ssim": -0.2199108898639679,
+      "matched_overlap_psnr": -0.9513654708862305
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 296,
+      "matched_psnr": -0.48558616638183594,
+      "matched_ssim": -0.18199840188026428,
+      "matched_overlap_psnr": 1.168191909790039
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 326,
+      "matched_psnr": -0.14054107666015625,
+      "matched_ssim": -0.1611143946647644,
+      "matched_overlap_psnr": 1.3600997924804688
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 354,
+      "matched_psnr": -0.09891891479492188,
+      "matched_ssim": -0.1752694547176361,
+      "matched_overlap_psnr": 1.7443046569824219
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 384,
+      "matched_psnr": 0.5503978729248047,
+      "matched_ssim": -0.1403651237487793,
+      "matched_overlap_psnr": 1.384613037109375
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 414,
+      "matched_psnr": -0.5172805786132812,
+      "matched_ssim": -0.15548580884933472,
+      "matched_overlap_psnr": -0.24422454833984375
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 444,
+      "matched_psnr": -1.3304462432861328,
+      "matched_ssim": -0.1871783435344696,
+      "matched_overlap_psnr": 0.3848896026611328
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 472,
+      "matched_psnr": -1.1373291015625,
+      "matched_ssim": -0.2184680998325348,
+      "matched_overlap_psnr": -0.5358066558837891
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 502,
+      "matched_psnr": -1.0673933029174805,
+      "matched_ssim": -0.19399669766426086,
+      "matched_overlap_psnr": -0.49872779846191406
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 532,
+      "matched_psnr": -0.6120710372924805,
+      "matched_ssim": -0.15891310572624207,
+      "matched_overlap_psnr": -0.1547079086303711
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 562,
+      "matched_psnr": -0.5252857208251953,
+      "matched_ssim": -0.12463444471359253,
+      "matched_overlap_psnr": -0.37955188751220703
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 590,
+      "matched_psnr": -0.5391702651977539,
+      "matched_ssim": -0.20466306805610657,
+      "matched_overlap_psnr": -0.10030174255371094
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 620,
+      "matched_psnr": -0.8203935623168945,
+      "matched_ssim": -0.18683892488479614,
+      "matched_overlap_psnr": -1.0762042999267578
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 650,
+      "matched_psnr": -2.866757392883301,
+      "matched_ssim": -0.22184494137763977,
+      "matched_overlap_psnr": -2.286831855773926
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 680,
+      "matched_psnr": -1.5357046127319336,
+      "matched_ssim": -0.17143681645393372,
+      "matched_overlap_psnr": -2.560431480407715
+    }
+  ]
+}

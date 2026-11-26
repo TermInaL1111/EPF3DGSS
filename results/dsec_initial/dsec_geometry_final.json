@@ -1,0 +1,2311 @@
+{
+  "epoch": 30,
+  "step": 3480,
+  "rows": [
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 2,
+      "matched": {
+        "point_absrel": 0.35118040442466736,
+        "point_inlier25": 0.5000232458114624,
+        "absrel": 0.31776463985443115,
+        "delta1": 0.513593852519989,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1629793643951416,
+        "translation_deg": 5.237869739532471,
+        "aligned_scale": 6.734550476074219
+      },
+      "zero": {
+        "point_absrel": 0.5236404538154602,
+        "point_inlier25": 0.20470759272575378,
+        "absrel": 0.5159900188446045,
+        "delta1": 0.22202757000923157,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.273268699645996
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 30,
+      "matched": {
+        "point_absrel": 0.23922580480575562,
+        "point_inlier25": 0.7062065601348877,
+        "absrel": 0.19097495079040527,
+        "delta1": 0.7048561573028564,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6789735555648804,
+        "translation_deg": 5.783164978027344,
+        "aligned_scale": 7.900116443634033
+      },
+      "zero": {
+        "point_absrel": 0.39905694127082825,
+        "point_inlier25": 0.3924984335899353,
+        "absrel": 0.37038400769233704,
+        "delta1": 0.41290175914764404,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.44485092163086
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 60,
+      "matched": {
+        "point_absrel": 0.19593612849712372,
+        "point_inlier25": 0.749801754951477,
+        "absrel": 0.13228045403957367,
+        "delta1": 0.8117523193359375,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9095669984817505,
+        "translation_deg": 24.3422794342041,
+        "aligned_scale": 7.969203948974609
+      },
+      "zero": {
+        "point_absrel": 0.5149385929107666,
+        "point_inlier25": 0.18832819163799286,
+        "absrel": 0.5013977289199829,
+        "delta1": 0.2741314470767975,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.880779266357422
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 90,
+      "matched": {
+        "point_absrel": 0.21712534129619598,
+        "point_inlier25": 0.7362508773803711,
+        "absrel": 0.15855009853839874,
+        "delta1": 0.7601903080940247,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.5263757109642029,
+        "translation_deg": 8.004128456115723,
+        "aligned_scale": 7.828126430511475
+      },
+      "zero": {
+        "point_absrel": 0.3640883266925812,
+        "point_inlier25": 0.4087597131729126,
+        "absrel": 0.3208913505077362,
+        "delta1": 0.434496134519577,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.334566116333008
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 118,
+      "matched": {
+        "point_absrel": 0.20325563848018646,
+        "point_inlier25": 0.737145185470581,
+        "absrel": 0.1443127691745758,
+        "delta1": 0.7410354614257812,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7996634840965271,
+        "translation_deg": 6.150424003601074,
+        "aligned_scale": 8.616209030151367
+      },
+      "zero": {
+        "point_absrel": 0.3788065016269684,
+        "point_inlier25": 0.47266343235969543,
+        "absrel": 0.34095802903175354,
+        "delta1": 0.4729211628437042,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.623242378234863
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 148,
+      "matched": {
+        "point_absrel": 0.21380002796649933,
+        "point_inlier25": 0.7509098052978516,
+        "absrel": 0.15529300272464752,
+        "delta1": 0.769607424736023,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9989719390869141,
+        "translation_deg": 6.328308582305908,
+        "aligned_scale": 7.782734394073486
+      },
+      "zero": {
+        "point_absrel": 0.5092741847038269,
+        "point_inlier25": 0.14176388084888458,
+        "absrel": 0.5050976872444153,
+        "delta1": 0.1667739897966385,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.217687606811523
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 178,
+      "matched": {
+        "point_absrel": 0.19508878886699677,
+        "point_inlier25": 0.7643099427223206,
+        "absrel": 0.1272672414779663,
+        "delta1": 0.815386950969696,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0024915933609009,
+        "translation_deg": 10.521940231323242,
+        "aligned_scale": 7.8258957862854
+      },
+      "zero": {
+        "point_absrel": 0.4124085307121277,
+        "point_inlier25": 0.38931432366371155,
+        "absrel": 0.37993335723876953,
+        "delta1": 0.4483087658882141,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.150951385498047
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 208,
+      "matched": {
+        "point_absrel": 0.21805515885353088,
+        "point_inlier25": 0.6819843649864197,
+        "absrel": 0.16895945370197296,
+        "delta1": 0.69809889793396,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0864253044128418,
+        "translation_deg": 7.606355667114258,
+        "aligned_scale": 7.337326526641846
+      },
+      "zero": {
+        "point_absrel": 0.4786987900733948,
+        "point_inlier25": 0.3771790862083435,
+        "absrel": 0.45833954215049744,
+        "delta1": 0.37514081597328186,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.660652160644531
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 236,
+      "matched": {
+        "point_absrel": 0.23961178958415985,
+        "point_inlier25": 0.6224003434181213,
+        "absrel": 0.18953661620616913,
+        "delta1": 0.6425408720970154,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8108415007591248,
+        "translation_deg": 16.91427993774414,
+        "aligned_scale": 7.2274932861328125
+      },
+      "zero": {
+        "point_absrel": 0.38639330863952637,
+        "point_inlier25": 0.3779739439487457,
+        "absrel": 0.356174111366272,
+        "delta1": 0.4268563985824585,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.232203483581543
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 266,
+      "matched": {
+        "point_absrel": 0.23252028226852417,
+        "point_inlier25": 0.7190744280815125,
+        "absrel": 0.18086932599544525,
+        "delta1": 0.7434782385826111,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0697263479232788,
+        "translation_deg": 11.286537170410156,
+        "aligned_scale": 8.058445930480957
+      },
+      "zero": {
+        "point_absrel": 0.48565664887428284,
+        "point_inlier25": 0.38268038630485535,
+        "absrel": 0.4642481207847595,
+        "delta1": 0.40291574597358704,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.65891170501709
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 296,
+      "matched": {
+        "point_absrel": 0.22590601444244385,
+        "point_inlier25": 0.6677024364471436,
+        "absrel": 0.17569881677627563,
+        "delta1": 0.6830965280532837,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8093922138214111,
+        "translation_deg": 18.746421813964844,
+        "aligned_scale": 7.174604415893555
+      },
+      "zero": {
+        "point_absrel": 0.4031268060207367,
+        "point_inlier25": 0.40657877922058105,
+        "absrel": 0.38098251819610596,
+        "delta1": 0.4178246557712555,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.661524772644043
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 326,
+      "matched": {
+        "point_absrel": 0.20235614478588104,
+        "point_inlier25": 0.7325455546379089,
+        "absrel": 0.15070787072181702,
+        "delta1": 0.7584452033042908,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7778319120407104,
+        "translation_deg": 18.0205078125,
+        "aligned_scale": 7.0695695877075195
+      },
+      "zero": {
+        "point_absrel": 0.4105004072189331,
+        "point_inlier25": 0.3103986382484436,
+        "absrel": 0.39754438400268555,
+        "delta1": 0.3050616681575775,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.82284164428711
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 354,
+      "matched": {
+        "point_absrel": 0.2049148827791214,
+        "point_inlier25": 0.796627938747406,
+        "absrel": 0.13865654170513153,
+        "delta1": 0.8155005574226379,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8641138672828674,
+        "translation_deg": 28.23682403564453,
+        "aligned_scale": 7.056413173675537
+      },
+      "zero": {
+        "point_absrel": 0.47339707612991333,
+        "point_inlier25": 0.2186269760131836,
+        "absrel": 0.46436792612075806,
+        "delta1": 0.2172146737575531,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.359387397766113
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 384,
+      "matched": {
+        "point_absrel": 0.2153204083442688,
+        "point_inlier25": 0.6890226602554321,
+        "absrel": 0.16129833459854126,
+        "delta1": 0.7366833090782166,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.011817455291748,
+        "translation_deg": 6.345696926116943,
+        "aligned_scale": 7.8368239402771
+      },
+      "zero": {
+        "point_absrel": 0.48979341983795166,
+        "point_inlier25": 0.18337363004684448,
+        "absrel": 0.47856366634368896,
+        "delta1": 0.20474378764629364,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.125326156616211
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 414,
+      "matched": {
+        "point_absrel": 0.2357407510280609,
+        "point_inlier25": 0.6643255352973938,
+        "absrel": 0.17955230176448822,
+        "delta1": 0.7146303653717041,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.949563205242157,
+        "translation_deg": 20.18021011352539,
+        "aligned_scale": 7.333861351013184
+      },
+      "zero": {
+        "point_absrel": 0.4601883292198181,
+        "point_inlier25": 0.41911929845809937,
+        "absrel": 0.4315621852874756,
+        "delta1": 0.4735594093799591,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.67021656036377
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 444,
+      "matched": {
+        "point_absrel": 0.22921402752399445,
+        "point_inlier25": 0.6803319454193115,
+        "absrel": 0.16670824587345123,
+        "delta1": 0.7261674404144287,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9614412188529968,
+        "translation_deg": 7.5332489013671875,
+        "aligned_scale": 7.211874485015869
+      },
+      "zero": {
+        "point_absrel": 0.4320858120918274,
+        "point_inlier25": 0.22404079139232635,
+        "absrel": 0.4174891710281372,
+        "delta1": 0.24451273679733276,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.200652122497559
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 472,
+      "matched": {
+        "point_absrel": 0.231705904006958,
+        "point_inlier25": 0.6705077290534973,
+        "absrel": 0.1808670163154602,
+        "delta1": 0.6940891742706299,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0936062335968018,
+        "translation_deg": 6.203713417053223,
+        "aligned_scale": 7.9534711837768555
+      },
+      "zero": {
+        "point_absrel": 0.5641205310821533,
+        "point_inlier25": 0.3815312385559082,
+        "absrel": 0.556827962398529,
+        "delta1": 0.38993436098098755,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 17.606966018676758
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 502,
+      "matched": {
+        "point_absrel": 0.216615229845047,
+        "point_inlier25": 0.6919662356376648,
+        "absrel": 0.1723492443561554,
+        "delta1": 0.7262676358222961,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9614412188529968,
+        "translation_deg": 11.320232391357422,
+        "aligned_scale": 8.102317810058594
+      },
+      "zero": {
+        "point_absrel": 0.42196124792099,
+        "point_inlier25": 0.44954976439476013,
+        "absrel": 0.3914845287799835,
+        "delta1": 0.4811689555644989,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.014144897460938
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 532,
+      "matched": {
+        "point_absrel": 0.1851883977651596,
+        "point_inlier25": 0.7750729322433472,
+        "absrel": 0.12737661600112915,
+        "delta1": 0.8944332599639893,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.738604724407196,
+        "translation_deg": 21.02398681640625,
+        "aligned_scale": 7.3705735206604
+      },
+      "zero": {
+        "point_absrel": 0.3193828761577606,
+        "point_inlier25": 0.41201794147491455,
+        "absrel": 0.2883908450603485,
+        "delta1": 0.3995201587677002,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.833043098449707
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 562,
+      "matched": {
+        "point_absrel": 0.21881991624832153,
+        "point_inlier25": 0.6941199898719788,
+        "absrel": 0.15091395378112793,
+        "delta1": 0.7792227864265442,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.612297534942627,
+        "translation_deg": 15.99899959564209,
+        "aligned_scale": 6.712031364440918
+      },
+      "zero": {
+        "point_absrel": 0.5275160670280457,
+        "point_inlier25": 0.1907733678817749,
+        "absrel": 0.5191155076026917,
+        "delta1": 0.20081312954425812,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.805173873901367
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 590,
+      "matched": {
+        "point_absrel": 0.18201084434986115,
+        "point_inlier25": 0.8250694870948792,
+        "absrel": 0.10310152918100357,
+        "delta1": 0.8325035572052002,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0024915933609009,
+        "translation_deg": 21.903865814208984,
+        "aligned_scale": 8.19548225402832
+      },
+      "zero": {
+        "point_absrel": 0.45997151732444763,
+        "point_inlier25": 0.30404895544052124,
+        "absrel": 0.43800777196884155,
+        "delta1": 0.3389122784137726,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.778059005737305
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 620,
+      "matched": {
+        "point_absrel": 0.19911251962184906,
+        "point_inlier25": 0.7350751161575317,
+        "absrel": 0.13697364926338196,
+        "delta1": 0.802935779094696,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.203334927558899,
+        "translation_deg": 7.701304912567139,
+        "aligned_scale": 8.258312225341797
+      },
+      "zero": {
+        "point_absrel": 0.5361464023590088,
+        "point_inlier25": 0.4163506031036377,
+        "absrel": 0.5204311609268188,
+        "delta1": 0.44256216287612915,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 18.992652893066406
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 650,
+      "matched": {
+        "point_absrel": 0.21465042233467102,
+        "point_inlier25": 0.7487173080444336,
+        "absrel": 0.15381115674972534,
+        "delta1": 0.7747223377227783,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6000308394432068,
+        "translation_deg": 14.819051742553711,
+        "aligned_scale": 6.888850688934326
+      },
+      "zero": {
+        "point_absrel": 0.467881441116333,
+        "point_inlier25": 0.2459612637758255,
+        "absrel": 0.4503876566886902,
+        "delta1": 0.2924744784832001,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.888998985290527
+      }
+    },
+    {
+      "sequence": "zurich_city_01_a",
+      "frame": 680,
+      "matched": {
+        "point_absrel": 0.2507207989692688,
+        "point_inlier25": 0.7062206864356995,
+        "absrel": 0.20177681744098663,
+        "delta1": 0.7250445485115051,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9863558411598206,
+        "translation_deg": 12.784289360046387,
+        "aligned_scale": 6.197638511657715
+      },
+      "zero": {
+        "point_absrel": 0.4509025514125824,
+        "point_inlier25": 0.3021159768104553,
+        "absrel": 0.4396378993988037,
+        "delta1": 0.3021804094314575,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.284075736999512
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 2,
+      "matched": {
+        "point_absrel": 0.1809525489807129,
+        "point_inlier25": 0.8384771347045898,
+        "absrel": 0.11491900682449341,
+        "delta1": 0.8688040375709534,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8531751036643982,
+        "translation_deg": 11.934640884399414,
+        "aligned_scale": 5.138348579406738
+      },
+      "zero": {
+        "point_absrel": 0.3519335985183716,
+        "point_inlier25": 0.38969600200653076,
+        "absrel": 0.32903578877449036,
+        "delta1": 0.39771124720573425,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 8.060352325439453
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 24,
+      "matched": {
+        "point_absrel": 0.2092319130897522,
+        "point_inlier25": 0.7216066122055054,
+        "absrel": 0.16457664966583252,
+        "delta1": 0.7298834919929504,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9134312868118286,
+        "translation_deg": 11.89681339263916,
+        "aligned_scale": 6.232911109924316
+      },
+      "zero": {
+        "point_absrel": 0.4255019426345825,
+        "point_inlier25": 0.3110522925853729,
+        "absrel": 0.41724905371665955,
+        "delta1": 0.30444273352622986,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.179048538208008
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 48,
+      "matched": {
+        "point_absrel": 0.2501091957092285,
+        "point_inlier25": 0.5438472628593445,
+        "absrel": 0.2042047679424286,
+        "delta1": 0.5979310274124146,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1246576309204102,
+        "translation_deg": 6.7163872718811035,
+        "aligned_scale": 6.013178825378418
+      },
+      "zero": {
+        "point_absrel": 0.4704395830631256,
+        "point_inlier25": 0.2772011160850525,
+        "absrel": 0.46717238426208496,
+        "delta1": 0.2733934819698334,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.41925048828125
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 70,
+      "matched": {
+        "point_absrel": 0.25165224075317383,
+        "point_inlier25": 0.5798745155334473,
+        "absrel": 0.20470914244651794,
+        "delta1": 0.5875028967857361,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9337702989578247,
+        "translation_deg": 11.491336822509766,
+        "aligned_scale": 6.86679744720459
+      },
+      "zero": {
+        "point_absrel": 0.43851661682128906,
+        "point_inlier25": 0.25361883640289307,
+        "absrel": 0.42527562379837036,
+        "delta1": 0.2775235176086426,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.100508689880371
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 94,
+      "matched": {
+        "point_absrel": 0.21306699514389038,
+        "point_inlier25": 0.6348309516906738,
+        "absrel": 0.15584692358970642,
+        "delta1": 0.6983337998390198,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.3208616971969604,
+        "translation_deg": 6.180917739868164,
+        "aligned_scale": 6.282259464263916
+      },
+      "zero": {
+        "point_absrel": 0.47078052163124084,
+        "point_inlier25": 0.3130347430706024,
+        "absrel": 0.4511463940143585,
+        "delta1": 0.328440397977829,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.366161346435547
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 118,
+      "matched": {
+        "point_absrel": 0.24785253405570984,
+        "point_inlier25": 0.5770555734634399,
+        "absrel": 0.1919930875301361,
+        "delta1": 0.6260612607002258,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.3184891939163208,
+        "translation_deg": 8.911582946777344,
+        "aligned_scale": 6.212433338165283
+      },
+      "zero": {
+        "point_absrel": 0.3642657697200775,
+        "point_inlier25": 0.3924568295478821,
+        "absrel": 0.32183632254600525,
+        "delta1": 0.48502904176712036,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.379106521606445
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 140,
+      "matched": {
+        "point_absrel": 0.2488909661769867,
+        "point_inlier25": 0.6036431789398193,
+        "absrel": 0.19561320543289185,
+        "delta1": 0.6309715509414673,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9926838874816895,
+        "translation_deg": 4.952702522277832,
+        "aligned_scale": 6.450516223907471
+      },
+      "zero": {
+        "point_absrel": 0.42310261726379395,
+        "point_inlier25": 0.33337241411209106,
+        "absrel": 0.38631492853164673,
+        "delta1": 0.4109457731246948,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.125662803649902
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 164,
+      "matched": {
+        "point_absrel": 0.25124701857566833,
+        "point_inlier25": 0.6788696646690369,
+        "absrel": 0.19986534118652344,
+        "delta1": 0.710722804069519,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6543177962303162,
+        "translation_deg": 4.730813026428223,
+        "aligned_scale": 6.954030990600586
+      },
+      "zero": {
+        "point_absrel": 0.45558276772499084,
+        "point_inlier25": 0.23480618000030518,
+        "absrel": 0.42747777700424194,
+        "delta1": 0.297341912984848,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.067316055297852
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 186,
+      "matched": {
+        "point_absrel": 0.22326575219631195,
+        "point_inlier25": 0.6696557402610779,
+        "absrel": 0.15820731222629547,
+        "delta1": 0.7501736283302307,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.151480793952942,
+        "translation_deg": 10.783336639404297,
+        "aligned_scale": 6.055882453918457
+      },
+      "zero": {
+        "point_absrel": 0.3866835832595825,
+        "point_inlier25": 0.41745683550834656,
+        "absrel": 0.3464200794696808,
+        "delta1": 0.4867052137851715,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.177186012268066
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 210,
+      "matched": {
+        "point_absrel": 0.21865065395832062,
+        "point_inlier25": 0.7135215401649475,
+        "absrel": 0.13401326537132263,
+        "delta1": 0.7852031588554382,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.3556632995605469,
+        "translation_deg": 20.354290008544922,
+        "aligned_scale": 5.551124095916748
+      },
+      "zero": {
+        "point_absrel": 0.4095242917537689,
+        "point_inlier25": 0.3185412585735321,
+        "absrel": 0.3765690326690674,
+        "delta1": 0.3665955066680908,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.284309387207031
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 234,
+      "matched": {
+        "point_absrel": 0.2505207359790802,
+        "point_inlier25": 0.5794996023178101,
+        "absrel": 0.2036903202533722,
+        "delta1": 0.6323700547218323,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1882799863815308,
+        "translation_deg": 14.544713973999023,
+        "aligned_scale": 5.73635721206665
+      },
+      "zero": {
+        "point_absrel": 0.39801838994026184,
+        "point_inlier25": 0.4204191565513611,
+        "absrel": 0.36996224522590637,
+        "delta1": 0.45856526494026184,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.047895431518555
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 256,
+      "matched": {
+        "point_absrel": 0.244407057762146,
+        "point_inlier25": 0.6450805068016052,
+        "absrel": 0.16894873976707458,
+        "delta1": 0.6904844641685486,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.076291561126709,
+        "translation_deg": 14.129020690917969,
+        "aligned_scale": 5.823927402496338
+      },
+      "zero": {
+        "point_absrel": 0.428987979888916,
+        "point_inlier25": 0.35136234760284424,
+        "absrel": 0.4013412892818451,
+        "delta1": 0.34445175528526306,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.431244850158691
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 280,
+      "matched": {
+        "point_absrel": 0.22838184237480164,
+        "point_inlier25": 0.7231343984603882,
+        "absrel": 0.13368824124336243,
+        "delta1": 0.8213300108909607,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1078283786773682,
+        "translation_deg": 6.26609992980957,
+        "aligned_scale": 6.807910442352295
+      },
+      "zero": {
+        "point_absrel": 0.48879125714302063,
+        "point_inlier25": 0.29597538709640503,
+        "absrel": 0.4429064989089966,
+        "delta1": 0.38374266028404236,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.814531326293945
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 302,
+      "matched": {
+        "point_absrel": 0.2781917452812195,
+        "point_inlier25": 0.579631507396698,
+        "absrel": 0.21243716776371002,
+        "delta1": 0.6374510526657104,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.344939112663269,
+        "translation_deg": 24.0307674407959,
+        "aligned_scale": 6.848898410797119
+      },
+      "zero": {
+        "point_absrel": 0.43186715245246887,
+        "point_inlier25": 0.3330530822277069,
+        "absrel": 0.4116462469100952,
+        "delta1": 0.346162348985672,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.820966720581055
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 326,
+      "matched": {
+        "point_absrel": 0.38839298486709595,
+        "point_inlier25": 0.3882198929786682,
+        "absrel": 0.3797765076160431,
+        "delta1": 0.36310479044914246,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.011043667793274,
+        "translation_deg": 30.10153579711914,
+        "aligned_scale": 7.356542587280273
+      },
+      "zero": {
+        "point_absrel": 0.6275299787521362,
+        "point_inlier25": 0.045565687119960785,
+        "absrel": 0.633401095867157,
+        "delta1": 0.050614312291145325,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.220709800720215
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 350,
+      "matched": {
+        "point_absrel": 0.23808789253234863,
+        "point_inlier25": 0.619583010673523,
+        "absrel": 0.19195415079593658,
+        "delta1": 0.6538330912590027,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.2379624843597412,
+        "translation_deg": 6.721174240112305,
+        "aligned_scale": 6.500168800354004
+      },
+      "zero": {
+        "point_absrel": 0.4757034182548523,
+        "point_inlier25": 0.547037661075592,
+        "absrel": 0.452241986989975,
+        "delta1": 0.5620694160461426,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 17.103120803833008
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 372,
+      "matched": {
+        "point_absrel": 0.21084851026535034,
+        "point_inlier25": 0.7202727794647217,
+        "absrel": 0.16842126846313477,
+        "delta1": 0.7881770133972168,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8991813063621521,
+        "translation_deg": 5.124073505401611,
+        "aligned_scale": 6.079913139343262
+      },
+      "zero": {
+        "point_absrel": 0.3447655737400055,
+        "point_inlier25": 0.5914605259895325,
+        "absrel": 0.31480875611305237,
+        "delta1": 0.583343505859375,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.863525390625
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 396,
+      "matched": {
+        "point_absrel": 0.20885826647281647,
+        "point_inlier25": 0.6996500492095947,
+        "absrel": 0.1560944765806198,
+        "delta1": 0.7327289581298828,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.38664302229881287,
+        "translation_deg": 17.459993362426758,
+        "aligned_scale": 5.516799449920654
+      },
+      "zero": {
+        "point_absrel": 0.5023102164268494,
+        "point_inlier25": 0.31752291321754456,
+        "absrel": 0.4899703562259674,
+        "delta1": 0.3196723759174347,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.610419273376465
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 418,
+      "matched": {
+        "point_absrel": 0.2365172952413559,
+        "point_inlier25": 0.638196587562561,
+        "absrel": 0.176059752702713,
+        "delta1": 0.710536777973175,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1071215867996216,
+        "translation_deg": 11.383197784423828,
+        "aligned_scale": 7.541422367095947
+      },
+      "zero": {
+        "point_absrel": 0.37164533138275146,
+        "point_inlier25": 0.4003088176250458,
+        "absrel": 0.3323112428188324,
+        "delta1": 0.4482323229312897,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.702982902526855
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 442,
+      "matched": {
+        "point_absrel": 0.21724721789360046,
+        "point_inlier25": 0.7141274809837341,
+        "absrel": 0.14076323807239532,
+        "delta1": 0.792993426322937,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.1816742420196533,
+        "translation_deg": 19.707948684692383,
+        "aligned_scale": 7.14053201675415
+      },
+      "zero": {
+        "point_absrel": 0.35076218843460083,
+        "point_inlier25": 0.43453270196914673,
+        "absrel": 0.30520546436309814,
+        "delta1": 0.4955895245075226,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.254894256591797
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 466,
+      "matched": {
+        "point_absrel": 0.26741644740104675,
+        "point_inlier25": 0.5433788299560547,
+        "absrel": 0.2148066908121109,
+        "delta1": 0.652849018573761,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.4399423599243164,
+        "translation_deg": 5.226560115814209,
+        "aligned_scale": 8.397058486938477
+      },
+      "zero": {
+        "point_absrel": 0.43226876854896545,
+        "point_inlier25": 0.42508652806282043,
+        "absrel": 0.3927640914916992,
+        "delta1": 0.46965545415878296,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.813112258911133
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 488,
+      "matched": {
+        "point_absrel": 0.18841798603534698,
+        "point_inlier25": 0.811840295791626,
+        "absrel": 0.1030978262424469,
+        "delta1": 0.8767068982124329,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8749158978462219,
+        "translation_deg": 23.384950637817383,
+        "aligned_scale": 7.112625598907471
+      },
+      "zero": {
+        "point_absrel": 0.41839608550071716,
+        "point_inlier25": 0.24864375591278076,
+        "absrel": 0.3984586000442505,
+        "delta1": 0.2811867892742157,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.099061965942383
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 512,
+      "matched": {
+        "point_absrel": 0.19808223843574524,
+        "point_inlier25": 0.7902811169624329,
+        "absrel": 0.13069258630275726,
+        "delta1": 0.8334465622901917,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9358635544776917,
+        "translation_deg": 14.650339126586914,
+        "aligned_scale": 7.190760135650635
+      },
+      "zero": {
+        "point_absrel": 0.49509939551353455,
+        "point_inlier25": 0.1562427431344986,
+        "absrel": 0.4901668131351471,
+        "delta1": 0.17055663466453552,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.894347190856934
+      }
+    },
+    {
+      "sequence": "interlaken_00_c",
+      "frame": 536,
+      "matched": {
+        "point_absrel": 0.1969424933195114,
+        "point_inlier25": 0.8136461973190308,
+        "absrel": 0.12731608748435974,
+        "delta1": 0.8347090482711792,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9304114580154419,
+        "translation_deg": 16.65001106262207,
+        "aligned_scale": 8.124204635620117
+      },
+      "zero": {
+        "point_absrel": 0.41258129477500916,
+        "point_inlier25": 0.40260809659957886,
+        "absrel": 0.3780544102191925,
+        "delta1": 0.42871299386024475,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.326333999633789
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 2,
+      "matched": {
+        "point_absrel": 0.2226407825946808,
+        "point_inlier25": 0.6701279282569885,
+        "absrel": 0.16220468282699585,
+        "delta1": 0.7415714263916016,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6543177962303162,
+        "translation_deg": 14.667235374450684,
+        "aligned_scale": 7.8902177810668945
+      },
+      "zero": {
+        "point_absrel": 0.5660857558250427,
+        "point_inlier25": 0.2847801744937897,
+        "absrel": 0.5449632406234741,
+        "delta1": 0.28400859236717224,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 16.02099609375
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 42,
+      "matched": {
+        "point_absrel": 0.23638096451759338,
+        "point_inlier25": 0.6091367602348328,
+        "absrel": 0.19580954313278198,
+        "delta1": 0.6376115679740906,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7110690474510193,
+        "translation_deg": 13.811271667480469,
+        "aligned_scale": 8.739242553710938
+      },
+      "zero": {
+        "point_absrel": 0.45988696813583374,
+        "point_inlier25": 0.31590691208839417,
+        "absrel": 0.44869035482406616,
+        "delta1": 0.31085309386253357,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.0635986328125
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 82,
+      "matched": {
+        "point_absrel": 0.2385493665933609,
+        "point_inlier25": 0.6900511384010315,
+        "absrel": 0.19581976532936096,
+        "delta1": 0.6848040819168091,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0799216032028198,
+        "translation_deg": 9.138650894165039,
+        "aligned_scale": 7.695666313171387
+      },
+      "zero": {
+        "point_absrel": 0.4051523804664612,
+        "point_inlier25": 0.33709898591041565,
+        "absrel": 0.3924810290336609,
+        "delta1": 0.32886430621147156,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.272906303405762
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 124,
+      "matched": {
+        "point_absrel": 0.26375120878219604,
+        "point_inlier25": 0.687531590461731,
+        "absrel": 0.22433337569236755,
+        "delta1": 0.7325944900512695,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8842595219612122,
+        "translation_deg": 6.5574469566345215,
+        "aligned_scale": 8.936579704284668
+      },
+      "zero": {
+        "point_absrel": 0.3471088111400604,
+        "point_inlier25": 0.4470069706439972,
+        "absrel": 0.31996411085128784,
+        "delta1": 0.44271427392959595,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.684340476989746
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 164,
+      "matched": {
+        "point_absrel": 0.24523994326591492,
+        "point_inlier25": 0.5934582352638245,
+        "absrel": 0.19828222692012787,
+        "delta1": 0.6232509016990662,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.2101457118988037,
+        "translation_deg": 12.37234115600586,
+        "aligned_scale": 7.817175388336182
+      },
+      "zero": {
+        "point_absrel": 0.3316354751586914,
+        "point_inlier25": 0.5057101845741272,
+        "absrel": 0.29137665033340454,
+        "delta1": 0.5247366428375244,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.73021411895752
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 204,
+      "matched": {
+        "point_absrel": 0.27092480659484863,
+        "point_inlier25": 0.6863065361976624,
+        "absrel": 0.22867920994758606,
+        "delta1": 0.6879735589027405,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6999750733375549,
+        "translation_deg": 9.559706687927246,
+        "aligned_scale": 11.567666053771973
+      },
+      "zero": {
+        "point_absrel": 0.6640269160270691,
+        "point_inlier25": 0.605495035648346,
+        "absrel": 0.6461132764816284,
+        "delta1": 0.5687938332557678,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 23.932971954345703
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 246,
+      "matched": {
+        "point_absrel": 0.26053905487060547,
+        "point_inlier25": 0.4854072630405426,
+        "absrel": 0.22404848039150238,
+        "delta1": 0.41372817754745483,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7268545031547546,
+        "translation_deg": 3.8553409576416016,
+        "aligned_scale": 8.880736351013184
+      },
+      "zero": {
+        "point_absrel": 0.2537025809288025,
+        "point_inlier25": 0.7986242771148682,
+        "absrel": 0.20084652304649353,
+        "delta1": 0.8063862323760986,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 18.609121322631836
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 286,
+      "matched": {
+        "point_absrel": 0.190047949552536,
+        "point_inlier25": 0.855679452419281,
+        "absrel": 0.13843397796154022,
+        "delta1": 0.87944096326828,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6743467450141907,
+        "translation_deg": 14.177764892578125,
+        "aligned_scale": 8.70921802520752
+      },
+      "zero": {
+        "point_absrel": 0.4816148281097412,
+        "point_inlier25": 0.4122267961502075,
+        "absrel": 0.47469064593315125,
+        "delta1": 0.39503687620162964,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 18.274250030517578
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 326,
+      "matched": {
+        "point_absrel": 0.19708724319934845,
+        "point_inlier25": 0.7779675722122192,
+        "absrel": 0.12234602868556976,
+        "delta1": 0.8284934163093567,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.77833491563797,
+        "translation_deg": 2.2877297401428223,
+        "aligned_scale": 8.93637752532959
+      },
+      "zero": {
+        "point_absrel": 0.47421982884407043,
+        "point_inlier25": 0.34988531470298767,
+        "absrel": 0.44901934266090393,
+        "delta1": 0.3753499388694763,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.984848022460938
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 368,
+      "matched": {
+        "point_absrel": 0.1789601743221283,
+        "point_inlier25": 0.7817981243133545,
+        "absrel": 0.10546606034040451,
+        "delta1": 0.8831799030303955,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8127697706222534,
+        "translation_deg": 4.962424278259277,
+        "aligned_scale": 9.458786010742188
+      },
+      "zero": {
+        "point_absrel": 0.45216435194015503,
+        "point_inlier25": 0.2627064883708954,
+        "absrel": 0.43244481086730957,
+        "delta1": 0.3098315894603729,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.393026351928711
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 408,
+      "matched": {
+        "point_absrel": 0.20037169754505157,
+        "point_inlier25": 0.653505265712738,
+        "absrel": 0.13985519111156464,
+        "delta1": 0.8719264268875122,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6807004809379578,
+        "translation_deg": 7.612416744232178,
+        "aligned_scale": 9.117764472961426
+      },
+      "zero": {
+        "point_absrel": 0.5263460278511047,
+        "point_inlier25": 0.21966691315174103,
+        "absrel": 0.5111691951751709,
+        "delta1": 0.2594601511955261,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.424309730529785
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 448,
+      "matched": {
+        "point_absrel": 0.19806499779224396,
+        "point_inlier25": 0.7915043234825134,
+        "absrel": 0.13608022034168243,
+        "delta1": 0.8107228875160217,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0770186185836792,
+        "translation_deg": 10.995977401733398,
+        "aligned_scale": 8.047943115234375
+      },
+      "zero": {
+        "point_absrel": 0.5404674410820007,
+        "point_inlier25": 0.19986899197101593,
+        "absrel": 0.5346165895462036,
+        "delta1": 0.19662703573703766,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.751346588134766
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 490,
+      "matched": {
+        "point_absrel": 0.25202861428260803,
+        "point_inlier25": 0.6081290245056152,
+        "absrel": 0.20472702383995056,
+        "delta1": 0.6634951829910278,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8118062019348145,
+        "translation_deg": 20.937763214111328,
+        "aligned_scale": 6.811965465545654
+      },
+      "zero": {
+        "point_absrel": 0.4665171802043915,
+        "point_inlier25": 0.2597295045852661,
+        "absrel": 0.4581257998943329,
+        "delta1": 0.2607773244380951,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.10433578491211
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 530,
+      "matched": {
+        "point_absrel": 0.37395796179771423,
+        "point_inlier25": 0.2941140830516815,
+        "absrel": 0.34521251916885376,
+        "delta1": 0.34038180112838745,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8402332067489624,
+        "translation_deg": 18.520620346069336,
+        "aligned_scale": 9.3477144241333
+      },
+      "zero": {
+        "point_absrel": 0.7085120677947998,
+        "point_inlier25": 0.09877724945545197,
+        "absrel": 0.7123233079910278,
+        "delta1": 0.12408158928155899,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 16.462928771972656
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 570,
+      "matched": {
+        "point_absrel": 0.30846548080444336,
+        "point_inlier25": 0.4943287968635559,
+        "absrel": 0.2712976336479187,
+        "delta1": 0.5429835319519043,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.012590765953064,
+        "translation_deg": 25.287540435791016,
+        "aligned_scale": 9.344552993774414
+      },
+      "zero": {
+        "point_absrel": 0.7385333180427551,
+        "point_inlier25": 0.14390435814857483,
+        "absrel": 0.7343505024909973,
+        "delta1": 0.21770095825195312,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 17.670608520507812
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 612,
+      "matched": {
+        "point_absrel": 0.2825274169445038,
+        "point_inlier25": 0.3685206472873688,
+        "absrel": 0.24301494657993317,
+        "delta1": 0.43295976519584656,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.2026844024658203,
+        "translation_deg": 16.817148208618164,
+        "aligned_scale": 8.667686462402344
+      },
+      "zero": {
+        "point_absrel": 0.6355001926422119,
+        "point_inlier25": 0.1736452877521515,
+        "absrel": 0.6246259808540344,
+        "delta1": 0.22842222452163696,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 17.03289031982422
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 652,
+      "matched": {
+        "point_absrel": 0.2379857450723648,
+        "point_inlier25": 0.6306344270706177,
+        "absrel": 0.20176821947097778,
+        "delta1": 0.6522893905639648,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7873334288597107,
+        "translation_deg": 14.780292510986328,
+        "aligned_scale": 8.880154609680176
+      },
+      "zero": {
+        "point_absrel": 0.5823930501937866,
+        "point_inlier25": 0.2497716099023819,
+        "absrel": 0.5784232020378113,
+        "delta1": 0.27414411306381226,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.858083724975586
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 692,
+      "matched": {
+        "point_absrel": 0.23721878230571747,
+        "point_inlier25": 0.6801544427871704,
+        "absrel": 0.18006661534309387,
+        "delta1": 0.7354133129119873,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6268256306648254,
+        "translation_deg": 1.351905107498169,
+        "aligned_scale": 8.872759819030762
+      },
+      "zero": {
+        "point_absrel": 0.43928030133247375,
+        "point_inlier25": 0.3709055781364441,
+        "absrel": 0.4155382513999939,
+        "delta1": 0.3719092905521393,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.302563667297363
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 734,
+      "matched": {
+        "point_absrel": 0.25958216190338135,
+        "point_inlier25": 0.7466819882392883,
+        "absrel": 0.1949019730091095,
+        "delta1": 0.7604868412017822,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.5120549201965332,
+        "translation_deg": 11.585020065307617,
+        "aligned_scale": 8.57276725769043
+      },
+      "zero": {
+        "point_absrel": 0.5896700024604797,
+        "point_inlier25": 0.14086167514324188,
+        "absrel": 0.5895093679428101,
+        "delta1": 0.15019041299819946,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.058171272277832
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 774,
+      "matched": {
+        "point_absrel": 0.22922958433628082,
+        "point_inlier25": 0.7027492523193359,
+        "absrel": 0.15243977308273315,
+        "delta1": 0.7082558870315552,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7396636605262756,
+        "translation_deg": 4.014540672302246,
+        "aligned_scale": 9.911066055297852
+      },
+      "zero": {
+        "point_absrel": 0.4553696811199188,
+        "point_inlier25": 0.2723429501056671,
+        "absrel": 0.4235784411430359,
+        "delta1": 0.3581872284412384,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.841801643371582
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 814,
+      "matched": {
+        "point_absrel": 0.2377210110425949,
+        "point_inlier25": 0.6311065554618835,
+        "absrel": 0.17274782061576843,
+        "delta1": 0.711443305015564,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7375442385673523,
+        "translation_deg": 30.646976470947266,
+        "aligned_scale": 10.116177558898926
+      },
+      "zero": {
+        "point_absrel": 0.45169979333877563,
+        "point_inlier25": 0.27880027890205383,
+        "absrel": 0.4200080633163452,
+        "delta1": 0.34553951025009155,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 17.303020477294922
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 856,
+      "matched": {
+        "point_absrel": 0.24505484104156494,
+        "point_inlier25": 0.6848002672195435,
+        "absrel": 0.17127573490142822,
+        "delta1": 0.6892783045768738,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6391903758049011,
+        "translation_deg": 6.045199871063232,
+        "aligned_scale": 9.571022987365723
+      },
+      "zero": {
+        "point_absrel": 0.42578125,
+        "point_inlier25": 0.3906044363975525,
+        "absrel": 0.3878268301486969,
+        "delta1": 0.4246080815792084,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 16.786291122436523
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 896,
+      "matched": {
+        "point_absrel": 0.28867048025131226,
+        "point_inlier25": 0.44080960750579834,
+        "absrel": 0.24138469994068146,
+        "delta1": 0.4906120002269745,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.642244279384613,
+        "translation_deg": 39.74250030517578,
+        "aligned_scale": 9.863568305969238
+      },
+      "zero": {
+        "point_absrel": 0.4333984851837158,
+        "point_inlier25": 0.3837110102176666,
+        "absrel": 0.38838106393814087,
+        "delta1": 0.4410792887210846,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.592378616333008
+      }
+    },
+    {
+      "sequence": "zurich_city_00_a",
+      "frame": 938,
+      "matched": {
+        "point_absrel": 0.23346857726573944,
+        "point_inlier25": 0.8013337850570679,
+        "absrel": 0.14758235216140747,
+        "delta1": 0.8150280117988586,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7022078633308411,
+        "translation_deg": 6.247800827026367,
+        "aligned_scale": 9.799717903137207
+      },
+      "zero": {
+        "point_absrel": 0.4164833724498749,
+        "point_inlier25": 0.32470524311065674,
+        "absrel": 0.38719579577445984,
+        "delta1": 0.3611883819103241,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.093518257141113
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 2,
+      "matched": {
+        "point_absrel": 0.24412226676940918,
+        "point_inlier25": 0.6960662603378296,
+        "absrel": 0.1830577701330185,
+        "delta1": 0.7115700840950012,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8122881054878235,
+        "translation_deg": 6.103741645812988,
+        "aligned_scale": 6.561712265014648
+      },
+      "zero": {
+        "point_absrel": 0.35235461592674255,
+        "point_inlier25": 0.3432520925998688,
+        "absrel": 0.32376694679260254,
+        "delta1": 0.3949218690395355,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.986762046813965
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 12,
+      "matched": {
+        "point_absrel": 0.25397762656211853,
+        "point_inlier25": 0.6156059503555298,
+        "absrel": 0.20266695320606232,
+        "delta1": 0.626524031162262,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6318005323410034,
+        "translation_deg": 9.160943984985352,
+        "aligned_scale": 6.608771324157715
+      },
+      "zero": {
+        "point_absrel": 0.39616838097572327,
+        "point_inlier25": 0.36698585748672485,
+        "absrel": 0.3756321370601654,
+        "delta1": 0.381222665309906,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.136178970336914
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 22,
+      "matched": {
+        "point_absrel": 0.25486141443252563,
+        "point_inlier25": 0.5800495147705078,
+        "absrel": 0.20794475078582764,
+        "delta1": 0.6007482409477234,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8098755478858948,
+        "translation_deg": 14.562597274780273,
+        "aligned_scale": 6.571682929992676
+      },
+      "zero": {
+        "point_absrel": 0.4333924353122711,
+        "point_inlier25": 0.3029809594154358,
+        "absrel": 0.4158596992492676,
+        "delta1": 0.33434948325157166,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.191868782043457
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 32,
+      "matched": {
+        "point_absrel": 0.241769477725029,
+        "point_inlier25": 0.6558057069778442,
+        "absrel": 0.19609396159648895,
+        "delta1": 0.6952556371688843,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8242449164390564,
+        "translation_deg": 13.955562591552734,
+        "aligned_scale": 6.864270210266113
+      },
+      "zero": {
+        "point_absrel": 0.5436142086982727,
+        "point_inlier25": 0.15467014908790588,
+        "absrel": 0.5404693484306335,
+        "delta1": 0.16254760324954987,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.81328296661377
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 42,
+      "matched": {
+        "point_absrel": 0.22209782898426056,
+        "point_inlier25": 0.7713688015937805,
+        "absrel": 0.16131967306137085,
+        "delta1": 0.777946412563324,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.666172444820404,
+        "translation_deg": 25.480924606323242,
+        "aligned_scale": 6.5880889892578125
+      },
+      "zero": {
+        "point_absrel": 0.7007170915603638,
+        "point_inlier25": 0.1478690654039383,
+        "absrel": 0.7105605006217957,
+        "delta1": 0.14227470755577087,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 16.705366134643555
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 52,
+      "matched": {
+        "point_absrel": 0.2304745614528656,
+        "point_inlier25": 0.6522786021232605,
+        "absrel": 0.1834651231765747,
+        "delta1": 0.6789327263832092,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9164255857467651,
+        "translation_deg": 3.3230156898498535,
+        "aligned_scale": 7.3724894523620605
+      },
+      "zero": {
+        "point_absrel": 0.6244994401931763,
+        "point_inlier25": 0.2589435279369354,
+        "absrel": 0.6257535219192505,
+        "delta1": 0.27239513397216797,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 16.752836227416992
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 62,
+      "matched": {
+        "point_absrel": 0.1993434578180313,
+        "point_inlier25": 0.7917097806930542,
+        "absrel": 0.1200958713889122,
+        "delta1": 0.8596587181091309,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9691442847251892,
+        "translation_deg": 8.020078659057617,
+        "aligned_scale": 7.979061603546143
+      },
+      "zero": {
+        "point_absrel": 0.48539644479751587,
+        "point_inlier25": 0.3313923180103302,
+        "absrel": 0.4627956748008728,
+        "delta1": 0.32721272110939026,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 15.894414901733398
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 72,
+      "matched": {
+        "point_absrel": 0.1999327391386032,
+        "point_inlier25": 0.7112073302268982,
+        "absrel": 0.12973502278327942,
+        "delta1": 0.8009212613105774,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8559229373931885,
+        "translation_deg": 10.180200576782227,
+        "aligned_scale": 7.722306251525879
+      },
+      "zero": {
+        "point_absrel": 0.42397308349609375,
+        "point_inlier25": 0.3656300902366638,
+        "absrel": 0.398436576128006,
+        "delta1": 0.3589875400066376,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 14.554916381835938
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 84,
+      "matched": {
+        "point_absrel": 0.2126135379076004,
+        "point_inlier25": 0.6879405975341797,
+        "absrel": 0.13854803144931793,
+        "delta1": 0.7613796591758728,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7370134592056274,
+        "translation_deg": 4.374704837799072,
+        "aligned_scale": 7.600416660308838
+      },
+      "zero": {
+        "point_absrel": 0.3985424041748047,
+        "point_inlier25": 0.35641995072364807,
+        "absrel": 0.3722250163555145,
+        "delta1": 0.3933660686016083,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 13.228742599487305
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 94,
+      "matched": {
+        "point_absrel": 0.22622942924499512,
+        "point_inlier25": 0.6918351650238037,
+        "absrel": 0.1475592702627182,
+        "delta1": 0.7375602722167969,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9594038128852844,
+        "translation_deg": 25.49905776977539,
+        "aligned_scale": 6.8271307945251465
+      },
+      "zero": {
+        "point_absrel": 0.38882875442504883,
+        "point_inlier25": 0.4094105660915375,
+        "absrel": 0.3526352047920227,
+        "delta1": 0.460001677274704,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 12.511186599731445
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 104,
+      "matched": {
+        "point_absrel": 0.19515453279018402,
+        "point_inlier25": 0.8381491899490356,
+        "absrel": 0.11228398233652115,
+        "delta1": 0.8466328978538513,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6549155712127686,
+        "translation_deg": 18.8391056060791,
+        "aligned_scale": 6.173512935638428
+      },
+      "zero": {
+        "point_absrel": 0.36668476462364197,
+        "point_inlier25": 0.418658971786499,
+        "absrel": 0.3274618983268738,
+        "delta1": 0.4665862023830414,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.053788185119629
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 114,
+      "matched": {
+        "point_absrel": 0.1984831690788269,
+        "point_inlier25": 0.7786367535591125,
+        "absrel": 0.11482438445091248,
+        "delta1": 0.8546189665794373,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.4252062737941742,
+        "translation_deg": 10.186131477355957,
+        "aligned_scale": 6.207287311553955
+      },
+      "zero": {
+        "point_absrel": 0.34972286224365234,
+        "point_inlier25": 0.38191887736320496,
+        "absrel": 0.3118266761302948,
+        "delta1": 0.45250600576400757,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.922403335571289
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 124,
+      "matched": {
+        "point_absrel": 0.2198072373867035,
+        "point_inlier25": 0.7376567125320435,
+        "absrel": 0.15491609275341034,
+        "delta1": 0.7631714344024658,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 1.0347647666931152,
+        "translation_deg": 10.2969970703125,
+        "aligned_scale": 5.86568021774292
+      },
+      "zero": {
+        "point_absrel": 0.38850918412208557,
+        "point_inlier25": 0.2719380855560303,
+        "absrel": 0.3705269396305084,
+        "delta1": 0.28084754943847656,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.953164100646973
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 134,
+      "matched": {
+        "point_absrel": 0.20314960181713104,
+        "point_inlier25": 0.8173964619636536,
+        "absrel": 0.11333097517490387,
+        "delta1": 0.8652721047401428,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.5424855947494507,
+        "translation_deg": 7.055690288543701,
+        "aligned_scale": 5.65651273727417
+      },
+      "zero": {
+        "point_absrel": 0.3719874918460846,
+        "point_inlier25": 0.4174022376537323,
+        "absrel": 0.3354662358760834,
+        "delta1": 0.47159820795059204,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.524202346801758
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 144,
+      "matched": {
+        "point_absrel": 0.20336444675922394,
+        "point_inlier25": 0.796105146408081,
+        "absrel": 0.10966219007968903,
+        "delta1": 0.8347536325454712,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.9134312868118286,
+        "translation_deg": 4.925889492034912,
+        "aligned_scale": 5.805192470550537
+      },
+      "zero": {
+        "point_absrel": 0.33620941638946533,
+        "point_inlier25": 0.43917083740234375,
+        "absrel": 0.29140496253967285,
+        "delta1": 0.5131853222846985,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.74354076385498
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 154,
+      "matched": {
+        "point_absrel": 0.21061770617961884,
+        "point_inlier25": 0.7718555331230164,
+        "absrel": 0.13937732577323914,
+        "delta1": 0.8057102560997009,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.5595313310623169,
+        "translation_deg": 19.174264907836914,
+        "aligned_scale": 5.5735650062561035
+      },
+      "zero": {
+        "point_absrel": 0.3284074664115906,
+        "point_inlier25": 0.41909149289131165,
+        "absrel": 0.2942541837692261,
+        "delta1": 0.4551960527896881,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 8.970285415649414
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 166,
+      "matched": {
+        "point_absrel": 0.2315618395805359,
+        "point_inlier25": 0.710715115070343,
+        "absrel": 0.17678500711917877,
+        "delta1": 0.7459969520568848,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.8336869478225708,
+        "translation_deg": 13.93407917022705,
+        "aligned_scale": 5.213218688964844
+      },
+      "zero": {
+        "point_absrel": 0.37435781955718994,
+        "point_inlier25": 0.34639936685562134,
+        "absrel": 0.35224398970603943,
+        "delta1": 0.3682798743247986,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.16544246673584
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 176,
+      "matched": {
+        "point_absrel": 0.19714123010635376,
+        "point_inlier25": 0.7852678894996643,
+        "absrel": 0.13365140557289124,
+        "delta1": 0.806820273399353,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6110178828239441,
+        "translation_deg": 19.672422409057617,
+        "aligned_scale": 5.527805805206299
+      },
+      "zero": {
+        "point_absrel": 0.3848026692867279,
+        "point_inlier25": 0.3174746334552765,
+        "absrel": 0.36797624826431274,
+        "delta1": 0.33065706491470337,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 9.629340171813965
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 186,
+      "matched": {
+        "point_absrel": 0.2399444580078125,
+        "point_inlier25": 0.7338799238204956,
+        "absrel": 0.18140923976898193,
+        "delta1": 0.7594515085220337,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6632286310195923,
+        "translation_deg": 11.249046325683594,
+        "aligned_scale": 6.50358247756958
+      },
+      "zero": {
+        "point_absrel": 0.3979618549346924,
+        "point_inlier25": 0.22468531131744385,
+        "absrel": 0.38114458322525024,
+        "delta1": 0.24699221551418304,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.313898086547852
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 196,
+      "matched": {
+        "point_absrel": 0.2241787314414978,
+        "point_inlier25": 0.7477505207061768,
+        "absrel": 0.15961496531963348,
+        "delta1": 0.7961189150810242,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7038778066635132,
+        "translation_deg": 5.329728603363037,
+        "aligned_scale": 6.938421726226807
+      },
+      "zero": {
+        "point_absrel": 0.39556795358657837,
+        "point_inlier25": 0.44548308849334717,
+        "absrel": 0.3572324514389038,
+        "delta1": 0.4742961525917053,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 11.270936012268066
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 206,
+      "matched": {
+        "point_absrel": 0.19881810247898102,
+        "point_inlier25": 0.8044859766960144,
+        "absrel": 0.12976029515266418,
+        "delta1": 0.8247856497764587,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7605330944061279,
+        "translation_deg": 12.887406349182129,
+        "aligned_scale": 7.070918083190918
+      },
+      "zero": {
+        "point_absrel": 0.32753321528434753,
+        "point_inlier25": 0.5073405504226685,
+        "absrel": 0.2735956907272339,
+        "delta1": 0.5721449851989746,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 10.0581693649292
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 216,
+      "matched": {
+        "point_absrel": 0.2135598361492157,
+        "point_inlier25": 0.7694239020347595,
+        "absrel": 0.145023375749588,
+        "delta1": 0.8065993189811707,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.5928131341934204,
+        "translation_deg": 11.392226219177246,
+        "aligned_scale": 6.89131498336792
+      },
+      "zero": {
+        "point_absrel": 0.31319183111190796,
+        "point_inlier25": 0.494874507188797,
+        "absrel": 0.2688252627849579,
+        "delta1": 0.5436604619026184,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 8.597224235534668
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 226,
+      "matched": {
+        "point_absrel": 0.2245849370956421,
+        "point_inlier25": 0.7655968070030212,
+        "absrel": 0.1553521454334259,
+        "delta1": 0.7981595993041992,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.7641265392303467,
+        "translation_deg": 22.50088882446289,
+        "aligned_scale": 5.7033915519714355
+      },
+      "zero": {
+        "point_absrel": 0.34113365411758423,
+        "point_inlier25": 0.3371911942958832,
+        "absrel": 0.3127111792564392,
+        "delta1": 0.37011024355888367,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 7.351222515106201
+      }
+    },
+    {
+      "sequence": "thun_00_a",
+      "frame": 238,
+      "matched": {
+        "point_absrel": 0.2646985948085785,
+        "point_inlier25": 0.627912163734436,
+        "absrel": 0.19926075637340546,
+        "delta1": 0.676151692867279,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.6458899974822998,
+        "translation_deg": 18.020097732543945,
+        "aligned_scale": 5.453680038452148
+      },
+      "zero": {
+        "point_absrel": 0.5135549306869507,
+        "point_inlier25": 0.2628822326660156,
+        "absrel": 0.49681973457336426,
+        "delta1": 0.27383631467819214,
+        "valid_prediction_fraction": 1.0,
+        "rotation_deg": 0.2769530415534973,
+        "translation_deg": 113.66374206542969,
+        "aligned_scale": 8.652100563049316
+      }
+    }
+  ],
+  "protocol": "20 ms rectified stereo, sparse camera depth, one median scale per pair"
+}

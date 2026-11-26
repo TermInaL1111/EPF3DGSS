@@ -1,0 +1,46 @@
+{
+  "all": {
+    "windows": 72,
+    "rotation_deg": {
+      "matched": 1.0985023124764364,
+      "zero": 0.7344501651823521,
+      "matched_minus_zero": 0.36405214729408425
+    },
+    "source_baseline_m": 0.05453201800118121,
+    "query_baseline_m": 0.027433790078425266,
+    "identity_rotation_deg": 0.6664424920972023
+  },
+  "indoor_flying1": {
+    "windows": 24,
+    "rotation_deg": {
+      "matched": 1.0913035993774731,
+      "zero": 0.6575758444766203,
+      "matched_minus_zero": 0.43372775490085286
+    },
+    "source_baseline_m": 0.04570812688325532,
+    "query_baseline_m": 0.02177549826228642,
+    "identity_rotation_deg": 0.5600898433476686
+  },
+  "indoor_flying2": {
+    "windows": 24,
+    "rotation_deg": {
+      "matched": 1.1191083428760369,
+      "zero": 0.8312010255952677,
+      "matched_minus_zero": 0.28790731728076935
+    },
+    "source_baseline_m": 0.0489910802363435,
+    "query_baseline_m": 0.02562601030278226,
+    "identity_rotation_deg": 0.777913528184096
+  },
+  "indoor_flying3": {
+    "windows": 24,
+    "rotation_deg": {
+      "matched": 1.0850949951757987,
+      "zero": 0.7145736254751682,
+      "matched_minus_zero": 0.3705213697006305
+    },
+    "source_baseline_m": 0.06889684688394482,
+    "query_baseline_m": 0.03489986167020712,
+    "identity_rotation_deg": 0.6613241047598422
+  }
+}

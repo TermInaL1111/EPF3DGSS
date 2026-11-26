@@ -1,0 +1,74 @@
+{
+  "all": {
+    "windows": 72,
+    "psnr": {
+      "matched": 13.50107330083847,
+      "zero": 13.170306854777866,
+      "matched_minus_zero": 0.3307664460606045
+    },
+    "ssim": {
+      "matched": 0.21288960062277815,
+      "zero": 0.11892473229414059,
+      "matched_minus_zero": 0.09396486832863754
+    },
+    "rotation_deg": {
+      "matched": 1.8448069786859884,
+      "zero": 1.2747621436913807,
+      "matched_minus_zero": 0.5700448349946075
+    }
+  },
+  "indoor_flying1": {
+    "windows": 24,
+    "psnr": {
+      "matched": 13.514891425768534,
+      "zero": 13.284827709197998,
+      "matched_minus_zero": 0.2300637165705363
+    },
+    "ssim": {
+      "matched": 0.18100265033232668,
+      "zero": 0.11739441736911733,
+      "matched_minus_zero": 0.06360823296320935
+    },
+    "rotation_deg": {
+      "matched": 1.7119289450347424,
+      "zero": 1.2879008650779724,
+      "matched_minus_zero": 0.42402807995676994
+    }
+  },
+  "indoor_flying2": {
+    "windows": 24,
+    "psnr": {
+      "matched": 14.2816055615743,
+      "zero": 13.499098261197409,
+      "matched_minus_zero": 0.7825073003768921
+    },
+    "ssim": {
+      "matched": 0.26662388863041997,
+      "zero": 0.12623720383271575,
+      "matched_minus_zero": 0.14038668479770422
+    },
+    "rotation_deg": {
+      "matched": 1.5083405983944733,
+      "zero": 1.313372400899728,
+      "matched_minus_zero": 0.19496819749474525
+    }
+  },
+  "indoor_flying3": {
+    "windows": 24,
+    "psnr": {
+      "matched": 12.706722915172577,
+      "zero": 12.726994593938192,
+      "matched_minus_zero": -0.020271678765614826
+    },
+    "ssim": {
+      "matched": 0.19104226290558776,
+      "zero": 0.11314257568058868,
+      "matched_minus_zero": 0.07789968722499907
+    },
+    "rotation_deg": {
+      "matched": 2.3141513926287494,
+      "zero": 1.223013165096442,
+      "matched_minus_zero": 1.0911382275323074
+    }
+  }
+}

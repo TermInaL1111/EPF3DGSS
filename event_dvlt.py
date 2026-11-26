@@ -16,6 +16,23 @@ def load_rgb(assets):
     return net.cuda().eval().requires_grad_(False)
 
 
+def load_scene_weights(model, checkpoint):
+    """Load a complete event-only Gaussian scene model and return (steps, use_f3)."""
+    expected = {name for name,p in model.named_parameters() if p.requires_grad}
+    steps, use_f3 = 12, True
+    if isinstance(checkpoint.get('geometry'), str):
+        if checkpoint['geometry'] != 'predicted':
+            raise ValueError('Event-only reconstruction requires predicted geometry')
+        steps, use_f3 = 16, checkpoint['f3']
+        checkpoint = checkpoint['model']
+        if not use_f3:
+            expected = {key for key in expected if not key.startswith('event_adapter.')}
+    if set(checkpoint) != expected:
+        raise ValueError('Checkpoint must contain the complete geometry adapters and Gaussian head')
+    model.load_state_dict(checkpoint,strict=False)
+    return steps,use_f3
+
+
 def voxelize(raw):
     x,y,t,p = raw
     valid = (x>=0)&(x<640)&(y>=0)&(y<480)
@@ -82,7 +99,7 @@ class EventDVLT(nn.Module):
         self.log_metric_scale = nn.Parameter(torch.tensor(-.7))
         self.backbone.eval()
 
-    def geometry(self,voxel,field,steps=12,mask_fraction=0.):
+    def geometry(self,voxel,field,steps=12,mask_fraction=0.,input_mask=None):
         b,s = voxel.shape[:2]
         h,w = 168,224
         v = voxel.flatten(0,1)
@@ -91,7 +108,7 @@ class EventDVLT(nn.Module):
         channels = channels/channels.amax((-1,-2),keepdim=True).clamp_min(1e-7)
         inputs = F.interpolate(channels,(h,w),mode="area")*self.channel_scale+self.channel_bias
         inputs = inputs + F.interpolate(self.event_adapter(field.flatten(0,1)),(h,w),mode="bilinear",align_corners=False)
-        patch = self.backbone.patch_embed_encoder(inputs,is_training=True)["x_norm_patchtokens"]
+        patch = self.backbone.patch_embed_encoder(inputs,masks=input_mask,is_training=True)["x_norm_patchtokens"]
         density = F.adaptive_avg_pool2d(channels[:,1:2],(h//14,w//14)).flatten(2).transpose(1,2)
         density = density/density.amax(1,keepdim=True).clamp_min(1e-6)
         if mask_fraction:
@@ -114,16 +131,22 @@ class EventDVLT(nn.Module):
                              density.reshape(b,-1,1),spatial.reshape(b,-1,1)).reshape(b*s,-1,768)
         return x,pos,hidden
 
-    def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False):
+    def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None):
         b,s = voxel.shape[:2]
         tokens,pos,hidden = self.geometry(voxel,field,steps,mask_fraction)
         n = self.backbone
-        raw = n._decode(tokens,168,224,b,s,pos)
-        # Follow the released DVLT ray fitting procedure. Its fitted poses have arbitrary scale.
-        with torch.no_grad(), torch.autocast("cuda",enabled=False):
-            rays = raw["rays"].float()
-            poses,intrinsic = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
-            relative = torch.linalg.solve(poses[:,:1],poses)
+        source_valid = None
+        raw = None
+        if calibrated_geometry is None:
+            raw = n._decode(tokens,168,224,b,s,pos)
+            # The published DVLT ray fit recovers poses up to scale.
+            with torch.no_grad(), torch.autocast("cuda",enabled=False):
+                rays = raw["rays"].float()
+                poses,intrinsic = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
+                relative = torch.linalg.solve(poses[:,:1],poses)
+        else:
+            metric_depth, intrinsic, relative = calibrated_geometry
+            source_valid = metric_depth > 0
         patch = tokens[:,n.patch_start_idx:].transpose(1,2).reshape(b*s,768,12,16)
         size = (480,640)
         def resize(x):
@@ -131,8 +154,13 @@ class EventDVLT(nn.Module):
         detail = torch.cat([resize(self.geometry_features(patch)),resize(self.field_features(field.flatten(0,1))),
                             voxel.flatten(0,1).asinh()],1)
         attrs = self.gs_head(detail).float()
-        scale = self.log_metric_scale.exp()
-        depth = resize(raw["depth"].reshape(b*s,1,168,224).float())*scale*(.25*attrs[:,:1].tanh()).exp()
+        if calibrated_geometry is None:
+            scale = self.log_metric_scale.exp()
+            depth = resize(raw["depth"].reshape(b*s,1,168,224).float())*scale
+        else:
+            scale = attrs.new_tensor(1.)
+            depth = metric_depth.reshape(b*s,1,480,640).clamp_min(1e-4)
+        depth = depth*(.25*attrs[:,:1].tanh()).exp()
         # Scale the predicted intrinsics using the pixel-center convention of the resize.
         k = intrinsic.reshape(b*s,3,3)
         y,x = torch.meshgrid(torch.arange(480,device=k.device),torch.arange(640,device=k.device),indexing="ij")
@@ -150,13 +178,17 @@ class EventDVLT(nn.Module):
                     gray=pack(attrs[:,8:9].sigmoid()),opacity=pack(attrs[:,9:10].sigmoid())[...,0].contiguous(),
                     tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
                     rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*scale)
+        if source_valid is not None:
+            result["opacity"] = result["opacity"] * source_valid.reshape(b,-1)
         if return_geometry:
             result["raw_geometry"] = raw
         return result
 
 
-def render(cloud,query):
-    k=query.new_tensor([[888.8889,0,320],[0,888.8889,240],[0,0,1]]).expand(len(query),1,3,3)
+def render(cloud,query,intrinsics=None):
+    if intrinsics is None:
+        intrinsics = query.new_tensor([[888.8889,0,320],[0,888.8889,240],[0,0,1]]).expand(len(query),3,3)
+    k = intrinsics[:,None]
     image,_,_=rasterization(cloud["centers"],cloud["quats"],cloud["scales"],cloud["opacity"],cloud["gray"],
                              torch.linalg.inv(query)[:,None],k,640,480,packed=False,eps2d=.25)
     return image[:,0,:,:,0]

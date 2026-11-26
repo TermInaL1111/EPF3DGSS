@@ -1,0 +1,17 @@
+{
+  "REALM": {
+    "path": "/data/userwj/projects/epf-deps/REALM",
+    "origin": "https://github.com/utiasSTARS/REALM.git",
+    "commit": "500317631de1fd01f31972da48c3e4f20f1e7a2b"
+  },
+  "fast-feature-fields": {
+    "path": "/data/userwj/projects/epf-deps/fast-feature-fields",
+    "origin": "https://github.com/grasp-lyrl/fast-feature-fields.git",
+    "commit": "833e2c65233f9787449ce0675ae41e3f6e9c193a"
+  },
+  "dvlt": {
+    "path": "/data/userwj/projects/epf-deps/dvlt",
+    "origin": "https://github.com/nv-tlabs/dvlt.git",
+    "commit": "d9f1c0c481eea8b6a399b507b30c9f484e99fd69"
+  }
+}

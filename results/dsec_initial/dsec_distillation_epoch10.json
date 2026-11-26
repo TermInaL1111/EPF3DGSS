@@ -1,0 +1,29 @@
+{
+  "epoch": 10,
+  "runs": {
+    "dsec_temporal_realm_f3": {
+      "f3": true,
+      "realm": true,
+      "windows": 48,
+      "matched": 0.20492681519438824,
+      "zero": 0.38719495199620724,
+      "matched_minus_zero": -0.182268136801819
+    },
+    "dsec_ablation_f3": {
+      "f3": true,
+      "realm": false,
+      "windows": 48,
+      "matched": 0.17394686148812374,
+      "zero": 0.5823240913450718,
+      "matched_minus_zero": -0.4083772298569481
+    },
+    "dsec_ablation_base": {
+      "f3": false,
+      "realm": false,
+      "windows": 48,
+      "matched": 0.1761634930347403,
+      "zero": 0.5634842539827029,
+      "matched_minus_zero": -0.3873207609479626
+    }
+  }
+}
