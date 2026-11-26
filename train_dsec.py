@@ -27,7 +27,6 @@ def main(args):
     last_epoch = args.stop_after or args.epochs
     if not 1 <= last_epoch <= args.epochs:
         raise ValueError('--stop-after must be between 1 and --epochs')
-    args.out.mkdir(parents=True, exist_ok=False)
     torch.manual_seed(args.seed)
     data = {seq: DSECTemporalPairs(args.root, seq) for seq in args.train + args.val}
     train = [(seq, pair) for seq in args.train for pair in data[seq].pairs]
@@ -52,9 +51,16 @@ def main(args):
         if args.stop_after:
             raise ValueError('--max-steps and --stop-after are mutually exclusive')
         last_epoch = math.ceil(horizon/len(train))
-    config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
+    config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()
+              if k != 'resume'}
     config.update(train_pairs=len(train), val_pairs=len(val), schedule_steps=horizon, actual_epochs=last_epoch)
-    (args.out/'config.json').write_text(json.dumps(config, indent=2)+'\n')
+    if args.resume:
+        recorded = json.loads((args.out/'config.json').read_text())
+        if any(recorded.get(k) != v for k,v in config.items() if k not in ('stop_after','actual_epochs')):
+            raise ValueError('Resume requires the same data, model and LR schedule')
+    else:
+        args.out.mkdir(parents=True, exist_ok=False)
+        (args.out/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     print(config, flush=True)
     teacher = load_rgb(args.assets)
     student = EventDVLT(args.assets).cuda().eval()
@@ -115,12 +121,48 @@ def main(args):
         (args.out/f'val_{epoch:03}.json').write_text(json.dumps(rows, indent=2, allow_nan=False)+'\n')
         print('validation', epoch, {k: sum(r[k] for r in rows)/len(rows) for k in ('matched','empty')}, flush=True)
 
-    evaluate(0)
-    step = 0
+    step, first_epoch = 0, 1
     order_rng = torch.Generator().manual_seed(args.seed) if args.max_steps else None
     k_rng = torch.Generator().manual_seed(args.seed+1) if args.max_steps else None
     view_rng = torch.Generator().manual_seed(args.seed+3)
-    for epoch in range(1, last_epoch+1):
+    resume_path = args.out/'latest.pt'
+    if args.resume:
+        saved = torch.load(resume_path,map_location='cpu',weights_only=True)
+        if 'training' not in saved:
+            raise ValueError('This checkpoint predates optimizer and RNG checkpointing')
+        if set(saved['model']) != set(adapter_names):
+            raise ValueError('Adapter set differs from checkpoint')
+        student.load_state_dict(saved['model'],strict=False)
+        state = saved['training']
+        opt.load_state_dict(state['optimizer'])
+        schedule.load_state_dict(state['schedule'])
+        torch.set_rng_state(state['cpu_rng'])
+        torch.cuda.set_rng_state(state['cuda_rng'])
+        for name,rng in [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]:
+            if rng is not None:
+                rng.set_state(state[name])
+        step, first_epoch = saved['step'], saved['epoch']+1
+        log_path = args.out/'train.jsonl'
+        retained = []
+        for line in log_path.read_text().splitlines():
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                break
+            if row['step'] <= step:
+                retained.append(line)
+        if len(retained)!=step:
+            raise ValueError('Training log does not cover the resume checkpoint')
+        temporary = log_path.with_suffix('.resume.tmp')
+        temporary.write_text('\n'.join(retained)+'\n')
+        temporary.replace(log_path)
+        if first_epoch > last_epoch:
+            if not (args.out/f'val_{saved["epoch"]:03}.json').is_file():
+                evaluate(saved['epoch'])
+            return
+    else:
+        evaluate(0)
+    for epoch in range(first_epoch, last_epoch+1):
         for index in torch.randperm(len(train),generator=order_rng).tolist():
             if step >= horizon:
                 break
@@ -146,7 +188,12 @@ def main(args):
                 print('step', step, 'epoch', epoch, 'K', steps, 'loss', float(loss.detach()), flush=True)
         params = dict(student.named_parameters())
         tmp = args.out/'latest.pt.tmp'
-        torch.save({'model': {n: params[n].detach().cpu() for n in adapter_names},
+        training = dict(optimizer=opt.state_dict(),schedule=schedule.state_dict(),
+                        cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state())
+        training.update({name:rng.get_state() for name,rng in
+                         [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]
+                         if rng is not None})
+        torch.save({'training':training,'model': {n: params[n].detach().cpu() for n in adapter_names},
                     'epoch': epoch, 'step': step, 'config': config}, tmp)
         tmp.replace(args.out/'latest.pt')
         if epoch == last_epoch or epoch % args.eval_every == 0:
@@ -164,6 +211,7 @@ if __name__ == '__main__':
     parser.add_argument('--max-steps', type=int, help='Exact step budget with an equally long cosine schedule')
     parser.add_argument('--max-views', type=int, default=2, help='Sample temporal clips up to this many views')
     parser.add_argument('--epochs', type=int, default=30)
+    parser.add_argument('--resume',action='store_true',help='Resume a saved epoch with optimizer and RNG state')
     parser.add_argument('--stop-after', type=int, help='Stop early while retaining the full cosine LR horizon')
     parser.add_argument('--seed', type=int, default=10)
     parser.add_argument('--eval-every', type=int, default=5)
