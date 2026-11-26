@@ -22,6 +22,10 @@ from event_field import EventField
 
 
 def main(args):
+    if args.cover_train and not args.max_steps:
+        raise ValueError('--cover-train requires --max-steps')
+    if args.realm_progress_epochs is not None and (not args.realm or args.realm_progress_epochs < 1):
+        raise ValueError('--realm-progress-epochs requires --realm and a positive value')
     if set(args.train) & set(args.val):
         raise ValueError('Training and validation sequences overlap')
     last_epoch = args.stop_after or args.epochs
@@ -45,6 +49,8 @@ def main(args):
     if args.steps_per_epoch:
         train = train[:args.steps_per_epoch]
     horizon = args.max_steps or args.epochs*len(train)
+    if args.cover_train:
+        horizon = max(horizon,len(train))
     if horizon < 1:
         raise ValueError('Training horizon must be positive')
     if args.max_steps is not None:
@@ -125,6 +131,17 @@ def main(args):
     order_rng = torch.Generator().manual_seed(args.seed) if args.max_steps else None
     k_rng = torch.Generator().manual_seed(args.seed+1) if args.max_steps else None
     view_rng = torch.Generator().manual_seed(args.seed+3)
+    params = dict(student.named_parameters())
+
+    def save_checkpoint(path, epoch, training=None):
+        state = {'model':{n:params[n].detach().cpu() for n in adapter_names},
+                 'epoch':epoch,'step':step,'config':config}
+        if training is not None:
+            state['training'] = training
+        tmp = path.with_suffix('.pt.tmp')
+        torch.save(state,tmp)
+        tmp.replace(path)
+
     resume_path = args.out/'latest.pt'
     if args.resume:
         saved = torch.load(resume_path,map_location='cpu',weights_only=True)
@@ -174,7 +191,10 @@ def main(args):
             steps = sample_shared_steps(teacher,k_rng)
             with torch.autocast('cuda', dtype=torch.bfloat16):
                 target = teacher_final_tokens(teacher, rgb, steps)
-            loss = compare(voxel, field, target, steps, epoch)
+            curriculum_epoch = epoch
+            if args.realm_progress_epochs:
+                curriculum_epoch = 1+(step*args.realm_progress_epochs)//horizon
+            loss = compare(voxel, field, target, steps, curriculum_epoch)
             opt.zero_grad(set_to_none=True)
             loss.backward()
             norm = torch.nn.utils.clip_grad_norm_(slow+fast, 1., error_if_nonfinite=True)
@@ -183,19 +203,17 @@ def main(args):
             step += 1
             with (args.out/'train.jsonl').open('a') as f:
                 f.write(json.dumps(dict(epoch=epoch, step=step, K=steps, loss=float(loss.detach()),
-                                        grad_norm=float(norm), sequence=seq, frames=frames), allow_nan=False)+'\n')
+                                        grad_norm=float(norm), sequence=seq, frames=frames, curriculum_epoch=curriculum_epoch), allow_nan=False)+'\n')
             if step == 1 or step % 20 == 0:
                 print('step', step, 'epoch', epoch, 'K', steps, 'loss', float(loss.detach()), flush=True)
-        params = dict(student.named_parameters())
-        tmp = args.out/'latest.pt.tmp'
+            if args.snapshot_every and step % args.snapshot_every == 0:
+                save_checkpoint(args.out/f'step_{step:06}.pt',epoch)
         training = dict(optimizer=opt.state_dict(),schedule=schedule.state_dict(),
                         cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state())
         training.update({name:rng.get_state() for name,rng in
                          [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]
                          if rng is not None})
-        torch.save({'training':training,'model': {n: params[n].detach().cpu() for n in adapter_names},
-                    'epoch': epoch, 'step': step, 'config': config}, tmp)
-        tmp.replace(args.out/'latest.pt')
+        save_checkpoint(resume_path,epoch,training)
         if epoch == last_epoch or epoch % args.eval_every == 0:
             evaluate(epoch)
 
@@ -209,6 +227,9 @@ if __name__ == '__main__':
     parser.add_argument('--f3', type=Path)
     parser.add_argument('--realm', action='store_true')
     parser.add_argument('--max-steps', type=int, help='Exact step budget with an equally long cosine schedule')
+    parser.add_argument('--cover-train',action='store_true',help='Raise the step budget if needed to visit every clip start')
+    parser.add_argument('--realm-progress-epochs',type=int,help='Map REALM curriculum epochs onto optimizer progress')
+    parser.add_argument('--snapshot-every',type=int,default=0,help='Save intermediate inference weights every N steps')
     parser.add_argument('--max-views', type=int, default=2, help='Sample temporal clips up to this many views')
     parser.add_argument('--epochs', type=int, default=30)
     parser.add_argument('--resume',action='store_true',help='Resume a saved epoch with optimizer and RNG state')

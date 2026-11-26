@@ -35,14 +35,20 @@ def training_schedule(run):
     with path.open() as stream:
         for line in stream:
             row = json.loads(line)
-            yield row['step'],row['epoch'],row['sequence'],tuple(row['frames']),row['K']
+            yield row['step'],row['epoch'],row['sequence'],tuple(row['frames']),row['K'],row.get('curriculum_epoch')
 
 
-def verify_schedule(paths, steps):
+def verify_schedule(paths, steps, train_pairs=None):
     step = 0
+    starts = set()
     for step,(a,b) in enumerate(zip(*(training_schedule(p) for p in paths),strict=True),1):
         if a != b or a[0] != step:
             raise ValueError(f'Training schedule differs or has a gap at step {step}')
+        if a[1] == 1:
+            _,_,seq,frames,_,_ = a
+            starts.add((seq,frames[0]))
+    if train_pairs is not None and len(starts) != train_pairs:
+        raise ValueError(f'First pass covered {len(starts)} of {train_pairs} clip starts')
     if step != steps:
         raise ValueError(f'Expected {steps} training steps, found {step}')
 
@@ -59,9 +65,11 @@ def compare(f3, no_f3):
         raise ValueError('Expected the paired 20,000-step F3 ablation')
     if gaussians[0]['steps'] != 5000 or gaussians[0]['geometry'] != 'predicted':
         raise ValueError('Expected a 5,000-step predicted Gaussian head')
-    verify_schedule(paths,geometry[0]['max_steps'])
+    steps = geometry[0]['schedule_steps']
+    coverage = geometry[0]['train_pairs'] if geometry[0].get('cover_train') else None
+    verify_schedule(paths,steps,coverage)
     depth = [load(p/'depth.json') for p in paths]
-    if any(d['step'] != 20000 or d['depth_cap_m'] != 50 for d in depth):
+    if any(d['step'] != steps or d['depth_cap_m'] != 50 for d in depth):
         raise ValueError('Depth reports must use the final geometry checkpoints and 50 m cap')
     render_metrics = ('psnr','ssim','ssim_evggs','lpips_vgg','lpips_alex')
     nested = dict((m,lambda r,c,m=m:r[c][m]) for m in render_metrics)
@@ -71,7 +79,7 @@ def compare(f3, no_f3):
     for rows in tokens:
         for row in rows:
             row['frames'] = tuple(row['frames'])
-    report = {'steps':geometry[0]['max_steps'], 'geometry_epochs':epoch}
+    report = {'steps':steps, 'geometry_epochs':epoch}
     report['dsec_tokens'] = paired(*tokens,('seq','frames'),
         {'token_loss':lambda r,c:r['matched' if c=='matched' else 'empty']})
     report['dsec_depth'] = paired(*(d['rows'] for d in depth), ('sequence','frame'),

@@ -10,6 +10,7 @@ def main(root, sequences):
     for archive, prefixes in {
         'train_events.zip': ('events/left/', 'events/right/'),
         'train_images.zip': ('images/',),
+        'train_calibration.zip': ('calibration/',),
         'train_disparity.zip': ('disparity/image/', 'disparity/timestamps.txt'),
     }.items():
         with ZipFile(root/archive) as z:

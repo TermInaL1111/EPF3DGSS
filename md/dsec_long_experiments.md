@@ -1,16 +1,16 @@
 # DSEC 长程蒸馏与重建
 
-两组各运行 20,000 步 DVLT 蒸馏，再冻结骨干各训练 5,000 步预测几何 Gaussian head。GPU 0 运行 F³ 组，GPU 1 运行去掉 F³ 的组。两组均保留五时间 bin 事件体素、LoRA、SAAG、最终 token 损失和 REALM 双掩码。样本顺序、视图数和共享 K 由独立且两组同种子的随机流生成。训练采用 DSEC 三条序列，验证使用 zurich_city_01_a，thun_00_a 另用于留出深度评估。
+正式两组至少各运行 20,000 步 DVLT 蒸馏，预算不足一轮时自动延长至完整遍历，再冻结骨干各训练 5,000 步预测几何 Gaussian head。GPU 0 运行 F³ 组，GPU 1 运行去掉 F³ 的组。两组均保留五时间 bin 事件体素、LoRA、SAAG、最终 token 损失和 REALM 双掩码。样本顺序、视图数和共享 K 由独立且两组同种子的随机流生成。训练采用 DSEC 34 条序列，整组 zurich_city_01 的 6 条片段仅参与验证，thun_00_a 另用于留出深度评估。
 
 蒸馏遵循 [Déjà-Events](https://arxiv.org/html/2611.21302v1) 的共享 K、最终 token 距离、2–18 视图、LoRA rank 16 与 AdamW 余弦预算。空间膨胀和第 8 轮启用输入遮挡来自 [REALM 附录 A.2](https://arxiv.org/html/2605.00271v2)。REALM 原论文在 DUNE 上使用另一种损失，本实验采用 Déjà-Events 损失并迁移 REALM 掩码。DSEC 的训练数据、图像对齐和裁剪是本项目的适配。
 
 ```bash
-bash scripts/run_dsec_long.sh f3
-# 在另一个终端运行
-bash scripts/run_dsec_long.sh no_f3
+bash scripts/run_dsec_full.sh
 ```
 
-两组首个短跑验证了相同的样本顺序、视图数量及 K。长跑输出位于服务器的 `/data/userwj/epf-runs/dsec_long_f3` 和 `/data/userwj/epf-runs/dsec_long_no_f3`。正式分数随结果产出更新。
+正式划分见 [dsec_full_split.json](../scripts/dsec_full_split.json)。脚本先解压和检查所有 41 条序列，再在 GPU 0 和 1 启动配对实验，输出到服务器的 `/data/userwj/epf-runs/dsec_full_f3` 和 `/data/userwj/epf-runs/dsec_full_no_f3`。完整数据的每一轮包含超过两万个候选起点，因此将 REALM 的 30 轮掩码里程碑映射到整个蒸馏预算的相对进度。这样一次完整遍历内也能启用两种掩码。该映射是数据规模变化后的适配。
+
+此前三序列配对长跑已停止并保留为先导实验，其权重不进入这轮正式训练。上一轮实验结果仍保留作历史参照。
 
 ## 评测协议
 
@@ -54,7 +54,6 @@ DSEC 验证两个窗口，MVSEC 验证三条航线各一个窗口，均产出两
 ### DSEC 数据范围
 
 服务器的四个训练压缩包合计约 376 GB，归档索引包含 41 条序列。
-当前实验固定使用其中三条训练序列，共 851 个片段起点。
-另有两条已解压序列用于验证或深度留出评估。扩充实验应另设运行目录，
-保留按完整序列隔离的划分。见 [归档清单](../results/dsec_initial/dsec_archive_inventory.json)。
+三序列先导实验使用了 851 个片段起点。正式实验使用以上 34/6/1 划分，
+输出目录独立。见 [归档清单](../results/dsec_initial/dsec_archive_inventory.json)。
 `left_training_entrypoints_present` 只表示左侧事件、图像时间戳和标定文件存在。
