@@ -1,0 +1,686 @@
+{
+  "all": {
+    "windows": 136,
+    "psnr": {
+      "matched": 11.710369229316711,
+      "zero": 12.336458143065958,
+      "matched_minus_zero": -0.626088913749246
+    },
+    "ssim": {
+      "matched": 0.10151990769115989,
+      "zero": 0.2167498011943227,
+      "matched_minus_zero": -0.11522989350316279
+    },
+    "foreground": {
+      "matched": 12.416212309809293,
+      "zero": 13.072504681699415,
+      "matched_minus_zero": -0.6562923718901241
+    },
+    "rotation_deg": {
+      "matched": 8.470329897368655,
+      "zero": 9.114605184863596,
+      "matched_minus_zero": -0.6442752874949399
+    },
+    "lpips_vgg": {
+      "matched": 0.4764000162043992,
+      "zero": 0.4538075792438844,
+      "matched_minus_zero": 0.022592436960514856
+    },
+    "lpips_alex": {
+      "matched": 0.6007479069864049,
+      "zero": 0.6035047532881007,
+      "matched_minus_zero": -0.00275684630169588
+    },
+    "ssim_evggs": {
+      "matched": 0.09787072430823601,
+      "zero": 0.20893704420578776,
+      "matched_minus_zero": -0.11106631989755175
+    }
+  },
+  "Arms": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.766615629196167,
+      "zero": 12.432090401649475,
+      "matched_minus_zero": -0.6654747724533081
+    },
+    "ssim": {
+      "matched": 0.11325521767139435,
+      "zero": 0.23417283967137337,
+      "matched_minus_zero": -0.12091762199997902
+    },
+    "foreground": {
+      "matched": 11.395146012306213,
+      "zero": 12.178498387336731,
+      "matched_minus_zero": -0.7833523750305176
+    },
+    "rotation_deg": {
+      "matched": 20.15347906947136,
+      "zero": 20.505274653434753,
+      "matched_minus_zero": -0.35179558396339417
+    },
+    "lpips_vgg": {
+      "matched": 0.4742746986448765,
+      "zero": 0.44312358275055885,
+      "matched_minus_zero": 0.031151115894317627
+    },
+    "lpips_alex": {
+      "matched": 0.6030099168419838,
+      "zero": 0.5942516177892685,
+      "matched_minus_zero": 0.008758299052715302
+    },
+    "ssim_evggs": {
+      "matched": 0.10918200295418501,
+      "zero": 0.2257305383682251,
+      "matched_minus_zero": -0.11654853541404009
+    }
+  },
+  "Capybara": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.673405170440674,
+      "zero": 12.216356873512268,
+      "matched_minus_zero": -0.5429517030715942
+    },
+    "ssim": {
+      "matched": 0.06432912452146411,
+      "zero": 0.16377627663314342,
+      "matched_minus_zero": -0.09944715211167932
+    },
+    "foreground": {
+      "matched": 13.685679912567139,
+      "zero": 14.471564531326294,
+      "matched_minus_zero": -0.7858846187591553
+    },
+    "rotation_deg": {
+      "matched": 7.628192186355591,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": 0.07674425840377808
+    },
+    "lpips_vgg": {
+      "matched": 0.502242635935545,
+      "zero": 0.4963098503649235,
+      "matched_minus_zero": 0.0059327855706214905
+    },
+    "lpips_alex": {
+      "matched": 0.5990664660930634,
+      "zero": 0.6368971467018127,
+      "matched_minus_zero": -0.03783068060874939
+    },
+    "ssim_evggs": {
+      "matched": 0.06202374445274472,
+      "zero": 0.15787759982049465,
+      "matched_minus_zero": -0.09585385536774993
+    }
+  },
+  "Robot": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.808903098106384,
+      "zero": 12.43243408203125,
+      "matched_minus_zero": -0.6235309839248657
+    },
+    "ssim": {
+      "matched": 0.10207235440611839,
+      "zero": 0.22997449897229671,
+      "matched_minus_zero": -0.12790214456617832
+    },
+    "foreground": {
+      "matched": 15.583706855773926,
+      "zero": 14.356591820716858,
+      "matched_minus_zero": 1.2271150350570679
+    },
+    "rotation_deg": {
+      "matched": 7.381352335214615,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -0.17009559273719788
+    },
+    "lpips_vgg": {
+      "matched": 0.4645282067358494,
+      "zero": 0.440821573138237,
+      "matched_minus_zero": 0.02370663359761238
+    },
+    "lpips_alex": {
+      "matched": 0.584139920771122,
+      "zero": 0.5934553816914558,
+      "matched_minus_zero": -0.009315460920333862
+    },
+    "ssim_evggs": {
+      "matched": 0.0984032079577446,
+      "zero": 0.2216838989406824,
+      "matched_minus_zero": -0.12328069098293781
+    }
+  },
+  "Woman": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.353405356407166,
+      "zero": 12.117749214172363,
+      "matched_minus_zero": -0.7643438577651978
+    },
+    "ssim": {
+      "matched": 0.1155676944181323,
+      "zero": 0.22341752238571644,
+      "matched_minus_zero": -0.10784982796758413
+    },
+    "foreground": {
+      "matched": 8.254810631275177,
+      "zero": 10.387049794197083,
+      "matched_minus_zero": -2.1322391629219055
+    },
+    "rotation_deg": {
+      "matched": 5.393280953168869,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -2.1581669747829437
+    },
+    "lpips_vgg": {
+      "matched": 0.4740464761853218,
+      "zero": 0.45315029844641685,
+      "matched_minus_zero": 0.020896177738904953
+    },
+    "lpips_alex": {
+      "matched": 0.6045150980353355,
+      "zero": 0.6111415401101112,
+      "matched_minus_zero": -0.006626442074775696
+    },
+    "ssim_evggs": {
+      "matched": 0.11141093447804451,
+      "zero": 0.21536384150385857,
+      "matched_minus_zero": -0.10395290702581406
+    }
+  },
+  "Shoes": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.644942283630371,
+      "zero": 12.269977569580078,
+      "matched_minus_zero": -0.625035285949707
+    },
+    "ssim": {
+      "matched": 0.09116553142666817,
+      "zero": 0.2027621529996395,
+      "matched_minus_zero": -0.11159662157297134
+    },
+    "foreground": {
+      "matched": 11.538225293159485,
+      "zero": 12.44612979888916,
+      "matched_minus_zero": -0.9079045057296753
+    },
+    "rotation_deg": {
+      "matched": 5.740563064813614,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -1.8108848631381989
+    },
+    "lpips_vgg": {
+      "matched": 0.47833871468901634,
+      "zero": 0.45894788205623627,
+      "matched_minus_zero": 0.019390832632780075
+    },
+    "lpips_alex": {
+      "matched": 0.5942758396267891,
+      "zero": 0.6009479314088821,
+      "matched_minus_zero": -0.006672091782093048
+    },
+    "ssim_evggs": {
+      "matched": 0.08789047785103321,
+      "zero": 0.1954548116773367,
+      "matched_minus_zero": -0.10756433382630348
+    }
+  },
+  "Train": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.759669065475464,
+      "zero": 12.404858827590942,
+      "matched_minus_zero": -0.6451897621154785
+    },
+    "ssim": {
+      "matched": 0.11165691819041967,
+      "zero": 0.23207248002290726,
+      "matched_minus_zero": -0.12041556183248758
+    },
+    "foreground": {
+      "matched": 12.690830826759338,
+      "zero": 13.852590441703796,
+      "matched_minus_zero": -1.161759614944458
+    },
+    "rotation_deg": {
+      "matched": 11.391944855451584,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": 3.840496927499771
+    },
+    "lpips_vgg": {
+      "matched": 0.4662037305533886,
+      "zero": 0.44026781246066093,
+      "matched_minus_zero": 0.02593591809272766
+    },
+    "lpips_alex": {
+      "matched": 0.5882967337965965,
+      "zero": 0.5875623524188995,
+      "matched_minus_zero": 0.000734381377696991
+    },
+    "ssim_evggs": {
+      "matched": 0.10764145292341709,
+      "zero": 0.22370607405900955,
+      "matched_minus_zero": -0.11606462113559246
+    }
+  },
+  "Flower": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.695573210716248,
+      "zero": 12.364691734313965,
+      "matched_minus_zero": -0.6691185235977173
+    },
+    "ssim": {
+      "matched": 0.10025070235133171,
+      "zero": 0.22218598797917366,
+      "matched_minus_zero": -0.12193528562784195
+    },
+    "foreground": {
+      "matched": 12.135075807571411,
+      "zero": 12.87049651145935,
+      "matched_minus_zero": -0.7354207038879395
+    },
+    "rotation_deg": {
+      "matched": 8.89932405948639,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": 1.3478761315345764
+    },
+    "lpips_vgg": {
+      "matched": 0.46974358707666397,
+      "zero": 0.45028797909617424,
+      "matched_minus_zero": 0.01945560798048973
+    },
+    "lpips_alex": {
+      "matched": 0.5912908762693405,
+      "zero": 0.6115538105368614,
+      "matched_minus_zero": -0.020262934267520905
+    },
+    "ssim_evggs": {
+      "matched": 0.09664738364517689,
+      "zero": 0.21417680755257607,
+      "matched_minus_zero": -0.11752942390739918
+    }
+  },
+  "Doll": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.74112594127655,
+      "zero": 12.407594799995422,
+      "matched_minus_zero": -0.6664688587188721
+    },
+    "ssim": {
+      "matched": 0.11545013729482889,
+      "zero": 0.2344836350530386,
+      "matched_minus_zero": -0.1190334977582097
+    },
+    "foreground": {
+      "matched": 11.572238326072693,
+      "zero": 12.654143691062927,
+      "matched_minus_zero": -1.0819053649902344
+    },
+    "rotation_deg": {
+      "matched": 5.890427231788635,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -1.6610206961631775
+    },
+    "lpips_vgg": {
+      "matched": 0.4707837738096714,
+      "zero": 0.4423877075314522,
+      "matched_minus_zero": 0.028396066278219223
+    },
+    "lpips_alex": {
+      "matched": 0.5998857542872429,
+      "zero": 0.593149870634079,
+      "matched_minus_zero": 0.00673588365316391
+    },
+    "ssim_evggs": {
+      "matched": 0.11129761300981045,
+      "zero": 0.22603010199964046,
+      "matched_minus_zero": -0.11473248898983002
+    }
+  },
+  "Camera": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.903276443481445,
+      "zero": 12.38110899925232,
+      "matched_minus_zero": -0.477832555770874
+    },
+    "ssim": {
+      "matched": 0.10690419282764196,
+      "zero": 0.21454083733260632,
+      "matched_minus_zero": -0.10763664450496435
+    },
+    "foreground": {
+      "matched": 14.582977414131165,
+      "zero": 13.336622953414917,
+      "matched_minus_zero": 1.2463544607162476
+    },
+    "rotation_deg": {
+      "matched": 3.2177386730909348,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -4.333709254860878
+    },
+    "lpips_vgg": {
+      "matched": 0.4688938073813915,
+      "zero": 0.44694292172789574,
+      "matched_minus_zero": 0.02195088565349579
+    },
+    "lpips_alex": {
+      "matched": 0.6000104025006294,
+      "zero": 0.5917619913816452,
+      "matched_minus_zero": 0.008248411118984222
+    },
+    "ssim_evggs": {
+      "matched": 0.10306045785546303,
+      "zero": 0.20680789649486542,
+      "matched_minus_zero": -0.10374743863940239
+    }
+  },
+  "TreasureChest": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.876203536987305,
+      "zero": 12.33371889591217,
+      "matched_minus_zero": -0.4575153589248657
+    },
+    "ssim": {
+      "matched": 0.10017969459295273,
+      "zero": 0.20451643504202366,
+      "matched_minus_zero": -0.10433674044907093
+    },
+    "foreground": {
+      "matched": 14.347825765609741,
+      "zero": 13.713100671768188,
+      "matched_minus_zero": 0.6347250938415527
+    },
+    "rotation_deg": {
+      "matched": 4.244067892432213,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": -3.3073800355196
+    },
+    "lpips_vgg": {
+      "matched": 0.47749414294958115,
+      "zero": 0.4595472104847431,
+      "matched_minus_zero": 0.017946932464838028
+    },
+    "lpips_alex": {
+      "matched": 0.6064150631427765,
+      "zero": 0.601783275604248,
+      "matched_minus_zero": 0.004631787538528442
+    },
+    "ssim_evggs": {
+      "matched": 0.09657893050462008,
+      "zero": 0.19714570231735706,
+      "matched_minus_zero": -0.10056677181273699
+    }
+  },
+  "ToyCrocodile": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.729949951171875,
+      "zero": 12.332709312438965,
+      "matched_minus_zero": -0.6027593612670898
+    },
+    "ssim": {
+      "matched": 0.10156633803853765,
+      "zero": 0.20823441731045023,
+      "matched_minus_zero": -0.10666807927191257
+    },
+    "foreground": {
+      "matched": 12.14493727684021,
+      "zero": 14.082395911216736,
+      "matched_minus_zero": -1.9374586343765259
+    },
+    "rotation_deg": {
+      "matched": 20.804564982652664,
+      "zero": 21.209057688713074,
+      "matched_minus_zero": -0.40449270606040955
+    },
+    "lpips_vgg": {
+      "matched": 0.4634738378226757,
+      "zero": 0.43640677630901337,
+      "matched_minus_zero": 0.027067061513662338
+    },
+    "lpips_alex": {
+      "matched": 0.5864560529589653,
+      "zero": 0.565903902053833,
+      "matched_minus_zero": 0.020552150905132294
+    },
+    "ssim_evggs": {
+      "matched": 0.09791547813802026,
+      "zero": 0.20072933853953145,
+      "matched_minus_zero": -0.10281386040151119
+    }
+  },
+  "ToyChicken": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.737675428390503,
+      "zero": 12.461189866065979,
+      "matched_minus_zero": -0.7235144376754761
+    },
+    "ssim": {
+      "matched": 0.09903546329587698,
+      "zero": 0.23415964469313622,
+      "matched_minus_zero": -0.13512418139725924
+    },
+    "foreground": {
+      "matched": 13.000010251998901,
+      "zero": 13.674516797065735,
+      "matched_minus_zero": -0.6745065450668335
+    },
+    "rotation_deg": {
+      "matched": 9.769211292266846,
+      "zero": 7.551447927951813,
+      "matched_minus_zero": 2.217763364315033
+    },
+    "lpips_vgg": {
+      "matched": 0.4688115082681179,
+      "zero": 0.44153016433119774,
+      "matched_minus_zero": 0.027281343936920166
+    },
+    "lpips_alex": {
+      "matched": 0.5930961966514587,
+      "zero": 0.6040543168783188,
+      "matched_minus_zero": -0.010958120226860046
+    },
+    "ssim_evggs": {
+      "matched": 0.09547605458647013,
+      "zero": 0.22571782767772675,
+      "matched_minus_zero": -0.13024177309125662
+    }
+  },
+  "Spray": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.775936961174011,
+      "zero": 12.320756196975708,
+      "matched_minus_zero": -0.5448192358016968
+    },
+    "ssim": {
+      "matched": 0.09935890790075064,
+      "zero": 0.21594411693513393,
+      "matched_minus_zero": -0.1165852090343833
+    },
+    "foreground": {
+      "matched": 13.649006724357605,
+      "zero": 13.3014417886734,
+      "matched_minus_zero": 0.3475649356842041
+    },
+    "rotation_deg": {
+      "matched": 7.3715861439704895,
+      "zero": 7.5438953042030334,
+      "matched_minus_zero": -0.17230916023254395
+    },
+    "lpips_vgg": {
+      "matched": 0.4781351536512375,
+      "zero": 0.45982836931943893,
+      "matched_minus_zero": 0.018306784331798553
+    },
+    "lpips_alex": {
+      "matched": 0.6041964665055275,
+      "zero": 0.6225134581327438,
+      "matched_minus_zero": -0.01831699162721634
+    },
+    "ssim_evggs": {
+      "matched": 0.09578781016170979,
+      "zero": 0.20816047303378582,
+      "matched_minus_zero": -0.11237266287207603
+    }
+  },
+  "WoodenTables": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.876746773719788,
+      "zero": 12.422127485275269,
+      "matched_minus_zero": -0.545380711555481
+    },
+    "ssim": {
+      "matched": 0.09746943227946758,
+      "zero": 0.20421363785862923,
+      "matched_minus_zero": -0.10674420557916164
+    },
+    "foreground": {
+      "matched": 13.427815198898315,
+      "zero": 13.712552905082703,
+      "matched_minus_zero": -0.2847377061843872
+    },
+    "rotation_deg": {
+      "matched": 4.137280985713005,
+      "zero": 7.5438953042030334,
+      "matched_minus_zero": -3.4066143184900284
+    },
+    "lpips_vgg": {
+      "matched": 0.5019003041088581,
+      "zero": 0.4758072532713413,
+      "matched_minus_zero": 0.026093050837516785
+    },
+    "lpips_alex": {
+      "matched": 0.6498284265398979,
+      "zero": 0.6320724040269852,
+      "matched_minus_zero": 0.01775602251291275
+    },
+    "ssim_evggs": {
+      "matched": 0.09396659675985575,
+      "zero": 0.19685384072363377,
+      "matched_minus_zero": -0.10288724396377802
+    }
+  },
+  "Globe": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.733534336090088,
+      "zero": 12.292665958404541,
+      "matched_minus_zero": -0.5591316223144531
+    },
+    "ssim": {
+      "matched": 0.08569088857620955,
+      "zero": 0.19848336093127728,
+      "matched_minus_zero": -0.11279247235506773
+    },
+    "foreground": {
+      "matched": 13.388487577438354,
+      "zero": 13.451545476913452,
+      "matched_minus_zero": -0.06305789947509766
+    },
+    "rotation_deg": {
+      "matched": 4.562389135360718,
+      "zero": 7.5438953042030334,
+      "matched_minus_zero": -2.9815061688423157
+    },
+    "lpips_vgg": {
+      "matched": 0.4942494407296181,
+      "zero": 0.4767698831856251,
+      "matched_minus_zero": 0.017479557543992996
+    },
+    "lpips_alex": {
+      "matched": 0.6120200380682945,
+      "zero": 0.6209913566708565,
+      "matched_minus_zero": -0.00897131860256195
+    },
+    "ssim_evggs": {
+      "matched": 0.08261365629732609,
+      "zero": 0.19133062660694122,
+      "matched_minus_zero": -0.10871697030961514
+    }
+  },
+  "SpatulaScan": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.72500479221344,
+      "zero": 12.443054437637329,
+      "matched_minus_zero": -0.7180496454238892
+    },
+    "ssim": {
+      "matched": 0.11021150462329388,
+      "zero": 0.2358132041990757,
+      "matched_minus_zero": -0.12560169957578182
+    },
+    "foreground": {
+      "matched": 12.169228315353394,
+      "zero": 14.298843264579773,
+      "matched_minus_zero": -2.1296149492263794
+    },
+    "rotation_deg": {
+      "matched": 11.244380787014961,
+      "zero": 7.5438953042030334,
+      "matched_minus_zero": 3.700485482811928
+    },
+    "lpips_vgg": {
+      "matched": 0.47383955121040344,
+      "zero": 0.4456022270023823,
+      "matched_minus_zero": 0.028237324208021164
+    },
+    "lpips_alex": {
+      "matched": 0.5851617008447647,
+      "zero": 0.587394580245018,
+      "matched_minus_zero": -0.002232879400253296
+    },
+    "ssim_evggs": {
+      "matched": 0.10624826978892088,
+      "zero": 0.2273116372525692,
+      "matched_minus_zero": -0.12106336746364832
+    }
+  },
+  "ToyRings": {
+    "windows": 8,
+    "psnr": {
+      "matched": 11.274308919906616,
+      "zero": 12.086703777313232,
+      "matched_minus_zero": -0.8123948574066162
+    },
+    "ssim": {
+      "matched": 0.11167432833462954,
+      "zero": 0.22599557228386402,
+      "matched_minus_zero": -0.11432124394923449
+    },
+    "foreground": {
+      "matched": 7.5096070766448975,
+      "zero": 9.444494843482971,
+      "matched_minus_zero": -1.9348877668380737
+    },
+    "rotation_deg": {
+      "matched": 6.165824607014656,
+      "zero": 7.5438953042030334,
+      "matched_minus_zero": -1.3780706971883774
+    },
+    "lpips_vgg": {
+      "matched": 0.4718407057225704,
+      "zero": 0.44699735566973686,
+      "matched_minus_zero": 0.024843350052833557
+    },
+    "lpips_alex": {
+      "matched": 0.6110494658350945,
+      "zero": 0.6041458696126938,
+      "matched_minus_zero": 0.006903596222400665
+    },
+    "ssim_evggs": {
+      "matched": 0.10765824187546968,
+      "zero": 0.21784873493015766,
+      "matched_minus_zero": -0.11019049305468798
+    }
+  }
+}

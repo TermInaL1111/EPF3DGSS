@@ -32,3 +32,5 @@ bash scripts/run_dsec_long.sh no_f3
 | MVSEC 跨域，DSEC 权重 | 72 | 13.89 | 12.16 | 0.360 |
 
 上一轮 DSEC 匹配事件的深度 AbsRel 为 0.172，全零为 0.425。归档指标采用上一轮有效深度范围，长程实验采用上面注明的 50 米上限。机器可读结果见 [results/dsec_initial](../results/dsec_initial/)。
+
+EV3DS 旧基线已按新指标重评 136 个窗口。匹配/全零事件 LPIPS-VGG 为 0.4764/0.4538，LPIPS-AlexNet 为 0.6007/0.6035。见 [EV3DS 重评汇总](../results/dsec_initial/ev3ds_reference_lpips_summary.json)。
