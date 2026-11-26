@@ -56,8 +56,12 @@ class DSECSequence:
         self.window_us = window_us
         self.calib = yaml.safe_load((self.root/'calibration/cam_to_cam.yaml').read_text())
         self.times = np.loadtxt(self.root/'images/timestamps.txt', dtype=np.int64)
-        self.disparity_times = np.loadtxt(self.root/'disparity/timestamps.txt', dtype=np.int64)
+        disparity_times = set(np.loadtxt(self.root/'disparity/timestamps.txt',dtype=np.int64,ndmin=1))
         self.files = [h5py.File(self.root/f'events/{side}/events.h5', 'r') for side in ('left','right')]
+        self.offsets = [int(f['t_offset'][()]) for f in self.files]
+        self.millisecond_indices = [f['ms_to_idx'][:] if 'ms_to_idx' in f else () for f in self.files]
+        bounds = [(offset+int(f['events/t'][0]),offset+int(f['events/t'][-1]))
+                  for offset,f in zip(self.offsets,self.files)]
         self.maps = []
         for side in ('left', 'right'):
             with h5py.File(self.root/f'events/{side}/rectify_map.h5', 'r') as f:
@@ -68,10 +72,9 @@ class DSECSequence:
             if index >= len(self.times):
                 raise ValueError(f'Image index out of range: {p}')
             at = int(self.times[index])
-            if not np.any(self.disparity_times == at):
+            if at not in disparity_times:
                 raise ValueError(f'Disparity/image timestamp mismatch: {p}')
-            if all(at-self.window_us >= int(f['t_offset'][()])+int(f['events/t'][0]) and
-                   at <= int(f['t_offset'][()])+int(f['events/t'][-1]) for f in self.files):
+            if all(first+self.window_us <= at <= last for first,last in bounds):
                 self.indices.append(index)
 
     def close(self):
@@ -80,9 +83,10 @@ class DSECSequence:
 
     def packet(self, view, index):
         f = self.files[view]
-        end = int(self.times[index]) - int(f['t_offset'][()])
-        lo = lower_bound(f['events/t'], end-self.window_us)
-        hi = lower_bound(f['events/t'], end)
+        end = int(self.times[index])-self.offsets[view]
+        timestamps, milliseconds = f['events/t'], self.millisecond_indices[view]
+        lo = indexed_lower_bound(timestamps,milliseconds,end-self.window_us)
+        hi = indexed_lower_bound(timestamps,milliseconds,end)
         x, y = f['events/x'][lo:hi], f['events/y'][lo:hi]
         xy = self.maps[view][y, x]
         # Relative microseconds avoid precision loss with large absolute timestamps.
