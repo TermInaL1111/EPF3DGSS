@@ -124,7 +124,10 @@ def main(args):
             matched = compare(voxel, field, target, 16)
             empty = compare(torch.zeros_like(voxel), torch.zeros_like(field), target, 16)
             rows.append({'seq': seq, 'frames': pair, 'matched': float(matched), 'empty': float(empty)})
-        (args.out/f'val_{epoch:03}.json').write_text(json.dumps(rows, indent=2, allow_nan=False)+'\n')
+        report = args.out/f'val_{epoch:03}.json'
+        temporary = report.with_suffix('.json.tmp')
+        temporary.write_text(json.dumps(rows,indent=2,allow_nan=False)+'\n')
+        temporary.replace(report)
         print('validation', epoch, {k: sum(r[k] for r in rows)/len(rows) for k in ('matched','empty')}, flush=True)
 
     step, first_epoch = 0, 1
@@ -142,6 +145,16 @@ def main(args):
         torch.save(state,tmp)
         tmp.replace(path)
 
+    def training_state(order=None, next_index=0):
+        state = dict(optimizer=opt.state_dict(),schedule=schedule.state_dict(),
+                     cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),
+                     order_indices=order,next_index=next_index)
+        state.update({name:rng.get_state() for name,rng in
+                      [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]
+                      if rng is not None})
+        return state
+
+    resume_order, resume_index = None, 0
     resume_path = args.out/'latest.pt'
     if args.resume:
         saved = torch.load(resume_path,map_location='cpu',weights_only=True)
@@ -158,7 +171,10 @@ def main(args):
         for name,rng in [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]:
             if rng is not None:
                 rng.set_state(state[name])
-        step, first_epoch = saved['step'], saved['epoch']+1
+        resume_order = state.get('order_indices')
+        resume_index = state.get('next_index',0)
+        step = saved['step']
+        first_epoch = saved['epoch'] + (resume_order is None)
         log_path = args.out/'train.jsonl'
         retained = []
         for line in log_path.read_text().splitlines():
@@ -180,7 +196,13 @@ def main(args):
     else:
         evaluate(0)
     for epoch in range(first_epoch, last_epoch+1):
-        for index in torch.randperm(len(train),generator=order_rng).tolist():
+        if resume_order is not None:
+            order,start_index = resume_order,resume_index
+            resume_order = None
+        else:
+            order,start_index = torch.randperm(len(train),generator=order_rng).tolist(),0
+        for position in range(start_index,len(order)):
+            index = order[position]
             if step >= horizon:
                 break
             seq,pair = train[index]
@@ -208,12 +230,8 @@ def main(args):
                 print('step', step, 'epoch', epoch, 'K', steps, 'loss', float(loss.detach()), flush=True)
             if args.snapshot_every and step % args.snapshot_every == 0:
                 save_checkpoint(args.out/f'step_{step:06}.pt',epoch)
-        training = dict(optimizer=opt.state_dict(),schedule=schedule.state_dict(),
-                        cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state())
-        training.update({name:rng.get_state() for name,rng in
-                         [('order',order_rng),('views',view_rng),('loops',k_rng),('mask',mask_rng)]
-                         if rng is not None})
-        save_checkpoint(resume_path,epoch,training)
+                save_checkpoint(resume_path,epoch,training_state(order,position+1))
+        save_checkpoint(resume_path,epoch,training_state())
         if epoch == last_epoch or epoch % args.eval_every == 0:
             evaluate(epoch)
 
@@ -232,7 +250,7 @@ if __name__ == '__main__':
     parser.add_argument('--snapshot-every',type=int,default=0,help='Save intermediate inference weights every N steps')
     parser.add_argument('--max-views', type=int, default=2, help='Sample temporal clips up to this many views')
     parser.add_argument('--epochs', type=int, default=30)
-    parser.add_argument('--resume',action='store_true',help='Resume a saved epoch with optimizer and RNG state')
+    parser.add_argument('--resume',action='store_true',help='Resume a saved step or epoch with optimizer and RNG state')
     parser.add_argument('--stop-after', type=int, help='Stop early while retaining the full cosine LR horizon')
     parser.add_argument('--seed', type=int, default=10)
     parser.add_argument('--eval-every', type=int, default=5)
