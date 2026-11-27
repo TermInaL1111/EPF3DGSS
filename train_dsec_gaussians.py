@@ -38,7 +38,11 @@ def run(args, data, checkpoint):
     encoder = EventField(args.f3_repository,args.assets/'f3.pth',4) if use_field else None
     train = [(s,i) for s in args.train for i in data[s].indices]
     val = [(s,i) for s in args.val for i in data[s].indices]
-    if len(val)>args.val_limit:
+    if args.mvsec_calibration:
+        val = [(seq, indices[i]) for seq in args.val
+               if (indices := data[seq].indices)
+               for i in np.linspace(0,len(indices)-1,min(len(indices),args.val_limit),dtype=int)]
+    elif len(val)>args.val_limit:
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
     if not train or not val:
         raise ValueError('Both splits require stereo frames with disparity timestamps')
@@ -50,7 +54,8 @@ def run(args, data, checkpoint):
         voxel = torch.stack([voxelize(p) for p in packets]).half()
         field = (torch.stack([encoder(p).half().cpu() for p in packets]) if encoder
                  else torch.zeros((2,32,96,128),dtype=torch.float16))
-        labels = tuple(torch.as_tensor(x,dtype=torch.float32) for x in stereo_supervision(source,index))
+        supervision = source.supervision(index) if args.mvsec_calibration else stereo_supervision(source,index)
+        labels = tuple(torch.as_tensor(x,dtype=torch.float32) for x in supervision)
         return voxel,field,*labels
 
     @torch.no_grad()
@@ -68,10 +73,14 @@ def run(args, data, checkpoint):
                                      (480,640),mode='bilinear',align_corners=False)[:,0]
             target = depth.cuda()
             valid = (target>0)&(estimate>0)&torch.isfinite(estimate)
+            if not valid.any() and args.mvsec_calibration:
+                continue
             if not valid.any():
                 raise ValueError(f'No valid depth for scale calibration in {sequence}/{index}')
             rows.append(dict(sequence=sequence,frame=index,
                              scale=float((target[valid]/estimate[valid]).median())))
+        if not rows:
+            raise ValueError('No usable training depths for scale calibration')
         scale = float(np.median([row['scale'] for row in rows]))
         if not np.isfinite(scale) or scale <= 0:
             raise ValueError('Invalid training scale')
@@ -181,9 +190,13 @@ def main(args):
                      else 'legacy')
     if args.head == 'fixed' and args.geometry != 'predicted':
         raise ValueError('The fixed head uses student depth')
+    if args.mvsec_calibration and args.head != 'fixed':
+        raise ValueError('MVSEC temporal training uses the fixed-center head')
     if set(args.train)&set(args.val):
         raise ValueError('Specify nonoverlapping training and validation sequences')
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
+    if args.mvsec_calibration is None:
+        config.pop('mvsec_calibration')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     lock_path = args.out.with_name(args.out.name+'.lock')
     with lock_path.open('a') as lock:
@@ -207,7 +220,12 @@ def main(args):
         data = {}
         try:
             for sequence in args.train+args.val:
-                data[sequence] = DSECSequence(args.root,sequence)
+                if args.mvsec_calibration:
+                    from mvsec_gaussian_data import MVSECTemporalGaussianSequence
+
+                    data[sequence] = MVSECTemporalGaussianSequence(args.root,sequence,args.mvsec_calibration)
+                else:
+                    data[sequence] = DSECSequence(args.root,sequence)
             run(args,data,checkpoint)
         finally:
             for source in data.values():
@@ -224,6 +242,8 @@ if __name__=='__main__':
     parser.add_argument('--head',choices=('legacy','fixed'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
+    parser.add_argument('--mvsec-calibration',type=Path,
+                        help='Train from temporal windows of the left MVSEC camera')
     parser.add_argument('--steps',type=int,default=500)
     parser.add_argument('--ssim-weight',type=float,default=.2)
     parser.add_argument('--seed',type=int,default=10)
