@@ -211,7 +211,7 @@ def main(args):
     if args.head != 'legacy' and args.geometry != 'predicted':
         raise ValueError('Fixed and voxel heads use student depth')
     if args.mvsec_calibration and args.head == 'legacy':
-        raise ValueError('MVSEC temporal training supports fixed and voxel heads')
+        raise ValueError('MVSEC temporal training supports fixed, voxel and octree heads')
     if not np.isfinite(args.event_weight) or args.event_weight < 0:
         raise ValueError('Event loss weight must be finite and nonnegative')
     if args.event_weight and (not args.mvsec_calibration or args.head != 'voxel' or
@@ -267,7 +267,7 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+',required=True)
     parser.add_argument('--val',nargs='+',required=True)
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
-    parser.add_argument('--head',choices=('legacy','fixed','voxel'),
+    parser.add_argument('--head',choices=('legacy','fixed','voxel','octree'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--mvsec-calibration',type=Path,
