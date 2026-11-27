@@ -10,6 +10,18 @@ def aggregate(rows):
     return {k: mean(row[k] for row in rows) for k in fields if all(k in row for row in rows)}
 
 
+def pair_with_epf(rows, epf, key, baseline):
+    windows = [(row[key], row['start']) for row in rows]
+    if not windows or len(set(windows)) != len(windows):
+        raise ValueError('Expected nonempty unique EvGGS evaluation windows')
+    if windows != [(row[key], row['start']) for row in epf]:
+        raise ValueError('EPF and EvGGS windows differ')
+    scores = aggregate([row['matched'] for row in epf])
+    if scores.keys() != baseline.keys():
+        raise ValueError('EPF and EvGGS metrics differ')
+    return {'epf': scores, 'epf_minus_evggs': {k: value-baseline[k] for k,value in scores.items()}}
+
+
 def main(args):
     baseline = json.loads(args.baseline.read_text())
     rows = baseline.pop('results')
@@ -33,11 +45,7 @@ def main(args):
     if args.epf:
         if baseline['native']:
             raise ValueError('A paired comparison requires the shared protocol')
-        epf = json.loads(args.epf.read_text())
-        if windows != [(row[key], row['start']) for row in epf]:
-            raise ValueError('EPF and EvGGS windows differ')
-        report['epf'] = aggregate([row['matched'] for row in epf])
-        report['epf_minus_evggs'] = {k: value-report['matched'][k] for k,value in report['epf'].items()}
+        report.update(pair_with_epf(rows, json.loads(args.epf.read_text()), key, report['matched']))
     args.out.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
 
 

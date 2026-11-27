@@ -53,7 +53,7 @@ def verify_schedule(paths, steps, train_pairs=None):
         raise ValueError(f'Expected {steps} training steps, found {step}')
 
 
-def compare(f3, no_f3):
+def compare(f3, no_f3, evggs=None):
     paths = (f3,no_f3)
     geometry = [load(p/'geometry/config.json') for p in paths]
     gaussians = [load(p/'gaussians/config.json') for p in paths]
@@ -88,6 +88,18 @@ def compare(f3, no_f3):
     report['dsec_render'] = paired(*(load(p/'gaussians/val_005000.json') for p in paths),
                                    ('sequence','frame'), flat)
     report['mvsec_render'] = paired(*(load(p/'mvsec.json') for p in paths), ('flight','start'), nested)
+    if evggs is not None:
+        from summarize_evggs import aggregate, pair_with_epf
+
+        baseline = load(evggs)
+        if baseline['dataset'] != 'mvsec' or baseline['native']:
+            raise ValueError('Expected the shared MVSEC EvGGS evaluation')
+        rows = baseline.pop('results')
+        scores = aggregate([row['matched'] for row in rows])
+        report['mvsec_evggs'] = dict(
+            **baseline, windows=len(rows), matched=scores,
+            **{name: pair_with_epf(rows, load(path/'mvsec.json'), 'flight', scores)
+               for name,path in zip(('f3','no_f3'),paths)})
     return report
 
 
@@ -95,8 +107,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('f3','no_f3','out'):
         parser.add_argument(name,type=Path)
+    parser.add_argument('--evggs', type=Path)
     args = parser.parse_args()
-    result = compare(args.f3,args.no_f3)
+    default_baseline = args.out.parent/'evggs/mvsec_shared.json'
+    evggs = args.evggs or (default_baseline if default_baseline.is_file() else None)
+    result = compare(args.f3,args.no_f3,evggs)
     temporary = args.out.with_name(args.out.name+'.tmp')
     temporary.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
     temporary.replace(args.out)
