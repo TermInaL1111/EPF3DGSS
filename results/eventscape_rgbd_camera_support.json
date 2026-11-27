@@ -1,0 +1,31 @@
+{
+  "reference": "RGB-D tracks and PnP, checked on held-out spatial tiles",
+  "query_offset_frames": 2,
+  "second_source_offset_frames": 4,
+  "max_candidates_per_sequence": 4,
+  "max_median_heldout_reprojection_px": 1.0,
+  "native_size": [
+    512,
+    256
+  ],
+  "splits": {
+    "train": {
+      "sequences": 527,
+      "candidates": 2108,
+      "accepted": 2096,
+      "median_heldout_reprojection_px": 0.24081106404483849
+    },
+    "val": {
+      "sequences": 100,
+      "candidates": 400,
+      "accepted": 400,
+      "median_heldout_reprojection_px": 0.24229546999486926
+    },
+    "test": {
+      "sequences": 116,
+      "candidates": 464,
+      "accepted": 463,
+      "median_heldout_reprojection_px": 0.22917201970472723
+    }
+  }
+}

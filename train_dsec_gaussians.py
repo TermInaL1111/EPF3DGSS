@@ -1,5 +1,6 @@
 """Train a grayscale Gaussian head with a frozen geometry backbone."""
 import argparse
+from contextlib import ExitStack, closing
 from functools import lru_cache
 import fcntl
 import json
@@ -17,7 +18,7 @@ from event_field import EventField
 from image_metrics import PerceptualMetrics, gray_metrics
 
 
-def run(args, data, checkpoint):
+def run(args, data, checkpoint, test=()):
     model = EventDVLT(args.assets).cuda().eval()
     weights = checkpoint['model']
     geometry_names = {n for n,p in model.named_parameters() if p.requires_grad
@@ -26,7 +27,7 @@ def run(args, data, checkpoint):
     use_field = bool(checkpoint['config']['f3'])
     expected = geometry_names if use_field else {n for n in geometry_names if not n.startswith('event_adapter.')}
     if set(weights) != expected:
-        raise ValueError('Unexpected parameters in DSEC geometry checkpoint')
+        raise ValueError('Unexpected parameters in distilled geometry checkpoint')
     model.load_state_dict(weights, strict=False)
     model.configure_head(args.head)
     boundary = None
@@ -50,7 +51,8 @@ def run(args, data, checkpoint):
     elif len(val)>args.val_limit:
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
     if not train or not val:
-        raise ValueError('Both splits require stereo frames with disparity timestamps')
+        raise ValueError('Both splits require usable source and target windows')
+    temporal = bool(args.mvsec_calibration or args.eventscape_cameras)
 
     @lru_cache(maxsize=32)
     def sample(seq,index):
@@ -59,7 +61,7 @@ def run(args, data, checkpoint):
         voxel = torch.stack([voxelize(p) for p in packets]).half()
         field = (torch.stack([encoder(p).half().cpu() for p in packets]) if encoder
                  else torch.zeros((2,32,96,128),dtype=torch.float16))
-        supervision = source.supervision(index) if args.mvsec_calibration else stereo_supervision(source,index)
+        supervision = source.supervision(index) if temporal else stereo_supervision(source,index)
         labels = tuple(torch.as_tensor(x,dtype=torch.float32) for x in supervision)
         return voxel,field,*labels
 
@@ -78,7 +80,7 @@ def run(args, data, checkpoint):
                                      (480,640),mode='bilinear',align_corners=False)[:,0]
             target = depth.cuda()
             valid = (target>0)&(estimate>0)&torch.isfinite(estimate)
-            if not valid.any() and args.mvsec_calibration:
+            if not valid.any() and temporal:
                 continue
             if not valid.any():
                 raise ValueError(f'No valid depth for scale calibration in {sequence}/{index}')
@@ -118,6 +120,9 @@ def run(args, data, checkpoint):
                           source_cameras=cameras, depth_refinement=refine,
                           event_leaf_ranking=args.event_leaves, matched_leaf_budget=bool(boundary))
         image = render(cloud,query,k)
+        count = cloud.get('gaussian_count')
+        if args.eventscape_cameras and count is None:
+            count = (cloud['centers'].shape[1],)
         event_loss = None
         if args.event_weight and training:
             previous,grid,counts = (x.cuda() for x in event_observation(*item))
@@ -128,9 +133,9 @@ def run(args, data, checkpoint):
                 before,after = (values+1/255).log()
                 event_loss = F.smooth_l1_loss(after-before,args.event_threshold*counts,
                                               beta=args.event_threshold)
-        return image,gray/255,cloud.get('gaussian_count'),event_loss
+        return image,gray/255,count,event_loss
 
-    @lru_cache(maxsize=None)
+    @lru_cache(maxsize=32)
     def overlap(seq,index):
         # Nominal angular overlap from calibration, independent of model output.
         _,_,_,ki,poses,query,k,_ = sample(seq,index)
@@ -150,40 +155,49 @@ def run(args, data, checkpoint):
         return torch.from_numpy(mask).cuda()
 
     @torch.no_grad()
-    def evaluate(step):
+    def evaluate(windows, label, native=False):
         rows = []
-        for index,item in enumerate(val):
+        for index,item in enumerate(windows):
             row = dict(sequence=item[0], frame=item[1])
             preview = []
             mask = overlap(*item)
             row["overlap_fraction"] = float(mask.float().mean())
+            native_gray = None
+            if native:
+                sequence = data[item[0]]
+                native_gray = torch.as_tensor(sequence.native_gray(item[1]), device=mask.device)[None]/255
+                source = cv2.cvtColor(sequence.sequence.rgb(item[1]), cv2.COLOR_RGB2GRAY)
+                source = torch.as_tensor(source, device=mask.device)[None]/255
+                psnr,ssim = gray_metrics(source,native_gray)
+                row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
             for key,empty in [('matched',False),('zero',True)]:
                 image,gray,count,_ = predict(item,empty)
                 if count is not None:
                     row[key+'_gaussian_count'] = int(count[0])
+                mse_overlap = (image-gray)[:,mask].square().mean()
+                row[key+'_overlap_psnr'] = float(-10*mse_overlap.clamp_min(1e-12).log10())
+                if native:
+                    image = F.interpolate(image[:,None], size=(256,512), mode='area')[:,0]
+                    gray = native_gray
                 psnr,ssim = gray_metrics(image,gray)
                 row[key+'_psnr'],row[key+'_ssim'] = float(psnr[0]),float(ssim[0])
                 row[key+"_ssim_evggs"] = float(gray_metrics(image,gray,padded=True)[1][0])
                 if perceptual:
                     row.update({f"{key}_{metric}":value for metric,value in perceptual(image,gray).items()})
-                mse_overlap = (image-gray)[:,mask].square().mean()
-                row[key+'_overlap_psnr'] = float(-10*mse_overlap.clamp_min(1e-12).log10())
                 if index == 0:
                     if not preview:
                         preview.append(gray[0])
                     preview.append(image[0])
             if preview:
                 comparison = torch.cat(preview,dim=1).clamp(0,1).mul(255).round().byte().cpu().numpy()
-                if not cv2.imwrite(str(args.out/f'preview_{step:06}.png'),comparison):
+                if not cv2.imwrite(str(args.out/f'preview_{label}.png'),comparison):
                     raise OSError('Could not save the validation preview')
             rows.append(row)
-        (args.out/f'val_{step:06}.json').write_text(json.dumps(rows,indent=2,allow_nan=False)+'\n')
-        print('validation',step,{k:sum(r[k] for r in rows)/len(rows)
+        (args.out/f'val_{label}.json').write_text(json.dumps(rows,indent=2,allow_nan=False)+'\n')
+        print('evaluation',label,{k:sum(r[k] for r in rows)/len(rows)
                                   for k in ('matched_psnr','zero_psnr','matched_ssim','zero_ssim')},flush=True)
 
-    evaluate(0)
-    if args.steps == 0:
-        return
+    evaluate(val,'000000')
     for step in range(1,args.steps+1):
         item = train[int(torch.randint(len(train),(1,)))]
         image,gray,_,event_loss = predict(item,training=True)
@@ -211,7 +225,10 @@ def run(args, data, checkpoint):
                                event_leaves=args.event_leaves)
             torch.save(payload,tmp)
             tmp.replace(args.out/'latest.pt')
-    evaluate(args.steps)
+    if args.steps:
+        evaluate(val,f'{args.steps:06}')
+    if test:
+        evaluate(test,'test',native=True)
 
 
 def main(args):
@@ -220,13 +237,24 @@ def main(args):
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
+    eventscape_splits = {}
+    if args.eventscape_cameras:
+        from eventscape_gaussian_data import load_camera_splits
+
+        eventscape_splits = load_camera_splits(args.eventscape_cameras)
+        if args.train or args.val:
+            raise ValueError('EventScape train and val splits come from the camera manifests')
+        args.train = list(eventscape_splits['train'])
+        args.val = list(eventscape_splits['val'])
+    elif not args.train or not args.val:
+        raise ValueError('Specify both --train and --val')
     if args.head is None:
         args.head = ('fixed' if args.geometry == 'predicted' and checkpoint['config'].get('cover_train')
                      else 'legacy')
     if args.head != 'legacy' and args.geometry != 'predicted':
         raise ValueError('Fixed and voxel heads use student depth')
-    if args.mvsec_calibration and args.head == 'legacy':
-        raise ValueError('MVSEC temporal training supports fixed, voxel and octree heads')
+    if (args.mvsec_calibration or args.eventscape_cameras) and args.head == 'legacy':
+        raise ValueError('Temporal training supports fixed, voxel and octree heads')
     if (args.boundary and args.head != 'octree') or (args.event_leaves and not args.boundary):
         raise ValueError('Boundary-controlled training requires an octree head and temporal weights')
     if not np.isfinite(args.event_weight) or args.event_weight < 0:
@@ -239,6 +267,8 @@ def main(args):
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
     if args.mvsec_calibration is None:
         config.pop('mvsec_calibration')
+    if args.eventscape_cameras is None:
+        config.pop('eventscape_cameras')
     if not args.event_weight:
         config.pop('event_weight')
         config.pop('event_threshold')
@@ -254,6 +284,7 @@ def main(args):
             validation = args.out/f'val_{args.steps:06}.json'
             checkpoint = args.out/'latest.pt'
             if (dict({'head':'legacy'}, **recorded) == config and validation.is_file() and
+                    (not eventscape_splits or (args.out/'val_test.json').is_file()) and
                     (args.steps == 0 or checkpoint.is_file())):
                 rows = json.loads(validation.read_text())
                 state = (torch.load(checkpoint,map_location='cpu',weights_only=True)
@@ -265,35 +296,44 @@ def main(args):
         args.out.mkdir()
         torch.manual_seed(args.seed)
         (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
-        data = {}
-        try:
-            for sequence in args.train+args.val:
-                if args.mvsec_calibration:
-                    from mvsec_gaussian_data import MVSECTemporalGaussianSequence
+        with ExitStack() as stack:
+            data = {}
+            test = []
+            if eventscape_splits:
+                from eventscape_gaussian_data import open_gaussian_sequences
 
-                    data[sequence] = MVSECTemporalGaussianSequence(args.root,sequence,args.mvsec_calibration)
-                else:
-                    data[sequence] = DSECSequence(args.root,sequence)
-            run(args,data,checkpoint)
-        finally:
-            for source in data.values():
-                source.close()
+                data = open_gaussian_sequences(args.root, eventscape_splits, stack)
+                test = [(name, index) for name in eventscape_splits['test']
+                        for index in data[name].indices]
+            else:
+                for sequence in args.train+args.val:
+                    if args.mvsec_calibration:
+                        from mvsec_gaussian_data import MVSECTemporalGaussianSequence
+
+                        source = MVSECTemporalGaussianSequence(args.root,sequence,args.mvsec_calibration)
+                    else:
+                        source = DSECSequence(args.root,sequence)
+                    data[sequence] = stack.enter_context(closing(source))
+            run(args,data,checkpoint,test)
 
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('root','assets','f3_repository','geometry_checkpoint','out'):
         parser.add_argument(key,type=Path)
-    parser.add_argument('--train',nargs='+',required=True)
-    parser.add_argument('--val',nargs='+',required=True)
+    parser.add_argument('--train',nargs='+')
+    parser.add_argument('--val',nargs='+')
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
     parser.add_argument('--head',choices=('legacy','fixed','voxel','octree'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--boundary', type=Path, help='Frozen EventScape temporal boundary checkpoint')
     parser.add_argument('--event-leaves', action='store_true', help='Use event priority for octree selection')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
-    parser.add_argument('--mvsec-calibration',type=Path,
-                        help='Train from temporal windows of the left MVSEC camera')
+    dataset = parser.add_mutually_exclusive_group()
+    dataset.add_argument('--mvsec-calibration',type=Path,
+                         help='Train from temporal windows of the left MVSEC camera')
+    dataset.add_argument('--eventscape-cameras',type=Path,
+                         help='Train from EventScape RGB-D camera manifests (train/val/test.json)')
     parser.add_argument('--event-weight',type=float,default=0.,
                         help='Weight for target-side native-pixel event supervision during MVSEC voxel-head training')
     parser.add_argument('--event-threshold',type=float,default=.1,
