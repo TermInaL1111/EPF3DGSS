@@ -16,9 +16,9 @@ NATIVE_K = np.array([[256., 0., 256.], [0., 256., 128.], [0., 0., 1.]])
 ARCHIVES = {'train': 'Town01-03_train.zip', 'val': 'Town05_val.zip', 'test': 'Town05_test.zip'}
 
 
-def reference_camera(first, target, depth, tiles):
+def reference_camera(first, target, depth, tiles, intrinsics=NATIVE_K, max_depth=200.):
     """Fit source-to-target PnP and validate it with separate spatial tiles."""
-    valid = np.isfinite(depth) & (depth >= .1) & (depth <= 200)
+    valid = np.isfinite(depth) & (depth >= .1) & (depth <= max_depth)
     corners = cv2.goodFeaturesToTrack(first, maxCorners=1536, qualityLevel=.01,
                                       minDistance=5, mask=valid.astype(np.uint8))
     if corners is None or len(corners) < 50:
@@ -33,21 +33,21 @@ def reference_camera(first, target, depth, tiles):
             & (np.linalg.norm((back-corners)[:, 0], axis=-1) <= .3))
     source, end = corners[keep, 0].astype(np.float64), end[keep, 0].astype(np.float64)
     x, y = np.rint(source).astype(np.intp).T
-    k_inv = np.linalg.inv(NATIVE_K)
+    k_inv = np.linalg.inv(intrinsics)
     rays = np.column_stack((source, np.ones(len(source)))) @ k_inv.T
     points = rays * depth[y, x, None]
     held = tiles[y, x]
     if held.sum() < 20 or (~held).sum() < 30:
         return None
     fit_points, fit_pixels = points[~held], end[~held]
-    ok, rotation, translation, inliers = cv2.solvePnPRansac(fit_points, fit_pixels, NATIVE_K, None,
+    ok, rotation, translation, inliers = cv2.solvePnPRansac(fit_points, fit_pixels, intrinsics, None,
         iterationsCount=150, reprojectionError=1., confidence=.999, flags=cv2.SOLVEPNP_EPNP)
     if not ok or inliers is None or len(inliers) < 25:
         return None
     fit = inliers[:, 0]
     rotation, translation = cv2.solvePnPRefineLM(fit_points[fit], fit_pixels[fit],
-                                                NATIVE_K, None, rotation, translation)
-    projected, _ = cv2.projectPoints(points[held], rotation, translation, NATIVE_K, None)
+                                                intrinsics, None, rotation, translation)
+    projected, _ = cv2.projectPoints(points[held], rotation, translation, intrinsics, None)
     residual = np.linalg.norm(projected[:, 0] - end[held], axis=-1)
     error = float(np.median(residual))
     if not np.isfinite(error) or error > 1.:

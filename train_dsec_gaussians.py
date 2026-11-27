@@ -52,7 +52,7 @@ def run(args, data, checkpoint, test=()):
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
     if not train or not val:
         raise ValueError('Both splits require usable source and target windows')
-    temporal = bool(args.mvsec_calibration or args.eventscape_cameras)
+    temporal = bool(args.mvsec_calibration or args.eventscape_cameras or args.dsec_temporal_cameras)
 
     @lru_cache(maxsize=32)
     def sample(seq,index):
@@ -121,7 +121,7 @@ def run(args, data, checkpoint, test=()):
                           event_leaf_ranking=args.event_leaves, matched_leaf_budget=bool(boundary))
         image = render(cloud,query,k)
         count = cloud.get('gaussian_count')
-        if args.eventscape_cameras and count is None:
+        if (args.eventscape_cameras or args.dsec_temporal_cameras) and count is None:
             count = (cloud['centers'].shape[1],)
         event_loss = None
         if args.event_weight and training:
@@ -169,6 +169,11 @@ def run(args, data, checkpoint, test=()):
                 source = cv2.cvtColor(sequence.sequence.rgb(item[1]), cv2.COLOR_RGB2GRAY)
                 source = torch.as_tensor(source, device=mask.device)[None]/255
                 psnr,ssim = gray_metrics(source,native_gray)
+                row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
+            if label == 'test' and args.dsec_temporal_cameras:
+                source = torch.as_tensor(data[item[0]].gray(item[1]),device=mask.device)[None]/255
+                target = sample(*item)[-1][None].to(mask.device)/255
+                psnr,ssim = gray_metrics(source,target)
                 row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
             for key,empty in [('matched',False),('zero',True)]:
                 image,gray,count,_ = predict(item,empty)
@@ -228,7 +233,7 @@ def run(args, data, checkpoint, test=()):
     if args.steps:
         evaluate(val,f'{args.steps:06}')
     if test:
-        evaluate(test,'test',native=True)
+        evaluate(test,'test',native=bool(args.eventscape_cameras))
 
 
 def main(args):
@@ -237,15 +242,20 @@ def main(args):
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
-    eventscape_splits = {}
+    camera_splits = {}
     if args.eventscape_cameras:
         from eventscape_gaussian_data import load_camera_splits
 
-        eventscape_splits = load_camera_splits(args.eventscape_cameras)
+        camera_splits = load_camera_splits(args.eventscape_cameras)
+    if args.dsec_temporal_cameras:
+        from dsec_temporal_gaussian_data import load_dsec_camera_splits
+
+        camera_splits = load_dsec_camera_splits(args.dsec_temporal_cameras)
+    if camera_splits:
         if args.train or args.val:
-            raise ValueError('EventScape train and val splits come from the camera manifests')
-        args.train = list(eventscape_splits['train'])
-        args.val = list(eventscape_splits['val'])
+            raise ValueError('Train and val splits come from the camera manifests')
+        args.train = list(camera_splits['train'])
+        args.val = list(camera_splits['val'])
     elif not args.train or not args.val:
         raise ValueError('Specify both --train and --val')
     if args.head is None:
@@ -253,7 +263,7 @@ def main(args):
                      else 'legacy')
     if args.head != 'legacy' and args.geometry != 'predicted':
         raise ValueError('Fixed and voxel heads use student depth')
-    if (args.mvsec_calibration or args.eventscape_cameras) and args.head == 'legacy':
+    if (args.mvsec_calibration or camera_splits) and args.head == 'legacy':
         raise ValueError('Temporal training supports fixed, voxel and octree heads')
     if (args.boundary and args.head != 'octree') or (args.event_leaves and not args.boundary):
         raise ValueError('Boundary-controlled training requires an octree head and temporal weights')
@@ -267,8 +277,9 @@ def main(args):
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
     if args.mvsec_calibration is None:
         config.pop('mvsec_calibration')
-    if args.eventscape_cameras is None:
-        config.pop('eventscape_cameras')
+    for key in ('eventscape_cameras','dsec_temporal_cameras'):
+        if config[key] is None:
+            config.pop(key)
     if not args.event_weight:
         config.pop('event_weight')
         config.pop('event_threshold')
@@ -284,7 +295,7 @@ def main(args):
             validation = args.out/f'val_{args.steps:06}.json'
             checkpoint = args.out/'latest.pt'
             if (dict({'head':'legacy'}, **recorded) == config and validation.is_file() and
-                    (not eventscape_splits or (args.out/'val_test.json').is_file()) and
+                    (not camera_splits or (args.out/'val_test.json').is_file()) and
                     (args.steps == 0 or checkpoint.is_file())):
                 rows = json.loads(validation.read_text())
                 state = (torch.load(checkpoint,map_location='cpu',weights_only=True)
@@ -299,12 +310,17 @@ def main(args):
         with ExitStack() as stack:
             data = {}
             test = []
-            if eventscape_splits:
+            if args.eventscape_cameras:
                 from eventscape_gaussian_data import open_gaussian_sequences
 
-                data = open_gaussian_sequences(args.root, eventscape_splits, stack)
-                test = [(name, index) for name in eventscape_splits['test']
-                        for index in data[name].indices]
+                data = open_gaussian_sequences(args.root, camera_splits, stack)
+            elif args.dsec_temporal_cameras:
+                from dsec_temporal_gaussian_data import DSECTemporalGaussianSequence
+
+                for split in camera_splits.values():
+                    for sequence, cameras in split.items():
+                        source = DSECTemporalGaussianSequence(args.root,sequence,cameras)
+                        data[sequence] = stack.enter_context(closing(source))
             else:
                 for sequence in args.train+args.val:
                     if args.mvsec_calibration:
@@ -314,6 +330,8 @@ def main(args):
                     else:
                         source = DSECSequence(args.root,sequence)
                     data[sequence] = stack.enter_context(closing(source))
+            if camera_splits:
+                test = [(name, index) for name in camera_splits['test'] for index in data[name].indices]
             run(args,data,checkpoint,test)
 
 
@@ -334,6 +352,8 @@ if __name__=='__main__':
                          help='Train from temporal windows of the left MVSEC camera')
     dataset.add_argument('--eventscape-cameras',type=Path,
                          help='Train from EventScape RGB-D camera manifests (train/val/test.json)')
+    dataset.add_argument('--dsec-temporal-cameras',type=Path,
+                         help='Train from DSEC temporal RGB-D camera manifests (train/val/test.json)')
     parser.add_argument('--event-weight',type=float,default=0.,
                         help='Weight for target-side native-pixel event supervision during MVSEC voxel-head training')
     parser.add_argument('--event-threshold',type=float,default=.1,
