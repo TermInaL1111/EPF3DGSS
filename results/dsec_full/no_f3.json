@@ -1,0 +1,91 @@
+{
+  "distillation_steps": 22522,
+  "gaussian_steps": 5000,
+  "head": "fixed",
+  "depth_windows": 168,
+  "depth": {
+    "matched": {
+      "absrel": 0.16221888662715042,
+      "delta1": 0.7653134670995531,
+      "dvlt_point_rel_l2": 0.21678128798625299,
+      "pose_auc20": 0.177437641723356
+    },
+    "zero": {
+      "absrel": 0.4823376327043488,
+      "delta1": 0.3272665724424379,
+      "dvlt_point_rel_l2": 0.41258113982067224,
+      "pose_auc20": 0.0
+    }
+  },
+  "dsec_render": {
+    "windows": 96,
+    "psnr": {
+      "matched": 9.120050206780434,
+      "zero": 8.344584609071413,
+      "matched_minus_zero": 0.77546559770902
+    },
+    "ssim": {
+      "matched": 0.2427200764650479,
+      "zero": 0.20720246837784848,
+      "matched_minus_zero": 0.03551760808719943
+    },
+    "overlap_psnr": {
+      "matched": 12.136017342408499,
+      "zero": 10.385432034730911,
+      "matched_minus_zero": 1.7505853076775868
+    },
+    "lpips_vgg": {
+      "matched": 0.6868993397802114,
+      "zero": 0.706933818757534,
+      "matched_minus_zero": -0.02003447897732258
+    },
+    "lpips_alex": {
+      "matched": 0.7393175804366668,
+      "zero": 0.8202485566337904,
+      "matched_minus_zero": -0.08093097619712353
+    },
+    "ssim_evggs": {
+      "matched": 0.23428859340492636,
+      "zero": 0.20005433463181058,
+      "matched_minus_zero": 0.034234258773115776
+    }
+  },
+  "mvsec_render": {
+    "windows": 72,
+    "psnr": {
+      "matched": 15.18053388595581,
+      "zero": 16.383206923802693,
+      "matched_minus_zero": -1.202673037846883
+    },
+    "ssim": {
+      "matched": 0.3598436130624678,
+      "zero": 0.4004514678898785,
+      "matched_minus_zero": -0.040607854827410646
+    },
+    "rotation_deg": {
+      "matched": 1.0606611714594893,
+      "zero": 0.7548771175659366,
+      "matched_minus_zero": 0.3057840538935529
+    },
+    "lpips_vgg": {
+      "matched": 0.6965628431902992,
+      "zero": 0.704521131184366,
+      "matched_minus_zero": -0.007958287994066874
+    },
+    "lpips_alex": {
+      "matched": 0.6610300872060988,
+      "zero": 0.6881905256046189,
+      "matched_minus_zero": -0.027160438398520153
+    },
+    "ssim_evggs": {
+      "matched": 0.355165542413791,
+      "zero": 0.3874079982439677,
+      "matched_minus_zero": -0.032242455830176674
+    },
+    "source_baseline_m": 0.05453201800118121,
+    "query_baseline_m": 0.027433790078425266,
+    "identity_rotation_deg": 0.6664424920972023,
+    "source_copy_psnr": 24.399373994933235,
+    "source_copy_ssim": 0.6589930189980401
+  }
+}
