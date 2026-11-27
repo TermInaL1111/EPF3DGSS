@@ -54,3 +54,7 @@ EPF 两行均使用仓库的 EV3DS 发布权重。正式 DSEC 两个训练组还
 直接运行 EvGGS 的 `eval_gs.py`，使用官方 `val` 划分和 `pretrain_evggs.pth`，保留全部 3,417 个窗口，得到 **PSNR 29.29363078 dB、SSIM 0.95764233、LPIPS-VGG 0.05682888**。评分使用加载器的 `cim`，即背景置黑的灰度目标。官方 PSNR 对每张图用 `20 log10(1 / sqrt(MSE))`，最后对所有窗口取平均。运行时仅为当前 NumPy 补上游使用的 `np.int` 别名。
 
 共享验证表的 **11.55 dB** 来自 136 个配对窗口和保留背景的灰度目标。上表原生验证的 **29.31 dB** 使用背景置黑的目标，并排除每场景最后三个回绕窗口。引用官方验证复跑时使用 **29.2936 dB**。官方入口固定使用验证划分，原生测试行来自本项目评测入口。
+
+## DSEC 训练权重在 MVSEC 的正式对照
+
+无 F³ 组完成 22,522 步 DSEC 蒸馏和 5,000 步 Gaussian head 训练后，在同一批 72 个 MVSEC 室内窗口上达到 15.18 dB PSNR、0.360 SSIM、0.697 LPIPS-VGG、0.661 LPIPS-AlexNet。相对 EvGGS，PSNR 高 2.71 dB，SSIM 高 0.307，两种 LPIPS 分别高 0.041 和 0.118。EvGGS 使用标定源位姿，EPF 预测源位姿，两者的权重训练域也不同。有 F³ 组正在蒸馏。 [可机读配对结果](../results/dsec_full/no_f3_vs_evggs_mvsec.json)
