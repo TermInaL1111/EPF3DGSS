@@ -78,7 +78,8 @@ def main(args):
                 copy_psnr,copy_ssim = gray_metrics(source[None],target[None])
                 row['source_copy_psnr'] = float(copy_psnr[0])
                 row['source_copy_ssim'] = float(copy_ssim[0])
-            variants = [("matched",vox,field,None),("zero",torch.zeros_like(vox),torch.zeros_like(field),None)]
+            variants = [("matched",vox,field,None,False),
+                        ("zero",torch.zeros_like(vox),torch.zeros_like(field),None,False)]
             if boundary_heads:
                 counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
                 boundary_inputs = evidence(counts)
@@ -86,15 +87,22 @@ def main(args):
                     def refine(tokens, depth, confidence, head=head, features=boundary_inputs[arm]):
                         log_depth, _ = head(tokens.float(), depth, confidence, features)
                         return log_depth.exp()
-                    variants.append((f'boundary_{arm}',vox,field,refine))
+                    variants.append((f'boundary_{arm}',vox,field,refine,False))
+                if model.head_type == 'octree':
+                    def refine_and_rank(tokens, depth, confidence):
+                        log_depth, edges = boundary_heads['temporal'](
+                            tokens.float(), depth, confidence, boundary_inputs['temporal'])
+                        return log_depth.exp(), edges
+                    variants.append(('boundary_temporal_event_leaves',vox,field,refine_and_rank,True))
             budget_scenes = {}
-            for key,v,f,refinement in variants:
+            for key,v,f,refinement,rank_leaves in variants:
                 with torch.autocast("cuda",dtype=torch.bfloat16):
                     if args.geometry_only:
                         tokens, pos, _ = model.geometry(v,f,steps=16)
                         raw = model.backbone._decode(tokens,168,224,1,2,pos)
                     else:
-                        scene=model(v,f,steps=render_steps,depth_refinement=refinement)
+                        scene=model(v,f,steps=render_steps,depth_refinement=refinement,
+                                    event_leaf_ranking=rank_leaves)
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)

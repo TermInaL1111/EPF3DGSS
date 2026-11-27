@@ -154,10 +154,13 @@ class EventDVLT(nn.Module):
         return x,pos,hidden
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
-                source_cameras=None, depth_refinement=None):
+                source_cameras=None, depth_refinement=None, event_leaf_ranking=False):
         b,s = voxel.shape[:2]
         if depth_refinement is not None and calibrated_geometry is not None:
             raise ValueError('Depth refinement requires predicted geometry')
+        if event_leaf_ranking and (self.head_type != 'octree' or depth_refinement is None):
+            raise ValueError('Event leaf ranking requires an octree head and boundary predictions')
+        leaf_scores = None
         use_voxels = self.head_type in ('voxel', 'octree')
         if use_voxels and (steps < 4 or calibrated_geometry is not None):
             raise ValueError('The voxel head requires predicted depth and at least four recurrent steps')
@@ -194,6 +197,11 @@ class EventDVLT(nn.Module):
             if depth_refinement is not None:
                 confidence = raw["depth_conf"].reshape_as(coarse_depth).float()
                 corrected = depth_refinement(patch_grid(tokens), coarse_depth, confidence)
+                if event_leaf_ranking:
+                    from event_depth_boundary import pixel_boundary_probability
+
+                    corrected, edges = corrected
+                    leaf_scores = pixel_boundary_probability(edges).reshape(b, -1)
                 if corrected.shape != depth.shape:
                     raise ValueError('Refined depth must match the Gaussian source grid')
                 depth = corrected
@@ -228,7 +236,7 @@ class EventDVLT(nn.Module):
             if self.head_type == 'octree':
                 confidence = resize(raw['depth_conf'].reshape(b*s,1,168,224).float()).reshape(b,-1)
             result = self.gs_head([self.geometry_features(patch_grid(state)) for state in feature_states],
-                                  appearance, points, valid, confidence=confidence)
+                                  appearance, points, valid, confidence=confidence, boundary=leaf_scores)
             result.update(tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
                           rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*translation_scale)
             if return_geometry:

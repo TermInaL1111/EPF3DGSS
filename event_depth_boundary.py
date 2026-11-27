@@ -78,6 +78,16 @@ class EventDepthBoundary(nn.Module):
         return sampled + residual.float(), edges.float()
 
 
+
+def pixel_boundary_probability(edges):
+    """Convert right/down adjacency predictions to incident scores per pixel."""
+    horizontal = edges[:, :1, :, :-1].sigmoid()
+    vertical = edges[:, 1:, :-1, :].sigmoid()
+    return torch.maximum(
+        torch.maximum(F.pad(horizontal, (0, 1)), F.pad(horizontal, (1, 0))),
+        torch.maximum(F.pad(vertical, (0, 0, 0, 1)), F.pad(vertical, (0, 0, 1, 0))),
+    )
+
 def adjacent(values):
     return (values[..., :, 1:] - values[..., :, :-1],
             values[..., 1:, :] - values[..., :-1, :])

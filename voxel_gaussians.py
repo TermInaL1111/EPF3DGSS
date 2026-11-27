@@ -25,7 +25,7 @@ class VoxelGaussianHead(nn.Module):
         nn.init.zeros_(self.attributes[-1].weight)
         nn.init.zeros_(self.attributes[-1].bias)
 
-    def forward(self, pyramid, appearance, points, valid, confidence=None):
+    def forward(self, pyramid, appearance, points, valid, confidence=None, boundary=None):
         fused = None
         for patch, project, refine, size in zip(
                 reversed(pyramid), self.projections, self.refine,
@@ -40,8 +40,14 @@ class VoxelGaussianHead(nn.Module):
         if self.octree:
             views = torch.arange(appearance.shape[0] // points.shape[0], device=points.device)
             views = views.repeat_interleave(appearance.shape[-2] * appearance.shape[-1])
-            scenes = [self.decode_octree(xyz[mask], features[mask], views[mask], conf[mask])
-                      for xyz, features, mask, conf in zip(points, dense, valid, confidence, strict=True)]
+            boundaries = [None] * len(points) if boundary is None else boundary
+            scenes = [
+                self.decode_octree(xyz[mask], features[mask], views[mask], conf[mask],
+                                   None if score is None else score[mask])
+                for xyz, features, mask, conf, score in zip(
+                    points, dense, valid, confidence, boundaries, strict=True
+                )
+            ]
         else:
             scenes = [self.decode_scene(xyz[mask], features[mask])
                       for xyz, features, mask in zip(points, dense, valid, strict=True)]
@@ -66,7 +72,7 @@ class VoxelGaussianHead(nn.Module):
             0, membership, features) / counts[:, None]
         return self.decode_attributes(centers, fused, self.voxel_size_m)
 
-    def decode_octree(self, points, features, views, confidence):
+    def decode_octree(self, points, features, views, confidence, boundary=None):
         from vggt.utils.octdensify import max_view_counts, select_leaves
 
         if not len(points):
@@ -81,7 +87,21 @@ class VoxelGaussianHead(nn.Module):
             memberships.append(ids)
             counts.append(support)
             view_counts.append(max_view_counts(ids, views, len(grid)))
-        leaves = select_leaves(coords, view_counts, ('point_count',) * 2, (.3, .3), None)
+        if boundary is None:
+            leaves = select_leaves(coords, view_counts, ('point_count',) * 2, (.3, .3), None)
+        else:
+            priorities = []
+            for ids, support, views_by_cell in zip(memberships, counts, view_counts, strict=True):
+                mass = points.new_zeros(len(support)).index_add_(0, ids, confidence)
+                edge_mass = points.new_zeros(len(support)).index_add_(0, ids, boundary.float() * confidence)
+                geometric = views_by_cell.float().log1p()
+                priorities.append(geometric / geometric.amax().clamp_min(1e-8)
+                                  + edge_mass / mass.clamp_min(1e-8))
+
+            def score(selected, level):
+                return priorities[level][selected[level]]
+
+            leaves = select_leaves(coords, view_counts, ('learned_score',) * 2, (.3, .3), score)
         centers, fused, widths = [], [], []
         for factor, ids, support, selected in zip((4, 2, 1), memberships, counts, leaves, strict=True):
             count = len(support)

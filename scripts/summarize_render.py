@@ -62,6 +62,10 @@ def compare_boundary(rows):
     if not keys or len(set(keys)) != len(keys):
         raise ValueError('Expected unique MVSEC flight windows')
     arms = ('matched', 'boundary_geometry', 'boundary_accumulated', 'boundary_fixed_edge', 'boundary_temporal')
+    event_leaf_arm = 'boundary_temporal_event_leaves'
+    has_event_leaves = any(event_leaf_arm in row for row in rows)
+    if has_event_leaves:
+        arms += (event_leaf_arm,)
     metrics = {'psnr': 1, 'ssim': 1, 'lpips_vgg': -1, 'lpips_alex': -1}
     summary = {}
     for arm in arms:
@@ -70,7 +74,10 @@ def compare_boundary(rows):
         if all('gaussian_count' in r for r in values):
             summary[arm]['mean_gaussian_count'] = fmean(r['gaussian_count'] for r in values)
     relative = {}
-    for reference in ('matched', 'boundary_geometry'):
+    references = ('matched', 'boundary_geometry')
+    if has_event_leaves:
+        references += ('boundary_temporal',)
+    for reference in references:
         relative[reference] = {
             arm: {m: 100 * sign * (summary[arm][m] - summary[reference][m]) / abs(summary[reference][m])
                   if summary[reference][m] else None for m, sign in metrics.items()}
