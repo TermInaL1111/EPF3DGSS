@@ -12,6 +12,31 @@ from mvsec_transfer import calibration,flight_windows
 from torch.nn import functional as F
 
 
+RENDER_KEYS = ('centers', 'quats', 'scales', 'opacity', 'gray')
+
+
+def image_scores(scene, query, target, perceptual):
+    image = F.avg_pool2d(render(scene, query[None]), 5)
+    target = target[None]
+    psnr, ssim = gray_metrics(image, target)
+    scores = dict(psnr=float(psnr[0]), ssim=float(ssim[0]),
+                  ssim_evggs=float(gray_metrics(image, target, padded=True)[1][0]))
+    if perceptual:
+        scores.update(perceptual(image, target))
+    return scores
+
+
+def cap_scene(scene, budget):
+    count = scene['opacity'].shape[1]
+    if not 0 < budget <= count:
+        raise ValueError('Gaussian budget must be positive and at most the scene count')
+    if budget == count:
+        return scene
+    keep = torch.argsort(scene['opacity'][0], descending=True, stable=True)[:budget]
+    keep = keep.sort().values
+    return {key: scene[key][:, keep] for key in RENDER_KEYS}
+
+
 @torch.inference_mode()
 def main(args):
     model=EventDVLT(args.assets).cuda().eval()
@@ -62,6 +87,7 @@ def main(args):
                         log_depth, _ = head(tokens.float(), depth, confidence, features)
                         return log_depth.exp()
                     variants.append((f'boundary_{arm}',vox,field,refine))
+            budget_scenes = {}
             for key,v,f,refinement in variants:
                 with torch.autocast("cuda",dtype=torch.bfloat16):
                     if args.geometry_only:
@@ -76,16 +102,20 @@ def main(args):
                     rot = relative[:3,:3].T @ right[:3,:3]
                     row[key] = dict(rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()))
                     continue
-                image=F.avg_pool2d(render(scene,query[None]),5)[0]
-                rot=scene["rotation"][0].T @ right[:3,:3]
-                psnr,ssim = gray_metrics(image[None],target[None])
-                row[key]=dict(psnr=float(psnr[0]),ssim=float(ssim[0]),
-                              rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()))
+                rot = scene["rotation"][0].T @ right[:3,:3]
+                row[key] = image_scores(scene, query, target, perceptual)
+                row[key]['rotation_deg'] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
                 if 'gaussian_count' in scene:
                     row[key]['gaussian_count'] = int(scene['gaussian_count'][0])
-                row[key]["ssim_evggs"] = float(gray_metrics(image[None],target[None],padded=True)[1][0])
-                if perceptual:
-                    row[key].update(perceptual(image[None],target[None]))
+                if boundary_heads and key != 'zero':
+                    budget_scenes[key] = {attr: scene[attr] for attr in RENDER_KEYS}
+            if budget_scenes:
+                budget = min(scene['opacity'].shape[1] for scene in budget_scenes.values())
+                row['matched_budget'] = {
+                    key: dict(gaussian_count=budget,
+                              **image_scores(cap_scene(scene, budget), query, target, perceptual))
+                    for key, scene in budget_scenes.items()
+                }
             rows.append(row)
     args.out.write_text(json.dumps(rows,indent=2,allow_nan=False)+"\n")
 

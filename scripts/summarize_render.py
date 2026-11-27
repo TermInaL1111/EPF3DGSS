@@ -76,7 +76,17 @@ def compare_boundary(rows):
                   if summary[reference][m] else None for m, sign in metrics.items()}
             for arm in arms if arm != reference
         }
-    return dict(windows=len(rows), summary=summary, relative_improvement_pct=relative)
+    report = dict(windows=len(rows), summary=summary, relative_improvement_pct=relative)
+    if any('matched_budget' in row for row in rows):
+        budget_rows = []
+        for row in rows:
+            budget = row['matched_budget']
+            counts = {budget[arm]['gaussian_count'] for arm in arms}
+            if len(counts) != 1 or min(counts) < 1:
+                raise ValueError('Budget-matched arms must render the same positive Gaussian count')
+            budget_rows.append(dict(flight=row['flight'], start=row['start'], **budget))
+        report['matched_budget'] = compare_boundary(budget_rows)
+    return report
 
 
 if __name__=='__main__':
@@ -84,6 +94,7 @@ if __name__=='__main__':
     p.add_argument('input',type=Path)
     p.add_argument('out',type=Path)
     p.add_argument('--predicted',type=Path,help='Compare a calibrated input against a DSEC predicted arm')
+    p.add_argument('--boundary', action='store_true', help='Compare depth refinements on paired MVSEC windows')
     args=p.parse_args()
     rows = json.loads(args.input.read_text())
     if args.boundary:
