@@ -62,6 +62,7 @@ def main(args):
     config.update(train_pairs=len(train), val_pairs=len(val), schedule_steps=horizon, actual_epochs=last_epoch)
     if args.resume:
         recorded = json.loads((args.out/'config.json').read_text())
+        recorded.setdefault('step_gating', 'saag')
         if any(recorded.get(k) != v for k,v in config.items() if k not in ('stop_after','actual_epochs')):
             raise ValueError('Resume requires the same data, model and LR schedule')
     else:
@@ -79,8 +80,12 @@ def main(args):
         elif not field_encoder and name.startswith('event_adapter.'):
             p.requires_grad_(False)
         if p.requires_grad:
-            (slow if name.startswith('backbone.') else fast).append(p)
             adapter_names.append(name)
+            if ((args.step_gating != 'saag' and name.startswith('corrections.')) or
+                (args.step_gating == 'frozen' and '.depth_scale.proj.' in name)):
+                p.requires_grad_(False)
+            else:
+                (slow if name.startswith('backbone.') else fast).append(p)
     opt = torch.optim.AdamW([{'params': slow, 'lr': 3e-5},
                              {'params': fast, 'lr': 3e-4}], weight_decay=.05)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(opt, horizon)
@@ -244,6 +249,8 @@ if __name__ == '__main__':
     parser.add_argument('--val', nargs='+', required=True)
     parser.add_argument('--f3', type=Path)
     parser.add_argument('--realm', action='store_true')
+    parser.add_argument('--step-gating', choices=('frozen','unfrozen','saag'), default='saag',
+                        help='Freeze DVLT gates, train DVLT gates alone, or also train patch corrections')
     parser.add_argument('--max-steps', type=int, help='Exact step budget with an equally long cosine schedule')
     parser.add_argument('--cover-train',action='store_true',help='Raise the step budget if needed to visit every clip start')
     parser.add_argument('--realm-progress-epochs',type=int,help='Map REALM curriculum epochs onto optimizer progress')
