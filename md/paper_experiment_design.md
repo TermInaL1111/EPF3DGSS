@@ -62,3 +62,7 @@
 2. 用固定骨干组合 F³ 蒸馏开关与 GS 外观 F³ 开关，形成 2×2，区分几何与外观贡献。固定中心和旧头也需同骨干对照。
 3. 主创新候选和均匀、深度置信融合用相同预算。报告质量、运行时间及退化案例，识别效果来自可靠性机制还是高斯数量变化。
 4. 先补共同窗口的教师和直接蒸馏，接着补 EventScape 同训练域和 MVSEC 室外跨域。IncEventGS 同数据实跑留到后续。最终论文使用有可核验配置、数据划分、权重和逐窗口产物的结果。
+
+### DSEC 单目时间位姿的可用性核验
+
+已下载 MC-EMVS 公开的 LiDAR-IMU 里程计，仓库提交为 `49fbc7ec65ee3fb6edbf706437dab39ff536ba7a`。按 ROS 时间戳与 DSEC 图像时间戳的覆盖范围检查，`interlaken_00`、`zurich_city_02`、`zurich_city_04` 三个轨迹分别完整覆盖当前训练划分的 5、5、6 条序列，当前 6 条验证和 1 条留出深度序列均无对应轨迹。以上 16 条适合开发单目时间渲染的训练数据加载和坐标转换。当前 DSEC 蒸馏已使用这些序列，不能将它们作为该检查点的留出时间测试。轨迹是里程计参考。应用前还要核验 LiDAR 到整流事件相机的外参和时间偏差。当前 MVSEC 室内时间几何使用自带的轨迹与深度。 [MC-EMVS 数据说明](https://github.com/tub-rip/dvs_mcemvs/blob/main/docs/examples.md#dsec) · [DSEC 原始 LiDAR/IMU](https://dsec.ifi.uzh.ch/dsec-datasets/download/)
