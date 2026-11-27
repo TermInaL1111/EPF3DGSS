@@ -1,9 +1,10 @@
-"""Train DVLT geometry on DSEC pairs, with optional F³ and REALM masking.
+"""Train DVLT geometry on DSEC or EventScape clips, with optional F³ and REALM masking.
 
 Base loss and shared K follow Déjà-Events III-B. The optional REALM arm
 transfers the masking schedule, keeping the DVLT objective and special tokens.
 """
 import argparse
+from contextlib import ExitStack
 from functools import lru_cache
 import json
 import math
@@ -21,26 +22,39 @@ from event_dvlt import EventDVLT, load_rgb, voxelize
 from event_field import EventField
 
 
-def main(args):
+def main(args, stack):
     if args.cover_train and not args.max_steps:
         raise ValueError('--cover-train requires --max-steps')
     if args.realm_progress_epochs is not None and (not args.realm or args.realm_progress_epochs < 1):
         raise ValueError('--realm-progress-epochs requires --realm and a positive value')
-    if set(args.train) & set(args.val):
-        raise ValueError('Training and validation sequences overlap')
     last_epoch = args.stop_after or args.epochs
     if not 1 <= last_epoch <= args.epochs:
         raise ValueError('--stop-after must be between 1 and --epochs')
     torch.manual_seed(args.seed)
-    data = {seq: DSECTemporalPairs(args.root, seq) for seq in args.train + args.val}
+    if args.eventscape:
+        if args.train is not None or args.val is not None:
+            raise ValueError('EventScape uses the supplied training and validation archives')
+        from eventscape_data import eventscape_sequences
+
+        splits = eventscape_sequences(args.root, stack)
+        args.train, args.val = list(splits['train']), list(splits['val'])
+        data = splits['train'] | splits['val']
+        stride = 1
+    else:
+        if not args.train or not args.val:
+            raise ValueError('DSEC requires --train and --val')
+        data = {seq: DSECTemporalPairs(args.root, seq) for seq in args.train + args.val}
+        stride = 2
+    if set(args.train) & set(args.val):
+        raise ValueError('Training and validation sequences overlap')
     train = [(seq, pair) for seq in args.train for pair in data[seq].pairs]
     val = [(seq, pair) for seq in args.val for pair in data[seq].pairs]
     if not 2 <= args.max_views <= 18:
         raise ValueError('--max-views must be in [2,18]')
-    clips = {seq: {start: tuple(range(start,start+2*views,2))
+    clips = {seq: {start: tuple(range(start,start+stride*views,stride))
                    for start,_ in data[seq].pairs
                    for views in range(2,args.max_views+1)
-                   if all(index in data[seq].ends for index in range(start,start+2*views,2))}
+                   if all(index in data[seq].ends for index in range(start,start+stride*views,stride))}
              for seq in args.train}
     if not train or not val:
         raise ValueError('Both splits need usable frame pairs')
@@ -59,6 +73,8 @@ def main(args):
         last_epoch = math.ceil(horizon/len(train))
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()
               if k != 'resume'}
+    if not args.eventscape:
+        config.pop('eventscape')
     config.update(train_pairs=len(train), val_pairs=len(val), schedule_steps=horizon, actual_epochs=last_epoch)
     if args.resume:
         recorded = json.loads((args.out/'config.json').read_text())
@@ -245,8 +261,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('root', 'assets', 'out'):
         parser.add_argument(key, type=Path)
-    parser.add_argument('--train', nargs='+', required=True)
-    parser.add_argument('--val', nargs='+', required=True)
+    parser.add_argument('--train', nargs='+')
+    parser.add_argument('--val', nargs='+')
+    parser.add_argument('--eventscape', action='store_true',
+                        help='Load Town01–03 training and Town05 validation from EventScape ZIPs')
     parser.add_argument('--f3', type=Path)
     parser.add_argument('--realm', action='store_true')
     parser.add_argument('--step-gating', choices=('frozen','unfrozen','saag'), default='saag',
@@ -263,4 +281,5 @@ if __name__ == '__main__':
     parser.add_argument('--eval-every', type=int, default=5)
     parser.add_argument('--val-limit', type=int, default=0)
     parser.add_argument('--steps-per-epoch', type=int, default=0, help='Short integration runs')
-    main(parser.parse_args())
+    with ExitStack() as stack:
+        main(parser.parse_args(), stack)

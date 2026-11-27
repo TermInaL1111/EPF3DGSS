@@ -62,6 +62,8 @@ def main(args):
                 psnr,ssim = gray_metrics(image[None],target[None])
                 row[key]=dict(psnr=float(psnr[0]),ssim=float(ssim[0]),
                               rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()))
+                if 'gaussian_count' in scene:
+                    row[key]['gaussian_count'] = int(scene['gaussian_count'][0])
                 row[key]["ssim_evggs"] = float(gray_metrics(image[None],target[None],padded=True)[1][0])
                 if perceptual:
                     row[key].update(perceptual(image[None],target[None]))

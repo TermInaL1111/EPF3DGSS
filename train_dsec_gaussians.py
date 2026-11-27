@@ -1,4 +1,4 @@
-"""Gray GS baseline on calibrated DSEC stereo, with a frozen geometry backbone."""
+"""Train a grayscale Gaussian head with a frozen geometry backbone."""
 import argparse
 from functools import lru_cache
 import fcntl
@@ -61,7 +61,7 @@ def run(args, data, checkpoint):
     @torch.no_grad()
     def initialize_scale():
         # DVLT scale is ambiguous, but the target camera baseline is in metres.
-        # Fit a single scalar on training frames only and keep it trainable.
+        # Fit a single scalar on training frames only.
         selected = [train[i] for i in np.linspace(0,len(train)-1,min(12,len(train)),dtype=int)]
         rows = []
         for sequence,index in selected:
@@ -97,11 +97,11 @@ def run(args, data, checkpoint):
         if empty:
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
-        cameras = (ki,poses) if training and args.head == 'fixed' else None
+        cameras = (ki,poses) if training and args.head != 'legacy' else None
         with torch.autocast('cuda',dtype=torch.bfloat16):
             cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras)
-        return render(cloud,query,k),gray/255
+        return render(cloud,query,k),gray/255,cloud.get('gaussian_count')
 
     @lru_cache(maxsize=None)
     def overlap(seq,index):
@@ -131,7 +131,9 @@ def run(args, data, checkpoint):
             mask = overlap(*item)
             row["overlap_fraction"] = float(mask.float().mean())
             for key,empty in [('matched',False),('zero',True)]:
-                image,gray = predict(item,empty)
+                image,gray,count = predict(item,empty)
+                if count is not None:
+                    row[key+'_gaussian_count'] = int(count[0])
                 psnr,ssim = gray_metrics(image,gray)
                 row[key+'_psnr'],row[key+'_ssim'] = float(psnr[0]),float(ssim[0])
                 row[key+"_ssim_evggs"] = float(gray_metrics(image,gray,padded=True)[1][0])
@@ -157,7 +159,7 @@ def run(args, data, checkpoint):
         return
     for step in range(1,args.steps+1):
         item = train[int(torch.randint(len(train),(1,)))]
-        image,gray = predict(item,training=True)
+        image,gray,_ = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
@@ -171,7 +173,7 @@ def run(args, data, checkpoint):
         if step==args.steps or step%100==0:
             tmp = args.out/'latest.pt.tmp'
             state = weights | {n:p.detach().cpu() for n,p in params.items()}
-            if args.head == 'fixed':
+            if args.head != 'legacy':
                 state['log_metric_scale'] = model.log_metric_scale.detach().cpu()
             torch.save({'model':state,'step':step,'geometry':args.geometry,'f3':use_field,
                         'head':args.head},tmp)
@@ -188,10 +190,10 @@ def main(args):
     if args.head is None:
         args.head = ('fixed' if args.geometry == 'predicted' and checkpoint['config'].get('cover_train')
                      else 'legacy')
-    if args.head == 'fixed' and args.geometry != 'predicted':
-        raise ValueError('The fixed head uses student depth')
-    if args.mvsec_calibration and args.head != 'fixed':
-        raise ValueError('MVSEC temporal training uses the fixed-center head')
+    if args.head != 'legacy' and args.geometry != 'predicted':
+        raise ValueError('Fixed and voxel heads use student depth')
+    if args.mvsec_calibration and args.head == 'legacy':
+        raise ValueError('MVSEC temporal training supports fixed and voxel heads')
     if set(args.train)&set(args.val):
         raise ValueError('Specify nonoverlapping training and validation sequences')
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
@@ -239,7 +241,7 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+',required=True)
     parser.add_argument('--val',nargs='+',required=True)
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
-    parser.add_argument('--head',choices=('legacy','fixed'),
+    parser.add_argument('--head',choices=('legacy','fixed','voxel'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--mvsec-calibration',type=Path,

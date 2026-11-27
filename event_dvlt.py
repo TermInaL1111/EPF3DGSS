@@ -1,4 +1,4 @@
-"""Event-adapted DVLT geometry backbone with a pixel-aligned Gaussian readout."""
+"""Event-adapted DVLT geometry backbone and Gaussian readouts."""
 import json
 import numpy as np
 import torch
@@ -106,13 +106,19 @@ class EventDVLT(nn.Module):
     def configure_head(self, kind):
         if kind == self.head_type:
             return
-        if kind != 'fixed':
+        if kind == 'fixed':
+            head = GaussianAttributes()
+        elif kind == 'voxel':
+            from voxel_gaussians import VoxelGaussianHead
+
+            head = VoxelGaussianHead()
+        else:
             raise ValueError(f'Unknown Gaussian head: {kind}')
         device = self.log_metric_scale.device
-        self.gs_head = GaussianAttributes().to(device)
+        self.gs_head = head.to(device).train(self.training)
         self.head_type = kind
 
-    def geometry(self,voxel,field,steps=12,mask_fraction=0.,input_mask=None):
+    def geometry(self,voxel,field,steps=12,mask_fraction=0.,input_mask=None,feature_states=None):
         b,s = voxel.shape[:2]
         h,w = 168,224
         v = voxel.flatten(0,1)
@@ -137,17 +143,24 @@ class EventDVLT(nn.Module):
         spatial = F.pad(torch.ones_like(density[:,extra:]),(0,0,extra,0))
         pos = n._get_rope_positions(b*s,h,w,x.device)
         block = n.recurrent_blocks[0]
+        taps = tuple(round(steps * fraction / 4) for fraction in (1, 2, 3, 4)) if feature_states is not None else ()
         for k in range(steps):
             pair = x.new_tensor([k/(steps-1),min(k+1,steps-1)/(steps-1)],dtype=torch.float32)
             x = gated_update(block.frame_attn,self.corrections[0],x,pair.expand(b*s,2),pos,density,spatial)
             x = gated_update(block.global_attn,self.corrections[1],x.reshape(b,-1,768),pair.expand(b,2),None,
                              density.reshape(b,-1,1),spatial.reshape(b,-1,1)).reshape(b*s,-1,768)
+            if k+1 in taps:
+                feature_states.append(x)
         return x,pos,hidden
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
                 source_cameras=None):
         b,s = voxel.shape[:2]
-        tokens,pos,hidden = self.geometry(voxel,field,steps,mask_fraction)
+        use_voxels = self.head_type == 'voxel'
+        if use_voxels and (steps < 4 or calibrated_geometry is not None):
+            raise ValueError('The voxel head requires predicted depth and at least four recurrent steps')
+        feature_states = [] if use_voxels else None
+        tokens,pos,hidden = self.geometry(voxel,field,steps,mask_fraction,feature_states=feature_states)
         n = self.backbone
         source_valid = None
         raw = None
@@ -163,25 +176,29 @@ class EventDVLT(nn.Module):
         else:
             metric_depth, intrinsic, relative = calibrated_geometry
             source_valid = metric_depth > 0
-        patch = tokens[:,n.patch_start_idx:].transpose(1,2).reshape(b*s,768,12,16)
+        def patch_grid(state):
+            return state[:,n.patch_start_idx:].transpose(1,2).reshape(b*s,768,12,16)
+
         size = (480,640)
         def resize(x):
             return F.interpolate(x,size,mode="bilinear",align_corners=False)
-        detail = torch.cat([resize(self.geometry_features(patch)),resize(self.field_features(field.flatten(0,1))),
-                            voxel.flatten(0,1).asinh()],1)
+        appearance = torch.cat([resize(self.field_features(field.flatten(0,1))),
+                                voxel.flatten(0,1).asinh()],1)
         fixed = self.head_type == 'fixed'
         if calibrated_geometry is None:
             scale = self.log_metric_scale.exp()
             depth = resize(raw["depth"].reshape(b*s,1,168,224).float())*scale
         else:
-            scale = detail.new_tensor(1.)
+            scale = metric_depth.new_tensor(1.)
             depth = metric_depth.reshape(b*s,1,480,640).clamp_min(1e-4)
-        if fixed:
-            log_size, quat, gray, opacity = self.gs_head(detail,depth)
-        else:
-            attrs = self.gs_head(detail).float()
-            depth = depth*(.25*attrs[:,:1].tanh()).exp()
-            log_size, quat, gray, opacity = attrs[:,1:4],attrs[:,4:8],attrs[:,8:9],attrs[:,9:10]
+        if feature_states is None:
+            detail = torch.cat([resize(self.geometry_features(patch_grid(tokens))), appearance],1)
+            if fixed:
+                log_size, quat, gray, opacity = self.gs_head(detail,depth)
+            else:
+                attrs = self.gs_head(detail).float()
+                depth = depth*(.25*attrs[:,:1].tanh()).exp()
+                log_size, quat, gray, opacity = attrs[:,1:4],attrs[:,4:8],attrs[:,8:9],attrs[:,9:10]
         # Scale the predicted intrinsics using the pixel-center convention of the resize.
         k = intrinsic.reshape(b*s,3,3)
         y,x = torch.meshgrid(torch.arange(480,device=k.device),torch.arange(640,device=k.device),indexing="ij")
@@ -190,6 +207,20 @@ class EventDVLT(nn.Module):
         local = torch.stack([xx,yy,torch.ones_like(xx)],-1)*depth[:,0,:,:,None]
         local = local.reshape(b,s,-1,3)
         translation_scale = 1. if source_cameras is not None else scale
+        if feature_states is not None:
+            # Keep metric coordinates in FP32 before assigning voxel membership.
+            with torch.autocast(voxel.device.type, enabled=False):
+                center = local.float() @ relative[:,:,:3,:3].float().transpose(-1,-2)
+                center = center + translation_scale*relative[:,:,:3,3].float()[:,:,None]
+            points = center.flatten(1,2)
+            valid = torch.isfinite(points).all(-1) & (depth.reshape(b,-1) > 0)
+            result = self.gs_head([self.geometry_features(patch_grid(state)) for state in feature_states],
+                                  appearance, points, valid)
+            result.update(tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
+                          rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*translation_scale)
+            if return_geometry:
+                result['raw_geometry'] = raw
+            return result
         center = local @ relative[:,:,:3,:3].transpose(-1,-2) + translation_scale*relative[:,:,:3,3][:,:,None]
         sigma = depth/(k[:,0,0,None,None,None].clamp_min(1)*640/224)
         sizes = sigma*log_size.clamp(-3,3).exp()

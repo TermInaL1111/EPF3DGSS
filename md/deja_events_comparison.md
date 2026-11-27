@@ -1,6 +1,6 @@
 # Déjà-Events 与 EPF 蒸馏几何对照
 
-论文列来自 [Déjà-Events 表 I–III](https://arxiv.org/html/2611.21302v1)。EPF 两列使用 DSEC 蒸馏第 7,000 步检查点。当前正式流水线用 DSEC 的 34 条序列蒸馏，MVSEC 室内航线用于跨域评测。MVSEC 训练和下载中的 EventScape 训练留作各自的实验行。
+论文列来自 [Déjà-Events 表 I–III](https://arxiv.org/html/2611.21302v1)。EPF 两列使用 DSEC 蒸馏第 7,000 步检查点。当前正式流水线用 DSEC 的 34 条序列蒸馏，MVSEC 室内航线用于跨域评测。EventScape 已完成下载和蒸馏联调，20,000 步直接蒸馏作为独立实验排队。数据划分与验证记录见 [论文实验设计](paper_experiment_design.md#eventscape-归档核验)。
 
 百分比为相对变化，正值表示改善，负值表示下降。越低越好的指标使用 (基线 − 当前) / |基线|，越高越好的指标使用 (当前 − 基线) / |基线|。计算使用未四舍五入的本地数值。论文对照百分比只反映数值差，不用于排名。
 
