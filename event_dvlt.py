@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from safetensors.torch import load_file
 from dvlt.model.dvlt.model import DVLTModel, _slice_expand_flatten
 from dvlt.common.rays import rays_to_pose
+from dvlt.common.rotation import mat_to_quat
 from gsplat import rasterization
 
 
@@ -24,6 +25,8 @@ def load_scene_weights(model, checkpoint):
         if checkpoint['geometry'] != 'predicted':
             raise ValueError('Event-only reconstruction requires predicted geometry')
         steps, use_f3 = 16, checkpoint['f3']
+        model.configure_head(checkpoint.get('head', 'legacy'))
+        expected = {name for name,p in model.named_parameters() if p.requires_grad}
         checkpoint = checkpoint['model']
         if not use_f3:
             expected = {key for key in expected if not key.startswith('event_adapter.')}
@@ -98,6 +101,16 @@ class EventDVLT(nn.Module):
         nn.init.zeros_(self.gs_head[-1].bias)
         self.log_metric_scale = nn.Parameter(torch.tensor(-.7))
         self.backbone.eval()
+        self.head_type = 'legacy'
+
+    def configure_head(self, kind):
+        if kind == self.head_type:
+            return
+        if kind != 'fixed':
+            raise ValueError(f'Unknown Gaussian head: {kind}')
+        device = self.log_metric_scale.device
+        self.gs_head = GaussianAttributes().to(device)
+        self.head_type = kind
 
     def geometry(self,voxel,field,steps=12,mask_fraction=0.,input_mask=None):
         b,s = voxel.shape[:2]
@@ -131,7 +144,8 @@ class EventDVLT(nn.Module):
                              density.reshape(b,-1,1),spatial.reshape(b,-1,1)).reshape(b*s,-1,768)
         return x,pos,hidden
 
-    def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None):
+    def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
+                source_cameras=None):
         b,s = voxel.shape[:2]
         tokens,pos,hidden = self.geometry(voxel,field,steps,mask_fraction)
         n = self.backbone
@@ -144,6 +158,8 @@ class EventDVLT(nn.Module):
                 rays = raw["rays"].float()
                 poses,intrinsic = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
                 relative = torch.linalg.solve(poses[:,:1],poses)
+            if source_cameras is not None:
+                intrinsic, relative = source_cameras
         else:
             metric_depth, intrinsic, relative = calibrated_geometry
             source_valid = metric_depth > 0
@@ -153,14 +169,19 @@ class EventDVLT(nn.Module):
             return F.interpolate(x,size,mode="bilinear",align_corners=False)
         detail = torch.cat([resize(self.geometry_features(patch)),resize(self.field_features(field.flatten(0,1))),
                             voxel.flatten(0,1).asinh()],1)
-        attrs = self.gs_head(detail).float()
+        fixed = self.head_type == 'fixed'
         if calibrated_geometry is None:
             scale = self.log_metric_scale.exp()
             depth = resize(raw["depth"].reshape(b*s,1,168,224).float())*scale
         else:
-            scale = attrs.new_tensor(1.)
+            scale = detail.new_tensor(1.)
             depth = metric_depth.reshape(b*s,1,480,640).clamp_min(1e-4)
-        depth = depth*(.25*attrs[:,:1].tanh()).exp()
+        if fixed:
+            log_size, quat, gray, opacity = self.gs_head(detail,depth)
+        else:
+            attrs = self.gs_head(detail).float()
+            depth = depth*(.25*attrs[:,:1].tanh()).exp()
+            log_size, quat, gray, opacity = attrs[:,1:4],attrs[:,4:8],attrs[:,8:9],attrs[:,9:10]
         # Scale the predicted intrinsics using the pixel-center convention of the resize.
         k = intrinsic.reshape(b*s,3,3)
         y,x = torch.meshgrid(torch.arange(480,device=k.device),torch.arange(640,device=k.device),indexing="ij")
@@ -168,21 +189,53 @@ class EventDVLT(nn.Module):
         yy = ((y+.5)*168/480-.5-k[:,1,2,None,None])/k[:,1,1,None,None].clamp_min(1)
         local = torch.stack([xx,yy,torch.ones_like(xx)],-1)*depth[:,0,:,:,None]
         local = local.reshape(b,s,-1,3)
-        center = local @ relative[:,:,:3,:3].transpose(-1,-2) + scale*relative[:,:,:3,3][:,:,None]
+        translation_scale = 1. if source_cameras is not None else scale
+        center = local @ relative[:,:,:3,:3].transpose(-1,-2) + translation_scale*relative[:,:,:3,3][:,:,None]
         sigma = depth/(k[:,0,0,None,None,None].clamp_min(1)*640/224)
-        sizes = sigma*(attrs[:,1:4].clamp(-3,3)).exp()
-        quat = attrs[:,4:8]+attrs.new_tensor([1.,0,0,0])[None,:,None,None]
+        sizes = sigma*log_size.clamp(-3,3).exp()
+        quat = F.normalize(quat+quat.new_tensor([1.,0,0,0])[None,:,None,None],dim=1)
+        if fixed:
+            camera_q = mat_to_quat(relative[:,:,:3,:3].float()).roll(1,-1).reshape(b*s,4,1,1)
+            qw, qv = camera_q[:,:1], camera_q[:,1:]
+            w, v = quat[:,:1], quat[:,1:]
+            quat = torch.cat([qw*w-(qv*v).sum(1,keepdim=True), qw*v+w*qv+torch.cross(qv.expand_as(v),v,dim=1)],1)
         def pack(x):
             return x.permute(0,2,3,1).reshape(b,-1,x.shape[1]).contiguous()
-        result = dict(centers=center.flatten(1,2).contiguous(),scales=pack(sizes),quats=pack(F.normalize(quat,dim=1)),
-                    gray=pack(attrs[:,8:9].sigmoid()),opacity=pack(attrs[:,9:10].sigmoid())[...,0].contiguous(),
+        result = dict(centers=center.flatten(1,2).contiguous(),scales=pack(sizes),quats=pack(quat),
+                    gray=pack(gray.sigmoid()),opacity=pack(opacity.sigmoid())[...,0].contiguous(),
                     tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
-                    rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*scale)
+                    rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*translation_scale)
         if source_valid is not None:
             result["opacity"] = result["opacity"] * source_valid.reshape(b,-1)
         if return_geometry:
             result["raw_geometry"] = raw
         return result
+
+
+class GaussianAttributes(nn.Module):
+    """Separate event intensity and Gaussian shape branches at fixed depth."""
+
+    def __init__(self):
+        super().__init__()
+        self.geometry = nn.Conv2d(24, 24, 3, padding=1)
+        self.appearance = nn.Conv2d(17, 24, 3, padding=1)
+        self.intensity = nn.Conv2d(24, 1, 1)
+        self.shape = nn.Sequential(
+            nn.Conv2d(26, 24, 3, padding=1), nn.GELU(),
+            nn.Conv2d(24, 24, 3, padding=1), nn.GELU())
+        self.scale = nn.Conv2d(24, 3, 1)
+        self.rotation = nn.Conv2d(24, 4, 1)
+        self.opacity = nn.Conv2d(24, 1, 1)
+        for layer in (self.scale, self.rotation, self.opacity):
+            nn.init.zeros_(layer.weight)
+            nn.init.zeros_(layer.bias)
+
+    def forward(self, features, depth):
+        geometry, appearance = features.split((24,17),dim=1)
+        combined = F.gelu(self.geometry(geometry)+self.appearance(appearance))
+        gray = self.intensity(combined)
+        shape = self.shape(torch.cat((combined,depth.clamp_min(1e-6).log(),gray.sigmoid()),1))
+        return tuple(layer(shape).float() for layer in (self.scale,self.rotation)) + (gray.float(),self.opacity(shape).float())
 
 
 def render(cloud,query,intrinsics=None):

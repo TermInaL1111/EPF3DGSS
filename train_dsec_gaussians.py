@@ -28,9 +28,11 @@ def run(args, data):
     if set(weights) != expected:
         raise ValueError('Unexpected parameters in DSEC geometry checkpoint')
     model.load_state_dict(weights, strict=False)
+    model.configure_head(args.head)
     for name, parameter in model.named_parameters():
         trainable = name.startswith(('gs_head.', 'field_features.', 'geometry_features.'))
-        parameter.requires_grad_(trainable or (name == 'log_metric_scale' and args.geometry == 'predicted'))
+        parameter.requires_grad_(trainable or (name == 'log_metric_scale' and args.geometry == 'predicted'
+                                                and args.head == 'legacy'))
     params = {n:p for n,p in model.named_parameters() if p.requires_grad}
     perceptual = PerceptualMetrics("cuda") if args.lpips else None
     optimizer = torch.optim.AdamW(params.values(), lr=3e-4)
@@ -82,13 +84,15 @@ def run(args, data):
     if args.geometry == 'predicted':
         initialize_scale()
 
-    def predict(item, empty=False):
+    def predict(item, empty=False, training=False):
         voxel,field,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
         if empty:
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
+        cameras = (ki,poses) if training and args.head == 'fixed' else None
         with torch.autocast('cuda',dtype=torch.bfloat16):
-            cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated)
+            cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
+                          source_cameras=cameras)
         return render(cloud,query,k),gray/255
 
     @lru_cache(maxsize=None)
@@ -145,7 +149,7 @@ def run(args, data):
         return
     for step in range(1,args.steps+1):
         item = train[int(torch.randint(len(train),(1,)))]
-        image,gray = predict(item)
+        image,gray = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
@@ -158,8 +162,11 @@ def run(args, data):
                   'ssim',float(ssim.detach().mean()),'grad',float(norm),flush=True)
         if step==args.steps or step%100==0:
             tmp = args.out/'latest.pt.tmp'
-            torch.save({'model':weights | {n:p.detach().cpu() for n,p in params.items()},
-                        'step':step,'geometry':args.geometry,'f3':use_field},tmp)
+            state = weights | {n:p.detach().cpu() for n,p in params.items()}
+            if args.head == 'fixed':
+                state['log_metric_scale'] = model.log_metric_scale.detach().cpu()
+            torch.save({'model':state,'step':step,'geometry':args.geometry,'f3':use_field,
+                        'head':args.head},tmp)
             tmp.replace(args.out/'latest.pt')
     evaluate(args.steps)
 
@@ -169,6 +176,8 @@ def main(args):
         raise ValueError('SSIM weight must be between 0 and 1')
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
+    if args.head == 'fixed' and args.geometry != 'predicted':
+        raise ValueError('The fixed head uses student depth')
     if set(args.train)&set(args.val):
         raise ValueError('Specify nonoverlapping training and validation sequences')
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
@@ -209,6 +218,7 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+',required=True)
     parser.add_argument('--val',nargs='+',required=True)
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
+    parser.add_argument('--head',choices=('legacy','fixed'),default='legacy')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--steps',type=int,default=500)
     parser.add_argument('--ssim-weight',type=float,default=.2)
