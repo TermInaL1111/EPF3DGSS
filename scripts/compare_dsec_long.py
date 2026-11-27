@@ -65,6 +65,8 @@ def compare(f3, no_f3, evggs=None):
         raise ValueError('Expected the paired 20,000-step F3 ablation')
     if gaussians[0]['steps'] != 5000 or gaussians[0]['geometry'] != 'predicted':
         raise ValueError('Expected a 5,000-step predicted Gaussian head')
+    if geometry[0].get('cover_train') and gaussians[0].get('head') != 'fixed':
+        raise ValueError('Expected the fixed-center Gaussian head for full-coverage distillation')
     steps = geometry[0]['schedule_steps']
     coverage = geometry[0]['train_pairs'] if geometry[0].get('cover_train') else None
     verify_schedule(paths,steps,coverage)

@@ -16,9 +16,8 @@ from event_field import EventField
 from image_metrics import PerceptualMetrics, gray_metrics
 
 
-def run(args, data):
+def run(args, data, checkpoint):
     model = EventDVLT(args.assets).cuda().eval()
-    checkpoint = torch.load(args.geometry_checkpoint, weights_only=True)
     weights = checkpoint['model']
     geometry_names = {n for n,p in model.named_parameters() if p.requires_grad
                       and not n.startswith(('gs_head.', 'field_features.', 'geometry_features.'))
@@ -176,6 +175,10 @@ def main(args):
         raise ValueError('SSIM weight must be between 0 and 1')
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
+    checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
+    if args.head is None:
+        args.head = ('fixed' if args.geometry == 'predicted' and checkpoint['config'].get('cover_train')
+                     else 'legacy')
     if args.head == 'fixed' and args.geometry != 'predicted':
         raise ValueError('The fixed head uses student depth')
     if set(args.train)&set(args.val):
@@ -189,7 +192,7 @@ def main(args):
             recorded = json.loads((args.out/'config.json').read_text())
             validation = args.out/f'val_{args.steps:06}.json'
             checkpoint = args.out/'latest.pt'
-            if (recorded == config and validation.is_file() and
+            if (dict({'head':'legacy'}, **recorded) == config and validation.is_file() and
                     (args.steps == 0 or checkpoint.is_file())):
                 rows = json.loads(validation.read_text())
                 state = (torch.load(checkpoint,map_location='cpu',weights_only=True)
@@ -205,7 +208,7 @@ def main(args):
         try:
             for sequence in args.train+args.val:
                 data[sequence] = DSECSequence(args.root,sequence)
-            run(args,data)
+            run(args,data,checkpoint)
         finally:
             for source in data.values():
                 source.close()
@@ -218,7 +221,8 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+',required=True)
     parser.add_argument('--val',nargs='+',required=True)
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
-    parser.add_argument('--head',choices=('legacy','fixed'),default='legacy')
+    parser.add_argument('--head',choices=('legacy','fixed'),
+                        help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--steps',type=int,default=500)
     parser.add_argument('--ssim-weight',type=float,default=.2)
