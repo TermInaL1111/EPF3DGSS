@@ -1,0 +1,233 @@
+{
+  "steps": 22522,
+  "windows": 168,
+  "sequences": 7,
+  "depth_cap_m": 50.0,
+  "arms": {
+    "no_f3": {
+      "matched": {
+        "windows": 168,
+        "signed_direction_windows": 168,
+        "rotation_median_deg": 0.6977341771125793,
+        "rotation_below_3_deg": 168,
+        "translation_median_deg": 19.294483184814453,
+        "translation_at_least_20_deg": 77,
+        "translation_reversed": 0,
+        "pose_auc20": 0.177437641723356
+      },
+      "zero": {
+        "windows": 168,
+        "signed_direction_windows": 168,
+        "rotation_median_deg": 0.333378404378891,
+        "rotation_below_3_deg": 168,
+        "translation_median_deg": 126.41413879394531,
+        "translation_at_least_20_deg": 168,
+        "translation_reversed": 168,
+        "pose_auc20": 0.0
+      },
+      "per_sequence": {
+        "zurich_city_01_a": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7540698051452637,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 19.787246704101562,
+          "translation_at_least_20_deg": 11,
+          "translation_reversed": 0,
+          "pose_auc20": 0.12301587301587301
+        },
+        "zurich_city_01_b": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6486102640628815,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 18.777562141418457,
+          "translation_at_least_20_deg": 10,
+          "translation_reversed": 0,
+          "pose_auc20": 0.18253968253968253
+        },
+        "zurich_city_01_c": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7107847332954407,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 20.51354217529297,
+          "translation_at_least_20_deg": 13,
+          "translation_reversed": 0,
+          "pose_auc20": 0.10912698412698413
+        },
+        "zurich_city_01_d": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6500272750854492,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 16.608150959014893,
+          "translation_at_least_20_deg": 10,
+          "translation_reversed": 0,
+          "pose_auc20": 0.22023809523809523
+        },
+        "zurich_city_01_e": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7287364602088928,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 18.12871265411377,
+          "translation_at_least_20_deg": 11,
+          "translation_reversed": 0,
+          "pose_auc20": 0.2123015873015873
+        },
+        "zurich_city_01_f": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7041157782077789,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 17.87606906890869,
+          "translation_at_least_20_deg": 9,
+          "translation_reversed": 0,
+          "pose_auc20": 0.2123015873015873
+        },
+        "thun_00_a": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.740355908870697,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 21.754722595214844,
+          "translation_at_least_20_deg": 13,
+          "translation_reversed": 0,
+          "pose_auc20": 0.18253968253968253
+        }
+      }
+    },
+    "f3": {
+      "matched": {
+        "windows": 168,
+        "signed_direction_windows": 168,
+        "rotation_median_deg": 0.7190050184726715,
+        "rotation_below_3_deg": 168,
+        "translation_median_deg": 18.179357528686523,
+        "translation_at_least_20_deg": 72,
+        "translation_reversed": 0,
+        "pose_auc20": 0.20379818594104307
+      },
+      "zero": {
+        "windows": 168,
+        "signed_direction_windows": 168,
+        "rotation_median_deg": 0.41021624207496643,
+        "rotation_below_3_deg": 168,
+        "translation_median_deg": 91.74742889404297,
+        "translation_at_least_20_deg": 168,
+        "translation_reversed": 168,
+        "pose_auc20": 0.0
+      },
+      "per_sequence": {
+        "zurich_city_01_a": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.73727086186409,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 19.990663528442383,
+          "translation_at_least_20_deg": 12,
+          "translation_reversed": 0,
+          "pose_auc20": 0.1349206349206349
+        },
+        "zurich_city_01_b": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6892701983451843,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 16.87060546875,
+          "translation_at_least_20_deg": 5,
+          "translation_reversed": 0,
+          "pose_auc20": 0.2996031746031746
+        },
+        "zurich_city_01_c": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6705638766288757,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 18.86504554748535,
+          "translation_at_least_20_deg": 11,
+          "translation_reversed": 0,
+          "pose_auc20": 0.19246031746031744
+        },
+        "zurich_city_01_d": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6826996207237244,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 17.384066581726074,
+          "translation_at_least_20_deg": 10,
+          "translation_reversed": 0,
+          "pose_auc20": 0.2222222222222222
+        },
+        "zurich_city_01_e": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7322186827659607,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 21.630135536193848,
+          "translation_at_least_20_deg": 13,
+          "translation_reversed": 0,
+          "pose_auc20": 0.16865079365079363
+        },
+        "zurich_city_01_f": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.6915357112884521,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 16.39119052886963,
+          "translation_at_least_20_deg": 10,
+          "translation_reversed": 0,
+          "pose_auc20": 0.21031746031746032
+        },
+        "thun_00_a": {
+          "windows": 24,
+          "signed_direction_windows": 24,
+          "rotation_median_deg": 0.7679510116577148,
+          "rotation_below_3_deg": 24,
+          "translation_median_deg": 18.868386268615723,
+          "translation_at_least_20_deg": 11,
+          "translation_reversed": 0,
+          "pose_auc20": 0.1984126984126984
+        }
+      }
+    }
+  },
+  "f3_changes": {
+    "absrel": {
+      "f3_minus_no_f3": -0.003306180327421143,
+      "sequence_bootstrap_95_interval": [
+        -0.005821568093129567,
+        -0.0007693046437842506
+      ]
+    },
+    "delta1": {
+      "f3_minus_no_f3": 0.007974096706935338,
+      "sequence_bootstrap_95_interval": [
+        7.676245378596614e-05,
+        0.015873604587146213
+      ]
+    },
+    "dvlt_point_rel_l2": {
+      "f3_minus_no_f3": -0.004645429507252716,
+      "sequence_bootstrap_95_interval": [
+        -0.007797216641761008,
+        -0.0012276533636308852
+      ]
+    },
+    "sim3_point_inlier25": {
+      "f3_minus_no_f3": 0.00893483559290568,
+      "sequence_bootstrap_95_interval": [
+        -0.001437629617395855,
+        0.017415775784424374
+      ]
+    },
+    "pose_auc20": {
+      "f3_minus_no_f3": 0.02636054421768707,
+      "sequence_bootstrap_95_interval": [
+        -0.008786848072562357,
+        0.0657596371882086
+      ]
+    }
+  }
+}
