@@ -261,3 +261,17 @@ CUDA_VISIBLE_DEVICES=1 python reconstruct.py "$EPF_ASSETS" \
 预测组正式权重从 DSEC 留出序列的两个事件包导出了
 `dsec_gs_predicted/heldout_frame42_scene.npz`，包含 614,400 个高斯。
 渲染对照位于同目录的 `heldout_frame42_render.png`。
+
+## 正式蒸馏的事件适配
+
+| 事件数据的难点 | 正式配置的做法 | 依据 |
+|---|---|---|
+| 事件与 RGB 的时间、视角和采样不同 | DSEC 左事件相机按同一帧时间取此前 150,000 个事件，按标定把 RGB 旋转对齐到事件视野后取共同裁剪。旋转对齐不能消除相机平移产生的视差。 | REALM 式输入与 DSEC 适配 |
+| 异步极性和密度与 RGB 不同 | 事件在五个时间 bin 做线性插值累积。各 bin 做空间 L2 归一化，再聚合正响应、绝对响应和负响应，归一化并做可训练仿射，送入 DINOv2。有 F³ 组还把冻结 F³ 的 32 通道特征投影为三通道输入残差。 | Déjà-Events 式输入转换，加 F³ 的项目适配 |
+| 有些 patch 事件稀少，稀疏程度也随场景变 | frame/global attention 各有一个局部 MLP，输入归一化 patch 活动量和递推区间嵌入，乘性修正注意力、FFN 更新门。相机和 register token 保留基础输出路径。 | 按 Déjà-Events 图 3 本地复现 SAAG |
+| 无事件区域难以直接对齐，但可由邻域补全 | 损失先覆盖有活动的 patch，随后按映射进度将活动区域膨胀 2/4/6 格。第 8 个映射 epoch 起，以 30% 概率随机遮挡学生输入 patch。相机和 register token 始终参与损失。 | REALM 的双掩码迁移到 DVLT token 损失 |
+| 多视图与递推预算变化 | 每个样本取 2–18 个时间视图，RGB 教师和事件学生共享同一次采样的 K。使用 DVLT 的 Beta(2,1) 采样映射至 8–16。最终 token 以余弦距离和教师范数加权 L1 对齐。训练 rank-16 QKV LoRA 及事件适配参数，保留冻结几何解码器。 | Déjà-Events §III-B/C |
+
+正式损失只对齐最终 token。EventVGGT 的混合 RGB/事件特征辅助深度、时空特征蒸馏和跨帧深度变化一致性均尚未接入。Event3R 的 temporal encoder 与 masked bin modeling 也未接入。当前五 bin 会先聚合为三通道，学生没有独立的 bin 级时序注意力。REALM 的输入遮挡针对空间 patch，Event3R 的 MBM 针对时间 bin。两组都使用 SAAG 与 REALM，F³ 消融只能验证其当前设置中的增量，且几何阶段使用 F³ 输入残差，GS 阶段还使用 F³ 外观特征。
+
+蒸馏的独立创新候选可以从已观测到的平移方向瓶颈出发。先在同一批时间窗口诊断 RGB 教师何时提供可靠对应，再测试事件支撑与教师重投影一致性共同筛选跨视图关系监督。主对照保持数据、F³、参数预算和 K 相同，比较纯 token、仅事件密度加权及跨视图关系监督，观察平移方向、深度、点图和下游 NVS。该方案仍是待验证假设。EventVGGT 的深度变化监督和 SFE-VGGT 的跨帧关系损失都是近邻工作，不能把加入时序损失或密度权重本身列为创新。 [Déjà-Events](https://arxiv.org/html/2611.21302v1) · [REALM](https://arxiv.org/html/2605.00271v2) · [EventVGGT](https://arxiv.org/abs/2603.09385) · [Event3R](https://arxiv.org/html/2607.15727v1) · [SFE-VGGT](https://arxiv.org/abs/2609.36929)
