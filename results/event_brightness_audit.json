@@ -1,0 +1,386 @@
+{
+  "eventscape_train": {
+    "dataset": "eventscape",
+    "source": "Town01-03_train.zip",
+    "blocks": [
+      {
+        "gap_frames": 1,
+        "response": "published_code",
+        "windows": 180,
+        "mean_dt_ms": 40.00000189989805,
+        "active_fraction": 0.0817469255529253,
+        "sign_agreement": 0.9131272631091903,
+        "no_change_mae": 0.4231714949839645,
+        "threshold_mae": {
+          "0.15": {
+            "aligned": 0.3114415573868484,
+            "shifted": 0.4290133132031068,
+            "reversed": 0.5918433705666344,
+            "within_threshold": 0.4268847543074227
+          },
+          "0.2": {
+            "aligned": 0.2886467995611964,
+            "shifted": 0.436278616613139,
+            "reversed": 0.651111879249087,
+            "within_threshold": 0.5351426397483601
+          },
+          "0.25": {
+            "aligned": 0.2751304010705028,
+            "shifted": 0.44599064880707423,
+            "reversed": 0.7111872832047219,
+            "within_threshold": 0.629525379213903
+          }
+        },
+        "sequences": [
+          "Town01/sequence_0",
+          "Town01/sequence_139",
+          "Town01/sequence_187",
+          "Town01/sequence_229",
+          "Town01/sequence_53",
+          "Town01/sequence_99",
+          "Town02/sequence_0",
+          "Town02/sequence_22",
+          "Town02/sequence_36",
+          "Town02/sequence_55",
+          "Town02/sequence_85",
+          "Town02/sequence_99",
+          "Town03/sequence_0",
+          "Town03/sequence_140",
+          "Town03/sequence_183",
+          "Town03/sequence_226",
+          "Town03/sequence_30",
+          "Town03/sequence_99"
+        ]
+      },
+      {
+        "gap_frames": 1,
+        "response": "inverse_srgb",
+        "windows": 180,
+        "mean_dt_ms": 40.00000189989805,
+        "active_fraction": 0.0817469255529253,
+        "sign_agreement": 0.9029862888879246,
+        "no_change_mae": 0.7591355300611919,
+        "threshold_mae": {
+          "0.15": {
+            "aligned": 0.6323420592525266,
+            "shifted": 0.7591851363099127,
+            "reversed": 0.9233164634276481,
+            "within_threshold": 0.25361187656144135
+          },
+          "0.2": {
+            "aligned": 0.5972242419585311,
+            "shifted": 0.7620574714727938,
+            "reversed": 0.9805705133653049,
+            "within_threshold": 0.3223961374780019
+          },
+          "0.25": {
+            "aligned": 0.5658250317201152,
+            "shifted": 0.7664354781367384,
+            "reversed": 1.0386703495531793,
+            "within_threshold": 0.3869605779030705
+          }
+        },
+        "sequences": [
+          "Town01/sequence_0",
+          "Town01/sequence_139",
+          "Town01/sequence_187",
+          "Town01/sequence_229",
+          "Town01/sequence_53",
+          "Town01/sequence_99",
+          "Town02/sequence_0",
+          "Town02/sequence_22",
+          "Town02/sequence_36",
+          "Town02/sequence_55",
+          "Town02/sequence_85",
+          "Town02/sequence_99",
+          "Town03/sequence_0",
+          "Town03/sequence_140",
+          "Town03/sequence_183",
+          "Town03/sequence_226",
+          "Town03/sequence_30",
+          "Town03/sequence_99"
+        ]
+      },
+      {
+        "gap_frames": 4,
+        "response": "published_code",
+        "windows": 180,
+        "mean_dt_ms": 160.0000075995922,
+        "active_fraction": 0.18848859852147362,
+        "sign_agreement": 0.8935858100842957,
+        "no_change_mae": 0.5075036128362019,
+        "threshold_mae": {
+          "0.15": {
+            "aligned": 0.37873669638109675,
+            "shifted": 0.5493071129768761,
+            "reversed": 0.6855208780887831,
+            "within_threshold": 0.344813644909396
+          },
+          "0.2": {
+            "aligned": 0.3483232482293993,
+            "shifted": 0.5702407460327499,
+            "reversed": 0.7482887411148179,
+            "within_threshold": 0.452782495094265
+          },
+          "0.25": {
+            "aligned": 0.32722325949201936,
+            "shifted": 0.593760246039772,
+            "reversed": 0.8119758320684229,
+            "within_threshold": 0.5538087767871417
+          }
+        },
+        "sequences": [
+          "Town01/sequence_0",
+          "Town01/sequence_139",
+          "Town01/sequence_187",
+          "Town01/sequence_229",
+          "Town01/sequence_53",
+          "Town01/sequence_99",
+          "Town02/sequence_0",
+          "Town02/sequence_22",
+          "Town02/sequence_36",
+          "Town02/sequence_55",
+          "Town02/sequence_85",
+          "Town02/sequence_99",
+          "Town03/sequence_0",
+          "Town03/sequence_140",
+          "Town03/sequence_183",
+          "Town03/sequence_226",
+          "Town03/sequence_30",
+          "Town03/sequence_99"
+        ]
+      },
+      {
+        "gap_frames": 4,
+        "response": "inverse_srgb",
+        "windows": 180,
+        "mean_dt_ms": 160.0000075995922,
+        "active_fraction": 0.18848859852147362,
+        "sign_agreement": 0.8828855198033421,
+        "no_change_mae": 0.9250351445542442,
+        "threshold_mae": {
+          "0.15": {
+            "aligned": 0.7837028570031201,
+            "shifted": 0.9583081082071989,
+            "reversed": 1.0977966771190284,
+            "within_threshold": 0.19159394389238527
+          },
+          "0.2": {
+            "aligned": 0.7423577917458153,
+            "shifted": 0.9737832376824583,
+            "reversed": 1.1581787542724808,
+            "within_threshold": 0.2463130322923332
+          },
+          "0.25": {
+            "aligned": 0.704007035435508,
+            "shifted": 0.9912022789390309,
+            "reversed": 1.2194862142935163,
+            "within_threshold": 0.3021706284410876
+          }
+        },
+        "sequences": [
+          "Town01/sequence_0",
+          "Town01/sequence_139",
+          "Town01/sequence_187",
+          "Town01/sequence_229",
+          "Town01/sequence_53",
+          "Town01/sequence_99",
+          "Town02/sequence_0",
+          "Town02/sequence_22",
+          "Town02/sequence_36",
+          "Town02/sequence_55",
+          "Town02/sequence_85",
+          "Town02/sequence_99",
+          "Town03/sequence_0",
+          "Town03/sequence_140",
+          "Town03/sequence_183",
+          "Town03/sequence_226",
+          "Town03/sequence_30",
+          "Town03/sequence_99"
+        ]
+      }
+    ]
+  },
+  "mvsec_indoor4": {
+    "dataset": "mvsec",
+    "source": "indoor_flying4_data.hdf5",
+    "blocks": [
+      {
+        "gap_frames": 1,
+        "response": "published_code",
+        "windows": 48,
+        "mean_dt_ms": 31.859298547108967,
+        "active_fraction": 0.13019520431640225,
+        "sign_agreement": 0.7282369592278704,
+        "no_change_mae": 0.3899370087310672,
+        "threshold_mae": {
+          "0.05": {
+            "aligned": 0.37856944142832577,
+            "shifted": 0.39473839076586015,
+            "reversed": 0.41824932574532064,
+            "within_threshold": 0.20808735297912062
+          },
+          "0.1": {
+            "aligned": 0.3755055034620541,
+            "shifted": 0.4028572740694513,
+            "reversed": 0.45302622084271355,
+            "within_threshold": 0.2924537678737409
+          },
+          "0.15": {
+            "aligned": 0.3781719076807329,
+            "shifted": 0.4131052224654725,
+            "reversed": 0.491839597359518,
+            "within_threshold": 0.3617417805861316
+          },
+          "0.2": {
+            "aligned": 0.38546442418084464,
+            "shifted": 0.42497456427092334,
+            "reversed": 0.5333460638045292,
+            "within_threshold": 0.4173681358137438
+          },
+          "0.25": {
+            "aligned": 0.3967334068253218,
+            "shifted": 0.43807077977245473,
+            "reversed": 0.5769270591895789,
+            "within_threshold": 0.46840192823011134
+          }
+        },
+        "sequences": [
+          "indoor_flying4"
+        ]
+      },
+      {
+        "gap_frames": 1,
+        "response": "inverse_srgb",
+        "windows": 48,
+        "mean_dt_ms": 31.859298547108967,
+        "active_fraction": 0.13019520431640225,
+        "sign_agreement": 0.7210848927141319,
+        "no_change_mae": 0.5942744799734404,
+        "threshold_mae": {
+          "0.05": {
+            "aligned": 0.58090577277799,
+            "shifted": 0.5982474894231942,
+            "reversed": 0.6210834239873423,
+            "within_threshold": 0.1760134444532694
+          },
+          "0.1": {
+            "aligned": 0.5739275035787453,
+            "shifted": 0.6051419689642216,
+            "reversed": 0.6531148826113511,
+            "within_threshold": 0.2397253129451736
+          },
+          "0.15": {
+            "aligned": 0.5720954545155666,
+            "shifted": 0.613943060428451,
+            "reversed": 0.689131352076151,
+            "within_threshold": 0.29088259402636163
+          },
+          "0.2": {
+            "aligned": 0.573924872251233,
+            "shifted": 0.6241444619602019,
+            "reversed": 0.7277537684437733,
+            "within_threshold": 0.3324941074626992
+          },
+          "0.25": {
+            "aligned": 0.5788393077830467,
+            "shifted": 0.6354269337836447,
+            "reversed": 0.7682280334577949,
+            "within_threshold": 0.3719182163769022
+          }
+        },
+        "sequences": [
+          "indoor_flying4"
+        ]
+      },
+      {
+        "gap_frames": 4,
+        "response": "published_code",
+        "windows": 48,
+        "mean_dt_ms": 127.43733823299408,
+        "active_fraction": 0.28221621516656537,
+        "sign_agreement": 0.6074091007531823,
+        "no_change_mae": 0.42846200343531865,
+        "threshold_mae": {
+          "0.05": {
+            "aligned": 0.43206854128586963,
+            "shifted": 0.4434435212043148,
+            "reversed": 0.4605213848121997,
+            "within_threshold": 0.17254239234311433
+          },
+          "0.1": {
+            "aligned": 0.4522333319660194,
+            "shifted": 0.47091718605561916,
+            "reversed": 0.5069698352274417,
+            "within_threshold": 0.24032737578605814
+          },
+          "0.15": {
+            "aligned": 0.48344541760555065,
+            "shifted": 0.5059327490608797,
+            "reversed": 0.561634295031388,
+            "within_threshold": 0.28535791624522605
+          },
+          "0.2": {
+            "aligned": 0.5227764973918783,
+            "shifted": 0.5461893493398156,
+            "reversed": 0.6217495135997344,
+            "within_threshold": 0.31596984502839287
+          },
+          "0.25": {
+            "aligned": 0.567965249786724,
+            "shifted": 0.5901341738271694,
+            "reversed": 0.6857485895917321,
+            "within_threshold": 0.33971758344602687
+          }
+        },
+        "sequences": [
+          "indoor_flying4"
+        ]
+      },
+      {
+        "gap_frames": 4,
+        "response": "inverse_srgb",
+        "windows": 48,
+        "mean_dt_ms": 127.43733823299408,
+        "active_fraction": 0.28221621516656537,
+        "sign_agreement": 0.6036694887560635,
+        "no_change_mae": 0.655483722841988,
+        "threshold_mae": {
+          "0.05": {
+            "aligned": 0.6554666834295866,
+            "shifted": 0.667809484159046,
+            "reversed": 0.684362480578946,
+            "within_threshold": 0.14434045285167676
+          },
+          "0.1": {
+            "aligned": 0.6685942993032681,
+            "shifted": 0.6904404741496578,
+            "reversed": 0.7252030550166731,
+            "within_threshold": 0.1962015199153427
+          },
+          "0.15": {
+            "aligned": 0.6909751858269876,
+            "shifted": 0.7196933917506062,
+            "reversed": 0.7737830093748835,
+            "within_threshold": 0.23659690318012372
+          },
+          "0.2": {
+            "aligned": 0.7206610311777593,
+            "shifted": 0.7539927574038655,
+            "reversed": 0.8276835436819673,
+            "within_threshold": 0.2678394340689936
+          },
+          "0.25": {
+            "aligned": 0.7562649131254865,
+            "shifted": 0.7921790243882153,
+            "reversed": 0.8856496201034405,
+            "within_threshold": 0.2929401572057113
+          }
+        },
+        "sequences": [
+          "indoor_flying4"
+        ]
+      }
+    ]
+  }
+}

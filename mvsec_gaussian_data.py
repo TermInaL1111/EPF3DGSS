@@ -7,6 +7,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation, Slerp
 
 from dsec_data import resize_intrinsics
+from event_observation import polarity_counts
 from mvsec_transfer import calibration, lower_bound_after
 from real_geometry import depth_lookup
 
@@ -46,15 +47,33 @@ class MVSECTemporalGaussianSequence:
         coords = self.mapping[block[:,1].astype(int),block[:,0].astype(int)]
         return np.column_stack([coords,block[:,2:]]).T
 
-    def supervision(self, index):
-        frames = [index,index+2,index+4]
+    def relative_poses(self, frames):
         times = self.times[frames]
-        poses = np.broadcast_to(np.eye(4),(3,4,4)).copy()
+        poses = np.broadcast_to(np.eye(4),(len(frames),4,4)).copy()
         poses[:,:3,:3] = self.rotation(times).as_matrix()
         poses[:,:3,3] = np.stack([
             np.interp(times,self.pose_times,self.world_from_camera[:,axis,3])
             for axis in range(3)],axis=-1)
-        poses = np.linalg.solve(poses[0],poses)
+        return np.linalg.solve(poses[0],poses)
+
+    def event_observation(self, index):
+        """Target-side interval immediately preceding the center RGB frame."""
+        start, stop = index+1, index+2
+        events = self.camera['events']
+        begin = lower_bound_after(events,self.times[start])
+        end = lower_bound_after(events,self.times[stop])
+        counts = polarity_counts(events[begin:end].T, self.mapping.shape[:2])
+        frames = self.camera['image_raw'][start:stop+1]
+        valid = ((frames > 2) & (frames < 253)).all(0) & (counts.sum(0) > 0)
+        valid &= ((self.mapping >= 0) & (self.mapping <= [639,479])).all(-1)
+        pixels = self.mapping[valid]
+        grid = 2*(pixels+.5)/[640,480]-1
+        return self.relative_poses([index,start])[1], grid, (counts[0]-counts[1])[valid]
+
+    def supervision(self, index):
+        frames = [index,index+2,index+4]
+        times = self.times[frames]
+        poses = self.relative_poses(frames)
         depths = []
         for time in times[::2]:
             closest = np.argmin(np.abs(self.depth_times-time))

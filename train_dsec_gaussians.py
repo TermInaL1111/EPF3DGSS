@@ -92,6 +92,10 @@ def run(args, data, checkpoint):
     if args.geometry == 'predicted':
         initialize_scale()
 
+    @lru_cache(maxsize=32)
+    def event_observation(seq,index):
+        return tuple(torch.as_tensor(x, dtype=torch.float32) for x in data[seq].event_observation(index))
+
     def predict(item, empty=False, training=False):
         voxel,field,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
         if empty:
@@ -101,7 +105,18 @@ def run(args, data, checkpoint):
         with torch.autocast('cuda',dtype=torch.bfloat16):
             cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras)
-        return render(cloud,query,k),gray/255,cloud.get('gaussian_count')
+        image = render(cloud,query,k)
+        event_loss = None
+        if args.event_weight and training:
+            previous,grid,counts = (x.cuda() for x in event_observation(*item))
+            if len(counts):
+                earlier = render(cloud,previous[None],k)
+                images = torch.stack((earlier,image),dim=1)
+                values = F.grid_sample(images,grid[None,None],align_corners=False)[0,:,0]
+                before,after = (values+1/255).log()
+                event_loss = F.smooth_l1_loss(after-before,args.event_threshold*counts,
+                                              beta=args.event_threshold)
+        return image,gray/255,cloud.get('gaussian_count'),event_loss
 
     @lru_cache(maxsize=None)
     def overlap(seq,index):
@@ -131,7 +146,7 @@ def run(args, data, checkpoint):
             mask = overlap(*item)
             row["overlap_fraction"] = float(mask.float().mean())
             for key,empty in [('matched',False),('zero',True)]:
-                image,gray,count = predict(item,empty)
+                image,gray,count,_ = predict(item,empty)
                 if count is not None:
                     row[key+'_gaussian_count'] = int(count[0])
                 psnr,ssim = gray_metrics(image,gray)
@@ -159,17 +174,20 @@ def run(args, data, checkpoint):
         return
     for step in range(1,args.steps+1):
         item = train[int(torch.randint(len(train),(1,)))]
-        image,gray,_ = predict(item,training=True)
+        image,gray,_,event_loss = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
+        if event_loss is not None:
+            loss = loss + args.event_weight*event_loss
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         norm = torch.nn.utils.clip_grad_norm_(params.values(),1.,error_if_nonfinite=True)
         optimizer.step()
         if step==1 or step%20==0:
             print('step',step,'loss',float(loss.detach()),'l1',float(l1.detach()),
-                  'ssim',float(ssim.detach().mean()),'grad',float(norm),flush=True)
+                  'ssim',float(ssim.detach().mean()),'grad',float(norm),
+                  'event',float(event_loss.detach()) if event_loss is not None else None,flush=True)
         if step==args.steps or step%100==0:
             tmp = args.out/'latest.pt.tmp'
             state = weights | {n:p.detach().cpu() for n,p in params.items()}
@@ -194,11 +212,19 @@ def main(args):
         raise ValueError('Fixed and voxel heads use student depth')
     if args.mvsec_calibration and args.head == 'legacy':
         raise ValueError('MVSEC temporal training supports fixed and voxel heads')
+    if not np.isfinite(args.event_weight) or args.event_weight < 0:
+        raise ValueError('Event loss weight must be finite and nonnegative')
+    if args.event_weight and (not args.mvsec_calibration or args.head != 'voxel' or
+                              not np.isfinite(args.event_threshold) or args.event_threshold <= 0):
+        raise ValueError('Event supervision requires an MVSEC voxel head and a positive threshold')
     if set(args.train)&set(args.val):
         raise ValueError('Specify nonoverlapping training and validation sequences')
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
     if args.mvsec_calibration is None:
         config.pop('mvsec_calibration')
+    if not args.event_weight:
+        config.pop('event_weight')
+        config.pop('event_threshold')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     lock_path = args.out.with_name(args.out.name+'.lock')
     with lock_path.open('a') as lock:
@@ -246,6 +272,10 @@ if __name__=='__main__':
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--mvsec-calibration',type=Path,
                         help='Train from temporal windows of the left MVSEC camera')
+    parser.add_argument('--event-weight',type=float,default=0.,
+                        help='Weight for target-side native-pixel event supervision during MVSEC voxel-head training')
+    parser.add_argument('--event-threshold',type=float,default=.1,
+                        help='Effective symmetric threshold in log APS intensity units')
     parser.add_argument('--steps',type=int,default=500)
     parser.add_argument('--ssim-weight',type=float,default=.2)
     parser.add_argument('--seed',type=int,default=10)

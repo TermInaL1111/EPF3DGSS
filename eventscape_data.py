@@ -60,12 +60,15 @@ class EventScapeSequence:
         packet = self.packet(index).astype(np.float64)
         packet[0] *= 640 / 512
         packet[1] *= 480 / 256
+        rgb = cv2.resize(self.rgb(index), (224, 168), interpolation=cv2.INTER_AREA)
+        return packet, rgb
+
+    def rgb(self, index):
         name = self.member(index, 'rgb', 'image.png')
         bgr = cv2.imdecode(np.frombuffer(self.archive.read(name), dtype=np.uint8), cv2.IMREAD_COLOR)
         if bgr is None or bgr.shape != (256, 512, 3):
             raise ValueError(f'Invalid EventScape frame {name}')
-        rgb = cv2.cvtColor(cv2.resize(bgr, (224, 168), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2RGB)
-        return packet, rgb
+        return cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
 
     def depth(self, index):
         name = self.member(index, 'depth', 'depth.npy')
