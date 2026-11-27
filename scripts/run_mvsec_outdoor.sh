@@ -23,6 +23,7 @@ for arm in teacher base adapted; do
         adapted) checkpoint="$geometry";;
     esac
     python -u evaluate_mvsec_geometry.py "$night" "$night/outdoor_night_calib.zip" "$EPF_ASSETS" \
-        "$f3" "$checkpoint" "$out/$arm.json" --flights outdoor_night1 --full-fov --max-depth 80 "${flags[@]}"
+        "$f3" "$checkpoint" "$out/$arm.json" --flights outdoor_night1 --full-fov --max-depth 80 \
+        --cloud-metrics "${flags[@]}"
 done
 python scripts/summarize_mvsec_outdoor.py "$out"

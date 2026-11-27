@@ -18,6 +18,7 @@ from event_dvlt import EventDVLT, load_rgb, voxelize
 from event_field import EventField
 from mvsec_transfer import calibration, lower_bound_after
 from real_geometry import depth_lookup
+from pointcloud_metrics import pointcloud_scores
 
 
 @torch.inference_mode()
@@ -108,7 +109,7 @@ def evaluate(args):
                 reference = torch.as_tensor(np.stack(depths),device='cuda',dtype=torch.float32)
                 valid = (reference >= .1) & (reference <= args.max_depth) & torch.isfinite(estimate) & (estimate > 0)
                 p, t = estimate[valid], reference[valid]
-                if not len(p):
+                if len(p) < (16 if args.cloud_metrics else 1):
                     continue
                 scale = (t/p).median()
                 aligned_depth = p*scale
@@ -117,7 +118,8 @@ def evaluate(args):
                     point_sets.append(torch.cat([lift(z,ki)[mask] @ cam[:3,:3].T + cam[:3,3]
                         for z,cam,ki,mask in zip(values,cameras,ks,valid)]))
                 xyz, truth_xyz = point_sets
-                point_error = (align_pointmap(xyz,truth_xyz)-truth_xyz).norm(dim=-1)/truth_xyz.norm(dim=-1).clamp_min(1e-8)
+                aligned = align_pointmap(xyz,truth_xyz)
+                point_error = (aligned-truth_xyz).norm(dim=-1)/truth_xyz.norm(dim=-1).clamp_min(1e-8)
                 origins, true_origins = poses[:,:3,3], gt_poses[:,:3,3]
                 rot, trans, distance_scale = umeyama_alignment(origins.T,true_origins.T)
                 offset = distance_scale*(origins @ rot.T)+trans-true_origins
@@ -130,6 +132,8 @@ def evaluate(args):
                     point_absrel=float(point_error.mean()),
                     point_inlier25=float((point_error<.25).float().mean()),
                     point_inlier3=float((point_error<.03).float().mean()))
+                if args.cloud_metrics:
+                    row.update(pointcloud_scores(aligned.cpu().numpy(),truth_xyz.cpu().numpy()))
                 if args.compare_pointmaps:
                     # DVLT's decoder points are in world coordinates. Apply the
                     # same first-camera gauge as the fitted-camera pointmap.
@@ -166,6 +170,7 @@ if __name__ == '__main__':
     parser.add_argument('--compare-pointmaps',action='store_true',
                         help='Compare direct decoder and fitted-camera points on common support')
     parser.add_argument('--full-fov',action='store_true',help='Use the official rectified DAVIS grid')
+    parser.add_argument('--cloud-metrics',action='store_true',help='Include bidirectional cloud distances and normal agreement')
     parser.add_argument('--teacher',action='store_true',help='Run the frozen RGB teacher on left APS')
     parser.add_argument('--max-depth',type=float,default=50.)
     args = parser.parse_args()

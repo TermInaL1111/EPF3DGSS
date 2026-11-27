@@ -19,6 +19,7 @@ from evaluate_eventscape_depth import depth_scores
 from event_dvlt import EventDVLT, load_rgb, voxelize
 from eventscape_data import EventScapeArchive, EventScapeSequence
 from eventscape_gaussian_data import NATIVE_K
+from pointcloud_metrics import pointcloud_scores
 
 
 def scores(raw, depth, reference_pose, reference_k, valid):
@@ -31,13 +32,15 @@ def scores(raw, depth, reference_pose, reference_k, valid):
     reference = [(lift(z,reference_k)[mask] @ cam[:3,:3].T + cam[:3,3])
                  for z,cam,mask in zip(depth,reference_pose,valid,strict=True)]
     target = torch.cat(reference)
-    point_error = (align_pointmap(torch.cat(fitted),target)-target).norm(dim=-1)
+    aligned = align_pointmap(torch.cat(fitted),target)
+    point_error = (aligned-target).norm(dim=-1)
     point_error = point_error/target.norm(dim=-1).clamp_min(1e-8)
     xyz, target_xyz = poses[:,:3,3].double(), reference_pose[:,:3,3].double()
     rotation, translation, scale = umeyama_alignment(xyz.T,target_xyz.T)
     offset = scale*(xyz @ rotation.T)+translation-target_xyz
     angles = compute_pose_metrics(poses.double(),reference_pose.double(),thresholds=(3,20,30))
     return dict(**depth_scores(estimate[valid],depth[valid]),
+                **pointcloud_scores(aligned.cpu().numpy(),target.cpu().numpy()),
                 ate_m=float(offset.square().sum(-1).mean().sqrt()),
                 point_absrel=float(point_error.mean()),
                 point_inlier25=float((point_error<.25).float().mean()),
@@ -87,7 +90,7 @@ def evaluate(args, archive, manifest):
             for output in raw.values():
                 estimate = output['depth'][0,...,0]
                 valid &= torch.isfinite(estimate) & (estimate > 0)
-            if valid.sum()<10:
+            if valid.sum()<16:
                 raise ValueError(f'Insufficient common depth support in {name}/{start}')
             row = dict(sequence=name,start=int(start),valid_pixels=int(valid.sum()))
             row.update({arm:scores(output,reference,poses,k,valid) for arm,output in raw.items()})
@@ -100,14 +103,21 @@ def evaluate(args, archive, manifest):
 
 def summarize(rows):
     direction = dict(absrel=-1,delta1=1,ate_m=-1,point_absrel=-1,point_inlier25=1,
-                     pose_auc3=1,pose_auc20=1,pose_auc30=1)
-    summary = {arm:{metric:fmean(row[arm][metric] for row in rows) for metric in direction}
-               for arm in ('teacher','direct','realm')}
+                     pose_auc3=1,pose_auc20=1,pose_auc30=1,cloud_accuracy_m=-1,
+                     cloud_completeness_m=-1)
+    arms = ('teacher','direct','realm')
+    nc = 'cloud_normal_consistency'
+    normal_rows = [row for row in rows if all(row[arm][nc] is not None for arm in arms)]
+    if normal_rows:
+        direction[nc] = 1
+    summary = {arm:{metric:fmean(row[arm][metric] for row in (normal_rows if metric == nc else rows))
+                    for metric in direction} for arm in arms}
     relative = {}
     for metric,sign in direction.items():
         baseline,estimate = (summary[arm][metric] for arm in ('direct','realm'))
         relative[metric] = 100*sign*(estimate-baseline)/abs(baseline) if baseline else None
-    return dict(summary=summary,realm_vs_direct_improvement_pct=relative)
+    return dict(summary=summary,realm_vs_direct_improvement_pct=relative,
+                cloud_normal_windows=len(normal_rows))
 
 
 if __name__ == '__main__':
