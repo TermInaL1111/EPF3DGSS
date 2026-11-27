@@ -1,4 +1,4 @@
-"""Train DVLT geometry on DSEC or EventScape clips, with optional F³ and REALM masking.
+"""Train DVLT geometry on DSEC, EventScape or MVSEC, with optional F³ and REALM masking.
 
 Base loss and shared K follow Déjà-Events III-B. The optional REALM arm
 transfers the masking schedule, keeping the DVLT objective and special tokens.
@@ -31,7 +31,15 @@ def main(args, stack):
     if not 1 <= last_epoch <= args.epochs:
         raise ValueError('--stop-after must be between 1 and --epochs')
     torch.manual_seed(args.seed)
-    if args.eventscape:
+    if args.mvsec_calibration:
+        if args.train is not None or args.val is not None:
+            raise ValueError('MVSEC day1 uses a chronological split of the same sequence')
+        from mvsec_geometry_data import adaptation_splits
+
+        data = adaptation_splits(args.root, 'outdoor_day1', args.mvsec_calibration, stack)
+        args.train, args.val = ['outdoor_day1/train'], ['outdoor_day1/val']
+        stride = 1
+    elif args.eventscape:
         if args.train is not None or args.val is not None:
             raise ValueError('EventScape uses the supplied training and validation archives')
         from eventscape_data import eventscape_sequences
@@ -51,11 +59,15 @@ def main(args, stack):
     val = [(seq, pair) for seq in args.val for pair in data[seq].pairs]
     if not 2 <= args.max_views <= 18:
         raise ValueError('--max-views must be in [2,18]')
-    clips = {seq: {start: tuple(range(start,start+stride*views,stride))
-                   for start,_ in data[seq].pairs
-                   for views in range(2,args.max_views+1)
-                   if all(index in data[seq].ends for index in range(start,start+stride*views,stride))}
-             for seq in args.train}
+    clips = {}
+    for seq in args.train:
+        source = data[seq]
+        adjacent = getattr(source, 'contiguous', source.ends)
+        clips[seq] = {start: tuple(range(start,start+stride*views,stride))
+                      for start,_ in source.pairs
+                      for views in range(2,args.max_views+1)
+                      if start+stride*(views-1) in source.ends
+                      and all(i in adjacent for i in range(start,start+stride*(views-1),stride))}
     if not train or not val:
         raise ValueError('Both splits need usable frame pairs')
     if args.val_limit and len(val) > args.val_limit:
@@ -75,6 +87,9 @@ def main(args, stack):
               if k != 'resume'}
     if not args.eventscape:
         config.pop('eventscape')
+    for key in ('mvsec_calibration', 'init_geometry'):
+        if config[key] is None:
+            config.pop(key)
     config.update(train_pairs=len(train), val_pairs=len(val), schedule_steps=horizon, actual_epochs=last_epoch)
     if args.resume:
         recorded = json.loads((args.out/'config.json').read_text())
@@ -102,6 +117,12 @@ def main(args, stack):
                 p.requires_grad_(False)
             else:
                 (slow if name.startswith('backbone.') else fast).append(p)
+    if args.init_geometry and not args.resume:
+        initial = torch.load(args.init_geometry, map_location='cpu', weights_only=True)
+        if set(initial['model']) != set(adapter_names):
+            raise ValueError('Initial geometry checkpoint has a different adapter set')
+        student.load_state_dict(initial['model'], strict=False)
+        print('Initialized adapters from geometry step', initial['step'], flush=True)
     opt = torch.optim.AdamW([{'params': slow, 'lr': 3e-5},
                              {'params': fast, 'lr': 3e-4}], weight_decay=.05)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(opt, horizon)
@@ -263,8 +284,13 @@ if __name__ == '__main__':
         parser.add_argument(key, type=Path)
     parser.add_argument('--train', nargs='+')
     parser.add_argument('--val', nargs='+')
-    parser.add_argument('--eventscape', action='store_true',
-                        help='Load Town01–03 training and Town05 validation from EventScape ZIPs')
+    dataset = parser.add_mutually_exclusive_group()
+    dataset.add_argument('--eventscape', action='store_true',
+                         help='Load Town01–03 training and Town05 validation from EventScape ZIPs')
+    dataset.add_argument('--mvsec-calibration', type=Path,
+                         help='Adapt from outdoor_day1 with chronological validation within day1')
+    parser.add_argument('--init-geometry', type=Path,
+                        help='Start from a geometry checkpoint with fresh optimizer and schedule')
     parser.add_argument('--f3', type=Path)
     parser.add_argument('--realm', action='store_true')
     parser.add_argument('--step-gating', choices=('frozen','unfrozen','saag'), default='saag',
