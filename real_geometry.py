@@ -13,12 +13,13 @@ from model import EventGaussians
 from mvsec_transfer import calibration, flight_windows
 
 
-def depth_lookup(calibration_path):
+def depth_lookup(calibration_path, height=24, width=32):
     cam = yaml.safe_load(calibration_path.read_text())["cam0"]
     rot = np.asarray(cam["rectification_matrix"])
     proj = np.asarray(cam["projection_matrix"])[:,:3]
-    y,x = np.indices((24,32))
-    rays = np.stack([(x-15.5)/(888.8889/20),(y-11.5)/(888.8889/20),np.ones_like(x)],-1)
+    y,x = np.indices((height,width))
+    rays = np.stack([(x-(width-1)/2)/(888.8889*width/640),
+                     (y-(height-1)/2)/(888.8889*height/480),np.ones_like(x)],-1)
     rectified = rays @ rot.T
     coords = rectified @ proj.T
     xy = np.rint(coords[...,:2]/coords[...,2:]).astype(int)

@@ -22,7 +22,7 @@ def main(args):
     metrics = PerceptualMetrics('cuda')
     rows = []
     for offset in range(0,len(keys),8):
-        rows.extend(evaluate(model,args.root,fields,keys[offset:offset+8],metrics))
+        rows.extend(evaluate(model,args.root,fields,keys[offset:offset+8],metrics,crop_evggs=args.crop_evggs))
         print(f'{len(rows)}/{len(keys)} validation windows',flush=True)
     temporary = args.out.with_name(args.out.name+'.tmp')
     temporary.write_text(json.dumps(rows,indent=2,allow_nan=False)+'\n')
@@ -33,4 +33,5 @@ if __name__=='__main__':
     p = argparse.ArgumentParser(description=__doc__)
     for name in ('root','assets','weights','fields','out'):
         p.add_argument(name,type=Path)
+    p.add_argument('--crop-evggs', action='store_true', help='Score the same central crop as EvGGS')
     main(p.parse_args())
