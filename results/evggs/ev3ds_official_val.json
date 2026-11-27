@@ -1,0 +1,12 @@
+{
+  "upstream_commit": "4c97c29da989a8555e04e2a0020b46ada8861665",
+  "entrypoint": "eval_gs.py",
+  "split": "val",
+  "weights": "pretrain_evggs.pth",
+  "sha256": "1ba5a707a16611f01f4921a33f3834c6b0f492c6d14776308eaebd92488e5fcf",
+  "windows": 3417,
+  "target": "cim",
+  "psnr": 29.29363078,
+  "ssim": 0.95764233,
+  "lpips_vgg": 0.05682888
+}
