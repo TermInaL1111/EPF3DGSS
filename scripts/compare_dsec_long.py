@@ -90,6 +90,21 @@ def compare(f3, no_f3, evggs=None):
     report['dsec_render'] = paired(*(load(p/'gaussians/val_005000.json') for p in paths),
                                    ('sequence','frame'), flat)
     report['mvsec_render'] = paired(*(load(p/'mvsec.json') for p in paths), ('flight','start'), nested)
+    temporal_paths = [p/'mvsec_geometry.json' for p in paths]
+    if all(p.is_file() for p in temporal_paths):
+        a, b = (load(p) for p in temporal_paths)
+        if a['step'] != steps or b['step'] != steps or a['clip_views'] != 18 or b['clip_views'] != 18:
+            raise ValueError('Expected final checkpoint MVSEC temporal evaluations')
+        first, second = (data['rows'] for data in (a,b))
+        keys = [(r['flight'], tuple(r['frames'])) for r in first]
+        if not keys or len(set(keys)) != len(keys) or keys != [(r['flight'], tuple(r['frames'])) for r in second]:
+            raise ValueError('Temporal MVSEC windows differ between arms')
+        metrics = ('absrel','delta1','ate_m','pose_auc3','pose_auc20','pose_auc30',
+                   'point_absrel','point_inlier3','point_inlier25')
+        report['mvsec_geometry'] = {'windows':len(keys), **{
+            metric: {'f3':fmean(r[metric] for r in first), 'no_f3':fmean(r[metric] for r in second),
+                     'f3_minus_no_f3':fmean(x[metric]-y[metric] for x,y in zip(first,second,strict=True))}
+            for metric in metrics}}
     if evggs is not None:
         from summarize_evggs import aggregate, pair_with_epf
 
