@@ -39,3 +39,12 @@ python evaluate_evggs.py mvsec "$repo" "$weights" "$flight" mvsec.json --calibra
 EPF 两行均使用仓库的 EV3DS 发布权重。正式 DSEC 两个训练组还在蒸馏，完成重建后将用相同 MVSEC 窗口加入对照。EvGGS 的原尺度深度在 EV3DS 验证集为 AbsRel 0.1037、δ1 0.9255，在测试集为 0.1148、0.9099，在 MVSEC 为 0.9294、0.0036（135 个有效源视图）。当前表格的深度结果来自 EvGGS。
 
 可机读汇总在 [results/evggs](../results/evggs/)，逐窗口产物保存在服务器的 `/data/userwj/epf-runs/evggs`。
+
+## EV3DS 原生协议
+
+| 划分 | 场景 | 窗口 | 遮黑 PSNR ↑ | 遮黑 SSIM ↑ | LPIPS-VGG ↓ | LPIPS-AlexNet ↓ | 原图 PSNR ↑ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 验证 | 17 | 3,366 | 29.31 | 0.956 | 0.057 | 0.056 | 11.62 |
+| 测试 | 16 | 3,168 | 27.74 | 0.943 | 0.067 | 0.066 | 11.67 |
+
+初次原生测试调用遗漏了测试划分参数。已重跑并核对官方测试场景清单、产物的划分字段和每场景 198 个窗口。

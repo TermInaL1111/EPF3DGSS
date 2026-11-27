@@ -1,0 +1,32 @@
+{
+  "dataset": "ev3ds",
+  "native": true,
+  "split": "val",
+  "upstream_commit": "4c97c29da989a8555e04e2a0020b46ada8861665",
+  "weights": "pretrain_evggs.pth",
+  "sha256": "1ba5a707a16611f01f4921a33f3834c6b0f492c6d14776308eaebd92488e5fcf",
+  "weights_step": 340000,
+  "windows": 3366,
+  "matched": {
+    "psnr": 29.31001901144933,
+    "ssim": 0.9559531165458444,
+    "ssim_evggs": 0.9577057523983826,
+    "lpips_vgg": 0.0567870999731243,
+    "lpips_alex": 0.05573841535269913,
+    "foreground": 19.411847845684964
+  },
+  "raw": {
+    "psnr": 11.623432639660894,
+    "ssim": 0.06765364447766439,
+    "ssim_evggs": 0.06497230574729909,
+    "lpips_vgg": 0.4318624072604709,
+    "lpips_alex": 0.4815153914481065,
+    "foreground": 19.409636231454723
+  },
+  "depth": {
+    "views": 6732,
+    "absrel": 0.04244041374751856,
+    "delta1": 0.9747700630396657,
+    "coverage": 1.0
+  }
+}
