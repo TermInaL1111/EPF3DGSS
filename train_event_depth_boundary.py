@@ -15,13 +15,29 @@ from event_dvlt import EventDVLT, voxelize
 from eventscape_data import EventScapeArchive, EventScapeSequence
 
 
-ARMS = ('geometry', 'accumulated', 'temporal')
+ARMS = ('geometry', 'accumulated', 'fixed_edge', 'temporal')
+
+
+def fixed_edge(counts):
+    # E2EGS Eqs. 1–2 with overlapping stride-one patches and a continuous confidence map.
+    signed = counts[:, 1] - counts[:, 0]
+    kernel = torch.exp(-.5 * torch.arange(-2, 3, device=counts.device).float().square())
+    kernel = kernel / kernel.sum()
+    blurred = F.conv2d(signed.flatten(0, 1)[:, None], (kernel[:, None] * kernel)[None, None],
+                       padding=2).reshape_as(signed)
+    delta = blurred.diff(dim=1).abs()
+    average = F.avg_pool2d(delta, 5, stride=1, padding=2, count_include_pad=False)
+    second = F.avg_pool2d(delta.square(), 5, stride=1, padding=2, count_include_pad=False)
+    variance = (second - average.square()).clamp_min(0).amax(dim=1, keepdim=True)
+    confidence = F.max_pool2d(variance, 5, stride=1, padding=2)
+    return confidence / confidence.amax(dim=(-2, -1), keepdim=True).clamp_min(1e-8)
 
 
 def evidence(counts):
     accumulated = counts.sum(dim=2, keepdim=True).expand_as(counts)
     return dict(geometry=torch.zeros_like(counts).flatten(1, 2),
                 accumulated=accumulated.flatten(1, 2).log1p(),
+                fixed_edge=fixed_edge(counts).expand(-1, 10, -1, -1),
                 temporal=counts.flatten(1, 2).log1p())
 
 
@@ -48,6 +64,7 @@ def score(pred, label):
     target = label[valid]
     values = values * (target / values).median()
     hit, predicted, truth = 0, 0, 0
+    near_reference, near_prediction = 0, 0
     masks = (valid[..., :, 1:] & valid[..., :, :-1], valid[..., 1:, :] & valid[..., :-1, :])
     band = torch.zeros_like(valid)
     target_log = torch.where(valid, label, 1).log()
@@ -57,6 +74,8 @@ def score(pred, label):
         hit += int((estimated & reference).sum())
         predicted += int(estimated.sum())
         truth += int(reference.sum())
+        near_reference += int((estimated & F.max_pool2d(reference.float(), 3, stride=1, padding=1).bool()).sum())
+        near_prediction += int((reference & F.max_pool2d(estimated.float(), 3, stride=1, padding=1).bool()).sum())
         if axis == 0:
             band[..., :, :-1] |= reference
             band[..., :, 1:] |= reference
@@ -67,6 +86,7 @@ def score(pred, label):
     err = (values-target).abs()/target
     return dict(absrel=float(err.mean()), delta1=float((torch.maximum(values/target,target/values)<1.25).float().mean()),
                 edge_hits=hit, edge_predicted=predicted, edge_reference=truth,
+                edge_predicted_near_reference=near_reference, edge_reference_near_predicted=near_prediction,
                 boundary_absrel=float(err[band].mean()) if band.any() else None,
                 interior_absrel=float(err[~band].mean()) if (~band).any() else None)
 
@@ -85,6 +105,11 @@ def summarize(rows):
             entry[key] = float(np.mean(values)) if values else None
         support = sum(s['edge_reference'] + s['edge_predicted'] for s in stats)
         entry['boundary_f1_exact'] = 2 * sum(s['edge_hits'] for s in stats) / support if support else None
+        total_predicted = sum(s['edge_predicted'] for s in stats)
+        total_reference = sum(s['edge_reference'] for s in stats)
+        precision = sum(s['edge_predicted_near_reference'] for s in stats) / max(1, total_predicted)
+        recall = sum(s['edge_reference_near_predicted'] for s in stats) / max(1, total_reference)
+        entry['boundary_f1_1px'] = 2 * precision * recall / (precision + recall) if precision + recall else 0.
         result[arm] = entry
     return result
 
