@@ -66,3 +66,7 @@
 ### DSEC 单目时间位姿的可用性核验
 
 已下载 MC-EMVS 公开的 LiDAR-IMU 里程计，仓库提交为 `49fbc7ec65ee3fb6edbf706437dab39ff536ba7a`。按 ROS 时间戳与 DSEC 图像时间戳的覆盖范围检查，`interlaken_00`、`zurich_city_02`、`zurich_city_04` 三个轨迹分别完整覆盖当前训练划分的 5、5、6 条序列，当前 6 条验证和 1 条留出深度序列均无对应轨迹。以上 16 条适合开发单目时间渲染的训练数据加载和坐标转换。当前 DSEC 蒸馏已使用这些序列，不能将它们作为该检查点的留出时间测试。轨迹是里程计参考。应用前还要核验 LiDAR 到整流事件相机的外参和时间偏差。当前 MVSEC 室内时间几何使用自带的轨迹与深度。 [MC-EMVS 数据说明](https://github.com/tub-rip/dvs_mcemvs/blob/main/docs/examples.md#dsec) · [DSEC 原始 LiDAR/IMU](https://dsec.ifi.uzh.ch/dsec-datasets/download/)
+
+### EventScape 归档核验
+
+已读取 Town05 验证和测试 ZIP 的目录，分别有 100 和 116 条序列，序列 ID 无交集。两包含 RGB、事件、深度和车辆定位数据。抽查验证序列 139，RGB、事件包与深度的前两个索引及时间戳一致，事件 NPZ 保存 `x/y/p/t`，车辆轨迹另有时间戳、位置和朝向。尚需全量验收样本内容，并核对相机内外参、事件时间单位和车辆到相机变换。Town01–03 训练归档当前仅有下载分片。暂以归档的 val/test 为数据集划分，Déjà-Events 的确切序列选择仍未核实。
