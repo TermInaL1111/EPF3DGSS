@@ -5,7 +5,7 @@ from pathlib import Path
 import torch
 from event_dvlt import EventDVLT,load_scene_weights,render,voxelize
 from event_field import EventField
-from event_depth_boundary import ARMS, EventDepthBoundary, evidence, event_bins
+from event_depth_boundary import ARMS, EventDepthBoundary, evidence, event_bins, load_temporal_boundary, temporal_corrector
 from image_metrics import PerceptualMetrics, gray_metrics
 from dvlt.common.rays import rays_to_pose
 from mvsec_transfer import calibration,flight_windows
@@ -52,6 +52,9 @@ def main(args):
         model.load_state_dict(delta,strict=False)
     else:
         render_steps,use_field = load_scene_weights(model,delta)
+    training_boundary = load_temporal_boundary(delta['boundary'], 'cuda') if 'boundary' in delta else None
+    if training_boundary and args.boundary:
+        raise ValueError('Evaluate the embedded matched-budget model without an external boundary head')
     boundary_heads = {}
     if args.boundary:
         if args.geometry_only:
@@ -80,6 +83,10 @@ def main(args):
                 row['source_copy_ssim'] = float(copy_ssim[0])
             variants = [("matched",vox,field,None,False),
                         ("zero",torch.zeros_like(vox),torch.zeros_like(field),None,False)]
+            if training_boundary:
+                counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
+                variants = [(key, v, f, temporal_corrector(training_boundary, counts, empty=key=='zero'),
+                             delta['event_leaves']) for key, v, f, _, _ in variants]
             if boundary_heads:
                 counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
                 boundary_inputs = evidence(counts)
@@ -102,7 +109,7 @@ def main(args):
                         raw = model.backbone._decode(tokens,168,224,1,2,pos)
                     else:
                         scene=model(v,f,steps=render_steps,depth_refinement=refinement,
-                                    event_leaf_ranking=rank_leaves)
+                                    event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary))
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)

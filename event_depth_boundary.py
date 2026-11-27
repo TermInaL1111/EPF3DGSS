@@ -79,6 +79,22 @@ class EventDepthBoundary(nn.Module):
 
 
 
+def load_temporal_boundary(state, device):
+    head = EventDepthBoundary().to(device).eval().requires_grad_(False)
+    head.load_state_dict(state)
+    return head
+
+
+def temporal_corrector(head, counts, empty=False):
+    features = (torch.zeros_like(counts) if empty else counts).flatten(1, 2).log1p()
+
+    def refine(tokens, depth, confidence):
+        log_depth, edges = head(tokens.float(), depth, confidence, features)
+        return log_depth.exp(), edges
+
+    return refine
+
+
 def pixel_boundary_probability(edges):
     """Convert right/down adjacency predictions to incident scores per pixel."""
     horizontal = edges[:, :1, :, :-1].sigmoid()

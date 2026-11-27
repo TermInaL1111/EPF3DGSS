@@ -25,7 +25,8 @@ class VoxelGaussianHead(nn.Module):
         nn.init.zeros_(self.attributes[-1].weight)
         nn.init.zeros_(self.attributes[-1].bias)
 
-    def forward(self, pyramid, appearance, points, valid, confidence=None, boundary=None):
+    def forward(self, pyramid, appearance, points, valid, confidence=None, boundary=None,
+                event_leaf_ranking=False, matched_leaf_budget=False):
         fused = None
         for patch, project, refine, size in zip(
                 reversed(pyramid), self.projections, self.refine,
@@ -43,7 +44,8 @@ class VoxelGaussianHead(nn.Module):
             boundaries = [None] * len(points) if boundary is None else boundary
             scenes = [
                 self.decode_octree(xyz[mask], features[mask], views[mask], conf[mask],
-                                   None if score is None else score[mask])
+                                   None if score is None else score[mask],
+                                   event_leaf_ranking, matched_leaf_budget)
                 for xyz, features, mask, conf, score in zip(
                     points, dense, valid, confidence, boundaries, strict=True
                 )
@@ -72,7 +74,8 @@ class VoxelGaussianHead(nn.Module):
             0, membership, features) / counts[:, None]
         return self.decode_attributes(centers, fused, self.voxel_size_m)
 
-    def decode_octree(self, points, features, views, confidence, boundary=None):
+    def decode_octree(self, points, features, views, confidence, boundary=None,
+                      event_leaf_ranking=True, matched_leaf_budget=False):
         from vggt.utils.octdensify import max_view_counts, select_leaves
 
         if not len(points):
@@ -87,9 +90,9 @@ class VoxelGaussianHead(nn.Module):
             memberships.append(ids)
             counts.append(support)
             view_counts.append(max_view_counts(ids, views, len(grid)))
-        if boundary is None:
-            leaves = select_leaves(coords, view_counts, ('point_count',) * 2, (.3, .3), None)
-        else:
+        geometric_leaves = select_leaves(coords, view_counts, ('point_count',) * 2, (.3, .3), None)
+        leaves, budget = geometric_leaves, None
+        if boundary is not None:
             priorities = []
             for ids, support, views_by_cell in zip(memberships, counts, view_counts, strict=True):
                 mass = points.new_zeros(len(support)).index_add_(0, ids, confidence)
@@ -101,7 +104,11 @@ class VoxelGaussianHead(nn.Module):
             def score(selected, level):
                 return priorities[level][selected[level]]
 
-            leaves = select_leaves(coords, view_counts, ('learned_score',) * 2, (.3, .3), score)
+            event_leaves = select_leaves(coords, view_counts, ('learned_score',) * 2, (.3, .3), score)
+            if event_leaf_ranking:
+                leaves = event_leaves
+            if matched_leaf_budget:
+                budget = min(sum(len(ids) for ids in selection) for selection in (geometric_leaves, event_leaves))
         centers, fused, widths = [], [], []
         for factor, ids, support, selected in zip((4, 2, 1), memberships, counts, leaves, strict=True):
             count = len(support)
@@ -114,7 +121,11 @@ class VoxelGaussianHead(nn.Module):
             centers.append(center[selected])
             fused.append(features_by_cell[selected])
             widths.append(points.new_full((len(selected), 1), self.voxel_size_m * factor))
-        return self.decode_attributes(torch.cat(centers), torch.cat(fused), torch.cat(widths))
+        cloud = self.decode_attributes(torch.cat(centers), torch.cat(fused), torch.cat(widths))
+        if budget is not None and budget < len(cloud['opacity']):
+            keep = torch.argsort(cloud['opacity'].detach(), descending=True, stable=True)[:budget].sort().values
+            cloud = {key: value[keep] for key, value in cloud.items()}
+        return cloud
 
     def decode_attributes(self, centers, fused, voxel_size):
         sizes, rotation, gray, opacity = self.attributes(fused).float().split((3, 4, 1, 1), dim=-1)
