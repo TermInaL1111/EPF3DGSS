@@ -8,7 +8,9 @@ import torch
 import torch.nn.functional as F
 
 from dsec_data import DSECSequence, stereo_supervision
+from dvlt.common.geometry import umeyama_alignment
 from dvlt.common.rays import rays_to_pose
+from dvlt.metric.pose import compute_pose_metrics
 from event_dvlt import EventDVLT, voxelize
 from event_field import EventField
 
@@ -30,6 +32,18 @@ def native_intrinsics(k):
     return k
 
 
+def align_pointmap(predicted, truth):
+    # Match the upstream evaluator's single 95th percentile refinement.
+    rotation, translation, scale = umeyama_alignment(predicted.T, truth.T)
+    aligned = scale * (predicted @ rotation.T) + translation
+    residual = (aligned-truth).norm(dim=-1)
+    inliers = residual <= torch.quantile(residual, .95)
+    if inliers.sum() >= 10:
+        rotation, translation, scale = umeyama_alignment(predicted[inliers].T, truth[inliers].T)
+        aligned = scale * (predicted @ rotation.T) + translation
+    return aligned
+
+
 def scores(raw, reference, intrinsics_truth, relative_truth, max_depth):
     estimate = raw['depth'].float()[0].permute(0,3,1,2)
     estimate = F.interpolate(estimate,(480,640),mode='bilinear',align_corners=False)[:,0]
@@ -45,6 +59,7 @@ def scores(raw, reference, intrinsics_truth, relative_truth, max_depth):
     poses,intrinsics = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
     relative = torch.linalg.solve(poses[0,0],poses[0,1])
     point_errors = []
+    predicted_points, true_points = [], []
     for view in range(2):
         mask = valid[view]
         pred_xyz = lift(estimate[view]*scale,native_intrinsics(intrinsics[0,view]))[mask]
@@ -53,7 +68,14 @@ def scores(raw, reference, intrinsics_truth, relative_truth, max_depth):
             pred_xyz = pred_xyz @ relative[:3,:3].T + relative[:3,3]*scale
             gt_xyz = gt_xyz @ relative_truth[:3,:3].T + relative_truth[:3,3]
         point_errors.append((pred_xyz-gt_xyz).norm(dim=-1)/gt_xyz.norm(dim=-1).clamp_min(1e-8))
+        predicted_points.append(pred_xyz/scale)
+        true_points.append(gt_xyz)
     point_errors = torch.cat(point_errors)
+    pred_xyz, gt_xyz = torch.cat(predicted_points), torch.cat(true_points)
+    aligned = align_pointmap(pred_xyz, gt_xyz)
+    rel_l2 = (aligned-gt_xyz).norm(dim=-1)/gt_xyz.norm(dim=-1).clamp_min(1e-8)
+    gt_poses = torch.stack((torch.eye(4, device=poses.device), relative_truth))
+    pose_metrics = compute_pose_metrics(poses[0].double(), gt_poses.double(), thresholds=(3, 20, 30))
     rotation = relative[:3,:3].T @ relative_truth[:3,:3]
     cos_rot = ((rotation.trace()-1)/2).clamp(-1,1)
     a,b = relative[:3,3],relative_truth[:3,3]
@@ -62,6 +84,13 @@ def scores(raw, reference, intrinsics_truth, relative_truth, max_depth):
         translation_deg = float(F.cosine_similarity(a,b,dim=0).clamp(-1,1).acos().rad2deg())
     return dict(point_absrel=float(point_errors.mean()),
                 point_inlier25=float((point_errors<.25).float().mean()),
+                dvlt_point_rel_l2=float(rel_l2.mean()),
+                dvlt_point_ir3=float((rel_l2<.03).float().mean()),
+                sim3_point_inlier25=float((rel_l2<.25).float().mean()),
+                dvlt_pose_auc3=float(pose_metrics['Auc_3']),
+                pose_auc20=float(pose_metrics['Auc_20']),
+                dvlt_pose_auc30=float(pose_metrics['Auc_30']),
+                depth_inlier3=float(((depth-gt).abs()/gt<.03).float().mean()),
                 absrel=float(((depth-gt).abs()/gt).mean()),
                 delta1=float((torch.maximum(depth/gt,gt/depth)<1.25).float().mean()),
                 valid_prediction_fraction=float(valid.sum()/labelled.sum()),
@@ -113,6 +142,7 @@ def main(args):
         finally:
             source.close()
     report = dict(depth_cap_m=args.max_depth,epoch=checkpoint['epoch'],step=checkpoint['step'],rows=rows,
+                  dvlt_protocol='Stereo pointmaps use upstream Sim(3) with one 95th percentile refinement; pose uses upstream AUC on each stereo pair',
                   protocol='20 ms rectified stereo, sparse camera depth, one median scale per pair')
     args.out.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
 

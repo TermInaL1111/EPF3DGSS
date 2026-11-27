@@ -84,7 +84,9 @@ def compare(f3, no_f3, evggs=None):
         {'token_loss':lambda r,c:r['matched' if c=='matched' else 'empty']})
     report['dsec_depth'] = paired(*(d['rows'] for d in depth), ('sequence','frame'),
                                   {m:(lambda r,c,m=m:r[c][m]) for m in
-                                   ('absrel','delta1','valid_prediction_fraction')})
+                                   ('absrel','delta1','valid_prediction_fraction','depth_inlier3',
+                                    'dvlt_point_rel_l2','dvlt_point_ir3','dvlt_pose_auc3','dvlt_pose_auc30',
+                                    'sim3_point_inlier25','pose_auc20')})
     report['dsec_render'] = paired(*(load(p/'gaussians/val_005000.json') for p in paths),
                                    ('sequence','frame'), flat)
     report['mvsec_render'] = paired(*(load(p/'mvsec.json') for p in paths), ('flight','start'), nested)
