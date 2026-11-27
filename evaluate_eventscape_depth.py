@@ -23,8 +23,7 @@ def depth_scores(estimate, reference):
 
 
 @torch.inference_mode()
-def evaluate(args, archive):
-    checkpoint = torch.load(args.checkpoint, map_location='cpu', weights_only=True)
+def evaluate(args, archive, checkpoint):
     if set(archive.sequences) & set(checkpoint['config']['train']):
         raise ValueError('EventScape test sequences overlap training')
     student = EventDVLT(args.assets).cuda().eval()
@@ -78,13 +77,18 @@ if __name__ == '__main__':
     parser.add_argument('--f3', type=Path)
     parser.add_argument('--limit', type=int, help='Limit the number of windows for a smoke test')
     args = parser.parse_args()
+    checkpoint = torch.load(args.checkpoint, map_location='cpu', weights_only=True)
     with closing(EventScapeArchive(args.archive)) as archive:
-        rows = evaluate(args, archive)
+        rows = evaluate(args, archive, checkpoint)
     if not rows:
         raise ValueError('No complete 18-view clips')
     summary = {arm: {key: sum(row[arm][key] for row in rows)/len(rows) for key in ('absrel', 'delta1')}
                for arm in ('student', 'teacher')}
-    report = dict(checkpoint=str(args.checkpoint), max_depth_m=200, clip_views=18, recurrent_steps=16,
+    report = dict(checkpoint=str(args.checkpoint), step=checkpoint['step'], windows=len(rows),
+                  sequences=len({row['sequence'] for row in rows}),
+                  max_depth_m=200, clip_views=18, recurrent_steps=16,
                   depth_alignment='median ratio per clip on jointly valid native pixels', summary=summary, rows=rows)
-    args.out.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+    temporary = args.out.with_suffix('.json.tmp')
+    temporary.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+    temporary.replace(args.out)
     print(summary, flush=True)
