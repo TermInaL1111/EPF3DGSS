@@ -1,0 +1,80 @@
+{
+  "dataset": "mvsec",
+  "native": false,
+  "split": "val",
+  "upstream_commit": "4c97c29da989a8555e04e2a0020b46ada8861665",
+  "weights": "pretrain_evggs.pth",
+  "sha256": "1ba5a707a16611f01f4921a33f3834c6b0f492c6d14776308eaebd92488e5fcf",
+  "weights_step": 340000,
+  "windows": 72,
+  "matched": {
+    "psnr": 12.470587174097696,
+    "ssim": 0.05262689189759032,
+    "ssim_evggs": 0.05771557211280904,
+    "lpips_vgg": 0.6557678944534726,
+    "lpips_alex": 0.5430350253979365
+  },
+  "per_flight": {
+    "indoor_flying1": {
+      "psnr": 12.84480353196462,
+      "ssim": 0.04288063046503036,
+      "ssim_evggs": 0.045800079125911,
+      "lpips_vgg": 0.6601306398709615,
+      "lpips_alex": 0.5397346628208955
+    },
+    "indoor_flying2": {
+      "psnr": 12.621046344439188,
+      "ssim": 0.05570287964656018,
+      "ssim_evggs": 0.0633022755937418,
+      "lpips_vgg": 0.6560598686337471,
+      "lpips_alex": 0.5609788013001283
+    },
+    "indoor_flying3": {
+      "psnr": 11.945911645889282,
+      "ssim": 0.0592971655811804,
+      "ssim_evggs": 0.06404436161877432,
+      "lpips_vgg": 0.6511131748557091,
+      "lpips_alex": 0.5283916120727857
+    }
+  },
+  "depth": {
+    "views": 135,
+    "absrel": 0.9293928645275257,
+    "delta1": 0.0036495346403508273,
+    "coverage": 1.0
+  },
+  "epf": {
+    "psnr": 16.2159041762352,
+    "ssim": 0.38097838188211125,
+    "ssim_evggs": 0.3690363746136427,
+    "lpips_vgg": 0.6704540633492999,
+    "lpips_alex": 0.643005715476142
+  },
+  "epf_minus_evggs": {
+    "psnr": 3.7453170021375026,
+    "ssim": 0.3283514899845209,
+    "ssim_evggs": 0.31132080250083366,
+    "lpips_vgg": 0.0146861688958273,
+    "lpips_alex": 0.09997069007820558
+  },
+  "epf_protocol": {
+    "geometry_training_domain": "DSEC",
+    "geometry_steps": 22522,
+    "head": "fixed",
+    "gaussian_steps": 5000,
+    "head_training_flights": [
+      "indoor_flying4"
+    ],
+    "evaluation_flights": [
+      "indoor_flying1",
+      "indoor_flying2",
+      "indoor_flying3"
+    ],
+    "image_size": [
+      128,
+      96
+    ],
+    "sensor": "left DAVIS",
+    "source_pose": "predicted"
+  }
+}

@@ -69,7 +69,8 @@ def evaluate(args):
                     raw = model.backbone._decode(tokens,168,224,1,18,pos)
                 rays = raw['rays'].float()
                 poses, intrinsics = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
-                poses = torch.linalg.solve(poses[0,0], poses[0])
+                first_camera = poses[0,0]
+                poses = torch.linalg.solve(first_camera, poses[0])
                 estimate = raw['depth'][0,...,0].float()
                 reference = torch.as_tensor(np.stack(depths),device='cuda',dtype=torch.float32)
                 valid = (reference >= .1) & (reference <= 50) & torch.isfinite(estimate) & (estimate > 0)
@@ -88,14 +89,31 @@ def evaluate(args):
                 rot, trans, distance_scale = umeyama_alignment(origins.T,true_origins.T)
                 offset = distance_scale*(origins @ rot.T)+trans-true_origins
                 pose_metrics = compute_pose_metrics(poses.double(),gt_poses.double(),thresholds=(3,20,30))
-                results.append(dict(flight=name,start=int(start),frames=indices.tolist(),
+                row = dict(flight=name,start=int(start),frames=indices.tolist(),
                     absrel=float(((aligned_depth-t).abs()/t).mean()),
                     delta1=float((torch.maximum(aligned_depth/t,t/aligned_depth)<1.25).float().mean()),
                     ate_m=float(offset.square().sum(-1).mean().sqrt()),
                     **{f'pose_auc{a}':float(pose_metrics[f'Auc_{a}']) for a in (3,20,30)},
                     point_absrel=float(point_error.mean()),
                     point_inlier25=float((point_error<.25).float().mean()),
-                    point_inlier3=float((point_error<.03).float().mean())))
+                    point_inlier3=float((point_error<.03).float().mean()))
+                if args.compare_pointmaps:
+                    # DVLT's decoder points are in world coordinates. Apply the
+                    # same first-camera gauge as the fitted-camera pointmap.
+                    world = raw['world_points'][0].float()[valid]
+                    direct = (world-first_camera[:3,3]) @ first_camera[:3,:3]
+                    common = torch.isfinite(direct).all(-1) & torch.isfinite(xyz).all(-1)
+                    if common.sum() < 10:
+                        raise ValueError(f'Insufficient common pointmap support in {name}/{start}')
+                    target_points = truth_xyz[common]
+                    norm = target_points.norm(dim=-1).clamp_min(1e-8)
+                    for source, points in (('native', direct), ('camera', xyz)):
+                        aligned = align_pointmap(points[common], target_points)
+                        error = (aligned-target_points).norm(dim=-1)/norm
+                        row[f'{source}_rel_l2'] = float(error.mean())
+                        row[f'{source}_ir3'] = float((error<.03).float().mean())
+                    row['pointmap_common_fraction'] = float(common.float().mean())
+                results.append(row)
             print(name,len(starts),'windows attempted',flush=True)
     if not results:
         raise ValueError('No windows with synchronized pose and depth')
@@ -110,4 +128,6 @@ if __name__ == '__main__':
         parser.add_argument(key,type=Path)
     parser.add_argument('--flights',nargs='+',default=['indoor_flying1','indoor_flying2','indoor_flying3'])
     parser.add_argument('--count',type=int,help='Maximum number of clips per flight')
+    parser.add_argument('--compare-pointmaps',action='store_true',
+                        help='Compare direct decoder and fitted-camera points on common support')
     evaluate(parser.parse_args())

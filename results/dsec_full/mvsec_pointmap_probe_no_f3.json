@@ -1,0 +1,41 @@
+{
+  "step": 22522,
+  "clip_views": 18,
+  "depth_scale": "median ratio per window",
+  "event_window_ms": 50,
+  "all": {
+    "windows": 24,
+    "native_rel_l2": 0.20172486454248428,
+    "native_ir3": 0.023712348200357763,
+    "camera_rel_l2": 0.19966647184143463,
+    "camera_ir3": 0.02328288295787691,
+    "pointmap_common_fraction": 1.0
+  },
+  "per_flight": {
+    "indoor_flying1": {
+      "windows": 8,
+      "native_rel_l2": 0.2019418627023697,
+      "native_ir3": 0.022530966729391366,
+      "camera_rel_l2": 0.19743262603878975,
+      "camera_ir3": 0.022071237159252632,
+      "pointmap_common_fraction": 1.0
+    },
+    "indoor_flying2": {
+      "windows": 8,
+      "native_rel_l2": 0.20112286321818829,
+      "native_ir3": 0.024197757855745294,
+      "camera_rel_l2": 0.20148875005543232,
+      "camera_ir3": 0.022030765457202506,
+      "pointmap_common_fraction": 1.0
+    },
+    "indoor_flying3": {
+      "windows": 8,
+      "native_rel_l2": 0.20210986770689487,
+      "native_ir3": 0.024408320015936624,
+      "camera_rel_l2": 0.20007803943008184,
+      "camera_ir3": 0.0257466462571756,
+      "pointmap_common_fraction": 1.0
+    }
+  },
+  "protocol": "DSEC no-F3 checkpoint, 50 ms left DAVIS packets, K=16, both pointmaps evaluated on common support with separate per-window Sim(3)"
+}
