@@ -42,9 +42,9 @@ def evidence(counts):
 
 
 @torch.no_grad()
-def sample(model, sequence, index, device):
-    packets = [sequence.packet(i) for i in (index-1, index)]
-    scaled = [packet.astype(np.float64) * np.array([640/512, 480/256, 1, 1])[:, None]
+def boundary_inputs(model, packets, shape, device):
+    h, w = shape
+    scaled = [packet.astype(np.float64) * np.array([640/w, 480/h, 1, 1])[:, None]
               for packet in packets]
     voxel = torch.stack([voxelize(packet) for packet in scaled])[None].to(device)
     with torch.autocast(device.type, dtype=torch.bfloat16):
@@ -53,13 +53,19 @@ def sample(model, sequence, index, device):
     tokens = tokens[1:, model.backbone.patch_start_idx:].transpose(1, 2).reshape(1, 768, 12, 16).float()
     depth = geometry['depth'][0, 1, ..., 0].float()[None, None]
     confidence = geometry['depth_conf'][0, 1].float()[None, None]
-    label = torch.from_numpy(sequence.depth(index))[None, None].to(device)
-    inputs = evidence(event_bins(packets[-1], label.shape[-2:])[None].to(device))
-    return tokens, depth, confidence, inputs, label
+    inputs = evidence(event_bins(packets[-1], shape)[None].to(device))
+    return tokens, depth, confidence, inputs
 
 
-def score(pred, label):
-    valid = torch.isfinite(label) & (label >= .1) & (label <= 200)
+def sample(model, sequence, index, device):
+    packets = [sequence.packet(i) for i in (index-1, index)]
+    target = sequence.depth(index)
+    return (*boundary_inputs(model, packets, target.shape, device),
+            torch.as_tensor(target, device=device)[None, None])
+
+
+def score(pred, label, max_depth=200.):
+    valid = torch.isfinite(label) & (label >= .1) & (label <= max_depth)
     values = pred.exp()[valid]
     target = label[valid]
     values = values * (target / values).median()
@@ -84,7 +90,7 @@ def score(pred, label):
             band[..., 1:, :] |= reference
     band = F.max_pool2d(band.float(), 5, stride=1, padding=2).bool()[valid]
     err = (values-target).abs()/target
-    return dict(absrel=float(err.mean()), delta1=float((torch.maximum(values/target,target/values)<1.25).float().mean()),
+    return dict(valid_pixels=int(valid.sum()), absrel=float(err.mean()), delta1=float((torch.maximum(values/target,target/values)<1.25).float().mean()),
                 edge_hits=hit, edge_predicted=predicted, edge_reference=truth,
                 edge_predicted_near_reference=near_reference, edge_reference_near_predicted=near_prediction,
                 boundary_absrel=float(err[band].mean()) if band.any() else None,
@@ -112,6 +118,18 @@ def summarize(rows):
         entry['boundary_f1_1px'] = 2 * precision * recall / (precision + recall) if precision + recall else 0.
         result[arm] = entry
     return result
+
+
+def relative_improvement(summary):
+    relative = {}
+    for arm in ARMS:
+        relative[arm] = {}
+        for metric, baseline in summary['geometry'].items():
+            value = summary[arm][metric]
+            sign = -1 if metric.endswith('absrel') else 1
+            relative[arm][metric] = (100 * sign * (value - baseline) / baseline
+                                     if baseline and value is not None else None)
+    return relative
 
 
 def main(args):
@@ -165,17 +183,9 @@ def main(args):
                 scores = {key: score(head(tokens, depth, conf, inputs[key])[0],label) for key,head in heads.items()}
                 rows.append(dict(sequence=sequence.sequence, index=index, dvlt=score(base,label), **scores))
         summary = summarize(rows)
-        relative = {}
-        for arm in ARMS:
-            relative[arm] = {}
-            for metric, baseline in summary['geometry'].items():
-                value = summary[arm][metric]
-                sign = -1 if metric.endswith('absrel') else 1
-                relative[arm][metric] = (100 * sign * (value - baseline) / baseline
-                                         if baseline and value is not None else None)
         result = dict(checkpoint=str(args.checkpoint), geometry_step=checkpoint['step'],
                       boundary_steps=step, summary=summary,
-                      relative_improvement_vs_geometry_pct=relative, rows=rows)
+                      relative_improvement_vs_geometry_pct=relative_improvement(summary), rows=rows)
         (args.out/'val.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
         print(result['summary'], flush=True)
 
