@@ -14,10 +14,10 @@ from torch.nn import functional as F
 
 from audit_voxel_boundaries import mvsec_packet, spread
 from dsec_data import DSECSequence
-from event_depth_boundary import EventDepthBoundary
+from event_depth_boundary import ARMS, EventDepthBoundary
 from event_dvlt import EventDVLT
 from eventscape_data import EventScapeArchive, EventScapeSequence
-from train_event_depth_boundary import ARMS, boundary_inputs, relative_improvement, score, summarize
+from train_event_depth_boundary import boundary_inputs, relative_improvement, score, summarize
 
 
 def windows(args):

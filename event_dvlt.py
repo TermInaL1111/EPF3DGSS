@@ -154,8 +154,10 @@ class EventDVLT(nn.Module):
         return x,pos,hidden
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
-                source_cameras=None):
+                source_cameras=None, depth_refinement=None):
         b,s = voxel.shape[:2]
+        if depth_refinement is not None and calibrated_geometry is not None:
+            raise ValueError('Depth refinement requires predicted geometry')
         use_voxels = self.head_type in ('voxel', 'octree')
         if use_voxels and (steps < 4 or calibrated_geometry is not None):
             raise ValueError('The voxel head requires predicted depth and at least four recurrent steps')
@@ -187,7 +189,15 @@ class EventDVLT(nn.Module):
         fixed = self.head_type == 'fixed'
         if calibrated_geometry is None:
             scale = self.log_metric_scale.exp()
-            depth = resize(raw["depth"].reshape(b*s,1,168,224).float())*scale
+            coarse_depth = raw["depth"].reshape(b*s,1,168,224).float()
+            depth = resize(coarse_depth)
+            if depth_refinement is not None:
+                confidence = raw["depth_conf"].reshape_as(coarse_depth).float()
+                corrected = depth_refinement(patch_grid(tokens), coarse_depth, confidence)
+                if corrected.shape != depth.shape:
+                    raise ValueError('Refined depth must match the Gaussian source grid')
+                depth = corrected
+            depth = depth * scale
         else:
             scale = metric_depth.new_tensor(1.)
             depth = metric_depth.reshape(b*s,1,480,640).clamp_min(1e-4)

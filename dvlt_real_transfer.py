@@ -5,6 +5,7 @@ from pathlib import Path
 import torch
 from event_dvlt import EventDVLT,load_scene_weights,render,voxelize
 from event_field import EventField
+from event_depth_boundary import ARMS, EventDepthBoundary, evidence, event_bins
 from image_metrics import PerceptualMetrics, gray_metrics
 from dvlt.common.rays import rays_to_pose
 from mvsec_transfer import calibration,flight_windows
@@ -26,6 +27,15 @@ def main(args):
         model.load_state_dict(delta,strict=False)
     else:
         render_steps,use_field = load_scene_weights(model,delta)
+    boundary_heads = {}
+    if args.boundary:
+        if args.geometry_only:
+            raise ValueError('Boundary refinement is evaluated with Gaussian rendering')
+        boundary_state = torch.load(args.boundary, weights_only=True, map_location='cpu')
+        for arm in ARMS:
+            head = EventDepthBoundary().cuda().eval()
+            head.load_state_dict(boundary_state['model'][arm])
+            boundary_heads[arm] = head
     maps=calibration(args.calibration)
     extract=EventField(args.f3_repository,args.f3_checkpoint,4) if use_field else None
     perceptual = PerceptualMetrics("cuda") if args.lpips and not args.geometry_only else None
@@ -43,13 +53,22 @@ def main(args):
                 copy_psnr,copy_ssim = gray_metrics(source[None],target[None])
                 row['source_copy_psnr'] = float(copy_psnr[0])
                 row['source_copy_ssim'] = float(copy_ssim[0])
-            for key,v,f in [("matched",vox,field),("zero",torch.zeros_like(vox),torch.zeros_like(field))]:
+            variants = [("matched",vox,field,None),("zero",torch.zeros_like(vox),torch.zeros_like(field),None)]
+            if boundary_heads:
+                counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
+                boundary_inputs = evidence(counts)
+                for arm, head in boundary_heads.items():
+                    def refine(tokens, depth, confidence, head=head, features=boundary_inputs[arm]):
+                        log_depth, _ = head(tokens.float(), depth, confidence, features)
+                        return log_depth.exp()
+                    variants.append((f'boundary_{arm}',vox,field,refine))
+            for key,v,f,refinement in variants:
                 with torch.autocast("cuda",dtype=torch.bfloat16):
                     if args.geometry_only:
                         tokens, pos, _ = model.geometry(v,f,steps=16)
                         raw = model.backbone._decode(tokens,168,224,1,2,pos)
                     else:
-                        scene=model(v,f,steps=render_steps)
+                        scene=model(v,f,steps=render_steps,depth_refinement=refinement)
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
@@ -77,5 +96,6 @@ if __name__=="__main__":
         p.add_argument(name,type=Path)
     p.add_argument("--lpips",action="store_true")
     p.add_argument("--count",type=int,default=24,help="Windows per flight")
+    p.add_argument("--boundary",type=Path,help="Evaluate frozen depth refinement arms on the same matched windows")
     p.add_argument("--geometry-only",action="store_true",help="Evaluate pose from a DSEC geometry checkpoint")
     main(p.parse_args())

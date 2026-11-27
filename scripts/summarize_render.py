@@ -57,6 +57,28 @@ def compare_dsec(calibrated, predicted):
                 paired_rows=rows)
 
 
+def compare_boundary(rows):
+    keys = [(r['flight'], r['start']) for r in rows]
+    if not keys or len(set(keys)) != len(keys):
+        raise ValueError('Expected unique MVSEC flight windows')
+    arms = ('matched', 'boundary_geometry', 'boundary_accumulated', 'boundary_fixed_edge', 'boundary_temporal')
+    metrics = {'psnr': 1, 'ssim': 1, 'lpips_vgg': -1, 'lpips_alex': -1}
+    summary = {}
+    for arm in arms:
+        values = [row[arm] for row in rows]
+        summary[arm] = {metric: fmean(r[metric] for r in values) for metric in metrics}
+        if all('gaussian_count' in r for r in values):
+            summary[arm]['mean_gaussian_count'] = fmean(r['gaussian_count'] for r in values)
+    relative = {}
+    for reference in ('matched', 'boundary_geometry'):
+        relative[reference] = {
+            arm: {m: 100 * sign * (summary[arm][m] - summary[reference][m]) / abs(summary[reference][m])
+                  if summary[reference][m] else None for m, sign in metrics.items()}
+            for arm in arms if arm != reference
+        }
+    return dict(windows=len(rows), summary=summary, relative_improvement_pct=relative)
+
+
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('input',type=Path)
@@ -64,6 +86,10 @@ if __name__=='__main__':
     p.add_argument('--predicted',type=Path,help='Compare a calibrated input against a DSEC predicted arm')
     args=p.parse_args()
     rows = json.loads(args.input.read_text())
-    report = (compare_dsec(rows,json.loads(args.predicted.read_text())) if args.predicted
-              else summarize(rows))
+    if args.boundary:
+        report = compare_boundary(rows)
+    elif args.predicted:
+        report = compare_dsec(rows, json.loads(args.predicted.read_text()))
+    else:
+        report = summarize(rows)
     args.out.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')

@@ -10,35 +10,9 @@ import numpy as np
 import torch
 from torch.nn import functional as F
 
-from event_depth_boundary import EventDepthBoundary, adjacent, depth_loss, event_bins
+from event_depth_boundary import ARMS, EventDepthBoundary, adjacent, depth_loss, evidence, event_bins
 from event_dvlt import EventDVLT, voxelize
 from eventscape_data import EventScapeArchive, EventScapeSequence
-
-
-ARMS = ('geometry', 'accumulated', 'fixed_edge', 'temporal')
-
-
-def fixed_edge(counts):
-    # E2EGS Eqs. 1–2 with overlapping stride-one patches and a continuous confidence map.
-    signed = counts[:, 1] - counts[:, 0]
-    kernel = torch.exp(-.5 * torch.arange(-2, 3, device=counts.device).float().square())
-    kernel = kernel / kernel.sum()
-    blurred = F.conv2d(signed.flatten(0, 1)[:, None], (kernel[:, None] * kernel)[None, None],
-                       padding=2).reshape_as(signed)
-    delta = blurred.diff(dim=1).abs()
-    average = F.avg_pool2d(delta, 5, stride=1, padding=2, count_include_pad=False)
-    second = F.avg_pool2d(delta.square(), 5, stride=1, padding=2, count_include_pad=False)
-    variance = (second - average.square()).clamp_min(0).amax(dim=1, keepdim=True)
-    confidence = F.max_pool2d(variance, 5, stride=1, padding=2)
-    return confidence / confidence.amax(dim=(-2, -1), keepdim=True).clamp_min(1e-8)
-
-
-def evidence(counts):
-    accumulated = counts.sum(dim=2, keepdim=True).expand_as(counts)
-    return dict(geometry=torch.zeros_like(counts).flatten(1, 2),
-                accumulated=accumulated.flatten(1, 2).log1p(),
-                fixed_edge=fixed_edge(counts).expand(-1, 10, -1, -1),
-                temporal=counts.flatten(1, 2).log1p())
 
 
 @torch.no_grad()
