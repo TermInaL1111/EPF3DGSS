@@ -1,0 +1,20 @@
+{
+  "step": 20000,
+  "windows": 1368,
+  "sequences": 116,
+  "checkpoint": "/data/userwj/epf-runs/eventscape_direct_20k/geometry/latest.pt",
+  "max_depth_m": 200,
+  "clip_views": 18,
+  "recurrent_steps": 16,
+  "depth_alignment": "median ratio per clip on jointly valid native pixels",
+  "summary": {
+    "student": {
+      "absrel": 0.17424778000326357,
+      "delta1": 0.777679651387428
+    },
+    "teacher": {
+      "absrel": 0.14735062191077666,
+      "delta1": 0.8383671322848365
+    }
+  }
+}

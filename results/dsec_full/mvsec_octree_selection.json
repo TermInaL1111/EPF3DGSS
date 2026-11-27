@@ -1,0 +1,136 @@
+{
+  "checkpoint": "/data/userwj/epf-runs/mvsec_mono_no_f3/latest.pt",
+  "checkpoint_step": 5000,
+  "sequence": "indoor_flying4",
+  "voxel_sizes_m": [
+    0.2,
+    0.1,
+    0.05
+  ],
+  "split_fractions": [
+    0.3,
+    0.3
+  ],
+  "rows": [
+    {
+      "frame": 2,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        23,
+        92,
+        344
+      ],
+      "selected_leaves": [
+        16,
+        28,
+        80
+      ],
+      "total_leaves": 124
+    },
+    {
+      "frame": 90,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        29,
+        103,
+        404
+      ],
+      "selected_leaves": [
+        20,
+        34,
+        87
+      ],
+      "total_leaves": 141
+    },
+    {
+      "frame": 178,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        60,
+        247,
+        1042
+      ],
+      "selected_leaves": [
+        42,
+        69,
+        183
+      ],
+      "total_leaves": 294
+    },
+    {
+      "frame": 266,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        60,
+        223,
+        926
+      ],
+      "selected_leaves": [
+        42,
+        70,
+        156
+      ],
+      "total_leaves": 268
+    },
+    {
+      "frame": 354,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        64,
+        303,
+        1288
+      ],
+      "selected_leaves": [
+        44,
+        81,
+        145
+      ],
+      "total_leaves": 270
+    },
+    {
+      "frame": 442,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        59,
+        214,
+        903
+      ],
+      "selected_leaves": [
+        41,
+        53,
+        129
+      ],
+      "total_leaves": 223
+    },
+    {
+      "frame": 530,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        98,
+        412,
+        1657
+      ],
+      "selected_leaves": [
+        68,
+        108,
+        244
+      ],
+      "total_leaves": 420
+    },
+    {
+      "frame": 618,
+      "valid_points": 614400,
+      "uniform_voxels": [
+        66,
+        262,
+        1050
+      ],
+      "selected_leaves": [
+        46,
+        72,
+        148
+      ],
+      "total_leaves": 266
+    }
+  ]
+}
