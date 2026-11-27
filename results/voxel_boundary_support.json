@@ -1,0 +1,646 @@
+{
+  "dsec": {
+    "reference": {
+      "frames": 64,
+      "sequences": 8,
+      "labelled_pairs": 5283113,
+      "jumps": {
+        "0.05": {
+          "pairs": 279463,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 6.083095078776081e-05,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.11141725380461814,
+              "same_voxel_expected_fraction": 0.0004154470621412065
+            }
+          }
+        },
+        "0.10": {
+          "pairs": 65533,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.0002899302641417301,
+              "same_voxel_expected_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "dvlt": {
+      "dataset": "dsec",
+      "source": "/data/userwj/datasets/DSEC/extracted",
+      "summary": {
+        "frames": 16,
+        "sequences": 8,
+        "labelled_pairs": 1391552,
+        "jumps": {
+          "0.05": {
+            "pairs": 51968,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.07814695859657475,
+                "false_same_voxel_expected_fraction": 0.07814695859657475
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.21908903062336402,
+                "false_same_voxel_expected_fraction": 0.21908903062336402
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.00017318349753694582,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.3895911697160474,
+                "false_same_voxel_expected_fraction": 0.38944932258551623
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.15147783251231528,
+                "same_voxel_expected_fraction": 0.0007888829309385811,
+                "predicted_same_voxel_expected_fraction": 0.6335030334393102,
+                "false_same_voxel_expected_fraction": 0.5130386173830941
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 521,
+                "positives": 5308,
+                "recall": 0.010025400246305419,
+                "precision": 0.09815373021853806
+              },
+              "nearest-exact": {
+                "true_positives": 2545,
+                "positives": 22635,
+                "recall": 0.04897244458128079,
+                "precision": 0.11243649215816214
+              }
+            }
+          },
+          "0.10": {
+            "pairs": 10003,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.054832157518231804,
+                "false_same_voxel_expected_fraction": 0.054832157518231804
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.21027061017830675,
+                "false_same_voxel_expected_fraction": 0.21027061017830675
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.40038178467342,
+                "false_same_voxel_expected_fraction": 0.40038178467342
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.00029991002699190244,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.6413691192044058,
+                "false_same_voxel_expected_fraction": 0.6410855258734574
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 18,
+                "positives": 1781,
+                "recall": 0.0017994601619514146,
+                "precision": 0.010106681639528355
+              },
+              "nearest-exact": {
+                "true_positives": 143,
+                "positives": 4612,
+                "recall": 0.014295711286614016,
+                "precision": 0.031006071118820467
+              }
+            }
+          }
+        }
+      },
+      "checkpoint": "/data/userwj/epf-runs/dsec_full_no_f3/geometry/latest.pt",
+      "checkpoint_step": 22522,
+      "recurrent_steps": 16,
+      "geometry": "Calibrated rays and one reference/prediction median scale ratio per frame",
+      "predicted_pairs": "Exact native-pixel neighbour agreement, no localization tolerance"
+    },
+    "reference_source": "/data/userwj/datasets/DSEC/extracted",
+    "probe_frames": [
+      [
+        "interlaken_00_c",
+        4
+      ],
+      [
+        "interlaken_00_c",
+        536
+      ],
+      [
+        "interlaken_00_g",
+        4
+      ],
+      [
+        "interlaken_00_g",
+        1334
+      ],
+      [
+        "zurich_city_02_c",
+        4
+      ],
+      [
+        "zurich_city_02_c",
+        2882
+      ],
+      [
+        "zurich_city_04_b",
+        4
+      ],
+      [
+        "zurich_city_04_b",
+        268
+      ],
+      [
+        "zurich_city_04_f",
+        4
+      ],
+      [
+        "zurich_city_04_f",
+        858
+      ],
+      [
+        "zurich_city_08_a",
+        4
+      ],
+      [
+        "zurich_city_08_a",
+        786
+      ],
+      [
+        "zurich_city_09_e",
+        4
+      ],
+      [
+        "zurich_city_09_e",
+        816
+      ],
+      [
+        "zurich_city_11_c",
+        4
+      ],
+      [
+        "zurich_city_11_c",
+        1956
+      ]
+    ]
+  },
+  "eventscape": {
+    "reference": {
+      "frames": 96,
+      "sequences": 12,
+      "labelled_pairs": 19779365,
+      "jumps": {
+        "0.05": {
+          "pairs": 1055557,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 3.3157849362942976e-05,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 0.0029444170234293366,
+              "same_voxel_expected_fraction": 1.1788138319314513e-05
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.03038869525757491,
+              "same_voxel_expected_fraction": 0.001967833008114257
+            }
+          }
+        },
+        "0.10": {
+          "pairs": 675346,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 0.0,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 1.924939216342438e-05,
+              "same_voxel_expected_fraction": 0.0
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.008290565132539469,
+              "same_voxel_expected_fraction": 9.05031457105692e-05
+            }
+          }
+        }
+      }
+    },
+    "dvlt": {
+      "dataset": "eventscape",
+      "source": "/data/userwj/datasets/EventScape/Town01-03_train.zip",
+      "summary": {
+        "frames": 12,
+        "sequences": 12,
+        "labelled_pairs": 2457901,
+        "jumps": {
+          "0.05": {
+            "pairs": 132629,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.023630603374158614,
+                "false_same_voxel_expected_fraction": 0.023630603374158614
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.10776598973314108,
+                "false_same_voxel_expected_fraction": 0.10776598973314108
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.000799221889631981,
+                "same_voxel_expected_fraction": 1.4656900899846387e-06,
+                "predicted_same_voxel_expected_fraction": 0.23791439534523282,
+                "false_same_voxel_expected_fraction": 0.23738956484614152
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.029955741202904344,
+                "same_voxel_expected_fraction": 0.0011134332710981787,
+                "predicted_same_voxel_expected_fraction": 0.4336102903612976,
+                "false_same_voxel_expected_fraction": 0.41017454468919556
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 16030,
+                "positives": 51023,
+                "recall": 0.12086346123396843,
+                "precision": 0.3141720400603649
+              },
+              "nearest-exact": {
+                "true_positives": 19026,
+                "positives": 60698,
+                "recall": 0.1434527893597931,
+                "precision": 0.313453491054071
+              }
+            }
+          },
+          "0.10": {
+            "pairs": 85692,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.027568335545597848,
+                "false_same_voxel_expected_fraction": 0.027568335545597848
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.11951290893657529,
+                "false_same_voxel_expected_fraction": 0.11951290893657529
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.0,
+                "same_voxel_expected_fraction": 0.0,
+                "predicted_same_voxel_expected_fraction": 0.26122158564524717,
+                "false_same_voxel_expected_fraction": 0.26122158564524717
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.0039210194650609155,
+                "same_voxel_expected_fraction": 1.1935252957960271e-05,
+                "predicted_same_voxel_expected_fraction": 0.47487184802030336,
+                "false_same_voxel_expected_fraction": 0.4717421077303196
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 4300,
+                "positives": 20118,
+                "recall": 0.05017971339214863,
+                "precision": 0.2137389402525102
+              },
+              "nearest-exact": {
+                "true_positives": 4562,
+                "positives": 22517,
+                "recall": 0.05323717499883303,
+                "precision": 0.2026024781276369
+              }
+            }
+          }
+        }
+      },
+      "checkpoint": "/data/userwj/epf-runs/eventscape_direct_20k/geometry/step_007000.pt",
+      "checkpoint_step": 7000,
+      "recurrent_steps": 16,
+      "geometry": "Calibrated rays and one reference/prediction median scale ratio per frame",
+      "predicted_pairs": "Exact native-pixel neighbour agreement, no localization tolerance"
+    },
+    "reference_source": "/data/userwj/datasets/EventScape/Town01-03_train.zip",
+    "probe_frames": [
+      [
+        "Town01/sequence_0",
+        92
+      ],
+      [
+        "Town01/sequence_172",
+        125
+      ],
+      [
+        "Town01/sequence_25",
+        125
+      ],
+      [
+        "Town01/sequence_99",
+        94
+      ],
+      [
+        "Town02/sequence_0",
+        77
+      ],
+      [
+        "Town02/sequence_31",
+        125
+      ],
+      [
+        "Town02/sequence_63",
+        125
+      ],
+      [
+        "Town02/sequence_99",
+        125
+      ],
+      [
+        "Town03/sequence_0",
+        125
+      ],
+      [
+        "Town03/sequence_17",
+        125
+      ],
+      [
+        "Town03/sequence_240",
+        125
+      ],
+      [
+        "Town03/sequence_99",
+        125
+      ]
+    ]
+  },
+  "mvsec": {
+    "reference": {
+      "frames": 72,
+      "sequences": 1,
+      "labelled_pairs": 6680480,
+      "jumps": {
+        "0.05": {
+          "pairs": 1652711,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.5379301039322665,
+              "same_voxel_expected_fraction": 0.04460015037100646
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 0.8035875600755364,
+              "same_voxel_expected_fraction": 0.20958661369308373
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 0.919060259174169,
+              "same_voxel_expected_fraction": 0.43856926283090564
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.9700159313999847,
+              "same_voxel_expected_fraction": 0.6915690530161369
+            }
+          }
+        },
+        "0.10": {
+          "pairs": 712666,
+          "grid": {
+            "0.05": {
+              "possible_any_orientation_fraction": 0.3096261081628701,
+              "same_voxel_expected_fraction": 0.0031689560146977995
+            },
+            "0.10": {
+              "possible_any_orientation_fraction": 0.6795665851885736,
+              "same_voxel_expected_fraction": 0.09274418626758597
+            },
+            "0.20": {
+              "possible_any_orientation_fraction": 0.8340400692610563,
+              "same_voxel_expected_fraction": 0.30307907994694944
+            },
+            "0.50": {
+              "possible_any_orientation_fraction": 0.9304653231668131,
+              "same_voxel_expected_fraction": 0.5796257707737239
+            }
+          }
+        }
+      }
+    },
+    "dvlt": {
+      "dataset": "mvsec",
+      "source": "/data/userwj/datasets/MVSEC/indoor_flying",
+      "summary": {
+        "frames": 16,
+        "sequences": 1,
+        "labelled_pairs": 1446430,
+        "jumps": {
+          "0.05": {
+            "pairs": 365220,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.5319889381742512,
+                "same_voxel_expected_fraction": 0.04380989590068148,
+                "predicted_same_voxel_expected_fraction": 0.8307354762435707,
+                "false_same_voxel_expected_fraction": 0.3676677461093142
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.7950413449427742,
+                "same_voxel_expected_fraction": 0.20668561961267054,
+                "predicted_same_voxel_expected_fraction": 0.9095407578483181,
+                "false_same_voxel_expected_fraction": 0.17763754766191553
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.9151333442856361,
+                "same_voxel_expected_fraction": 0.43320814753340614,
+                "predicted_same_voxel_expected_fraction": 0.9531363567217834,
+                "false_same_voxel_expected_fraction": 0.07864525550335115
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.9680795137177591,
+                "same_voxel_expected_fraction": 0.686214997065598,
+                "predicted_same_voxel_expected_fraction": 0.980815032689004,
+                "false_same_voxel_expected_fraction": 0.030815297580586407
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 118,
+                "positives": 1356,
+                "recall": 0.00032309293028859315,
+                "precision": 0.08702064896755163
+              },
+              "nearest-exact": {
+                "true_positives": 383,
+                "positives": 2765,
+                "recall": 0.001048682985597722,
+                "precision": 0.13851717902350813
+              }
+            }
+          },
+          "0.10": {
+            "pairs": 162233,
+            "grid": {
+              "0.05": {
+                "possible_any_orientation_fraction": 0.3062139022270438,
+                "same_voxel_expected_fraction": 0.003092037797073607,
+                "predicted_same_voxel_expected_fraction": 0.8576264670387217,
+                "false_same_voxel_expected_fraction": 0.5804247428513543
+              },
+              "0.10": {
+                "possible_any_orientation_fraction": 0.6686124278044541,
+                "same_voxel_expected_fraction": 0.09137327063080584,
+                "predicted_same_voxel_expected_fraction": 0.924452431187741,
+                "false_same_voxel_expected_fraction": 0.2953005456587557
+              },
+              "0.20": {
+                "possible_any_orientation_fraction": 0.8300530718164615,
+                "same_voxel_expected_fraction": 0.2977018332921415,
+                "predicted_same_voxel_expected_fraction": 0.9609958514501705,
+                "false_same_voxel_expected_fraction": 0.15830492643253846
+              },
+              "0.50": {
+                "possible_any_orientation_fraction": 0.9281403906726745,
+                "same_voxel_expected_fraction": 0.573649586654081,
+                "predicted_same_voxel_expected_fraction": 0.9840805992114815,
+                "false_same_voxel_expected_fraction": 0.06937160123021684
+              }
+            },
+            "predicted_jumps": {
+              "bilinear": {
+                "true_positives": 21,
+                "positives": 524,
+                "recall": 0.00012944345478416844,
+                "precision": 0.04007633587786259
+              },
+              "nearest-exact": {
+                "true_positives": 14,
+                "positives": 542,
+                "recall": 8.629563652277897e-05,
+                "precision": 0.025830258302583026
+              }
+            }
+          }
+        }
+      },
+      "checkpoint": "/data/userwj/epf-runs/dsec_full_no_f3/geometry/latest.pt",
+      "checkpoint_step": 22522,
+      "recurrent_steps": 16,
+      "geometry": "Calibrated rays and one reference/prediction median scale ratio per frame",
+      "predicted_pairs": "Exact native-pixel neighbour agreement, no localization tolerance"
+    },
+    "reference_source": "/data/userwj/datasets/MVSEC/indoor_flying",
+    "probe_frames": [
+      [
+        "indoor_flying4",
+        1
+      ],
+      [
+        "indoor_flying4",
+        26
+      ],
+      [
+        "indoor_flying4",
+        52
+      ],
+      [
+        "indoor_flying4",
+        78
+      ],
+      [
+        "indoor_flying4",
+        104
+      ],
+      [
+        "indoor_flying4",
+        130
+      ],
+      [
+        "indoor_flying4",
+        156
+      ],
+      [
+        "indoor_flying4",
+        182
+      ],
+      [
+        "indoor_flying4",
+        207
+      ],
+      [
+        "indoor_flying4",
+        233
+      ],
+      [
+        "indoor_flying4",
+        259
+      ],
+      [
+        "indoor_flying4",
+        285
+      ],
+      [
+        "indoor_flying4",
+        311
+      ],
+      [
+        "indoor_flying4",
+        337
+      ],
+      [
+        "indoor_flying4",
+        363
+      ],
+      [
+        "indoor_flying4",
+        389
+      ]
+    ]
+  }
+}

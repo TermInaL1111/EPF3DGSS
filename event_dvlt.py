@@ -11,10 +11,10 @@ from dvlt.common.rotation import mat_to_quat
 from gsplat import rasterization
 
 
-def load_rgb(assets):
+def load_rgb(assets, device='cuda'):
     net = DVLTModel(**json.loads((assets/"config.json").read_text()))
     net.load_state_dict(load_file(assets/"dvlt.safetensors"),strict=True)
-    return net.cuda().eval().requires_grad_(False)
+    return net.to(device).eval().requires_grad_(False)
 
 
 def load_scene_weights(model, checkpoint):
@@ -74,9 +74,9 @@ def gated_update(block, correction, x, interval, pos, density, special):
 
 
 class EventDVLT(nn.Module):
-    def __init__(self, assets):
+    def __init__(self, assets, device='cuda'):
         super().__init__()
-        self.backbone = load_rgb(assets)
+        self.backbone = load_rgb(assets, device)
         blocks = self.backbone.recurrent_blocks[0]
         for block in [*self.backbone.patch_embed_encoder.blocks,blocks.frame_attn,blocks.global_attn]:
             block.attn.qkv = LowRankQKV(block.attn.qkv)
