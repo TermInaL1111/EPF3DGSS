@@ -1,0 +1,264 @@
+{
+  "windows": 72,
+  "evggs": {
+    "psnr": 12.470587174097696,
+    "ssim": 0.05262689189759032,
+    "ssim_evggs": 0.05771557211280904,
+    "lpips_vgg": 0.6557678944534726,
+    "lpips_alex": 0.5430350253979365
+  },
+  "arms": {
+    "dsec_temporal": {
+      "source_cameras": {
+        "predicted": {
+          "psnr": {
+            "real": 14.663983742396036,
+            "zero": 16.66020827823215,
+            "real_improvement": -1.9962245358361148,
+            "improvement_pct": -11.981990275861895,
+            "swapped": 14.66639953189426,
+            "real_vs_swapped": -0.0024157894982241856,
+            "real_vs_swapped_pct": -0.016471592042550682
+          },
+          "ssim": {
+            "real": 0.35408817376527524,
+            "zero": 0.4316872141013543,
+            "real_improvement": -0.07759904033607906,
+            "improvement_pct": -17.975756010660966,
+            "swapped": 0.35357072338875795,
+            "real_vs_swapped": 0.0005174503765172922,
+            "real_vs_swapped_pct": 0.14634989332766257
+          },
+          "lpips_vgg": {
+            "real": 0.708068293829759,
+            "zero": 0.7080840534634061,
+            "real_improvement": 1.5759633647083326e-05,
+            "improvement_pct": 0.0022256727248692073,
+            "swapped": 0.7088164662321409,
+            "real_vs_swapped": 0.000748172402381897,
+            "real_vs_swapped_pct": 0.10555234507445356
+          },
+          "lpips_alex": {
+            "real": 0.6884502834743924,
+            "zero": 0.7332356795668602,
+            "real_improvement": 0.04478539609246779,
+            "improvement_pct": 6.107912822644363,
+            "swapped": 0.6893446428908242,
+            "real_vs_swapped": 0.0008943594164317892,
+            "real_vs_swapped_pct": 0.12974053336821745
+          }
+        },
+        "calibrated": {
+          "psnr": {
+            "real": 14.149032884173923,
+            "zero": 16.865556650691563,
+            "real_improvement": -2.716523766517639,
+            "improvement_pct": -16.1069321504206,
+            "swapped": 14.16035098499722,
+            "real_vs_swapped": -0.011318100823295651,
+            "real_vs_swapped_pct": -0.07992810937586993
+          },
+          "ssim": {
+            "real": 0.36115263774991035,
+            "zero": 0.4335091033329566,
+            "real_improvement": -0.07235646558304626,
+            "improvement_pct": -16.69087569943667,
+            "swapped": 0.36189871260689366,
+            "real_vs_swapped": -0.0007460748569833031,
+            "real_vs_swapped_pct": -0.2061557090405332
+          },
+          "lpips_vgg": {
+            "real": 0.7186461860934893,
+            "zero": 0.7042425125837326,
+            "real_improvement": -0.014403673509756687,
+            "improvement_pct": -2.0452717994703744,
+            "swapped": 0.7194307181570265,
+            "real_vs_swapped": 0.0007845320635372355,
+            "real_vs_swapped_pct": 0.1090490082974188
+          },
+          "lpips_alex": {
+            "real": 0.7101983692910936,
+            "zero": 0.7484550111823611,
+            "real_improvement": 0.03825664189126754,
+            "improvement_pct": 5.111415024242025,
+            "swapped": 0.7073410691486465,
+            "real_vs_swapped": -0.0028573001424471167,
+            "real_vs_swapped_pct": -0.4039494194626864
+          }
+        }
+      },
+      "predicted_vs_evggs": {
+        "epf": {
+          "psnr": 14.663983742396036,
+          "ssim": 0.35408817376527524,
+          "ssim_evggs": 0.3614885598007176,
+          "lpips_vgg": 0.708068293829759,
+          "lpips_alex": 0.6884502834743924
+        },
+        "epf_minus_evggs": {
+          "psnr": 2.19339656829834,
+          "ssim": 0.30146128186768495,
+          "ssim_evggs": 0.30377298768790856,
+          "lpips_vgg": 0.05230039937628639,
+          "lpips_alex": 0.14541525807645594
+        },
+        "relative_improvement_pct": {
+          "psnr": 17.58855888401295,
+          "ssim": 572.8274480931075,
+          "ssim_evggs": 526.3276037429958,
+          "lpips_vgg": -7.975443723098762,
+          "lpips_alex": -26.778246572566022
+        }
+      },
+      "calibrated_vs_evggs": {
+        "epf": {
+          "psnr": 14.149032884173923,
+          "ssim": 0.36115263774991035,
+          "ssim_evggs": 0.38149235314793056,
+          "lpips_vgg": 0.7186461860934893,
+          "lpips_alex": 0.7101983692910936
+        },
+        "epf_minus_evggs": {
+          "psnr": 1.6784457100762271,
+          "ssim": 0.30852574585232007,
+          "ssim_evggs": 0.32377678103512153,
+          "lpips_vgg": 0.06287829164001668,
+          "lpips_alex": 0.16716334389315712
+        },
+        "relative_improvement_pct": {
+          "psnr": 13.459235612918686,
+          "ssim": 586.2511250953181,
+          "ssim_evggs": 560.9868691975844,
+          "lpips_vgg": -9.588498029843386,
+          "lpips_alex": -30.78316058354794
+        }
+      }
+    },
+    "eventscape_realm": {
+      "source_cameras": {
+        "predicted": {
+          "psnr": {
+            "real": 10.985095037354363,
+            "zero": 14.077019068929884,
+            "real_improvement": -3.0919240315755214,
+            "improvement_pct": -21.964337878889904,
+            "swapped": 10.981751216782463,
+            "real_vs_swapped": 0.003343820571899414,
+            "real_vs_swapped_pct": 0.030448882932162417
+          },
+          "ssim": {
+            "real": 0.25144492503669524,
+            "zero": 0.24858873751428393,
+            "real_improvement": 0.0028561875224113187,
+            "improvement_pct": 1.1489609509148426,
+            "swapped": 0.24978930585914189,
+            "real_vs_swapped": 0.001655619177553358,
+            "real_vs_swapped_pct": 0.6628062686106243
+          },
+          "lpips_vgg": {
+            "real": 0.6907418800724877,
+            "zero": 0.6799230840471056,
+            "real_improvement": -0.01081879602538216,
+            "improvement_pct": -1.5911793964966523,
+            "swapped": 0.6917748600244522,
+            "real_vs_swapped": 0.0010329799519644967,
+            "real_vs_swapped_pct": 0.14932314133647237
+          },
+          "lpips_alex": {
+            "real": 0.6650970644421048,
+            "zero": 0.6418614702092277,
+            "real_improvement": -0.023235594232877133,
+            "improvement_pct": -3.6200325633042008,
+            "swapped": 0.6663253133495649,
+            "real_vs_swapped": 0.0012282489074600944,
+            "real_vs_swapped_pct": 0.184331719484854
+          }
+        },
+        "calibrated": {
+          "psnr": {
+            "real": 10.51955074734158,
+            "zero": 13.796476311153835,
+            "real_improvement": -3.276925563812256,
+            "improvement_pct": -23.75190222421509,
+            "swapped": 10.540584180090162,
+            "real_vs_swapped": -0.021033432748582825,
+            "real_vs_swapped_pct": -0.19954712555981796
+          },
+          "ssim": {
+            "real": 0.2790202107280493,
+            "zero": 0.29219423544903594,
+            "real_improvement": -0.013174024720986666,
+            "improvement_pct": -4.508653191169631,
+            "swapped": 0.2795260914911826,
+            "real_vs_swapped": -0.0005058807631333484,
+            "real_vs_swapped_pct": -0.18097801190387477
+          },
+          "lpips_vgg": {
+            "real": 0.7046439887748824,
+            "zero": 0.6850017474757301,
+            "real_improvement": -0.019642241299152374,
+            "improvement_pct": -2.8674731665335362,
+            "swapped": 0.7054263460967276,
+            "real_vs_swapped": 0.0007823573218451729,
+            "real_vs_swapped_pct": 0.11090560002105401
+          },
+          "lpips_alex": {
+            "real": 0.7119051143527031,
+            "zero": 0.6797596199644936,
+            "real_improvement": -0.03214549438820946,
+            "improvement_pct": -4.728950270668996,
+            "swapped": 0.710772440665298,
+            "real_vs_swapped": -0.0011326736874051058,
+            "real_vs_swapped_pct": -0.15935813244881855
+          }
+        }
+      },
+      "predicted_vs_evggs": {
+        "epf": {
+          "psnr": 10.985095037354363,
+          "ssim": 0.25144492503669524,
+          "ssim_evggs": 0.24664930750926337,
+          "lpips_vgg": 0.6907418800724877,
+          "lpips_alex": 0.6650970644421048
+        },
+        "epf_minus_evggs": {
+          "psnr": -1.4854921367433338,
+          "ssim": 0.19881803313910493,
+          "ssim_evggs": 0.18893373539645433,
+          "lpips_vgg": 0.0349739856190151,
+          "lpips_alex": 0.12206203904416835
+        },
+        "relative_improvement_pct": {
+          "psnr": -11.911966261130088,
+          "ssim": 377.7879064680398,
+          "ssim_evggs": 327.3531362162891,
+          "lpips_vgg": -5.333287267465721,
+          "lpips_alex": -22.477746984132597
+        }
+      },
+      "calibrated_vs_evggs": {
+        "epf": {
+          "psnr": 10.51955074734158,
+          "ssim": 0.2790202107280493,
+          "ssim_evggs": 0.29391744836337036,
+          "lpips_vgg": 0.7046439887748824,
+          "lpips_alex": 0.7119051143527031
+        },
+        "epf_minus_evggs": {
+          "psnr": -1.9510364267561169,
+          "ssim": 0.22639331883045896,
+          "ssim_evggs": 0.23620187625056133,
+          "lpips_vgg": 0.048876094321409824,
+          "lpips_alex": 0.16887008895476663
+        },
+        "relative_improvement_pct": {
+          "psnr": -15.645104753435824,
+          "ssim": 430.18561550435214,
+          "ssim_evggs": 409.2515548297582,
+          "lpips_vgg": -7.45326124301098,
+          "lpips_alex": -31.09745800117009
+        }
+      }
+    }
+  }
+}
