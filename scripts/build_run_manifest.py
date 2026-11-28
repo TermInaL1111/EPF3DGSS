@@ -1,12 +1,14 @@
 """Record every head variant, checkpoint and frozen-head evaluation."""
 
+import csv
 import hashlib
 import json
 from pathlib import Path
 from statistics import fmean
+import sys
 
 ROOT = Path('/data/userwj/epf-runs')
-OUT = Path('results')
+OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('results')
 
 RUNS = [
     dict(id='octree_target4_12k', head='octree', train='DSEC+EventScape', target=4,
@@ -108,19 +110,55 @@ for spec in RUNS:
             entry['eval'][dataset] = dict(path=str(path), **scores(path))
     manifest['runs'].append(entry)
 
-(OUT / 'run_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+comparison = ROOT/'source_view_supervision/comparison.json'
+if comparison.is_file():
+    report = json.loads(comparison.read_text())
+    steps = report['steps']
+    for arm,checkpoints in report['checkpoints'].items():
+        latest = checkpoints['latest']
+        directory = Path(latest['path']).parent
+        evaluations = {}
+        for dataset in ('dsec','eventscape','mvsec'):
+            result = report[dataset]
+            metrics = result['scores'][arm]
+            condition = 'matched'
+            if dataset == 'mvsec':
+                metrics = metrics['predicted']
+                condition = 'real'
+            filename = 'mvsec.json' if dataset == 'mvsec' else f'val_test_{dataset}.json'
+            evaluations[dataset] = dict(
+                path=str(directory/filename), windows=result['windows'],
+                zero_psnr=metrics['psnr']['zero'],
+                **{metric:metrics[metric][condition] for metric in ('psnr','ssim','lpips_vgg','lpips_alex')},
+            )
+        manifest['runs'].append(dict(
+            id=f'source_view_{arm}_{steps}', head='octree_pixel', train='DSEC+EventScape',
+            target=4, steps=steps, status='finished', run_dir=str(directory),
+            checkpoint=latest['path'], checkpoint_sha256=latest['sha256'], checkpoint_bytes=latest['bytes'],
+            initial_checkpoint=report['initial_checkpoint'], checkpoints=checkpoints,
+            config_json=str(directory/'config.json'), train_jsonl=str(directory/'train.jsonl'),
+            comparison_json=str(comparison), eval=evaluations,
+        ))
 
-lines = ['id,head,train,target,steps,status,dsec_psnr,dsec_lpips_vgg,es_psnr,es_lpips_vgg,checkpoint']
-for entry in manifest['runs']:
-    dsec = entry['eval'].get('dsec', {})
-    es = entry['eval'].get('eventscape', {})
-    lines.append(','.join(str(value) for value in (
-        entry['id'], entry['head'], entry['train'], entry['target'], entry['steps'], entry['status'],
-        f"{dsec.get('psnr', ''):.4f}" if dsec else '',
-        f"{dsec.get('lpips_vgg', ''):.4f}" if dsec else '',
-        f"{es.get('psnr', ''):.4f}" if es else '',
-        f"{es.get('lpips_vgg', ''):.4f}" if es else '',
-        entry['checkpoint'] or '',
-    )))
-(OUT / 'run_manifest.csv').write_text('\n'.join(lines) + '\n')
-print('\n'.join(lines))
+OUT.mkdir(parents=True,exist_ok=True)
+json_out = OUT/'run_manifest.json'
+json_tmp = json_out.with_suffix('.json.tmp')
+json_tmp.write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
+json_tmp.replace(json_out)
+csv_out = OUT/'run_manifest.csv'
+csv_tmp = csv_out.with_suffix('.csv.tmp')
+with csv_tmp.open('w',newline='') as stream:
+    writer = csv.writer(stream,lineterminator='\n')
+    fields = ('id','head','train','target','steps','status')
+    datasets = {'dsec':'dsec','eventscape':'es','mvsec':'mvsec'}
+    metrics = ('psnr','lpips_vgg')
+    writer.writerow([*fields,*(f'{prefix}_{metric}' for prefix in datasets.values() for metric in metrics),
+                     'checkpoint'])
+    for entry in manifest['runs']:
+        values = [entry['eval'].get(dataset,{}).get(metric)
+                  for dataset in datasets for metric in metrics]
+        writer.writerow([*(entry[key] for key in fields),
+                         *(f'{value:.4f}' if value is not None else '' for value in values),
+                         entry['checkpoint'] or ''])
+csv_tmp.replace(csv_out)
+print(f'Recorded {len(manifest["runs"])} runs in {OUT}')
