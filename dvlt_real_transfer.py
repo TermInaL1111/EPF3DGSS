@@ -5,7 +5,8 @@ from pathlib import Path
 import torch
 from event_dvlt import EventDVLT,load_scene_weights,render,voxelize
 from event_field import EventField
-from event_depth_boundary import ARMS, EventDepthBoundary, evidence, event_bins, load_temporal_boundary, temporal_corrector
+from event_depth_boundary import (ARMS, EventDepthBoundary, evidence, event_bins,
+                                  load_temporal_boundary, restore_depth_scale, temporal_corrector)
 from image_metrics import PerceptualMetrics, gray_metrics
 from dvlt.common.rays import rays_to_pose
 from mvsec_transfer import calibration,flight_windows
@@ -39,6 +40,8 @@ def cap_scene(scene, budget):
 
 @torch.inference_mode()
 def main(args):
+    if args.preserve_boundary_scale and not args.boundary:
+        raise ValueError('Scale preservation requires an external boundary checkpoint')
     model=EventDVLT(args.assets).cuda().eval()
     delta=torch.load(args.weights,weights_only=True)
     if args.geometry_only:
@@ -91,14 +94,20 @@ def main(args):
                 counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
                 boundary_inputs = evidence(counts)
                 for arm, head in boundary_heads.items():
-                    def refine(tokens, depth, confidence, head=head, features=boundary_inputs[arm]):
+                    def refine(tokens, depth, confidence, head=head, features=boundary_inputs[arm], arm=arm):
                         log_depth, _ = head(tokens.float(), depth, confidence, features)
+                        if args.preserve_boundary_scale:
+                            corrected, offset = restore_depth_scale(log_depth,depth)
+                            row.setdefault('boundary_log_scale_offsets',{})[arm] = offset.tolist()
+                            return corrected
                         return log_depth.exp()
                     variants.append((f'boundary_{arm}',vox,field,refine,False))
                 if model.head_type == 'octree':
                     def refine_and_rank(tokens, depth, confidence):
                         log_depth, edges = boundary_heads['temporal'](
                             tokens.float(), depth, confidence, boundary_inputs['temporal'])
+                        if args.preserve_boundary_scale:
+                            return restore_depth_scale(log_depth,depth)[0], edges
                         return log_depth.exp(), edges
                     variants.append(('boundary_temporal_event_leaves',vox,field,refine_and_rank,True))
             budget_scenes = {}
@@ -142,5 +151,7 @@ if __name__=="__main__":
     p.add_argument("--lpips",action="store_true")
     p.add_argument("--count",type=int,default=24,help="Windows per flight")
     p.add_argument("--boundary",type=Path,help="Evaluate frozen depth refinement arms on the same matched windows")
+    p.add_argument("--preserve-boundary-scale",action="store_true",
+                   help="Center each boundary correction in the original DVLT log-depth gauge")
     p.add_argument("--geometry-only",action="store_true",help="Evaluate pose from a DSEC geometry checkpoint")
     main(p.parse_args())

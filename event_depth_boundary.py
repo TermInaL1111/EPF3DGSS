@@ -85,6 +85,14 @@ def load_temporal_boundary(state, device):
     return head
 
 
+def restore_depth_scale(log_depth, coarse_depth):
+    """Preserve the DVLT depth gauge when applying scale-invariant offsets."""
+    reference = F.interpolate(coarse_depth.float().clamp_min(1e-6).log(),
+                              log_depth.shape[-2:],mode='bilinear',align_corners=False)
+    offset = (log_depth-reference).flatten(1).median(dim=1).values
+    return (log_depth-offset[:,None,None,None]).exp(), offset
+
+
 def temporal_corrector(head, counts, empty=False):
     features = (torch.zeros_like(counts) if empty else counts).flatten(1, 2).log1p()
 
