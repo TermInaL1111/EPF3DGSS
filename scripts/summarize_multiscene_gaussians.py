@@ -72,6 +72,38 @@ def compare_training_domains(arms):
     return result
 
 
+def validation_progress(folder, steps):
+    """Compare each validation pass with the same head before optimization."""
+    def read(step):
+        rows = json.loads((folder/f'val_{step:06}.json').read_text())
+        index = {(row['sequence'], row['frame']):row for row in rows}
+        if not rows or len(index) != len(rows):
+            raise ValueError(f'Empty or duplicate validation windows at step {step}')
+        return index
+
+    first = read(0)
+    groups = {name:[key for key in first if key[0].startswith('Town05/') == eventscape]
+              for name,eventscape in (('dsec',False),('eventscape',True))}
+    if not all(groups.values()):
+        raise ValueError('Validation must include both datasets')
+    report = {}
+    for step in steps:
+        current = read(step)
+        if current.keys() != first.keys():
+            raise ValueError(f'Validation windows differ at step {step}')
+        report[step] = {}
+        for name,keys in groups.items():
+            result = dict(windows=len(keys),metrics={})
+            for metric,sign in METRICS.items():
+                initial,real,zero = (fmean(rows[key][f'{arm}_{metric}'] for key in keys)
+                                     for rows,arm in ((first,'matched'),(current,'matched'),(current,'zero')))
+                result['metrics'][metric] = dict(initial=initial,real=real,zero=zero,
+                    change_since_initial=real-initial, real_improvement=sign*(real-zero),
+                    improvement_pct=100*sign*(real-zero)/abs(zero) if zero else None)
+            report[step][name] = result
+    return report
+
+
 def summarize_runs(root):
     folder = root/'multiscene_gaussians'
 
@@ -92,6 +124,9 @@ def summarize_runs(root):
     eventscape = read(Path(config['eventscape_cameras'])/'test.json')
     report = {'head_steps':config['steps'],'train_sequences':len(config['train']),
               'train_windows':training_windows(folder,config)}
+    milestones = list(range(report['train_windows'],config['steps'],report['train_windows']))
+    report['validation_progress'] = {head:validation_progress(folder/head,[*milestones,config['steps']])
+                                     for head in ('fixed','octree')}
     for dataset, manifest, size in (
         ('dsec',dsec,(640,480)),('eventscape',eventscape,(512,256)),
     ):
