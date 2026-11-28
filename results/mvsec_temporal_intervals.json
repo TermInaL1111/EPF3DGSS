@@ -1,0 +1,73 @@
+{
+  "dataset": "mvsec",
+  "windows": 72,
+  "sequences": 3,
+  "controls": {
+    "time_reversed": {
+      "boundary_f1_1px": {
+        "original": 0.04374971719594549,
+        "control": 0.04368407065451213,
+        "improvement": -6.564654143335902e-05,
+        "improvement_pct": -0.1500502075004106,
+        "sequence_bootstrap_95_interval": [
+          -0.00016980045362825769,
+          0.00013336223501964756
+        ]
+      },
+      "boundary_absrel": {
+        "original": 0.5549239385873079,
+        "control": 0.554929124398364,
+        "improvement": -5.185811056018785e-06,
+        "improvement_pct": -0.0009345084425841336,
+        "sequence_bootstrap_95_interval": [
+          -0.00010828549663233211,
+          0.00014835037291049957
+        ]
+      }
+    },
+    "polarity_swapped": {
+      "boundary_f1_1px": {
+        "original": 0.04374971719594549,
+        "control": 0.043387502203321326,
+        "improvement": -0.000362214992624163,
+        "improvement_pct": -0.8279253349270366,
+        "sequence_bootstrap_95_interval": [
+          -0.00038404557754747465,
+          -0.00035256140779137135
+        ]
+      },
+      "boundary_absrel": {
+        "original": 0.5549239385873079,
+        "control": 0.5549108684062958,
+        "improvement": 1.3070181012153625e-05,
+        "improvement_pct": 0.0023553103593668906,
+        "sequence_bootstrap_95_interval": [
+          -0.00011544612546765531,
+          9.875434140360628e-05
+        ]
+      }
+    },
+    "time_uniform": {
+      "boundary_f1_1px": {
+        "original": 0.04374971719594549,
+        "control": 0.04374594077473072,
+        "improvement": -3.7764212147683995e-06,
+        "improvement_pct": -0.008631875716715216,
+        "sequence_bootstrap_95_interval": [
+          -3.5502523328505287e-05,
+          4.904673977886714e-05
+        ]
+      },
+      "boundary_absrel": {
+        "original": 0.5549239385873079,
+        "control": 0.5551037540038427,
+        "improvement": -0.00017981541653477873,
+        "improvement_pct": -0.032403614987766075,
+        "sequence_bootstrap_95_interval": [
+          -0.000357196976741192,
+          -3.961287438869476e-05
+        ]
+      }
+    }
+  }
+}
