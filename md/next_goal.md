@@ -22,7 +22,7 @@ cd refs/Draftpaper_loop_repo
 .venv/bin/python -m draftpaper_cli.cli verify-next-action --project "$project"
 ```
 
-运行时身份检查和 `preflight-research-feasibility` 已通过。随后 `generate-plan` 因将英文项目描述带进中文版研究计划而被语言校验拒绝。现有英文项目描述也仍把 self-splitting 写成主头，需要按当前证据更新。项目已有本地图表和文献导入。稿件编排前还需核验文献、统一实验口径并替换当前通用 LaTeX 模板。 [Draftpaper_loop 上游](https://github.com/xiejhhhhhh/Draftpaper_loop)
+本地项目已同步中英文研究目标，围绕源视图监督、几何迁移和源相机控制组织证据。此前已导入 5 张图和 6 张表。目标更新后，重新运行可行性检查时遇到已有产物的登记差异，待按 Draftpaper 的人工检查点复核本地 `review/drift/reconciliation-c9188bcc1d184b90a9dc0863c2d0c642/drift_reconciliation.json`。实验和主仓库英文稿可继续更新。 [研究目标](../paper/research_objective.json) · [英文稿](../paper/manuscript.md) · [Draftpaper_loop 上游](https://github.com/xiejhhhhhh/Draftpaper_loop)
 
 ## 源视图监督运行
 
