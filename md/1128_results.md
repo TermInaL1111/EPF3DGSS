@@ -273,3 +273,5 @@ EventScape 的名义角度重叠占比为 99.96%，仅在这个区域计分只�
 源相机替换消除了大范围黑区。EventScape 的分数仍低于复制源帧的 25.45 dB，且树木、道路纹理仍不清楚。内参和位姿单独替换已在 GPU 1 启动。 [同窗对照图](../paper/eventscape_camera_control.png) · [源相机完整结果](../results/gaussian_camera_control.json)
 
 DSEC 的 KISS-ICP 已通过 47 帧官方 Thun 点云的 CPU 注册。以点云头时间记录轨迹，逐点时间用于运动补偿。实测扫描间隔中位数为 50.43 ms。前缀保留的并行下载正在运行。下载完成后在 CPU 自动生成相机参考，沿用原始校准外参并剔除无法插值的窗口。 [LiDAR 参考入口](../scripts/prepare_dsec_lidar_reference.py)
+
+DSEC 的 18 帧评测已在一窗真实 Zurich 样本通过 GPU 联调。五组使用相同的左事件输入、原始 640×480 事件视差与 50 m 深度上限。前三组为 EventScape 直接蒸馏、仅 SAAG、SAAG + REALM，在 DSEC 零样本评测。后两组是在 DSEC 训练的无 F³、有 F³，使用相同留出窗口。深度分别报告逐窗中位数尺度对齐与原尺度结果。点图和位姿将在 LiDAR 同步子集上计算。207 窗深度评测排在 GPU 1 的相机分量对照之后。 [DSEC 时序评测代码](../evaluate_dsec_temporal_geometry.py) · [运行命令](../scripts/run_dsec_temporal_geometry.sh)
