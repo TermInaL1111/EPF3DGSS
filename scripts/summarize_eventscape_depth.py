@@ -89,17 +89,41 @@ def compare(folders):
                 scores=scores,relative_improvement_pct=relative)
 
 
+def training_progress(folders, through):
+    if through < 1000 or through % 1000:
+        raise ValueError('Choose a completed multiple of 1,000 steps')
+    if verify(folders,prefix=True) < through:
+        raise ValueError('The requested matched training steps are still running')
+    progress = {}
+    for arm,folder in folders.items():
+        with (folder/'geometry/train.jsonl').open() as stream:
+            rows = [json.loads(next(stream)) for _ in range(through)]
+        blocks = [rows[start:start+1000] for start in range(0,through,1000)]
+        progress[arm] = {
+            'sequences_seen':len({row['sequence'] for row in rows}),
+            'blocks':[dict(first=block[0]['step'],last=block[-1]['step'],
+                           mean_training_loss=fmean(row['loss'] for row in block),
+                           mean_grad_norm=fmean(row['grad_norm'] for row in block))
+                      for block in blocks],
+        }
+    return dict(matched_steps=through,training_progress=progress)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('root',type=Path)
     parser.add_argument('--arm',choices=('realm','saag'),action='append',required=True)
     parser.add_argument('--out',type=Path)
+    parser.add_argument('--training-through',type=int,help='Summarize a matched training prefix')
     args = parser.parse_args()
     folders = {arm:args.root/f'eventscape_{arm}_20k' for arm in ('direct',*args.arm)}
     if args.out:
-        report = compare(folders)
+        report = (compare(folders) if args.training_through is None
+                  else training_progress(folders,args.training_through))
         temporary = args.out.with_suffix('.json.tmp')
         temporary.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
         temporary.replace(args.out)
     else:
+        if args.training_through is not None:
+            parser.error('--training-through requires --out')
         print(verify(folders,prefix=True),'matched training steps')

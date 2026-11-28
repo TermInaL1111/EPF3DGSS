@@ -1,0 +1,110 @@
+{
+  "matched_steps": 5000,
+  "training_progress": {
+    "direct": {
+      "sequences_seen": 525,
+      "blocks": [
+        {
+          "first": 1,
+          "last": 1000,
+          "mean_training_loss": 0.24266542077064515,
+          "mean_grad_norm": 0.23688022635877132
+        },
+        {
+          "first": 1001,
+          "last": 2000,
+          "mean_training_loss": 0.20509998594224452,
+          "mean_grad_norm": 0.2749934311062098
+        },
+        {
+          "first": 2001,
+          "last": 3000,
+          "mean_training_loss": 0.19737262512743473,
+          "mean_grad_norm": 0.29176460970938206
+        },
+        {
+          "first": 3001,
+          "last": 4000,
+          "mean_training_loss": 0.19349533286690712,
+          "mean_grad_norm": 0.3275780479758978
+        },
+        {
+          "first": 4001,
+          "last": 5000,
+          "mean_training_loss": 0.19110922293365,
+          "mean_grad_norm": 0.3185818319022655
+        }
+      ]
+    },
+    "realm": {
+      "sequences_seen": 525,
+      "blocks": [
+        {
+          "first": 1,
+          "last": 1000,
+          "mean_training_loss": 0.21653836990892888,
+          "mean_grad_norm": 0.5575507886707782
+        },
+        {
+          "first": 1001,
+          "last": 2000,
+          "mean_training_loss": 0.1868891489505768,
+          "mean_grad_norm": 0.5211644104123115
+        },
+        {
+          "first": 2001,
+          "last": 3000,
+          "mean_training_loss": 0.18022795483469964,
+          "mean_grad_norm": 0.5090032083243131
+        },
+        {
+          "first": 3001,
+          "last": 4000,
+          "mean_training_loss": 0.17665770229697228,
+          "mean_grad_norm": 0.5426950272917748
+        },
+        {
+          "first": 4001,
+          "last": 5000,
+          "mean_training_loss": 0.19894314213097095,
+          "mean_grad_norm": 0.6017326652109622
+        }
+      ]
+    },
+    "saag": {
+      "sequences_seen": 525,
+      "blocks": [
+        {
+          "first": 1,
+          "last": 1000,
+          "mean_training_loss": 0.23187985143065454,
+          "mean_grad_norm": 0.5044497803151607
+        },
+        {
+          "first": 1001,
+          "last": 2000,
+          "mean_training_loss": 0.20097997561097145,
+          "mean_grad_norm": 0.47282067511975767
+        },
+        {
+          "first": 2001,
+          "last": 3000,
+          "mean_training_loss": 0.19404935701191425,
+          "mean_grad_norm": 0.47450004415214064
+        },
+        {
+          "first": 3001,
+          "last": 4000,
+          "mean_training_loss": 0.19067113956809043,
+          "mean_grad_norm": 0.4900227138400078
+        },
+        {
+          "first": 4001,
+          "last": 5000,
+          "mean_training_loss": 0.18851195745170116,
+          "mean_grad_norm": 0.48096170377731323
+        }
+      ]
+    }
+  }
+}
