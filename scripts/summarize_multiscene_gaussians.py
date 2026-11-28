@@ -3,10 +3,25 @@
 import argparse
 import json
 from pathlib import Path
+from statistics import fmean
 
 from summarize_eventscape_render import compare
 from summarize_evggs import aggregate, pair_with_epf
 from summarize_render import summarize
+
+
+def camera_control(rows):
+    metrics = dict(psnr=1,ssim=1,lpips_vgg=-1,lpips_alex=-1)
+    report = {}
+    for name,suffix in (('predicted',''),('calibrated','_calibrated')):
+        report[name] = {}
+        for metric,sign in metrics.items():
+            real,zero = (fmean(row[f'{condition}{suffix}'][metric] for row in rows)
+                         for condition in ('matched','zero'))
+            report[name][metric] = dict(real=real,zero=zero,
+                real_improvement=sign*(real-zero),
+                improvement_pct=100*sign*(real-zero)/abs(zero) if zero else None)
+    return report
 
 
 def summarize_runs(root):
@@ -43,7 +58,10 @@ def summarize_runs(root):
     for arm in ('dsec_temporal','eventscape_realm','mixed_fixed','mixed_octree'):
         predictions = read(folder/f'{arm}_mvsec.json')
         arms[arm] = pair_with_epf(rows,predictions,'flight',reference)
+        calibrated = [row | {'matched':row['matched_calibrated']} for row in predictions]
+        arms[arm]['calibrated_vs_evggs'] = pair_with_epf(rows,calibrated,'flight',reference)
         arms[arm]['event_and_zero'] = summarize(predictions)['all']
+        arms[arm]['source_camera_control'] = camera_control(predictions)
     report['mvsec'] = dict(windows=len(rows),image_size=[128,96],evggs=reference,arms=arms)
     return report
 

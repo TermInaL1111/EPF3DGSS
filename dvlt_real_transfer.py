@@ -42,6 +42,8 @@ def cap_scene(scene, budget):
 def main(args):
     if args.preserve_boundary_scale and not args.boundary:
         raise ValueError('Scale preservation requires an external boundary checkpoint')
+    if args.calibrated_source_control and (args.geometry_only or args.boundary):
+        raise ValueError('The calibrated source control requires a trained render model')
     model=EventDVLT(args.assets).cuda().eval()
     delta=torch.load(args.weights,weights_only=True)
     if args.geometry_only:
@@ -111,6 +113,14 @@ def main(args):
                             return restore_depth_scale(log_depth,depth)[0], edges
                         return log_depth.exp(), edges
                     variants.append(('boundary_temporal_event_leaves',vox,field,refine_and_rank,True))
+            cameras = None
+            if args.calibrated_source_control:
+                # Match the virtual left DAVIS camera used to rectify the source events.
+                k = right.new_tensor([[888.8889*224/640,0,111.5],
+                                      [0,888.8889*168/480,83.5],[0,0,1]])
+                cameras = (k.expand(1,2,3,3),torch.stack((torch.eye(4,device=right.device),right))[None])
+                for key,v,f,refinement,rank in tuple(variants):
+                    variants.append((f'{key}_calibrated',v,f,refinement,rank))
             budget_scenes = {}
             for key,v,f,refinement,rank_leaves in variants:
                 with torch.autocast("cuda",dtype=torch.bfloat16):
@@ -119,7 +129,8 @@ def main(args):
                         raw = model.backbone._decode(tokens,168,224,1,2,pos)
                     else:
                         scene=model(v,f,steps=render_steps,depth_refinement=refinement,
-                                    event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary))
+                                    event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary),
+                                    source_cameras=cameras if key.endswith('_calibrated') else None)
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
@@ -155,4 +166,6 @@ if __name__=="__main__":
     p.add_argument("--preserve-boundary-scale",action="store_true",
                    help="Center each boundary correction in the original DVLT log-depth gauge")
     p.add_argument("--geometry-only",action="store_true",help="Evaluate pose from a DSEC geometry checkpoint")
+    p.add_argument("--calibrated-source-control",action="store_true",
+                   help="Also compare real and zero events with identical calibrated source cameras")
     main(p.parse_args())

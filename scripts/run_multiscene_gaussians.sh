@@ -15,7 +15,7 @@ mkdir -p "$out"
 transfer() {
     local label=$1 weights=$2
     python -u dvlt_real_transfer.py "$flight" "$calib" "$EPF_ASSETS" "$weights" \
-        "$f3" "$EPF_ASSETS/f3.pth" "$out/${label}_mvsec.json" --lpips
+        "$f3" "$EPF_ASSETS/f3.pth" "$out/${label}_mvsec.json" --lpips --calibrated-source-control
     python scripts/summarize_render.py "$out/${label}_mvsec.json" "$out/${label}_mvsec_summary.json"
     python scripts/summarize_evggs.py "$run/evggs/mvsec_shared.json" "$out/${label}_vs_evggs.json" \
         --epf "$out/${label}_mvsec.json"
