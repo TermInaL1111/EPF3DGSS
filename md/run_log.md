@@ -25,7 +25,7 @@
 | `octree_pixel_mixed_12k` | octree_pixel | mixed | 12000 | finished | **17.39 / 0.648** | 17.93 / 0.578 |
 | `octree_pixel_center_es_12k` | octree_pixel_center | EventScape | 12000 | finished | — | 18.13 / 0.566 |
 | `octree_pixel_center_mixed_12k` | octree_pixel_center | mixed | 12000 | finished | 17.77 / 0.635 | 17.73 / 0.639 |
-| `octree_pixel_fine_es_12k` | octree_pixel_fine（2.5 cm） | EventScape | 12000 | running | pending | pending |
+| `octree_pixel_fine_es_12k` | octree_pixel_fine（2.5 cm） | EventScape | 4900 | stopped | — | — |
 | `octree_pixel_es_40k` | octree_pixel | EventScape | 3900 | stopped（增益很小） | — | — |
 | `octree_target8_eval` | octree | mixed | 12000 | target-8 评测 | 18.06（9 窗子集） | 17.68（336 窗子集） |
 
@@ -49,7 +49,7 @@
 
 ## 待补
 
-- `octree_pixel_center_mixed_12k`、`octree_pixel_fine_es_12k` 完成后更新本表和 manifest。
+- 源视图监督两组续训各 12,000 步。已逐步核对前 300 步，两组按相同顺序取到 DSEC 140 窗、EventScape 160 窗，均无重复。GPU 0 仅监督目标视图，GPU 1 额外监督两个源视图。评测后按每个数据集自己的位移排序分为三组，组内汇总绝对值和相对变化。 [训练与评测协议](next_goal.md#源视图监督运行) · [汇总代码](../scripts/summarize_source_view_supervision.py)
 - 与 EvGGS/IncEventGS 的同协议表尚未完成；需要先固定目标背景/裁剪/target frame。
 
 ## 代码与几何版本
