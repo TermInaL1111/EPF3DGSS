@@ -207,3 +207,7 @@ EvGGS 的 SSIM 基值很小，表中同时给绝对差。混合体素头的真�
 ### EventScape 仅 SAAG 几何补评
 
 已核验直接蒸馏、仅 SAAG 和 SAAG + REALM 的 20,000 步权重具有相同的训练序列与参数结构。补评在同一批 948 个 Town05 窗中重新运行三组学生与 RGB 教师，共用四组预测有效像素的交集。汇总分别给出仅 SAAG 相对直接蒸馏、联合组相对仅 SAAG 的改善百分比。该任务已排在 GPU 0 光度续训及其评测之后。 [补评入口](../scripts/run_eventscape_geometry.sh)
+
+### MVSEC 户外评测扩展
+
+Déjà-Events 表 IV 单独报告 night1 适配结果。表 I–III 的零样本实验覆盖一条白天和三条夜间序列。MVSEC 官方备用下载目录提供 night2、night3 的 HDF5 数据和参考文件，四个文件共 47.92 GB，已验证四个端点的 HDF5 文件签名与精确字节数。下载完成后，GPU 1 将使用已有 day1 检查点，在 night2、night3 分别跑同窗的灰度教师、适配前学生和适配后学生。与 night1 一样，每窗取 18 帧，采用 80 m 深度上限，逐夜报告深度、点图、位姿和适配百分比。 [MVSEC 官方下载](https://daniilidis-group.github.io/mvsec/download/) · [Déjà-Events §IV–V](https://arxiv.org/html/2611.21302v1#S4) · [夜间评测入口](../scripts/run_mvsec_outdoor.sh)

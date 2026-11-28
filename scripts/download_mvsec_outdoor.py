@@ -1,4 +1,4 @@
-"""Download the official MVSEC day1/night1 HDF5 pairs and sensor calibration."""
+"""Download official MVSEC outdoor HDF5 pairs and calibration."""
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -20,6 +20,13 @@ FILES = {
     'outdoor_night/outdoor_night1_data.hdf5': '1z8b00gWoZnGuzAOSD49KFaX03q1UuKxc',
     'outdoor_night/outdoor_night1_gt.hdf5': '139dZNXHNUtSul0ZLmPu6N39gbvciQZme',
     'outdoor_night/outdoor_night_calib.zip': '1NGUBQ8b41b9murJualNeaO7M3nrIPjfm',
+}
+# Additional public HDF5 pairs in the official fallback Drive folder.
+EXTRA_NIGHTS = {
+    'outdoor_night/outdoor_night2_data.hdf5': '1rRvRC5ZG-autd9NFV9qyB1pwsJtPX0G2',
+    'outdoor_night/outdoor_night2_gt.hdf5': '1-UAt4ZGIJ5JyxAd72AqXWbGoeJyylRoo',
+    'outdoor_night/outdoor_night3_data.hdf5': '1ADVyZmczdaEBBeCo2ebwt5nvx4-ZZf8L',
+    'outdoor_night/outdoor_night3_gt.hdf5': '1eMVz4BziJMBobmgsA0izEJrvDmSd-MDy',
 }
 CHUNK = 16 * 1024 * 1024
 
@@ -75,6 +82,7 @@ def download(target, file_id, pool):
             raise ValueError(f'Existing file has a different byte count: {target}')
         inspect(target, target.name)
         return
+    target.parent.mkdir(parents=True, exist_ok=True)
     chunks = target.with_name(target.name+'.parts')
     chunks.mkdir(parents=True, exist_ok=True)
     pending = []
@@ -107,7 +115,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('root', type=Path)
     parser.add_argument('--workers', type=int, default=6)
+    parser.add_argument('--extra-nights', action='store_true', help='Download only the night2/night3 HDF5 pairs')
     args = parser.parse_args()
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        for relative, file_id in FILES.items():
+        for relative, file_id in (EXTRA_NIGHTS if args.extra_nights else FILES).items():
             download(args.root/relative, file_id, pool)
