@@ -10,6 +10,30 @@ from summarize_evggs import aggregate, pair_with_epf
 from summarize_render import summarize
 
 
+def training_windows(folder, config):
+    windows = set()
+    for key in ('dsec_temporal_cameras','eventscape_cameras'):
+        manifest = json.loads((Path(config[key])/'train.json').read_text())
+        for name, rows in manifest['sequences'].items():
+            indices = rows['cameras'] if key == 'dsec_temporal_cameras' else rows
+            windows.update((name,int(index)) for index in indices)
+    for arm in ('fixed','octree'):
+        with (folder/arm/'train.jsonl').open() as stream:
+            samples = [(r['step'],r['sequence'],r['frame']) for r in map(json.loads,stream)]
+        if len(samples) != config['steps'] or any(row[0] != i for i,row in enumerate(samples,1)):
+            raise ValueError(f'Incomplete training record for {arm}')
+        width = len(windows)
+        for start in range(0,len(samples),width):
+            items = [row[1:] for row in samples[start:start+width]]
+            if len(set(items)) != len(items) or set(items) - windows:
+                raise ValueError(f'Unexpected windows or repeated sampling within a pass for {arm}')
+        if arm == 'fixed':
+            reference = samples
+        elif samples != reference:
+            raise ValueError('Fixed and octree used different training windows')
+    return len(windows)
+
+
 def camera_control(rows):
     metrics = dict(psnr=1,ssim=1,lpips_vgg=-1,lpips_alex=-1)
     report = {}
@@ -42,7 +66,8 @@ def summarize_runs(root):
     dsec = read(Path(config['dsec_temporal_cameras'])/'test.json')
     dsec['sequences'] = {name:row['cameras'] for name,row in dsec['sequences'].items()}
     eventscape = read(Path(config['eventscape_cameras'])/'test.json')
-    report = {'head_steps':config['steps'],'train_sequences':len(config['train'])}
+    report = {'head_steps':config['steps'],'train_sequences':len(config['train']),
+              'train_windows':training_windows(folder,config)}
     for dataset, manifest, size in (
         ('dsec',dsec,(640,480)),('eventscape',eventscape,(512,256)),
     ):

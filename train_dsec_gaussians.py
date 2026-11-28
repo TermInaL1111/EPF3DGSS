@@ -52,7 +52,8 @@ def run(args, data, checkpoint, test):
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
     if not train or not val:
         raise ValueError('Both splits require usable source and target windows')
-    train_rng = torch.Generator().manual_seed(args.seed) if args.eventscape_root else None
+    mixed = bool(args.eventscape_root)
+    train_rng = torch.Generator().manual_seed(args.seed) if mixed else None
     print('training windows',len(train),'validation windows',len(val),flush=True)
     temporal = bool(args.mvsec_calibration or args.eventscape_cameras or args.dsec_temporal_cameras)
 
@@ -207,7 +208,13 @@ def run(args, data, checkpoint, test):
 
     evaluate(val,'000000')
     for step in range(1,args.steps+1):
-        item = train[int(torch.randint(len(train),(1,),generator=train_rng))]
+        if mixed:
+            position = (step-1) % len(train)
+            if position == 0:
+                order = torch.randperm(len(train),generator=train_rng).tolist()
+            item = train[order[position]]
+        else:
+            item = train[int(torch.randint(len(train),(1,)))]
         image,gray,_,event_loss = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
@@ -218,6 +225,11 @@ def run(args, data, checkpoint, test):
         loss.backward()
         norm = torch.nn.utils.clip_grad_norm_(params.values(),1.,error_if_nonfinite=True)
         optimizer.step()
+        if mixed:
+            with (args.out/'train.jsonl').open('a') as stream:
+                row = dict(step=step, sequence=item[0], frame=item[1],
+                           loss=float(loss.detach()), grad_norm=float(norm))
+                stream.write(json.dumps(row,allow_nan=False)+'\n')
         if step==1 or step%20==0:
             print('step',step,'loss',float(loss.detach()),'l1',float(l1.detach()),
                   'ssim',float(ssim.detach().mean()),'grad',float(norm),
@@ -234,6 +246,8 @@ def run(args, data, checkpoint, test):
                                preserve_boundary_scale=args.preserve_boundary_scale)
             torch.save(payload,tmp)
             tmp.replace(args.out/'latest.pt')
+        if mixed and step % len(train) == 0 and step < args.steps:
+            evaluate(val,f'{step:06}')
     if args.steps:
         evaluate(val,f'{args.steps:06}')
     for label, (names, native) in test.items():
@@ -270,6 +284,10 @@ def main(args):
             raise ValueError('Train and val splits come from the camera manifests')
         args.train = [*dsec_splits.get('train',{}),*eventscape_splits.get('train',{})]
         args.val = [*dsec_splits.get('val',{}),*eventscape_splits.get('val',{})]
+        if mixed:
+            for split in dsec_splits:
+                if dsec_splits[split].keys() & eventscape_splits[split].keys():
+                    raise ValueError(f'A DSEC and EventScape sequence share a name in {split}')
     elif not args.train or not args.val:
         raise ValueError('Specify both --train and --val')
     if args.head is None:
