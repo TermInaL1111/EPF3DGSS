@@ -1386,5 +1386,301 @@
         "median_reprojection_px": 0.32581368724817433
       }
     }
+  },
+  "mvsec_boundary_preserved_scale": {
+    "windows": 72,
+    "summary": {
+      "matched": {
+        "psnr": 17.380966875288223,
+        "ssim": 0.43841701104409164,
+        "lpips_vgg": 0.6907466898361841,
+        "lpips_alex": 0.7244668362869157,
+        "mean_gaussian_count": 198.19444444444446
+      },
+      "boundary_geometry": {
+        "psnr": 17.624079399638706,
+        "ssim": 0.44054060574207043,
+        "lpips_vgg": 0.685794879992803,
+        "lpips_alex": 0.7336503499084048,
+        "mean_gaussian_count": 611.3055555555555
+      },
+      "boundary_accumulated": {
+        "psnr": 17.571228159798515,
+        "ssim": 0.43910568869776195,
+        "lpips_vgg": 0.6896001944939295,
+        "lpips_alex": 0.728406648668978,
+        "mean_gaussian_count": 862.8472222222222
+      },
+      "boundary_fixed_edge": {
+        "psnr": 17.61389274067349,
+        "ssim": 0.441126243935691,
+        "lpips_vgg": 0.6880396430691084,
+        "lpips_alex": 0.7322613133324517,
+        "mean_gaussian_count": 662.7777777777778
+      },
+      "boundary_temporal": {
+        "psnr": 17.641714149051243,
+        "ssim": 0.4407412399434381,
+        "lpips_vgg": 0.6900245340334045,
+        "lpips_alex": 0.7333301471339332,
+        "mean_gaussian_count": 669.375
+      },
+      "boundary_temporal_event_leaves": {
+        "psnr": 17.57966360780928,
+        "ssim": 0.4417314926783244,
+        "lpips_vgg": 0.681159183382988,
+        "lpips_alex": 0.7308520178000132,
+        "mean_gaussian_count": 668.6111111111111
+      }
+    },
+    "relative_improvement_pct": {
+      "matched": {
+        "boundary_geometry": {
+          "psnr": 1.3987284257248869,
+          "ssim": 0.4843778057154863,
+          "lpips_vgg": 0.7168778245691675,
+          "lpips_alex": -1.2676237422484524
+        },
+        "boundary_accumulated": {
+          "psnr": 1.0946530528218223,
+          "ssim": 0.15708278564059883,
+          "lpips_vgg": 0.16597912941523307,
+          "lpips_alex": -0.543822323497221
+        },
+        "boundary_fixed_edge": {
+          "psnr": 1.340120299731041,
+          "ssim": 0.617957976846589,
+          "lpips_vgg": 0.3919015185896554,
+          "lpips_alex": -1.0758914908354948
+        },
+        "boundary_temporal": {
+          "psnr": 1.5001885432147213,
+          "ssim": 0.5301411306580716,
+          "lpips_vgg": 0.10454712464144315,
+          "lpips_alex": -1.2234253388939567
+        },
+        "boundary_temporal_event_leaves": {
+          "psnr": 1.1431857269319041,
+          "ssim": 0.7560111835850776,
+          "lpips_vgg": 1.3879916609473613,
+          "lpips_alex": -0.8813628441328346
+        }
+      },
+      "boundary_geometry": {
+        "matched": {
+          "psnr": -1.3794338917666635,
+          "ssim": -0.48204289690883195,
+          "lpips_vgg": -0.7220540700789627,
+          "lpips_alex": 1.2517561836691986
+        },
+        "boundary_accumulated": {
+          "psnr": -0.29988085415272386,
+          "ssim": -0.3257173176786801,
+          "lpips_vgg": -0.5548764816043054,
+          "lpips_alex": 0.7147411897345275
+        },
+        "boundary_fixed_edge": {
+          "psnr": -0.05779966564055742,
+          "ssim": 0.13293625740448664,
+          "lpips_vgg": -0.32732281062362945,
+          "lpips_alex": 0.18933223109980768
+        },
+        "boundary_temporal": {
+          "psnr": 0.1000605422425533,
+          "ssim": 0.04554272608531023,
+          "lpips_vgg": -0.6167520586688955,
+          "lpips_alex": 0.04364514710742276
+        },
+        "boundary_temporal_event_leaves": {
+          "psnr": -0.2520176561978972,
+          "ssim": 0.2703239884659374,
+          "lpips_vgg": 0.6759596411486256,
+          "lpips_alex": 0.38142585343835944
+        }
+      },
+      "boundary_temporal": {
+        "matched": {
+          "psnr": -1.4780155236618118,
+          "ssim": -0.5273454554978214,
+          "lpips_vgg": -0.10465654004480922,
+          "lpips_alex": 1.2086385486343243
+        },
+        "boundary_geometry": {
+          "psnr": -0.09996052120300908,
+          "ssim": -0.04552199412821585,
+          "lpips_vgg": 0.6129715440519009,
+          "lpips_alex": -0.0436642044136724
+        },
+        "boundary_accumulated": {
+          "psnr": -0.3995416128909339,
+          "ssim": -0.3710910387886677,
+          "lpips_vgg": 0.06149629738446633,
+          "lpips_alex": 0.6713890713749695
+        },
+        "boundary_fixed_edge": {
+          "psnr": -0.15770240999653862,
+          "ssim": 0.08735374804098087,
+          "lpips_vgg": 0.2876551291145852,
+          "lpips_alex": 0.14575069709854366
+        },
+        "boundary_temporal_event_leaves": {
+          "psnr": -0.35172625923824724,
+          "ssim": 0.22467893746756495,
+          "lpips_vgg": 1.2847877449510101,
+          "lpips_alex": 0.337928195589019
+        }
+      }
+    },
+    "matched_budget": {
+      "windows": 72,
+      "summary": {
+        "matched": {
+          "psnr": 17.380966875288223,
+          "ssim": 0.43841701104409164,
+          "lpips_vgg": 0.6907466898361841,
+          "lpips_alex": 0.7244668362869157,
+          "mean_gaussian_count": 198.19444444444446
+        },
+        "boundary_geometry": {
+          "psnr": 15.169966843393114,
+          "ssim": 0.2852996195563012,
+          "lpips_vgg": 0.7166534943713082,
+          "lpips_alex": 0.7306403583950467,
+          "mean_gaussian_count": 198.19444444444446
+        },
+        "boundary_accumulated": {
+          "psnr": 14.223603122764164,
+          "ssim": 0.15970981264642128,
+          "lpips_vgg": 0.7193004488945007,
+          "lpips_alex": 0.7202970360716184,
+          "mean_gaussian_count": 198.19444444444446
+        },
+        "boundary_fixed_edge": {
+          "psnr": 14.672311120563084,
+          "ssim": 0.20841266353252447,
+          "lpips_vgg": 0.7217300683259964,
+          "lpips_alex": 0.7228259791930517,
+          "mean_gaussian_count": 198.19444444444446
+        },
+        "boundary_temporal": {
+          "psnr": 14.621630012989044,
+          "ssim": 0.20225609312506598,
+          "lpips_vgg": 0.7227615565061569,
+          "lpips_alex": 0.7194517122374641,
+          "mean_gaussian_count": 198.19444444444446
+        },
+        "boundary_temporal_event_leaves": {
+          "psnr": 14.506434341271719,
+          "ssim": 0.20556564641366196,
+          "lpips_vgg": 0.7159322508507304,
+          "lpips_alex": 0.7193896704249911,
+          "mean_gaussian_count": 198.19444444444446
+        }
+      },
+      "relative_improvement_pct": {
+        "matched": {
+          "boundary_geometry": {
+            "psnr": -12.7208114931664,
+            "ssim": -34.92505711015658,
+            "lpips_vgg": -3.7505506600788863,
+            "lpips_alex": -0.8521469581371015
+          },
+          "boundary_accumulated": {
+            "psnr": -18.165639317874263,
+            "ssim": -63.571255534525946,
+            "lpips_vgg": -4.1337525721749495,
+            "lpips_alex": 0.5755681290628231
+          },
+          "boundary_fixed_edge": {
+            "psnr": -15.584033812159388,
+            "ssim": -52.46245964859142,
+            "lpips_vgg": -4.485490693724525,
+            "lpips_alex": 0.22649167797297592
+          },
+          "boundary_temporal": {
+            "psnr": -15.875623502984334,
+            "ssim": -53.86673235069223,
+            "lpips_vgg": -4.634820136100159,
+            "lpips_alex": 0.6922503278625465
+          },
+          "boundary_temporal_event_leaves": {
+            "psnr": -16.538392568387177,
+            "ssim": -53.111845289920055,
+            "lpips_vgg": -3.646135607326504,
+            "lpips_alex": 0.7008141170334788
+          }
+        },
+        "boundary_geometry": {
+          "matched": {
+            "psnr": 14.57485078721878,
+            "ssim": 53.66897850264192,
+            "lpips_vgg": 3.6149694013354496,
+            "lpips_alex": 0.8449467699391869
+          },
+          "boundary_accumulated": {
+            "psnr": -6.238403355780005,
+            "ssim": -44.020320498568324,
+            "lpips_vgg": -0.3693492802284586,
+            "lpips_alex": 1.4156516546866944
+          },
+          "boundary_fixed_edge": {
+            "psnr": -3.280532699692561,
+            "ssim": -26.949547336709223,
+            "lpips_vgg": -0.7083721763111849,
+            "lpips_alex": 1.0695247137949493
+          },
+          "boundary_temporal": {
+            "psnr": -3.6146211528661567,
+            "ssim": -29.107478853418986,
+            "lpips_vgg": -0.8523034050377546,
+            "lpips_alex": 1.5313479510165655
+          },
+          "boundary_temporal_event_leaves": {
+            "psnr": -4.373987820615307,
+            "ssim": -27.947451618281768,
+            "lpips_vgg": 0.10064048054499533,
+            "lpips_alex": 1.5398393807275135
+          }
+        },
+        "boundary_temporal": {
+          "matched": {
+            "psnr": 18.871609115043515,
+            "ssim": 116.76331440506688,
+            "lpips_vgg": 4.429519857798366,
+            "lpips_alex": -0.6970758376340186
+          },
+          "boundary_geometry": {
+            "psnr": 3.7501758006252235,
+            "ssim": 41.058603055229014,
+            "lpips_vgg": 0.8451005839844611,
+            "lpips_alex": -1.555162906317427
+          },
+          "boundary_accumulated": {
+            "psnr": -2.722178648148635,
+            "ssim": -21.035846100486086,
+            "lpips_vgg": 0.4788726766801556,
+            "lpips_alex": -0.11749556221437636
+          },
+          "boundary_fixed_edge": {
+            "psnr": 0.34661735749719524,
+            "ssim": 3.0439480523593128,
+            "lpips_vgg": 0.14271486507206552,
+            "lpips_alex": -0.46900534089964113
+          },
+          "boundary_temporal_event_leaves": {
+            "psnr": -0.787844252761093,
+            "ssim": 1.636318212944762,
+            "lpips_vgg": 0.9448905512406459,
+            "lpips_alex": 0.00862348527602882
+          }
+        }
+      }
+    },
+    "raw_median_depth_multiplier": {
+      "geometry": 0.04329222118013207,
+      "accumulated": 0.02693852849608047,
+      "fixed_edge": 0.06384296862199489,
+      "temporal": 0.02805109172940737
+    }
   }
 }

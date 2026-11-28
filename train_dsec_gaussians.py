@@ -114,7 +114,8 @@ def run(args, data, checkpoint, test=()):
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
         cameras = (ki,poses) if training and args.head != 'legacy' else None
-        refine = temporal_corrector(boundary, boundary_counts(*item).cuda(), empty) if boundary else None
+        refine = (temporal_corrector(boundary,boundary_counts(*item).cuda(),empty,args.preserve_boundary_scale)
+                  if boundary else None)
         with torch.autocast('cuda',dtype=torch.bfloat16):
             cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras, depth_refinement=refine,
@@ -227,7 +228,8 @@ def run(args, data, checkpoint, test=()):
             payload = dict(model=state, step=step, geometry=args.geometry, f3=use_field, head=args.head)
             if boundary:
                 payload.update(boundary={key: p.detach().cpu() for key,p in boundary.state_dict().items()},
-                               event_leaves=args.event_leaves)
+                               event_leaves=args.event_leaves,
+                               preserve_boundary_scale=args.preserve_boundary_scale)
             torch.save(payload,tmp)
             tmp.replace(args.out/'latest.pt')
     if args.steps:
@@ -267,6 +269,8 @@ def main(args):
         raise ValueError('Temporal training supports fixed, voxel and octree heads')
     if (args.boundary and args.head != 'octree') or (args.event_leaves and not args.boundary):
         raise ValueError('Boundary-controlled training requires an octree head and temporal weights')
+    if args.preserve_boundary_scale and not args.boundary:
+        raise ValueError('Scale preservation requires a boundary checkpoint')
     if not np.isfinite(args.event_weight) or args.event_weight < 0:
         raise ValueError('Event loss weight must be finite and nonnegative')
     if args.event_weight and (not args.mvsec_calibration or args.head != 'voxel' or
@@ -286,6 +290,8 @@ def main(args):
     if not args.boundary:
         config.pop('boundary')
         config.pop('event_leaves')
+    if not args.preserve_boundary_scale:
+        config.pop('preserve_boundary_scale')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     lock_path = args.out.with_name(args.out.name+'.lock')
     with lock_path.open('a') as lock:
@@ -345,6 +351,7 @@ if __name__=='__main__':
     parser.add_argument('--head',choices=('legacy','fixed','voxel','octree'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--boundary', type=Path, help='Frozen EventScape temporal boundary checkpoint')
+    parser.add_argument('--preserve-boundary-scale', action='store_true')
     parser.add_argument('--event-leaves', action='store_true', help='Use event priority for octree selection')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     dataset = parser.add_mutually_exclusive_group()

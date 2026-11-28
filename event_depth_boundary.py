@@ -93,12 +93,13 @@ def restore_depth_scale(log_depth, coarse_depth):
     return (log_depth-offset[:,None,None,None]).exp(), offset
 
 
-def temporal_corrector(head, counts, empty=False):
+def temporal_corrector(head, counts, empty=False, preserve_scale=False):
     features = (torch.zeros_like(counts) if empty else counts).flatten(1, 2).log1p()
 
     def refine(tokens, depth, confidence):
         log_depth, edges = head(tokens.float(), depth, confidence, features)
-        return log_depth.exp(), edges
+        depth = restore_depth_scale(log_depth,depth)[0] if preserve_scale else log_depth.exp()
+        return depth, edges
 
     return refine
 

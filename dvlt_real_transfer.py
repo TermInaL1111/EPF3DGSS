@@ -88,7 +88,8 @@ def main(args):
                         ("zero",torch.zeros_like(vox),torch.zeros_like(field),None,False)]
             if training_boundary:
                 counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
-                variants = [(key, v, f, temporal_corrector(training_boundary, counts, empty=key=='zero'),
+                variants = [(key, v, f, temporal_corrector(training_boundary, counts, empty=key=='zero',
+                             preserve_scale=delta.get('preserve_boundary_scale',False)),
                              delta['event_leaves']) for key, v, f, _, _ in variants]
             if boundary_heads:
                 counts = torch.stack([event_bins(packet, (480,640)) for packet in raw]).cuda()
