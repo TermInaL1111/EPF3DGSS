@@ -1682,5 +1682,219 @@
       "fixed_edge": 0.06384296862199489,
       "temporal": 0.02805109172940737
     }
+  },
+  "mvsec_event_selection_preserved_scale": {
+    "windows": 72,
+    "train_steps": 5000,
+    "summary": {
+      "matched": {
+        "mean_gaussian_count": 659.4583333333334,
+        "metrics": {
+          "psnr": {
+            "geometry": 17.45272448327806,
+            "event": 17.30118680000305,
+            "delta": -0.15153768327500927,
+            "improvement_pct": -0.8682752278602789
+          },
+          "ssim": {
+            "geometry": 0.43867457533876103,
+            "event": 0.43650314439502025,
+            "delta": -0.002171430943740782,
+            "improvement_pct": -0.4949981297785314
+          },
+          "lpips_vgg": {
+            "geometry": 0.6834825384947989,
+            "event": 0.6893857303592894,
+            "delta": 0.005903191864490509,
+            "improvement_pct": -0.8636931497168644
+          },
+          "lpips_alex": {
+            "geometry": 0.703795517484347,
+            "event": 0.7109403726127412,
+            "delta": 0.007144855128394245,
+            "improvement_pct": -1.0151890642800454
+          }
+        }
+      },
+      "zero": {
+        "mean_gaussian_count": 160.0,
+        "metrics": {
+          "psnr": {
+            "geometry": 17.338784986072117,
+            "event": 17.198751740985447,
+            "delta": -0.14003324508666992,
+            "improvement_pct": -0.8076300917230111
+          },
+          "ssim": {
+            "geometry": 0.4314782335940335,
+            "event": 0.42937862624724704,
+            "delta": -0.0020996073467864362,
+            "improvement_pct": -0.4866079406364451
+          },
+          "lpips_vgg": {
+            "geometry": 0.6916678696870804,
+            "event": 0.6972770533627934,
+            "delta": 0.005609183675713059,
+            "improvement_pct": -0.8109649040442961
+          },
+          "lpips_alex": {
+            "geometry": 0.7310868667231666,
+            "event": 0.7406102700365914,
+            "delta": 0.009523403313424827,
+            "improvement_pct": -1.3026363551174227
+          }
+        }
+      }
+    },
+    "per_window_diagnostics": {
+      "matched": {
+        "gaussians": {
+          "minimum": 300,
+          "median": 642.0,
+          "maximum": 1186,
+          "mean": 659.4583333333334
+        },
+        "metrics": {
+          "psnr": {
+            "mean_improvement": -0.15153768327501085,
+            "median_improvement": -0.09850597381591797,
+            "improved_windows": 26,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.15976488590240479,
+              "indoor_flying2": -0.15105247497558594,
+              "indoor_flying3": -0.14379568894704184
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.14742408196131387,
+              "indoor_flying2": -0.1517802874247233,
+              "indoor_flying3": -0.15540868043899536
+            }
+          },
+          "ssim": {
+            "mean_improvement": -0.0021714309437407386,
+            "median_improvement": -0.002050936222076416,
+            "improved_windows": 27,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.0027683842927217484,
+              "indoor_flying2": -0.002459481358528137,
+              "indoor_flying3": -0.0012864271799723308
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.001872954269250234,
+              "indoor_flying2": -0.0020274057363470397,
+              "indoor_flying3": -0.0026139328256249428
+            }
+          },
+          "lpips_vgg": {
+            "mean_improvement": -0.005903191864490509,
+            "median_improvement": -0.005477547645568848,
+            "improved_windows": 24,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.005753055214881897,
+              "indoor_flying2": -0.004114019374052684,
+              "indoor_flying3": -0.007842501004536947
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.005978260189294815,
+              "indoor_flying2": -0.006797778109709422,
+              "indoor_flying3": -0.00493353729446729
+            }
+          },
+          "lpips_alex": {
+            "mean_improvement": -0.007144855128394233,
+            "median_improvement": -0.005471557378768921,
+            "improved_windows": 21,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.0031511162718137107,
+              "indoor_flying2": -0.011450091997782389,
+              "indoor_flying3": -0.006833357115586598
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.009141724556684494,
+              "indoor_flying2": -0.004992236693700154,
+              "indoor_flying3": -0.00730060413479805
+            }
+          }
+        }
+      },
+      "zero": {
+        "gaussians": {
+          "minimum": 160,
+          "median": 160.0,
+          "maximum": 160,
+          "mean": 160.0
+        },
+        "metrics": {
+          "psnr": {
+            "mean_improvement": -0.14003324508666992,
+            "median_improvement": -0.08105087280273438,
+            "improved_windows": 22,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.1142343282699585,
+              "indoor_flying2": -0.16484057903289795,
+              "indoor_flying3": -0.14102482795715332
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.15293270349502563,
+              "indoor_flying2": -0.1276295781135559,
+              "indoor_flying3": -0.13953745365142822
+            }
+          },
+          "ssim": {
+            "mean_improvement": -0.002099607346786393,
+            "median_improvement": -0.0021798163652420044,
+            "improved_windows": 20,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.0018129715075095494,
+              "indoor_flying2": -0.003016366312901179,
+              "indoor_flying3": -0.0014694842199484508
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.0022429252664248147,
+              "indoor_flying2": -0.001641227863729,
+              "indoor_flying3": -0.0024146689102053642
+            }
+          },
+          "lpips_vgg": {
+            "mean_improvement": -0.005609183675713009,
+            "median_improvement": -0.006707102060317993,
+            "improved_windows": 23,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.0056125447154045105,
+              "indoor_flying2": -0.006236078838507335,
+              "indoor_flying3": -0.004978927473227183
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.005607503155867259,
+              "indoor_flying2": -0.0052957360943158465,
+              "indoor_flying3": -0.005924311776955922
+            }
+          },
+          "lpips_alex": {
+            "mean_improvement": -0.009523403313424852,
+            "median_improvement": -0.008329391479492188,
+            "improved_windows": 4,
+            "tied_windows": 0,
+            "per_flight": {
+              "indoor_flying1": -0.008825652301311493,
+              "indoor_flying2": -0.010764318207899729,
+              "indoor_flying3": -0.008980239431063334
+            },
+            "leave_one_flight_out": {
+              "indoor_flying1": -0.009872278819481531,
+              "indoor_flying2": -0.008902945866187414,
+              "indoor_flying3": -0.009794985254605612
+            }
+          }
+        }
+      }
+    }
   }
 }
