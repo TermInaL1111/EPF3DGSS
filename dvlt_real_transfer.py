@@ -193,7 +193,8 @@ def main(args):
                     continue
                 rot = scene["rotation"][0].T @ right[:3,:3]
                 preview = (args.preview_dir/f'{flight}_{start}_{key}.png'
-                           if args.preview_dir and key in ('matched_calibrated','zero_calibrated') else None)
+                           if args.preview_dir and key in ('matched','zero','matched_calibrated','zero_calibrated')
+                           else None)
                 row[key] = image_scores(scene, query, target, perceptual,preview)
                 row[key]['rotation_deg'] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
                 if 'gaussian_count' in scene:

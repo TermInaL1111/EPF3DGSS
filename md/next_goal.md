@@ -29,3 +29,5 @@ cd refs/Draftpaper_loop_repo
 GPU 0 运行仅目标帧组，GPU 1 运行源视图监督组。两组从 `octree_pixel_mixed_12k` 续训 12,000 步，AdamW 学习率为 0.0001，随机种子为 11。源事件对应第 `i` 和 `i+2` 帧，目标为第 `i+4` 帧。源视图组将两个源灰度重建的平均 L1 + SSIM 损失按 0.5 加到目标损失上。沿用 4,034 个 DSEC 和 EventScape 训练窗。各轮随机打乱后不放回采样，两个组使用相同顺序。
 
 DSEC 与 EventScape 留出评测沿用 target-offset 4。MVSEC 沿用 EvGGS 的 72 个固定窗口，源为 `i,i+4`，目标为 `i+2`。它是不同目标间隔的跨域测试。主结果使用已知内参和预测源位姿，另留相同标定源相机的对照。两个组完成后，汇总脚本核验配对窗口、逐步样本顺序和源损失记录，并计算相对变化。 [训练和评测入口](../scripts/run_source_view_supervision.sh) · [配对汇总](../scripts/summarize_source_view_supervision.py)
+
+正式评分完成后，自动从两组相同的 DSEC 和 EventScape 测试首窗导出对照，MVSEC 则使用航线 1 的固定中间窗。每行包含目标灰度、仅目标帧监督模型、源视图监督模型及后者的全零事件输入。MVSEC 导图沿用主评测的已知内参和预测源位姿。 [导图入口](../scripts/run_source_view_previews.sh)
