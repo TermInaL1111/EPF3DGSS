@@ -1,0 +1,135 @@
+{
+  "dataset": "eventscape",
+  "cap_m": 200.0,
+  "geometry_checkpoint": "/data/userwj/epf-runs/eventscape_direct_20k/geometry/latest.pt",
+  "geometry_step": 20000,
+  "boundary_checkpoint": "/data/userwj/epf-runs/eventscape_boundary_5k/latest.pt",
+  "boundary_steps": 5000,
+  "summary": {
+    "dvlt": {
+      "absrel": 0.19519164689399046,
+      "delta1": 0.7443620955635761,
+      "boundary_absrel": 0.38242197961642826,
+      "interior_absrel": 0.14321090325970073,
+      "boundary_f1_exact": 0.07638872646474097,
+      "boundary_f1_1px": 0.13874359123226201
+    },
+    "geometry": {
+      "absrel": 0.21923203926918836,
+      "delta1": 0.7453024402774614,
+      "boundary_absrel": 0.4521341299445465,
+      "interior_absrel": 0.15389765310904074,
+      "boundary_f1_exact": 0.0755390403141824,
+      "boundary_f1_1px": 0.14135011589790578
+    },
+    "accumulated": {
+      "absrel": 0.22025221791760674,
+      "delta1": 0.7544997144362022,
+      "boundary_absrel": 0.44858065722831364,
+      "interior_absrel": 0.1561920412912451,
+      "boundary_f1_exact": 0.0952793751105604,
+      "boundary_f1_1px": 0.18807824525295472
+    },
+    "fixed_edge": {
+      "absrel": 0.20770583250399294,
+      "delta1": 0.7513519206951405,
+      "boundary_absrel": 0.43735253900803367,
+      "interior_absrel": 0.14354352164885092,
+      "boundary_f1_exact": 0.07853323508933219,
+      "boundary_f1_1px": 0.14398196207939984
+    },
+    "temporal": {
+      "absrel": 0.21033138248684077,
+      "delta1": 0.7526881499537106,
+      "boundary_absrel": 0.4152243028170076,
+      "interior_absrel": 0.15299130838107447,
+      "boundary_f1_exact": 0.07820938691647779,
+      "boundary_f1_1px": 0.15812554285532174
+    },
+    "time_reversed": {
+      "absrel": 0.21029284596443176,
+      "delta1": 0.7527530475937086,
+      "boundary_absrel": 0.4150041016782152,
+      "interior_absrel": 0.15301030787542977,
+      "boundary_f1_exact": 0.07701716674177345,
+      "boundary_f1_1px": 0.15461611109512258
+    },
+    "polarity_swapped": {
+      "absrel": 0.2104388827393795,
+      "delta1": 0.7523709258128857,
+      "boundary_absrel": 0.41538622705587025,
+      "interior_absrel": 0.1530950348503117,
+      "boundary_f1_exact": 0.0777129415311753,
+      "boundary_f1_1px": 0.15764383196501552
+    },
+    "time_uniform": {
+      "absrel": 0.21059137936039218,
+      "delta1": 0.7525904363599317,
+      "boundary_absrel": 0.4160513723718709,
+      "interior_absrel": 0.15310684835602498,
+      "boundary_f1_exact": 0.07936810257483057,
+      "boundary_f1_1px": 0.16173191434090453
+    }
+  },
+  "relative_improvement_vs_geometry_pct": {
+    "geometry": {
+      "absrel": -0.0,
+      "delta1": 0.0,
+      "boundary_absrel": -0.0,
+      "interior_absrel": -0.0,
+      "boundary_f1_exact": 0.0,
+      "boundary_f1_1px": 0.0
+    },
+    "accumulated": {
+      "absrel": -0.4653419508476764,
+      "delta1": 1.2340324761739498,
+      "boundary_absrel": 0.7859333062665896,
+      "interior_absrel": -1.4908532624462478,
+      "boundary_f1_exact": 26.132625876995363,
+      "boundary_f1_1px": 33.05843016697609
+    },
+    "fixed_edge": {
+      "absrel": 5.257537540415222,
+      "delta1": 0.8116812841008479,
+      "boundary_absrel": 3.2692933263688277,
+      "interior_absrel": 6.727933305684416,
+      "boundary_f1_exact": 3.9637712667467198,
+      "boundary_f1_1px": 1.8619342225336344
+    },
+    "temporal": {
+      "absrel": 4.059925187950625,
+      "delta1": 0.9909681328159387,
+      "boundary_absrel": 8.163468467214763,
+      "interior_absrel": 0.5889269327090412,
+      "boundary_f1_exact": 3.535054974472622,
+      "boundary_f1_1px": 11.867996606053369
+    }
+  },
+  "controls_vs_temporal_pct": {
+    "time_reversed": {
+      "absrel": 0.018321812918916953,
+      "delta1": 0.008622115281349105,
+      "boundary_absrel": 0.05303185225394711,
+      "interior_absrel": -0.012418675646575988,
+      "boundary_f1_exact": -1.5243952442403756,
+      "boundary_f1_1px": -2.2193958653537362
+    },
+    "polarity_swapped": {
+      "absrel": -0.05110994434957808,
+      "delta1": -0.04214549423216255,
+      "boundary_absrel": -0.03899681154597375,
+      "interior_absrel": -0.06779892945216628,
+      "boundary_f1_exact": -0.6347644507591548,
+      "boundary_f1_1px": -0.3046382523707503
+    },
+    "time_uniform": {
+      "absrel": -0.1236129722903698,
+      "delta1": -0.012981949268746686,
+      "boundary_absrel": -0.19918621074252862,
+      "interior_absrel": -0.07552061366958002,
+      "boundary_f1_exact": 1.4815557365130707,
+      "boundary_f1_1px": 2.2807014100703973
+    }
+  },
+  "windows": 116
+}

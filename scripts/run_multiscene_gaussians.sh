@@ -33,3 +33,4 @@ for head in fixed octree; do
         --geometry predicted --head "$head" --steps 12000 --val-limit 144 --lpips
     transfer "mixed_$head" "$out/$head/latest.pt"
 done
+python scripts/summarize_multiscene_gaussians.py "$run" "$out/comparison.json"
