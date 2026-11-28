@@ -51,3 +51,11 @@
 
 - `octree_pixel_center_mixed_12k`、`octree_pixel_fine_es_12k` 完成后更新本表和 manifest。
 - 与 EvGGS/IncEventGS 的同协议表尚未完成；需要先固定目标背景/裁剪/target frame。
+
+## 代码与几何版本
+
+- 代码 commit：`9d0e321`（per-pixel colour head、VG²GT-style 变体、run manifest）。
+- 冻结几何：`/data/userwj/epf-runs/eventscape_realm_20k/geometry/latest.pt`
+  - SHA-256：`8e866eecf4466c15eead4eb1a4b751270cf5c79dc826842bac34b61947e55de2`
+  - 大小：`12196026` bytes
+- 头部 `latest.pt` 的 SHA-256 见 `results/run_manifest.json`。
