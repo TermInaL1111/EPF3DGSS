@@ -80,6 +80,7 @@
 | octree_pixel，EventScape-only | 7.44（zero-shot 失败） | **18.20 / 0.563** |
 | octree_pixel，mixed | **17.39 / 0.648** | 17.93 / 0.578 |
 | octree_pixel_center，EventScape | — | 18.13 / 0.566 |
+| octree_pixel_center，mixed | 17.77 / 0.635 | 17.73 / 0.639 |
 
 - EventScape per-pixel colour：+0.42 dB，LPIPS 0.641→0.563；渲染图能看出 STOP、护栏、树和路面标线。
 - DSEC zero-shot 失败（7.44 < 全零 9.20）；混合训练恢复 17.39，但仍比 octree 低 0.40 dB。
@@ -153,7 +154,7 @@ daa165c Archive key head checkpoints and record archived-weight hashes
 
 | 项 | 状态 |
 |---|---|
-| `octree_pixel_center_mixed_12k` | 12k 训练完成；test 评测可能仍在跑；val 16.034（DSEC） |
+| `octree_pixel_center_mixed_12k` | 完成：DSEC 17.77 / 0.718 / LPIPS 0.635；EventScape 17.73 / 0.588 / 0.639 |
 | `octree_pixel_detail_es_12k` | 已停在 4.5k；4k val 与 5 cm 持平（16.134 vs 16.132） |
 | `octree_pixel_fine_es_12k` | 已停在 4.9k；4k val 16.112 vs 16.132 |
 | `octree_pixel_deep_es_12k` | 已停在 3.1k；2k val +0.014 dB |

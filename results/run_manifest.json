@@ -290,7 +290,7 @@
       "train": "DSEC+EventScape",
       "target": 4,
       "steps": 12000,
-      "status": "finished training, test pending",
+      "status": "finished",
       "run_dir": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k",
       "checkpoint": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt",
       "checkpoint_sha256": "1cc387084adc9cc5c18c5ca323aa065255d7e334adf16191274c70aad19aacc5",
@@ -298,7 +298,28 @@
       "config_json": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/config.json",
       "train_jsonl": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/train.jsonl",
       "val_012000_json": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/val_012000.json",
-      "eval": {}
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/val_test_dsec.json",
+          "windows": 21,
+          "psnr": 17.7678743544079,
+          "ssim": 0.7176883362588429,
+          "lpips_vgg": 0.6349485289482844,
+          "lpips_alex": 0.5908514715376354,
+          "zero_psnr": 9.174131211780367,
+          "gaussians": 218740.42857142858
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/val_test_eventscape.json",
+          "windows": 463,
+          "psnr": 17.724616841672564,
+          "ssim": 0.5876096183228956,
+          "lpips_vgg": 0.6385667073031481,
+          "lpips_alex": 0.663093702453259,
+          "zero_psnr": 12.59578246534772,
+          "gaussians": 327573.76889848814
+        }
+      }
     },
     {
       "id": "octree_pixel_fine_es_12k",

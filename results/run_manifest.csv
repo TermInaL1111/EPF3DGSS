@@ -8,7 +8,7 @@ octree_pixel_dsec_zeroshot,octree_pixel,EventScape,4,12000,zero-shot (failed),7.
 octree_pixel_mixed_12k,octree_pixel,DSEC+EventScape,4,12000,finished,17.3898,0.6478,17.9325,0.5777,/data/userwj/epf-runs/octree_pixel_mixed_12k/latest.pt
 octree_pixel_center_es_12k,octree_pixel_center,EventScape,4,12000,finished,,,18.1268,0.5662,/data/userwj/epf-runs/octree_pixel_center_es_12k/latest.pt
 octree_pixel_center_es_7k_eval,octree_pixel_center,EventScape,4,7500,intermediate evaluation,,,18.0985,0.5783,
-octree_pixel_center_mixed_12k,octree_pixel_center,DSEC+EventScape,4,12000,finished training, test pending,,,,,/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt
+octree_pixel_center_mixed_12k,octree_pixel_center,DSEC+EventScape,4,12000,finished,17.7679,0.6349,17.7246,0.6386,/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt
 octree_pixel_fine_es_12k,octree_pixel_fine (2.5 cm),EventScape,4,4900,stopped at 4.9k (no gain vs 5 cm),,,,,/data/userwj/epf-runs/octree_pixel_fine_es_12k/latest.pt
 octree_pixel_deep_es_12k,octree_pixel_deep (48ch x3),EventScape,4,3100,stopped at 3.1k (+0.014 dB at 2k),,,,,/data/userwj/epf-runs/octree_pixel_deep_es_12k/latest.pt
 octree_pixel_detail_es_12k,octree_pixel + high-res F3,EventScape,4,4500,stopped at 4.5k (no gain at 4k),,,,,/data/userwj/epf-runs/octree_pixel_detail_es_12k/latest.pt

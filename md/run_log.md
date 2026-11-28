@@ -24,7 +24,7 @@
 | `octree_pixel_dsec_zeroshot` | octree_pixel | EventScape | 12000 | zero-shot | 7.44 / 0.685 | — |
 | `octree_pixel_mixed_12k` | octree_pixel | mixed | 12000 | finished | **17.39 / 0.648** | 17.93 / 0.578 |
 | `octree_pixel_center_es_12k` | octree_pixel_center | EventScape | 12000 | finished | — | 18.13 / 0.566 |
-| `octree_pixel_center_mixed_12k` | octree_pixel_center | mixed | 12000 | running | pending | pending |
+| `octree_pixel_center_mixed_12k` | octree_pixel_center | mixed | 12000 | finished | 17.77 / 0.635 | 17.73 / 0.639 |
 | `octree_pixel_fine_es_12k` | octree_pixel_fine（2.5 cm） | EventScape | 12000 | running | pending | pending |
 | `octree_pixel_es_40k` | octree_pixel | EventScape | 3900 | stopped（增益很小） | — | — |
 | `octree_target8_eval` | octree | mixed | 12000 | target-8 评测 | 18.06（9 窗子集） | 17.68（336 窗子集） |
