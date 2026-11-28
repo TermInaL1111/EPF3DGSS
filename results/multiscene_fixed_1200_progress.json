@@ -1,0 +1,17 @@
+{
+  "head": "fixed",
+  "steps_verified": 1200,
+  "training_windows": 4034,
+  "by_dataset": {
+    "dsec": {
+      "windows": 561,
+      "sequences": 33,
+      "mean_loss": 0.24565401543164211
+    },
+    "eventscape": {
+      "windows": 639,
+      "sequences": 412,
+      "mean_loss": 0.17763579192575715
+    }
+  }
+}
