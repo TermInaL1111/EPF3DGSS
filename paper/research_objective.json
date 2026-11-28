@@ -1,0 +1,57 @@
+{
+  "working_title": "Source-View Supervision for Feed-Forward Gaussian Reconstruction from Monocular Events",
+  "working_title_zh_cn": "面向单目事件前馈高斯重建的源视图监督",
+  "scientific_objective": "Determine whether training-time source-view grayscale supervision improves held-out novel-view rendering from monocular events with known intrinsics and predicted source poses.",
+  "scientific_objective_zh_cn": "检验仅在训练时使用源视图灰度监督，能否改善单目事件在已知内参、预测源位姿条件下的留出新视角渲染。",
+  "primary_scientific_questions": [
+    {
+      "claim_id": "source_view_effect",
+      "research_question": "How does source-view supervision affect paired held-out rendering metrics and sensitivity to zero events across DSEC, EventScape and MVSEC?",
+      "research_question_zh_cn": "源视图监督如何影响 DSEC、EventScape 和 MVSEC 的同窗画质指标及对真实事件输入的依赖？",
+      "expected_finding": "The sign and magnitude of the change are empirical outcomes and may differ with the data domain and camera displacement.",
+      "expected_finding_zh_cn": "以同窗实验确定收益或退步，分别检验不同数据域和目标位移下的变化。"
+    },
+    {
+      "claim_id": "geometry_transfer",
+      "research_question": "How does event distillation affect depth and pose on held-out clips?",
+      "research_question_zh_cn": "事件蒸馏如何影响留出片段的深度和位姿？",
+      "expected_finding": "Geometry effects can vary by metric and training domain.",
+      "expected_finding_zh_cn": "几何变化可能随指标和训练域而异。"
+    },
+    {
+      "claim_id": "camera_protocol",
+      "research_question": "How much of the rendering error is associated with source camera estimation?",
+      "research_question_zh_cn": "源相机估计对渲染误差有多大影响？",
+      "expected_finding": "Matched intrinsics and pose interventions quantify camera sensitivity.",
+      "expected_finding_zh_cn": "用同窗的内参与位姿替换量化相机误差的影响。"
+    }
+  ],
+  "methodological_hypothesis": "An auxiliary source-view photometric loss can improve appearance preservation without changing the inference inputs or the frozen geometry backbone.",
+  "methodological_hypothesis_zh_cn": "源视图光度损失有望减少外观细节损失，同时保持推理输入和冻结几何骨干一致。",
+  "data_scope": [
+    "DSEC held-out sequences",
+    "EventScape Town05",
+    "MVSEC shared indoor flight windows"
+  ],
+  "data_scope_zh_cn": [
+    "DSEC 留出序列",
+    "EventScape Town05",
+    "MVSEC 室内航线共享窗口"
+  ],
+  "secondary_analyses": [
+    "Source camera ablation",
+    "Aligned and metric depth",
+    "Pointmaps and relative pose",
+    "Displacement groups",
+    "Shared-window EvGGS comparison"
+  ],
+  "secondary_analyses_zh_cn": [
+    "源相机内外参消融",
+    "对齐及米制深度",
+    "点图和相对位姿",
+    "相机位移分组",
+    "EvGGS 同窗比较"
+  ],
+  "claim_boundary": "Limit claims to the evaluated splits, target times and camera protocols. Separate privileged camera diagnostics from event-only inference and report failures and zero-event controls.",
+  "claim_boundary_zh_cn": "结论限于已测划分、目标时刻和相机协议。分别报告外部参考相机诊断和只输入事件的推理，并记录失败及全零事件对照。"
+}
