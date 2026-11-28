@@ -33,3 +33,5 @@ DSEC 与 EventScape 留出评测沿用 target-offset 4。MVSEC 沿用 EvGGS 的 
 正式评分完成后，自动从两组相同的 DSEC 和 EventScape 测试首窗导出对照，MVSEC 则使用航线 1 的固定中间窗。每行包含目标灰度、仅目标帧监督模型、源视图监督模型及后者的全零事件输入。MVSEC 导图沿用主评测的已知内参和预测源位姿。 [导图入口](../scripts/run_source_view_previews.sh)
 
 MVSEC 完整评测输出源帧和目标帧索引。汇总逐窗核对 EvGGS 的两个源索引和目标索引，再计算双方都使用标定源位姿时的差值及相对百分比。记录 EvGGS 官方权重哈希。EPF 主协议的预测源位姿结果另表报告。
+
+正式汇总同时保存逐场景配对差。EventScape 按 116 个 Town05 场景重采样，报告 95% 区间，保留逐窗加权的均值。DSEC 测试只有一条序列，MVSEC 只有三条航线，这两域的逐序列差作为描述性结果。 [汇总代码](../scripts/summarize_source_view_supervision.py)

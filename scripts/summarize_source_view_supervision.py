@@ -1,11 +1,13 @@
 """Compare matched source-view training arms on the three rendering benchmarks."""
 
 import argparse
+from collections import defaultdict
 from hashlib import sha256
 import json
 from math import dist, isfinite
 from pathlib import Path
-from statistics import fmean
+from random import Random
+from statistics import fmean, quantiles
 from zipfile import ZipFile
 
 from summarize_attribute_supervision import manifest_windows, metric_change, read_json
@@ -44,6 +46,33 @@ def motion_groups(arms, motion, metrics):
         groups[name] = dict(windows=len(group),displacement_m=[motion[group[0]],motion[group[-1]]],
                             scores=scores,source_vs_target=changes)
     return groups
+
+
+def scene_comparison(arms, score):
+    target,source = arms['target'],arms['source']
+    if target.keys() != source.keys():
+        raise ValueError('Scene comparison requires paired windows')
+    grouped = defaultdict(list)
+    for key in sorted(target):
+        grouped[key[0]].append(key)
+    counts = [len(keys) for keys in grouped.values()]
+    results = {}
+    for metric,sign in METRICS.items():
+        totals = [sum(sign*(score(source[key],metric)-score(target[key],metric)) for key in keys)
+                  for keys in grouped.values()]
+        per_scene = {name:total/count for name,total,count in zip(grouped,totals,counts,strict=True)}
+        interval = None
+        if len(counts) >= 10:
+            rng = Random(20261128)
+            samples = []
+            for _ in range(10000):
+                selected = rng.choices(range(len(counts)),k=len(counts))
+                samples.append(sum(totals[i] for i in selected)/sum(counts[i] for i in selected))
+            cuts = quantiles(samples,n=40,method='inclusive')
+            interval = [cuts[0],cuts[-1]]
+        results[metric] = dict(improvement=sum(totals)/sum(counts),per_scene=per_scene,
+                               scene_bootstrap_95_interval=interval)
+    return dict(scenes=len(counts),metrics=results)
 
 
 def temporal_motion(config,dataset):
@@ -155,7 +184,9 @@ def summarize(root, steps, mvsec_reference):
         groups = motion_groups(by_window,temporal_motion(config,dataset),
                                lambda row,condition,metric:row[f'{condition}_{metric}'])
         report[dataset] = dict(windows=len(expected),scores=scores,source_vs_target=changes,
-                               motion_groups=groups)
+                               motion_groups=groups,
+                               scene_comparison=scene_comparison(by_window,
+                                   lambda row,metric:row[f'matched_{metric}']))
 
     baseline = read_json(mvsec_reference)
     expected = index(baseline['results'],'flight','start')
@@ -177,6 +208,7 @@ def summarize(root, steps, mvsec_reference):
     report['mvsec'] = dict(windows=len(expected),scores=scores,source_vs_target=changes,
                            evggs=evggs_comparison(baseline,by_window),
                            predicted_camera_protocol='known intrinsics and event-predicted relative pose',
+                           scene_comparison=scene_comparison(by_window,lambda row,metric:row['matched'][metric]),
                            motion_groups={
                                camera:motion_groups(by_window,motion,
                                    lambda row,condition,metric:row[f'{condition}{suffix}'][metric])
