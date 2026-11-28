@@ -1,10 +1,12 @@
 """Compare matched source-view training arms on the three rendering benchmarks."""
 
 import argparse
+from hashlib import sha256
 import json
 from math import dist, isfinite
 from pathlib import Path
 from statistics import fmean
+from zipfile import ZipFile
 
 from summarize_attribute_supervision import manifest_windows, metric_change, read_json
 from summarize_evggs import aggregate, pair_with_epf
@@ -77,6 +79,20 @@ def evggs_comparison(reference, arms):
                 upstream_commit=reference['upstream_commit'], baseline=baseline, arms=comparisons)
 
 
+def checkpoint_record(path):
+    digest = sha256()
+    with path.open('rb') as stream:
+        for block in iter(lambda:stream.read(1 << 20),b''):
+            digest.update(block)
+    return dict(path=str(path.resolve()),bytes=path.stat().st_size,sha256=digest.hexdigest())
+
+
+def checkpoint_members(path):
+    with ZipFile(path) as archive:
+        return {name.split('/',1)[1]:sha256(archive.read(name)).hexdigest()
+                for name in archive.namelist()}
+
+
 def summarize(root, steps, mvsec_reference):
     folders = {arm:root/f'{arm}_{steps}' for arm in ('target','source')}
     configs = {arm:read_json(folder/'config.json') for arm,folder in folders.items()}
@@ -87,6 +103,17 @@ def summarize(root, steps, mvsec_reference):
             or configs['target'].get('source_view_weight',0) != 0
             or configs['source'].get('source_view_weight') != .5):
         raise ValueError('Training arms differ outside the source-view loss')
+    if config['save_every'] != 4000:
+        raise ValueError('Expected checkpoints every 4,000 steps')
+    checkpoint_steps = sorted(set(range(4000,steps+1,4000)) | {steps})
+    checkpoints = {}
+    for arm,folder in folders.items():
+        records = {step:checkpoint_record(folder/f'step_{step:06}.pt') for step in checkpoint_steps}
+        latest = folder/'latest.pt'
+        if checkpoint_members(Path(records[steps]['path'])) != checkpoint_members(latest):
+            raise ValueError(f'Final checkpoint differs from the latest checkpoint for {arm}')
+        records['latest'] = checkpoint_record(latest)
+        checkpoints[arm] = records
     schedules = {}
     for arm,folder in folders.items():
         with (folder/'train.jsonl').open() as stream:
@@ -107,6 +134,8 @@ def summarize(root, steps, mvsec_reference):
             raise ValueError('Training windows differ from the expected manifest')
 
     report = dict(steps=steps,unique_training_windows=width,
+                  initial_checkpoint=checkpoint_record(Path(config['init_head'])),
+                  checkpoints=checkpoints,
                   validation_progress={arm:validation_progress(folder,[*range(width,steps,width),steps])
                                        for arm,folder in folders.items()})
     for dataset in ('dsec','eventscape'):
