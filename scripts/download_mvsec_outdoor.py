@@ -4,6 +4,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import re
+from secrets import token_hex
 import shutil
 import time
 from zipfile import ZipFile
@@ -35,13 +36,15 @@ def fetch_range(file_id, first, last, path=None, expected_size=None):
     url = 'https://drive.usercontent.google.com/download'
     params = dict(id=file_id, export='download', confirm='t', chunk=f'{first}-{last}')
     for attempt in range(6):
+        request_params = params if attempt == 0 else params | {'retry':token_hex(8)}
         try:
-            with requests.get(url, params=params, headers={'Range': f'bytes={first}-{last}'},
+            with requests.get(url, params=request_params, headers={'Range': f'bytes={first}-{last}'},
                               stream=True, timeout=(20, 90)) as response:
                 response.raise_for_status()
                 match = re.fullmatch(r'bytes (\d+)-(\d+)/(\d+)', response.headers.get('Content-Range', ''))
                 if response.status_code != 206 or not match:
-                    raise OSError('Server did not supply the requested byte range')
+                    raise OSError(f'No byte range {first}-{last}; HTTP {response.status_code}, '
+                                  f'content type {response.headers.get("Content-Type")}')
                 start, end, size = map(int, match.groups())
                 if (start, end) != (first, last) or (expected_size and size != expected_size):
                     raise OSError('Unexpected file range or size')
