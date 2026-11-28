@@ -137,6 +137,15 @@ class EventScapeGaussianSequence:
         gray = cv2.resize(self.native_gray(index), (640,480), interpolation=cv2.INTER_LINEAR)
         return depths, np.stack([self.source_k]*2), np.stack((np.eye(4),later)), query, self.render_k, gray
 
+    def source_supervision(self, index):
+        later = self.camera(self.cameras[str(index)],self.source_offsets[1])
+        gray = np.stack([
+            cv2.resize(cv2.cvtColor(self.sequence.rgb(index+offset),cv2.COLOR_RGB2GRAY),
+                       (640,480),interpolation=cv2.INTER_LINEAR)
+            for offset in self.source_offsets
+        ])
+        return np.stack((np.eye(4),later)),self.render_k,gray
+
 
 def load_camera_splits(directory):
     splits = {}

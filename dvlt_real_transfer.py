@@ -127,11 +127,12 @@ def main(args):
                         return log_depth.exp(), edges
                     variants.append(('boundary_temporal_event_leaves',vox,field,refine_and_rank,True))
             cameras = None
-            if args.calibrated_source_control:
+            if args.calibrated_source_control or args.known_source_intrinsics:
                 # Match the virtual left DAVIS camera used to rectify the source events.
                 k = right.new_tensor([[888.8889*224/640,0,111.5],
                                       [0,888.8889*168/480,83.5],[0,0,1]])
                 cameras = (k.expand(1,2,3,3),torch.stack((torch.eye(4,device=right.device),right))[None])
+            if args.calibrated_source_control:
                 for key,v,f,refinement,rank in tuple(variants):
                     variants.append((f'{key}_calibrated',v,f,refinement,rank))
                 if not training_boundary:
@@ -169,7 +170,8 @@ def main(args):
                     else:
                         scene=model(v,f,steps=render_steps,depth_refinement=refinement,
                                     event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary),
-                                    source_cameras=cameras if key.endswith('_calibrated') else None,
+                                    source_cameras=(cameras if key.endswith('_calibrated') else
+                                                    (cameras[0],None) if args.known_source_intrinsics else None),
                                     appearance_inputs=appearance,return_geometry=capture_depth,
                                     depth_readout=readouts.get(depth_sources.get(key)))
                 if capture_depth:
@@ -230,6 +232,8 @@ if __name__=="__main__":
     p.add_argument("--geometry-only",action="store_true",help="Evaluate pose from a DSEC geometry checkpoint")
     p.add_argument("--calibrated-source-control",action="store_true",
                    help="Also compare real and zero events with identical calibrated source cameras")
+    p.add_argument("--known-source-intrinsics",action="store_true",
+                   help="Use virtual DAVIS intrinsics with predicted source poses in the primary comparison")
     p.add_argument("--input-path-control",action="store_true",
                    help="Independently zero geometry and direct appearance events")
     p.add_argument("--depth-feature-control",action="store_true",

@@ -217,7 +217,16 @@ def run(args, data, checkpoint, test):
                 before,after = (values+1/255).log()
                 event_loss = F.smooth_l1_loss(after-before,args.event_threshold*counts,
                                               beta=args.event_threshold)
-        return image,gray/255,count,event_loss,coverage
+        source_loss = None
+        if args.source_view_weight and training:
+            queries,source_k,labels = (torch.as_tensor(x,device=image.device,dtype=torch.float32)
+                                       for x in data[item[0]].source_supervision(item[1]))
+            source_images = torch.cat([render(cloud,pose[None],source_k[None]) for pose in queries])
+            labels = labels/255
+            source_l1 = (source_images-labels).abs().mean()
+            _,source_ssim = gray_metrics(source_images,labels)
+            source_loss = (1-args.ssim_weight)*source_l1 + args.ssim_weight*(1-source_ssim.mean())
+        return image,gray/255,count,event_loss,coverage,source_loss
 
     @lru_cache(maxsize=32)
     def overlap(seq,index):
@@ -267,7 +276,7 @@ def run(args, data, checkpoint, test):
             if args.source_depth_control:
                 variants.append(('matched_reference_depth',False,'reference_depth'))
             for key,empty,source_control in variants:
-                image,gray,count,_,coverage = predict(item,empty,source_control=source_control)
+                image,gray,count,_,coverage,_ = predict(item,empty,source_control=source_control)
                 if coverage is not None:
                     row.update({f'{key}_{metric}':value for metric,value in coverage.items()})
                 if count is not None:
@@ -305,12 +314,14 @@ def run(args, data, checkpoint, test):
             item = train[order[position]]
         else:
             item = train[int(torch.randint(len(train),(1,)))]
-        image,gray,_,event_loss,_ = predict(item,training=True)
+        image,gray,_,event_loss,_,source_loss = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
         if event_loss is not None:
             loss = loss + args.event_weight*event_loss
+        if source_loss is not None:
+            loss = loss + args.source_view_weight*source_loss
         perceptual_loss = None
         if args.lpips_weight:
             reduced = F.interpolate(torch.stack((image,gray),dim=1),size=(192,256),mode='area')
@@ -326,6 +337,8 @@ def run(args, data, checkpoint, test):
                            loss=float(loss.detach()), grad_norm=float(norm))
                 if perceptual_loss is not None:
                     row['lpips_loss'] = float(perceptual_loss.detach())
+                if source_loss is not None:
+                    row['source_view_loss'] = float(source_loss.detach())
                 stream.write(json.dumps(row,allow_nan=False)+'\n')
         if step==1 or step%20==0:
             print('step',step,'loss',float(loss.detach()),'l1',float(l1.detach()),
@@ -360,6 +373,10 @@ def run(args, data, checkpoint, test):
 
 
 def main(args):
+    if not np.isfinite(args.source_view_weight) or args.source_view_weight < 0:
+        raise ValueError('Source-view weight must be finite and nonnegative')
+    if args.source_view_weight and not (args.eventscape_cameras or args.dsec_temporal_cameras):
+        raise ValueError('Source-view supervision requires EventScape or DSEC temporal cameras')
     if not 0 <= args.ssim_weight <= 1:
         raise ValueError('SSIM weight must be between 0 and 1')
     if args.steps < 0 or args.val_limit < 1:
@@ -447,6 +464,8 @@ def main(args):
         config.pop('init_head')
     if not args.lpips_weight:
         config.pop('lpips_weight')
+    if not args.source_view_weight:
+        config.pop('source_view_weight')
     if not args.source_camera_control:
         config.pop('source_camera_control')
     if not args.source_camera_components:
@@ -531,6 +550,8 @@ if __name__=='__main__':
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--lpips-weight',type=float,default=0.,help='Train with additional VGG LPIPS supervision')
     parser.add_argument('--init-head',type=Path,help='Start from a trained head with identical frozen geometry')
+    parser.add_argument('--source-view-weight',type=float,default=0.,
+                        help='Weight of the mean photometric loss on the two source RGB views')
     parser.add_argument('--source-camera-control',action='store_true',
                         help='Compare predicted and calibrated source cameras and report alpha coverage')
     parser.add_argument('--source-camera-components',action='store_true',

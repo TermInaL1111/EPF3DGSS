@@ -91,6 +91,13 @@ class DSECTemporalGaussianSequence(DSECSequence):
         depth = np.stack([self.depth(index+offset,event=True) for offset in self.source_offsets])
         return depth, np.stack([self.event_k]*2), poses, event_from_rgb@query, self.rgb_k, self.gray(index+self.target_offset)
 
+    def source_supervision(self, index):
+        event_from_rgb = np.linalg.inv(self.rgb_from_event)
+        later_rgb = self.camera(self.cameras[str(index)], self.source_offsets[1])
+        poses = event_from_rgb @ np.stack((np.eye(4),later_rgb))
+        gray = np.stack([self.gray(index+offset) for offset in self.source_offsets])
+        return poses,self.rgb_k,gray
+
 
 def prepare(root, names, count):
     y,x = np.indices((480,640))
