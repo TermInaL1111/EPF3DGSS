@@ -9,15 +9,17 @@ from event_depth_boundary import (ARMS, EventDepthBoundary, evidence, event_bins
                                   load_temporal_boundary, restore_depth_scale, temporal_corrector)
 from image_metrics import PerceptualMetrics, gray_metrics
 from dvlt.common.rays import rays_to_pose
-from mvsec_transfer import calibration,flight_windows
+from mvsec_transfer import calibration,flight_windows,write_gray_preview
 from torch.nn import functional as F
 
 
 RENDER_KEYS = ('centers', 'quats', 'scales', 'opacity', 'gray')
 
 
-def image_scores(scene, query, target, perceptual):
+def image_scores(scene, query, target, perceptual, preview=None):
     image = F.avg_pool2d(render(scene, query[None]), 5)
+    if preview is not None:
+        write_gray_preview(preview,image[0])
     target = target[None]
     psnr, ssim = gray_metrics(image, target)
     scores = dict(psnr=float(psnr[0]), ssim=float(ssim[0]),
@@ -48,6 +50,10 @@ def main(args):
         raise ValueError('Input path controls require calibrated source cameras')
     if args.depth_feature_control and not args.input_path_control:
         raise ValueError('Depth/feature controls require input path controls')
+    if args.preview_dir:
+        if not args.calibrated_source_control:
+            raise ValueError('Render previews require calibrated source cameras for pairing with EvGGS')
+        args.preview_dir.mkdir(parents=True,exist_ok=True)
     model=EventDVLT(args.assets).cuda().eval()
     delta=torch.load(args.weights,weights_only=True)
     if args.geometry_only:
@@ -78,7 +84,10 @@ def main(args):
     perceptual = PerceptualMetrics("cuda") if args.lpips and not args.geometry_only else None
     rows=[]
     for flight in ("indoor_flying1","indoor_flying2","indoor_flying3"):
-        for start,events,(source,target),query,right,raw in flight_windows(args.root,flight,args.count,4,extract,*maps,raw_packets=True):
+        for start,events,(source,target),query,right,raw in flight_windows(
+                args.root,flight,args.count,4,extract,*maps,raw_packets=True,preview=bool(args.preview_dir)):
+            if args.preview_dir:
+                write_gray_preview(args.preview_dir/f'{flight}_{start}_target.png',target)
             vox=torch.stack([voxelize(packet) for packet in raw])[None].cuda()
             field=events[:,4:][None] if use_field else vox.new_zeros((1,2,32,96,128))
             row=dict(flight=flight,start=start,
@@ -181,7 +190,9 @@ def main(args):
                     row[key] = dict(rotation_deg=float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg()))
                     continue
                 rot = scene["rotation"][0].T @ right[:3,:3]
-                row[key] = image_scores(scene, query, target, perceptual)
+                preview = (args.preview_dir/f'{flight}_{start}_{key}.png'
+                           if args.preview_dir and key in ('matched_calibrated','zero_calibrated') else None)
+                row[key] = image_scores(scene, query, target, perceptual,preview)
                 row[key]['rotation_deg'] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
                 if 'gaussian_count' in scene:
                     row[key]['gaussian_count'] = int(scene['gaussian_count'][0])
@@ -210,6 +221,8 @@ if __name__=="__main__":
     for name in ("root","calibration","assets","weights","f3_repository","f3_checkpoint","out"):
         p.add_argument(name,type=Path)
     p.add_argument("--lpips",action="store_true")
+    p.add_argument("--preview-dir",type=Path,
+                   help="Score and save the first, middle and last selected window per MVSEC flight")
     p.add_argument("--count",type=int,default=24,help="Windows per flight")
     p.add_argument("--boundary",type=Path,help="Evaluate frozen depth refinement arms on the same matched windows")
     p.add_argument("--preserve-boundary-scale",action="store_true",

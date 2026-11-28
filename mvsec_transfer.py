@@ -41,7 +41,13 @@ def calibration(path):
     return mapping,inverse
 
 
-def flight_windows(root,sequence,count,scale,field,mapping,inverse,raw_packets=False):
+def write_gray_preview(path, image):
+    pixels = image.detach().clamp(0,1).mul(255).round().byte().cpu().numpy()
+    if not cv2.imwrite(str(path),pixels):
+        raise OSError(f'Could not save {path}')
+
+
+def flight_windows(root,sequence,count,scale,field,mapping,inverse,raw_packets=False,preview=False):
     with h5py.File(root/f"{sequence}_data.hdf5") as data, h5py.File(root/f"{sequence}_gt.hdf5") as truth:
         cam = data["davis/left"]
         gt = truth["davis/left"]
@@ -50,7 +56,10 @@ def flight_windows(root,sequence,count,scale,field,mapping,inverse,raw_packets=F
         poses = gt["pose"][:]
         interp = Slerp(pose_times,Rotation.from_matrix(poses[:,:3,:3]))
         valid = np.nonzero((times[1:-4]>=pose_times[0]) & (times[5:]<=pose_times[-1]))[0]+1
-        for start in valid[np.linspace(0,len(valid)-1,count,dtype=int)]:
+        sampled = valid[np.linspace(0,len(valid)-1,count,dtype=int)]
+        if preview:
+            sampled = sampled[np.unique([0,(len(sampled)-1)//2,len(sampled)-1])]
+        for start in sampled:
             frame_ids = np.array([start,start+2,start+4])
             at = times[frame_ids]
             rigid = np.repeat(np.eye(4)[None],3,axis=0)

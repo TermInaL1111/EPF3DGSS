@@ -139,7 +139,7 @@ def mvsec(args, model, metrics):
     import h5py
 
     from lib.dataset.Ev3D import ReadEventFromH5
-    from mvsec_transfer import calibration, flight_windows
+    from mvsec_transfer import calibration, flight_windows, write_gray_preview
     from real_geometry import depth_lookup, depth_pair
 
     # MVSEC's virtual image and pooled grayscale reference are shared with DVLT.
@@ -154,13 +154,17 @@ def mvsec(args, model, metrics):
             gt = truth['davis/left']
             depth_times = gt['depth_image_rect_ts'][:]
             for start, _, (_, target), query, right, raw in flight_windows(
-                    args.root, flight, args.count or 24, 4, None, *maps, raw_packets=True):
+                    args.root, flight, args.count or 24, 4, None, *maps, raw_packets=True,
+                    preview=bool(args.preview_dir)):
                 item = {}
                 item['leframe'], item['left_voxel'] = event_input(raw[0], loader, slice(None))
                 item['reframe'], item['right_voxel'] = event_input(raw[1], loader, slice(None))
                 camera = camera_batch(k, query, 480, 640, 100.)
                 poses = (torch.eye(4, device='cuda')[None], right[None])
                 prediction, output = render_window(model, item, camera, poses, k[None], target.shape)
+                if args.preview_dir:
+                    write_gray_preview(args.preview_dir/f'{flight}_{start}_target.png',target)
+                    write_gray_preview(args.preview_dir/f'{flight}_{start}_matched.png',prediction[0])
                 scores = render_metrics(prediction, target[None], metrics)
                 refs, offsets = depth_pair(gt, image_times, depth_times, start, xy, factor)
                 refs[(refs < .1) | (refs > 50)] = torch.nan
@@ -172,6 +176,10 @@ def mvsec(args, model, metrics):
 
 @torch.inference_mode()
 def main(args):
+    if args.preview_dir:
+        if args.dataset != 'mvsec':
+            raise ValueError('Render previews are available for the shared MVSEC protocol')
+        args.preview_dir.mkdir(parents=True,exist_ok=True)
     # Upstream config parses argv at import and resolves its defaults from the checkout.
     sys.path.insert(0, str(args.repository))
     sys.argv = [sys.argv[0]]
@@ -211,6 +219,8 @@ if __name__ == '__main__':
     p.add_argument('--split', choices=['val','test'], default='val')
     p.add_argument('--native', action='store_true', help='Use the official EV3DS two-packet protocol')
     p.add_argument('--count', type=int, help='Windows per scene or flight')
+    p.add_argument('--preview-dir', type=lambda s: Path(s).resolve(),
+                   help='Score and save the first, middle and last selected window per MVSEC flight')
     p.add_argument('--limit-scenes', type=int)
     args = p.parse_args()
     if args.dataset == 'mvsec' and (args.native or args.calibration is None):
