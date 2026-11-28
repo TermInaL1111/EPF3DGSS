@@ -44,6 +44,8 @@ def main(args):
         raise ValueError('Scale preservation requires an external boundary checkpoint')
     if args.calibrated_source_control and (args.geometry_only or args.boundary):
         raise ValueError('The calibrated source control requires a trained render model')
+    if args.input_path_control and not args.calibrated_source_control:
+        raise ValueError('Input path controls require calibrated source cameras')
     model=EventDVLT(args.assets).cuda().eval()
     delta=torch.load(args.weights,weights_only=True)
     if args.geometry_only:
@@ -124,8 +126,20 @@ def main(args):
                 if not training_boundary:
                     variants.extend((key,vox.flip(1),field.flip(1),None,False)
                                     for key in ('swapped','swapped_calibrated'))
+                if args.input_path_control:
+                    if training_boundary:
+                        raise ValueError('Input path controls require a head without boundary refinement')
+                    variants.extend((
+                        ('zero_appearance_calibrated',vox,field,None,False),
+                        ('zero_geometry_calibrated',torch.zeros_like(vox),torch.zeros_like(field),None,False),
+                    ))
             budget_scenes = {}
             for key,v,f,refinement,rank_leaves in variants:
+                appearance = None
+                if key == 'zero_appearance_calibrated':
+                    appearance = (torch.zeros_like(vox),torch.zeros_like(field))
+                elif key == 'zero_geometry_calibrated':
+                    appearance = (vox,field)
                 with torch.autocast("cuda",dtype=torch.bfloat16):
                     if args.geometry_only:
                         tokens, pos, _ = model.geometry(v,f,steps=16)
@@ -133,7 +147,8 @@ def main(args):
                     else:
                         scene=model(v,f,steps=render_steps,depth_refinement=refinement,
                                     event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary),
-                                    source_cameras=cameras if key.endswith('_calibrated') else None)
+                                    source_cameras=cameras if key.endswith('_calibrated') else None,
+                                    appearance_inputs=appearance)
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
@@ -146,6 +161,8 @@ def main(args):
                 row[key]['rotation_deg'] = float(((rot.trace()-1)/2).clamp(-1,1).acos().rad2deg())
                 if 'gaussian_count' in scene:
                     row[key]['gaussian_count'] = int(scene['gaussian_count'][0])
+                elif args.input_path_control:
+                    row[key]['gaussian_count'] = scene['centers'].shape[1]
                 if boundary_heads and key != 'zero':
                     budget_scenes[key] = {attr: scene[attr] for attr in RENDER_KEYS}
             if budget_scenes:
@@ -155,6 +172,11 @@ def main(args):
                               **image_scores(cap_scene(scene, budget), query, target, perceptual))
                     for key, scene in budget_scenes.items()
                 }
+            if args.input_path_control:
+                for reference, arm in (('matched_calibrated','zero_appearance_calibrated'),
+                                       ('zero_calibrated','zero_geometry_calibrated')):
+                    if row[reference]['gaussian_count'] != row[arm]['gaussian_count']:
+                        raise ValueError(f'Appearance intervention changed Gaussian support in {flight}/{start}')
             rows.append(row)
     args.out.write_text(json.dumps(rows,indent=2,allow_nan=False)+"\n")
 
@@ -171,4 +193,6 @@ if __name__=="__main__":
     p.add_argument("--geometry-only",action="store_true",help="Evaluate pose from a DSEC geometry checkpoint")
     p.add_argument("--calibrated-source-control",action="store_true",
                    help="Also compare real and zero events with identical calibrated source cameras")
+    p.add_argument("--input-path-control",action="store_true",
+                   help="Independently zero geometry and direct appearance events")
     main(p.parse_args())

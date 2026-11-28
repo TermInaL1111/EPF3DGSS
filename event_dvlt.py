@@ -154,7 +154,8 @@ class EventDVLT(nn.Module):
         return x,pos,hidden
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
-                source_cameras=None, depth_refinement=None, event_leaf_ranking=False, matched_leaf_budget=False):
+                source_cameras=None, depth_refinement=None, event_leaf_ranking=False, matched_leaf_budget=False,
+                appearance_inputs=None):
         b,s = voxel.shape[:2]
         if depth_refinement is not None and calibrated_geometry is not None:
             raise ValueError('Depth refinement requires predicted geometry')
@@ -187,8 +188,9 @@ class EventDVLT(nn.Module):
         size = (480,640)
         def resize(x):
             return F.interpolate(x,size,mode="bilinear",align_corners=False)
-        appearance = torch.cat([resize(self.field_features(field.flatten(0,1))),
-                                voxel.flatten(0,1).asinh()],1)
+        appearance_voxel, appearance_field = (voxel,field) if appearance_inputs is None else appearance_inputs
+        appearance = torch.cat([resize(self.field_features(appearance_field.flatten(0,1))),
+                                appearance_voxel.flatten(0,1).asinh()],1)
         fixed = self.head_type == 'fixed'
         if calibrated_geometry is None:
             scale = self.log_metric_scale.exp()
