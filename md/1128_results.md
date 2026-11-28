@@ -201,3 +201,9 @@ EvGGS 的 SSIM 基值很小，表中同时给绝对差。混合体素头的真�
 ### 属性头监督配对续训
 
 两组从同一个 12,000 步混合体素检查点开始，固定事件 DVLT、尺度和三维中心构造，AdamW 学习率设为 1e−4。DSEC 与 EventScape 的 4,034 个训练窗各遍历一次，共用种子与样本顺序。光度组沿用原有灰度 L1 + SSIM，对照组额外在 256×192 目标灰度图上计算权重 0.5 的 VGG LPIPS。该损失参考 InfiniSplat v2 的感知项，本实验沿用现有单目标及全图监督。GPU 0 运行光度组，GPU 1 运行感知组。训练后用相同 MVSEC 72 窗比较预测与标定源相机下的真实、全零及交换事件，保留 DSEC、EventScape 各自的留出评测。结果同时报告 PSNR、SSIM、VGG LPIPS 和未加入训练损失的 AlexNet LPIPS。 [InfiniSplat v2 损失](https://arxiv.org/html/2610.20341v1#A4) · [续训入口](../scripts/run_mvsec_attribute_supervision.sh)
+
+续训前 700 步已逐项核对。两组的序列、帧号和顺序完全一致，每组覆盖 290 个 DSEC 窗与 410 个 EventScape 窗，无重复。前 700 步的平均梯度范数为光度组 0.840、感知组 0.970，感知组的未加权 VGG LPIPS 训练损失均值为 0.512。这些数值用于核对训练和采样，最终泛化以留出窗口为准。自动汇总将核查完整的两个训练清单，按 DSEC 21 窗、EventScape 463 窗、MVSEC 72 窗分别对比续训前、光度续训和感知续训，并输出相对变化百分比。 [汇总入口](../scripts/summarize_attribute_supervision.py)
+
+### EventScape 仅 SAAG 几何补评
+
+已核验直接蒸馏、仅 SAAG 和 SAAG + REALM 的 20,000 步权重具有相同的训练序列与参数结构。补评在同一批 948 个 Town05 窗中重新运行三组学生与 RGB 教师，共用四组预测有效像素的交集。汇总分别给出仅 SAAG 相对直接蒸馏、联合组相对仅 SAAG 的改善百分比。该任务已排在 GPU 0 光度续训及其评测之后。 [补评入口](../scripts/run_eventscape_geometry.sh)

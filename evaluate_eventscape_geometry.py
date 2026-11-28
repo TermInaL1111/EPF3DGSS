@@ -52,8 +52,11 @@ def evaluate(args, archive, manifest):
     teacher = load_rgb(args.assets)
     teacher.inference_steps = 16
     student = EventDVLT(args.assets).cuda().eval()
-    states = {arm: torch.load(path,map_location='cpu',weights_only=True) for arm,path in
-              (('direct',args.direct),('realm',args.realm))}
+    checkpoints = {'direct':args.direct,'realm':args.realm}
+    if args.saag is not None:
+        checkpoints['saag'] = args.saag
+    states = {arm:torch.load(path,map_location='cpu',weights_only=True)
+              for arm,path in checkpoints.items()}
     expected = {name for name,p in student.named_parameters() if p.requires_grad
                 and not name.startswith(('gs_head.','geometry_features.','field_features.','event_adapter.'))
                 and name != 'log_metric_scale'}
@@ -105,25 +108,33 @@ def summarize(rows):
     direction = dict(absrel=-1,delta1=1,ate_m=-1,point_absrel=-1,point_inlier25=1,
                      pose_auc3=1,pose_auc20=1,pose_auc30=1,cloud_accuracy_m=-1,
                      cloud_completeness_m=-1)
-    arms = ('teacher','direct','realm')
+    arms = tuple(arm for arm in ('teacher','direct','saag','realm') if arm in rows[0])
     nc = 'cloud_normal_consistency'
     normal_rows = [row for row in rows if all(row[arm][nc] is not None for arm in arms)]
     if normal_rows:
         direction[nc] = 1
     summary = {arm:{metric:fmean(row[arm][metric] for row in (normal_rows if metric == nc else rows))
                     for metric in direction} for arm in arms}
-    relative = {}
-    for metric,sign in direction.items():
-        baseline,estimate = (summary[arm][metric] for arm in ('direct','realm'))
-        relative[metric] = 100*sign*(estimate-baseline)/abs(baseline) if baseline else None
-    return dict(summary=summary,realm_vs_direct_improvement_pct=relative,
-                cloud_normal_windows=len(normal_rows))
+    def relative(before, after):
+        changes = {}
+        for metric,sign in direction.items():
+            baseline,estimate = (summary[arm][metric] for arm in (before,after))
+            changes[metric] = 100*sign*(estimate-baseline)/abs(baseline) if baseline else None
+        return changes
+
+    report = dict(summary=summary,realm_vs_direct_improvement_pct=relative('direct','realm'),
+                  cloud_normal_windows=len(normal_rows))
+    if 'saag' in arms:
+        report['saag_vs_direct_improvement_pct'] = relative('direct','saag')
+        report['realm_vs_saag_improvement_pct'] = relative('saag','realm')
+    return report
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('archive','assets','cameras','direct','realm','out'):
         parser.add_argument(name,type=Path)
+    parser.add_argument('--saag',type=Path,help='Evaluate the SAAG-only checkpoint on the same support')
     parser.add_argument('--limit',type=int)
     args = parser.parse_args()
     manifest = json.loads(args.cameras.read_text())
