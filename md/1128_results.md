@@ -211,3 +211,9 @@ EvGGS 的 SSIM 基值很小，表中同时给绝对差。混合体素头的真�
 ### MVSEC 户外评测扩展
 
 Déjà-Events 表 IV 单独报告 night1 适配结果。表 I–III 的零样本实验覆盖一条白天和三条夜间序列。MVSEC 官方备用下载目录提供 night2、night3 的 HDF5 数据和参考文件，四个文件共 47.92 GB，已验证四个端点的 HDF5 文件签名与精确字节数。下载完成后，GPU 1 将使用已有 day1 检查点，在 night2、night3 分别跑同窗的灰度教师、适配前学生和适配后学生。与 night1 一样，每窗取 18 帧，采用 80 m 深度上限，逐夜报告深度、点图、位姿和适配百分比。 [MVSEC 官方下载](https://daniilidis-group.github.io/mvsec/download/) · [Déjà-Events §IV–V](https://arxiv.org/html/2611.21302v1#S4) · [夜间评测入口](../scripts/run_mvsec_outdoor.sh)
+
+### DSEC 单目时序几何准备
+
+沿用 DSEC 长程蒸馏的留出序列，生成 207 个不重叠的 18 帧窗口。前六条 `zurich_city_01_a–f` 分别为 18、36、27、22、55、43 窗，`thun_00_a` 为 6 窗。窗口只检查左事件覆盖、同步的左 RGB 帧和事件视差标签。每个事件窗口为帧时刻前 50 ms，深度评测上限为 50 m。该划分是本地 7 条留出序列，Déjà-Events 使用 10 条验证序列。
+
+已提取两条原始驱动记录的 LiDAR–相机外参。两个 ROS bag 合计 3.08 GB，按官方 ZIP 中的成员范围下载，完成后核对 CRC。点图和位姿的后续协议将用真实 LiDAR 点云生成里程计伪真值，记录可同步的窗口数量，再输出 AbsRel、δ1、点图误差、ATE 和 AUC@20°。 [DSEC 原始 LiDAR 数据](https://dsec.ifi.uzh.ch/dsec-datasets/download/) · [Déjà-Events 评测协议](https://arxiv.org/html/2611.21302v1#S4) · [窗口准备](../scripts/prepare_dsec_geometry_clips.py)

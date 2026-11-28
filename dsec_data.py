@@ -50,20 +50,21 @@ def indexed_lower_bound(timestamps, milliseconds, value):
 
 
 class DSECSequence:
-    def __init__(self, root, sequence, window_us=20000):
+    def __init__(self, root, sequence, window_us=20000, *, monocular=False):
         self.root = Path(root) / sequence
         self.sequence = sequence
         self.window_us = window_us
         self.calib = yaml.safe_load((self.root/'calibration/cam_to_cam.yaml').read_text())
         self.times = np.loadtxt(self.root/'images/timestamps.txt', dtype=np.int64)
         disparity_times = set(np.loadtxt(self.root/'disparity/timestamps.txt',dtype=np.int64,ndmin=1))
-        self.files = [h5py.File(self.root/f'events/{side}/events.h5', 'r') for side in ('left','right')]
+        sides = ('left',) if monocular else ('left','right')
+        self.files = [h5py.File(self.root/f'events/{side}/events.h5', 'r') for side in sides]
         self.offsets = [int(f['t_offset'][()]) for f in self.files]
         self.millisecond_indices = [f['ms_to_idx'][:] if 'ms_to_idx' in f else () for f in self.files]
         bounds = [(offset+int(f['events/t'][0]),offset+int(f['events/t'][-1]))
                   for offset,f in zip(self.offsets,self.files)]
         self.maps = []
-        for side in ('left', 'right'):
+        for side in sides:
             with h5py.File(self.root/f'events/{side}/rectify_map.h5', 'r') as f:
                 self.maps.append(f['rectify_map'][:])
         self.indices = []
