@@ -1,0 +1,153 @@
+{
+  "windows": 72,
+  "diagnostics": {
+    "matched": {
+      "gaussians": {
+        "minimum": 6,
+        "median": 9.0,
+        "maximum": 17,
+        "mean": 9.51388888888889
+      },
+      "metrics": {
+        "psnr": {
+          "mean_improvement": 0.05366953214009603,
+          "median_improvement": 0.013522148132324219,
+          "improved_windows": 39,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": -0.04508105913798014,
+            "indoor_flying2": 0.1063452959060669,
+            "indoor_flying3": 0.09974435965220134
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.10304482777913411,
+            "indoor_flying2": 0.027331650257110596,
+            "indoor_flying3": 0.030632118384043377
+          }
+        },
+        "ssim": {
+          "mean_improvement": 0.0044905706826183535,
+          "median_improvement": 0.00017783045768737793,
+          "improved_windows": 37,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": 0.0020070355385541916,
+            "indoor_flying2": 0.0072770242889722185,
+            "indoor_flying3": 0.004187652220328649
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.005732338254650434,
+            "indoor_flying2": 0.00309734387944142,
+            "indoor_flying3": 0.0046420299137632055
+          }
+        },
+        "lpips_vgg": {
+          "mean_improvement": 0.0009062356419033475,
+          "median_improvement": 0.0006029009819030762,
+          "improved_windows": 38,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": -0.0007347936431566874,
+            "indoor_flying2": 0.001750183602174123,
+            "indoor_flying3": 0.0017033169666926067
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.0017267502844333649,
+            "indoor_flying2": 0.0004842616617679596,
+            "indoor_flying3": 0.0005076949795087179
+          }
+        },
+        "lpips_alex": {
+          "mean_improvement": 0.0019409747587309943,
+          "median_improvement": 0.0006713569164276123,
+          "improved_windows": 42,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": -0.0017258599400520325,
+            "indoor_flying2": 0.005833946168422699,
+            "indoor_flying3": 0.0017148380478223164
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.0037743921081225076,
+            "indoor_flying2": -5.510946114857991e-06,
+            "indoor_flying3": 0.0020540431141853333
+          }
+        }
+      }
+    },
+    "zero": {
+      "gaussians": {
+        "minimum": 5,
+        "median": 5.0,
+        "maximum": 5,
+        "mean": 5.0
+      },
+      "metrics": {
+        "psnr": {
+          "mean_improvement": -0.06978166103363037,
+          "median_improvement": -0.022217273712158203,
+          "improved_windows": 35,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": 0.0189663569132487,
+            "indoor_flying2": -0.10261472066243489,
+            "indoor_flying3": -0.12569661935170492
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": -0.1141556700070699,
+            "indoor_flying2": -0.05336513121922811,
+            "indoor_flying3": -0.0418241818745931
+          }
+        },
+        "ssim": {
+          "mean_improvement": -0.013356586193872822,
+          "median_improvement": -0.004099369049072266,
+          "improved_windows": 28,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": -0.010243708888689676,
+            "indoor_flying2": -0.01417844370007515,
+            "indoor_flying3": -0.01564760599285364
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": -0.014913024846464396,
+            "indoor_flying2": -0.01294565744077166,
+            "indoor_flying3": -0.012211076294382414
+          }
+        },
+        "lpips_vgg": {
+          "mean_improvement": 0.009528958135181002,
+          "median_improvement": 0.010497987270355225,
+          "improved_windows": 62,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": 0.00859526296456655,
+            "indoor_flying2": 0.010616645216941833,
+            "indoor_flying3": 0.009374966224034628
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.00999580572048823,
+            "indoor_flying2": 0.008985114594300589,
+            "indoor_flying3": 0.00960595409075419
+          }
+        },
+        "lpips_alex": {
+          "mean_improvement": 0.006204400625493791,
+          "median_improvement": 0.004154175519943237,
+          "improved_windows": 50,
+          "tied_windows": 0,
+          "per_flight": {
+            "indoor_flying1": 0.0055620794494946795,
+            "indoor_flying2": 0.00647938996553421,
+            "indoor_flying3": 0.006571732461452484
+          },
+          "leave_one_flight_out": {
+            "indoor_flying1": 0.006525561213493347,
+            "indoor_flying2": 0.006066905955473582,
+            "indoor_flying3": 0.006020734707514445
+          }
+        }
+      }
+    }
+  }
+}
