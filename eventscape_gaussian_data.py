@@ -126,6 +126,9 @@ class EventScapeGaussianSequence:
     def native_gray(self, index):
         return cv2.cvtColor(self.sequence.rgb(index+self.target_offset), cv2.COLOR_RGB2GRAY)
 
+    def source_rgb(self, index):
+        return np.stack([self.sequence.rgb(index+offset) for offset in self.source_offsets])
+
     def supervision(self, index):
         cameras = self.cameras[str(index)]
         query = self.camera(cameras,self.target_offset)

@@ -59,6 +59,16 @@ class DSECTemporalGaussianSequence(DSECSequence):
             raise ValueError(f'Cannot decode {path}')
         return cv2.resize(frame,(640,480),interpolation=cv2.INTER_AREA)
 
+    def source_rgb(self, index):
+        images = []
+        for offset in self.source_offsets:
+            path = self.root/f'images/left/rectified/{index+offset:06}.png'
+            frame = cv2.imread(str(path), cv2.IMREAD_COLOR)
+            if frame is None:
+                raise ValueError(f'Cannot decode {path}')
+            images.append(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+        return np.stack(images)
+
     def depth(self, index, event=False):
         location, key = ('event','cams_03') if event else ('image','cams_12')
         path = self.root/f'disparity/{location}/{index:06}.png'
