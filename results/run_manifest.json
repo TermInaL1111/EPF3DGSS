@@ -415,6 +415,54 @@
           "gaussians": 328826.20535714284
         }
       }
+    },
+    {
+      "id": "source_view_target_12000",
+      "head": "octree_pixel",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "4k checkpoint and 4034-step validation verified",
+      "run_dir": "/data/userwj/epf-runs/source_view_supervision/target_12000",
+      "checkpoint": "/data/userwj/epf-runs/source_view_supervision/target_12000/step_004000.pt",
+      "checkpoint_sha256": "b9ae70a8e4eed537fde16ed6fce9f8a6e384f3e3bb90b1644eca95a0403d2550",
+      "checkpoint_bytes": 4354502,
+      "checkpoints": {
+        "4000": {
+          "path": "/data/userwj/epf-runs/source_view_supervision/target_12000/step_004000.pt",
+          "bytes": 4354502,
+          "sha256": "b9ae70a8e4eed537fde16ed6fce9f8a6e384f3e3bb90b1644eca95a0403d2550"
+        }
+      },
+      "config_json": "results/source_view_supervision/target_12000/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/source_view_supervision/target_12000/train.jsonl",
+      "validation_json": "results/source_view_supervision/target_12000/val_004034.json",
+      "validation_summary": "results/source_view_supervision/validation_004034.json",
+      "eval": {}
+    },
+    {
+      "id": "source_view_source_12000",
+      "head": "octree_pixel",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "4k checkpoint and 4034-step validation verified",
+      "run_dir": "/data/userwj/epf-runs/source_view_supervision/source_12000",
+      "checkpoint": "/data/userwj/epf-runs/source_view_supervision/source_12000/step_004000.pt",
+      "checkpoint_sha256": "120d376984d33dadc02aed87e697f7f7b31f02b34c5f6c880eefb14f218971de",
+      "checkpoint_bytes": 4354502,
+      "checkpoints": {
+        "4000": {
+          "path": "/data/userwj/epf-runs/source_view_supervision/source_12000/step_004000.pt",
+          "bytes": 4354502,
+          "sha256": "120d376984d33dadc02aed87e697f7f7b31f02b34c5f6c880eefb14f218971de"
+        }
+      },
+      "config_json": "results/source_view_supervision/source_12000/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/source_view_supervision/source_12000/train.jsonl",
+      "validation_json": "results/source_view_supervision/source_12000/val_004034.json",
+      "validation_summary": "results/source_view_supervision/validation_004034.json",
+      "eval": {}
     }
   ]
 }

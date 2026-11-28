@@ -8,17 +8,20 @@
     "val_000000.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/target_12000/val_000000.json",
       "bytes": 98999,
-      "sha256": "5d4e2fd00f55cccb833fc61c3a6918adcacadfc046355726decde37521cf382a"
+      "sha256": "5d4e2fd00f55cccb833fc61c3a6918adcacadfc046355726decde37521cf382a",
+      "archive": "results/source_view_supervision/target_12000/val_000000.json"
     },
     "val_004034.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/target_12000/val_004034.json",
       "bytes": 99024,
-      "sha256": "8a2bf769d3a2c8b68ba946ea314fe10a0aa31f9d269efbec60537eae69e5153c"
+      "sha256": "8a2bf769d3a2c8b68ba946ea314fe10a0aa31f9d269efbec60537eae69e5153c",
+      "archive": "results/source_view_supervision/target_12000/val_004034.json"
     },
     "config.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/target_12000/config.json",
       "bytes": 18486,
-      "sha256": "5eec119222a3c7fe5a120bda3243a5fb76e85db7987bb8c71c5bb50316f41672"
+      "sha256": "5eec119222a3c7fe5a120bda3243a5fb76e85db7987bb8c71c5bb50316f41672",
+      "archive": "results/source_view_supervision/target_12000/config.json"
     }
   },
   "source_12000": {
@@ -30,17 +33,20 @@
     "val_000000.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/source_12000/val_000000.json",
       "bytes": 99018,
-      "sha256": "577fb06c7b60b79f4c3064743a45528389f8d904f9498aeeabe963213c37fafd"
+      "sha256": "577fb06c7b60b79f4c3064743a45528389f8d904f9498aeeabe963213c37fafd",
+      "archive": "results/source_view_supervision/source_12000/val_000000.json"
     },
     "val_004034.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/source_12000/val_004034.json",
       "bytes": 99059,
-      "sha256": "a47f90d24be00fc15501c617525428faf1362696aa304c430924bb7426b25e7b"
+      "sha256": "a47f90d24be00fc15501c617525428faf1362696aa304c430924bb7426b25e7b",
+      "archive": "results/source_view_supervision/source_12000/val_004034.json"
     },
     "config.json": {
       "path": "/data/userwj/epf-runs/source_view_supervision/source_12000/config.json",
       "bytes": 18515,
-      "sha256": "833d18b0c7733d19d2c86827d76d1a364fabc3ad4444ca28e66b8081237b89a2"
+      "sha256": "833d18b0c7733d19d2c86827d76d1a364fabc3ad4444ca28e66b8081237b89a2",
+      "archive": "results/source_view_supervision/source_12000/config.json"
     }
   }
 }

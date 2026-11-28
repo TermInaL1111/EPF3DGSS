@@ -1,16 +1,18 @@
-id,head,train,target,steps,status,dsec_psnr,dsec_lpips_vgg,es_psnr,es_lpips_vgg,checkpoint
-octree_target4_12k,octree,DSEC+EventScape,4,12000,finished,17.7937,0.6344,17.7769,0.6412,/data/userwj/epf-runs/octree_target4_12k/latest.pt
-vg2gt_target4_12k,vg2gt (fine voxel),DSEC+EventScape,4,4600,stopped at 4.6k (DSEC geometry collapse),11.8635,0.6571,17.7163,0.6572,/data/userwj/epf-runs/vg2gt_target4_12k/latest.pt
-vg2gt_octree_target4_12k,vg2gt_octree,DSEC+EventScape,4,12000,finished,15.4417,0.6404,17.6579,0.6545,/data/userwj/epf-runs/vg2gt_octree_target4_12k/latest.pt
-octree_pixel_es_12k,octree_pixel,EventScape,4,12000,finished,,,18.1975,0.5633,/data/userwj/epf-runs/octree_pixel_es_12k/latest.pt
-octree_pixel_es_4k_eval,octree_pixel,EventScape,4,4200,intermediate evaluation,,,17.8798,0.6000,
-octree_pixel_dsec_zeroshot,octree_pixel,EventScape,4,12000,zero-shot (failed),7.4359,0.6845,,,
-octree_pixel_mixed_12k,octree_pixel,DSEC+EventScape,4,12000,finished,17.3898,0.6478,17.9325,0.5777,/data/userwj/epf-runs/octree_pixel_mixed_12k/latest.pt
-octree_pixel_center_es_12k,octree_pixel_center,EventScape,4,12000,finished,,,18.1268,0.5662,/data/userwj/epf-runs/octree_pixel_center_es_12k/latest.pt
-octree_pixel_center_es_7k_eval,octree_pixel_center,EventScape,4,7500,intermediate evaluation,,,18.0985,0.5783,
-octree_pixel_center_mixed_12k,octree_pixel_center,DSEC+EventScape,4,12000,finished,17.7679,0.6349,17.7246,0.6386,/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt
-octree_pixel_fine_es_12k,octree_pixel_fine (2.5 cm),EventScape,4,4900,stopped at 4.9k (no gain vs 5 cm),,,,,/data/userwj/epf-runs/octree_pixel_fine_es_12k/latest.pt
-octree_pixel_deep_es_12k,octree_pixel_deep (48ch x3),EventScape,4,3100,stopped at 3.1k (+0.014 dB at 2k),,,,,/data/userwj/epf-runs/octree_pixel_deep_es_12k/latest.pt
-octree_pixel_detail_es_12k,octree_pixel + high-res F3,EventScape,4,4500,stopped at 4.5k (no gain at 4k),,,,,/data/userwj/epf-runs/octree_pixel_detail_es_12k/latest.pt
-octree_pixel_es_40k,octree_pixel,EventScape,4,3900,stopped (marginal gain),,,,,/data/userwj/epf-runs/octree_pixel_es_40k/latest.pt
-octree_target8_eval,octree,DSEC+EventScape,8,12000,target-8 held-out evaluation,18.0605,0.6170,17.6753,0.6199,
+id,head,train,target,steps,status,dsec_psnr,dsec_lpips_vgg,es_psnr,es_lpips_vgg,mvsec_psnr,mvsec_lpips_vgg,checkpoint
+octree_target4_12k,octree,DSEC+EventScape,4,12000,finished,17.7937,0.6344,17.7769,0.6412,,,/data/userwj/epf-runs/octree_target4_12k/latest.pt
+vg2gt_target4_12k,vg2gt (fine voxel),DSEC+EventScape,4,4600,stopped at 4.6k (DSEC geometry collapse),11.8635,0.6571,17.7163,0.6572,,,/data/userwj/epf-runs/vg2gt_target4_12k/latest.pt
+vg2gt_octree_target4_12k,vg2gt_octree,DSEC+EventScape,4,12000,finished,15.4417,0.6404,17.6579,0.6545,,,/data/userwj/epf-runs/vg2gt_octree_target4_12k/latest.pt
+octree_pixel_es_12k,octree_pixel,EventScape,4,12000,finished,,,18.1975,0.5633,,,/data/userwj/epf-runs/octree_pixel_es_12k/latest.pt
+octree_pixel_es_4k_eval,octree_pixel,EventScape,4,4200,intermediate evaluation,,,17.8798,0.6000,,,
+octree_pixel_dsec_zeroshot,octree_pixel,EventScape,4,12000,zero-shot (failed),7.4359,0.6845,,,,,
+octree_pixel_mixed_12k,octree_pixel,DSEC+EventScape,4,12000,finished,17.3898,0.6478,17.9325,0.5777,,,/data/userwj/epf-runs/octree_pixel_mixed_12k/latest.pt
+octree_pixel_center_es_12k,octree_pixel_center,EventScape,4,12000,finished,,,18.1268,0.5662,,,/data/userwj/epf-runs/octree_pixel_center_es_12k/latest.pt
+octree_pixel_center_es_7k_eval,octree_pixel_center,EventScape,4,7500,intermediate evaluation,,,18.0985,0.5783,,,
+octree_pixel_center_mixed_12k,octree_pixel_center,DSEC+EventScape,4,12000,finished,17.7679,0.6349,17.7246,0.6386,,,/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt
+octree_pixel_fine_es_12k,octree_pixel_fine (2.5 cm),EventScape,4,4900,stopped at 4.9k (no gain vs 5 cm),,,,,,,/data/userwj/epf-runs/octree_pixel_fine_es_12k/latest.pt
+octree_pixel_deep_es_12k,octree_pixel_deep (48ch x3),EventScape,4,3100,stopped at 3.1k (+0.014 dB at 2k),,,,,,,/data/userwj/epf-runs/octree_pixel_deep_es_12k/latest.pt
+octree_pixel_detail_es_12k,octree_pixel + high-res F3,EventScape,4,4500,stopped at 4.5k (no gain at 4k),,,,,,,/data/userwj/epf-runs/octree_pixel_detail_es_12k/latest.pt
+octree_pixel_es_40k,octree_pixel,EventScape,4,3900,stopped (marginal gain),,,,,,,/data/userwj/epf-runs/octree_pixel_es_40k/latest.pt
+octree_target8_eval,octree,DSEC+EventScape,8,12000,target-8 held-out evaluation,18.0605,0.6170,17.6753,0.6199,,,
+source_view_target_12000,octree_pixel,DSEC+EventScape,4,12000,4k checkpoint and 4034-step validation verified,,,,,,,/data/userwj/epf-runs/source_view_supervision/target_12000/step_004000.pt
+source_view_source_12000,octree_pixel,DSEC+EventScape,4,12000,4k checkpoint and 4034-step validation verified,,,,,,,/data/userwj/epf-runs/source_view_supervision/source_12000/step_004000.pt

@@ -49,7 +49,7 @@
 
 ## 待补
 
-- 两组各续训 12,000 步。GPU 0 仅监督目标视图，GPU 1 额外监督两个源视图。4,000 步权重已保存，4,034 步完成 144 个配对验证窗。正式测试按每个数据集的目标位移分三组。 [验证结果](../results/source_view_supervision/validation_004034.json) · [产物路径与哈希](../results/source_view_supervision/validation_004034_artifacts.json)
+- 两组各续训 12,000 步。GPU 0 仅监督目标视图，GPU 1 额外监督两个源视图。4,000 步权重已保存，4,034 步完成 144 个配对验证窗。仓库归档了两组初始与首轮验证的逐窗 JSON，已从归档重新生成汇总并逐字节比对。正式测试按每个数据集的目标位移分三组。 [验证结果](../results/source_view_supervision/validation_004034.json) · [产物路径与哈希](../results/source_view_supervision/validation_004034_artifacts.json) · [运行清单](../results/run_manifest.json)
 - 已统一 MVSEC 的两个渲染器的投影位置。EvGGS 官方权重的 72 窗复评排在 GPU 0 完成续训之后。IncEventGS 保留文献与指标对照。 [评测协议](evggs_baseline.md)
 
 ## 代码与几何版本

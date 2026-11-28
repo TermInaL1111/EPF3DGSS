@@ -110,7 +110,24 @@ for spec in RUNS:
             entry['eval'][dataset] = dict(path=str(path), **scores(path))
     manifest['runs'].append(entry)
 
-comparison = ROOT/'source_view_supervision/comparison.json'
+pair_directory = ROOT/'source_view_supervision'
+comparison = pair_directory/'comparison.json'
+validation = Path('results/source_view_supervision/validation_004034_artifacts.json')
+if not comparison.is_file() and validation.is_file():
+    for directory_name,artifacts in json.loads(validation.read_text()).items():
+        arm,steps = directory_name.rsplit('_',1)
+        checkpoint = artifacts['step_004000.pt']
+        directory = Path(checkpoint['path']).parent
+        manifest['runs'].append(dict(
+            id=f'source_view_{arm}_{steps}', head='octree_pixel', train='DSEC+EventScape',
+            target=4, steps=int(steps), status='4k checkpoint and 4034-step validation verified',
+            run_dir=str(directory),
+            checkpoint=checkpoint['path'], checkpoint_sha256=checkpoint['sha256'],
+            checkpoint_bytes=checkpoint['bytes'], checkpoints={4000:checkpoint},
+            config_json=artifacts['config.json']['archive'], train_jsonl=str(directory/'train.jsonl'),
+            validation_json=artifacts['val_004034.json']['archive'],
+            validation_summary=str(validation.with_name('validation_004034.json')), eval={},
+        ))
 if comparison.is_file():
     report = json.loads(comparison.read_text())
     steps = report['steps']
