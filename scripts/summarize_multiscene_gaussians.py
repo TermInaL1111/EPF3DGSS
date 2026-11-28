@@ -10,6 +10,9 @@ from summarize_evggs import aggregate, pair_with_epf
 from summarize_render import summarize
 
 
+METRICS = dict(psnr=1,ssim=1,lpips_vgg=-1,lpips_alex=-1)
+
+
 def training_windows(folder, config):
     windows = set()
     for key in ('dsec_temporal_cameras','eventscape_cameras'):
@@ -35,11 +38,10 @@ def training_windows(folder, config):
 
 
 def camera_control(rows):
-    metrics = dict(psnr=1,ssim=1,lpips_vgg=-1,lpips_alex=-1)
     report = {}
     for name,suffix in (('predicted',''),('calibrated','_calibrated')):
         report[name] = {}
-        for metric,sign in metrics.items():
+        for metric,sign in METRICS.items():
             real,zero,swapped = (fmean(row[f'{condition}{suffix}'][metric] for row in rows)
                                  for condition in ('matched','zero','swapped'))
             report[name][metric] = dict(real=real,zero=zero,
@@ -48,6 +50,26 @@ def camera_control(rows):
                 swapped=swapped,real_vs_swapped=sign*(real-swapped),
                 real_vs_swapped_pct=100*sign*(real-swapped)/abs(swapped) if swapped else None)
     return report
+
+
+def compare_training_domains(arms):
+    pairs = (('dsec_temporal','mixed_octree'), ('eventscape_realm','mixed_octree'),
+             ('mixed_fixed','mixed_octree'))
+    result = {}
+    for baseline, method in pairs:
+        a = arms[baseline]['source_camera_control']
+        b = arms[method]['source_camera_control']
+        result[f'{method}_vs_{baseline}'] = {}
+        for camera in ('predicted','calibrated'):
+            comparison = {}
+            for metric, sign in METRICS.items():
+                reference = a[camera][metric]['real']
+                estimate = b[camera][metric]['real']
+                change = estimate-reference
+                comparison[metric] = dict(baseline=reference,method=estimate,delta=change,
+                    improvement_pct=100*sign*change/abs(reference) if reference else None)
+            result[f'{method}_vs_{baseline}'][camera] = comparison
+    return result
 
 
 def summarize_runs(root):
@@ -89,7 +111,8 @@ def summarize_runs(root):
         arms[arm]['calibrated_vs_evggs'] = pair_with_epf(rows,calibrated,'flight',reference)
         arms[arm]['event_and_zero'] = summarize(predictions)['all']
         arms[arm]['source_camera_control'] = camera_control(predictions)
-    report['mvsec'] = dict(windows=len(rows),image_size=[128,96],evggs=reference,arms=arms)
+    report['mvsec'] = dict(windows=len(rows),image_size=[128,96],evggs=reference,arms=arms,
+                          training_domain_comparisons=compare_training_domains(arms))
     return report
 
 
