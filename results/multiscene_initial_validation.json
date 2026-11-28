@@ -1,0 +1,129 @@
+{
+  "step": 0,
+  "head": "fixed",
+  "scale": {
+    "scale": 6.011117935180664,
+    "training_frames": [
+      {
+        "sequence": "interlaken_00_c",
+        "frame": 2,
+        "scale": 5.6458821296691895
+      },
+      {
+        "sequence": "zurich_city_00_b",
+        "frame": 308,
+        "scale": 7.029910087585449
+      },
+      {
+        "sequence": "zurich_city_03_a",
+        "frame": 222,
+        "scale": 3.8637681007385254
+      },
+      {
+        "sequence": "zurich_city_04_e",
+        "frame": 144,
+        "scale": 7.969116687774658
+      },
+      {
+        "sequence": "zurich_city_07_a",
+        "frame": 844,
+        "scale": 9.899391174316406
+      },
+      {
+        "sequence": "zurich_city_11_b",
+        "frame": 1724,
+        "scale": 6.027653694152832
+      },
+      {
+        "sequence": "Town01/sequence_165",
+        "frame": 166,
+        "scale": 5.917736530303955
+      },
+      {
+        "sequence": "Town01/sequence_39",
+        "frame": 82,
+        "scale": 4.96555757522583
+      },
+      {
+        "sequence": "Town02/sequence_43",
+        "frame": 1,
+        "scale": 5.674457550048828
+      },
+      {
+        "sequence": "Town03/sequence_146",
+        "frame": 163,
+        "scale": 6.501509666442871
+      },
+      {
+        "sequence": "Town03/sequence_23",
+        "frame": 1,
+        "scale": 6.293060302734375
+      },
+      {
+        "sequence": "Town03/sequence_99",
+        "frame": 245,
+        "scale": 5.994582176208496
+      }
+    ]
+  },
+  "validation": {
+    "dsec": {
+      "windows": 27,
+      "metrics": {
+        "psnr": {
+          "real": 7.675385775389494,
+          "zero": 7.856718946386267,
+          "improvement": -0.1813331709967727,
+          "improvement_pct": -2.308001243702089
+        },
+        "ssim": {
+          "real": 0.19077228837543064,
+          "zero": 0.1815030872821808,
+          "improvement": 0.009269201093249857,
+          "improvement_pct": 5.106910979888257
+        },
+        "lpips_vgg": {
+          "real": 0.6905872998414216,
+          "zero": 0.7019232621899357,
+          "improvement": 0.011335962348514084,
+          "improvement_pct": 1.6149859905122574
+        },
+        "lpips_alex": {
+          "real": 0.7828971721507885,
+          "zero": 0.8112348980373807,
+          "improvement": 0.028337725886592224,
+          "improvement_pct": 3.4931591275411895
+        }
+      }
+    },
+    "eventscape": {
+      "windows": 117,
+      "metrics": {
+        "psnr": {
+          "real": 8.768853953760914,
+          "zero": 8.63071088709383,
+          "improvement": 0.13814306666708376,
+          "improvement_pct": 1.60059893645215
+        },
+        "ssim": {
+          "real": 0.15742934227753907,
+          "zero": 0.14739009209422985,
+          "improvement": 0.010039250183309228,
+          "improvement_pct": 6.811346706324673
+        },
+        "lpips_vgg": {
+          "real": 0.6670791486389617,
+          "zero": 0.6679280812923725,
+          "improvement": 0.0008489326534107944,
+          "improvement_pct": 0.12709941042876902
+        },
+        "lpips_alex": {
+          "real": 0.8367968038616017,
+          "zero": 0.8432701311559758,
+          "improvement": 0.006473327294374109,
+          "improvement_pct": 0.7676457466245497
+        }
+      }
+    }
+  }
+}
