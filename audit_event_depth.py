@@ -2,6 +2,8 @@
 
 import argparse
 import json
+from contextlib import closing
+from io import BytesIO
 from pathlib import Path
 from statistics import fmean
 
@@ -13,8 +15,10 @@ from scipy.ndimage import map_coordinates
 from scipy.spatial.transform import Rotation, Slerp
 
 from audit_event_brightness import log_image, unclipped
+from dsec_data import camera_matrix, indexed_lower_bound, rectified_transform
 from ev3ds_pose import camera
 from event_observation import polarity_counts
+from eventscape_data import EventScapeArchive, EventScapeSequence
 from mvsec_transfer import lower_bound_after
 
 
@@ -23,13 +27,18 @@ TRIPLETS = {'10_percent': [1, 2, 3], '20_percent': [0, 2, 4]}
 CONDITIONS = ('aligned', 'later_interval', 'flipped', 'zero_change', 'aps_difference')
 
 
+def normalized_pixels(points, k, distortion):
+    if distortion is None:
+        return (points - k[:2, 2]) @ np.linalg.inv(k[:2, :2]).T
+    model, coefficients = distortion
+    undistort = cv2.fisheye.undistortPoints if model == 'equidistant' else cv2.undistortPoints
+    return undistort(points[:, None], k, coefficients)[:, 0]
+
+
 def pixel_rays(shape, k, distortion):
     y, x = np.indices(shape, dtype=np.float64)
     points = np.column_stack((x.ravel(), y.ravel()))
-    if distortion is None:
-        xy = (points - k[:2, 2]) @ np.linalg.inv(k[:2, :2]).T
-    else:
-        xy = cv2.fisheye.undistortPoints(points[:, None], k, distortion)[:, 0]
+    xy = normalized_pixels(points, k, distortion)
     return np.column_stack((xy, np.ones(len(points)))).reshape(*shape, 3)
 
 
@@ -37,7 +46,11 @@ def project(points, k, distortion):
     xy = points[:, :2] / points[:, 2:3].clip(min=1e-8)
     if distortion is None:
         return xy @ k[:2, :2].T + k[:2, 2]
-    return cv2.fisheye.distortPoints(xy[:, None], k, distortion)[:, 0]
+    model, coefficients = distortion
+    if model == 'equidistant':
+        return cv2.fisheye.distortPoints(xy[:, None], k, coefficients)[:, 0]
+    return cv2.projectPoints(np.column_stack((xy, np.ones(len(xy)))), np.zeros(3), np.zeros(3),
+                             k, coefficients)[0][:, 0]
 
 
 def transport_depth(depth, rays, k, distortion, image_from_measurement):
@@ -75,12 +88,196 @@ def ev3ds_windows(root, scene_limit, window_limit):
             yield name, int(index), images, depths, packets, rays, k, None, pose, [0., 0.]
 
 
+def tracked_points(first, last, mask, max_corners=256):
+    corners = cv2.goodFeaturesToTrack(first, maxCorners=max_corners, qualityLevel=.01, minDistance=5,
+                                      mask=mask.astype(np.uint8))
+    if corners is None:
+        return np.empty((0, 2)), np.empty((0, 2))
+    end, forward, _ = cv2.calcOpticalFlowPyrLK(first, last, corners, None)
+    if end is None:
+        return np.empty((0, 2)), np.empty((0, 2))
+    back, backward, _ = cv2.calcOpticalFlowPyrLK(last, first, end, None)
+    if back is None:
+        return np.empty((0, 2)), np.empty((0, 2))
+    consistent = ((forward[:, 0] > 0) & (backward[:, 0] > 0)
+                  & (np.linalg.norm((back-corners)[:, 0], axis=-1) <= .3))
+    return corners[consistent, 0].astype(np.float64), end[consistent, 0].astype(np.float64)
+
+
+def eventscape_pose(first, last, depth, rays, k, score_tiles):
+    valid = (.1 < depth) & (depth <= 200.) & unclipped(first)
+
+    def tracks(mask):
+        u, v = tracked_points(first, last, valid & mask, 768)
+        x, y = np.rint(u).astype(np.intp).T
+        return rays[y, x]*depth[y, x, None], v
+
+    source, target = tracks(~score_tiles)
+    held_out, observations = tracks(score_tiles)
+    if len(source) < 30 or len(held_out) < 20:
+        return None
+    ok, rotation, translation, inliers = cv2.solvePnPRansac(
+        source, target, k, None, iterationsCount=150, reprojectionError=1.,
+        confidence=.999, flags=cv2.SOLVEPNP_EPNP)
+    if not ok or inliers is None or len(inliers) < 25:
+        return None
+    i = inliers[:, 0]
+    rotation, translation = cv2.solvePnPRefineLM(source[i], target[i], k, None, rotation, translation)
+    matrix = cv2.Rodrigues(rotation)[0]
+    projection = project(held_out @ matrix.T + translation[:, 0], k, None)
+    residual = np.linalg.norm(projection-observations, axis=-1)
+    median = float(np.median(residual))
+    if median > 1.:
+        return None
+    b_from_a = np.eye(4)
+    b_from_a[:3, :3], b_from_a[:3, 3] = matrix, translation[:, 0]
+    return np.linalg.inv(b_from_a), dict(fit_tracks=len(source), inliers=len(i),
+                                        heldout_tracks=len(held_out), median_px=median)
+
+
+def eventscape_windows(path, scene_limit, window_limit, registration):
+    shape = (256, 512)
+    k = np.array([[256., 0., 256.], [0., 256., 128.], [0., 0., 1.]])
+    rays = pixel_rays(shape, k, None)
+    y, x = np.indices(shape)
+    score_tiles = ((y//32+x//32) % 2).astype(bool)
+    with closing(EventScapeArchive(path)) as archive:
+        for town in ('Town01', 'Town02', 'Town03'):
+            names = [name for name in archive.sequences if name.startswith(town + '/')]
+            if not names:
+                raise ValueError('Use the EventScape training archive with Town01, 02 and 03')
+            for pos in np.linspace(0, len(names)-1, min(scene_limit, len(names)), dtype=int):
+                seq = EventScapeSequence(archive, names[pos])
+                vehicle = [np.loadtxt(BytesIO(archive.archive.read(f'{seq.sequence}/vehicle_data/{field}.txt')))
+                           for field in ('timestamps', 'position')]
+                for index in np.linspace(1, len(seq.ends)-3, min(window_limit, len(seq.ends)-3), dtype=int):
+                    images = [cv2.cvtColor(seq.rgb(i), cv2.COLOR_RGB2GRAY) for i in (index,index+1)]
+                    depths = [seq.depth(i) for i in (index,index+1)]
+                    depths = [np.where((.1 < depth) & (depth <= 200.), depth, 0) for depth in depths]
+                    fitted = eventscape_pose(*images, depths[0], rays, k, score_tiles)
+                    row = dict(sequence=seq.sequence, frame=int(index), pose_supported=fitted is not None)
+                    registration.append(row)
+                    if fitted is None:
+                        continue
+                    pose, quality = fitted
+                    xyz = np.stack([np.interp(seq.times[index:index+2], vehicle[0], coordinate)
+                                    for coordinate in vehicle[1].T], axis=-1)
+                    row.update(quality, camera_shift_m=float(np.linalg.norm(pose[:3, 3])),
+                               vehicle_shift_m=float(np.linalg.norm(xyz[1]-xyz[0])))
+                    packets = []
+                    for i in (index+1,index+2):
+                        packet = seq.packet(i)
+                        time = packet[2].astype(np.float64)*1e-6
+                        use = ((time > seq.times[i-1]) & (time <= seq.times[i])
+                               & score_tiles[packet[1], packet[0]])
+                        packets.append(packet[:, use])
+                    yield seq.sequence, int(index), images, depths, packets, rays, k, None, pose, [0., 0.]
+
+
+def dsec_trajectory(path):
+    from rosbags.highlevel import AnyReader
+
+    times, positions, rotations = [], [], []
+    with AnyReader([path]) as reader:
+        for connection, _, raw in reader.messages(connections=[c for c in reader.connections if c.topic == '/pose']):
+            msg = reader.deserialize(raw, connection.msgtype)
+            stamp, p, q = msg.header.stamp, msg.pose.position, msg.pose.orientation
+            times.append(stamp.sec+stamp.nanosec*1e-9)
+            positions.append((p.x, p.y, p.z))
+            rotations.append((q.x, q.y, q.z, q.w))
+    times, ids = np.unique(times, return_index=True)
+    position = np.asarray(positions)[ids]
+    rotation = Slerp(times, Rotation.from_quat(np.asarray(rotations)[ids]))
+
+    def interpolate(at):
+        result = np.broadcast_to(np.eye(4), (len(at), 4, 4)).copy()
+        result[:, :3, :3] = rotation(at).as_matrix()
+        result[:, :3, 3] = np.column_stack([np.interp(at, times, position[:, j]) for j in range(3)])
+        return result
+
+    return times[[0, -1]], interpolate
+
+
+def dsec_rgbd(path, index, q, event_from_rgb, event_shape, event_k, distortion):
+    gray = cv2.imread(str(path/f'images/left/rectified/{index:06}.png'), cv2.IMREAD_GRAYSCALE)
+    disparity = cv2.imread(str(path/f'disparity/image/{index:06}.png'), cv2.IMREAD_UNCHANGED)
+    xyz = cv2.reprojectImageTo3D(disparity.astype(np.float32)/256, q)
+    z = xyz[..., 2]
+    valid = (disparity > 0) & np.isfinite(z) & (z > .1) & (z <= 50.)
+    event_xyz = xyz[valid] @ event_from_rgb[:3, :3].T + event_from_rgb[:3, 3]
+    xy = np.rint(project(event_xyz, event_k, distortion)).astype(np.int64)
+    h, w = event_shape
+    keep = (event_xyz[:, 2] > 0) & ((xy >= 0) & (xy < [w, h])).all(axis=-1)
+    pixel = (xy[keep, 1]*w + xy[keep, 0])
+    depth = event_xyz[keep, 2]
+    order = np.argsort(depth, kind='stable')
+    _, nearest = np.unique(pixel[order], return_index=True)
+    chosen = order[nearest]
+    proxy_gray, proxy_depth = np.zeros(h*w, np.uint8), np.zeros(h*w, np.float32)
+    proxy_gray[pixel[chosen]] = gray[valid][keep][chosen]
+    proxy_depth[pixel[chosen]] = depth[chosen]
+    return gray, np.where(valid, z, 0), proxy_gray.reshape(event_shape), proxy_depth.reshape(event_shape)
+
+
+def dsec_windows(root, odometry, scene_limit, window_limit, registration):
+    scenes = [p for p in sorted(root.iterdir()) if (p/'calibration/cam_to_lidar.yaml').is_file()
+              and (odometry/(p.name.rsplit('_', 1)[0]+'-odometry')/'pose.bag').is_file()]
+    if not scenes:
+        raise ValueError('No DSEC sequences have extracted calibration and an odometry bag')
+    for selected in np.linspace(0, len(scenes)-1, min(scene_limit, len(scenes)), dtype=int):
+        path = scenes[selected]
+        bag = odometry/(path.name.rsplit('_', 1)[0]+'-odometry')/'pose.bag'
+        limits, interpolate = dsec_trajectory(bag)
+        calib = yaml.safe_load((path/'calibration/cam_to_cam.yaml').read_text())
+        hand_eye = yaml.safe_load((path/'calibration/cam_to_lidar.yaml').read_text())
+        lidar_from_rgb = np.asarray(hand_eye['T_lidar_camRect1'])
+        rgb_k = camera_matrix(calib['intrinsics']['camRect1']['camera_matrix'])
+        event = calib['intrinsics']['cam0']
+        k = camera_matrix(event['camera_matrix'])
+        distortion = (event['distortion_model'], np.asarray(event['distortion_coeffs']))
+        shape = tuple(reversed(event['resolution']))
+        rays = pixel_rays(shape, k, distortion)
+        raw_from_rect = np.eye(4)
+        raw_from_rect[:3, :3] = np.asarray(calib['extrinsics']['R_rect0']).T
+        event_from_rgb = raw_from_rect @ rectified_transform(calib, 0, 1)
+        lidar_from_event = np.linalg.solve(event_from_rgb.T, lidar_from_rgb.T).T
+        q = np.asarray(calib['disparity_to_depth']['cams_12'])
+        times = np.loadtxt(path/'images/timestamps.txt', dtype=np.int64)
+        labels = [int(p.stem) for p in sorted((path/'disparity/image').glob('*.png'))]
+        triples = [(a,b,c) for a,b,c in zip(labels, labels[1:], labels[2:])
+                   if limits[0] <= times[a]*1e-6 <= times[c]*1e-6 <= limits[1]
+                   and max(times[b]-times[a], times[c]-times[b]) <= 130000]
+        with h5py.File(path/'events/left/events.h5') as events:
+            offset, lookup = int(events['t_offset'][()]), events['ms_to_idx'][:]
+            for i in np.linspace(0, len(triples)-1, min(window_limit, len(triples)), dtype=int):
+                a, b, c = triples[i]
+                first, last = [dsec_rgbd(path, index, q, event_from_rgb, shape, k, distortion)
+                               for index in (a,b)]
+                lidar = interpolate(times[[a,b]].astype(np.float64)*1e-6)
+                rgb_poses, event_poses = lidar @ lidar_from_rgb, lidar @ lidar_from_event
+                rgb_pose = np.linalg.solve(*rgb_poses)
+                tracks = aps_tracks(first[0], last[0], first[1], rgb_k, None, rgb_pose, first[1] > 0)
+                usable = tracks is not None and tracks['tracks'] >= 25 and tracks['epe'][2] <= 2.
+                row = dict(sequence=path.name, frame=a, pose_supported=usable,
+                           rgb_track_count=tracks['tracks'] if tracks else 0,
+                           rgb_epe_px=tracks['epe'][2] if tracks else None)
+                registration.append(row)
+                if not usable:
+                    continue
+                timeset = events['events/t']
+                bounds = [indexed_lower_bound(timeset, lookup, int(at)-offset+1) for at in times[[a,b,c]]]
+                packets = [np.stack([events[f'events/{key}'][lo:hi] for key in ('x','y','t','p')])
+                           for lo,hi in zip(bounds, bounds[1:])]
+                yield (path.name, a, [first[2],last[2]], [first[3],last[3]], packets, rays, k, distortion,
+                       np.linalg.solve(*event_poses), [0., 0.])
+
+
 def mvsec_windows(root, window_limit):
     name = 'indoor_flying4'
     calibration = yaml.safe_load((root/'calibration/camchain-imucam-indoor_flying.yaml').read_text())['cam0']
     fx, fy, cx, cy = calibration['intrinsics']
     k = np.array([[fx, 0., cx], [0., fy, cy], [0., 0., 1.]])
-    distortion = np.asarray(calibration['distortion_coeffs'])
+    distortion = ('equidistant', np.asarray(calibration['distortion_coeffs']))
     rays = pixel_rays(tuple(reversed(calibration['resolution'])), k, distortion)
     with h5py.File(root/f'{name}_data.hdf5') as data, h5py.File(root/f'{name}_gt.hdf5') as truth:
         cam, gt = data['davis/left'], truth['davis/left']
@@ -135,10 +332,12 @@ def surface_normals(depth, rays, y, x):
     return normal, usable
 
 
-def log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes):
+def log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes,
+                    *, check_ending_depth=True):
     """Predict same-pixel endpoint log changes by sampling one reference image."""
     if not len(x):
-        return np.empty((len(DEPTH_FACTORS), 0)), np.empty(0, dtype=bool), 0
+        return (np.empty((len(DEPTH_FACTORS), 0)), np.empty(0, dtype=bool), 0,
+                np.empty((len(DEPTH_FACTORS), 0, 2)))
     reference_depth, ending_depth = depths
     before = log_image(first, 'published_code')[y, x]
     ray = rays[y, x] @ pose[:3, :3].T
@@ -150,6 +349,7 @@ def log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes
     base_depth = normal @ origin
     derivative = np.einsum('ij,ij->i', normal, ray)
     proposals = []
+    projections = []
     common = np.ones(len(x), dtype=bool)
     for factor in DEPTH_FACTORS:
         distance = (factor*plane_depth-base_depth) / derivative.clip(min=1e-8)
@@ -163,10 +363,11 @@ def log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes
                  & (np.abs(local_depth/surface_depth.clip(min=1e-8)-1) <= .1))
         brightness = map_coordinates(first.astype(np.float32), [py, px], order=1, cval=0)
         common &= valid & (brightness > 2) & (brightness < 253)
-        if factor == 1.:
+        if factor == 1. and check_ending_depth:
             common &= np.abs(ending_depth[y, x]/distance.clip(min=1e-8)-1) <= .1
         proposals.append(np.log(brightness.clip(min=1)/255)-before)
-    return np.stack(proposals)[:, common], common, int((common & estimated).sum())
+        projections.append(np.column_stack((px, py)))
+    return np.stack(proposals)[:, common], common, int((common & estimated).sum()), np.stack(projections)[:, common]
 
 
 def huber(error, scale):
@@ -176,28 +377,12 @@ def huber(error, scale):
 
 def aps_tracks(first, last, reference_depth, k, distortion, pose, support):
     """Check the reference geometry against independent bidirectional image tracks."""
-    corners = cv2.goodFeaturesToTrack(first, maxCorners=256, qualityLevel=.01, minDistance=5,
-                                      mask=support.astype(np.uint8))
-    if corners is None:
+    start_xy, end_xy = tracked_points(first, last, support)
+    if not len(start_xy):
         return None
-    end, forward, _ = cv2.calcOpticalFlowPyrLK(first, last, corners, None)
-    if end is None:
-        return None
-    back, backward, _ = cv2.calcOpticalFlowPyrLK(last, first, end, None)
-    if back is None:
-        return None
-    consistent = ((forward[:, 0] > 0) & (backward[:, 0] > 0)
-                  & (np.linalg.norm((back-corners)[:, 0], axis=-1) <= .3))
-    if not consistent.any():
-        return None
-    start_xy = corners[consistent, 0].astype(np.float64)
-    end_xy = end[consistent, 0]
     x, y = np.rint(start_xy).astype(np.intp).T
     z = reference_depth[y, x]
-    if distortion is None:
-        normalized = (start_xy-k[:2, 2]) @ np.linalg.inv(k[:2, :2]).T
-    else:
-        normalized = cv2.fisheye.undistortPoints(start_xy[:, None], k, distortion)[:, 0]
+    normalized = normalized_pixels(start_xy, k, distortion)
     rays = np.column_stack((normalized, np.ones(len(normalized))))
     projections = []
     for factor in DEPTH_FACTORS:
@@ -217,7 +402,7 @@ def analyze(window, contrast, local_planes):
     active = (counts.sum(0) > 0) & unclipped(first) & unclipped(last)
     valid = active & np.isfinite(depths[0]) & (depths[0] > 0) & (depths[1] > 0)
     y, x = np.where(valid)
-    predicted, common, local_support = log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes)
+    predicted, common, local_support, _ = log_differences(first, depths, rays, k, distortion, pose, y, x, local_planes)
     y, x = y[common], x[common]
     support = np.zeros_like(active)
     support[y, x] = True
@@ -291,23 +476,33 @@ def summarize(rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('dataset', choices=('ev3ds', 'mvsec'))
+    parser.add_argument('dataset', choices=('ev3ds', 'mvsec', 'eventscape', 'dsec'))
     parser.add_argument('root', type=Path)
     parser.add_argument('out', type=Path)
     parser.add_argument('--contrast', type=float, required=True)
-    parser.add_argument('--sequences', type=int, default=12)
+    parser.add_argument('--sequences', type=int, default=12, help='Sequence limit (per town for EventScape)')
     parser.add_argument('--windows', type=int, default=8)
+    parser.add_argument('--odometry', type=Path, help='Root of the public DSEC odometry bags')
     parser.add_argument('--local-planes', action='store_true', help='Use depth-derived local normals where supported')
     args = parser.parse_args()
     if not np.isfinite(args.contrast) or min(args.contrast, args.sequences, args.windows) <= 0:
         parser.error('Contrast, sequence count and window count must be positive')
-    windows = (ev3ds_windows(args.root, args.sequences, args.windows) if args.dataset == 'ev3ds'
-               else mvsec_windows(args.root, args.windows))
+    if args.dataset == 'dsec' and not args.odometry:
+        parser.error('DSEC requires --odometry')
+    registration = []
+    if args.dataset == 'ev3ds':
+        windows = ev3ds_windows(args.root, args.sequences, args.windows)
+    elif args.dataset == 'eventscape':
+        windows = eventscape_windows(args.root, args.sequences, args.windows, registration)
+    elif args.dataset == 'dsec':
+        windows = dsec_windows(args.root, args.odometry, args.sequences, args.windows, registration)
+    else:
+        windows = mvsec_windows(args.root, args.windows)
     cv2.setNumThreads(1)
     rows = [analyze(window, args.contrast, args.local_planes) for window in windows]
     summary = summarize(rows)
     report = dict(dataset=args.dataset, contrast=args.contrast, local_planes=args.local_planes, factors=DEPTH_FACTORS.tolist(),
-                  conditions=CONDITIONS, summary=summary, rows=rows)
+                  conditions=CONDITIONS, summary=summary, rows=rows, registration=registration)
     args.out.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
     print(json.dumps(summary, indent=2, allow_nan=False))
 

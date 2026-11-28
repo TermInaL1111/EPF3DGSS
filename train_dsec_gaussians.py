@@ -12,10 +12,60 @@ import torch
 import torch.nn.functional as F
 
 from dsec_data import DSECSequence, resize_intrinsics, stereo_supervision
+from evaluate_eventscape_depth import depth_scores
 from event_depth_boundary import event_bins, load_temporal_boundary, temporal_corrector
 from event_dvlt import EventDVLT, load_scene_weights, render, voxelize
 from event_field import EventField
 from image_metrics import PerceptualMetrics, gray_metrics
+
+
+def geometry_audit(cloud, depth, intrinsics, poses, query, query_k):
+    estimate = cloud['source_depth']
+    valid = (depth > 0) & torch.isfinite(estimate) & (estimate > 0)
+    predicted, reference = estimate[valid], depth[valid]
+    if not len(reference):
+        raise ValueError('No common source depth support')
+    aligned = depth_scores(predicted,reference)
+    fitted_k, fitted_pose = cloud['fitted_intrinsics'], cloud['fitted_c2w']
+    rays = cloud['raw_geometry']['rays'][...,:3].float()
+    height,width = rays.shape[-3:-1]
+    y,x = torch.meshgrid(torch.arange(height,device=rays.device),torch.arange(width,device=rays.device),indexing='ij')
+    pixels = torch.stack((x,y,torch.ones_like(x)),-1).float()
+    reference_rays = (pixels.flatten(0,1) @ torch.linalg.inv(intrinsics).transpose(-1,-2)).reshape_as(rays)
+    local_rays = (rays.flatten(2,3) @ fitted_pose[...,:3,:3]).reshape_as(rays)
+    angle = F.cosine_similarity(local_rays,reference_rays,dim=-1).clamp(-1,1).acos().rad2deg()
+    h,w = depth.shape[-2:]
+    y,x = torch.meshgrid(torch.arange(h,device=rays.device),torch.arange(w,device=rays.device),indexing='ij')
+    sensor_pixels = torch.stack(((x+.5)*width/w-.5,(y+.5)*height/h-.5,torch.ones_like(x)),-1).float()
+    source_rays = sensor_pixels.flatten(0,1) @ torch.linalg.inv(intrinsics).transpose(-1,-2)
+    target_from_source = torch.linalg.solve(query[:,None],poses)
+    def project(z):
+        local = source_rays*z.flatten(2)[...,None]
+        target = local @ target_from_source[...,:3,:3].transpose(-1,-2) + target_from_source[...,:3,3].unsqueeze(-2)
+        projected = target @ query_k[:,None].transpose(-1,-2)
+        return projected[...,:2]/projected[...,2:].clamp_min(1e-6), projected[...,2]
+    estimated_px, estimated_z = project(estimate)
+    reference_px, reference_z = project(depth)
+    shared = valid.flatten(2) & (estimated_z>0) & (reference_z>0)
+    shared &= ((reference_px>=0)&(reference_px<reference_px.new_tensor([w,h]))).all(-1)
+    error_px = (estimated_px-reference_px).norm(dim=-1)[shared]
+    fitted_relative = torch.linalg.solve(fitted_pose[:,0],fitted_pose[:,1])
+    rotation = fitted_relative[:,:3,:3].transpose(-1,-2) @ poses[:,1,:3,:3]
+    rotation_cos = ((rotation.diagonal(dim1=-2,dim2=-1).sum(-1)-1)/2).clamp(-1,1)
+    offset = fitted_relative[:,:3,3] * cloud['metric_scale']
+    reference_offset = poses[:,1,:3,3]
+    return dict(
+        source_depth_fraction=float(valid.float().mean()),
+        metric_depth_absrel=float(((predicted-reference).abs()/reference).mean()),
+        aligned_depth_absrel=aligned['absrel'], reference_depth_scale=aligned['scale'],
+        focal_x_ratio=float((fitted_k[...,0,0]/intrinsics[...,0,0]).mean()),
+        focal_y_ratio=float((fitted_k[...,1,1]/intrinsics[...,1,1]).mean()),
+        principal_point_error_px=float((fitted_k[...,:2,2]-intrinsics[...,:2,2]).norm(dim=-1).mean()),
+        local_ray_angle_deg=float(angle.mean()),
+        rotation_error_deg=float(rotation_cos.acos().rad2deg().mean()),
+        translation_error_m=float((offset-reference_offset).norm(dim=-1).mean()),
+        depth_reprojection_px=float(error_px.mean()) if len(error_px) else None,
+    )
 
 
 def run(args, data, checkpoint, test):
@@ -49,15 +99,16 @@ def run(args, data, checkpoint, test):
     perceptual = PerceptualMetrics("cuda") if args.lpips or args.lpips_weight else None
     optimizer = torch.optim.AdamW(params.values(), lr=args.lr)
     encoder = EventField(args.f3_repository,args.assets/'f3.pth',4) if use_field else None
-    train = [(s,i) for s in args.train for i in data[s].indices]
-    val = [(s,i) for s in args.val for i in data[s].indices]
-    if args.mvsec_calibration:
+    eval_only = args.steps == 0 and args.init_head is not None
+    train = [] if eval_only else [(s,i) for s in args.train for i in data[s].indices]
+    val = [] if eval_only else [(s,i) for s in args.val for i in data[s].indices]
+    if not eval_only and args.mvsec_calibration:
         val = [(seq, indices[i]) for seq in args.val
                if (indices := data[seq].indices)
                for i in np.linspace(0,len(indices)-1,min(len(indices),args.val_limit),dtype=int)]
-    elif len(val)>args.val_limit:
+    elif not eval_only and len(val)>args.val_limit:
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
-    if not train or not val:
+    if not eval_only and (not train or not val):
         raise ValueError('Both splits require usable source and target windows')
     mixed = bool(args.eventscape_root)
     train_rng = torch.Generator().manual_seed(args.seed) if mixed else None
@@ -124,23 +175,29 @@ def run(args, data, checkpoint, test):
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
         cameras = None
-        if source_control == 'both' or (training and args.head != 'legacy'):
+        if source_control in ('both','reference_depth'):
             cameras = (ki,poses)
-        elif source_control == 'intrinsics':
+        elif source_control == 'intrinsics' or args.known_source_intrinsics:
             cameras = (ki,None)
         elif source_control == 'poses':
             cameras = (None,poses)
+        elif training and args.head != 'legacy':
+            cameras = (ki,poses)
         refine = (temporal_corrector(boundary,boundary_counts(*item).cuda(),empty,args.preserve_boundary_scale)
                   if boundary else None)
         with torch.autocast('cuda',dtype=torch.bfloat16):
             cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras, depth_refinement=refine,
+                          return_geometry=args.source_depth_control and source_control == 'both' and not empty,
+                          reference_metric_depth=depth if source_control == 'reference_depth' else None,
                           event_leaf_ranking=args.event_leaves, matched_leaf_budget=bool(boundary))
         coverage = None
         if args.source_camera_control:
             image,alpha = render(cloud,query,k,return_alpha=True)
             coverage = dict(alpha_mean=float(alpha.mean()),
                             alpha_covered_fraction=float((alpha>=.5).float().mean()))
+            if 'fitted_intrinsics' in cloud:
+                coverage.update(geometry_audit(cloud,depth,ki,poses,query,k))
         else:
             image = render(cloud,query,k)
         count = cloud.get('gaussian_count')
@@ -203,6 +260,8 @@ def run(args, data, checkpoint, test):
                 variants += [('matched_calibrated',False,'both'),('zero_calibrated',True,'both')]
             if args.source_camera_components:
                 variants += [('matched_intrinsics',False,'intrinsics'),('matched_poses',False,'poses')]
+            if args.source_depth_control:
+                variants.append(('matched_reference_depth',False,'reference_depth'))
             for key,empty,source_control in variants:
                 image,gray,count,_,coverage = predict(item,empty,source_control=source_control)
                 if coverage is not None:
@@ -232,7 +291,8 @@ def run(args, data, checkpoint, test):
         print('evaluation',label,{k:sum(r[k] for r in rows)/len(rows)
                                   for k in ('matched_psnr','zero_psnr','matched_ssim','zero_ssim')},flush=True)
 
-    evaluate(val,'000000')
+    if not eval_only:
+        evaluate(val,'000000')
     for step in range(1,args.steps+1):
         if mixed:
             position = (step-1) % len(train)
@@ -300,10 +360,14 @@ def main(args):
         raise ValueError('Source-camera comparison requires evaluation of a frozen trained head')
     if args.source_camera_components and not args.source_camera_control:
         raise ValueError('Source-camera components require the full source-camera comparison')
+    if args.source_depth_control and (not args.source_camera_control or args.head != 'octree'):
+        raise ValueError('Source depth comparison requires the frozen octree camera control')
+    if args.known_source_intrinsics and (args.geometry != 'predicted' or args.source_camera_control):
+        raise ValueError('Known source intrinsics require predicted geometry and the standard render protocol')
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
     eventscape_splits, dsec_splits = {}, {}
     mixed = bool(args.eventscape_cameras and args.dsec_temporal_cameras)
-    if mixed != bool(args.eventscape_root):
+    if args.dsec_temporal_cameras and mixed != bool(args.eventscape_root):
         raise ValueError('Specify --eventscape-root only when mixing DSEC and EventScape')
     if args.mvsec_calibration and args.eventscape_cameras:
         raise ValueError('MVSEC calibration cannot be mixed with EventScape manifests')
@@ -329,6 +393,10 @@ def main(args):
             for split in dsec_splits:
                 if dsec_splits[split].keys() & eventscape_splits[split].keys():
                     raise ValueError(f'A DSEC and EventScape sequence share a name in {split}')
+        if args.steps == 0 and args.init_head is not None:
+            eventscape_splits = {'test': eventscape_splits['test']} if eventscape_splits else {}
+            dsec_splits = {'test': dsec_splits['test']} if dsec_splits else {}
+            args.train, args.val = [], []
     elif not args.train or not args.val:
         raise ValueError('Specify both --train and --val')
     if args.head is None:
@@ -371,6 +439,10 @@ def main(args):
         config.pop('source_camera_control')
     if not args.source_camera_components:
         config.pop('source_camera_components')
+    if not args.source_depth_control:
+        config.pop('source_depth_control')
+    if not args.known_source_intrinsics:
+        config.pop('known_source_intrinsics')
     if args.lr == 3e-4:
         config.pop('lr')
     args.out.parent.mkdir(parents=True,exist_ok=True)
@@ -399,14 +471,27 @@ def main(args):
             if args.eventscape_cameras:
                 from eventscape_gaussian_data import open_gaussian_sequences
 
-                data = open_gaussian_sequences(args.eventscape_root or args.root,eventscape_splits,stack)
+                data = open_gaussian_sequences(args.eventscape_root or args.root,eventscape_splits,stack,
+                                               target_offset=args.target_offset)
             if args.dsec_temporal_cameras:
                 from dsec_temporal_gaussian_data import DSECTemporalGaussianSequence
 
                 for split in dsec_splits.values():
                     for sequence, cameras in split.items():
-                        source = DSECTemporalGaussianSequence(args.root,sequence,cameras)
+                        try:
+                            source = DSECTemporalGaussianSequence(args.root,sequence,cameras,
+                                                                  target_offset=args.target_offset)
+                        except ValueError:
+                            if args.target_offset == 2:
+                                raise
+                            continue
                         data[sequence] = stack.enter_context(closing(source))
+            if test:
+                present = set(data)
+                args.train = [name for name in args.train if name in present]
+                args.val = [name for name in args.val if name in present]
+                for label,(names,native) in list(test.items()):
+                    test[label] = ([name for name in names if name in present],native)
             if not test:
                 for sequence in args.train+args.val:
                     if args.mvsec_calibration:
@@ -426,7 +511,7 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+')
     parser.add_argument('--val',nargs='+')
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
-    parser.add_argument('--head',choices=('legacy','fixed','voxel','octree'),
+    parser.add_argument('--head',choices=('legacy','fixed','voxel','octree','octree_pixel','octree_pixel_center','octree_pixel_fine','vg2gt','vg2gt_pixel','vg2gt_octree'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--boundary', type=Path, help='Frozen EventScape temporal boundary checkpoint')
     parser.add_argument('--preserve-boundary-scale', action='store_true')
@@ -438,6 +523,12 @@ if __name__=='__main__':
                         help='Compare predicted and calibrated source cameras and report alpha coverage')
     parser.add_argument('--source-camera-components',action='store_true',
                         help='Also compare calibrated intrinsics and poses separately for real events')
+    parser.add_argument('--source-depth-control',action='store_true',
+                        help='Replace measured source depth with camera and feature inputs held fixed')
+    parser.add_argument('--target-offset',type=int,choices=(2,4,6,8),default=2,
+                        help='Target frame offset from the first source; 2 is the midpoint, 4 extrapolates')
+    parser.add_argument('--known-source-intrinsics',action='store_true',
+                        help='Use sensor intrinsics and event-predicted source poses in training and evaluation')
     parser.add_argument('--lr',type=float,default=3e-4)
     dataset = parser.add_mutually_exclusive_group()
     dataset.add_argument('--mvsec-calibration',type=Path,

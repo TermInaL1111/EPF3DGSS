@@ -1,0 +1,132 @@
+{
+  "protocol": {
+    "camera": "known sensor intrinsics + event-predicted relative source poses",
+    "target_offset": 4,
+    "train_windows": 4034,
+    "train_steps": {
+      "octree": 12000,
+      "vg2gt_fine": 4600,
+      "vg2gt_octree": 12000
+    },
+    "note": "Fine-voxel VG2GT run was stopped at 4.6k after DSEC geometry collapsed."
+  },
+  "target2_known_intrinsics": {
+    "dsec": {
+      "psnr": 17.5636781056722,
+      "ssim": 0.7075747279893785,
+      "lpips_vgg": 0.616565519855136,
+      "lpips_alex": 0.530168144475846,
+      "alpha_mean": 0.9578369231451125,
+      "alpha_covered_fraction": 0.9892761253175282
+    },
+    "eventscape": {
+      "psnr": 17.87930830714512,
+      "ssim": 0.5919579971686295,
+      "lpips_vgg": 0.6192934200264207,
+      "lpips_alex": 0.6097952850307811,
+      "alpha_mean": 0.9606532181570906,
+      "alpha_covered_fraction": 0.9969777324544689
+    }
+  },
+  "target8_octree_reference_head": {
+    "dsec": {
+      "windows": 9,
+      "target2": {
+        "psnr": 17.798187573750813,
+        "ssim": 0.7142979568905301,
+        "lpips_vgg": 0.6162353687816196,
+        "lpips_alex": 0.5408963494830661,
+        "gaussian_count": 208046.88888888888
+      },
+      "target8": {
+        "psnr": 18.060451295640732,
+        "ssim": 0.7010346982214186,
+        "lpips_vgg": 0.6170271502600776,
+        "lpips_alex": 0.5440749592251248,
+        "gaussian_count": 208046.88888888888
+      }
+    },
+    "eventscape": {
+      "windows": 336,
+      "target2": {
+        "psnr": 17.902605380330765,
+        "ssim": 0.5952409021556377,
+        "lpips_vgg": 0.6190478049573445,
+        "lpips_alex": 0.6083218949359088,
+        "gaussian_count": 328826.20535714284
+      },
+      "target8": {
+        "psnr": 17.675269478843326,
+        "ssim": 0.5884560541737647,
+        "lpips_vgg": 0.619947669406732,
+        "lpips_alex": 0.6134961360976809,
+        "gaussian_count": 328826.20535714284
+      }
+    }
+  },
+  "runs": [
+    {
+      "name": "octree_target4_12k",
+      "dsec": {
+        "windows": 21,
+        "psnr": 17.79365312485468,
+        "ssim": 0.7215083695593334,
+        "lpips_vgg": 0.6344289864812579,
+        "lpips_alex": 0.6060660282770792,
+        "zero_psnr": 9.467331159682502,
+        "gaussians": 218740.42857142858
+      },
+      "eventscape": {
+        "windows": 463,
+        "psnr": 17.776931412534115,
+        "ssim": 0.5888541015126535,
+        "lpips_vgg": 0.6412097761491977,
+        "lpips_alex": 0.6673124224011893,
+        "zero_psnr": 13.403159118883039,
+        "gaussians": 327573.76889848814
+      }
+    },
+    {
+      "name": "vg2gt_fine_target4_4k6",
+      "dsec": {
+        "windows": 21,
+        "psnr": 11.863476753234863,
+        "ssim": 0.6251236853145418,
+        "lpips_vgg": 0.6571203186398461,
+        "lpips_alex": 0.6662337808381944,
+        "zero_psnr": 8.857439903985886,
+        "gaussians": 614843.619047619
+      },
+      "eventscape": {
+        "windows": 463,
+        "psnr": 17.716308626706347,
+        "ssim": 0.5876821033640505,
+        "lpips_vgg": 0.6572113253385408,
+        "lpips_alex": 0.6926713247278596,
+        "zero_psnr": 14.637332285969613,
+        "gaussians": 762179.5421166307
+      }
+    },
+    {
+      "name": "vg2gt_octree_target4_12k",
+      "dsec": {
+        "windows": 21,
+        "psnr": 15.441701571146647,
+        "ssim": 0.7018567692665827,
+        "lpips_vgg": 0.6403870554197402,
+        "lpips_alex": 0.6243658888907659,
+        "zero_psnr": 10.484950837634859,
+        "gaussians": 437480.85714285716
+      },
+      "eventscape": {
+        "windows": 463,
+        "psnr": 17.657912855786844,
+        "ssim": 0.5869707221217598,
+        "lpips_vgg": 0.6544634775775555,
+        "lpips_alex": 0.6760004578604811,
+        "zero_psnr": 13.245295985986038,
+        "gaussians": 655147.5377969763
+      }
+    }
+  ]
+}

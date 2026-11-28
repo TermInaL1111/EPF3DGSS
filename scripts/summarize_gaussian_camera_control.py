@@ -9,6 +9,13 @@ from summarize_attribute_supervision import manifest_windows, metric_change, rea
 from summarize_multiscene_gaussians import METRICS
 
 
+GEOMETRY_DIAGNOSTICS = (
+    'source_depth_fraction','metric_depth_absrel','aligned_depth_absrel','reference_depth_scale',
+    'focal_x_ratio','focal_y_ratio','principal_point_error_px','local_ray_angle_deg',
+    'rotation_error_deg','translation_error_m','depth_reprojection_px',
+)
+
+
 def summarize(root, reference):
     config = read_json(root/'config.json')
     if not config['source_camera_control'] or config['steps']:
@@ -44,6 +51,20 @@ def summarize(root, reference):
                 components[component] = dict(scores=estimate,
                     vs_predicted={m:metric_change(predicted[m],estimate[m],sign) for m,sign in metrics.items()})
             report[dataset]['components'] = components
+        if config.get('source_depth_control'):
+            predicted_depth = scores['matched']['calibrated']
+            measured_depth = {m:fmean(row[f'matched_reference_depth_{m}'] for row in rows) for m in metrics}
+            diagnostics = {}
+            for key in GEOMETRY_DIAGNOSTICS:
+                values = [row[f'matched_calibrated_{key}'] for row in rows
+                          if row[f'matched_calibrated_{key}'] is not None]
+                diagnostics[key] = dict(mean=fmean(values) if values else None,windows=len(values))
+            report[dataset]['depth_control'] = dict(
+                measured_depth_scores=measured_depth,
+                vs_predicted_depth={m:metric_change(predicted_depth[m],measured_depth[m],sign)
+                                    for m,sign in metrics.items()},
+                geometry=diagnostics,
+            )
     return report
 
 

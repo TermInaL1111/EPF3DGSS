@@ -84,25 +84,55 @@ def prepare(root, split, windows_per_sequence, sequence_limit=None):
 class EventScapeGaussianSequence:
     """Use event packets i/i+4, grey target i+2 and an offline camera reference."""
 
-    def __init__(self, archive, name, cameras):
+    def __init__(self, archive, name, cameras, target_offset=2):
+        if target_offset not in (2,4,6,8):
+            raise ValueError('EventScape target offset must be 2, 4, 6 or 8 frames')
         self.sequence = EventScapeSequence(archive, name)
+        self.name = name
         self.cameras = cameras
-        self.indices = sorted(map(int, cameras))
+        self.target_offset = target_offset
+        self.source_offsets = (0,4) if target_offset != 4 else (0,2)
+        self.indices = [i for i in sorted(map(int, cameras))
+                        if i+self.target_offset < len(self.sequence.ends)
+                        and self.has_offset(cameras[str(i)], self.target_offset)
+                        and self.has_offset(cameras[str(i)], self.source_offsets[1])]
+        if not self.indices:
+            raise ValueError(f'No valid target offset {target_offset} in {name}')
         self.source_k = resize_intrinsics(NATIVE_K, (512,256), (224,168))
         self.render_k = resize_intrinsics(NATIVE_K, (512,256), (640,480))
 
+    @staticmethod
+    def has_offset(cameras, offset):
+        if isinstance(cameras, dict):
+            return str(offset) in cameras
+        position = (offset - 2) // 2
+        return 0 <= position < len(cameras)
+
+    def camera(self, cameras, offset):
+        if isinstance(cameras, dict):
+            if str(offset) not in cameras:
+                raise ValueError(f'Camera offset {offset} is absent from {self.name}')
+            return np.asarray(cameras[str(offset)]['c2w'])
+        position = (offset - 2) // 2
+        if position < 0 or position >= len(cameras):
+            raise ValueError(f'Camera offset {offset} is absent from {self.sequence.name}')
+        return np.asarray(cameras[position]['c2w'])
+
     def packet(self, view, index):
-        packet = self.sequence.packet(index+4*view).astype(np.float64)
+        packet = self.sequence.packet(index+self.source_offsets[view]).astype(np.float64)
         packet[:2] *= np.array([640/512,480/256])[:,None]
         return packet
 
     def native_gray(self, index):
-        return cv2.cvtColor(self.sequence.rgb(index+2), cv2.COLOR_RGB2GRAY)
+        return cv2.cvtColor(self.sequence.rgb(index+self.target_offset), cv2.COLOR_RGB2GRAY)
 
     def supervision(self, index):
-        query, later = (np.asarray(item['c2w']) for item in self.cameras[str(index)])
-        depths = np.stack([cv2.resize(self.sequence.depth(i), (640,480), interpolation=cv2.INTER_NEAREST)
-                           for i in (index,index+4)])
+        cameras = self.cameras[str(index)]
+        query = self.camera(cameras,self.target_offset)
+        later = self.camera(cameras,self.source_offsets[1])
+        depths = np.stack([cv2.resize(self.sequence.depth(index+offset), (640,480),
+                                     interpolation=cv2.INTER_NEAREST)
+                           for offset in self.source_offsets])
         depths = np.where(np.isfinite(depths) & (depths >= .1) & (depths <= 200),depths,0)
         gray = cv2.resize(self.native_gray(index), (640,480), interpolation=cv2.INTER_LINEAR)
         return depths, np.stack([self.source_k]*2), np.stack((np.eye(4),later)), query, self.render_k, gray
@@ -122,14 +152,19 @@ def load_camera_splits(directory):
     return splits
 
 
-def open_gaussian_sequences(root, splits, stack):
+def open_gaussian_sequences(root, splits, stack, target_offset=2):
     data = {}
     for split, sequences in splits.items():
         archive = stack.enter_context(closing(EventScapeArchive(root / ARCHIVES[split])))
         if sequences.keys() - set(archive.sequences):
             raise ValueError(f'EventScape camera manifest contains unknown sequences: {split}')
-        data.update({name: EventScapeGaussianSequence(archive, name, rows)
-                     for name, rows in sequences.items()})
+        for name, rows in sequences.items():
+            try:
+                data[name] = EventScapeGaussianSequence(archive, name, rows,
+                                                        target_offset=target_offset)
+            except ValueError:
+                if target_offset == 2:
+                    raise
     return data
 
 

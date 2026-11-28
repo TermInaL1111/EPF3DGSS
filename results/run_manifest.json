@@ -1,0 +1,360 @@
+{
+  "runs": [
+    {
+      "id": "octree_target4_12k",
+      "head": "octree",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "finished",
+      "run_dir": "/data/userwj/epf-runs/octree_target4_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_target4_12k/latest.pt",
+      "checkpoint_sha256": "551b630f0753adabf2f151ea79f621b9725631599bd5257885b9685050c3daa5",
+      "checkpoint_bytes": 4331981,
+      "config_json": "/data/userwj/epf-runs/octree_target4_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_target4_12k/train.jsonl",
+      "val_012000_json": "/data/userwj/epf-runs/octree_target4_12k/val_012000.json",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/octree_target4_12k/val_test_dsec.json",
+          "windows": 21,
+          "psnr": 17.793652897789364,
+          "ssim": 0.7215082957631066,
+          "lpips_vgg": 0.6344289353915623,
+          "lpips_alex": 0.6060660708518255,
+          "zero_psnr": 9.467330206008185,
+          "gaussians": 218740.42857142858
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_target4_12k/val_test_eventscape.json",
+          "windows": 463,
+          "psnr": 17.776931420773202,
+          "ssim": 0.5888540956551777,
+          "lpips_vgg": 0.6412097094640876,
+          "lpips_alex": 0.6673124247184326,
+          "zero_psnr": 13.403159209512994,
+          "gaussians": 327573.76889848814
+        }
+      }
+    },
+    {
+      "id": "vg2gt_target4_12k",
+      "head": "vg2gt (fine voxel)",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 4600,
+      "status": "stopped at 4.6k (DSEC geometry collapse)",
+      "run_dir": "/data/userwj/epf-runs/vg2gt_target4_12k",
+      "checkpoint": "/data/userwj/epf-runs/vg2gt_target4_12k/latest.pt",
+      "checkpoint_sha256": "9103acba2273b26ec651ba89ae7f729fd9d29def364a77fc261e553df5fba725",
+      "checkpoint_bytes": 4359493,
+      "config_json": "/data/userwj/epf-runs/vg2gt_target4_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/vg2gt_target4_12k/train.jsonl",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/vg2gt_target4_eval_46k/val_test_dsec.json",
+          "windows": 21,
+          "psnr": 11.863476753234863,
+          "ssim": 0.6251236853145418,
+          "lpips_vgg": 0.6571203186398461,
+          "lpips_alex": 0.6662337808381944,
+          "zero_psnr": 8.857439903985886,
+          "gaussians": 614843.619047619
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/vg2gt_target4_eval_46k/val_test_eventscape.json",
+          "windows": 463,
+          "psnr": 17.716308626706347,
+          "ssim": 0.5876821033640505,
+          "lpips_vgg": 0.6572113253385408,
+          "lpips_alex": 0.6926713247278596,
+          "zero_psnr": 14.637332285969613,
+          "gaussians": 762179.5421166307
+        }
+      }
+    },
+    {
+      "id": "vg2gt_octree_target4_12k",
+      "head": "vg2gt_octree",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "finished",
+      "run_dir": "/data/userwj/epf-runs/vg2gt_octree_target4_12k",
+      "checkpoint": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/latest.pt",
+      "checkpoint_sha256": "8e390ede83f48f461e5b389f8fe71d19ea54ebb58aae453322c8bf2b2c0e584d",
+      "checkpoint_bytes": 4335244,
+      "config_json": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/train.jsonl",
+      "val_012000_json": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/val_012000.json",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/val_test_dsec.json",
+          "windows": 21,
+          "psnr": 15.441701571146647,
+          "ssim": 0.7018567692665827,
+          "lpips_vgg": 0.6403870554197402,
+          "lpips_alex": 0.6243658888907659,
+          "zero_psnr": 10.484950837634859,
+          "gaussians": 437480.85714285716
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/vg2gt_octree_target4_12k/val_test_eventscape.json",
+          "windows": 463,
+          "psnr": 17.657912855786844,
+          "ssim": 0.5869707221217598,
+          "lpips_vgg": 0.6544634775775555,
+          "lpips_alex": 0.6760004578604811,
+          "zero_psnr": 13.245295985986038,
+          "gaussians": 655147.5377969763
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_es_12k",
+      "head": "octree_pixel",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "finished",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_es_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_es_12k/latest.pt",
+      "checkpoint_sha256": "eb0e8caf0b8b21de7abc87428724a292beed6b959814c82e9f2cf1715ab02a40",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_es_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_es_12k/train.jsonl",
+      "val_012000_json": "/data/userwj/epf-runs/octree_pixel_es_12k/val_012000.json",
+      "eval": {
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_es_12k/val_test.json",
+          "windows": 463,
+          "psnr": 18.19746370294954,
+          "ssim": 0.6074447057674565,
+          "lpips_vgg": 0.563286420014198,
+          "lpips_alex": 0.5149498316690679,
+          "zero_psnr": 14.5972322439272,
+          "gaussians": 326562.88336933043
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_es_4k_eval",
+      "head": "octree_pixel",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 4200,
+      "status": "intermediate evaluation",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_es_eval_4k",
+      "checkpoint": null,
+      "checkpoint_sha256": null,
+      "checkpoint_bytes": null,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_es_eval_4k/config.json",
+      "eval": {
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_es_eval_4k/val_test.json",
+          "windows": 463,
+          "psnr": 17.87976129832587,
+          "ssim": 0.5949966362305388,
+          "lpips_vgg": 0.5999633498634684,
+          "lpips_alex": 0.5833207932069544,
+          "zero_psnr": 13.601302219003632,
+          "gaussians": 326562.88336933043
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_dsec_zeroshot",
+      "head": "octree_pixel",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "zero-shot (failed)",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_dsec_zeroshot",
+      "checkpoint": null,
+      "checkpoint_sha256": null,
+      "checkpoint_bytes": null,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_dsec_zeroshot/config.json",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/octree_pixel_dsec_zeroshot/val_test.json",
+          "windows": 21,
+          "psnr": 7.435889380318778,
+          "ssim": 0.36697894476708914,
+          "lpips_vgg": 0.6845214934576125,
+          "lpips_alex": 0.7158265397662208,
+          "zero_psnr": 9.200623830159506,
+          "gaussians": 217873.14285714287
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_mixed_12k",
+      "head": "octree_pixel",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "finished",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_mixed_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_mixed_12k/latest.pt",
+      "checkpoint_sha256": "f29be4472f61bc687c24ac14d8d06ffda8a50ad188fbff9e8d93f927697b1f02",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_mixed_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_mixed_12k/train.jsonl",
+      "val_012000_json": "/data/userwj/epf-runs/octree_pixel_mixed_12k/val_012000.json",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/octree_pixel_mixed_12k/val_test_dsec.json",
+          "windows": 21,
+          "psnr": 17.389830952598935,
+          "ssim": 0.7043886582056681,
+          "lpips_vgg": 0.6478293566476732,
+          "lpips_alex": 0.5955635082154047,
+          "zero_psnr": 10.070779845828103,
+          "gaussians": 217873.14285714287
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_mixed_12k/val_test_eventscape.json",
+          "windows": 463,
+          "psnr": 17.932517132027876,
+          "ssim": 0.6007818916961389,
+          "lpips_vgg": 0.5777133063415214,
+          "lpips_alex": 0.5347408897547176,
+          "zero_psnr": 13.283301617105373,
+          "gaussians": 326562.88336933043
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_center_es_12k",
+      "head": "octree_pixel_center",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "finished",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_center_es_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_center_es_12k/latest.pt",
+      "checkpoint_sha256": "2dd926da742ddb99a9ed635f7f1dc7fd089edca1fb52de4bc667f10765baeeb4",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_center_es_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_center_es_12k/train.jsonl",
+      "val_012000_json": "/data/userwj/epf-runs/octree_pixel_center_es_12k/val_012000.json",
+      "eval": {
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_center_es_12k/val_test.json",
+          "windows": 463,
+          "psnr": 18.12678458829678,
+          "ssim": 0.6062595528222572,
+          "lpips_vgg": 0.5661739633613735,
+          "lpips_alex": 0.5185880382297878,
+          "zero_psnr": 14.600549131438747,
+          "gaussians": 326562.88336933043
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_center_es_7k_eval",
+      "head": "octree_pixel_center",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 7500,
+      "status": "intermediate evaluation",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_center_es_eval_7k",
+      "checkpoint": null,
+      "checkpoint_sha256": null,
+      "checkpoint_bytes": null,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_center_es_eval_7k/config.json",
+      "eval": {
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_pixel_center_es_eval_7k/val_test.json",
+          "windows": 463,
+          "psnr": 18.09848639362574,
+          "ssim": 0.603378024266039,
+          "lpips_vgg": 0.578283712106956,
+          "lpips_alex": 0.5454905024743749,
+          "zero_psnr": 14.72213377859886,
+          "gaussians": 326562.88336933043
+        }
+      }
+    },
+    {
+      "id": "octree_pixel_center_mixed_12k",
+      "head": "octree_pixel_center",
+      "train": "DSEC+EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "running",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/latest.pt",
+      "checkpoint_sha256": "0c3778225ff3b654a0b4b715f8e964ebfe0e89dd9c89ce60d7ea9a16f50f6be9",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_center_mixed_12k/train.jsonl",
+      "eval": {}
+    },
+    {
+      "id": "octree_pixel_fine_es_12k",
+      "head": "octree_pixel_fine (2.5 cm)",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 12000,
+      "status": "running",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_fine_es_12k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_fine_es_12k/latest.pt",
+      "checkpoint_sha256": "66e489c5c705c0be4f3fc98388243f0df7ef7de4a4d2934b1a7f8e4e919cc80a",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_fine_es_12k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_fine_es_12k/train.jsonl",
+      "eval": {}
+    },
+    {
+      "id": "octree_pixel_es_40k",
+      "head": "octree_pixel",
+      "train": "EventScape",
+      "target": 4,
+      "steps": 3900,
+      "status": "stopped (marginal gain)",
+      "run_dir": "/data/userwj/epf-runs/octree_pixel_es_40k",
+      "checkpoint": "/data/userwj/epf-runs/octree_pixel_es_40k/latest.pt",
+      "checkpoint_sha256": "f901ab82f9745366f1d283b62deb272e0273489e94eb7309411855702b0512c7",
+      "checkpoint_bytes": 4354057,
+      "config_json": "/data/userwj/epf-runs/octree_pixel_es_40k/config.json",
+      "train_jsonl": "/data/userwj/epf-runs/octree_pixel_es_40k/train.jsonl",
+      "eval": {}
+    },
+    {
+      "id": "octree_target8_eval",
+      "head": "octree",
+      "train": "DSEC+EventScape",
+      "target": 8,
+      "steps": 12000,
+      "status": "target-8 held-out evaluation",
+      "run_dir": "/data/userwj/epf-runs/octree_target8_eval",
+      "checkpoint": null,
+      "checkpoint_sha256": null,
+      "checkpoint_bytes": null,
+      "config_json": "/data/userwj/epf-runs/octree_target8_eval/config.json",
+      "eval": {
+        "dsec": {
+          "path": "/data/userwj/epf-runs/octree_target8_eval/val_test_dsec.json",
+          "windows": 9,
+          "psnr": 18.060451295640732,
+          "ssim": 0.7010346982214186,
+          "lpips_vgg": 0.6170271502600776,
+          "lpips_alex": 0.5440749592251248,
+          "zero_psnr": 10.24372058444553,
+          "gaussians": 208046.88888888888
+        },
+        "eventscape": {
+          "path": "/data/userwj/epf-runs/octree_target8_eval/val_test_eventscape.json",
+          "windows": 336,
+          "psnr": 17.675269478843326,
+          "ssim": 0.5884560541737647,
+          "lpips_vgg": 0.619947669406732,
+          "lpips_alex": 0.6134961360976809,
+          "zero_psnr": 12.966150428567614,
+          "gaussians": 328826.20535714284
+        }
+      }
+    }
+  ]
+}

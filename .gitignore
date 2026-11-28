@@ -3,3 +3,7 @@ __pycache__/
 *.safetensors
 
 .ipynb_checkpoints/
+
+refs/
+draftpaper/
+.dsh/

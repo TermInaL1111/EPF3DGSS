@@ -11,6 +11,9 @@ flags=()
 if [[ "${1:-}" == --components ]]; then
     out="${out}_components"
     flags=(--source-camera-components)
+elif [[ "${1:-}" == --depth ]]; then
+    out="${out}_depth"
+    flags=(--source-depth-control)
 elif [[ $# -ne 0 ]]; then
     exit 2
 fi

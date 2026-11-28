@@ -1,0 +1,358 @@
+{
+  "dsec": {
+    "windows": 21,
+    "scores": {
+      "matched": {
+        "predicted": {
+          "psnr": 12.042673247201103,
+          "ssim": 0.47797212572324843,
+          "lpips_vgg": 0.666080735978626,
+          "lpips_alex": 0.6725387800307501,
+          "alpha_mean": 0.5768373069309053,
+          "alpha_covered_fraction": 0.5813104680606297
+        },
+        "calibrated": {
+          "psnr": 17.671174003964378,
+          "ssim": 0.7165102646464393,
+          "lpips_vgg": 0.609875772680555,
+          "lpips_alex": 0.5208195235048022,
+          "alpha_mean": 0.9550966251464117,
+          "alpha_covered_fraction": 0.9895711143811544
+        }
+      },
+      "zero": {
+        "predicted": {
+          "psnr": 8.321194353557768,
+          "ssim": 0.31748017526808237,
+          "lpips_vgg": 0.7129187697455996,
+          "lpips_alex": 0.7842583429245722,
+          "alpha_mean": 0.4198608299096425,
+          "alpha_covered_fraction": 0.4420523430619921
+        },
+        "calibrated": {
+          "psnr": 9.4533174151466,
+          "ssim": 0.4968451091221401,
+          "lpips_vgg": 0.71773742494129,
+          "lpips_alex": 0.7742851745514643,
+          "alpha_mean": 0.909342436563401,
+          "alpha_covered_fraction": 0.9476393801825387
+        }
+      }
+    },
+    "calibrated_vs_predicted": {
+      "matched": {
+        "psnr": {
+          "delta": 5.628500756763275,
+          "improvement_pct": 46.73796790153235
+        },
+        "ssim": {
+          "delta": 0.23853813892319087,
+          "improvement_pct": 49.90628659824973
+        },
+        "lpips_vgg": {
+          "delta": -0.05620496329807101,
+          "improvement_pct": 8.438160760721141
+        },
+        "lpips_alex": {
+          "delta": -0.15171925652594787,
+          "improvement_pct": 22.559183355792644
+        },
+        "alpha_mean": {
+          "delta": 0.3782593182155064,
+          "improvement_pct": 65.57469734890344
+        },
+        "alpha_covered_fraction": {
+          "delta": 0.4082606463205247,
+          "improvement_pct": 70.23108454980444
+        }
+      },
+      "zero": {
+        "psnr": {
+          "delta": 1.1321230615888318,
+          "improvement_pct": 13.605295267557198
+        },
+        "ssim": {
+          "delta": 0.17936493385405772,
+          "improvement_pct": 56.496420194615546
+        },
+        "lpips_vgg": {
+          "delta": 0.004818655195690358,
+          "improvement_pct": -0.675905222331271
+        },
+        "lpips_alex": {
+          "delta": -0.00997316837310791,
+          "improvement_pct": 1.271668763626669
+        },
+        "alpha_mean": {
+          "delta": 0.48948160665375845,
+          "improvement_pct": 116.58186993987958
+        },
+        "alpha_covered_fraction": {
+          "delta": 0.5055870371205466,
+          "improvement_pct": 114.37266311461325
+        }
+      }
+    },
+    "maximum_predicted_psnr_drift_db": 2.574920654296875e-05,
+    "depth_control": {
+      "measured_depth_scores": {
+        "psnr": 17.52678026471819,
+        "ssim": 0.7153591967764354,
+        "lpips_vgg": 0.6181653369040716,
+        "lpips_alex": 0.5417547992297581,
+        "alpha_mean": 0.9744621884255182,
+        "alpha_covered_fraction": 0.9944006062689281
+      },
+      "vs_predicted_depth": {
+        "psnr": {
+          "delta": -0.14439373924618693,
+          "improvement_pct": -0.8171145800148503
+        },
+        "ssim": {
+          "delta": -0.0011510678700038524,
+          "improvement_pct": -0.1606491807304177
+        },
+        "lpips_vgg": {
+          "delta": 0.008289564223516566,
+          "improvement_pct": -1.3592217620125946
+        },
+        "lpips_alex": {
+          "delta": 0.020935275724955904,
+          "improvement_pct": -4.019679520474595
+        },
+        "alpha_mean": {
+          "delta": 0.019365563279106546,
+          "improvement_pct": 2.0276025241046054
+        },
+        "alpha_covered_fraction": {
+          "delta": 0.004829491887773707,
+          "improvement_pct": 0.48803889054440663
+        }
+      },
+      "geometry": {
+        "source_depth_fraction": {
+          "mean": 0.20060322682062784,
+          "windows": 21
+        },
+        "metric_depth_absrel": {
+          "mean": 0.21028801585946763,
+          "windows": 21
+        },
+        "aligned_depth_absrel": {
+          "mean": 0.16636589169502258,
+          "windows": 21
+        },
+        "reference_depth_scale": {
+          "mean": 1.0064394956543332,
+          "windows": 21
+        },
+        "focal_x_ratio": {
+          "mean": 1.9242027884437924,
+          "windows": 21
+        },
+        "focal_y_ratio": {
+          "mean": 1.2891512428011214,
+          "windows": 21
+        },
+        "principal_point_error_px": {
+          "mean": 16.77808325631278,
+          "windows": 21
+        },
+        "local_ray_angle_deg": {
+          "mean": 7.84107696442377,
+          "windows": 21
+        },
+        "rotation_error_deg": {
+          "mean": 0.7646596871671223,
+          "windows": 21
+        },
+        "translation_error_m": {
+          "mean": 0.23006075691609157,
+          "windows": 21
+        },
+        "depth_reprojection_px": {
+          "mean": 1.3612944058009557,
+          "windows": 21
+        }
+      }
+    }
+  },
+  "eventscape": {
+    "windows": 463,
+    "scores": {
+      "matched": {
+        "predicted": {
+          "psnr": 9.353867096210916,
+          "ssim": 0.16700185729154501,
+          "lpips_vgg": 0.70823722807429,
+          "lpips_alex": 0.8264081219360071,
+          "alpha_mean": 0.2572860569405504,
+          "alpha_covered_fraction": 0.25641758260407665
+        },
+        "calibrated": {
+          "psnr": 17.913620277305917,
+          "ssim": 0.5957314437074229,
+          "lpips_vgg": 0.6163845071267361,
+          "lpips_alex": 0.6068431270302758,
+          "alpha_mean": 0.9612169055907824,
+          "alpha_covered_fraction": 0.997192036513376
+        }
+      },
+      "zero": {
+        "predicted": {
+          "psnr": 8.943311795302654,
+          "ssim": 0.1444594064490069,
+          "lpips_vgg": 0.7275634247077464,
+          "lpips_alex": 0.8588942558410101,
+          "alpha_mean": 0.22302065734986867,
+          "alpha_covered_fraction": 0.2343677849736121
+        },
+        "calibrated": {
+          "psnr": 13.254950616066193,
+          "ssim": 0.5096524422807261,
+          "lpips_vgg": 0.6750374568976285,
+          "lpips_alex": 0.7993718165558307,
+          "alpha_mean": 0.9770626138662416,
+          "alpha_covered_fraction": 0.999999866501044
+        }
+      }
+    },
+    "calibrated_vs_predicted": {
+      "matched": {
+        "psnr": {
+          "delta": 8.559753181095001,
+          "improvement_pct": 91.51031432296493
+        },
+        "ssim": {
+          "delta": 0.4287295864158779,
+          "improvement_pct": 256.72144811384896
+        },
+        "lpips_vgg": {
+          "delta": -0.09185272094755392,
+          "improvement_pct": 12.969202592936712
+        },
+        "lpips_alex": {
+          "delta": -0.21956499490573134,
+          "improvement_pct": 26.568591120736027
+        },
+        "alpha_mean": {
+          "delta": 0.703930848650232,
+          "improvement_pct": 273.59852182463396
+        },
+        "alpha_covered_fraction": {
+          "delta": 0.7407744539092993,
+          "improvement_pct": 288.89378270642896
+        }
+      },
+      "zero": {
+        "psnr": {
+          "delta": 4.311638820763539,
+          "improvement_pct": 48.21076262853953
+        },
+        "ssim": {
+          "delta": 0.36519303583171925,
+          "improvement_pct": 252.7997620983094
+        },
+        "lpips_vgg": {
+          "delta": -0.05252596781011787,
+          "improvement_pct": 7.219434900980204
+        },
+        "lpips_alex": {
+          "delta": -0.05952243928517942,
+          "improvement_pct": 6.930124270873877
+        },
+        "alpha_mean": {
+          "delta": 0.754041956516373,
+          "improvement_pct": 338.1040866243402
+        },
+        "alpha_covered_fraction": {
+          "delta": 0.7656320815274319,
+          "improvement_pct": 326.67974466441103
+        }
+      }
+    },
+    "maximum_predicted_psnr_drift_db": 1.049041748046875e-05,
+    "depth_control": {
+      "measured_depth_scores": {
+        "psnr": 17.76490984313174,
+        "ssim": 0.5962053009552266,
+        "lpips_vgg": 0.5756701259324669,
+        "lpips_alex": 0.5470745665851988,
+        "alpha_mean": 0.9233930280862566,
+        "alpha_covered_fraction": 0.98668120811104
+      },
+      "vs_predicted_depth": {
+        "psnr": {
+          "delta": -0.14871043417417695,
+          "improvement_pct": -0.8301528773755048
+        },
+        "ssim": {
+          "delta": 0.00047385724780368843,
+          "improvement_pct": 0.07954209112326298
+        },
+        "lpips_vgg": {
+          "delta": -0.04071438119426918,
+          "improvement_pct": 6.605354405168041
+        },
+        "lpips_alex": {
+          "delta": -0.059768560445076946,
+          "improvement_pct": 9.8490957189493
+        },
+        "alpha_mean": {
+          "delta": -0.03782387750452587,
+          "improvement_pct": -3.9349991957620207
+        },
+        "alpha_covered_fraction": {
+          "delta": -0.01051082840233597,
+          "improvement_pct": -1.0540425532364328
+        }
+      },
+      "geometry": {
+        "source_depth_fraction": {
+          "mean": 0.7861938087780583,
+          "windows": 463
+        },
+        "metric_depth_absrel": {
+          "mean": 0.248089068313783,
+          "windows": 463
+        },
+        "aligned_depth_absrel": {
+          "mean": 0.18793134209468607,
+          "windows": 463
+        },
+        "reference_depth_scale": {
+          "mean": 1.17821979947533,
+          "windows": 463
+        },
+        "focal_x_ratio": {
+          "mean": 3.425931078311434,
+          "windows": 463
+        },
+        "focal_y_ratio": {
+          "mean": 1.5345167464880398,
+          "windows": 463
+        },
+        "principal_point_error_px": {
+          "mean": 10.015069815304058,
+          "windows": 463
+        },
+        "local_ray_angle_deg": {
+          "mean": 17.397341837378352,
+          "windows": 463
+        },
+        "rotation_error_deg": {
+          "mean": 0.5662355792606109,
+          "windows": 463
+        },
+        "translation_error_m": {
+          "mean": 0.20197185157892772,
+          "windows": 463
+        },
+        "depth_reprojection_px": {
+          "mean": 1.5993634622310717,
+          "windows": 463
+        }
+      }
+    }
+  }
+}

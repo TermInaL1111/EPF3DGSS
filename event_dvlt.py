@@ -112,6 +112,30 @@ class EventDVLT(nn.Module):
             from voxel_gaussians import VoxelGaussianHead
 
             head = VoxelGaussianHead(octree=kind == "octree")
+        elif kind == 'vg2gt':
+            from vg2gt_gaussians import SelfSplittingVoxelGaussianHead
+
+            head = SelfSplittingVoxelGaussianHead()
+        elif kind == 'vg2gt_pixel':
+            from vg2gt_pixel_gaussians import SelfSplittingPixelColourHead
+
+            head = SelfSplittingPixelColourHead()
+        elif kind == 'vg2gt_octree':
+            from vg2gt_octree_gaussians import SelfSplittingOctreeHead
+
+            head = SelfSplittingOctreeHead()
+        elif kind == 'octree_pixel':
+            from voxel_gaussians import VoxelGaussianHead
+
+            head = VoxelGaussianHead(octree=True, per_pixel_color=True)
+        elif kind == 'octree_pixel_center':
+            from voxel_gaussians import VoxelGaussianHead
+
+            head = VoxelGaussianHead(octree=True, per_pixel_color=True, center_color=True)
+        elif kind == 'octree_pixel_fine':
+            from voxel_gaussians import VoxelGaussianHead
+
+            head = VoxelGaussianHead(octree=True, per_pixel_color=True, voxel_size=.025)
         else:
             raise ValueError(f'Unknown Gaussian head: {kind}')
         device = self.log_metric_scale.device
@@ -155,17 +179,21 @@ class EventDVLT(nn.Module):
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
                 source_cameras=None, depth_refinement=None, event_leaf_ranking=False, matched_leaf_budget=False,
-                appearance_inputs=None, depth_readout=None):
+                appearance_inputs=None, depth_readout=None, reference_metric_depth=None):
         b,s = voxel.shape[:2]
         if depth_refinement is not None and calibrated_geometry is not None:
             raise ValueError('Depth refinement requires predicted geometry')
         if depth_readout is not None and (source_cameras is None or any(x is None for x in source_cameras)
                                            or calibrated_geometry is not None):
             raise ValueError('Depth readout interventions require fixed source cameras and predicted geometry')
+        if reference_metric_depth is not None and (
+                source_cameras is None or any(x is None for x in source_cameras)
+                or calibrated_geometry is not None or depth_refinement is not None or depth_readout is not None):
+            raise ValueError('Reference depth control requires fixed cameras and an unmodified depth decoder')
         if (event_leaf_ranking or matched_leaf_budget) and (self.head_type != 'octree' or depth_refinement is None):
             raise ValueError('Event leaf ranking requires an octree head and boundary predictions')
         leaf_scores = None
-        use_voxels = self.head_type in ('voxel', 'octree')
+        use_voxels = self.head_type in ('voxel', 'octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'vg2gt', 'vg2gt_pixel', 'vg2gt_octree')
         if use_voxels and (steps < 4 or calibrated_geometry is not None):
             raise ValueError('The voxel head requires predicted depth and at least four recurrent steps')
         feature_states = [] if use_voxels else None
@@ -180,6 +208,7 @@ class EventDVLT(nn.Module):
                 rays = raw["rays"].float()
                 poses,intrinsic = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
                 relative = torch.linalg.solve(poses[:,:1],poses)
+                fitted_intrinsics = intrinsic
             if source_cameras is not None:
                 source_intrinsics, source_poses = source_cameras
                 if source_intrinsics is not None:
@@ -217,6 +246,10 @@ class EventDVLT(nn.Module):
                     raise ValueError('Refined depth must match the Gaussian source grid')
                 depth = corrected
             depth = depth * scale
+            if reference_metric_depth is not None:
+                reference = reference_metric_depth.reshape_as(depth)
+                measured = torch.isfinite(reference) & (reference > 0)
+                depth = torch.where(measured,reference,depth)
         else:
             scale = metric_depth.new_tensor(1.)
             depth = metric_depth.reshape(b*s,1,480,640).clamp_min(1e-4)
@@ -244,15 +277,19 @@ class EventDVLT(nn.Module):
             points = center.flatten(1,2)
             valid = torch.isfinite(points).all(-1) & (depth.reshape(b,-1) > 0)
             confidence = None
-            if self.head_type == 'octree':
+            if self.head_type in ('octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'vg2gt_octree'):
                 confidence = resize(depth_confidence.reshape(b*s,1,168,224).float()).reshape(b,-1)
             result = self.gs_head([self.geometry_features(patch_grid(state)) for state in feature_states],
                                   appearance, points, valid, confidence=confidence, boundary=leaf_scores,
-                                  event_leaf_ranking=event_leaf_ranking, matched_leaf_budget=matched_leaf_budget)
+                                  event_leaf_ranking=event_leaf_ranking, matched_leaf_budget=matched_leaf_budget,
+                                  source_intrinsics=intrinsic if self.head_type == 'octree_pixel_center' else None)
             result.update(tokens=tokens,masked=hidden,source_depth=depth.reshape(b,s,480,640),
                           rotation=relative[:,1,:3,:3],translation=relative[:,1,:3,3]*translation_scale)
             if return_geometry:
                 result['raw_geometry'] = raw
+                result['fitted_intrinsics'] = fitted_intrinsics
+                result['fitted_c2w'] = poses
+                result['metric_scale'] = scale
             return result
         center = local @ relative[:,:,:3,:3].transpose(-1,-2) + translation_scale*relative[:,:,:3,3][:,:,None]
         sigma = depth/(k[:,0,0,None,None,None].clamp_min(1)*640/224)
