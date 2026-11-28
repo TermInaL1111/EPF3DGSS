@@ -118,19 +118,25 @@ def run(args, data, checkpoint, test):
         source = data[seq]
         return torch.stack([event_bins(source.packet(view, index), (480,640)) for view in (0,1)])
 
-    def predict(item, empty=False, training=False):
+    def predict(item, empty=False, training=False, calibrated_source=False):
         voxel,field,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
         if empty:
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
-        cameras = (ki,poses) if training and args.head != 'legacy' else None
+        cameras = (ki,poses) if calibrated_source or (training and args.head != 'legacy') else None
         refine = (temporal_corrector(boundary,boundary_counts(*item).cuda(),empty,args.preserve_boundary_scale)
                   if boundary else None)
         with torch.autocast('cuda',dtype=torch.bfloat16):
             cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras, depth_refinement=refine,
                           event_leaf_ranking=args.event_leaves, matched_leaf_budget=bool(boundary))
-        image = render(cloud,query,k)
+        coverage = None
+        if args.source_camera_control:
+            image,alpha = render(cloud,query,k,return_alpha=True)
+            coverage = dict(alpha_mean=float(alpha.mean()),
+                            alpha_covered_fraction=float((alpha>=.5).float().mean()))
+        else:
+            image = render(cloud,query,k)
         count = cloud.get('gaussian_count')
         if (args.eventscape_cameras or args.dsec_temporal_cameras) and count is None:
             count = (cloud['centers'].shape[1],)
@@ -144,7 +150,7 @@ def run(args, data, checkpoint, test):
                 before,after = (values+1/255).log()
                 event_loss = F.smooth_l1_loss(after-before,args.event_threshold*counts,
                                               beta=args.event_threshold)
-        return image,gray/255,count,event_loss
+        return image,gray/255,count,event_loss,coverage
 
     @lru_cache(maxsize=32)
     def overlap(seq,index):
@@ -186,8 +192,13 @@ def run(args, data, checkpoint, test):
                 target = sample(*item)[-1][None].to(mask.device)/255
                 psnr,ssim = gray_metrics(source,target)
                 row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
-            for key,empty in [('matched',False),('zero',True)]:
-                image,gray,count,_ = predict(item,empty)
+            variants = [('matched',False,False),('zero',True,False)]
+            if args.source_camera_control:
+                variants += [('matched_calibrated',False,True),('zero_calibrated',True,True)]
+            for key,empty,calibrated_source in variants:
+                image,gray,count,_,coverage = predict(item,empty,calibrated_source=calibrated_source)
+                if coverage is not None:
+                    row.update({f'{key}_{metric}':value for metric,value in coverage.items()})
                 if count is not None:
                     row[key+'_gaussian_count'] = int(count[0])
                 mse_overlap = (image-gray)[:,mask].square().mean()
@@ -222,7 +233,7 @@ def run(args, data, checkpoint, test):
             item = train[order[position]]
         else:
             item = train[int(torch.randint(len(train),(1,)))]
-        image,gray,_,event_loss = predict(item,training=True)
+        image,gray,_,event_loss,_ = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
@@ -277,6 +288,8 @@ def main(args):
         raise ValueError('Learning rate must be positive and LPIPS weight nonnegative')
     if args.init_head and (args.geometry != 'predicted' or args.boundary):
         raise ValueError('Head initialization requires predicted geometry without a boundary head')
+    if args.source_camera_control and (args.steps or not args.init_head):
+        raise ValueError('Source-camera comparison requires evaluation of a frozen trained head')
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
     eventscape_splits, dsec_splits = {}, {}
     mixed = bool(args.eventscape_cameras and args.dsec_temporal_cameras)
@@ -344,6 +357,8 @@ def main(args):
         config.pop('init_head')
     if not args.lpips_weight:
         config.pop('lpips_weight')
+    if not args.source_camera_control:
+        config.pop('source_camera_control')
     if args.lr == 3e-4:
         config.pop('lr')
     args.out.parent.mkdir(parents=True,exist_ok=True)
@@ -407,6 +422,8 @@ if __name__=='__main__':
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
     parser.add_argument('--lpips-weight',type=float,default=0.,help='Train with additional VGG LPIPS supervision')
     parser.add_argument('--init-head',type=Path,help='Start from a trained head with identical frozen geometry')
+    parser.add_argument('--source-camera-control',action='store_true',
+                        help='Compare predicted and calibrated source cameras and report alpha coverage')
     parser.add_argument('--lr',type=float,default=3e-4)
     dataset = parser.add_mutually_exclusive_group()
     dataset.add_argument('--mvsec-calibration',type=Path,

@@ -62,6 +62,12 @@ DSEC 的体素头提高 PSNR 1.987 dB、SSIM 48.35%，LPIPS-VGG 退步 2.45%、L
 
 MVSEC 短位移组的复制源帧分数明显更高，说明运动范围会影响全窗平均结果。DSEC 所有位移组都有事件收益，但样本来自同一条测试序列。EventScape 的分组变化是探索性结果，位移与场景、曝光和遮挡共同变化。 [完整分组指标与位移范围](../results/temporal_nvs_motion.json) · [统计入口](../scripts/diagnose_temporal_nvs.py)
 
+“复制源帧”直接将同一灰度相机的第 (i) 帧与第 (i+2) 帧计算 PSNR。它需要源灰度输入，无图像变换或 3DGS 渲染。MVSEC 航线 1 目标帧 4 的相机位移约 0.26 mm，复制得到 51.13 dB。目标帧 1055 的位移约 3.42 cm，复制分数降至 16.98 dB。DSEC 与 EventScape 的示例也可直接看出相邻画面保留了大量相同纹理。
+
+![复制源帧、目标帧与真实事件 3DGS 渲染](../paper/source_copy_nvs_examples.png)
+
+图中 DSEC、EventScape 使用本节 5,000 步体素头的同窗渲染。MVSEC 右列使用后续 12,000 步混合体素头及标定源位姿，左列复制分数使用本节相同的源帧和目标帧。 [原图](../paper/source_copy_nvs_examples.png)
+
 ## 三、事件边界及等预算选叶
 
 各行按「1 像素容差边界 F1 ↑ / 边界带 AbsRel ↓」报告。边界头在 EventScape 训练 5,000 步，再做同域和跨域测试。
@@ -217,3 +223,19 @@ Déjà-Events 表 IV 单独报告 night1 适配结果。表 I–III 的零样本
 沿用 DSEC 长程蒸馏的留出序列，生成 207 个不重叠的 18 帧窗口。前六条 `zurich_city_01_a–f` 分别为 18、36、27、22、55、43 窗，`thun_00_a` 为 6 窗。窗口只检查左事件覆盖、同步的左 RGB 帧和事件视差标签。每个事件窗口为帧时刻前 50 ms，深度评测上限为 50 m。该划分是本地 7 条留出序列，Déjà-Events 使用 10 条验证序列。
 
 已提取两条原始驱动记录的 LiDAR–相机外参。两个 ROS bag 合计 3.08 GB，按官方 ZIP 中的成员范围下载，完成后核对 CRC。点图和位姿的后续协议将用真实 LiDAR 点云生成里程计伪真值，记录可同步的窗口数量，再输出 AbsRel、δ1、点图误差、ATE 和 AUC@20°。 [DSEC 原始 LiDAR 数据](https://dsec.ifi.uzh.ch/dsec-datasets/download/) · [Déjà-Events 评测协议](https://arxiv.org/html/2611.21302v1#S4) · [窗口准备](../scripts/prepare_dsec_geometry_clips.py)
+
+### 渲染质量与覆盖诊断
+
+| 数据集 | 测试窗 | 体素头全图 PSNR ↑ | 标定相机名义重叠区 PSNR ↑ | 复制源灰度参考 PSNR ↑ |
+|---|---:|---:|---:|---:|
+| DSEC | 21 | 12.043 | 13.985 | 22.736 |
+| EventScape | 463 | 9.354 | 9.381 | 25.451 |
+
+EventScape 的名义角度重叠占比为 99.96%，仅在这个区域计分只提高 0.027 dB。名义重叠由标定相机和旋转确定。GPU 1 已启动冻结检查点对照，在上述全部窗口比较预测与离线参考的源内外参，保留真实和全零事件，并记录平均累积不透明度与不透明度至少 0.5 的画面占比。首个 EventScape 窗换用参考源相机后，中间小块扩展到整幅图，但树和纹理仍模糊。 [同窗对照图](../paper/eventscape_camera_control.png) · [渲染入口](../scripts/run_gaussian_camera_control.sh) · [多场景原始汇总](../results/multiscene_gaussians_final.json)
+
+属性头续训的 144 窗验证已完成，以下为感知组相对光度组的变化。正式测试另使用整条留出序列。
+
+| 数据集 | 验证窗 | PSNR 变化 ↑ | SSIM 改善 ↑ | LPIPS-VGG 改善 ↓ | LPIPS-Alex 改善 ↓ |
+|---|---:|---:|---:|---:|---:|
+| DSEC | 27 | +0.111 dB（+0.97%） | −13.20% | +3.81% | +11.43% |
+| EventScape | 117 | −0.153 dB（−1.66%） | −14.83% | −0.20% | +0.65% |

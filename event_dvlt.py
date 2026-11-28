@@ -297,10 +297,11 @@ class GaussianAttributes(nn.Module):
         return tuple(layer(shape).float() for layer in (self.scale,self.rotation)) + (gray.float(),self.opacity(shape).float())
 
 
-def render(cloud,query,intrinsics=None):
+def render(cloud,query,intrinsics=None,*,return_alpha=False):
     if intrinsics is None:
         intrinsics = query.new_tensor([[888.8889,0,320],[0,888.8889,240],[0,0,1]]).expand(len(query),3,3)
     k = intrinsics[:,None]
-    image,_,_=rasterization(cloud["centers"],cloud["quats"],cloud["scales"],cloud["opacity"],cloud["gray"],
-                             torch.linalg.inv(query)[:,None],k,640,480,packed=False,eps2d=.25)
-    return image[:,0,:,:,0]
+    image,alpha,_=rasterization(cloud["centers"],cloud["quats"],cloud["scales"],cloud["opacity"],cloud["gray"],
+                                 torch.linalg.inv(query)[:,None],k,640,480,packed=False,eps2d=.25)
+    gray = image[:,0,:,:,0]
+    return (gray,alpha[:,0,:,:,0]) if return_alpha else gray
