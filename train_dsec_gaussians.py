@@ -13,7 +13,7 @@ import torch.nn.functional as F
 
 from dsec_data import DSECSequence, resize_intrinsics, stereo_supervision
 from event_depth_boundary import event_bins, load_temporal_boundary, temporal_corrector
-from event_dvlt import EventDVLT, render, voxelize
+from event_dvlt import EventDVLT, load_scene_weights, render, voxelize
 from event_field import EventField
 from image_metrics import PerceptualMetrics, gray_metrics
 
@@ -30,6 +30,13 @@ def run(args, data, checkpoint, test):
         raise ValueError('Unexpected parameters in distilled geometry checkpoint')
     model.load_state_dict(weights, strict=False)
     model.configure_head(args.head)
+    if args.init_head:
+        previous = torch.load(args.init_head,map_location='cpu',weights_only=True)
+        if (previous.get('head') != args.head or previous.get('boundary') or
+                any(name not in previous['model'] or not torch.equal(tensor,previous['model'][name])
+                    for name,tensor in weights.items())):
+            raise ValueError('Initial head must use the same frozen geometry and head type')
+        load_scene_weights(model,previous)
     boundary = None
     if args.boundary:
         boundary_source = torch.load(args.boundary, weights_only=True, map_location='cpu')
@@ -39,8 +46,8 @@ def run(args, data, checkpoint, test):
         parameter.requires_grad_(trainable or (name == 'log_metric_scale' and args.geometry == 'predicted'
                                                 and args.head == 'legacy'))
     params = {n:p for n,p in model.named_parameters() if p.requires_grad}
-    perceptual = PerceptualMetrics("cuda") if args.lpips else None
-    optimizer = torch.optim.AdamW(params.values(), lr=3e-4)
+    perceptual = PerceptualMetrics("cuda") if args.lpips or args.lpips_weight else None
+    optimizer = torch.optim.AdamW(params.values(), lr=args.lr)
     encoder = EventField(args.f3_repository,args.assets/'f3.pth',4) if use_field else None
     train = [(s,i) for s in args.train for i in data[s].indices]
     val = [(s,i) for s in args.val for i in data[s].indices]
@@ -99,7 +106,7 @@ def run(args, data, checkpoint, test):
             dict(scale=scale,training_frames=rows),indent=2,allow_nan=False)+'\n')
         print('training-only initial scale',scale,flush=True)
 
-    if args.geometry == 'predicted':
+    if args.geometry == 'predicted' and not args.init_head:
         initialize_scale()
 
     @lru_cache(maxsize=32)
@@ -191,7 +198,7 @@ def run(args, data, checkpoint, test):
                 psnr,ssim = gray_metrics(image,gray)
                 row[key+'_psnr'],row[key+'_ssim'] = float(psnr[0]),float(ssim[0])
                 row[key+"_ssim_evggs"] = float(gray_metrics(image,gray,padded=True)[1][0])
-                if perceptual:
+                if args.lpips:
                     row.update({f"{key}_{metric}":value for metric,value in perceptual(image,gray).items()})
                 if index == 0:
                     if not preview:
@@ -221,6 +228,11 @@ def run(args, data, checkpoint, test):
         loss = (1-args.ssim_weight)*l1 + args.ssim_weight*(1-ssim.mean())
         if event_loss is not None:
             loss = loss + args.event_weight*event_loss
+        perceptual_loss = None
+        if args.lpips_weight:
+            reduced = F.interpolate(torch.stack((image,gray),dim=1),size=(192,256),mode='area')
+            perceptual_loss = perceptual.vgg_loss(*reduced.unbind(1))
+            loss = loss + args.lpips_weight*perceptual_loss
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         norm = torch.nn.utils.clip_grad_norm_(params.values(),1.,error_if_nonfinite=True)
@@ -229,6 +241,8 @@ def run(args, data, checkpoint, test):
             with (args.out/'train.jsonl').open('a') as stream:
                 row = dict(step=step, sequence=item[0], frame=item[1],
                            loss=float(loss.detach()), grad_norm=float(norm))
+                if perceptual_loss is not None:
+                    row['lpips_loss'] = float(perceptual_loss.detach())
                 stream.write(json.dumps(row,allow_nan=False)+'\n')
         if step==1 or step%20==0:
             print('step',step,'loss',float(loss.detach()),'l1',float(l1.detach()),
@@ -259,6 +273,10 @@ def main(args):
         raise ValueError('SSIM weight must be between 0 and 1')
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
+    if not np.isfinite(args.lr) or args.lr <= 0 or not np.isfinite(args.lpips_weight) or args.lpips_weight < 0:
+        raise ValueError('Learning rate must be positive and LPIPS weight nonnegative')
+    if args.init_head and (args.geometry != 'predicted' or args.boundary):
+        raise ValueError('Head initialization requires predicted geometry without a boundary head')
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
     eventscape_splits, dsec_splits = {}, {}
     mixed = bool(args.eventscape_cameras and args.dsec_temporal_cameras)
@@ -322,6 +340,12 @@ def main(args):
         config.pop('event_leaves')
     if not args.preserve_boundary_scale:
         config.pop('preserve_boundary_scale')
+    if not args.init_head:
+        config.pop('init_head')
+    if not args.lpips_weight:
+        config.pop('lpips_weight')
+    if args.lr == 3e-4:
+        config.pop('lr')
     args.out.parent.mkdir(parents=True,exist_ok=True)
     lock_path = args.out.with_name(args.out.name+'.lock')
     with lock_path.open('a') as lock:
@@ -381,6 +405,9 @@ if __name__=='__main__':
     parser.add_argument('--preserve-boundary-scale', action='store_true')
     parser.add_argument('--event-leaves', action='store_true', help='Use event priority for octree selection')
     parser.add_argument('--lpips',action='store_true',help='Report VGG and AlexNet LPIPS during validation')
+    parser.add_argument('--lpips-weight',type=float,default=0.,help='Train with additional VGG LPIPS supervision')
+    parser.add_argument('--init-head',type=Path,help='Start from a trained head with identical frozen geometry')
+    parser.add_argument('--lr',type=float,default=3e-4)
     dataset = parser.add_mutually_exclusive_group()
     dataset.add_argument('--mvsec-calibration',type=Path,
                          help='Train from temporal windows of the left MVSEC camera')

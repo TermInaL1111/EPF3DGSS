@@ -37,9 +37,17 @@ class PerceptualMetrics:
         self.models = {name: lpips.LPIPS(net=name).eval().requires_grad_(False).to(device)
                        for name in ('vgg','alex')}
 
-    @torch.no_grad()
-    def __call__(self, prediction, target):
+    @staticmethod
+    def inputs(prediction, target):
         # Public LPIPS takes RGB normalized to [-1,1]. Repeat grayscale channels.
         x = prediction[:,None].float().repeat(1,3,1,1)*2-1
         y = target[:,None].float().repeat(1,3,1,1)*2-1
+        return x, y
+
+    def vgg_loss(self, prediction, target):
+        return self.models['vgg'](*self.inputs(prediction,target)).mean()
+
+    @torch.no_grad()
+    def __call__(self, prediction, target):
+        x,y = self.inputs(prediction,target)
         return {f'lpips_{name}':float(model(x,y).mean()) for name,model in self.models.items()}

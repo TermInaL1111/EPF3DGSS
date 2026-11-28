@@ -197,3 +197,7 @@ EvGGS 的 SSIM 基值很小，表中同时给绝对差。混合体素头的真�
 | 全零事件 | 全零事件 | 16.1893 | 0.3818 | 0.6954 | 0.6889 | 11,338.5 |
 
 在真实深度和高斯中心不变时，仅替换递推特征就使体素头 PSNR 提升 3.230 dB，两种 LPIPS 同时退步。只替换深度及置信度并保留真实特征，PSNR 仅升 0.090 dB。全零优势主要来自递推特征经属性头产生的变化，高斯数量缩减无法单独解释它。固定中心头使用真实深度时，仅替换特征使 PSNR 上升 0.034 dB、SSIM 从 0.2996 降至 0.1862。混合体素头的下一轮应优先检查 DSEC、EventScape 到 MVSEC 的属性特征迁移，并在固定几何下验证外观监督，保留固定中心组作为对照。 [完整指标与改善百分比](../results/mvsec_depth_feature_controls.json) · [结果汇总代码](../scripts/summarize_mvsec_depth_features.py)
+
+### 属性头监督配对续训
+
+两组从同一个 12,000 步混合体素检查点开始，固定事件 DVLT、尺度和三维中心构造，AdamW 学习率设为 1e−4。DSEC 与 EventScape 的 4,034 个训练窗各遍历一次，共用种子与样本顺序。光度组沿用原有灰度 L1 + SSIM，对照组额外在 256×192 目标灰度图上计算权重 0.5 的 VGG LPIPS。该损失参考 InfiniSplat v2 的感知项，本实验沿用现有单目标及全图监督。GPU 0 运行光度组，GPU 1 运行感知组。训练后用相同 MVSEC 72 窗比较预测与标定源相机下的真实、全零及交换事件，保留 DSEC、EventScape 各自的留出评测。结果同时报告 PSNR、SSIM、VGG LPIPS 和未加入训练损失的 AlexNet LPIPS。 [InfiniSplat v2 损失](https://arxiv.org/html/2610.20341v1#A4) · [续训入口](../scripts/run_mvsec_attribute_supervision.sh)
