@@ -46,6 +46,8 @@ def main(args):
         raise ValueError('The calibrated source control requires a trained render model')
     if args.input_path_control and not args.calibrated_source_control:
         raise ValueError('Input path controls require calibrated source cameras')
+    if args.depth_feature_control and not args.input_path_control:
+        raise ValueError('Depth/feature controls require input path controls')
     model=EventDVLT(args.assets).cuda().eval()
     delta=torch.load(args.weights,weights_only=True)
     if args.geometry_only:
@@ -133,13 +135,24 @@ def main(args):
                         ('zero_appearance_calibrated',vox,field,None,False),
                         ('zero_geometry_calibrated',torch.zeros_like(vox),torch.zeros_like(field),None,False),
                     ))
+                if args.depth_feature_control:
+                    variants.extend((
+                        ('real_depth_zero_features_calibrated',torch.zeros_like(vox),torch.zeros_like(field),None,False),
+                        ('zero_depth_real_features_calibrated',vox,field,None,False),
+                    ))
             budget_scenes = {}
+            readouts, supports = {}, {}
+            depth_sources = {'real_depth_zero_features_calibrated':'matched_calibrated',
+                             'zero_depth_real_features_calibrated':'zero_calibrated'}
             for key,v,f,refinement,rank_leaves in variants:
                 appearance = None
                 if key == 'zero_appearance_calibrated':
                     appearance = (torch.zeros_like(vox),torch.zeros_like(field))
                 elif key == 'zero_geometry_calibrated':
                     appearance = (vox,field)
+                if key in depth_sources:
+                    appearance = (torch.zeros_like(vox),torch.zeros_like(field))
+                capture_depth = args.depth_feature_control and key in depth_sources.values()
                 with torch.autocast("cuda",dtype=torch.bfloat16):
                     if args.geometry_only:
                         tokens, pos, _ = model.geometry(v,f,steps=16)
@@ -148,7 +161,18 @@ def main(args):
                         scene=model(v,f,steps=render_steps,depth_refinement=refinement,
                                     event_leaf_ranking=rank_leaves, matched_leaf_budget=bool(training_boundary),
                                     source_cameras=cameras if key.endswith('_calibrated') else None,
-                                    appearance_inputs=appearance)
+                                    appearance_inputs=appearance,return_geometry=capture_depth,
+                                    depth_readout=readouts.get(depth_sources.get(key)))
+                if capture_depth:
+                    raw = scene['raw_geometry']
+                    readouts[key] = (raw['depth'],raw['depth_conf'])
+                    supports[key] = scene['centers']
+                if key in depth_sources:
+                    reference = supports[depth_sources[key]]
+                    # CUDA reductions for confidence-weighted centers can differ in roundoff.
+                    if (scene['centers'].shape != reference.shape or
+                            not torch.allclose(scene['centers'],reference,rtol=1e-4,atol=1e-4)):
+                        raise ValueError(f'Depth-fixed intervention changed Gaussian centers in {flight}/{start}')
                 if args.geometry_only:
                     rays = raw['rays'].float()
                     poses, _ = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
@@ -195,4 +219,6 @@ if __name__=="__main__":
                    help="Also compare real and zero events with identical calibrated source cameras")
     p.add_argument("--input-path-control",action="store_true",
                    help="Independently zero geometry and direct appearance events")
+    p.add_argument("--depth-feature-control",action="store_true",
+                   help="Cross predicted depth/confidence and recurrent features with direct appearance held at zero")
     main(p.parse_args())

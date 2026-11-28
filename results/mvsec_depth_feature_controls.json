@@ -1,0 +1,181 @@
+{
+  "windows": 72,
+  "heads": {
+    "fixed": {
+      "scores": {
+        "real_depth_real_features": {
+          "psnr": 13.600223435295952,
+          "ssim": 0.299599672978123,
+          "lpips_vgg": 0.6949960067868233,
+          "lpips_alex": 0.7126762320597967,
+          "gaussian_count_median": 614400.0
+        },
+        "real_depth_zero_features": {
+          "psnr": 13.634572148323059,
+          "ssim": 0.1861691885213885,
+          "lpips_vgg": 0.7092988482779927,
+          "lpips_alex": 0.7288934944404496,
+          "gaussian_count_median": 614400.0
+        },
+        "zero_depth_real_features": {
+          "psnr": 13.62913187344869,
+          "ssim": 0.2993553972078694,
+          "lpips_vgg": 0.7053129466043578,
+          "lpips_alex": 0.7216862349046601,
+          "gaussian_count_median": 614400.0
+        },
+        "zero_depth_zero_features": {
+          "psnr": 13.97402056058248,
+          "ssim": 0.25926957093179226,
+          "lpips_vgg": 0.7033771847685178,
+          "lpips_alex": 0.7492945931024022,
+          "gaussian_count_median": 614400.0
+        }
+      },
+      "relative_to_real": {
+        "real_depth_zero_features": {
+          "psnr": {
+            "delta": 0.03434871302710718,
+            "improvement_pct": 0.2525599170522725
+          },
+          "ssim": {
+            "delta": -0.11343048445673451,
+            "improvement_pct": -37.86068366804169
+          },
+          "lpips_vgg": {
+            "delta": 0.014302841491169449,
+            "improvement_pct": -2.057974628846547
+          },
+          "lpips_alex": {
+            "delta": 0.016217262380652908,
+            "improvement_pct": -2.2755441603238715
+          }
+        },
+        "zero_depth_real_features": {
+          "psnr": {
+            "delta": 0.02890843815273847,
+            "improvement_pct": 0.21255855310225202
+          },
+          "ssim": {
+            "delta": -0.00024427577025359914,
+            "improvement_pct": -0.08153405770620996
+          },
+          "lpips_vgg": {
+            "delta": 0.010316939817534565,
+            "improvement_pct": -1.4844603014674715
+          },
+          "lpips_alex": {
+            "delta": 0.009010002844863418,
+            "improvement_pct": -1.2642490993171551
+          }
+        },
+        "zero_depth_zero_features": {
+          "psnr": {
+            "delta": 0.37379712528652753,
+            "improvement_pct": 2.748463119483988
+          },
+          "ssim": {
+            "delta": -0.04033010204633075,
+            "improvement_pct": -13.461330463226401
+          },
+          "lpips_vgg": {
+            "delta": 0.008381177981694576,
+            "improvement_pct": -1.205931818291057
+          },
+          "lpips_alex": {
+            "delta": 0.03661836104260552,
+            "improvement_pct": -5.138148207464435
+          }
+        }
+      }
+    },
+    "octree": {
+      "scores": {
+        "real_depth_real_features": {
+          "psnr": 12.600357029173109,
+          "ssim": 0.30524372516406906,
+          "lpips_vgg": 0.7197665249307951,
+          "lpips_alex": 0.7451156328121821,
+          "gaussian_count_median": 111727.5
+        },
+        "real_depth_zero_features": {
+          "psnr": 15.830184631877476,
+          "ssim": 0.3884269172946612,
+          "lpips_vgg": 0.7703795830408732,
+          "lpips_alex": 0.8191539769371351,
+          "gaussian_count_median": 111727.5
+        },
+        "zero_depth_real_features": {
+          "psnr": 12.690538869963753,
+          "ssim": 0.3038928678466214,
+          "lpips_vgg": 0.710141756468349,
+          "lpips_alex": 0.716305968662103,
+          "gaussian_count_median": 11338.5
+        },
+        "zero_depth_zero_features": {
+          "psnr": 16.189272046089172,
+          "ssim": 0.38180805059770745,
+          "lpips_vgg": 0.6953701310687594,
+          "lpips_alex": 0.6889155093166563,
+          "gaussian_count_median": 11338.5
+        }
+      },
+      "relative_to_real": {
+        "real_depth_zero_features": {
+          "psnr": {
+            "delta": 3.2298276027043666,
+            "improvement_pct": 25.632826079661665
+          },
+          "ssim": {
+            "delta": 0.08318319213059217,
+            "improvement_pct": 27.251401183064797
+          },
+          "lpips_vgg": {
+            "delta": 0.0506130581100781,
+            "improvement_pct": -7.031871635728614
+          },
+          "lpips_alex": {
+            "delta": 0.07403834412495303,
+            "improvement_pct": -9.936490507590188
+          }
+        },
+        "zero_depth_real_features": {
+          "psnr": {
+            "delta": 0.09018184079064362,
+            "improvement_pct": 0.7157086150959784
+          },
+          "ssim": {
+            "delta": -0.0013508573174476624,
+            "improvement_pct": -0.44255039697264015
+          },
+          "lpips_vgg": {
+            "delta": -0.009624768462446087,
+            "improvement_pct": 1.3372070149235546
+          },
+          "lpips_alex": {
+            "delta": -0.028809664150079017,
+            "improvement_pct": 3.8664688917271635
+          }
+        },
+        "zero_depth_zero_features": {
+          "psnr": {
+            "delta": 3.5889150169160633,
+            "improvement_pct": 28.482645440972743
+          },
+          "ssim": {
+            "delta": 0.07656432543363839,
+            "improvement_pct": 25.08301371059632
+          },
+          "lpips_vgg": {
+            "delta": -0.024396393862035626,
+            "improvement_pct": 3.389487148541858
+          },
+          "lpips_alex": {
+            "delta": -0.05620012349552572,
+            "improvement_pct": 7.542470057086003
+          }
+        }
+      }
+    }
+  }
+}
