@@ -122,6 +122,30 @@ def checkpoint_members(path):
                 for name in archive.namelist()}
 
 
+def summarize_validation(root, steps, milestone):
+    folders = {arm:root/f'{arm}_{steps}' for arm in ('target','source')}
+    reports = {arm:validation_progress(folder,[milestone])[milestone]
+               for arm,folder in folders.items()}
+    keys = {}
+    for arm,folder in folders.items():
+        rows = read_json(folder/f'val_{milestone:06}.json')
+        keys[arm] = index(rows,'sequence','frame')
+    if keys['target'] != keys['source']:
+        raise ValueError('Validation windows differ between training arms')
+    datasets = {}
+    for dataset in reports['target']:
+        baseline = reports['target'][dataset]['metrics']
+        estimate = reports['source'][dataset]['metrics']
+        datasets[dataset] = dict(
+            windows=reports['target'][dataset]['windows'],
+            target=baseline,
+            source=estimate,
+            source_vs_target={metric:metric_change(baseline[metric]['real'],estimate[metric]['real'],sign)
+                              for metric,sign in METRICS.items()},
+        )
+    return dict(step=milestone,split='validation',datasets=datasets)
+
+
 def summarize(root, steps, mvsec_reference):
     folders = {arm:root/f'{arm}_{steps}' for arm in ('target','source')}
     configs = {arm:read_json(folder/'config.json') for arm,folder in folders.items()}
@@ -223,8 +247,12 @@ if __name__ == '__main__':
     parser.add_argument('mvsec_reference',type=Path)
     parser.add_argument('out',type=Path)
     parser.add_argument('--steps',type=int,default=12000)
+    parser.add_argument('--validation-step',type=int,help='Summarize a shared validation milestone only')
     args = parser.parse_args()
-    report = summarize(args.root,args.steps,args.mvsec_reference)
+    if args.validation_step is None:
+        report = summarize(args.root,args.steps,args.mvsec_reference)
+    else:
+        report = summarize_validation(args.root,args.steps,args.validation_step)
     temporary = args.out.with_suffix('.json.tmp')
     temporary.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
     temporary.replace(args.out)
