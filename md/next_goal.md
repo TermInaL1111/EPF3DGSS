@@ -31,3 +31,5 @@ GPU 0 运行仅目标帧组，GPU 1 运行源视图监督组。两组从 `octree
 DSEC 与 EventScape 留出评测沿用 target-offset 4。MVSEC 沿用 EvGGS 的 72 个固定窗口，源为 `i,i+4`，目标为 `i+2`。它是不同目标间隔的跨域测试。主结果使用已知内参和预测源位姿，另留相同标定源相机的对照。两个组完成后，汇总脚本核验配对窗口、逐步样本顺序和源损失记录，并计算相对变化。 [训练和评测入口](../scripts/run_source_view_supervision.sh) · [配对汇总](../scripts/summarize_source_view_supervision.py)
 
 正式评分完成后，自动从两组相同的 DSEC 和 EventScape 测试首窗导出对照，MVSEC 则使用航线 1 的固定中间窗。每行包含目标灰度、仅目标帧监督模型、源视图监督模型及后者的全零事件输入。MVSEC 导图沿用主评测的已知内参和预测源位姿。 [导图入口](../scripts/run_source_view_previews.sh)
+
+MVSEC 完整评测输出源帧和目标帧索引。汇总逐窗核对 EvGGS 的两个源索引和目标索引，再计算双方都使用标定源位姿时的差值及相对百分比。记录 EvGGS 官方权重哈希。EPF 主协议的预测源位姿结果另表报告。

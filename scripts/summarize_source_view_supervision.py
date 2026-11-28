@@ -7,6 +7,7 @@ from pathlib import Path
 from statistics import fmean
 
 from summarize_attribute_supervision import manifest_windows, metric_change, read_json
+from summarize_evggs import aggregate, pair_with_epf
 from summarize_multiscene_gaussians import METRICS, camera_control, validation_progress
 from summarize_render import summarize as summarize_renders
 
@@ -55,6 +56,25 @@ def temporal_motion(config,dataset):
             query = records[str(offset)] if isinstance(records,dict) else records[(offset-2)//2]
             motion[name,int(frame)] = dist([row[3] for row in query['c2w'][:3]],(0,0,0))
     return motion
+
+
+def evggs_comparison(reference, arms):
+    rows = reference['results']
+    if reference['dataset'] != 'mvsec' or reference['native'] or len(rows) != 72:
+        raise ValueError('Expected the official checkpoint on the 72 shared MVSEC windows')
+    baseline = aggregate([row['matched'] for row in rows])
+    comparisons = {}
+    for arm,indexed in arms.items():
+        aligned = []
+        for row in rows:
+            candidate = indexed[row['flight'],row['start']]
+            if any(candidate[key] != row[key] for key in ('sources','target')):
+                raise ValueError(f'EvGGS source or target frames differ for {arm}')
+            aligned.append(candidate | {'matched':candidate['matched_calibrated']})
+        comparisons[arm] = pair_with_epf(rows,aligned,'flight',baseline)
+    return dict(protocol='shared virtual cameras, calibrated source poses, 128x96 full grayscale',
+                weights=reference['weights'], weights_sha256=reference['sha256'],
+                upstream_commit=reference['upstream_commit'], baseline=baseline, arms=comparisons)
 
 
 def summarize(root, steps, mvsec_reference):
@@ -108,7 +128,8 @@ def summarize(root, steps, mvsec_reference):
         report[dataset] = dict(windows=len(expected),scores=scores,source_vs_target=changes,
                                motion_groups=groups)
 
-    expected = index(read_json(mvsec_reference)['results'],'flight','start')
+    baseline = read_json(mvsec_reference)
+    expected = index(baseline['results'],'flight','start')
     scores = {}
     by_window = {}
     for arm,folder in folders.items():
@@ -125,6 +146,7 @@ def summarize(root, steps, mvsec_reference):
                                             scores['source'][camera][metric]['real'],sign)
                        for metric,sign in METRICS.items()} for camera in ('predicted','calibrated')}
     report['mvsec'] = dict(windows=len(expected),scores=scores,source_vs_target=changes,
+                           evggs=evggs_comparison(baseline,by_window),
                            predicted_camera_protocol='known intrinsics and event-predicted relative pose',
                            motion_groups={
                                camera:motion_groups(by_window,motion,

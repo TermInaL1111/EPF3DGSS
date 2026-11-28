@@ -90,7 +90,7 @@ def main(args):
                 write_gray_preview(args.preview_dir/f'{flight}_{start}_target.png',target)
             vox=torch.stack([voxelize(packet) for packet in raw])[None].cuda()
             field=events[:,4:][None] if use_field else vox.new_zeros((1,2,32,96,128))
-            row=dict(flight=flight,start=start,
+            row=dict(flight=flight,start=start,sources=[start,start+4],target=start+2,
                      source_baseline_m=float(right[:3,3].norm()),
                      query_baseline_m=float(query[:3,3].norm()))
             baseline_cos = ((right[:3,:3].trace()-1)/2).clamp(-1,1)
