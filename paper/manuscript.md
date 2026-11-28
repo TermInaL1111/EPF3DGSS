@@ -96,3 +96,17 @@ We render the weak, uniformly distilled student under controlled substitutions o
 | Full reference geometry and gray | 23.53 | 0.925 |
 
 With predicted geometry, even true source intensities transfer poorly to the target. With reference geometry, the student’s predicted intensities also miss much of the foreground texture. Simultaneously replacing geometry and appearance raises foreground PSNR by 9.98 dB. The last row measures what this renderer can recover with privileged inputs and a chosen background model. Only the first row measures event-only reconstruction.
+
+## Held-out monocular geometry
+
+We evaluate five checkpoints on the same 207 nonoverlapping 18-frame clips from seven held-out DSEC sequences. The depth reference comes from rectified event-camera disparity with a 50 m cap. We align depth by one median scale per window and align camera trajectories and pointmaps with Sim(3). KISS-ICP trajectories from the two source LiDAR drives provide pseudo-ground-truth camera poses. Every clip had synchronized reference poses. The published Déjà-Events protocol uses a different validation split and LiDAR odometry reference.
+
+| Training domain and adaptation | Depth AbsRel ↓ | δ1 ↑ | Pointmap AbsRel ↓ | ATE (m) ↓ | AUC@20° ↑ |
+|---|---:|---:|---:|---:|---:|
+| EventScape, direct distillation | 0.1855 | 0.7680 | 0.1958 | 0.1592 | 0.8108 |
+| EventScape, SAAG | 0.1816 | 0.7723 | 0.1928 | 0.1194 | 0.8122 |
+| EventScape, SAAG + REALM | 0.1725 | 0.7685 | 0.1882 | 0.1723 | 0.8272 |
+| DSEC, without F³ | 0.1426 | 0.8215 | 0.1640 | 0.1231 | 0.8449 |
+| DSEC, with F³ | 0.1425 | 0.8227 | 0.1625 | 0.1341 | 0.8538 |
+
+Compared with direct distillation, SAAG + REALM reduces DSEC scale-aligned depth error by 7.00% and pointmap error by 3.89%, while ATE rises by 8.19%. Without scale alignment, all five depth AbsRel values exceed 0.90 under the raw decoder scale. On 948 EventScape clips with checked RGB-D pose references, SAAG alone changes the pointmap error by less than 0.01% and lowers ATE by 0.10%. These results qualify the geometry gains separately from rendering quality. [Evaluation evidence](../results/monocular_geometry_final.json)

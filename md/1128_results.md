@@ -10,11 +10,11 @@ EventScape 直接蒸馏和 SAAG + REALM 各 20,000 步。逐步核验了训练�
 |---|---:|---:|---:|---:|---:|
 | RGB DVLT | 0.1474 | 0.8384 | 0.3874 | 0.06025 | 0.7407 |
 | 直接蒸馏 | 0.1742 | 0.7777 | 0.4219 | 0.09173 | 0.7129 |
-| 仅 SAAG | 0.1740 | 0.7790 | — | — | — |
+| 仅 SAAG | 0.1740 | 0.7790 | 0.4219 | 0.09164 | 0.7128 |
 | SAAG + REALM | 0.1718 | 0.7705 | 0.4230 | 0.09112 | 0.7124 |
 | 联合组相对直接蒸馏改善 | +1.40% | −0.93% | −0.25% | +0.67% | −0.07% |
 
-点图和位姿使用全部相机通过 RGB-D PnP 检查的 948 / 1,368 个窗口，占 69.3%。同一子集的直接蒸馏和联合组深度 AbsRel 分别为 0.16869、0.16916。联合组的全测试 AbsRel 小幅改善，在有相机参考的子集上略退。仅 SAAG 的 20,000 步已完成。同窗相对直接蒸馏改善 AbsRel 0.14%、δ1 0.17%。联合组相对仅 SAAG 改善 AbsRel 1.26%，δ1 下降 1.09%。目前这两个指标的变化方向有分歧，支持保留蒸馏消融表。仅 SAAG 组已完成全测试深度评测，表中三维指标暂缺。 [三组蒸馏最终汇总](../results/eventscape_distillation_final.json)
+点图和位姿使用全部相机通过 RGB-D PnP 检查的 948 / 1,368 个窗口，占 69.3%。同一子集的直接蒸馏和联合组深度 AbsRel 分别为 0.16869、0.16916。联合组的全测试 AbsRel 小幅改善，在有相机参考的子集上略退。仅 SAAG 的 20,000 步已完成。同窗相对直接蒸馏改善 AbsRel 0.14%、δ1 0.17%。联合组相对仅 SAAG 改善 AbsRel 1.26%，δ1 下降 1.09%。目前这两个指标的变化方向有分歧，支持保留蒸馏消融表。仅 SAAG 已补评 948 窗的三维指标，ATE 相对直接蒸馏改善 0.10%，AUC@20° 下降 0.02%。 [三组蒸馏最终汇总](../results/eventscape_distillation_final.json)
 
 MVSEC 户外使用 day1 的同帧灰度教师和事件做 10,721 步适配，在 night1 的 146 个相同 18 帧窗口比较。论文表 IV 单列作参照，本地的输入整流、参考及窗口筛选会影响绝对数值。 [Déjà-Events 表 IV](https://arxiv.org/html/2611.21302v1#S5.SS4)
 
@@ -212,7 +212,7 @@ EvGGS 的 SSIM 基值很小，表中同时给绝对差。混合体素头的真�
 
 ### EventScape 仅 SAAG 几何补评
 
-已核验直接蒸馏、仅 SAAG 和 SAAG + REALM 的 20,000 步权重具有相同的训练序列与参数结构。补评在同一批 948 个 Town05 窗中重新运行三组学生与 RGB 教师，共用四组预测有效像素的交集。汇总分别给出仅 SAAG 相对直接蒸馏、联合组相对仅 SAAG 的改善百分比。该任务已排在 GPU 0 光度续训及其评测之后。 [补评入口](../scripts/run_eventscape_geometry.sh)
+已核验直接蒸馏、仅 SAAG 和 SAAG + REALM 的 20,000 步权重具有相同的训练序列与参数结构。补评在同一批 948 个 Town05 窗中重新运行三组学生与 RGB 教师，共用四组预测有效像素的交集。汇总分别给出仅 SAAG 相对直接蒸馏、联合组相对仅 SAAG 的改善百分比。该任务已完成。仅 SAAG 相对直接蒸馏，点图 AbsRel 改善 0.002%，ATE 改善 0.10%，AUC@20° 下降 0.02%。 [补评入口](../scripts/run_eventscape_geometry.sh)
 
 ### MVSEC 户外评测扩展
 
@@ -274,4 +274,4 @@ EventScape 的名义角度重叠占比为 99.96%，仅在这个区域计分只�
 
 DSEC 的 KISS-ICP 已通过 47 帧官方 Thun 点云的 CPU 注册。以点云头时间记录轨迹，逐点时间用于运动补偿。实测扫描间隔中位数为 50.43 ms。前缀保留的并行下载正在运行。下载完成后在 CPU 自动生成相机参考，沿用原始校准外参并剔除无法插值的窗口。 [LiDAR 参考入口](../scripts/prepare_dsec_lidar_reference.py)
 
-DSEC 的 18 帧评测已在一窗真实 Zurich 样本通过 GPU 联调。五组使用相同的左事件输入、原始 640×480 事件视差与 50 m 深度上限。前三组为 EventScape 直接蒸馏、仅 SAAG、SAAG + REALM，在 DSEC 零样本评测。后两组是在 DSEC 训练的无 F³、有 F³，使用相同留出窗口。深度分别报告逐窗中位数尺度对齐与原尺度结果。点图和位姿将在 LiDAR 同步子集上计算。207 窗深度评测排在 GPU 1 的相机分量对照之后。 [DSEC 时序评测代码](../evaluate_dsec_temporal_geometry.py) · [运行命令](../scripts/run_dsec_temporal_geometry.sh)
+DSEC 的 18 帧评测已在一窗真实 Zurich 样本通过 GPU 联调。五组使用相同的左事件输入、原始 640×480 事件视差与 50 m 深度上限。前三组为 EventScape 直接蒸馏、仅 SAAG、SAAG + REALM，在 DSEC 零样本评测。后两组是在 DSEC 训练的无 F³、有 F³，使用相同留出窗口。深度分别报告逐窗中位数尺度对齐与原尺度结果。207 窗的深度、点图和位姿评测已完成，逐窗核对均与 LiDAR 参考清单一致。 [汇总数值](../results/monocular_geometry_final.json) [DSEC 时序评测代码](../evaluate_dsec_temporal_geometry.py) · [运行命令](../scripts/run_dsec_temporal_geometry.sh)
