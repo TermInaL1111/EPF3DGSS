@@ -18,7 +18,7 @@ from event_field import EventField
 from image_metrics import PerceptualMetrics, gray_metrics
 
 
-def run(args, data, checkpoint, test=()):
+def run(args, data, checkpoint, test):
     model = EventDVLT(args.assets).cuda().eval()
     weights = checkpoint['model']
     geometry_names = {n for n,p in model.named_parameters() if p.requires_grad
@@ -52,6 +52,8 @@ def run(args, data, checkpoint, test=()):
         val = [val[i] for i in np.linspace(0,len(val)-1,args.val_limit,dtype=int)]
     if not train or not val:
         raise ValueError('Both splits require usable source and target windows')
+    train_rng = torch.Generator().manual_seed(args.seed) if args.eventscape_root else None
+    print('training windows',len(train),'validation windows',len(val),flush=True)
     temporal = bool(args.mvsec_calibration or args.eventscape_cameras or args.dsec_temporal_cameras)
 
     @lru_cache(maxsize=32)
@@ -171,7 +173,7 @@ def run(args, data, checkpoint, test=()):
                 source = torch.as_tensor(source, device=mask.device)[None]/255
                 psnr,ssim = gray_metrics(source,native_gray)
                 row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
-            if label == 'test' and args.dsec_temporal_cameras:
+            if label.startswith('test') and args.dsec_temporal_cameras and not native:
                 source = torch.as_tensor(data[item[0]].gray(item[1]),device=mask.device)[None]/255
                 target = sample(*item)[-1][None].to(mask.device)/255
                 psnr,ssim = gray_metrics(source,target)
@@ -205,7 +207,7 @@ def run(args, data, checkpoint, test=()):
 
     evaluate(val,'000000')
     for step in range(1,args.steps+1):
-        item = train[int(torch.randint(len(train),(1,)))]
+        item = train[int(torch.randint(len(train),(1,),generator=train_rng))]
         image,gray,_,event_loss = predict(item,training=True)
         l1 = (image-gray).abs().mean()
         _,ssim = gray_metrics(image,gray)
@@ -234,8 +236,8 @@ def run(args, data, checkpoint, test=()):
             tmp.replace(args.out/'latest.pt')
     if args.steps:
         evaluate(val,f'{args.steps:06}')
-    if test:
-        evaluate(test,'test',native=bool(args.eventscape_cameras))
+    for label, (names, native) in test.items():
+        evaluate([(name,index) for name in names for index in data[name].indices],label,native)
 
 
 def main(args):
@@ -244,20 +246,30 @@ def main(args):
     if args.steps < 0 or args.val_limit < 1:
         raise ValueError("Steps must be nonnegative and validation limit must be positive")
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
-    camera_splits = {}
+    eventscape_splits, dsec_splits = {}, {}
+    mixed = bool(args.eventscape_cameras and args.dsec_temporal_cameras)
+    if mixed != bool(args.eventscape_root):
+        raise ValueError('Specify --eventscape-root only when mixing DSEC and EventScape')
+    if args.mvsec_calibration and args.eventscape_cameras:
+        raise ValueError('MVSEC calibration cannot be mixed with EventScape manifests')
     if args.eventscape_cameras:
         from eventscape_gaussian_data import load_camera_splits
 
-        camera_splits = load_camera_splits(args.eventscape_cameras)
+        eventscape_splits = load_camera_splits(args.eventscape_cameras)
     if args.dsec_temporal_cameras:
         from dsec_temporal_gaussian_data import load_dsec_camera_splits
 
-        camera_splits = load_dsec_camera_splits(args.dsec_temporal_cameras)
-    if camera_splits:
+        dsec_splits = load_dsec_camera_splits(args.dsec_temporal_cameras)
+    test = {}
+    if eventscape_splits:
+        test['test_eventscape' if mixed else 'test'] = (eventscape_splits['test'],True)
+    if dsec_splits:
+        test['test_dsec' if mixed else 'test'] = (dsec_splits['test'],False)
+    if test:
         if args.train or args.val:
             raise ValueError('Train and val splits come from the camera manifests')
-        args.train = list(camera_splits['train'])
-        args.val = list(camera_splits['val'])
+        args.train = [*dsec_splits.get('train',{}),*eventscape_splits.get('train',{})]
+        args.val = [*dsec_splits.get('val',{}),*eventscape_splits.get('val',{})]
     elif not args.train or not args.val:
         raise ValueError('Specify both --train and --val')
     if args.head is None:
@@ -265,7 +277,7 @@ def main(args):
                      else 'legacy')
     if args.head != 'legacy' and args.geometry != 'predicted':
         raise ValueError('Fixed and voxel heads use student depth')
-    if (args.mvsec_calibration or camera_splits) and args.head == 'legacy':
+    if (args.mvsec_calibration or test) and args.head == 'legacy':
         raise ValueError('Temporal training supports fixed, voxel and octree heads')
     if (args.boundary and args.head != 'octree') or (args.event_leaves and not args.boundary):
         raise ValueError('Boundary-controlled training requires an octree head and temporal weights')
@@ -281,7 +293,7 @@ def main(args):
     config = {k:str(v) if isinstance(v,Path) else v for k,v in vars(args).items()}
     if args.mvsec_calibration is None:
         config.pop('mvsec_calibration')
-    for key in ('eventscape_cameras','dsec_temporal_cameras'):
+    for key in ('eventscape_cameras','dsec_temporal_cameras','eventscape_root'):
         if config[key] is None:
             config.pop(key)
     if not args.event_weight:
@@ -301,7 +313,7 @@ def main(args):
             validation = args.out/f'val_{args.steps:06}.json'
             checkpoint = args.out/'latest.pt'
             if (dict({'head':'legacy'}, **recorded) == config and validation.is_file() and
-                    (not camera_splits or (args.out/'val_test.json').is_file()) and
+                    all((args.out/f'val_{label}.json').is_file() for label in test) and
                     (args.steps == 0 or checkpoint.is_file())):
                 rows = json.loads(validation.read_text())
                 state = (torch.load(checkpoint,map_location='cpu',weights_only=True)
@@ -315,19 +327,18 @@ def main(args):
         (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
         with ExitStack() as stack:
             data = {}
-            test = []
             if args.eventscape_cameras:
                 from eventscape_gaussian_data import open_gaussian_sequences
 
-                data = open_gaussian_sequences(args.root, camera_splits, stack)
-            elif args.dsec_temporal_cameras:
+                data = open_gaussian_sequences(args.eventscape_root or args.root,eventscape_splits,stack)
+            if args.dsec_temporal_cameras:
                 from dsec_temporal_gaussian_data import DSECTemporalGaussianSequence
 
-                for split in camera_splits.values():
+                for split in dsec_splits.values():
                     for sequence, cameras in split.items():
                         source = DSECTemporalGaussianSequence(args.root,sequence,cameras)
                         data[sequence] = stack.enter_context(closing(source))
-            else:
+            if not test:
                 for sequence in args.train+args.val:
                     if args.mvsec_calibration:
                         from mvsec_gaussian_data import MVSECTemporalGaussianSequence
@@ -336,8 +347,6 @@ def main(args):
                     else:
                         source = DSECSequence(args.root,sequence)
                     data[sequence] = stack.enter_context(closing(source))
-            if camera_splits:
-                test = [(name, index) for name in camera_splits['test'] for index in data[name].indices]
             run(args,data,checkpoint,test)
 
 
@@ -357,8 +366,9 @@ if __name__=='__main__':
     dataset = parser.add_mutually_exclusive_group()
     dataset.add_argument('--mvsec-calibration',type=Path,
                          help='Train from temporal windows of the left MVSEC camera')
-    dataset.add_argument('--eventscape-cameras',type=Path,
+    parser.add_argument('--eventscape-cameras',type=Path,
                          help='Train from EventScape RGB-D camera manifests (train/val/test.json)')
+    parser.add_argument('--eventscape-root',type=Path,help='EventScape archive root in mixed training')
     dataset.add_argument('--dsec-temporal-cameras',type=Path,
                          help='Train from DSEC temporal RGB-D camera manifests (train/val/test.json)')
     parser.add_argument('--event-weight',type=float,default=0.,

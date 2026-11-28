@@ -19,7 +19,11 @@ def pair_with_epf(rows, epf, key, baseline):
     scores = aggregate([row['matched'] for row in epf])
     if scores.keys() != baseline.keys():
         raise ValueError('EPF and EvGGS metrics differ')
-    return {'epf': scores, 'epf_minus_evggs': {k: value-baseline[k] for k,value in scores.items()}}
+    deltas = {k:value-baseline[k] for k,value in scores.items()}
+    return {'epf': scores, 'epf_minus_evggs': deltas,
+            'relative_improvement_pct': {
+                k:100*(-1 if k.startswith('lpips_') else 1)*delta/abs(baseline[k])
+                if baseline[k] else None for k,delta in deltas.items() if k != 'foreground'}}
 
 
 def main(args):
