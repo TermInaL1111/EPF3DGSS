@@ -136,6 +136,11 @@ class EventDVLT(nn.Module):
             from voxel_gaussians import VoxelGaussianHead
 
             head = VoxelGaussianHead(octree=True, per_pixel_color=True, voxel_size=.025)
+        elif kind == 'octree_pixel_deep':
+            from voxel_gaussians import VoxelGaussianHead
+
+            head = VoxelGaussianHead(octree=True, per_pixel_color=True,
+                                     color_width=48, color_layers=3)
         else:
             raise ValueError(f'Unknown Gaussian head: {kind}')
         device = self.log_metric_scale.device
@@ -179,7 +184,8 @@ class EventDVLT(nn.Module):
 
     def forward(self,voxel,field,steps=12,mask_fraction=0.,return_geometry=False, calibrated_geometry=None,
                 source_cameras=None, depth_refinement=None, event_leaf_ranking=False, matched_leaf_budget=False,
-                appearance_inputs=None, depth_readout=None, reference_metric_depth=None):
+                appearance_inputs=None, depth_readout=None, reference_metric_depth=None,
+                detail_field=None):
         b,s = voxel.shape[:2]
         if depth_refinement is not None and calibrated_geometry is not None:
             raise ValueError('Depth refinement requires predicted geometry')
@@ -193,7 +199,7 @@ class EventDVLT(nn.Module):
         if (event_leaf_ranking or matched_leaf_budget) and (self.head_type != 'octree' or depth_refinement is None):
             raise ValueError('Event leaf ranking requires an octree head and boundary predictions')
         leaf_scores = None
-        use_voxels = self.head_type in ('voxel', 'octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'vg2gt', 'vg2gt_pixel', 'vg2gt_octree')
+        use_voxels = self.head_type in ('voxel', 'octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'octree_pixel_deep', 'vg2gt', 'vg2gt_pixel', 'vg2gt_octree')
         if use_voxels and (steps < 4 or calibrated_geometry is not None):
             raise ValueError('The voxel head requires predicted depth and at least four recurrent steps')
         feature_states = [] if use_voxels else None
@@ -224,7 +230,8 @@ class EventDVLT(nn.Module):
         size = (480,640)
         def resize(x):
             return F.interpolate(x,size,mode="bilinear",align_corners=False)
-        appearance_voxel, appearance_field = (voxel,field) if appearance_inputs is None else appearance_inputs
+        appearance_voxel, appearance_field = ((voxel, detail_field if detail_field is not None else field)
+                                              if appearance_inputs is None else appearance_inputs)
         appearance = torch.cat([resize(self.field_features(appearance_field.flatten(0,1))),
                                 appearance_voxel.flatten(0,1).asinh()],1)
         fixed = self.head_type == 'fixed'
@@ -277,7 +284,7 @@ class EventDVLT(nn.Module):
             points = center.flatten(1,2)
             valid = torch.isfinite(points).all(-1) & (depth.reshape(b,-1) > 0)
             confidence = None
-            if self.head_type in ('octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'vg2gt_octree'):
+            if self.head_type in ('octree', 'octree_pixel', 'octree_pixel_center', 'octree_pixel_fine', 'octree_pixel_deep', 'vg2gt_octree'):
                 confidence = resize(depth_confidence.reshape(b*s,1,168,224).float()).reshape(b,-1)
             result = self.gs_head([self.geometry_features(patch_grid(state)) for state in feature_states],
                                   appearance, points, valid, confidence=confidence, boundary=leaf_scores,

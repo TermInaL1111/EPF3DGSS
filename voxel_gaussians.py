@@ -11,7 +11,8 @@ class VoxelGaussianHead(nn.Module):
 
     voxel_size_m = .05
 
-    def __init__(self, octree=False, per_pixel_color=False, center_color=False, voxel_size=None):
+    def __init__(self, octree=False, per_pixel_color=False, center_color=False, voxel_size=None,
+                 color_width=None, color_layers=1):
         super().__init__()
         self.octree = octree
         self.per_pixel_color = per_pixel_color
@@ -29,8 +30,12 @@ class VoxelGaussianHead(nn.Module):
         nn.init.zeros_(self.attributes[-1].weight)
         nn.init.zeros_(self.attributes[-1].bias)
         if per_pixel_color:
-            self.color_head = nn.Sequential(
-                nn.Conv2d(width, width, 3, padding=1), nn.GELU(), nn.Conv2d(width, 1, 1))
+            hidden = color_width or width
+            layers = [nn.Conv2d(width, hidden, 3, padding=1), nn.GELU()]
+            for _ in range(color_layers - 1):
+                layers += [nn.Conv2d(hidden, hidden, 3, padding=1), nn.GELU()]
+            layers.append(nn.Conv2d(hidden, 1, 1))
+            self.color_head = nn.Sequential(*layers)
             nn.init.zeros_(self.color_head[-1].weight)
             nn.init.zeros_(self.color_head[-1].bias)
 

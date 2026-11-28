@@ -99,6 +99,7 @@ def run(args, data, checkpoint, test):
     perceptual = PerceptualMetrics("cuda") if args.lpips or args.lpips_weight else None
     optimizer = torch.optim.AdamW(params.values(), lr=args.lr)
     encoder = EventField(args.f3_repository,args.assets/'f3.pth',4) if use_field else None
+    detail_encoder = EventField(args.f3_repository,args.assets/'f3.pth',8) if use_field else None
     eval_only = args.steps == 0 and args.init_head is not None
     train = [] if eval_only else [(s,i) for s in args.train for i in data[s].indices]
     val = [] if eval_only else [(s,i) for s in args.val for i in data[s].indices]
@@ -122,9 +123,11 @@ def run(args, data, checkpoint, test):
         voxel = torch.stack([voxelize(p) for p in packets]).half()
         field = (torch.stack([encoder(p).half().cpu() for p in packets]) if encoder
                  else torch.zeros((2,32,96,128),dtype=torch.float16))
+        detail = (torch.stack([detail_encoder(p).half().cpu() for p in packets]) if detail_encoder
+                  else torch.zeros((2,32,240,320),dtype=torch.float16))
         supervision = source.supervision(index) if temporal else stereo_supervision(source,index)
         labels = tuple(torch.as_tensor(x,dtype=torch.float32) for x in supervision)
-        return voxel,field,*labels
+        return voxel,field,detail,*labels
 
     @torch.no_grad()
     def initialize_scale():
@@ -133,7 +136,7 @@ def run(args, data, checkpoint, test):
         selected = [train[i] for i in np.linspace(0,len(train)-1,min(12,len(train)),dtype=int)]
         rows = []
         for sequence,index in selected:
-            voxel,field,depth,*_ = sample(sequence,index)
+            voxel,field,_,depth,*_ = sample(sequence,index)
             with torch.autocast('cuda',dtype=torch.bfloat16):
                 tokens,pos,_ = model.geometry(voxel[None].cuda().float(),field[None].cuda().float(),steps=16)
                 raw = model.backbone._decode(tokens,168,224,1,2,pos)
@@ -170,9 +173,9 @@ def run(args, data, checkpoint, test):
         return torch.stack([event_bins(source.packet(view, index), (480,640)) for view in (0,1)])
 
     def predict(item, empty=False, training=False, source_control=None):
-        voxel,field,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
+        voxel,field,detail,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
         if empty:
-            voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
+            voxel,field,detail = torch.zeros_like(voxel),torch.zeros_like(field),torch.zeros_like(detail)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
         cameras = None
         if source_control in ('both','reference_depth'):
@@ -186,7 +189,8 @@ def run(args, data, checkpoint, test):
         refine = (temporal_corrector(boundary,boundary_counts(*item).cuda(),empty,args.preserve_boundary_scale)
                   if boundary else None)
         with torch.autocast('cuda',dtype=torch.bfloat16):
-            cloud = model(voxel.float(),field.float(),steps=16,calibrated_geometry=calibrated,
+            cloud = model(voxel.float(),field.float(),detail_field=detail.float(),
+                          steps=16,calibrated_geometry=calibrated,
                           source_cameras=cameras, depth_refinement=refine,
                           return_geometry=args.source_depth_control and source_control == 'both' and not empty,
                           reference_metric_depth=depth if source_control == 'reference_depth' else None,
@@ -218,7 +222,7 @@ def run(args, data, checkpoint, test):
     @lru_cache(maxsize=32)
     def overlap(seq,index):
         # Nominal angular overlap from calibration, independent of model output.
-        _,_,_,ki,poses,query,k,_ = sample(seq,index)
+        _,_,_,_,ki,poses,query,k,_ = sample(seq,index)
         y,x = np.indices((480,640))
         pixels = np.stack([x,y,np.ones_like(x)],-1)
         rays = pixels @ np.linalg.inv(k.numpy()).T
