@@ -1,0 +1,40 @@
+{
+  "matched_training_steps": 20000,
+  "windows": 1368,
+  "scores": {
+    "direct": {
+      "absrel": 0.17424778000326357,
+      "delta1": 0.777679651387428
+    },
+    "realm": {
+      "absrel": 0.17180584504252724,
+      "delta1": 0.7704692208453229
+    },
+    "saag": {
+      "absrel": 0.17399974875914598,
+      "delta1": 0.7789884923755774
+    },
+    "teacher": {
+      "absrel": 0.14735062191077666,
+      "delta1": 0.8383671322848365
+    }
+  },
+  "relative_improvement_pct": {
+    "direct_vs_teacher": {
+      "absrel": -18.253847689067513,
+      "delta1": -7.238771483325498
+    },
+    "realm_vs_direct": {
+      "absrel": 1.4014152494170051,
+      "delta1": -0.9271723297943156
+    },
+    "saag_vs_direct": {
+      "absrel": 0.1423439909036152,
+      "delta1": 0.16830078886780395
+    },
+    "realm_vs_saag": {
+      "absrel": 1.260866025534083,
+      "delta1": -1.0936325264927176
+    }
+  }
+}
