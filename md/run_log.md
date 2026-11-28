@@ -49,8 +49,8 @@
 
 ## 待补
 
-- 源视图监督两组续训各 12,000 步。已逐步核对前 300 步，两组按相同顺序取到 DSEC 140 窗、EventScape 160 窗，均无重复。GPU 0 仅监督目标视图，GPU 1 额外监督两个源视图。评测后按每个数据集自己的位移排序分为三组，组内汇总绝对值和相对变化。 [训练与评测协议](next_goal.md#源视图监督运行) · [汇总代码](../scripts/summarize_source_view_supervision.py)
-- 与 EvGGS/IncEventGS 的同协议表尚未完成；需要先固定目标背景/裁剪/target frame。
+- 两组各续训 12,000 步。GPU 0 仅监督目标视图，GPU 1 额外监督两个源视图。4,000 步权重已保存，4,034 步完成 144 个配对验证窗。正式测试按每个数据集的目标位移分三组。 [验证结果](../results/source_view_supervision/validation_004034.json) · [产物路径与哈希](../results/source_view_supervision/validation_004034_artifacts.json)
+- 已统一 MVSEC 的两个渲染器的投影位置。EvGGS 官方权重的 72 窗复评排在 GPU 0 完成续训之后。IncEventGS 保留文献与指标对照。 [评测协议](evggs_baseline.md)
 
 ## 代码与几何版本
 

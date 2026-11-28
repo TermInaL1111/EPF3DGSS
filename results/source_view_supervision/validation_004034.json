@@ -1,0 +1,184 @@
+{
+  "step": 4034,
+  "split": "validation",
+  "datasets": {
+    "dsec": {
+      "windows": 27,
+      "target": {
+        "psnr": {
+          "initial": 17.011456383599175,
+          "real": 16.872314771016438,
+          "zero": 10.640315656308774,
+          "change_since_initial": -0.13914161258273694,
+          "real_improvement": 6.231999114707664,
+          "improvement_pct": 58.569682667380604
+        },
+        "ssim": {
+          "initial": 0.6744666629367404,
+          "real": 0.6765141862410086,
+          "zero": 0.5496664422529715,
+          "change_since_initial": 0.0020475233042681618,
+          "real_improvement": 0.1268477439880371,
+          "improvement_pct": 23.07722179074893
+        },
+        "lpips_vgg": {
+          "initial": 0.6573174507529648,
+          "real": 0.659132167145058,
+          "zero": 0.7177568254647432,
+          "change_since_initial": 0.0018147163920931852,
+          "real_improvement": 0.05862465831968522,
+          "improvement_pct": 8.167760478171155
+        },
+        "lpips_alex": {
+          "initial": 0.6697501098668134,
+          "real": 0.6772865321901109,
+          "zero": 0.8069614878407231,
+          "change_since_initial": 0.0075364223232975425,
+          "real_improvement": 0.12967495565061216,
+          "improvement_pct": 16.069534619006156
+        }
+      },
+      "source": {
+        "psnr": {
+          "initial": 17.0114557478163,
+          "real": 16.946475947344744,
+          "zero": 10.640134670116284,
+          "change_since_initial": -0.06497980047155494,
+          "real_improvement": 6.30634127722846,
+          "improvement_pct": 59.26937461553332
+        },
+        "ssim": {
+          "initial": 0.6744666187851517,
+          "real": 0.6775077272344519,
+          "zero": 0.5471824683524944,
+          "change_since_initial": 0.003041108449300167,
+          "real_improvement": 0.13032525888195745,
+          "improvement_pct": 23.81751361193138
+        },
+        "lpips_vgg": {
+          "initial": 0.6573174463378059,
+          "real": 0.6580985343014752,
+          "zero": 0.7222101909142954,
+          "change_since_initial": 0.0007810879636693802,
+          "real_improvement": 0.06411165661282014,
+          "improvement_pct": 8.877146489951464
+        },
+        "lpips_alex": {
+          "initial": 0.6697501562259816,
+          "real": 0.673647262431957,
+          "zero": 0.8090837884832311,
+          "change_since_initial": 0.003897106205975498,
+          "real_improvement": 0.1354365260512741,
+          "improvement_pct": 16.739493236562495
+        }
+      },
+      "source_vs_target": {
+        "psnr": {
+          "delta": 0.07416117632830677,
+          "improvement_pct": 0.4395435797327712
+        },
+        "ssim": {
+          "delta": 0.000993540993443287,
+          "improvement_pct": 0.14686181216151725
+        },
+        "lpips_vgg": {
+          "delta": -0.0010336328435827102,
+          "improvement_pct": 0.15681723561751681
+        },
+        "lpips_alex": {
+          "delta": -0.0036392697581538735,
+          "improvement_pct": 0.5373308910167948
+        }
+      }
+    },
+    "eventscape": {
+      "windows": 117,
+      "target": {
+        "psnr": {
+          "initial": 18.083768086555676,
+          "real": 18.571610760485004,
+          "zero": 12.671098741710695,
+          "change_since_initial": 0.4878426739293289,
+          "real_improvement": 5.900512018774309,
+          "improvement_pct": 46.56669590420771
+        },
+        "ssim": {
+          "initial": 0.681411384517311,
+          "real": 0.6886154517658756,
+          "zero": 0.5759156585758568,
+          "change_since_initial": 0.007204067248564594,
+          "real_improvement": 0.11269979319001877,
+          "improvement_pct": 19.568801700705016
+        },
+        "lpips_vgg": {
+          "initial": 0.5207258213279594,
+          "real": 0.5186892612877055,
+          "zero": 0.5929091277285519,
+          "change_since_initial": -0.0020365600402538764,
+          "real_improvement": 0.07421986644084633,
+          "improvement_pct": 12.517915978993999
+        },
+        "lpips_alex": {
+          "initial": 0.5126863063400627,
+          "real": 0.5150551480105799,
+          "zero": 0.7457890225271894,
+          "change_since_initial": 0.0023688416705172077,
+          "real_improvement": 0.23073387451660943,
+          "improvement_pct": 30.938223485073824
+        }
+      },
+      "source": {
+        "psnr": {
+          "initial": 18.08376815991524,
+          "real": 18.572603983756824,
+          "zero": 12.770889339284,
+          "change_since_initial": 0.4888358238415833,
+          "real_improvement": 5.801714644472824,
+          "improvement_pct": 45.42921397514903
+        },
+        "ssim": {
+          "initial": 0.6814113651585375,
+          "real": 0.6883990527727665,
+          "zero": 0.5789368017616435,
+          "change_since_initial": 0.006987687614228966,
+          "real_improvement": 0.10946225101112295,
+          "improvement_pct": 18.907461173316477
+        },
+        "lpips_vgg": {
+          "initial": 0.5207257899973128,
+          "real": 0.5163261184835026,
+          "zero": 0.5966832974018195,
+          "change_since_initial": -0.004399671513810155,
+          "real_improvement": 0.08035717891831684,
+          "improvement_pct": 13.46730824680728
+        },
+        "lpips_alex": {
+          "initial": 0.5126863055759006,
+          "real": 0.5082545861219748,
+          "zero": 0.7399570605693719,
+          "change_since_initial": -0.004431719453925731,
+          "real_improvement": 0.2317024744473971,
+          "improvement_pct": 31.31296216960345
+        }
+      },
+      "source_vs_target": {
+        "psnr": {
+          "delta": 0.000993223271819943,
+          "improvement_pct": 0.0053480728442426425
+        },
+        "ssim": {
+          "delta": -0.0002163989931091015,
+          "improvement_pct": -0.03142523051932265
+        },
+        "lpips_vgg": {
+          "delta": -0.0023631428042029112,
+          "improvement_pct": 0.45559894537552953
+        },
+        "lpips_alex": {
+          "delta": -0.006800561888605117,
+          "improvement_pct": 1.320356065728601
+        }
+      }
+    }
+  }
+}
