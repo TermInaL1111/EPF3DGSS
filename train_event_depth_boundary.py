@@ -75,9 +75,9 @@ def sequences(archive):
     return [EventScapeSequence(archive, name) for name in archive.sequences]
 
 
-def summarize(rows):
+def summarize(rows, arms=('dvlt', *ARMS)):
     result = {}
-    for arm in ('dvlt', *ARMS):
+    for arm in arms:
         stats = [row[arm] for row in rows]
         entry = {}
         for key in ('absrel','delta1','boundary_absrel','interior_absrel'):
@@ -94,11 +94,11 @@ def summarize(rows):
     return result
 
 
-def relative_improvement(summary):
+def relative_improvement(summary, arms=ARMS, reference='geometry'):
     relative = {}
-    for arm in ARMS:
+    for arm in arms:
         relative[arm] = {}
-        for metric, baseline in summary['geometry'].items():
+        for metric, baseline in summary[reference].items():
             value = summary[arm][metric]
             sign = -1 if metric.endswith('absrel') else 1
             relative[arm][metric] = (100 * sign * (value - baseline) / baseline

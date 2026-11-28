@@ -20,6 +20,17 @@ from eventscape_data import EventScapeArchive, EventScapeSequence
 from train_event_depth_boundary import boundary_inputs, relative_improvement, score, summarize
 
 
+TEMPORAL_CONTROLS = ('time_reversed', 'polarity_swapped', 'time_uniform')
+
+
+def temporal_controls(evidence):
+    """Change temporal order or polarity without changing total event activity."""
+    counts = evidence.unflatten(1,(2,5)).expm1()
+    return dict(time_reversed=counts.flip((2,)).flatten(1,2).log1p(),
+                polarity_swapped=counts.flip((1,)).flatten(1,2).log1p(),
+                time_uniform=counts.mean(2,keepdim=True).expand_as(counts).flatten(1,2).log1p())
+
+
 def windows(args):
     if args.dataset == 'dsec':
         split = json.loads(args.split.read_text())
@@ -85,16 +96,24 @@ def evaluate(args):
         baseline = F.interpolate(depth, target.shape[-2:], mode='bilinear', align_corners=False).log()
         scores = {key: score(head(tokens, depth, conf, evidence[key])[0], target, cap)
                   for key, head in heads.items()}
+        if args.temporal_controls:
+            scores.update({key:score(heads['temporal'](tokens,depth,conf,features)[0],target,cap)
+                           for key,features in temporal_controls(evidence['temporal']).items()})
         rows.append(dict(sequence=name, index=index, dvlt=score(baseline, target, cap), **scores))
         if args.limit and len(rows) >= args.limit:
             break
     if not rows:
         raise ValueError('No valid depth windows')
-    summary = summarize(rows)
-    return dict(dataset=args.dataset, cap_m=cap, geometry_checkpoint=str(args.geometry),
-                geometry_step=checkpoint['step'], boundary_checkpoint=str(args.boundary),
-                boundary_steps=state['step'], summary=summary,
-                relative_improvement_vs_geometry_pct=relative_improvement(summary), rows=rows)
+    arms = ('dvlt', *ARMS, *TEMPORAL_CONTROLS) if args.temporal_controls else ('dvlt', *ARMS)
+    summary = summarize(rows,arms)
+    report = dict(dataset=args.dataset, cap_m=cap, geometry_checkpoint=str(args.geometry),
+                  geometry_step=checkpoint['step'], boundary_checkpoint=str(args.boundary),
+                  boundary_steps=state['step'], summary=summary,
+                  relative_improvement_vs_geometry_pct=relative_improvement(summary), rows=rows)
+    if args.temporal_controls:
+        report['controls_vs_temporal_pct'] = relative_improvement(
+            summary, TEMPORAL_CONTROLS, reference='temporal')
+    return report
 
 
 if __name__ == '__main__':
@@ -106,6 +125,8 @@ if __name__ == '__main__':
     parser.add_argument('--frames', type=int, default=24, help='Sampled windows per sequence')
     parser.add_argument('--limit', type=int, help='Total valid window cap for integration checks')
     parser.add_argument('--device', choices=('cpu', 'cuda'), default='cuda')
+    parser.add_argument('--temporal-controls', action='store_true',
+                        help='Ablate time order and polarity at the trained temporal head input')
     args = parser.parse_args()
     if args.frames < 1 or (args.limit is not None and args.limit < 1):
         parser.error('Window limits must be positive')
