@@ -121,6 +121,9 @@ def main(args):
                 cameras = (k.expand(1,2,3,3),torch.stack((torch.eye(4,device=right.device),right))[None])
                 for key,v,f,refinement,rank in tuple(variants):
                     variants.append((f'{key}_calibrated',v,f,refinement,rank))
+                if not training_boundary:
+                    variants.extend((key,vox.flip(1),field.flip(1),None,False)
+                                    for key in ('swapped','swapped_calibrated'))
             budget_scenes = {}
             for key,v,f,refinement,rank_leaves in variants:
                 with torch.autocast("cuda",dtype=torch.bfloat16):

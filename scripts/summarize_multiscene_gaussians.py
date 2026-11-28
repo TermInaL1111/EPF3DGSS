@@ -40,11 +40,13 @@ def camera_control(rows):
     for name,suffix in (('predicted',''),('calibrated','_calibrated')):
         report[name] = {}
         for metric,sign in metrics.items():
-            real,zero = (fmean(row[f'{condition}{suffix}'][metric] for row in rows)
-                         for condition in ('matched','zero'))
+            real,zero,swapped = (fmean(row[f'{condition}{suffix}'][metric] for row in rows)
+                                 for condition in ('matched','zero','swapped'))
             report[name][metric] = dict(real=real,zero=zero,
                 real_improvement=sign*(real-zero),
-                improvement_pct=100*sign*(real-zero)/abs(zero) if zero else None)
+                improvement_pct=100*sign*(real-zero)/abs(zero) if zero else None,
+                swapped=swapped,real_vs_swapped=sign*(real-swapped),
+                real_vs_swapped_pct=100*sign*(real-swapped)/abs(swapped) if swapped else None)
     return report
 
 
