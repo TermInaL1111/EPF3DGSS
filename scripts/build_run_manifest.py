@@ -11,6 +11,7 @@ OUT = Path('results')
 RUNS = [
     dict(id='octree_target4_12k', head='octree', train='DSEC+EventScape', target=4,
          steps=12000, dir='octree_target4_12k', status='finished',
+         archive='octree_target4_12k.pt',
          tests={'dsec': 'val_test_dsec.json', 'eventscape': 'val_test_eventscape.json'}),
     dict(id='vg2gt_target4_12k', head='vg2gt (fine voxel)', train='DSEC+EventScape', target=4,
          steps=4600, dir='vg2gt_target4_12k', status='stopped at 4.6k (DSEC geometry collapse)',
@@ -21,6 +22,7 @@ RUNS = [
          tests={'dsec': 'val_test_dsec.json', 'eventscape': 'val_test_eventscape.json'}),
     dict(id='octree_pixel_es_12k', head='octree_pixel', train='EventScape', target=4,
          steps=12000, dir='octree_pixel_es_12k', status='finished',
+         archive='octree_pixel_es_12k.pt',
          tests={'eventscape': 'val_test.json'}),
     dict(id='octree_pixel_es_4k_eval', head='octree_pixel', train='EventScape', target=4,
          steps=4200, dir='octree_pixel_es_eval_4k', status='intermediate evaluation',
@@ -30,9 +32,11 @@ RUNS = [
          tests={'dsec': 'val_test.json'}),
     dict(id='octree_pixel_mixed_12k', head='octree_pixel', train='DSEC+EventScape', target=4,
          steps=12000, dir='octree_pixel_mixed_12k', status='finished',
+         archive='octree_pixel_mixed_12k.pt',
          tests={'dsec': 'val_test_dsec.json', 'eventscape': 'val_test_eventscape.json'}),
     dict(id='octree_pixel_center_es_12k', head='octree_pixel_center', train='EventScape', target=4,
          steps=12000, dir='octree_pixel_center_es_12k', status='finished',
+         archive='octree_pixel_center_es_12k.pt',
          tests={'eventscape': 'val_test.json'}),
     dict(id='octree_pixel_center_es_7k_eval', head='octree_pixel_center', train='EventScape', target=4,
          steps=7500, dir='octree_pixel_center_es_eval_7k', status='intermediate evaluation',
@@ -82,6 +86,11 @@ for spec in RUNS:
     entry['checkpoint'] = str(checkpoint) if checkpoint.is_file() else None
     entry['checkpoint_sha256'] = sha256(checkpoint) if checkpoint.is_file() else None
     entry['checkpoint_bytes'] = checkpoint.stat().st_size if checkpoint.is_file() else None
+    archive = spec.get('archive')
+    if archive:
+        archived = Path('weights') / archive
+        entry['archived_weights'] = str(archived)
+        entry['archived_weights_sha256'] = sha256(archived) if archived.is_file() else None
     for name in ('config.json', 'train.jsonl', 'val_012000.json'):
         file = directory / name
         if file.is_file():

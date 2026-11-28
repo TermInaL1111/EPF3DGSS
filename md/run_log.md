@@ -59,3 +59,29 @@
   - SHA-256：`8e866eecf4466c15eead4eb1a4b751270cf5c79dc826842bac34b61947e55de2`
   - 大小：`12196026` bytes
 - 头部 `latest.pt` 的 SHA-256 见 `results/run_manifest.json`。
+
+## weights/ 归档
+
+已把 4 个关键 run 的最终头复制到 `weights/`，文件名可读，源文件与副本 SHA-256 一致：
+
+| run | 归档文件 | 字节 |
+|---|---|---:|
+| `octree_target4_12k` | `weights/octree_target4_12k.pt` | 4,331,981 |
+| `octree_pixel_es_12k` | `weights/octree_pixel_es_12k.pt` | 4,354,057 |
+| `octree_pixel_mixed_12k` | `weights/octree_pixel_mixed_12k.pt` | 4,354,057 |
+| `octree_pixel_center_es_12k` | `weights/octree_pixel_center_es_12k.pt` | 4,354,057 |
+
+`results/run_manifest.json` 现在同时记录 `checkpoint`（服务器原路径）、
+`checkpoint_sha256`、`archived_weights` 和 `archived_weights_sha256`。
+
+注意：`.gitignore` 仍排除 `*.pt`，所以 `weights/` 是本地归档，不随 git 提交。
+若需要版本化权重，需单独用 Git LFS / 对象存储 / release asset。
+
+## 中间 checkpoint 留档
+
+`train_dsec_gaussians.py` 新增：
+
+- `--save-every N`：每 N 步额外保存 `step_XXXXXX.pt`；
+- 训练结束时总会保存 `step_<final>.pt`。
+
+旧运行没有这些中间权重；只有 `latest.pt`（最终）和 `val_*.json` 指标。

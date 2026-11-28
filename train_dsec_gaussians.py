@@ -339,6 +339,14 @@ def run(args, data, checkpoint, test):
                                preserve_boundary_scale=args.preserve_boundary_scale)
             torch.save(payload,tmp)
             tmp.replace(args.out/'latest.pt')
+            if args.save_every and step % args.save_every == 0:
+                archive = args.out/f'step_{step:06}.pt.tmp'
+                torch.save(payload,archive)
+                archive.replace(args.out/f'step_{step:06}.pt')
+            if step == args.steps:
+                archive = args.out/f'step_{step:06}.pt.tmp'
+                torch.save(payload,archive)
+                archive.replace(args.out/f'step_{step:06}.pt')
         if mixed and step % len(train) == 0 and step < args.steps:
             evaluate(val,f'{step:06}')
     if args.steps:
@@ -511,7 +519,7 @@ if __name__=='__main__':
     parser.add_argument('--train',nargs='+')
     parser.add_argument('--val',nargs='+')
     parser.add_argument('--geometry',choices=('calibrated','predicted'),required=True)
-    parser.add_argument('--head',choices=('legacy','fixed','voxel','octree','octree_pixel','octree_pixel_center','octree_pixel_fine','vg2gt','vg2gt_pixel','vg2gt_octree'),
+    parser.add_argument('--head',choices=('legacy','fixed','voxel','octree','octree_pixel','octree_pixel_center','octree_pixel_fine','octree_pixel_deep','vg2gt','vg2gt_pixel','vg2gt_octree'),
                         help='Defaults to fixed for predicted geometry from full-coverage distillation')
     parser.add_argument('--boundary', type=Path, help='Frozen EventScape temporal boundary checkpoint')
     parser.add_argument('--preserve-boundary-scale', action='store_true')
@@ -544,6 +552,8 @@ if __name__=='__main__':
                         help='Effective symmetric threshold in log APS intensity units')
     parser.add_argument('--steps',type=int,default=500)
     parser.add_argument('--ssim-weight',type=float,default=.2)
+    parser.add_argument('--save-every',type=int,default=0,
+                        help='Also keep step_XXXXXX.pt every N optimizer steps')
     parser.add_argument('--seed',type=int,default=10)
     parser.add_argument('--val-limit',type=int,default=24)
     main(parser.parse_args())
