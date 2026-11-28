@@ -4,6 +4,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import re
+import shutil
 import struct
 from tempfile import TemporaryFile
 import time
@@ -59,7 +60,16 @@ def checksum(path):
     return check
 
 
-def download_member(target, info):
+def download_block(path, start, size):
+    if path.is_file() and path.stat().st_size == size:
+        return
+    data, _ = fetch(start,start+size-1)
+    temporary = path.with_suffix('.tmp')
+    temporary.write_bytes(data)
+    temporary.replace(path)
+
+
+def download_member(target, info, pool):
     if info.compress_type != ZIP_STORED or info.flag_bits & 1:
         raise ValueError(f'Expected an uncompressed, unencrypted archive member: {info.filename}')
     if target.exists():
@@ -77,31 +87,48 @@ def download_member(target, info):
     if written > info.file_size:
         raise ValueError(f'Partial file exceeds the archive member: {partial}')
     print(f'{target} {written:,}/{info.file_size:,} bytes',flush=True)
+    chunk_dir = target.with_suffix(target.suffix+'.parts')
+    chunk_dir.mkdir(exist_ok=True)
+    chunks = []
+    futures = []
+    for offset in range(written,info.file_size,BLOCK):
+        path = chunk_dir/f'{offset:012}'
+        size = min(BLOCK,info.file_size-offset)
+        chunks.append(path)
+        futures.append(pool.submit(download_block,path,start+offset,size))
+    for index,future in enumerate(futures,1):
+        future.result()
+        if index % 20 == 0:
+            print(f'{target} {index}/{len(futures)} ranges ready',flush=True)
     with partial.open('ab') as output:
-        for offset in range(written,info.file_size,BLOCK):
-            last = min(offset+BLOCK,info.file_size)-1
-            data, _ = fetch(start+offset,start+last)
-            output.write(data)
+        for path in chunks:
+            with path.open('rb') as block:
+                shutil.copyfileobj(block,output,1 << 20)
     if partial.stat().st_size != info.file_size or checksum(partial) != info.CRC:
         raise ValueError(f'Archive checksum mismatch for {partial}')
     partial.replace(target)
+    shutil.rmtree(chunk_dir)
     print(f'Ready {target}',flush=True)
 
 
-def download_drive(root, listing, drive):
+def download_drive(root, listing, drive, pool):
     for filename in ('cam_to_lidar.yaml','lidar_imu.bag'):
-        download_member(root/drive/filename,listing[f'data/{drive}/{filename}'])
+        download_member(root/drive/filename,listing[f'data/{drive}/{filename}'],pool)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('root',type=Path)
     parser.add_argument('drives',nargs='+')
+    parser.add_argument('--workers',type=int,default=8)
     args = parser.parse_args()
+    if args.workers < 1:
+        parser.error('Worker count must be positive')
     listing = inventory()
     drives = sorted(set(args.drives))
     for drive in drives:
         if f'data/{drive}/lidar_imu.bag' not in listing:
             parser.error(f'Unknown DSEC drive {drive}')
-    with ThreadPoolExecutor(max_workers=min(2,len(drives))) as pool:
-        list(pool.map(lambda drive:download_drive(args.root,listing,drive),drives))
+    with ThreadPoolExecutor(max_workers=args.workers) as ranges:
+        for drive in drives:
+            download_drive(args.root,listing,drive,ranges)

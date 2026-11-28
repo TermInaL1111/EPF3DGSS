@@ -118,12 +118,18 @@ def run(args, data, checkpoint, test):
         source = data[seq]
         return torch.stack([event_bins(source.packet(view, index), (480,640)) for view in (0,1)])
 
-    def predict(item, empty=False, training=False, calibrated_source=False):
+    def predict(item, empty=False, training=False, source_control=None):
         voxel,field,depth,ki,poses,query,k,gray = (x[None].cuda() for x in sample(*item))
         if empty:
             voxel,field = torch.zeros_like(voxel),torch.zeros_like(field)
         calibrated = (depth,ki,poses) if args.geometry == 'calibrated' else None
-        cameras = (ki,poses) if calibrated_source or (training and args.head != 'legacy') else None
+        cameras = None
+        if source_control == 'both' or (training and args.head != 'legacy'):
+            cameras = (ki,poses)
+        elif source_control == 'intrinsics':
+            cameras = (ki,None)
+        elif source_control == 'poses':
+            cameras = (None,poses)
         refine = (temporal_corrector(boundary,boundary_counts(*item).cuda(),empty,args.preserve_boundary_scale)
                   if boundary else None)
         with torch.autocast('cuda',dtype=torch.bfloat16):
@@ -192,11 +198,13 @@ def run(args, data, checkpoint, test):
                 target = sample(*item)[-1][None].to(mask.device)/255
                 psnr,ssim = gray_metrics(source,target)
                 row.update(source_copy_psnr=float(psnr[0]),source_copy_ssim=float(ssim[0]))
-            variants = [('matched',False,False),('zero',True,False)]
+            variants = [('matched',False,None),('zero',True,None)]
             if args.source_camera_control:
-                variants += [('matched_calibrated',False,True),('zero_calibrated',True,True)]
-            for key,empty,calibrated_source in variants:
-                image,gray,count,_,coverage = predict(item,empty,calibrated_source=calibrated_source)
+                variants += [('matched_calibrated',False,'both'),('zero_calibrated',True,'both')]
+            if args.source_camera_components:
+                variants += [('matched_intrinsics',False,'intrinsics'),('matched_poses',False,'poses')]
+            for key,empty,source_control in variants:
+                image,gray,count,_,coverage = predict(item,empty,source_control=source_control)
                 if coverage is not None:
                     row.update({f'{key}_{metric}':value for metric,value in coverage.items()})
                 if count is not None:
@@ -290,6 +298,8 @@ def main(args):
         raise ValueError('Head initialization requires predicted geometry without a boundary head')
     if args.source_camera_control and (args.steps or not args.init_head):
         raise ValueError('Source-camera comparison requires evaluation of a frozen trained head')
+    if args.source_camera_components and not args.source_camera_control:
+        raise ValueError('Source-camera components require the full source-camera comparison')
     checkpoint = torch.load(args.geometry_checkpoint, map_location='cpu', weights_only=True)
     eventscape_splits, dsec_splits = {}, {}
     mixed = bool(args.eventscape_cameras and args.dsec_temporal_cameras)
@@ -359,6 +369,8 @@ def main(args):
         config.pop('lpips_weight')
     if not args.source_camera_control:
         config.pop('source_camera_control')
+    if not args.source_camera_components:
+        config.pop('source_camera_components')
     if args.lr == 3e-4:
         config.pop('lr')
     args.out.parent.mkdir(parents=True,exist_ok=True)
@@ -424,6 +436,8 @@ if __name__=='__main__':
     parser.add_argument('--init-head',type=Path,help='Start from a trained head with identical frozen geometry')
     parser.add_argument('--source-camera-control',action='store_true',
                         help='Compare predicted and calibrated source cameras and report alpha coverage')
+    parser.add_argument('--source-camera-components',action='store_true',
+                        help='Also compare calibrated intrinsics and poses separately for real events')
     parser.add_argument('--lr',type=float,default=3e-4)
     dataset = parser.add_mutually_exclusive_group()
     dataset.add_argument('--mvsec-calibration',type=Path,

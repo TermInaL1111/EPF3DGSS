@@ -159,7 +159,8 @@ class EventDVLT(nn.Module):
         b,s = voxel.shape[:2]
         if depth_refinement is not None and calibrated_geometry is not None:
             raise ValueError('Depth refinement requires predicted geometry')
-        if depth_readout is not None and (source_cameras is None or calibrated_geometry is not None):
+        if depth_readout is not None and (source_cameras is None or any(x is None for x in source_cameras)
+                                           or calibrated_geometry is not None):
             raise ValueError('Depth readout interventions require fixed source cameras and predicted geometry')
         if (event_leaf_ranking or matched_leaf_budget) and (self.head_type != 'octree' or depth_refinement is None):
             raise ValueError('Event leaf ranking requires an octree head and boundary predictions')
@@ -180,7 +181,11 @@ class EventDVLT(nn.Module):
                 poses,intrinsic = rays_to_pose(rays,torch.ones_like(rays[...,0]),168,224,14)
                 relative = torch.linalg.solve(poses[:,:1],poses)
             if source_cameras is not None:
-                intrinsic, relative = source_cameras
+                source_intrinsics, source_poses = source_cameras
+                if source_intrinsics is not None:
+                    intrinsic = source_intrinsics
+                if source_poses is not None:
+                    relative = source_poses
         else:
             metric_depth, intrinsic, relative = calibrated_geometry
             source_valid = metric_depth > 0
@@ -230,7 +235,7 @@ class EventDVLT(nn.Module):
         yy = ((y+.5)*168/480-.5-k[:,1,2,None,None])/k[:,1,1,None,None].clamp_min(1)
         local = torch.stack([xx,yy,torch.ones_like(xx)],-1)*depth[:,0,:,:,None]
         local = local.reshape(b,s,-1,3)
-        translation_scale = 1. if source_cameras is not None else scale
+        translation_scale = 1. if source_cameras is not None and source_cameras[1] is not None else scale
         if feature_states is not None:
             # Keep metric coordinates in FP32 before assigning voxel membership.
             with torch.autocast(voxel.device.type, enabled=False):
