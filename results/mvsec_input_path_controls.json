@@ -1,0 +1,66 @@
+{
+  "windows": 72,
+  "source_cameras": "calibrated",
+  "heads": {
+    "fixed": {
+      "real": {
+        "psnr": 13.601108060942757,
+        "ssim": 0.2995726995997959,
+        "lpips_vgg": 0.6950669843289587,
+        "lpips_alex": 0.7119969899455706,
+        "gaussian_count_median": 614400.0
+      },
+      "zero_direct_appearance": {
+        "psnr": 13.600223435295952,
+        "ssim": 0.299599672978123,
+        "lpips_vgg": 0.6949960067868233,
+        "lpips_alex": 0.7126762320597967,
+        "gaussian_count_median": 614400.0
+      },
+      "zero_geometry": {
+        "psnr": 13.975387944115532,
+        "ssim": 0.25931346375081277,
+        "lpips_vgg": 0.7034784257411957,
+        "lpips_alex": 0.7491299278206296,
+        "gaussian_count_median": 614400.0
+      },
+      "all_zero": {
+        "psnr": 13.97402056058248,
+        "ssim": 0.25926957093179226,
+        "lpips_vgg": 0.7033771847685178,
+        "lpips_alex": 0.7492945931024022,
+        "gaussian_count_median": 614400.0
+      }
+    },
+    "octree": {
+      "real": {
+        "psnr": 12.598472131623161,
+        "ssim": 0.3052949450082249,
+        "lpips_vgg": 0.7197757032182481,
+        "lpips_alex": 0.7441223114728928,
+        "gaussian_count_median": 111727.5
+      },
+      "zero_direct_appearance": {
+        "psnr": 12.600357439782885,
+        "ssim": 0.3052437084002627,
+        "lpips_vgg": 0.7197647624545627,
+        "lpips_alex": 0.745116171737512,
+        "gaussian_count_median": 111727.5
+      },
+      "zero_geometry": {
+        "psnr": 16.188281138737995,
+        "ssim": 0.3818203740649753,
+        "lpips_vgg": 0.6954613286587927,
+        "lpips_alex": 0.6891176303227743,
+        "gaussian_count_median": 11338.5
+      },
+      "all_zero": {
+        "psnr": 16.18927115864224,
+        "ssim": 0.38180808702276814,
+        "lpips_vgg": 0.695370166665978,
+        "lpips_alex": 0.6889146193861961,
+        "gaussian_count_median": 11338.5
+      }
+    }
+  }
+}
