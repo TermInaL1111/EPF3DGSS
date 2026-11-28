@@ -16,6 +16,12 @@ from pilot import bin_events
 from event_field import EventField
 
 
+# OpenCV rectification uses integer pixel centers. Both Gaussian renderers use
+# a half-pixel offset when mapping camera coordinates to image array indices.
+MVSEC_VIRTUAL_K = ((888.8889, 0, 319.5), (0, 888.8889, 239.5), (0, 0, 1))
+MVSEC_RASTER_K = ((888.8889, 0, 320.0), (0, 888.8889, 240.0), (0, 0, 1))
+
+
 def lower_bound_after(events,t):
     lo, hi = 0,len(events)
     while lo < hi:
@@ -32,7 +38,7 @@ def calibration(path):
     fx,fy,cx,cy = cam["intrinsics"]
     native = np.array([[fx,0,cx],[0,fy,cy],[0,0,1.]])
     dist = np.array(cam["distortion_coeffs"])
-    virtual = np.array([[888.8889,0,319.5],[0,888.8889,239.5],[0,0,1.]])
+    virtual = np.array(MVSEC_VIRTUAL_K)
     assert cam["distortion_model"] == "equidistant"
     y,x = np.indices(cam["resolution"][::-1])
     xy = np.stack([x,y],-1).astype(float).reshape(-1,1,2)

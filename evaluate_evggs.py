@@ -139,13 +139,13 @@ def mvsec(args, model, metrics):
     import h5py
 
     from lib.dataset.Ev3D import ReadEventFromH5
-    from mvsec_transfer import calibration, flight_windows, write_gray_preview
+    from mvsec_transfer import MVSEC_RASTER_K, calibration, flight_windows, write_gray_preview
     from real_geometry import depth_lookup, depth_pair
 
     # MVSEC's virtual image and pooled grayscale reference are shared with DVLT.
     loader = ReadEventFromH5.__new__(ReadEventFromH5)
     loader.H, loader.W = 480, 640
-    k = torch.tensor([[888.8889, 0, 319.5], [0, 888.8889, 239.5], [0, 0, 1]], device='cuda')
+    k = torch.tensor(MVSEC_RASTER_K, device='cuda')
     maps = calibration(args.calibration)
     xy, factor = depth_lookup(args.calibration, 480, 640)
     for flight in ('indoor_flying1','indoor_flying2','indoor_flying3'):
@@ -171,6 +171,7 @@ def mvsec(args, model, metrics):
                 depths = [depth_metrics(output[view]['depth'][0, 0], ref)
                           for view, ref in zip(('lview','rview'), refs)]
                 yield dict(flight=flight, start=start, sources=[start,start+4], target=start+2,
+                           query_raster_intrinsics=MVSEC_RASTER_K,
                            matched=scores, depth=depths, depth_dt_s=offsets)
 
 

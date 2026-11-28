@@ -101,9 +101,13 @@ def evggs_comparison(reference, arms):
             candidate = indexed[row['flight'],row['start']]
             if any(candidate[key] != row[key] for key in ('sources','target')):
                 raise ValueError(f'EvGGS source or target frames differ for {arm}')
+            if ('query_raster_intrinsics' not in row or
+                    candidate.get('query_raster_intrinsics') != row['query_raster_intrinsics']):
+                raise ValueError(f'EvGGS query raster intrinsics differ or are missing for {arm}')
             aligned.append(candidate | {'matched':candidate['matched_calibrated']})
         comparisons[arm] = pair_with_epf(rows,aligned,'flight',baseline)
     return dict(protocol='shared virtual cameras, calibrated source poses, 128x96 full grayscale',
+                query_raster_intrinsics=rows[0]['query_raster_intrinsics'],
                 weights=reference['weights'], weights_sha256=reference['sha256'],
                 upstream_commit=reference['upstream_commit'], baseline=baseline, arms=comparisons)
 

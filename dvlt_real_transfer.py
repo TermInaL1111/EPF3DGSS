@@ -9,7 +9,7 @@ from event_depth_boundary import (ARMS, EventDepthBoundary, evidence, event_bins
                                   load_temporal_boundary, restore_depth_scale, temporal_corrector)
 from image_metrics import PerceptualMetrics, gray_metrics
 from dvlt.common.rays import rays_to_pose
-from mvsec_transfer import calibration,flight_windows,write_gray_preview
+from mvsec_transfer import MVSEC_RASTER_K,calibration,flight_windows,write_gray_preview
 from torch.nn import functional as F
 
 
@@ -17,7 +17,8 @@ RENDER_KEYS = ('centers', 'quats', 'scales', 'opacity', 'gray')
 
 
 def image_scores(scene, query, target, perceptual, preview=None):
-    image = F.avg_pool2d(render(scene, query[None]), 5)
+    intrinsics = query.new_tensor(MVSEC_RASTER_K)[None]
+    image = F.avg_pool2d(render(scene, query[None], intrinsics), 5)
     if preview is not None:
         write_gray_preview(preview,image[0])
     target = target[None]
@@ -96,6 +97,7 @@ def main(args):
             baseline_cos = ((right[:3,:3].trace()-1)/2).clamp(-1,1)
             row['identity_rotation_deg'] = float(baseline_cos.acos().rad2deg())
             if not args.geometry_only:
+                row['query_raster_intrinsics'] = MVSEC_RASTER_K
                 copy_psnr,copy_ssim = gray_metrics(source[None],target[None])
                 row['source_copy_psnr'] = float(copy_psnr[0])
                 row['source_copy_ssim'] = float(copy_ssim[0])
